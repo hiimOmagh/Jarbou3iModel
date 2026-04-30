@@ -1,0 +1,25 @@
+{
+  "name": "Jarbou3i Research Engine",
+  "short_name": "Jarbou3i Research",
+  "description": "Stable public beta research-to-strategy workflow with source-assisted planning, provider harness, evidence matrix, export pack, and Quality Gate v3.",
+  "id": "/jarbou3i-research-engine/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#020817",
+  "theme_color": "#255ee8",
+  "icons": [
+    {
+      "src": "assets/jarbou3i-mascot-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/jarbou3i-mascot-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
