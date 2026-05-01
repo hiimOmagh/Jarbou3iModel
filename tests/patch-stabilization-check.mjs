@@ -11,20 +11,20 @@ const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
 const v102 = fs.readFileSync('tests/v103-no-browser-suite.mjs', 'utf8');
 const release = fs.readFileSync('src/research/release-candidate.js', 'utf8');
 
-assert.equal(pkg.version, '1.0.8');
-assert.equal(schema.properties.workflow_version.const, '1.0.8');
-assert.equal(fixture.workflow_version, '1.0.8');
-assert.equal(fixture.release_candidate.stable_release_version, '1.0.8');
+assert.equal(pkg.version, '1.0.9');
+assert.equal(schema.properties.workflow_version.const, '1.0.9');
+assert.equal(fixture.workflow_version, '1.0.9');
+assert.equal(fixture.release_candidate.stable_release_version, '1.0.9');
 assert.equal(migrationFixture.workflow_version, '1.0.1', 'v1.0.1 migration fixture must preserve the previous patch source version');
-assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8'"), 'migrations must support v1.0.5 → v1.0.8');
+assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8','1.0.9'"), 'migrations must support v1.0.5 → v1.0.9');
 assert.ok(ciNoBrowser.includes('tests/v105-no-browser-suite.mjs'), 'CI no-browser syntax gate must target v105 suite');
 assert.ok(ciNoBrowser.includes('tests/v108-no-browser-suite.mjs'), 'CI no-browser syntax gate must target v108 suite');
 assert.ok(v102.includes('patch-stabilization-check.mjs'), 'v103 no-browser suite must include patch gate');
 assert.ok(v102.includes('ux-stabilization-patch-check.mjs'), 'v103 no-browser suite must include UX stabilization gate');
 assert.ok(pkg.scripts['test:patch'].includes('ux-stabilization-patch-check'), 'patch script must include UX stabilization gate');
-assert.ok(renderHelpers.includes("alphaBadge:'v1.0.8 · Hosted Demo Deployment Verification + Browser Evidence Capture'"), 'English stable badge must be fixed');
-assert.ok(renderHelpers.includes('جاهزية العرض العام وملاحظات الإصدار'), 'Arabic release badge must be fixed');
-assert.ok(renderHelpers.includes('Démo publique et notes de publication'), 'French release badge must be fixed');
+assert.ok(renderHelpers.includes("alphaBadge:'v1.0.9 · Hosted Demo Smoke Fixes + Evidence Review'"), 'English stable badge must be fixed');
+assert.ok(renderHelpers.includes('إصلاح فحص العرض المستضاف ومراجعة الأدلة'), 'Arabic release badge must be fixed');
+assert.ok(renderHelpers.includes('Corrections de démo hébergée et revue des preuves'), 'French release badge must be fixed');
 assert.ok(release.includes("'patch_release'"), 'stable policy must allow patch_release work only after stable');
 for (const forbidden of ['new_major_feature','new_live_provider','new_source_connector','oauth_production_enablement','secret_export_weakening']) {
   assert.ok(release.includes(forbidden), `release policy must keep blocked-work guard: ${forbidden}`);

@@ -119,7 +119,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.6-documentation-release-packaging-cleanup.md',
   'docs/repo-cleanup-audit-v1.0.6.md',
   'docs/v1.0.7-public-demo-readiness-release-notes.md',
-  'docs/v1.0.8-hosted-demo-deployment-browser-evidence.md'
+  'docs/v1.0.8-hosted-demo-deployment-browser-evidence.md',
+  'docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md'
 ];
 
 const actualReleaseDocs = [...allPaths]
