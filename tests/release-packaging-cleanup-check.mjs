@@ -13,15 +13,16 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.9-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.9.json');
+const migrationFixture = json('fixtures/migrations/v1.0.10-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.10.json');
 
-assert.equal(pkg.version, '1.0.9');
-assert.ok(pkg.description.includes('hosted demo smoke/evidence review patch'));
-assert.equal(schema.properties.workflow_version.const, '1.0.9');
-assert.equal(fixture.workflow_version, '1.0.9');
-assert.equal(migrationFixture.workflow_version, '1.0.9');
-assert.equal(privacyFixture.workflow_version, '1.0.9');
+assert.equal(pkg.version, '1.0.10');
+assert.ok(pkg.description.includes('module-type warning fix patch'));
+assert.equal(pkg.type, 'module');
+assert.equal(schema.properties.workflow_version.const, '1.0.10');
+assert.equal(fixture.workflow_version, '1.0.10');
+assert.equal(migrationFixture.workflow_version, '1.0.10');
+assert.equal(privacyFixture.workflow_version, '1.0.10');
 assert.equal(privacyFixture.privacy_export.release_gate, 'pass');
 assert.equal(privacyFixture.privacy_export.raw_token_exported, false);
 assert.equal(privacyFixture.privacy_export.key_exported, false);
@@ -50,7 +51,8 @@ const expectedDocHeadings = new Map([
   ['docs/v1.0.6-documentation-release-packaging-cleanup.md', '# v1.0.6 — Documentation + Release Packaging Cleanup'],
   ['docs/v1.0.7-public-demo-readiness-release-notes.md', '# v1.0.7 — Public Demo Readiness + Release Notes Polish'],
   ['docs/v1.0.8-hosted-demo-deployment-browser-evidence.md', '# v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture'],
-  ['docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md', '# v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review']
+  ['docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md', '# v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review'],
+  ['docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md', '# v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
   assert.equal(read(file).split('\n')[0], heading, `${file} heading drifted`);
@@ -58,6 +60,7 @@ for (const [file, heading] of expectedDocHeadings) {
 
 const docsCorpus = [readme, changelog, roadmap, qaMatrix, ...[...expectedDocHeadings.keys()].map(read)].join('\n');
 for (const token of [
+  'v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix',
   'v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review',
   'v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture',
   'v1.0.7 — Public Demo Readiness + Release Notes Polish',
@@ -82,14 +85,16 @@ for (const token of [
 for (const token of ['node_modules/','playwright-report/','test-results/','*.zip','backend/.dev.vars']) {
   assert.ok(releaseIgnore.includes(token), `.releaseignore missing ${token}`);
 }
-for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.0.9`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions']) {
+for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.0.10`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions']) {
   assert.ok(manifest.includes(token), `release manifest missing ${token}`);
 }
-for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:v107:no-browser','test:v107','test:v108:no-browser','test:v108','test:v109:no-browser','test:v109','test:hosted-demo:evidence-review']) {
+for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:v107:no-browser','test:v107','test:v108:no-browser','test:v108','test:v109:no-browser','test:v109','test:v110:no-browser','test:v110','test:hosted-demo:evidence-review','test:module-type-warning']) {
   assert.ok(pkg.scripts[script], `missing package script ${script}`);
 }
 assert.ok(pkg.scripts['test:patch'].includes('release-packaging-cleanup-check.mjs'));
 assert.ok(pkg.scripts['test:stable'].includes('release-packaging-cleanup-check.mjs'));
+assert.ok(pkg.scripts['test:stable'].includes('module-type-warning-fix-check.mjs'));
+assert.ok(pkg.scripts['test:patch'].includes('module-type-warning-fix-check.mjs'));
 
 const rootFiles = fs.readdirSync('.').filter((name) => name.endsWith('.zip') || name === 'node_modules' || name === 'playwright-report' || name === 'test-results');
 assert.deepEqual(rootFiles, [], `release tree contains generated archive/dependency/test-output artifacts: ${rootFiles.join(', ')}`);
