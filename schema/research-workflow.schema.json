@@ -39,11 +39,13 @@
     "backend_hardening",
     "browser_qa_hardening",
     "public_demo",
-    "release_notes"
+    "release_notes",
+    "hosted_demo_verification",
+    "browser_evidence_capture"
   ],
   "properties": {
     "workflow_version": {
-      "const": "1.0.7"
+      "const": "1.0.8"
     },
     "generated_at": {
       "type": "string"
@@ -303,7 +305,7 @@
       "additionalProperties": true,
       "properties": {
         "quality_gate_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "generated_at": {
           "type": "string"
@@ -412,7 +414,7 @@
       ],
       "properties": {
         "export_pack_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "format": {
           "const": "export_pack_v2"
@@ -449,10 +451,10 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "proxy_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "status": {
           "type": "string"
@@ -523,7 +525,7 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "release_type": {
           "const": "patch_only_browser_qa_visual_regression"
@@ -585,26 +587,73 @@
       ],
       "additionalProperties": true,
       "properties": {
-        "public_demo_version": { "const": "1.0.7" },
-        "demo_stage": { "const": "public_demo_ready" },
-        "release_type": { "const": "patch" },
-        "runtime_capability_change": { "const": false },
-        "provider_behavior_changed": { "const": false },
-        "oauth_behavior_changed": { "const": false },
-        "backend_behavior_changed": { "const": false },
-        "source_behavior_changed": { "const": false },
-        "local_only_default": { "const": true },
+        "public_demo_version": {
+          "const": "1.0.8"
+        },
+        "demo_stage": {
+          "const": "public_demo_ready"
+        },
+        "release_type": {
+          "const": "patch"
+        },
+        "runtime_capability_change": {
+          "const": false
+        },
+        "provider_behavior_changed": {
+          "const": false
+        },
+        "oauth_behavior_changed": {
+          "const": false
+        },
+        "backend_behavior_changed": {
+          "const": false
+        },
+        "source_behavior_changed": {
+          "const": false
+        },
+        "local_only_default": {
+          "const": true
+        },
         "checklist": {
           "type": "array",
           "minItems": 6,
-          "items": { "type": "object", "required": ["check_id", "label", "passed", "status"], "additionalProperties": true }
+          "items": {
+            "type": "object",
+            "required": [
+              "check_id",
+              "label",
+              "passed",
+              "status"
+            ],
+            "additionalProperties": true
+          }
         },
-        "pass_count": { "type": "number" },
-        "fail_count": { "type": "number" },
-        "readiness_score": { "type": "number", "minimum": 0, "maximum": 100 },
-        "demo_script": { "type": "array", "items": { "type": "string" } },
-        "safety_notes": { "type": "array", "items": { "type": "string" } },
-        "release_gate": { "const": "public_demo_ready_checked" }
+        "pass_count": {
+          "type": "number"
+        },
+        "fail_count": {
+          "type": "number"
+        },
+        "readiness_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "demo_script": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "safety_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "release_gate": {
+          "const": "public_demo_ready_checked"
+        }
       }
     },
     "release_notes": {
@@ -622,15 +671,45 @@
       ],
       "additionalProperties": true,
       "properties": {
-        "release_notes_version": { "const": "1.0.7" },
-        "release_title": { "const": "v1.0.7 — Public Demo Readiness + Release Notes Polish" },
-        "release_type": { "const": "patch" },
-        "runtime_capability_change": { "const": false },
-        "summary": { "type": "string" },
-        "notable_changes": { "type": "array", "minItems": 3, "items": { "type": "string" } },
-        "unchanged_boundaries": { "type": "array", "minItems": 4, "items": { "type": "string" } },
-        "publish_checklist": { "type": "array", "minItems": 3, "items": { "type": "string" } },
-        "release_gate": { "const": "release_notes_polished" }
+        "release_notes_version": {
+          "const": "1.0.8"
+        },
+        "release_title": {
+          "const": "v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture"
+        },
+        "release_type": {
+          "const": "patch"
+        },
+        "runtime_capability_change": {
+          "const": false
+        },
+        "summary": {
+          "type": "string"
+        },
+        "notable_changes": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "unchanged_boundaries": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "string"
+          }
+        },
+        "publish_checklist": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "release_gate": {
+          "const": "release_notes_polished"
+        }
       }
     },
     "onboarding": {
@@ -644,7 +723,7 @@
       ],
       "properties": {
         "onboarding_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "generated_at": {
           "type": "string"
@@ -715,6 +794,143 @@
         }
       },
       "additionalProperties": true
+    },
+    "hosted_demo_verification": {
+      "type": "object",
+      "required": [
+        "hosted_demo_version",
+        "deployment_stage",
+        "runtime_capability_change",
+        "provider_behavior_changed",
+        "oauth_behavior_changed",
+        "backend_behavior_changed",
+        "source_behavior_changed",
+        "storage_behavior_changed",
+        "browser_evidence_required",
+        "checklist",
+        "readiness_score",
+        "release_gate"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "hosted_demo_version": {
+          "const": "1.0.8"
+        },
+        "deployment_stage": {
+          "const": "hosted_demo_verification"
+        },
+        "release_type": {
+          "const": "patch"
+        },
+        "runtime_capability_change": {
+          "const": false
+        },
+        "provider_behavior_changed": {
+          "const": false
+        },
+        "oauth_behavior_changed": {
+          "const": false
+        },
+        "backend_behavior_changed": {
+          "const": false
+        },
+        "source_behavior_changed": {
+          "const": false
+        },
+        "storage_behavior_changed": {
+          "const": false
+        },
+        "browser_evidence_required": {
+          "const": true
+        },
+        "checklist": {
+          "type": "array",
+          "minItems": 7,
+          "items": {
+            "type": "object",
+            "required": [
+              "check_id",
+              "label",
+              "passed",
+              "status"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "pass_count": {
+          "type": "number"
+        },
+        "fail_count": {
+          "type": "number"
+        },
+        "readiness_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "verification_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "release_gate": {
+          "const": "hosted_demo_verified"
+        }
+      }
+    },
+    "browser_evidence_capture": {
+      "type": "object",
+      "required": [
+        "browser_evidence_version",
+        "evidence_mode",
+        "artifact_root",
+        "artifacts",
+        "screenshots_attached_by_default",
+        "release_gate"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "browser_evidence_version": {
+          "const": "1.0.8"
+        },
+        "evidence_mode": {
+          "const": "playwright_capture_and_attach"
+        },
+        "artifact_root": {
+          "const": "test-results/hosted-demo-evidence"
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "required": [
+              "artifact_id",
+              "path",
+              "required",
+              "captured",
+              "status"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required_artifact_count": {
+          "type": "number"
+        },
+        "missing_artifact_count": {
+          "type": "number"
+        },
+        "screenshots_attached_by_default": {
+          "const": true
+        },
+        "strict_visual_baseline_optional": {
+          "const": true
+        },
+        "release_gate": {
+          "const": "browser_evidence_capture_ready"
+        }
+      }
     }
   },
   "$defs": {
@@ -733,7 +949,7 @@
       ],
       "properties": {
         "plan_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "topic": {
           "type": "string",
@@ -1018,7 +1234,7 @@
       ],
       "properties": {
         "brief_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "generated_at": {
           "type": "string"
@@ -1089,7 +1305,7 @@
           ],
           "properties": {
             "fit_version": {
-              "const": "1.0.7"
+              "const": "1.0.8"
             },
             "template_id": {
               "type": "string"
@@ -1140,7 +1356,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "provider": {
           "type": "string"
@@ -1227,7 +1443,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "generated_at": {
           "type": "string"
@@ -1300,7 +1516,7 @@
       ],
       "properties": {
         "validation_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "validated_at": {
           "type": "string"
@@ -1381,7 +1597,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "checked_at": {
           "type": "string"
@@ -1464,7 +1680,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "fixture_count": {
           "type": "number"
@@ -1496,7 +1712,7 @@
       ],
       "properties": {
         "policy_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "generated_at": {
           "type": "string"
@@ -1556,7 +1772,7 @@
       ],
       "properties": {
         "request_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "created_at": {
           "type": "string"
@@ -1629,7 +1845,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "checked_at": {
           "type": "string"
@@ -1697,7 +1913,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "fixture_count": {
           "type": "number"
@@ -1736,7 +1952,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "connector": {
           "type": "string"
@@ -1808,7 +2024,7 @@
       ],
       "properties": {
         "import_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "imported_at": {
           "type": "string"
@@ -1942,7 +2158,7 @@
       ],
       "properties": {
         "review_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "generated_at": {
           "type": "string"
@@ -2145,7 +2361,7 @@
       ],
       "properties": {
         "portable_account_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -2254,7 +2470,7 @@
           ]
         },
         "oauth_spike_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         }
       },
       "additionalProperties": true
@@ -2281,7 +2497,7 @@
       ],
       "properties": {
         "guard_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "safe": {
           "type": "boolean"
@@ -2317,7 +2533,7 @@
           }
         },
         "audit_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "release_gate": {
           "enum": [
@@ -2373,13 +2589,13 @@
       ],
       "properties": {
         "migration_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "source_version": {
           "type": "string"
         },
         "target_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "started_at": {
           "type": "string"
@@ -2440,7 +2656,7 @@
       ],
       "properties": {
         "workspace_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "storage_mode": {
           "const": "local_only"
@@ -2483,7 +2699,7 @@
           ],
           "properties": {
             "diagnostics_version": {
-              "const": "1.0.7"
+              "const": "1.0.8"
             },
             "available": {
               "type": "boolean"
@@ -2529,7 +2745,7 @@
           "type": "string"
         },
         "template_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "display_name": {
           "type": "string"
@@ -2595,7 +2811,7 @@
           "type": "string"
         },
         "result_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "connector": {
           "type": "string"
@@ -2646,7 +2862,7 @@
       ],
       "properties": {
         "identity_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "provider_id": {
           "type": "string"
@@ -2718,7 +2934,7 @@
       ],
       "properties": {
         "budget_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "max_queries": {
           "type": "integer",
@@ -2778,7 +2994,7 @@
       ],
       "properties": {
         "search_policy_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "provider_identity": {
           "$ref": "#/$defs/search_provider_identity"
@@ -2836,7 +3052,7 @@
       ],
       "properties": {
         "oauth_spike_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -2974,7 +3190,7 @@
       ],
       "properties": {
         "release_candidate_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "generated_at": {
           "type": "string"
@@ -2992,7 +3208,7 @@
           ],
           "properties": {
             "release_version": {
-              "const": "1.0.7"
+              "const": "1.0.8"
             },
             "release_stage": {
               "const": "public_beta_stable"
@@ -3077,7 +3293,7 @@
           ]
         },
         "stable_release_version": {
-          "const": "1.0.7"
+          "const": "1.0.8"
         },
         "stable_ready": {
           "type": "boolean"
