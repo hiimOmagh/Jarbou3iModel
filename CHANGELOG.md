@@ -1,3 +1,12 @@
+## v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix
+
+- Rebuilt the failed-download v1.0.10 patch from the confirmed v1.0.9 baseline.
+- Added package-level ESM mode via `"type": "module"` to remove Node's `MODULE_TYPELESS_PACKAGE_JSON` warning during Worker smoke validation.
+- Added `tests/module-type-warning-fix-check.mjs` to prove `tests/backend-worker-smoke.mjs` exits cleanly without ESM reparsing warnings.
+- Added `tests/v110-no-browser-suite.mjs` and wired the module-warning check into no-browser CI.
+- Updated v1.0.10 schema, migration fixture, privacy fixture, release manifest, release notes, README, roadmap, and QA matrix.
+- Preserved provider, OAuth, backend endpoint, source connector, storage, browser runtime, and privacy/export boundaries.
+
 ## v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review
 
 - Added hosted-demo smoke-fix metadata and evidence-review metadata to exported research packets, schema, fixtures, privacy snapshots, and migration defaults.

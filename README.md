@@ -4,19 +4,17 @@ Experimental research-to-strategy workflow layer for schema-governed strategic a
 
 ## Current version
 
-`v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review`
+`v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix`
 
-This patch tightens hosted-demo publication proof without changing runtime capability. It adds hosted URL browser-test routing, stable evidence artifacts, a metadata snapshot, an evidence-review panel, and no-browser gates that verify the smoke/evidence review contract.
+This patch rebuilds the failed-download v1.0.10 from the confirmed v1.0.9 baseline. It removes the Node module-type warning in backend Worker smoke validation, keeps hosted-demo evidence capture intact, and preserves all runtime boundaries.
 
 ## What this patch changes
 
-- Adds hosted-demo smoke-fix metadata to exported research packets.
-- Adds hosted-demo evidence-review metadata to exported research packets.
-- Updates Playwright config to support `HOSTED_DEMO_URL` for real hosted URL verification.
-- Updates browser evidence capture to write stable screenshots and `hosted-demo-metadata.json`.
-- Adds `tests/hosted-demo-evidence-review-check.mjs` and `tests/v109-no-browser-suite.mjs`.
-- Adds `docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md`.
-- Updates browser CI to avoid duplicate full-suite evidence reruns while still covering provider, layout, visual, evidence, smoke, RTL, and accessibility browser gates.
+- Adds `"type": "module"` to `package.json` because the Worker, Playwright config, and browser specs already use ESM syntax.
+- Adds `tests/module-type-warning-fix-check.mjs` to prove `tests/backend-worker-smoke.mjs` exits without `MODULE_TYPELESS_PACKAGE_JSON` or ESM reparsing warnings.
+- Adds `tests/v110-no-browser-suite.mjs` as the canonical v1.0.10 no-browser suite.
+- Adds v1.0.10 migration/privacy snapshots and release documentation.
+- Keeps v1.0.9 hosted URL evidence capture, metadata snapshot, and artifact upload behavior unchanged.
 
 ## Compatibility boundary
 
@@ -24,6 +22,7 @@ This patch tightens hosted-demo publication proof without changing runtime capab
 - No OAuth behavior change.
 - No backend endpoint behavior change.
 - No source connector behavior change.
+- No browser runtime behavior change.
 - No storage model change.
 - Manual/private mode remains first-class.
 - Existing advanced panels remain collapsed by default.
@@ -49,7 +48,7 @@ Topic/context
 
 ## First-run workflow
 
-The v1.0.5 onboarding layer remains active in v1.0.9:
+The v1.0.5 onboarding layer remains active in v1.0.10:
 
 ```text
 Topic → Plan → Evidence → Review queue → Quality gate → Safe export
@@ -142,7 +141,8 @@ npm run test:release-packaging
 npm run test:repo:hygiene
 npm run test:hosted-demo
 npm run test:hosted-demo:evidence-review
-npm run test:v109:no-browser
+npm run test:module-type-warning
+npm run test:v110:no-browser
 ```
 
 Browser tests require Playwright browsers:
@@ -169,6 +169,7 @@ The app remains static and GitHub Pages-compatible. The optional Cloudflare Work
 
 | Version | Release focus | Runtime capability added? |
 |---|---|---:|
+| v1.0.10 | Hosted URL CI Artifact Review + Module-Type Warning Fix | No |
 | v1.0.9 | Hosted Demo Smoke Fixes + Evidence Review | No |
 | v1.0.8 | Hosted Demo Deployment Verification + Browser Evidence Capture | No |
 | v1.0.7 | Public Demo Readiness + Release Notes Polish | No |

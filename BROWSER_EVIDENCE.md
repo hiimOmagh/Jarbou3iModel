@@ -32,4 +32,4 @@ HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run tes
 
 ## Evidence Review standard
 
-The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, and reachable provider/export states. The metadata snapshot must show app version `1.0.9` and the evidence-review panel present.
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, and reachable provider/export states. The metadata snapshot must show app version `1.0.10` and the evidence-review panel present.

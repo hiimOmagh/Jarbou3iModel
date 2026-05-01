@@ -2,7 +2,7 @@
 
 The hosted demo must be verified as a deployed artifact, not only as a local static page.
 
-## v1.0.9 requirements
+## v1.0.10 requirements
 
 - Run no-browser CI gates.
 - Run browser evidence capture locally or in GitHub Actions.
