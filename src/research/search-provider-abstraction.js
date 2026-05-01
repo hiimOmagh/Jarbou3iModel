@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine web search provider abstraction v1.0.8. */
+/* Jarbou3i Research Engine web search provider abstraction v1.0.9. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.8';
+  const VERSION = '1.0.9';
 
   const SEARCH_PROVIDERS = Object.freeze({
     mock_search: {
