@@ -1,10 +1,10 @@
-## v1.0.7 — Public Demo Readiness + Release Notes Polish
+## v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture
 
 - Added `src/research/public-demo-readiness.js` for public-demo and release-note metadata.
 - Added a first-screen public demo readiness panel.
 - Added export-safe `public_demo` and `release_notes` packet sections.
 - Added schema, migration, privacy, and canonical workflow fixture coverage for public demo readiness.
-- Added `PUBLIC_DEMO.md`, `RELEASE_NOTES.md`, and `docs/v1.0.7-public-demo-readiness-release-notes.md`.
+- Added `PUBLIC_DEMO.md`, `RELEASE_NOTES.md`, and `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`.
 - Added `tests/public-demo-readiness-check.mjs` and `tests/v107-no-browser-suite.mjs`.
 - Preserved provider, OAuth, backend, source connector, storage, and privacy/export boundaries.
 

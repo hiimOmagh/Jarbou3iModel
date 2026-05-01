@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.7
+# Release Manifest — v1.0.8
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.7`
-- Release name: `Public Demo Readiness + Release Notes Polish`
+- Version: `1.0.8`
+- Release name: `Hosted Demo Deployment Verification + Browser Evidence Capture`
 - Release type: patch
 - Runtime capability change: no
 
@@ -48,7 +48,7 @@
 
 ## Compatibility boundary
 
-v1.0.7 must not change provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to change public-demo copy, release notes, export-safe demo metadata, QA wrappers, version snapshots, and documentation.
+v1.0.8 must not change provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to change public-demo copy, release notes, export-safe demo metadata, QA wrappers, version snapshots, and documentation.
 
 ## Required no-browser gates
 
@@ -90,3 +90,14 @@ npm run test:repo:hygiene
 ```
 
 The gate rejects stale duplicate release docs, orphan temporary files, generated dependency/build/test artifacts, root ZIP archives, and local secret/config files.
+
+
+## Hosted demo verification files
+
+- `HOSTED_DEMO_VERIFICATION.md`
+- `BROWSER_EVIDENCE.md`
+- `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`
+- `tests/hosted-demo-deployment-check.mjs`
+- `tests/hosted-demo-browser-evidence.spec.mjs`
+
+Runtime capability change: no.

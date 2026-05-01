@@ -1,29 +1,16 @@
-# Release Notes — v1.0.7
+# Release Notes — v1.0.8
 
-## v1.0.7 — Public Demo Readiness + Release Notes Polish
+## v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture
 
-This patch prepares the stable research engine for public demonstration and handoff.
+This patch adds publish-time proof for the hosted public demo. It introduces hosted-demo verification metadata, browser evidence capture, and CI checks that force the release to prove the deployed UI state instead of relying only on local no-browser tests.
 
 ### Added
 
-- Public demo readiness metadata in research packets.
-- Release-note metadata in research packets.
-- Public demo readiness panel on the first screen.
-- Public demo operator guide.
-- Dedicated public-demo readiness test.
+- Hosted-demo verification panel and export-safe packet metadata.
+- Browser evidence capture metadata and Playwright evidence spec.
+- Hosted demo and browser evidence documentation.
+- Stronger repository hygiene detection for stray temporary `XX*` artifacts.
 
-### Unchanged boundaries
+### Compatibility boundary
 
-- No provider behavior changed.
-- No OAuth behavior changed.
-- No backend behavior changed.
-- No source connector behavior changed.
-- Manual/private mode remains the default.
-- No raw provider key or token is exported.
-
-### Required checks before publishing
-
-```bash
-npm run test:ci:no-browser
-npm run test:ci:browser
-```
+No provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, or storage behavior changed. Manual/private mode remains the default.

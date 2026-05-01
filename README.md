@@ -4,7 +4,7 @@ Experimental research-to-strategy workflow layer for schema-governed strategic a
 
 ## Current version
 
-`v1.0.7 — Public Demo Readiness + Release Notes Polish`
+`v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture`
 
 This patch prepares the stable package for public demonstration and handoff without changing runtime capability. It adds public-demo readiness metadata, release-note metadata, a first-screen demo readiness panel, and dedicated public-demo QA.
 
@@ -12,7 +12,7 @@ This patch prepares the stable package for public demonstration and handoff with
 
 - Adds `src/research/public-demo-readiness.js`.
 - Adds `PUBLIC_DEMO.md` and `RELEASE_NOTES.md`.
-- Adds `docs/v1.0.7-public-demo-readiness-release-notes.md`.
+- Adds `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`.
 - Adds export-safe `public_demo` and `release_notes` metadata to research packets, schema, fixtures, privacy snapshots, and migration defaults.
 - Adds `tests/public-demo-readiness-check.mjs` and `tests/v107-no-browser-suite.mjs`.
 - Keeps v1.0.6 release packaging hygiene active.
@@ -48,7 +48,7 @@ Topic/context
 
 ## First-run workflow
 
-The v1.0.5 onboarding layer remains active in v1.0.7:
+The v1.0.5 onboarding layer remains active in v1.0.8:
 
 ```text
 Topic → Plan → Evidence → Review queue → Quality gate → Safe export
