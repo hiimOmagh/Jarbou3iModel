@@ -46,6 +46,10 @@ const requiredDeletes = [
   {
     path: 'src/XXSyA2D3',
     reason: 'orphan temporary source artifact'
+  },
+  {
+    path: 'src/XXvKXvVS',
+    reason: 'orphan temporary source artifact'
   }
 ];
 
@@ -87,6 +91,7 @@ for (const entry of allEntries) {
   if (entry.type === 'file' && /(^|\/)Thumbs\.db$|(^|\/)\.DS_Store$/.test(entry.path)) failures.push(`DELETE ${entry.path} — OS metadata file`);
   if (entry.type === 'file' && /(^|\/).*\.tmp$/.test(entry.path)) failures.push(`DELETE ${entry.path} — temporary file`);
   if (entry.type === 'file' && /(^|\/).*\.log$/.test(entry.path)) failures.push(`DELETE ${entry.path} — log file`);
+  if (entry.type === 'file' && /(^|\/)[A-Za-z]*XX[A-Za-z0-9_-]*$/.test(entry.path)) failures.push(`DELETE ${entry.path} — temporary XX* artifact`);
 }
 
 const expectedReleaseDocs = [
@@ -113,7 +118,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.5-onboarding-first-run-success.md',
   'docs/v1.0.6-documentation-release-packaging-cleanup.md',
   'docs/repo-cleanup-audit-v1.0.6.md',
-  'docs/v1.0.7-public-demo-readiness-release-notes.md'
+  'docs/v1.0.7-public-demo-readiness-release-notes.md',
+  'docs/v1.0.8-hosted-demo-deployment-browser-evidence.md'
 ];
 
 const actualReleaseDocs = [...allPaths]
