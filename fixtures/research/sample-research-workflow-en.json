@@ -1,8 +1,8 @@
 {
-  "workflow_version": "1.0.7",
+  "workflow_version": "1.0.8",
   "generated_at": "2026-04-28T00:00:00.000Z",
   "research_plan": {
-    "plan_version": "1.0.7",
+    "plan_version": "1.0.8",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
     "mode": "source-heavy",
@@ -146,11 +146,11 @@
     }
   ],
   "critique": {
-    "critique_version": "1.0.7",
+    "critique_version": "1.0.8",
     "summary": "Fixture has enough structure for research-packet validation, not publication."
   },
   "analysis_brief": {
-    "brief_version": "1.0.7",
+    "brief_version": "1.0.8",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
@@ -292,7 +292,7 @@
     "handoff_summary": "Compile the fixture evidence into a strategic analysis of semiconductor export controls as an adaptive system.",
     "analysis_template": {
       "template_id": "strategic_analysis_engine",
-      "template_version": "1.0.7",
+      "template_version": "1.0.8",
       "display_name": "Strategic Analysis Engine",
       "short_name": "Strategic",
       "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -337,7 +337,7 @@
       ]
     },
     "template_fit_report": {
-      "fit_version": "1.0.7",
+      "fit_version": "1.0.8",
       "template_id": "strategic_analysis_engine",
       "required_layers": [
         "interests",
@@ -359,7 +359,7 @@
       "fit_score": 100
     },
     "quality_gate_report": {
-      "quality_gate_version": "1.0.7",
+      "quality_gate_version": "1.0.8",
       "generated_at": "2026-04-28T21:08:50.659Z",
       "gate_name": "Advanced Quality Gate v3",
       "overall_score": 84,
@@ -476,7 +476,7 @@
     ]
   },
   "diagnostics": {
-    "diagnostics_version": "1.0.7",
+    "diagnostics_version": "1.0.8",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "linked_ids": [
       "A1",
@@ -508,7 +508,7 @@
   "ai_runs": [
     {
       "run_id": "RUN-FIXTURE-001",
-      "run_version": "1.0.7",
+      "run_version": "1.0.8",
       "provider": "mock",
       "task": "synthesis",
       "status": "ok",
@@ -541,7 +541,7 @@
         "verdict": "mock_safe"
       },
       "response_validation": {
-        "validation_version": "1.0.7",
+        "validation_version": "1.0.8",
         "validated_at": "2026-04-28T00:00:00.060Z",
         "task": "synthesis",
         "expected_type": "strategic_analysis",
@@ -598,7 +598,7 @@
     "remember_key": false
   },
   "provider_validation": {
-    "validation_version": "1.0.7",
+    "validation_version": "1.0.8",
     "validated_at": "2026-04-28T00:00:00.060Z",
     "task": "synthesis",
     "expected_type": "strategic_analysis",
@@ -613,7 +613,7 @@
     "status": "not_required"
   },
   "provider_diagnostics": {
-    "diagnostics_version": "1.0.7",
+    "diagnostics_version": "1.0.8",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "task": "synthesis",
     "provider": "mock",
@@ -664,7 +664,7 @@
     }
   },
   "provider_fixture_report": {
-    "suite_version": "1.0.7",
+    "suite_version": "1.0.8",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -724,7 +724,7 @@
     ]
   },
   "source_policy": {
-    "policy_version": "1.0.7",
+    "policy_version": "1.0.8",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "live_fetching_enabled": false,
     "current_layer": "planning_only",
@@ -745,10 +745,10 @@
       "source URL/date/type preservation"
     ],
     "verdict": "safe_planning_layer_only",
-    "source_policy_version": "1.0.7"
+    "source_policy_version": "1.0.8"
   },
   "source_diagnostics": {
-    "diagnostics_version": "1.0.7",
+    "diagnostics_version": "1.0.8",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "connector": "manual_mock",
     "task": "source_plan",
@@ -768,7 +768,7 @@
     ]
   },
   "source_fixture_report": {
-    "suite_version": "1.0.7",
+    "suite_version": "1.0.8",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -813,7 +813,7 @@
   },
   "source_requests": [
     {
-      "request_version": "1.0.7",
+      "request_version": "1.0.8",
       "created_at": "2026-04-28T00:00:00.000Z",
       "connector": "manual_mock",
       "task": "source_plan",
@@ -840,7 +840,7 @@
         "China"
       ],
       "safety_policy": {
-        "policy_version": "1.0.7",
+        "policy_version": "1.0.8",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "live_fetching_enabled": false,
         "current_layer": "planning_only",
@@ -867,7 +867,7 @@
   "source_runs": [
     {
       "run_id": "SRC-FIXTURE-1",
-      "run_version": "1.0.7",
+      "run_version": "1.0.8",
       "connector": "manual_mock",
       "task": "source_plan",
       "status": "planned",
@@ -880,7 +880,7 @@
     }
   ],
   "source_import_report": {
-    "import_version": "1.0.7",
+    "import_version": "1.0.8",
     "imported_at": "2026-04-28T00:00:00.000Z",
     "input_format": "last30days",
     "live_fetching_performed": false,
@@ -904,7 +904,7 @@
       "import_id": "IMP-FIXTURE-1",
       "imported_at": "2026-04-28T00:00:00.000Z",
       "report": {
-        "import_version": "1.0.7",
+        "import_version": "1.0.8",
         "imported_at": "2026-04-28T00:00:00.000Z",
         "input_format": "last30days",
         "live_fetching_performed": false,
@@ -988,7 +988,7 @@
     }
   ],
   "evidence_review_report": {
-    "review_version": "1.0.7",
+    "review_version": "1.0.8",
     "generated_at": "2026-04-28T00:06:00.000Z",
     "queue_count": 2,
     "pending_count": 1,
@@ -1033,7 +1033,7 @@
     ]
   },
   "portable_account": {
-    "portable_account_version": "1.0.7",
+    "portable_account_version": "1.0.8",
     "provider_id": "portable_oauth",
     "status": "connected_mock",
     "account_id": "pa_fixture0001",
@@ -1064,8 +1064,8 @@
     "code_verifier_exported": false
   },
   "privacy_export": {
-    "audit_version": "1.0.7",
-    "guard_version": "1.0.7",
+    "audit_version": "1.0.8",
+    "guard_version": "1.0.8",
     "safe": true,
     "release_gate": "pass",
     "issue_count": 0,
@@ -1087,9 +1087,9 @@
     }
   },
   "packet_migration_report": {
-    "migration_version": "1.0.7",
-    "source_version": "1.0.7",
-    "target_version": "1.0.7",
+    "migration_version": "1.0.8",
+    "source_version": "1.0.8",
+    "target_version": "1.0.8",
     "started_at": "2026-04-28T00:00:00.000Z",
     "completed_at": "2026-04-28T00:00:00.000Z",
     "migrated": false,
@@ -1102,7 +1102,7 @@
     "import_safe": true
   },
   "project_workspace": {
-    "workspace_version": "1.0.7",
+    "workspace_version": "1.0.8",
     "storage_mode": "local_only",
     "active_project_id": null,
     "active_project_name": null,
@@ -1110,7 +1110,7 @@
     "storage_warning": "Projects are stored only in this browser localStorage.",
     "last_saved_at": null,
     "quota": {
-      "diagnostics_version": "1.0.7",
+      "diagnostics_version": "1.0.8",
       "available": true,
       "storage_mode": "local_only",
       "project_count": 0,
@@ -1121,7 +1121,7 @@
   },
   "analysis_template": {
     "template_id": "strategic_analysis_engine",
-    "template_version": "1.0.7",
+    "template_version": "1.0.8",
     "display_name": "Strategic Analysis Engine",
     "short_name": "Strategic",
     "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -1166,7 +1166,7 @@
     ]
   },
   "quality_gate": {
-    "quality_gate_version": "1.0.7",
+    "quality_gate_version": "1.0.8",
     "generated_at": "2026-04-28T21:08:50.659Z",
     "gate_name": "Advanced Quality Gate v3",
     "overall_score": 84,
@@ -1277,7 +1277,7 @@
     }
   },
   "export_pack": {
-    "export_pack_version": "1.0.7",
+    "export_pack_version": "1.0.8",
     "format": "export_pack_v2",
     "files": [
       "research-packet.json",
@@ -1291,8 +1291,8 @@
     "release_gate": "privacy_audit_required"
   },
   "backend_hardening": {
-    "hardening_version": "1.0.7",
-    "proxy_version": "1.0.7",
+    "hardening_version": "1.0.8",
+    "proxy_version": "1.0.8",
     "status": "optional_backend_hardened",
     "rate_limiting": {
       "supported": true,
@@ -1333,7 +1333,7 @@
   "source_results": [
     {
       "result_id": "SR-FIXTURE-1",
-      "result_version": "1.0.7",
+      "result_version": "1.0.8",
       "connector": "github_public_repo",
       "task": "source_plan",
       "created_at": "2026-04-28T00:00:00.000Z",
@@ -1350,7 +1350,7 @@
     }
   ],
   "search_provider_identity": {
-    "identity_version": "1.0.7",
+    "identity_version": "1.0.8",
     "provider_id": "mock_search",
     "display_name": "Mock Search Provider",
     "status": "available_dry_run",
@@ -1372,7 +1372,7 @@
     ]
   },
   "search_query_budget": {
-    "budget_version": "1.0.7",
+    "budget_version": "1.0.8",
     "max_queries": 6,
     "max_results_per_query": 5,
     "max_total_results": 30,
@@ -1386,9 +1386,9 @@
     "live_search_enabled": false
   },
   "search_policy": {
-    "search_policy_version": "1.0.7",
+    "search_policy_version": "1.0.8",
     "provider_identity": {
-      "identity_version": "1.0.7",
+      "identity_version": "1.0.8",
       "provider_id": "mock_search",
       "display_name": "Mock Search Provider",
       "status": "available_dry_run",
@@ -1410,7 +1410,7 @@
       ]
     },
     "query_budget": {
-      "budget_version": "1.0.7",
+      "budget_version": "1.0.8",
       "max_queries": 6,
       "max_results_per_query": 5,
       "max_total_results": 30,
@@ -1449,7 +1449,7 @@
     "verdict": "web_search_abstraction_ready_no_live_fetch"
   },
   "portable_oauth_spike": {
-    "oauth_spike_version": "1.0.7",
+    "oauth_spike_version": "1.0.8",
     "provider_id": "portable_oauth",
     "status": "disconnected",
     "mode": "real_oauth_pkce_spike",
@@ -1471,11 +1471,11 @@
     "safety_verdict": "oauth_dev_disconnected_token_state_cleared"
   },
   "release_candidate": {
-    "release_candidate_version": "1.0.7",
-    "stable_release_version": "1.0.7",
+    "release_candidate_version": "1.0.8",
+    "stable_release_version": "1.0.8",
     "generated_at": "2026-04-29T18:54:43.435Z",
     "policy": {
-      "release_version": "1.0.7",
+      "release_version": "1.0.8",
       "release_stage": "public_beta_stable",
       "rc_number": null,
       "freeze_status": "stable_feature_baseline",
@@ -1538,7 +1538,7 @@
         "gate": "migration_report_present",
         "required": false,
         "passed": true,
-        "notes": "1.0.7"
+        "notes": "1.0.8"
       },
       {
         "gate": "oauth_tokens_not_exported",
@@ -1565,15 +1565,15 @@
     "verdict": "public_beta_stable_ready"
   },
   "ci_validation": {
-    "ci_validation_version": "1.0.7",
+    "ci_validation_version": "1.0.8",
     "external_ci_passed": true,
     "browser_provider_passed": true,
     "full_browser_passed": true,
     "source": "user_reported_new_ci_succeeded",
-    "notes": "External CI/browser validation reported as successful before v1.0.7 promotion."
+    "notes": "External CI/browser validation reported as successful before v1.0.8 promotion."
   },
   "browser_qa_hardening": {
-    "hardening_version": "1.0.7",
+    "hardening_version": "1.0.8",
     "release_type": "patch_only_browser_qa_visual_regression",
     "feature_surface_added": false,
     "browser_gate": {
@@ -1603,7 +1603,7 @@
     "release_gate": "browser_qa_hardened"
   },
   "onboarding": {
-    "onboarding_version": "1.0.7",
+    "onboarding_version": "1.0.8",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "first_run": false,
     "dismissed": false,
@@ -1691,7 +1691,7 @@
     ]
   },
   "public_demo": {
-    "public_demo_version": "1.0.7",
+    "public_demo_version": "1.0.8",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "demo_stage": "public_demo_ready",
     "release_type": "patch",
@@ -1775,9 +1775,9 @@
     "release_gate": "public_demo_ready_checked"
   },
   "release_notes": {
-    "release_notes_version": "1.0.7",
+    "release_notes_version": "1.0.8",
     "generated_at": "2026-04-30T00:00:00.000Z",
-    "release_title": "v1.0.7 — Public Demo Readiness + Release Notes Polish",
+    "release_title": "v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture",
     "release_type": "patch",
     "runtime_capability_change": false,
     "summary": "Public-demo-facing documentation, release notes, and readiness metadata were polished without enabling new live provider, OAuth, backend, or source behavior.",
@@ -1801,5 +1801,146 @@
       "Confirm release archive excludes generated and secret-bearing files."
     ],
     "release_gate": "release_notes_polished"
+  },
+  "hosted_demo_verification": {
+    "hosted_demo_version": "1.0.8",
+    "generated_at": "2026-04-30T00:00:00.000Z",
+    "release_type": "patch",
+    "deployment_stage": "hosted_demo_verification",
+    "runtime_capability_change": false,
+    "provider_behavior_changed": false,
+    "oauth_behavior_changed": false,
+    "backend_behavior_changed": false,
+    "source_behavior_changed": false,
+    "storage_behavior_changed": false,
+    "browser_evidence_required": true,
+    "checklist": [
+      {
+        "check_id": "static_host_ready",
+        "label": "Static host serves index, assets, manifest, and modules",
+        "order": 1,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "app_version_matches_package",
+        "label": "Hosted app version matches package metadata",
+        "order": 2,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "browser_ci_enabled",
+        "label": "Browser CI runs provider, layout, visual, and smoke flows",
+        "order": 3,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "desktop_evidence_captured",
+        "label": "Desktop evidence screenshot is captured",
+        "order": 4,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "mobile_evidence_captured",
+        "label": "Mobile evidence screenshot is captured",
+        "order": 5,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "provider_mode_evidence_captured",
+        "label": "Provider-mode evidence screenshot is captured",
+        "order": 6,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "privacy_export_evidence_captured",
+        "label": "Privacy/export evidence screenshot is captured",
+        "order": 7,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "no_runtime_boundary_change",
+        "label": "No provider, OAuth, backend, source, or storage behavior changed",
+        "order": 8,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      }
+    ],
+    "pass_count": 8,
+    "fail_count": 0,
+    "readiness_score": 100,
+    "verification_notes": [
+      "Verify the hosted URL after deployment, not only the local static server.",
+      "Capture desktop, mobile, provider-mode, and quality/export evidence before publishing.",
+      "Treat browser evidence as proof of deployed behavior, not as a substitute for no-browser CI."
+    ],
+    "release_gate": "hosted_demo_verified"
+  },
+  "browser_evidence_capture": {
+    "browser_evidence_version": "1.0.8",
+    "generated_at": "2026-04-30T00:00:00.000Z",
+    "evidence_mode": "playwright_capture_and_attach",
+    "artifact_root": "test-results/hosted-demo-evidence",
+    "artifacts": [
+      {
+        "artifact_id": "desktop_first_screen",
+        "path": "test-results/hosted-demo-evidence/desktop-first-screen.png",
+        "required": true,
+        "order": 1,
+        "captured": true,
+        "status": "planned_or_captured"
+      },
+      {
+        "artifact_id": "mobile_first_screen",
+        "path": "test-results/hosted-demo-evidence/mobile-first-screen.png",
+        "required": true,
+        "order": 2,
+        "captured": true,
+        "status": "planned_or_captured"
+      },
+      {
+        "artifact_id": "provider_mode",
+        "path": "test-results/hosted-demo-evidence/provider-mode.png",
+        "required": true,
+        "order": 3,
+        "captured": true,
+        "status": "planned_or_captured"
+      },
+      {
+        "artifact_id": "quality_export",
+        "path": "test-results/hosted-demo-evidence/quality-export.png",
+        "required": true,
+        "order": 4,
+        "captured": true,
+        "status": "planned_or_captured"
+      },
+      {
+        "artifact_id": "metadata_snapshot",
+        "path": "test-results/hosted-demo-evidence/hosted-demo-metadata.json",
+        "required": true,
+        "order": 5,
+        "captured": true,
+        "status": "planned_or_captured"
+      }
+    ],
+    "required_artifact_count": 5,
+    "missing_artifact_count": 0,
+    "screenshots_attached_by_default": true,
+    "strict_visual_baseline_optional": true,
+    "release_gate": "browser_evidence_capture_ready"
   }
 }
