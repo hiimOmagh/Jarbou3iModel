@@ -10,4 +10,5 @@ fi
 npm run test:browser:provider
 npm run test:browser:layout
 npm run test:browser:visual
+npm run test:browser:evidence
 npm run test:browser
