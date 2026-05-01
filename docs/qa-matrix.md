@@ -39,7 +39,7 @@
 | v1.0.4 | Browser QA hardening | `npm run test:browser:qa` | Runs provider, layout, and visual browser gates. |
 | v1.0.5 | Onboarding | `npm run test:onboarding` | Verifies first-run guide and export-safe onboarding metadata. |
 | v1.0.6 | Release packaging | `npm run test:release-packaging` | Verifies corrected release labels, manifest, archive hygiene, and current snapshots. |
-| v1.0.7 | Public demo readiness | `npm run test:public-demo` | Verifies public demo metadata, release notes, first-screen demo panel, and unchanged runtime boundaries. |
+| v1.0.8 | Public demo readiness | `npm run test:public-demo` | Verifies public demo metadata, release notes, first-screen demo panel, and unchanged runtime boundaries. |
 
 ## Browser gates
 

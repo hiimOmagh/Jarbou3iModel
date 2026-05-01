@@ -2,7 +2,7 @@
 
 ## Current stable patch
 
-`v1.0.7 — Public Demo Readiness + Release Notes Polish` is the current stable patch. It prepares public-demo copy, release notes, demo metadata, and QA gates without changing runtime capability.
+`v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture` is the current stable patch. It adds hosted-demo deployment verification, browser evidence capture, and stronger repo hygiene without changing runtime provider/OAuth/backend/source/storage behavior.
 
 ## Recently completed
 
@@ -33,3 +33,6 @@ Allowed scope:
 - hosted multi-user accounts
 - paid-provider abstraction beyond the current safety model
 - schema-breaking workflow redesign
+
+
+Next logical patch: `v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review`, after browser evidence from the real hosted URL is available.
