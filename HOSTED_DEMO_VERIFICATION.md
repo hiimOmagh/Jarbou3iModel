@@ -1,18 +1,32 @@
-# Hosted Demo Verification — v1.0.8
+# Hosted Demo Verification
 
-This guide defines the release proof needed before publishing the hosted public demo.
+The hosted demo must be verified as a deployed artifact, not only as a local static page.
 
-## Required verification
+## v1.0.9 requirements
 
-1. Deploy the current static package to the hosted demo target.
-2. Open the hosted URL and verify `meta[name="app-version"]` is `1.0.8`.
-3. Confirm the first-run guide, public-demo panel, and hosted-demo verification panel are visible.
-4. Run browser CI and capture desktop, mobile, provider-mode, and quality/export evidence.
-5. Confirm privacy/export gates remain green before sharing an export package.
+- Run no-browser CI gates.
+- Run browser evidence capture locally or in GitHub Actions.
+- For real deployment proof, run browser evidence with `HOSTED_DEMO_URL`.
+- Review screenshots and `hosted-demo-metadata.json` before publishing; this is the evidence review gate.
+- Confirm no provider/OAuth/backend/source/storage behavior changed.
 
-## Compatibility boundary
+## Commands
 
-v1.0.8 does not change provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, or storage behavior. It adds release proof, not new runtime capability.
+Local static server mode:
 
+```bash
+npm run test:browser:evidence
+```
 
-This release requires browser evidence before treating the hosted demo as publish-ready.
+Hosted URL mode:
+
+```bash
+HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
+```
+
+## Release gates
+
+- `hosted_demo_verified`
+- `hosted_demo_smoke_fixed`
+- `browser_evidence_capture_ready`
+- `evidence_review_complete`

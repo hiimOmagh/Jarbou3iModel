@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const hostedDemoUrl = process.env.HOSTED_DEMO_URL?.trim();
+const localBaseUrl = 'http://127.0.0.1:4173';
+const baseURL = hostedDemoUrl || localBaseUrl;
+
 export default defineConfig({
   testDir: './tests',
   timeout: 30_000,
@@ -7,14 +11,14 @@ export default defineConfig({
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   reporter: [['list'], ['html', { open: 'never' }]],
-  webServer: {
+  webServer: hostedDemoUrl ? undefined : {
     command: 'npx http-server . -p 4173 -c-1',
-    url: 'http://127.0.0.1:4173',
+    url: localBaseUrl,
     reuseExistingServer: !process.env.CI,
     timeout: 30_000
   },
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL,
     trace: 'on-first-retry'
   },
   projects: [

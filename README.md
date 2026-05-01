@@ -4,18 +4,19 @@ Experimental research-to-strategy workflow layer for schema-governed strategic a
 
 ## Current version
 
-`v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture`
+`v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review`
 
-This patch prepares the stable package for public demonstration and handoff without changing runtime capability. It adds public-demo readiness metadata, release-note metadata, a first-screen demo readiness panel, and dedicated public-demo QA.
+This patch tightens hosted-demo publication proof without changing runtime capability. It adds hosted URL browser-test routing, stable evidence artifacts, a metadata snapshot, an evidence-review panel, and no-browser gates that verify the smoke/evidence review contract.
 
 ## What this patch changes
 
-- Adds `src/research/public-demo-readiness.js`.
-- Adds `PUBLIC_DEMO.md` and `RELEASE_NOTES.md`.
-- Adds `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`.
-- Adds export-safe `public_demo` and `release_notes` metadata to research packets, schema, fixtures, privacy snapshots, and migration defaults.
-- Adds `tests/public-demo-readiness-check.mjs` and `tests/v107-no-browser-suite.mjs`.
-- Keeps v1.0.6 release packaging hygiene active.
+- Adds hosted-demo smoke-fix metadata to exported research packets.
+- Adds hosted-demo evidence-review metadata to exported research packets.
+- Updates Playwright config to support `HOSTED_DEMO_URL` for real hosted URL verification.
+- Updates browser evidence capture to write stable screenshots and `hosted-demo-metadata.json`.
+- Adds `tests/hosted-demo-evidence-review-check.mjs` and `tests/v109-no-browser-suite.mjs`.
+- Adds `docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md`.
+- Updates browser CI to avoid duplicate full-suite evidence reruns while still covering provider, layout, visual, evidence, smoke, RTL, and accessibility browser gates.
 
 ## Compatibility boundary
 
@@ -24,7 +25,6 @@ This patch prepares the stable package for public demonstration and handoff with
 - No backend endpoint behavior change.
 - No source connector behavior change.
 - No storage model change.
-- No schema-breaking change.
 - Manual/private mode remains first-class.
 - Existing advanced panels remain collapsed by default.
 
@@ -44,17 +44,37 @@ Topic/context
 → Privacy Audit Release Gate
 → Quality Gate
 → Export Pack
+→ Hosted Demo Evidence Review
 ```
 
 ## First-run workflow
 
-The v1.0.5 onboarding layer remains active in v1.0.8:
+The v1.0.5 onboarding layer remains active in v1.0.9:
 
 ```text
 Topic → Plan → Evidence → Review queue → Quality gate → Safe export
 ```
 
 The first-run state is local-only and exports only safe onboarding metadata.
+
+## Hosted demo evidence workflow
+
+```text
+Local/browser CI
+→ optional HOSTED_DEMO_URL verification
+→ desktop screenshot
+→ mobile screenshot
+→ provider-mode screenshot
+→ quality/export screenshot
+→ hosted-demo-metadata.json
+→ evidence review gate
+```
+
+Run against a deployed URL:
+
+```bash
+HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
+```
 
 ## Source connector contract
 
@@ -119,7 +139,10 @@ npm run test:export-pack
 npm run test:quality
 npm run test:migrations
 npm run test:release-packaging
-npm run test:v106:no-browser
+npm run test:repo:hygiene
+npm run test:hosted-demo
+npm run test:hosted-demo:evidence-review
+npm run test:v109:no-browser
 ```
 
 Browser tests require Playwright browsers:
@@ -129,7 +152,7 @@ npx playwright install --with-deps
 npm run test:browser:provider
 npm run test:browser:layout
 npm run test:browser:visual
-npm run test:browser
+npm run test:browser:evidence
 ```
 
 Full release gate:
@@ -146,6 +169,9 @@ The app remains static and GitHub Pages-compatible. The optional Cloudflare Work
 
 | Version | Release focus | Runtime capability added? |
 |---|---|---:|
+| v1.0.9 | Hosted Demo Smoke Fixes + Evidence Review | No |
+| v1.0.8 | Hosted Demo Deployment Verification + Browser Evidence Capture | No |
+| v1.0.7 | Public Demo Readiness + Release Notes Polish | No |
 | v1.0.6 | Documentation + Release Packaging Cleanup | No |
 | v1.0.5 | Onboarding + First-Run Success | Yes, local-only onboarding metadata/UI |
 | v1.0.4 | Browser QA + Visual Regression Hardening | No |
@@ -169,17 +195,10 @@ The app remains static and GitHub Pages-compatible. The optional Cloudflare Work
 | v0.16.0-beta | Provider Mode Browser QA + Privacy Export Tests | QA hardening |
 | v0.15.0-beta | Portable Account Mock Flow | Local mock flow only |
 
-
 ## Repository hygiene guard
-
-v1.0.6 includes a repo-level cleanup audit for stale release files, generated artifacts, local secrets, and release archives:
 
 ```bash
 npm run test:repo:hygiene
 ```
 
-If CI reports `docs/v1.0.5-browser-qa-visual-regression-hardening.md`, remove it with:
-
-```bash
-git rm docs/v1.0.5-browser-qa-visual-regression-hardening.md
-```
+The gate rejects stale duplicate release docs, orphan temporary files, generated dependency/build/test artifacts, root ZIP archives, and local secret/config files.

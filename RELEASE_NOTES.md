@@ -1,16 +1,20 @@
-# Release Notes — v1.0.8
+# Release Notes — v1.0.9
 
-## v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture
+## v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review
 
-This patch adds publish-time proof for the hosted public demo. It introduces hosted-demo verification metadata, browser evidence capture, and CI checks that force the release to prove the deployed UI state instead of relying only on local no-browser tests.
+This patch turns hosted-demo browser evidence into a reviewable proof bundle. It supports running the evidence spec against a real hosted URL, writes stable screenshot files, writes a metadata snapshot, and adds an evidence-review release gate.
 
 ### Added
 
-- Hosted-demo verification panel and export-safe packet metadata.
-- Browser evidence capture metadata and Playwright evidence spec.
-- Hosted demo and browser evidence documentation.
-- Stronger repository hygiene detection for stray temporary `XX*` artifacts.
+- Hosted-demo smoke-fix metadata and release gate.
+- Hosted-demo evidence-review metadata and release gate.
+- Evidence-review panel on the first screen.
+- `HOSTED_DEMO_URL` support in Playwright config.
+- Stable `test-results/hosted-demo-evidence/hosted-demo-metadata.json` artifact.
+- Dedicated GitHub Actions upload for `hosted-demo-evidence`.
 
 ### Compatibility boundary
 
 No provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, or storage behavior changed. Manual/private mode remains the default.
+
+The public demo layer remains active; this patch only hardens hosted evidence review.

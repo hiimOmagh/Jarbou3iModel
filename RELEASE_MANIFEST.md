@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.8
+# Release Manifest — v1.0.9
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.8`
-- Release name: `Hosted Demo Deployment Verification + Browser Evidence Capture`
+- Version: `1.0.9`
+- Release name: `Hosted Demo Smoke Fixes + Evidence Review`
 - Release type: patch
 - Runtime capability change: no
 
@@ -34,11 +34,15 @@
 - `.nojekyll`
 - `.gitignore`
 - `.releaseignore`
+- `BROWSER_EVIDENCE.md`
 - `CHANGELOG.md`
 - `CONTRIBUTING.md`
+- `HOSTED_DEMO_VERIFICATION.md`
 - `LICENSE`
+- `PUBLIC_DEMO.md`
 - `README.md`
 - `RELEASE_MANIFEST.md`
+- `RELEASE_NOTES.md`
 - `SECURITY.md`
 - `index.html`
 - `manifest.webmanifest`
@@ -48,7 +52,7 @@
 
 ## Compatibility boundary
 
-v1.0.8 must not change provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to change public-demo copy, release notes, export-safe demo metadata, QA wrappers, version snapshots, and documentation.
+v1.0.9 must not change provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to change hosted-demo smoke tests, browser evidence capture artifacts, evidence-review metadata, QA wrappers, version snapshots, and documentation.
 
 ## Required no-browser gates
 
@@ -64,7 +68,9 @@ npm run test:migrations
 npm run test:release-packaging
 npm run test:repo:hygiene
 npm run test:public-demo
-npm run test:v107:no-browser
+npm run test:hosted-demo
+npm run test:hosted-demo:evidence-review
+npm run test:v109:no-browser
 ```
 
 ## Required browser gates before publishing
@@ -73,17 +79,23 @@ npm run test:v107:no-browser
 npm run test:browser:provider
 npm run test:browser:layout
 npm run test:browser:visual
-npm run test:browser
+npm run test:browser:evidence
+npm run test:e2e
+npm run test:rtl
+./node_modules/.bin/playwright test tests/a11y.spec.js
+```
+
+## Hosted URL evidence command
+
+```bash
+HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
 ```
 
 ## Release archive exclusions
 
 Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, and local environment files must not be shipped in release archives. See `.releaseignore`.
 
-
 ## Repository hygiene gate
-
-Run before publishing or merging release cleanup patches:
 
 ```bash
 npm run test:repo:hygiene
@@ -91,13 +103,14 @@ npm run test:repo:hygiene
 
 The gate rejects stale duplicate release docs, orphan temporary files, generated dependency/build/test artifacts, root ZIP archives, and local secret/config files.
 
-
 ## Hosted demo verification files
 
 - `HOSTED_DEMO_VERIFICATION.md`
 - `BROWSER_EVIDENCE.md`
 - `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`
+- `docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md`
 - `tests/hosted-demo-deployment-check.mjs`
+- `tests/hosted-demo-evidence-review-check.mjs`
 - `tests/hosted-demo-browser-evidence.spec.mjs`
 
 Runtime capability change: no.

@@ -1,22 +1,35 @@
-# Browser Evidence Capture — v1.0.8
+# Browser Evidence
 
-Browser evidence is captured through Playwright and attached to the browser test report.
+Browser evidence is the proof bundle for the public hosted demo.
 
-## Evidence states
+## Artifact root
 
-- Desktop first screen.
-- Mobile first screen.
-- Provider/settings mode.
-- Quality/export mode.
-- Hosted-demo metadata snapshot through packet export metadata.
+```text
+test-results/hosted-demo-evidence
+```
 
-## Command
+## Required artifacts
+
+- `desktop-first-screen.png`
+- `mobile-first-screen.png`
+- `provider-mode.png`
+- `quality-export.png`
+- `hosted-demo-metadata.json`
+
+## Capture modes
+
+Local static mode:
 
 ```bash
 npm run test:browser:evidence
 ```
 
-Use this after no-browser CI and before public publishing. The evidence is intentionally generated under `test-results/` and must not be committed.
+Hosted URL mode:
 
+```bash
+HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
+```
 
-This release requires browser evidence before treating the hosted demo as publish-ready.
+## Evidence Review standard
+
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, and reachable provider/export states. The metadata snapshot must show app version `1.0.9` and the evidence-review panel present.

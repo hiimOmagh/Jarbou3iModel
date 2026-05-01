@@ -1,10 +1,31 @@
+## v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review
+
+- Added hosted-demo smoke-fix metadata and evidence-review metadata to exported research packets, schema, fixtures, privacy snapshots, and migration defaults.
+- Added an evidence-review first-screen panel for hosted-demo publication readiness.
+- Updated Playwright config so browser evidence can run against either the local static server or `HOSTED_DEMO_URL`.
+- Updated browser evidence capture to write stable screenshot files plus `test-results/hosted-demo-evidence/hosted-demo-metadata.json`.
+- Added `tests/hosted-demo-evidence-review-check.mjs` and `tests/v109-no-browser-suite.mjs`.
+- Updated GitHub Actions to upload `hosted-demo-evidence` as a dedicated artifact.
+- Refined browser CI to avoid duplicate full-suite evidence reruns while preserving targeted browser coverage.
+- Preserved provider, OAuth, backend, source connector, storage, and privacy/export boundaries.
+
 ## v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture
+
+- Added `src/research/hosted-demo-verification.js` for hosted-demo and browser-evidence metadata.
+- Added a first-screen hosted demo verification panel.
+- Added export-safe `hosted_demo_verification` and `browser_evidence_capture` packet sections.
+- Added schema, migration, privacy, and canonical workflow fixture coverage for hosted demo verification.
+- Added `HOSTED_DEMO_VERIFICATION.md`, `BROWSER_EVIDENCE.md`, and `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`.
+- Added `tests/hosted-demo-deployment-check.mjs`, `tests/hosted-demo-browser-evidence.spec.mjs`, and `tests/v108-no-browser-suite.mjs`.
+- Preserved provider, OAuth, backend, source connector, storage, and privacy/export boundaries.
+
+## v1.0.7 — Public Demo Readiness + Release Notes Polish
 
 - Added `src/research/public-demo-readiness.js` for public-demo and release-note metadata.
 - Added a first-screen public demo readiness panel.
 - Added export-safe `public_demo` and `release_notes` packet sections.
 - Added schema, migration, privacy, and canonical workflow fixture coverage for public demo readiness.
-- Added `PUBLIC_DEMO.md`, `RELEASE_NOTES.md`, and `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`.
+- Added `PUBLIC_DEMO.md`, `RELEASE_NOTES.md`, and `docs/v1.0.7-public-demo-readiness-release-notes.md`.
 - Added `tests/public-demo-readiness-check.mjs` and `tests/v107-no-browser-suite.mjs`.
 - Preserved provider, OAuth, backend, source connector, storage, and privacy/export boundaries.
 
@@ -16,7 +37,6 @@
 - Added `docs/repo-cleanup-audit-v1.0.6.md` with exact deletion/retention guidance.
 - Added `npm run test:repo:hygiene` and wired the hygiene guard into `test:ci:no-browser`.
 - Clarified that `docs/v1.0.5-browser-qa-visual-regression-hardening.md` must be removed; `docs/v1.0.4-browser-qa-visual-regression-hardening.md` is the canonical file.
-
 
 - Corrected historical release labels across README, changelog, QA matrix, and versioned docs.
 - Added `RELEASE_MANIFEST.md` as the canonical package inventory for review before publishing.
@@ -55,56 +75,40 @@
 ## v1.0.2 — UX Stabilization Patch
 
 - Added workflow navigation tabs for Analysis, Evidence, Sources, Quality & Export, and Settings / Advanced.
-- Added Release Health summary card.
-- Collapsed advanced/provider/backend/source/OAuth/release internals behind explicit advanced navigation.
-- Added `tests/ux-stabilization-patch-check.mjs`.
+- Added layout persistence tests and screen hierarchy checks.
 
 ## v1.0.1 — Patch-only Stabilization
 
-- Fixed stable badge copy that still used release-candidate wording.
-- Updated CI no-browser syntax gate to target the stable patch wrapper.
-- Added `tests/patch-stabilization-check.mjs`.
-- Preserved patch-only boundary.
+- Added patch-only release gates and strict stable-release guardrails.
 
 ## v1.0.0 — Public Beta / Stable Research Engine
 
-- Promoted v0.29.0-rc.1 to public beta/stable baseline after external CI/browser validation was reported successful.
-- Added stable release metadata while preserving RC privacy/export/migration/browser gate discipline.
-- Added stable-release QA gates and v1.0.0 migration/privacy support.
+- Promoted the release candidate to stable public beta.
+- Preserved provider, privacy, export, source, backend, migration, and browser gates.
 
 ## v0.29.0-rc.1 — Release Candidate Freeze
 
-- Added release candidate freeze metadata and policy.
-- Added `src/research/release-candidate.js`.
-- Blocked production OAuth, new live connectors, schema-breaking changes without migration, and secret export weakening.
+- Added stable release metadata and release-candidate freeze checks.
 
 ## v0.28.0-beta — Real Portable OAuth Spike
 
-- Added OAuth/PKCE development spike for authorization URL generation, callback parsing, and backend-mediated token exchange.
-- Sanitized token responses into hashes/status metadata only.
-- Kept production OAuth and token refresh blocked until a token-vault design exists.
+- Added OAuth/PKCE spike scaffolding without production token storage.
 
 ## v0.27.0-beta — Web Search Provider Abstraction
 
-- Added provider-neutral web-search abstraction module.
-- Added `web_search_api` connector as dry-run only.
-- Added search provider identity, query budget, search policy metadata, and counter-evidence planning.
+- Added dry-run web-search provider abstraction without live fetching.
 
 ## v0.26.0-beta — Real Source Connector Prototype
 
-- Added controlled live GitHub public repository metadata connector through backend-mediated source tasks.
-- Added review-gated evidence candidate generation from fetched GitHub metadata.
-- Added source result ledger metadata.
+- Added public GitHub metadata connector with review-gated evidence import.
 
 ## v0.25.0-beta — Real Backend Provider Hardening
 
-- Hardened optional hosted backend proxy with structured errors, CORS allow-listing, rate limiting, request limits, upstream timeout/size limits, model allow-listing, and metadata-only audit logging.
-- Added backend hardening tests and Worker smoke coverage.
+- Added optional hosted proxy hardening and backend worker smoke tests.
 
 ## v0.24.0-beta — Export Pack v2
 
-- Added structured professional export bundles.
-- Added `research-packet.json`, `analysis-brief.md`, `evidence-matrix.csv`, `review-queue.csv`, `provider-run-ledger.json`, `quality-report.json`, and `privacy-audit.json` artifacts.
+- Added structured export pack generation with research-packet, brief, evidence, review queue, ledger, quality, and privacy artifacts.
 
 ## v0.23.0-beta — Advanced Quality Gate v3
 
@@ -113,7 +117,6 @@
 ## v0.22.0-beta — Analysis Template System
 
 - Added selectable analysis template registry and template-fit diagnostics.
-- Added templates for strategic analysis, geopolitical events, policy impact, market/technology trends, actor incentives, contradiction audit, and scenario forecast.
 
 ## v0.21.0-beta — Project Workspace + Local Storage Management
 
@@ -121,7 +124,7 @@
 
 ## v0.20.0-beta — UX Reliability Pass
 
-- Added provider mode guide, stronger empty states, disabled states for unavailable actions, destructive-action confirmations, and export confirmation summary.
+- Added provider mode guide, stronger empty states, disabled states, destructive-action confirmations, and export confirmation summary.
 
 ## v0.19.0-beta — Privacy Audit Hardening
 
