@@ -44,6 +44,7 @@ run_node tests/release-packaging-cleanup-check.mjs
 run_node tests/repo-file-hygiene-check.mjs
 run_node tests/public-demo-readiness-check.mjs
 run_node tests/hosted-demo-deployment-check.mjs
+run_node tests/hosted-demo-evidence-review-check.mjs
 
 echo "CI no-browser gate: provider/OAuth/backend/source"
 run_node tests/provider-identity-check.mjs
@@ -77,9 +78,11 @@ run_node --check tests/browser-qa-hardening-check.mjs
 run_node --check tests/browser-layout-persistence.spec.mjs
 run_node --check tests/browser-visual-regression.spec.mjs
 run_node --check tests/hosted-demo-browser-evidence.spec.mjs
+run_node --check tests/hosted-demo-evidence-review-check.mjs
 run_node --check tests/v105-no-browser-suite.mjs
 run_node --check tests/v106-no-browser-suite.mjs
 run_node --check tests/v107-no-browser-suite.mjs
 run_node --check tests/v108-no-browser-suite.mjs
+run_node --check tests/v109-no-browser-suite.mjs
 
 echo "CI no-browser gate passed."
