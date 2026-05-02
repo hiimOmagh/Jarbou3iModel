@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.14 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.15 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.14';
+  const VERSION = '1.0.15';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -1942,7 +1942,7 @@
     const weakestHtml = report.weakest_dimensions.map(item => '<li><strong>' + esc(item.dimension) + '</strong>: ' + esc(item.score) + ' · ' + esc(item.severity) + '</li>').join('');
     const actionsHtml = report.fix_actions.map(action => '<li>' + esc(action) + '</li>').join('');
     const scoringReport = evidenceScoringReport();
-    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>Evidence Scoring v1</h4><div class="miniChips"><span>reliability ' + esc(scoringReport.average_reliability_score || 0) + '/100</span><span>attention ' + esc(scoringReport.average_attention_signal_score || 0) + '/100</span><span>traceability ' + esc(scoringReport.average_traceability_score || 0) + '/100</span><span>risk ' + esc(scoringReport.attention_dominance_risk_count || 0) + '</span></div><small>' + esc(scoringReport.policy || '') + '</small></div>';
+    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>Evidence Scoring UI Explanation + Calibration Pass</h4><div class="miniChips"><span>reliability ' + esc(scoringReport.average_reliability_score || 0) + '/100 · ' + esc(scoringReport.reliability_band || '—') + '</span><span>attention ' + esc(scoringReport.average_attention_signal_score || 0) + '/100 · ' + esc(scoringReport.attention_band || '—') + '</span><span>traceability ' + esc(scoringReport.average_traceability_score || 0) + '/100 · ' + esc(scoringReport.traceability_band || '—') + '</span><span>calibration warnings ' + esc(scoringReport.calibration_warning_count || 0) + '</span></div><small>' + esc(scoringReport.policy || '') + '</small><small>Attention = public visibility only. Reliability = source strength, traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth. Guard: ' + esc(scoringReport.score_theater_guard || 'score_theater_guard') + '</small></div>';
     const reportHtml = scoringHtml + '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(report.publication_readiness) + '</h4><div class="miniChips"><span>' + esc(report.release_gate) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' blockers</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
     el.innerHTML = scoreHtml + reportHtml;
   }
