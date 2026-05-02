@@ -1,4 +1,5 @@
-`v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass` is the current stable patch. It keeps `evidence_scoring.v1`, adds `evidence_scoring_calibration.v1`, and explains that attention is not truth while preserving manual/private mode.
+`v1.0.16 — Source Packet Builder UI + Scoring Review Controls
+- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass` is the current stable patch. It keeps `evidence_scoring.v1`, adds `evidence_scoring_calibration.v1`, and explains that attention is not truth while preserving manual/private mode.
 
 # Roadmap
 

@@ -38,6 +38,7 @@
 | v1.0.12 | Source capability registry | `npm run test:source:capabilities` | Verifies source availability/auth/freshness/privacy/demo contracts without enabling live source behavior. |
 | v1.0.13 | Manual source packet import | `npm run test:source:packet` | Verifies structured manual source packet import with no live fetching or verification claims. |
 | v1.0.15 | Evidence Scoring UI Explanation + Calibration Pass | `npm run test:evidence:scoring` | Verifies reliability, attention, traceability, contradiction value, synthesis weight, and attention-not-truth guardrails. |
+| v1.0.16 | Source Packet Builder UI + Scoring Review Controls | `npm run test:source:packet-builder` | Verifies local/manual source packet builder output and scoring review controls. |
 
 ## Browser gates
 
@@ -53,8 +54,9 @@
 ## Current release gates
 
 ```bash
-npm run test:evidence:scoring
-npm run test:v114:no-browser
+npm run test:source:packet-builder
+npm run test:evidence:calibration
+npm run test:v116:no-browser
 npm run test:ci:no-browser
 npm run test:ci:browser
 ```
