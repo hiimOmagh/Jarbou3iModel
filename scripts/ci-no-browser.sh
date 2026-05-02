@@ -63,6 +63,7 @@ run_node tests/source-packet-import-check.mjs
 run_node tests/evidence-scoring-check.mjs
 run_node tests/evidence-scoring-calibration-check.mjs
 run_node tests/source-packet-builder-check.mjs
+run_node tests/source-packet-builder-browser-qa-check.mjs
 run_node tests/evidence-review-queue-check.mjs
 run_node tests/github-source-connector-check.mjs
 run_node tests/web-search-provider-check.mjs
@@ -96,6 +97,9 @@ run_node --check tests/source-packet-import-check.mjs
 run_node --check tests/evidence-scoring-check.mjs
 run_node --check tests/evidence-scoring-calibration-check.mjs
 run_node --check tests/source-packet-builder-check.mjs
+run_node --check tests/source-packet-builder-browser-qa-check.mjs
+run_node --check tests/source-packet-builder-browser.spec.mjs
+run_node --check tests/v117-no-browser-suite.mjs
 run_node --check tests/v116-no-browser-suite.mjs
 run_node --check tests/v115-no-browser-suite.mjs
 run_node --check tests/v114-no-browser-suite.mjs
