@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine UX reliability helpers v1.0.11. */
+/* Jarbou3i Research Engine UX reliability helpers v1.0.12. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.11';
+  const VERSION = '1.0.12';
 
   function count(value){ return Array.isArray(value) ? value.length : 0; }
   function hasText(value){ return typeof value === 'string' && value.trim().length > 0; }
