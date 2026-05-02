@@ -2,7 +2,7 @@
 
 | Version | Area | Primary gate | Purpose |
 |---|---|---|---|
-| v1.0.18 | Source Packet Builder Export Roundtrip QA | `npm run test:source:packet-roundtrip` | Verifies builder export, source-packet re-import, scoring-review preservation, queue-only discipline, and no-fetch/no-verification boundaries. |
+| v1.0.19 | Source Packet Template Presets | `npm run test:source:packet-templates` | Verifies local template presets, template reports, source-packet re-import compatibility, queue-only discipline, and no-fetch/no-verification boundaries. |
 | v1.0.17 | Source Packet Builder Browser QA + UX Tightening | `npm run test:source:packet-builder:browser-qa` + `npm run test:browser:source-packet-builder` | Verifies builder visibility, overflow safety, local/manual semantics, and copy/export control reachability. |
 | v1.0.16 | Source Packet Builder UI + Scoring Review Controls | `npm run test:source:packet-builder` | Verifies local/manual source packet builder output and scoring review controls. |
 | v1.0.15 | Evidence Scoring UI Explanation + Calibration Pass | `npm run test:evidence:calibration` | Verifies scoring interpretation and calibration guardrails. |

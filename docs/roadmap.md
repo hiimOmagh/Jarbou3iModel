@@ -2,7 +2,7 @@
 
 ## Current patch
 
-`v1.0.18 — Source Packet Builder Export Roundtrip QA`
+`v1.0.18 — Source Packet Template Presets`
 
 Purpose: prove source packet export/import roundtrip integrity before adding presets or live source capability.
 
@@ -12,7 +12,7 @@ Purpose: prove source packet export/import roundtrip integrity before adding pre
    - Add local-only templates for Reddit thread, official report, YouTube transcript, market signal, GitHub release, and generic article packets.
 
 2. `v1.1.0 — Controlled Source Workflow MVP`
-   - Only after browser QA, roundtrip QA, and templates are stable.
+   - Only after browser QA, template presets, and templates are stable.
 
 ## Blocked until later
 
