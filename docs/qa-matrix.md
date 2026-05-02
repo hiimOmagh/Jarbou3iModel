@@ -1,3 +1,10 @@
+## v1.0.12 — Research Source Strategy Blueprint
+
+| Gate | Command | Purpose |
+|---|---|---|
+| Source capability registry | `npm run test:source:capabilities` | Verifies availability/auth/freshness/privacy/demo visibility contracts without enabling live source behavior. |
+| v1.0.12 no-browser | `npm run test:v112:no-browser` | Runs the stable no-browser suite plus the v1.0.12 registry gate. |
+
 # QA Matrix
 
 ## Core no-browser gates
