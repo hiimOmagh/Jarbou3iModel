@@ -1,3 +1,10 @@
+## v1.0.13 — Manual Source Packet Import
+
+| Gate | Command | Purpose |
+|---|---|---|
+| Source packet import | `npm run test:source:packet` | Verifies structured manual source packet JSON import with no live fetching or verification claims. |
+| v1.0.13 no-browser | `npm run test:v113:no-browser` | Runs the stable no-browser suite plus the v1.0.13 packet-import gate. |
+
 ## v1.0.12 — Research Source Strategy Blueprint
 
 | Gate | Command | Purpose |
@@ -66,7 +73,10 @@
 ## Current release gates
 
 ```bash
-npm run test:v111:no-browser
+npm run test:v113:no-browser
+npm run test:source:packet
 npm run test:ci:no-browser
 npm run test:ci:browser
 ```
+
+Public Demo boundary remains unchanged.

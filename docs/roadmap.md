@@ -38,6 +38,10 @@ Allowed scope:
 - schema-breaking workflow redesign
 
 
+## Current patch
+
+`v1.0.13 — Manual Source Packet Import` adds local structured source-packet import as the safe bridge between source strategy metadata and future evidence scoring.
+
 ## Next recommended patch
 
-`v1.0.12 — Research Source Strategy Blueprint` should define source capability metadata before any live multi-source search, scraping, or portable-auth expansion.
+`v1.0.14 — Evidence Scoring v1` should separate public attention signals from evidence reliability before any live multi-source search, scraping, or portable-auth expansion.
