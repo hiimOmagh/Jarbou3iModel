@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine hosted demo smoke fixes + evidence review helpers v1.0.16. */
+/* Jarbou3i Research Engine hosted demo smoke fixes + evidence review helpers v1.0.17. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.16';
+  const VERSION = '1.0.17';
   const DEPLOYMENT_CHECKS = Object.freeze([
     {check_id:'static_host_ready', label:'Static host serves index, assets, manifest, and modules', required:true},
     {check_id:'app_version_matches_package', label:'Hosted app version matches package metadata', required:true},
