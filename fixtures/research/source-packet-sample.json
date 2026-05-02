@@ -1,0 +1,51 @@
+{
+  "source_packet_version": "manual_source_packet.v1",
+  "source_packets": [
+    {
+      "packet_id": "reddit-energy-policy-2026-04-22",
+      "source_type": "reddit_thread",
+      "title": "Public discussion after an energy-policy vote",
+      "url": "https://example.com/reddit/energy-policy-thread",
+      "captured_at": "2026-04-22T12:00:00.000Z",
+      "freshness_window_days": 30,
+      "engagement": {
+        "upvotes": 1200,
+        "comments": 340
+      },
+      "evidence": [
+        {
+          "claim": "Public discourse concentrated on implementation risk rather than headline capacity targets.",
+          "quote": "Most high-engagement comments questioned procurement transparency and grid-readiness assumptions.",
+          "confidence": "medium",
+          "supports": ["N1"],
+          "contradicts": []
+        },
+        {
+          "claim": "The strongest counter-signal was that users still framed faster renewable deployment as strategically necessary.",
+          "quote": "Several comments argued that execution risk does not eliminate the need to reduce energy dependence.",
+          "confidence": "medium",
+          "supports": ["I1"],
+          "contradicts": ["N1"]
+        }
+      ]
+    },
+    {
+      "packet_id": "official-note-2026-04-21",
+      "source_type": "official",
+      "title": "Official policy consultation note",
+      "url": "https://example.gov/policy-note",
+      "captured_at": "2026-04-21T09:00:00.000Z",
+      "freshness_window_days": 30,
+      "engagement": {},
+      "evidence": [
+        {
+          "claim": "The official timeline emphasizes procurement acceleration and grid-connection sequencing.",
+          "quote": "The implementation schedule links procurement decisions with connection-readiness milestones.",
+          "confidence": "high",
+          "supports": ["T1"],
+          "contradicts": []
+        }
+      ]
+    }
+  ]
+}
