@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine public demo readiness + release notes helpers v1.0.15. */
+/* Jarbou3i Research Engine public demo readiness + release notes helpers v1.0.16. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.15';
+  const VERSION = '1.0.16';
   const DEMO_CHECKS = Object.freeze([
     {check_id:'manual_private_default', label:'Manual/private mode is the default', required:true},
     {check_id:'first_run_path_visible', label:'First-run path is visible before advanced setup', required:true},
@@ -41,7 +41,7 @@
     return {
       release_notes_version:version,
       generated_at:now,
-      release_title:'v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass',
+      release_title:'v1.0.16 — Source Packet Builder UI + Scoring Review Controls',
       release_type:'patch',
       runtime_capability_change:false,
       summary:'Public-demo-facing documentation, release notes, and readiness metadata were polished without enabling new live provider, OAuth, backend, or source behavior.',

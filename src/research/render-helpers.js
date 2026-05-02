@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine render helpers v1.0.15. */
+/* Jarbou3i Research Engine render helpers v1.0.16. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -6,7 +6,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.0.15 · Evidence Scoring Calibration',
+      alphaBadge:'v1.0.16 · Source Packet Builder',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، روابط سببية، محاكاة AI، نقد، وبوابة جودة v2.',
-      alphaBadge:'v1.0.15 · تقييم الأدلة v1' ,
+      alphaBadge:'v1.0.16 · منشئ حزمة المصادر' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, liens causaux, IA simulée, critique et barrière qualité v2.',
-      alphaBadge:'v1.0.15 · Scoring des preuves v1',
+      alphaBadge:'v1.0.16 · Constructeur de paquet source',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -89,7 +89,19 @@
     statusReviewEditing:'Evidence candidate loaded into the form for review editing.',
     statusReviewQueueExported:'Evidence review queue exported.',
     statusReviewQueueCleared:'Resolved evidence review items cleared.',
-    statusNoReviewSelection:'Load a review candidate before accepting edited evidence.'
+    statusNoReviewSelection:'Load a review candidate before accepting edited evidence.',
+    sourcePacketBuilderTitle:'Source Packet Builder',
+    sourcePacketBuilderSubtitle:'Build local manual source packet JSON from accepted evidence or review queue candidates.',
+    sourcePacketBuilderPolicyNote:'Builder output is local/manual. It performs no live fetching and does not verify source truth.',
+    buildSourcePacketFromEvidence:'Build from evidence matrix',
+    buildSourcePacketFromReview:'Build from review queue',
+    copySourcePacketBuilder:'Copy source packet',
+    exportSourcePacketBuilder:'Export source packet',
+    statusSourcePacketBuilt:'Manual source packet built. Review scoring flags before reuse.',
+    statusSourcePacketEmpty:'No evidence available for source packet builder.',
+    statusSourcePacketCopied:'Source packet copied.',
+    statusSourcePacketExported:'Source packet exported.',
+    statusEvidenceNeedsEdit:'Evidence candidate marked as needs edit by scoring review controls.'
   });
   Object.assign(COPY.ar, {
     importSourceEvidence:'إرسال إلى صف المراجعة',
@@ -115,7 +127,19 @@
     statusReviewEditing:'تم تحميل المرشح في النموذج للتعديل.',
     statusReviewQueueExported:'تم تصدير صف المراجعة.',
     statusReviewQueueCleared:'تم مسح عناصر المراجعة المحسومة.',
-    statusNoReviewSelection:'حمّل مرشح مراجعة قبل قبول النسخة المعدلة.'
+    statusNoReviewSelection:'حمّل مرشح مراجعة قبل قبول النسخة المعدلة.',
+    sourcePacketBuilderTitle:'منشئ حزمة المصادر',
+    sourcePacketBuilderSubtitle:'بناء JSON محلي لحزمة مصادر يدوية من الأدلة أو صف المراجعة.',
+    sourcePacketBuilderPolicyNote:'المُنشئ محلي ويدوي فقط: لا يجلب ولا يتحقق من المصادر.',
+    buildSourcePacketFromEvidence:'بناء من مصفوفة الأدلة',
+    buildSourcePacketFromReview:'بناء من صف المراجعة',
+    copySourcePacketBuilder:'نسخ حزمة المصادر',
+    exportSourcePacketBuilder:'تصدير حزمة المصادر',
+    statusSourcePacketBuilt:'تم بناء حزمة مصادر يدوية. راجع أعلام التقييم قبل إعادة الاستخدام.',
+    statusSourcePacketEmpty:'لا توجد أدلة لبناء حزمة مصادر.',
+    statusSourcePacketCopied:'تم نسخ حزمة المصادر.',
+    statusSourcePacketExported:'تم تصدير حزمة المصادر.',
+    statusEvidenceNeedsEdit:'تم وسم المرشح بأنه يحتاج تعديل وفق ضوابط التقييم.'
   });
   Object.assign(COPY.fr, {
     importSourceEvidence:'Envoyer en revue',
@@ -141,7 +165,19 @@
     statusReviewEditing:'Candidat chargé dans le formulaire pour modification.',
     statusReviewQueueExported:'File de revue exportée.',
     statusReviewQueueCleared:'Éléments résolus effacés.',
-    statusNoReviewSelection:'Chargez un candidat avant d’accepter la version modifiée.'
+    statusNoReviewSelection:'Chargez un candidat avant d’accepter la version modifiée.',
+    sourcePacketBuilderTitle:'Constructeur de paquet source',
+    sourcePacketBuilderSubtitle:'Construire un paquet source manuel/local depuis les preuves ou la file de revue.',
+    sourcePacketBuilderPolicyNote:'Le constructeur est local/manuel: aucun fetch live et aucune vérification de source.',
+    buildSourcePacketFromEvidence:'Construire depuis la matrice',
+    buildSourcePacketFromReview:'Construire depuis la revue',
+    copySourcePacketBuilder:'Copier le paquet source',
+    exportSourcePacketBuilder:'Exporter le paquet source',
+    statusSourcePacketBuilt:'Paquet source manuel construit. Vérifiez les alertes de score avant réutilisation.',
+    statusSourcePacketEmpty:'Aucune preuve disponible pour construire un paquet source.',
+    statusSourcePacketCopied:'Paquet source copié.',
+    statusSourcePacketExported:'Paquet source exporté.',
+    statusEvidenceNeedsEdit:'Candidat marqué à modifier par les contrôles de scoring.'
   });
 
 

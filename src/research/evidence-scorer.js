@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine evidence scoring UI calibration — v1.0.15. Separates attention from reliability and explains score meaning. */
+/* Jarbou3i Research Engine source packet builder UI and scoring review controls — v1.0.16. Separates attention from reliability and explains score meaning. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.15';
+  const VERSION = '1.0.16';
   const SCORING_VERSION = 'evidence_scoring.v1';
   const CALIBRATION_VERSION = 'evidence_scoring_calibration.v1';
   const SOURCE_RELIABILITY_BASE = Object.freeze({
