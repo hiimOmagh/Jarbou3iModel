@@ -1,8 +1,8 @@
 {
-  "workflow_version": "1.0.11",
+  "workflow_version": "1.0.12",
   "generated_at": "2026-04-28T00:00:00.000Z",
   "research_plan": {
-    "plan_version": "1.0.11",
+    "plan_version": "1.0.12",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
     "mode": "source-heavy",
@@ -146,11 +146,11 @@
     }
   ],
   "critique": {
-    "critique_version": "1.0.11",
+    "critique_version": "1.0.12",
     "summary": "Fixture has enough structure for research-packet validation, not publication."
   },
   "analysis_brief": {
-    "brief_version": "1.0.11",
+    "brief_version": "1.0.12",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
@@ -292,7 +292,7 @@
     "handoff_summary": "Compile the fixture evidence into a strategic analysis of semiconductor export controls as an adaptive system.",
     "analysis_template": {
       "template_id": "strategic_analysis_engine",
-      "template_version": "1.0.11",
+      "template_version": "1.0.12",
       "display_name": "Strategic Analysis Engine",
       "short_name": "Strategic",
       "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -337,7 +337,7 @@
       ]
     },
     "template_fit_report": {
-      "fit_version": "1.0.11",
+      "fit_version": "1.0.12",
       "template_id": "strategic_analysis_engine",
       "required_layers": [
         "interests",
@@ -359,7 +359,7 @@
       "fit_score": 100
     },
     "quality_gate_report": {
-      "quality_gate_version": "1.0.11",
+      "quality_gate_version": "1.0.12",
       "generated_at": "2026-04-28T21:08:50.659Z",
       "gate_name": "Advanced Quality Gate v3",
       "overall_score": 84,
@@ -476,7 +476,7 @@
     ]
   },
   "diagnostics": {
-    "diagnostics_version": "1.0.11",
+    "diagnostics_version": "1.0.12",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "linked_ids": [
       "A1",
@@ -508,7 +508,7 @@
   "ai_runs": [
     {
       "run_id": "RUN-FIXTURE-001",
-      "run_version": "1.0.11",
+      "run_version": "1.0.12",
       "provider": "mock",
       "task": "synthesis",
       "status": "ok",
@@ -541,7 +541,7 @@
         "verdict": "mock_safe"
       },
       "response_validation": {
-        "validation_version": "1.0.11",
+        "validation_version": "1.0.12",
         "validated_at": "2026-04-28T00:00:00.060Z",
         "task": "synthesis",
         "expected_type": "strategic_analysis",
@@ -598,7 +598,7 @@
     "remember_key": false
   },
   "provider_validation": {
-    "validation_version": "1.0.11",
+    "validation_version": "1.0.12",
     "validated_at": "2026-04-28T00:00:00.060Z",
     "task": "synthesis",
     "expected_type": "strategic_analysis",
@@ -613,7 +613,7 @@
     "status": "not_required"
   },
   "provider_diagnostics": {
-    "diagnostics_version": "1.0.11",
+    "diagnostics_version": "1.0.12",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "task": "synthesis",
     "provider": "mock",
@@ -664,7 +664,7 @@
     }
   },
   "provider_fixture_report": {
-    "suite_version": "1.0.11",
+    "suite_version": "1.0.12",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -724,7 +724,7 @@
     ]
   },
   "source_policy": {
-    "policy_version": "1.0.11",
+    "policy_version": "1.0.12",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "live_fetching_enabled": false,
     "current_layer": "planning_only",
@@ -745,10 +745,10 @@
       "source URL/date/type preservation"
     ],
     "verdict": "safe_planning_layer_only",
-    "source_policy_version": "1.0.11"
+    "source_policy_version": "1.0.12"
   },
   "source_diagnostics": {
-    "diagnostics_version": "1.0.11",
+    "diagnostics_version": "1.0.12",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "connector": "manual_mock",
     "task": "source_plan",
@@ -768,7 +768,7 @@
     ]
   },
   "source_fixture_report": {
-    "suite_version": "1.0.11",
+    "suite_version": "1.0.12",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -813,7 +813,7 @@
   },
   "source_requests": [
     {
-      "request_version": "1.0.11",
+      "request_version": "1.0.12",
       "created_at": "2026-04-28T00:00:00.000Z",
       "connector": "manual_mock",
       "task": "source_plan",
@@ -840,7 +840,7 @@
         "China"
       ],
       "safety_policy": {
-        "policy_version": "1.0.11",
+        "policy_version": "1.0.12",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "live_fetching_enabled": false,
         "current_layer": "planning_only",
@@ -867,7 +867,7 @@
   "source_runs": [
     {
       "run_id": "SRC-FIXTURE-1",
-      "run_version": "1.0.11",
+      "run_version": "1.0.12",
       "connector": "manual_mock",
       "task": "source_plan",
       "status": "planned",
@@ -880,7 +880,7 @@
     }
   ],
   "source_import_report": {
-    "import_version": "1.0.11",
+    "import_version": "1.0.12",
     "imported_at": "2026-04-28T00:00:00.000Z",
     "input_format": "last30days",
     "live_fetching_performed": false,
@@ -904,7 +904,7 @@
       "import_id": "IMP-FIXTURE-1",
       "imported_at": "2026-04-28T00:00:00.000Z",
       "report": {
-        "import_version": "1.0.11",
+        "import_version": "1.0.12",
         "imported_at": "2026-04-28T00:00:00.000Z",
         "input_format": "last30days",
         "live_fetching_performed": false,
@@ -988,7 +988,7 @@
     }
   ],
   "evidence_review_report": {
-    "review_version": "1.0.11",
+    "review_version": "1.0.12",
     "generated_at": "2026-04-28T00:06:00.000Z",
     "queue_count": 2,
     "pending_count": 1,
@@ -1033,7 +1033,7 @@
     ]
   },
   "portable_account": {
-    "portable_account_version": "1.0.11",
+    "portable_account_version": "1.0.12",
     "provider_id": "portable_oauth",
     "status": "connected_mock",
     "account_id": "pa_fixture0001",
@@ -1064,8 +1064,8 @@
     "code_verifier_exported": false
   },
   "privacy_export": {
-    "audit_version": "1.0.11",
-    "guard_version": "1.0.11",
+    "audit_version": "1.0.12",
+    "guard_version": "1.0.12",
     "safe": true,
     "release_gate": "pass",
     "issue_count": 0,
@@ -1087,9 +1087,9 @@
     }
   },
   "packet_migration_report": {
-    "migration_version": "1.0.11",
-    "source_version": "1.0.11",
-    "target_version": "1.0.11",
+    "migration_version": "1.0.12",
+    "source_version": "1.0.12",
+    "target_version": "1.0.12",
     "started_at": "2026-04-28T00:00:00.000Z",
     "completed_at": "2026-04-28T00:00:00.000Z",
     "migrated": false,
@@ -1102,7 +1102,7 @@
     "import_safe": true
   },
   "project_workspace": {
-    "workspace_version": "1.0.11",
+    "workspace_version": "1.0.12",
     "storage_mode": "local_only",
     "active_project_id": null,
     "active_project_name": null,
@@ -1110,7 +1110,7 @@
     "storage_warning": "Projects are stored only in this browser localStorage.",
     "last_saved_at": null,
     "quota": {
-      "diagnostics_version": "1.0.11",
+      "diagnostics_version": "1.0.12",
       "available": true,
       "storage_mode": "local_only",
       "project_count": 0,
@@ -1121,7 +1121,7 @@
   },
   "analysis_template": {
     "template_id": "strategic_analysis_engine",
-    "template_version": "1.0.11",
+    "template_version": "1.0.12",
     "display_name": "Strategic Analysis Engine",
     "short_name": "Strategic",
     "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -1166,7 +1166,7 @@
     ]
   },
   "quality_gate": {
-    "quality_gate_version": "1.0.11",
+    "quality_gate_version": "1.0.12",
     "generated_at": "2026-04-28T21:08:50.659Z",
     "gate_name": "Advanced Quality Gate v3",
     "overall_score": 84,
@@ -1277,7 +1277,7 @@
     }
   },
   "export_pack": {
-    "export_pack_version": "1.0.11",
+    "export_pack_version": "1.0.12",
     "format": "export_pack_v2",
     "files": [
       "research-packet.json",
@@ -1291,8 +1291,8 @@
     "release_gate": "privacy_audit_required"
   },
   "backend_hardening": {
-    "hardening_version": "1.0.11",
-    "proxy_version": "1.0.11",
+    "hardening_version": "1.0.12",
+    "proxy_version": "1.0.12",
     "status": "optional_backend_hardened",
     "rate_limiting": {
       "supported": true,
@@ -1333,7 +1333,7 @@
   "source_results": [
     {
       "result_id": "SR-FIXTURE-1",
-      "result_version": "1.0.11",
+      "result_version": "1.0.12",
       "connector": "github_public_repo",
       "task": "source_plan",
       "created_at": "2026-04-28T00:00:00.000Z",
@@ -1350,7 +1350,7 @@
     }
   ],
   "search_provider_identity": {
-    "identity_version": "1.0.11",
+    "identity_version": "1.0.12",
     "provider_id": "mock_search",
     "display_name": "Mock Search Provider",
     "status": "available_dry_run",
@@ -1372,7 +1372,7 @@
     ]
   },
   "search_query_budget": {
-    "budget_version": "1.0.11",
+    "budget_version": "1.0.12",
     "max_queries": 6,
     "max_results_per_query": 5,
     "max_total_results": 30,
@@ -1386,9 +1386,9 @@
     "live_search_enabled": false
   },
   "search_policy": {
-    "search_policy_version": "1.0.11",
+    "search_policy_version": "1.0.12",
     "provider_identity": {
-      "identity_version": "1.0.11",
+      "identity_version": "1.0.12",
       "provider_id": "mock_search",
       "display_name": "Mock Search Provider",
       "status": "available_dry_run",
@@ -1410,7 +1410,7 @@
       ]
     },
     "query_budget": {
-      "budget_version": "1.0.11",
+      "budget_version": "1.0.12",
       "max_queries": 6,
       "max_results_per_query": 5,
       "max_total_results": 30,
@@ -1449,7 +1449,7 @@
     "verdict": "web_search_abstraction_ready_no_live_fetch"
   },
   "portable_oauth_spike": {
-    "oauth_spike_version": "1.0.11",
+    "oauth_spike_version": "1.0.12",
     "provider_id": "portable_oauth",
     "status": "disconnected",
     "mode": "real_oauth_pkce_spike",
@@ -1471,11 +1471,11 @@
     "safety_verdict": "oauth_dev_disconnected_token_state_cleared"
   },
   "release_candidate": {
-    "release_candidate_version": "1.0.11",
-    "stable_release_version": "1.0.11",
+    "release_candidate_version": "1.0.12",
+    "stable_release_version": "1.0.12",
     "generated_at": "2026-04-29T18:54:43.435Z",
     "policy": {
-      "release_version": "1.0.11",
+      "release_version": "1.0.12",
       "release_stage": "public_beta_stable",
       "rc_number": null,
       "freeze_status": "stable_feature_baseline",
@@ -1538,7 +1538,7 @@
         "gate": "migration_report_present",
         "required": false,
         "passed": true,
-        "notes": "1.0.11"
+        "notes": "1.0.12"
       },
       {
         "gate": "oauth_tokens_not_exported",
@@ -1565,15 +1565,15 @@
     "verdict": "public_beta_stable_ready"
   },
   "ci_validation": {
-    "ci_validation_version": "1.0.11",
+    "ci_validation_version": "1.0.12",
     "external_ci_passed": true,
     "browser_provider_passed": true,
     "full_browser_passed": true,
     "source": "user_reported_new_ci_succeeded",
-    "notes": "External CI/browser validation reported as successful before v1.0.11 promotion."
+    "notes": "External CI/browser validation reported as successful before v1.0.12 promotion."
   },
   "browser_qa_hardening": {
-    "hardening_version": "1.0.11",
+    "hardening_version": "1.0.12",
     "release_type": "patch_only_browser_qa_visual_regression",
     "feature_surface_added": false,
     "browser_gate": {
@@ -1603,7 +1603,7 @@
     "release_gate": "browser_qa_hardened"
   },
   "onboarding": {
-    "onboarding_version": "1.0.11",
+    "onboarding_version": "1.0.12",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "first_run": false,
     "dismissed": false,
@@ -1691,7 +1691,7 @@
     ]
   },
   "public_demo": {
-    "public_demo_version": "1.0.11",
+    "public_demo_version": "1.0.12",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "demo_stage": "public_demo_ready",
     "release_type": "patch",
@@ -1775,9 +1775,9 @@
     "release_gate": "public_demo_ready_checked"
   },
   "release_notes": {
-    "release_notes_version": "1.0.11",
+    "release_notes_version": "1.0.12",
     "generated_at": "2026-04-30T00:00:00.000Z",
-    "release_title": "v1.0.11 — Repository Hygiene + Stale Artifact Cleanup",
+    "release_title": "v1.0.12 — Research Source Strategy Blueprint",
     "release_type": "patch",
     "runtime_capability_change": false,
     "summary": "Hosted-demo smoke fixes and evidence review metadata were added without changing live provider, OAuth, backend, source, or storage behavior.",
@@ -1803,7 +1803,7 @@
     "release_gate": "release_notes_polished"
   },
   "hosted_demo_verification": {
-    "hosted_demo_version": "1.0.11",
+    "hosted_demo_version": "1.0.12",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_verification",
@@ -1891,7 +1891,7 @@
     "release_gate": "hosted_demo_verified"
   },
   "browser_evidence_capture": {
-    "browser_evidence_version": "1.0.11",
+    "browser_evidence_version": "1.0.12",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "evidence_mode": "playwright_capture_attach_and_write_artifacts",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -1945,7 +1945,7 @@
     "metadata_written_by_default": true
   },
   "hosted_demo_smoke_fixes": {
-    "smoke_fixes_version": "1.0.11",
+    "smoke_fixes_version": "1.0.12",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_smoke_fixes",
@@ -2027,7 +2027,7 @@
     "release_gate": "hosted_demo_smoke_fixed"
   },
   "hosted_demo_evidence_review": {
-    "evidence_review_version": "1.0.11",
+    "evidence_review_version": "1.0.12",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "review_stage": "hosted_demo_evidence_review",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -2100,5 +2100,147 @@
       "Treat evidence review as a release gate, not as cosmetic QA."
     ],
     "release_gate": "evidence_review_complete"
+  },
+  "source_capability_registry": {
+    "source_strategy_version": "1.0.12",
+    "generated_at": "2026-05-02T00:00:00.000Z",
+    "release_gate": "source_strategy_blueprint_checked",
+    "runtime_capability_change": false,
+    "provider_behavior_changed": false,
+    "oauth_behavior_changed": false,
+    "backend_behavior_changed": false,
+    "source_behavior_changed": false,
+    "registry": [
+      {
+        "source_id": "manual_private",
+        "label": "Manual / private analysis workspace",
+        "availability": "local",
+        "auth_mode": "none",
+        "freshness": "user_supplied",
+        "evidence_type": "manual_note",
+        "privacy_risk": "low",
+        "demo_visibility": "show",
+        "live_fetching_enabled": false,
+        "export_allowed": true,
+        "status": "available_default",
+        "notes": [
+          "Default path. User-supplied material only. No network fetch."
+        ]
+      },
+      {
+        "source_id": "demo_static",
+        "label": "Static public demo fixtures",
+        "availability": "mock",
+        "auth_mode": "none",
+        "freshness": "static",
+        "evidence_type": "mixed",
+        "privacy_risk": "low",
+        "demo_visibility": "show",
+        "live_fetching_enabled": false,
+        "export_allowed": true,
+        "status": "available_demo_only",
+        "notes": [
+          "Static/local evidence only. Must not be described as live."
+        ]
+      },
+      {
+        "source_id": "manual_source_packet",
+        "label": "Manual source packet import",
+        "availability": "manual",
+        "auth_mode": "none",
+        "freshness": "user_supplied",
+        "evidence_type": "mixed",
+        "privacy_risk": "low",
+        "demo_visibility": "show",
+        "live_fetching_enabled": false,
+        "export_allowed": true,
+        "status": "planned_next_safe_increment",
+        "notes": [
+          "Future v1.0.13 candidate. Import structured source packets collected by the user."
+        ]
+      },
+      {
+        "source_id": "web_search_api_dry_run",
+        "label": "Web search provider abstraction dry-run",
+        "availability": "mock",
+        "auth_mode": "api_key",
+        "freshness": "planned",
+        "evidence_type": "article",
+        "privacy_risk": "medium",
+        "demo_visibility": "disabled_with_reason",
+        "live_fetching_enabled": false,
+        "export_allowed": true,
+        "status": "dry_run_only",
+        "notes": [
+          "Query planning exists. Live web search remains disabled in stable public demo mode."
+        ]
+      },
+      {
+        "source_id": "github_public_repo",
+        "label": "GitHub public repository metadata",
+        "availability": "controlled_backend",
+        "auth_mode": "none",
+        "freshness": "live",
+        "evidence_type": "code",
+        "privacy_risk": "medium",
+        "demo_visibility": "disabled_with_reason",
+        "live_fetching_enabled": true,
+        "export_allowed": true,
+        "status": "existing_controlled_backend_metadata",
+        "notes": [
+          "Existing controlled backend path for public metadata only. No private repositories, no token export, review queue required."
+        ]
+      },
+      {
+        "source_id": "portable_auth_planned",
+        "label": "Portable auth / user-paid provider account",
+        "availability": "unavailable",
+        "auth_mode": "oauth_pkce",
+        "freshness": "planned",
+        "evidence_type": "metadata",
+        "privacy_risk": "high",
+        "demo_visibility": "hide",
+        "live_fetching_enabled": false,
+        "export_allowed": false,
+        "status": "future_spike_only",
+        "notes": [
+          "BrainLink/OpenRouter-style PKCE belongs in a later threat-modeled spike, not this patch."
+        ]
+      }
+    ],
+    "audit": {
+      "registry_version": "1.0.12",
+      "generated_at": "2026-05-02T00:00:00.000Z",
+      "capability_count": 6,
+      "visible_demo_capabilities": [
+        "manual_private",
+        "demo_static",
+        "manual_source_packet"
+      ],
+      "hidden_capabilities": [
+        "portable_auth_planned"
+      ],
+      "disabled_capabilities": [
+        "web_search_api_dry_run",
+        "github_public_repo"
+      ],
+      "live_capabilities": [
+        "github_public_repo"
+      ],
+      "new_live_connector_enabled": false,
+      "production_oauth_enabled": false,
+      "auth_material_export_allowed": false,
+      "reports": [],
+      "issues": [],
+      "ok": true,
+      "verdict": "source_capability_registry_ready_no_runtime_expansion"
+    },
+    "next_safe_increment": "v1.0.13 manual source packet import",
+    "blocked_until_threat_modeled": [
+      "production OAuth / portable account auth",
+      "live Reddit/X/YouTube/TikTok scraping",
+      "external RAG dependency as core runtime"
+    ],
+    "scoring_warning": "Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength."
   }
 }
