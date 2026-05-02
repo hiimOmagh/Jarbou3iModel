@@ -1,64 +1,22 @@
 # QA Matrix
 
-## Core no-browser gates
-
-| Gate | Command | Purpose |
-|---|---|---|
-| QA aggregate | `npm run test:qa` | Runs core static, schema, fixture, workflow, privacy, migration, module, workspace, template, quality, export, backend, browser-hardening, onboarding, release-packaging, and evidence-scoring checks. |
-| Static | `npm run test:static` | Checks syntax, required files, DOM IDs, legacy tokens, and version metadata. |
-| Schema | `npm run test:schema` | Validates strategic-analysis and research-workflow schema structure. |
-| Fixtures | `npm run test:fixtures` | Validates sample strategic-analysis fixtures. |
-| Research workflow | `npm run test:research` | Validates the canonical research workflow fixture. |
-| Accessibility static | `npm run test:a11y:static` | Runs static accessibility checks. |
-
-## Privacy/export gates
-
-| Gate | Command | Purpose |
-|---|---|---|
-| Privacy guard | `npm run test:privacy:guard` | Checks export guard behavior. |
-| Privacy export | `npm run test:privacy:export` | Audits export/provider/privacy JSON candidates. |
-| Privacy audit | `npm run test:privacy:audit` | Verifies redaction and audit release gate behavior. |
-| Privacy bundle | `npm run test:privacy` | Runs all privacy gates. |
-| Export Pack v2 | `npm run test:export-pack` | Validates structured export bundle artifacts. |
-
-## Provider/source/backend gates
-
-| Gate | Command | Purpose |
-|---|---|---|
-| Provider bundle | `npm run test:provider` | Checks provider identity, portable mock, OAuth spike, response contracts, and fixtures. |
-| Source bundle | `npm run test:source` | Checks source planning, source import, source packets, evidence scoring, review queue, GitHub connector, and web-search abstraction. |
-| Backend bundle | `npm run test:backend` | Checks hosted proxy contract, hardening, and Worker smoke tests. |
-
-## Stable patch gates
-
-| Version | Gate | Command | Purpose |
+| Version | Area | Primary gate | Purpose |
 |---|---|---|---|
-| v1.0.10 | Module type warning fix | `npm run test:module-type-warning` | Verifies package-level ESM mode and warning-clean backend Worker smoke validation. |
-| v1.0.11 | Repository hygiene cleanup | `npm run test:repo:cleanup` | Verifies stale-artifact gates, release drift checks, and migration fixture coverage. |
-| v1.0.12 | Source capability registry | `npm run test:source:capabilities` | Verifies source availability/auth/freshness/privacy/demo contracts without enabling live source behavior. |
-| v1.0.13 | Manual source packet import | `npm run test:source:packet` | Verifies structured manual source packet import with no live fetching or verification claims. |
-| v1.0.15 | Evidence Scoring UI Explanation + Calibration Pass | `npm run test:evidence:scoring` | Verifies reliability, attention, traceability, contradiction value, synthesis weight, and attention-not-truth guardrails. |
+| v1.0.17 | Source Packet Builder Browser QA + UX Tightening | `npm run test:source:packet-builder:browser-qa` + `npm run test:browser:source-packet-builder` | Verifies builder visibility, overflow safety, local/manual semantics, and copy/export control reachability. |
 | v1.0.16 | Source Packet Builder UI + Scoring Review Controls | `npm run test:source:packet-builder` | Verifies local/manual source packet builder output and scoring review controls. |
-
-## Browser gates
-
-| Gate | Command | Purpose |
-|---|---|---|
-| Provider browser QA | `npm run test:browser:provider` | Validates provider UI flows. |
-| Layout persistence | `npm run test:browser:layout` | Checks overflow and tab/collapse persistence across viewports. |
-| Visual capture | `npm run test:browser:visual` | Captures screenshots as CI artifacts. |
-| Hosted demo evidence | `npm run test:browser:evidence` | Captures hosted-demo screenshots and writes `hosted-demo-metadata.json`. |
-| Strict visual baseline | `npm run test:browser:visual:strict` | Enforces approved Playwright baselines. |
-| Full browser suite | `npm run test:browser` | Runs all Playwright tests. |
-
-## Current release gates
-
-```bash
-npm run test:source:packet-builder
-npm run test:evidence:calibration
-npm run test:v116:no-browser
-npm run test:ci:no-browser
-npm run test:ci:browser
-```
-
-Public Demo boundary remains unchanged: use manual/mock mode unless browser QA and release gates pass.
+| v1.0.15 | Evidence Scoring UI Explanation + Calibration Pass | `npm run test:evidence:calibration` | Verifies scoring interpretation and calibration guardrails. |
+| v1.0.14 | Evidence Scoring v1 | `npm run test:evidence:scoring` | Verifies attention and reliability remain separate. |
+| v1.0.13 | Manual Source Packet Import | `npm run test:source:packet` | Verifies manual source packet import into review queue. |
+| v1.0.12 | Research Source Strategy Blueprint | `npm run test:source:capabilities` | Verifies source/auth/freshness/privacy/demo visibility registry. |
+| v1.0.11 | Repository Hygiene + Stale Artifact Cleanup | `npm run test:repo:cleanup` | Verifies stale files, migration fixture drift, and release hygiene. |
+| v1.0.10 | Module-Type Warning Fix | `npm run test:module-type-warning` | Verifies Worker smoke test has no module-type warning. |
+| v1.0.9 | Hosted Demo Smoke Fixes + Evidence Review | `npm run test:hosted-demo:evidence-review` | Verifies hosted demo evidence review metadata. |
+| v1.0.8 | Hosted Demo Deployment Verification + Browser Evidence Capture | `npm run test:browser:evidence` | Captures hosted demo browser evidence. |
+| v1.0.7 | Public Demo Readiness + Release Notes Polish | `npm run test:public-demo` | Verifies demo honesty and release-note metadata. |
+| v1.0.6 | Documentation + Release Packaging Cleanup | `npm run test:release-packaging` | Verifies release manifest, docs, and package hygiene. |
+| v1.0.5 | Onboarding + First-Run Success | `npm run test:onboarding` | Verifies local-only first-run guide. |
+| v1.0.4 | Browser QA + Visual Regression Hardening | `npm run test:browser:qa` | Verifies browser layout and visual capture. |
+| v1.0.3 | Screen Discipline Patch | `npm run test:screen-discipline` | Verifies screen hierarchy and advanced panels. |
+| v1.0.2 | UX Stabilization Patch | `npm run test:ux:stabilization` | Verifies workflow navigation and persistence. |
+| v1.0.1 | Patch-only Stabilization | `npm run test:patch` | Verifies stable patch boundaries. |
+| v1.0.0 | Stable Research Engine | `npm run test:stable` | Verifies stable release baseline. |

@@ -1,48 +1,27 @@
-`v1.0.16 — Source Packet Builder UI + Scoring Review Controls
-- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass` is the current stable patch. It keeps `evidence_scoring.v1`, adds `evidence_scoring_calibration.v1`, and explains that attention is not truth while preserving manual/private mode.
-
 # Roadmap
 
-## Current stable patch
+## Current patch
 
-`v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass` is the current stable patch. It separates attention signals from evidence reliability and adds traceability, specificity, recency, contradiction-value, and synthesis-weight scoring without enabling live source fetching or provider/OAuth expansion.
+`v1.0.17 — Source Packet Builder Browser QA + UX Tightening`
 
-## Recently completed
+Purpose: verify and tighten the local/manual Source Packet Builder UI before adding any new source/provider capability.
 
-- `v1.0.13 — Manual Source Packet Import`
-- `v1.0.12 — Research Source Strategy Blueprint`
-- `v1.0.11 — Repository Hygiene + Stale Artifact Cleanup`
-- `v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix`
-- `v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review`
-- `v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture`
-- `v1.0.7 — Public Demo Readiness + Release Notes Polish`
-- `v1.0.6 — Documentation + Release Packaging Cleanup`
-- `v1.0.5 — Onboarding + First-Run Success`
-- `v1.0.4 — Browser QA + Visual Regression Hardening`
-- `v1.0.3 — Screen Discipline Patch`
-- `v1.0.2 — UX Stabilization Patch`
-- `v1.0.1 — Patch-only Stabilization`
-- `v1.0.0 — Public Beta / Stable Research Engine`
+## Immediate next candidates
 
-## Next recommended patch
+1. `v1.0.18 — Source Packet Builder Export Roundtrip QA`
+   - Validate generated manual source packet JSON can be re-imported cleanly.
+   - Confirm review queue and scoring metadata survive roundtrip.
 
-`v1.0.15 — Source Packet Builder UI + Scoring Review Controls`
+2. `v1.0.19 — Source Packet Template Presets`
+   - Add local-only templates for Reddit thread, official report, YouTube transcript, market signal, GitHub release, and generic article packets.
 
-Allowed scope:
+3. `v1.1.0 — Controlled Source Workflow MVP`
+   - Only after browser QA, roundtrip QA, and templates are stable.
 
-- local-only source packet builder UI
-- edit controls for scoring review flags
-- better evidence scoring explanations in the UI
-- no live scraping
-- no production OAuth
-- no provider behavior change
-- no backend endpoint change
-- no storage model change
+## Blocked until later
 
-## Deferred major/minor work
-
-- production OAuth with token vault
-- additional live source connectors
-- hosted multi-user accounts
-- paid-provider abstraction beyond the current safety model
-- schema-breaking workflow redesign
+- Live scraping.
+- Production OAuth.
+- BrainLink/OpenRouter PKCE production flow.
+- New live source connectors.
+- Provider behavior changes.
