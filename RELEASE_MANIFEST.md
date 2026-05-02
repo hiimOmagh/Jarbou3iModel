@@ -3,8 +3,8 @@
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.11`
-- Release name: `Repository Hygiene + Stale Artifact Cleanup`
+- Version: `1.0.12`
+- Release name: `Research Source Strategy Blueprint`
 - Release type: patch
 - Runtime capability change: no
 
@@ -118,3 +118,13 @@ The gate rejects stale duplicate release docs, orphan temporary files, generated
 - `tests/hosted-demo-browser-evidence.spec.mjs`
 
 Runtime capability change: no.
+
+
+## v1.0.12 source strategy artifacts
+
+- `src/research/source-capability-registry.js`
+- `tests/source-capability-registry-check.mjs`
+- `tests/v112-no-browser-suite.mjs`
+- `docs/v1.0.12-research-source-strategy-blueprint.md`
+
+Runtime capability change: no

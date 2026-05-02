@@ -1,3 +1,7 @@
+### v1.0.12 — Research Source Strategy Blueprint
+
+Adds a compatibility-safe source capability registry so future source and auth work is explicit about availability, auth mode, freshness, evidence type, privacy risk, and demo visibility. No new live connector, OAuth path, backend behavior, or provider behavior is enabled.
+
 # Jarbou3i Research Engine
 
 Experimental research-to-strategy workflow layer for schema-governed strategic analysis. The app remains a static, browser-first workspace with manual/private mode preserved as the default operating mode.

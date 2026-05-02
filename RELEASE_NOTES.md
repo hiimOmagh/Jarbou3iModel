@@ -1,3 +1,7 @@
+## v1.0.12 — Research Source Strategy Blueprint
+
+Patch release. Adds source capability registry metadata and gates. Runtime capability change: no. Manual/private mode remains default. Production OAuth and live social/video source collection remain blocked.
+
 # Release Notes — v1.0.11
 
 ## v1.0.11 — Repository Hygiene + Stale Artifact Cleanup

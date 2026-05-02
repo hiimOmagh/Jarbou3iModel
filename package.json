@@ -1,9 +1,9 @@
 {
   "name": "jarbou3i-research-engine",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "private": true,
   "type": "module",
-  "description": "Jarbou3i Research Engine v1.0.11 repository hygiene and stale artifact cleanup patch: stricter release drift gates, migration fixture coverage repair, stale artifact denylist hardening, and compatibility-preserving CI wrappers.",
+  "description": "Jarbou3i Research Engine v1.0.12 research source strategy blueprint patch: source capability registry, auth/freshness/privacy/demo visibility contracts, and compatibility-preserving gates for future source workflows.",
   "scripts": {
     "dev": "http-server . -p 4173 -c-1",
     "test": "npm run test:qa && npm run test:browser",
@@ -73,10 +73,10 @@
     "test:ci:no-browser": "bash scripts/ci-no-browser.sh",
     "test:ci:browser": "bash scripts/ci-browser.sh",
     "test:ci": "npm run test:ci:no-browser && npm run test:ci:browser",
-    "test:stable": "node tests/stable-release-check.mjs && node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs",
+    "test:stable": "node tests/stable-release-check.mjs && node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs && node tests/source-capability-registry-check.mjs",
     "test:v100:no-browser": "node tests/v100-no-browser-suite.mjs",
     "test:v100": "npm run test:v100:no-browser && npm run test:browser:provider",
-    "test:patch": "node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs",
+    "test:patch": "node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs && node tests/source-capability-registry-check.mjs",
     "test:v102:no-browser": "node tests/v102-no-browser-suite.mjs",
     "test:v102": "npm run test:v102:no-browser && npm run test:browser:provider",
     "test:ux:stabilization": "node tests/ux-stabilization-patch-check.mjs",
@@ -109,7 +109,10 @@
     "test:v110": "npm run test:v110:no-browser && npm run test:ci:browser",
     "test:repo:cleanup": "node tests/repository-hygiene-cleanup-check.mjs",
     "test:v111:no-browser": "node tests/v111-no-browser-suite.mjs",
-    "test:v111": "npm run test:v111:no-browser && npm run test:ci:browser"
+    "test:v111": "npm run test:v111:no-browser && npm run test:ci:browser",
+    "test:source:capabilities": "node tests/source-capability-registry-check.mjs",
+    "test:v112:no-browser": "node tests/v112-no-browser-suite.mjs",
+    "test:v112": "npm run test:v112:no-browser && npm run test:ci:browser"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

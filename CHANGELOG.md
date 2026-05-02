@@ -1,3 +1,9 @@
+## v1.0.12 — Research Source Strategy Blueprint
+
+- Added source capability registry for availability/auth/freshness/evidence/privacy/demo-visibility contracts.
+- Added packet/schema/fixture coverage and CI checks.
+- Preserved manual/private mode and avoided live source/provider/OAuth expansion.
+
 ## v1.0.11 — Repository Hygiene + Stale Artifact Cleanup
 
 - Added repository hygiene cleanup gates for stale artifacts, duplicate release docs, generated outputs, secret-bearing local config, and migration fixture drift.
