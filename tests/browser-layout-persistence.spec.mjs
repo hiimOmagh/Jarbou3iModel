@@ -61,7 +61,7 @@ test.describe('v1.0.19 browser layout and persistence hardening', () => {
   });
 
   test('primary actions remain visible on first screen', async ({ page }) => {
-    await expect(page.locator('#buildPlanBtn')).toBeVisible();
+    await expect(page.locator('#generatePlanBtn')).toBeVisible();
     await expect(page.locator('#screenDisciplineNextAction')).toBeVisible();
     await expect(page.locator('#releaseHealthMetrics')).toBeVisible();
     await assertNoHorizontalOverflow(page);

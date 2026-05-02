@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 
 const repoRoot = process.cwd();
 const exists = (relativePath) => fs.existsSync(path.join(repoRoot, relativePath));
@@ -33,6 +34,16 @@ const walk = (dir, base = '') => {
 
 const allEntries = walk('.');
 const allPaths = new Set(allEntries.map((entry) => entry.path));
+const trackedPaths = (() => {
+  try {
+    return new Set(execSync('git ls-files', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean));
+  } catch (error) {
+    return new Set();
+  }
+})();
 
 const requiredDeletes = [
   {
@@ -54,7 +65,6 @@ const requiredDeletes = [
 ];
 
 const generatedRootNames = [
-  'node_modules',
   'dist',
   'build',
   'coverage',
@@ -79,6 +89,9 @@ for (const item of requiredDeletes) {
 
 for (const name of generatedRootNames) {
   if (exists(name)) failures.push(`DELETE ${name}/ — generated dependency/build/test output must not be committed`);
+}
+if ([...trackedPaths].some((file) => file === 'node_modules' || file.startsWith('node_modules/'))) {
+  failures.push('DELETE node_modules/ — generated dependency output must not be committed');
 }
 
 for (const file of forbiddenSecretFiles) {
