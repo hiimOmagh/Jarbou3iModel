@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine quality gate v1.0.13 — Advanced Quality Gate v3. */
+/* Jarbou3i Research Engine quality gate v1.0.14 — Advanced Quality Gate v3. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const QUALITY_GATE_VERSION = '1.0.13';
+  const QUALITY_GATE_VERSION = '1.0.14';
   const LAYERS = Object.freeze(['interests','actors','tools','narrative','results','feedback']);
   function clamp(value){ const n = Number(value); return Math.max(0, Math.min(100, Number.isFinite(n) ? Math.round(n) : 0)); }
   function arr(value){ return Array.isArray(value) ? value : []; }
@@ -73,6 +73,11 @@
     if(score >= 50) return 'reviewable_draft';
     return 'draft_only';
   }
+  function evidenceScoringReportFrom(state, evidence){
+    if(state.evidence_scoring_report && typeof state.evidence_scoring_report === 'object') return state.evidence_scoring_report;
+    if(root.evidenceScorer?.scoreEvidenceSet) return root.evidenceScorer.scoreEvidenceSet(evidence || []);
+    return {average_reliability_score:0, average_attention_signal_score:0, average_traceability_score:0, average_synthesis_weight:0, attention_dominance_risk_count:0, weak_traceability_count:0, high_reliability_count:0, risk_flags:[]};
+  }
   function severity(score){ return score >= 80 ? 'low' : (score >= 60 ? 'medium' : 'high'); }
   function calculateQualityGateV3Report(state = {}, deps = {}){
     const evidence = arr(state.evidence);
@@ -88,11 +93,14 @@
     const migration = state.packet_migration_report || {};
     const privacy = state.privacy_export || {safe:true, release_gate:'pass', raw_token_exported:false, access_token_exported:false, refresh_token_exported:false, post_redaction_issue_count:0, issue_count:0};
     const basic = basicScores(state, deps);
+    const scoring = evidenceScoringReportFrom(state, evidence);
     const providerRuns = arr(state.ai_runs);
     const validatedRuns = providerRuns.filter(run => run.response_validation?.accepted).length;
     const dimensions = {
       completeness: clamp((state.plan ? 22 : 0) + (state.analysis_brief ? 18 : 0) + (state.critique ? 12 : 0) + Math.min(28, evidence.length * 4) + Math.min(20, links.length * 5)),
-      evidence_strength: clamp(Math.min(55, evidence.length * 9) + Math.min(20, sourceUrlCount * 5) + Math.min(15, sourceDateCount * 4) + Math.min(10, evidence.reduce((sum, item) => sum + (Number(item.evidence_strength) || 0), 0) / Math.max(1, evidence.length) * 2)),
+      evidence_strength: clamp(Math.min(45, evidence.length * 8) + Math.min(18, sourceUrlCount * 5) + Math.min(12, sourceDateCount * 4) + Math.min(20, Number(scoring.average_synthesis_weight || 0) * 0.20) + Math.min(15, evidence.reduce((sum, item) => sum + (Number(item.evidence_strength) || 0), 0) / Math.max(1, evidence.length) * 3)),
+      evidence_reliability: clamp(Number(scoring.average_reliability_score || 0)),
+      attention_signal_integrity: clamp(100 - Math.min(70, Number(scoring.attention_dominance_risk_count || 0) * 25) - Math.min(30, Number(scoring.weak_traceability_count || 0) * 8)),
       contradiction_coverage: clamp(Math.min(60, counterCount * 25) + (arr(state.critique?.findings).some(f => String(f.type || '').includes('counter')) ? 20 : 0) + (arr(state.plan?.counter_evidence_targets).length ? 20 : 0)),
       source_diversity: clamp(Math.min(50, sourceTypes.size * 18) + Math.min(25, sourceUrlCount * 5) + Math.min(25, sourceDateCount * 5)),
       actor_layer_coverage: clamp((coveredCoreLayers / LAYERS.length) * 70 + (coverage.actors ? 15 : 0) + (coverage.interests ? 15 : 0)),
@@ -102,7 +110,7 @@
       migration_safety: clamp((migration.ok === true || !migration.source_version ? 35 : 0) + (migration.import_safe === true || !migration.source_version ? 35 : 0) + (!arr(migration.removed_sensitive_fields).length ? 20 : 5) + (migration.target_version === QUALITY_GATE_VERSION || !migration.target_version ? 10 : 0)),
       template_fit: basic.templateFit
     };
-    const weights = {completeness:0.13, evidence_strength:0.14, contradiction_coverage:0.10, source_diversity:0.11, actor_layer_coverage:0.10, causal_link_density:0.10, provider_safety:0.10, privacy_safety:0.10, migration_safety:0.06, template_fit:0.06};
+    const weights = {completeness:0.12, evidence_strength:0.11, evidence_reliability:0.08, attention_signal_integrity:0.05, contradiction_coverage:0.09, source_diversity:0.10, actor_layer_coverage:0.09, causal_link_density:0.09, provider_safety:0.09, privacy_safety:0.09, migration_safety:0.05, template_fit:0.05};
     const overall = clamp(Object.entries(weights).reduce((sum, [key, weight]) => sum + dimensions[key] * weight, 0));
     const blockers = [];
     if(dimensions.privacy_safety < 80) blockers.push('privacy_safety_below_release_threshold');
@@ -114,6 +122,8 @@
     if(dimensions.evidence_strength < 70) fix_actions.push('Add traceable evidence with URLs, dates, source types, and stronger evidence_strength values.');
     if(dimensions.contradiction_coverage < 70) fix_actions.push('Add counter-evidence and contradiction-linked claims before treating the analysis as robust.');
     if(dimensions.source_diversity < 70) fix_actions.push('Diversify source types; avoid relying on one media or signal class.');
+    if(dimensions.evidence_reliability < 70) fix_actions.push('Improve evidence reliability: prefer traceable official, primary, academic, or well-documented sources over attention-only signals.');
+    if(dimensions.attention_signal_integrity < 80) fix_actions.push('Separate public attention from truth-value; high-engagement social items need independent corroboration before synthesis weight increases.');
     if(dimensions.causal_link_density < 70) fix_actions.push('Add evidence-backed causal links across interests, actors, tools, narrative, results, and feedback.');
     if(dimensions.provider_safety < 80) fix_actions.push('Run provider dry-run/fixture validation and confirm key_exported remains false.');
     if(dimensions.privacy_safety < 80) fix_actions.push('Run privacy export audit and resolve all post-redaction issues before sharing.');
@@ -133,7 +143,8 @@
       fix_actions,
       blockers,
       evidence_thresholds: {minimum_evidence_items:5, minimum_traceable_urls:3, minimum_source_dates:3, minimum_source_types:3, minimum_counter_evidence_items:1, minimum_causal_links:3},
-      observed_counts: {evidence_items:evidence.length, traceable_urls:sourceUrlCount, source_dates:sourceDateCount, source_types:sourceTypes.size, counter_evidence_items:counterCount, causal_links:links.length, provider_runs:providerRuns.length, validated_provider_runs:validatedRuns, resolved_review_items:reviewReport.resolved_count || 0},
+      observed_counts: {evidence_items:evidence.length, traceable_urls:sourceUrlCount, source_dates:sourceDateCount, source_types:sourceTypes.size, counter_evidence_items:counterCount, causal_links:links.length, provider_runs:providerRuns.length, validated_provider_runs:validatedRuns, resolved_review_items:reviewReport.resolved_count || 0, high_reliability_evidence_items:scoring.high_reliability_count || 0, attention_dominance_risk_count:scoring.attention_dominance_risk_count || 0},
+      evidence_scoring_report: scoring,
       layer_coverage: coverage,
       legacy_scores: basic
     };
@@ -145,6 +156,8 @@
       qualityV3: report.overall_score,
       completeness: report.dimensions.completeness,
       evidenceStrength: report.dimensions.evidence_strength,
+      evidenceReliability: report.dimensions.evidence_reliability,
+      attentionSignalIntegrity: report.dimensions.attention_signal_integrity,
       contradictionCoverage: report.dimensions.contradiction_coverage,
       sourceDiversity: report.dimensions.source_diversity,
       actorLayerCoverage: report.dimensions.actor_layer_coverage,

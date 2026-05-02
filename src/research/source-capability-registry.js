@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source capability registry v1.0.13. No live source expansion. */
+/* Jarbou3i Research Engine source capability registry v1.0.14. No live source expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.13';
+  const VERSION = '1.0.14';
 
   const ALLOWED = Object.freeze({
     availability:['local','mock','manual','external','unavailable','controlled_backend'],
@@ -44,7 +44,7 @@
     },
     manual_source_packet: {
       source_id:'manual_source_packet',
-      label:'Manual source packet import',
+      label:'Evidence scoring v1',
       availability:'manual',
       auth_mode:'none',
       freshness:'user_supplied',
@@ -54,7 +54,7 @@
       live_fetching_enabled:false,
       export_allowed:true,
       status:'available_manual_import',
-      notes:['Available in v1.0.13. Imports structured user-collected source packets into the review queue. No live fetching, scraping, or verification claims.']
+      notes:['Available in v1.0.14. Imports structured user-collected source packets into the review queue. No live fetching, scraping, or verification claims.']
     },
     web_search_api_dry_run: {
       source_id:'web_search_api_dry_run',

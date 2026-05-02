@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine manual source packet importer v1.0.13. No live fetching. */
+/* Jarbou3i Research Engine evidence scoring v1er v1.0.14. No live fetching. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.13';
+  const VERSION = '1.0.14';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
 
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }
@@ -49,7 +49,7 @@
     const title = text(packet.title || packet.source_title || packet.name, `Manual source packet ${packetIndex + 1}`);
     const url = text(packet.url || packet.source_url);
     const type = sourceType(packet.source_type || packet.type || item.source_type);
-    return {
+    const candidate = {
       evidence_id: `IMP${packetIndex + 1}-${index + 1}`,
       claim: claim || quote || title,
       source_title: title,
@@ -77,6 +77,7 @@
         engagement: Object.assign({}, packet.engagement || item.engagement || {})
       }
     };
+    return root.evidenceScorer?.attachEvidenceScoring ? root.evidenceScorer.attachEvidenceScoring(candidate) : candidate;
   }
   function packetsFrom(value){
     if(Array.isArray(value)) return value;

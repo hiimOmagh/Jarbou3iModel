@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source import adapter v1.0.13. */
+/* Jarbou3i Research Engine source import adapter v1.0.14. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.13';
+  const VERSION = '1.0.14';
   const URL_RE = /https?:\/\/[^\s)\]>"']+/gi;
   const DATE_RE = /\b(20\d{2}[-/.](0?[1-9]|1[0-2])[-/.](0?[1-9]|[12]\d|3[01])|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+20\d{2}|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+20\d{2})\b/i;
   const BULLET_RE = /^\s*(?:[-*•]|\d+[.)]|\[[x ]\])\s+/;
@@ -91,7 +91,7 @@
       const dateMatch=line.match(DATE_RE);
       const scores=scoreLine(line, format);
       const sourceType=inferSourceType(line, primaryUrl);
-      evidence.push({
+      const candidate = {
         evidence_id:`IMP${evidence.length+1}`,
         claim,
         source_title:sourceTitleFromLine(line, primaryUrl, evidence.length+1),
@@ -106,7 +106,8 @@
         confidence:primaryUrl?'medium':'low',
         notes:`Imported from ${format}; review claim, source metadata, and link IDs before synthesis.`,
         import_meta:{format, source_urls:urls, raw_hash:stableHash(line), verification_status:'unverified_manual_import'}
-      });
+      };
+      evidence.push(root.evidenceScorer?.attachEvidenceScoring ? root.evidenceScorer.attachEvidenceScoring(candidate) : candidate);
     });
     const sourceTypes=unique(evidence.map(e=>e.source_type));
     const report={

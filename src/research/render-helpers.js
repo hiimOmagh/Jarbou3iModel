@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine render helpers v1.0.13. */
+/* Jarbou3i Research Engine render helpers v1.0.14. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -6,7 +6,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.0.13 · Manual Source Packet Import',
+      alphaBadge:'v1.0.14 · Evidence Scoring v1',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، روابط سببية، محاكاة AI، نقد، وبوابة جودة v2.',
-      alphaBadge:'v1.0.13 · استيراد حزم المصادر اليدوية' ,
+      alphaBadge:'v1.0.14 · تقييم الأدلة v1' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, liens causaux, IA simulée, critique et barrière qualité v2.',
-      alphaBadge:'v1.0.13 · Import manuel de paquets sources',
+      alphaBadge:'v1.0.14 · Scoring des preuves v1',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -148,7 +148,7 @@
   Object.assign(COPY.en, {
     qualityV3Score:'Quality v3',
     completenessScore:'Completeness',
-    evidenceStrengthScore:'Evidence strength',
+    evidenceStrengthScore:'Evidence strength', evidenceReliabilityScore:'Evidence reliability', attentionSignalIntegrityScore:'Attention integrity',
     contradictionCoverageScore:'Contradiction coverage',
     sourceDiversityScore:'Source diversity',
     actorLayerCoverageScore:'Actor/layer coverage',
@@ -174,7 +174,7 @@
   Object.assign(COPY.ar, {
     qualityV3Score:'الجودة v3',
     completenessScore:'الاكتمال',
-    evidenceStrengthScore:'قوة الأدلة',
+    evidenceStrengthScore:'قوة الأدلة', evidenceReliabilityScore:'موثوقية الأدلة', attentionSignalIntegrityScore:'سلامة إشارة الانتباه',
     contradictionCoverageScore:'تغطية التناقضات',
     sourceDiversityScore:'تنوع المصادر',
     actorLayerCoverageScore:'تغطية الفاعلين/الطبقات',
@@ -200,7 +200,7 @@
   Object.assign(COPY.fr, {
     qualityV3Score:'Qualité v3',
     completenessScore:'Complétude',
-    evidenceStrengthScore:'Force des preuves',
+    evidenceStrengthScore:'Force des preuves', evidenceReliabilityScore:'Fiabilité des preuves', attentionSignalIntegrityScore:'Intégrité du signal attention',
     contradictionCoverageScore:'Couverture contradictions',
     sourceDiversityScore:'Diversité sources',
     actorLayerCoverageScore:'Couverture acteurs/couches',
