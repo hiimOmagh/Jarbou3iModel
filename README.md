@@ -2,18 +2,18 @@
 
 ## Current version
 
-`v1.0.17 — Source Packet Builder Browser QA + UX Tightening`
+`v1.0.18 — Source Packet Builder Export Roundtrip QA`
 
 A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
 ## What this patch changes
 
-- Adds browser-QA hooks and UX guardrail copy for the Source Packet Builder.
-- Keeps build/copy/export controls visible and responsive across desktop, tablet, and mobile layouts.
-- Adds bounded packet metadata preview in the builder output.
-- Adds overflow-safe styling for builder chips, warnings, and preview content.
-- Ensures the builder appears in the Sources and Quality workflow tabs.
-- Adds static browser-QA checks and a dedicated Playwright browser spec.
+- Adds local/manual source packet export → import roundtrip QA.
+- Confirms generated packets re-import through the source packet importer.
+- Preserves scoring review metadata as import metadata.
+- Confirms re-imported evidence remains queue-only and unverified.
+- Confirms evidence scoring survives the roundtrip without treating attention as truth.
+- Adds a dedicated roundtrip module and no-browser test gate.
 
 ## Compatibility boundary
 
@@ -54,17 +54,18 @@ npx playwright install --with-deps
 npm run test:ci:browser
 ```
 
-Targeted v1.0.17 checks:
+Targeted v1.0.18 checks:
 
 ```bash
-npm run test:source:packet-builder:browser-qa
+npm run test:source:packet-roundtrip
 npm run test:source:packet-builder
-npm run test:v117:no-browser
-npm run test:browser:source-packet-builder
+npm run test:v118:no-browser
+npm run test:ci:no-browser
 ```
 
 ## Release history
 
+- v1.0.18 — Source Packet Builder Export Roundtrip QA
 - v1.0.17 — Source Packet Builder Browser QA + UX Tightening
 - v1.0.16 — Source Packet Builder UI + Scoring Review Controls
 - v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass

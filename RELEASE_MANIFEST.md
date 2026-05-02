@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.17
+# Release Manifest — v1.0.18
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.17`
-- Release name: `Source Packet Builder Browser QA + UX Tightening`
+- Version: `1.0.18`
+- Release name: `Source Packet Builder Export Roundtrip QA`
 - Release type: patch
 - Runtime capability change: no
 
@@ -50,21 +50,20 @@
 
 ## Compatibility boundary
 
-v1.0.17 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add browser QA, layout guardrails, source packet builder copy/preview tightening, release docs, fixtures, and QA wrappers.
+v1.0.18 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/manual source packet export/import roundtrip QA, scoring-review preservation checks, release docs, fixtures, and QA wrappers.
 
 ## Required no-browser gates
 
 ```bash
-npm run test:source:packet-builder:browser-qa
+npm run test:source:packet-roundtrip
 npm run test:source:packet-builder
-npm run test:v117:no-browser
+npm run test:v118:no-browser
 npm run test:ci:no-browser
 ```
 
 ## Required browser gates before publishing
 
 ```bash
-npm run test:browser:source-packet-builder
 npm run test:ci:browser
 ```
 
@@ -72,14 +71,14 @@ npm run test:ci:browser
 
 Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, local environment files, and ZIP archives must not be shipped inside the committed release tree. See `.releaseignore`.
 
-## v1.0.17 source packet builder browser QA artifacts
+## v1.0.18 source packet roundtrip QA artifacts
 
-- `tests/source-packet-builder-browser-qa-check.mjs`
-- `tests/source-packet-builder-browser.spec.mjs`
-- `tests/v117-no-browser-suite.mjs`
-- `docs/v1.0.17-source-packet-builder-browser-qa-ux-tightening.md`
-- `fixtures/migrations/v1.0.17-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.17.json`
+- `src/research/source-packet-roundtrip.js`
+- `tests/source-packet-roundtrip-check.mjs`
+- `tests/v118-no-browser-suite.mjs`
+- `docs/v1.0.18-source-packet-builder-export-roundtrip-qa.md`
+- `fixtures/migrations/v1.0.18-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.18.json`
 
 ## Retained v1.0.16 artifacts
 

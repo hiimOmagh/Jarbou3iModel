@@ -1,16 +1,23 @@
-## v1.0.17 — Source Packet Builder Browser QA + UX Tightening
+## v1.0.18 — Source Packet Builder Export Roundtrip QA
 
-This patch tightens the browser-facing Source Packet Builder introduced in v1.0.16.
+This patch verifies that a generated local/manual source packet can be exported and re-imported without changing the product's trust boundary.
 
 ### Added
 
-- Browser-QA hook on the Source Packet Builder card.
-- Explicit local/manual guardrail copy.
-- Responsive builder action layout.
-- Bounded metadata preview for generated source packets.
-- Overflow-safe builder chips, warnings, and preview content.
-- Dedicated static browser-QA check.
-- Dedicated Playwright browser spec for source packet builder UI.
+- `src/research/source-packet-roundtrip.js`.
+- `tests/source-packet-roundtrip-check.mjs`.
+- `tests/v118-no-browser-suite.mjs`.
+- `source_packet_roundtrip_report` in schema, fixtures, migrations, and exported research packets.
+- Import metadata preservation for source packet scoring reviews.
+
+### Verified
+
+- Generated source packets use `manual_source_packet.v1`.
+- Re-import uses the source packet importer.
+- Re-imported evidence remains queue-only and unverified.
+- Evidence scoring remains attached after re-import.
+- Attention remains explicitly separated from truth/reliability.
+- No live fetching or verification claim is introduced.
 
 ### Preserved
 
@@ -21,14 +28,12 @@ This patch tightens the browser-facing Source Packet Builder introduced in v1.0.
 - No source connector behavior change.
 - No storage behavior change.
 - Manual/private mode remains default.
-- Builder output remains transport metadata, not source verification.
 
 ### Required validation
 
 ```bash
-npm run test:source:packet-builder:browser-qa
-npm run test:source:packet-builder
-npm run test:v117:no-browser
+npm run test:source:packet-roundtrip
+npm run test:v118:no-browser
 npm run test:ci:no-browser
 npx playwright install --with-deps
 npm run test:ci:browser

@@ -1,3 +1,13 @@
+## v1.0.18 — Source Packet Builder Export Roundtrip QA
+
+- Added `src/research/source-packet-roundtrip.js` for local/manual source packet export/import roundtrip QA.
+- Added `tests/source-packet-roundtrip-check.mjs`.
+- Added `tests/v118-no-browser-suite.mjs`.
+- Preserved source packet scoring review metadata as import metadata.
+- Added `source_packet_roundtrip_report` to schema, fixtures, migrations, and exported research packets.
+- Confirmed re-imported evidence remains queue-only, unverified, and locally scored.
+- Preserved provider/OAuth/backend/source/storage behavior and manual/private mode.
+
 ## v1.0.17 — Source Packet Builder Browser QA + UX Tightening
 
 - Added Source Packet Builder browser-QA hook and guardrail copy.
