@@ -1,24 +1,10 @@
-## v1.0.13 — Manual Source Packet Import
-
-| Gate | Command | Purpose |
-|---|---|---|
-| Source packet import | `npm run test:source:packet` | Verifies structured manual source packet JSON import with no live fetching or verification claims. |
-| v1.0.13 no-browser | `npm run test:v113:no-browser` | Runs the stable no-browser suite plus the v1.0.13 packet-import gate. |
-
-## v1.0.12 — Research Source Strategy Blueprint
-
-| Gate | Command | Purpose |
-|---|---|---|
-| Source capability registry | `npm run test:source:capabilities` | Verifies availability/auth/freshness/privacy/demo visibility contracts without enabling live source behavior. |
-| v1.0.12 no-browser | `npm run test:v112:no-browser` | Runs the stable no-browser suite plus the v1.0.12 registry gate. |
-
 # QA Matrix
 
 ## Core no-browser gates
 
 | Gate | Command | Purpose |
 |---|---|---|
-| QA aggregate | `npm run test:qa` | Runs core static, schema, fixture, workflow, privacy, migration, module, workspace, template, quality, export, backend, browser-hardening, onboarding, and release-packaging checks. |
+| QA aggregate | `npm run test:qa` | Runs core static, schema, fixture, workflow, privacy, migration, module, workspace, template, quality, export, backend, browser-hardening, onboarding, release-packaging, and evidence-scoring checks. |
 | Static | `npm run test:static` | Checks syntax, required files, DOM IDs, legacy tokens, and version metadata. |
 | Schema | `npm run test:schema` | Validates strategic-analysis and research-workflow schema structure. |
 | Fixtures | `npm run test:fixtures` | Validates sample strategic-analysis fixtures. |
@@ -40,24 +26,18 @@
 | Gate | Command | Purpose |
 |---|---|---|
 | Provider bundle | `npm run test:provider` | Checks provider identity, portable mock, OAuth spike, response contracts, and fixtures. |
-| Source bundle | `npm run test:source` | Checks source planning, source import, review queue, GitHub connector, and web-search abstraction. |
+| Source bundle | `npm run test:source` | Checks source planning, source import, source packets, evidence scoring, review queue, GitHub connector, and web-search abstraction. |
 | Backend bundle | `npm run test:backend` | Checks hosted proxy contract, hardening, and Worker smoke tests. |
 
 ## Stable patch gates
 
 | Version | Gate | Command | Purpose |
 |---|---|---|---|
-| v1.0.1 | Patch-only stabilization | `npm run test:patch` | Ensures stable patch boundaries remain active. |
-| v1.0.2 | UX stabilization | `npm run test:ux:stabilization` | Verifies workflow navigation and collapsed advanced hierarchy. |
-| v1.0.3 | Screen discipline | `npm run test:screen-discipline` | Verifies compact screen hierarchy and no duplicate command surfaces. |
-| v1.0.4 | Browser QA hardening | `npm run test:browser:qa` | Runs provider, layout, and visual browser gates. |
-| v1.0.5 | Onboarding | `npm run test:onboarding` | Verifies first-run guide and export-safe onboarding metadata. |
-| v1.0.6 | Release packaging | `npm run test:release-packaging` | Verifies corrected release labels, manifest, archive hygiene, and current snapshots. |
-| v1.0.7 | Public demo readiness | `npm run test:public-demo` | Verifies public demo metadata, release notes, first-screen demo panel, and unchanged runtime boundaries. |
-| v1.0.8 | Hosted demo verification | `npm run test:hosted-demo` | Verifies hosted-demo verification metadata, browser evidence capture metadata, and unchanged runtime boundaries. |
-| v1.0.9 | Hosted demo evidence review | `npm run test:hosted-demo:evidence-review` | Verifies hosted URL routing, stable evidence artifacts, metadata snapshot contract, and evidence-review release gate. |
 | v1.0.10 | Module type warning fix | `npm run test:module-type-warning` | Verifies package-level ESM mode and warning-clean backend Worker smoke validation. |
-| v1.0.11 | Repository Hygiene + Stale Artifact Cleanup | `npm run test:repo:cleanup` | Verifies stale-artifact gates, release drift checks, and migration fixture coverage. |
+| v1.0.11 | Repository hygiene cleanup | `npm run test:repo:cleanup` | Verifies stale-artifact gates, release drift checks, and migration fixture coverage. |
+| v1.0.12 | Source capability registry | `npm run test:source:capabilities` | Verifies source availability/auth/freshness/privacy/demo contracts without enabling live source behavior. |
+| v1.0.13 | Manual source packet import | `npm run test:source:packet` | Verifies structured manual source packet import with no live fetching or verification claims. |
+| v1.0.14 | Evidence Scoring v1 | `npm run test:evidence:scoring` | Verifies reliability, attention, traceability, contradiction value, synthesis weight, and attention-not-truth guardrails. |
 
 ## Browser gates
 
@@ -73,10 +53,10 @@
 ## Current release gates
 
 ```bash
-npm run test:v113:no-browser
-npm run test:source:packet
+npm run test:evidence:scoring
+npm run test:v114:no-browser
 npm run test:ci:no-browser
 npm run test:ci:browser
 ```
 
-Public Demo boundary remains unchanged.
+Public Demo boundary remains unchanged: use manual/mock mode unless browser QA and release gates pass.

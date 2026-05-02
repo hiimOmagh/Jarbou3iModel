@@ -2,10 +2,14 @@
 
 ## Current stable patch
 
-`v1.0.11 — Repository Hygiene + Stale Artifact Cleanup` is the current stable patch. It tightens repo hygiene, repairs migration fixture coverage, blocks stale artifacts, and keeps provider/OAuth/backend/source/storage behavior unchanged.
+`v1.0.14 — Evidence Scoring v1` is the current stable patch. It separates attention signals from evidence reliability and adds traceability, specificity, recency, contradiction-value, and synthesis-weight scoring without enabling live source fetching or provider/OAuth expansion.
 
 ## Recently completed
 
+- `v1.0.13 — Manual Source Packet Import`
+- `v1.0.12 — Research Source Strategy Blueprint`
+- `v1.0.11 — Repository Hygiene + Stale Artifact Cleanup`
+- `v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix`
 - `v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review`
 - `v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture`
 - `v1.0.7 — Public Demo Readiness + Release Notes Polish`
@@ -17,17 +21,20 @@
 - `v1.0.1 — Patch-only Stabilization`
 - `v1.0.0 — Public Beta / Stable Research Engine`
 
-## Next logical patch
+## Next recommended patch
 
-`v1.0.11 — Hosted Demo Content Polish + Tutorial Alignment`
+`v1.0.15 — Source Packet Builder UI + Scoring Review Controls`
 
 Allowed scope:
 
-- demo script copy cleanup
-- tutorial/readme alignment with visible UI
-- hosted evidence review wording improvements
-- no new provider/OAuth/backend/source behavior
-- no schema-breaking workflow changes
+- local-only source packet builder UI
+- edit controls for scoring review flags
+- better evidence scoring explanations in the UI
+- no live scraping
+- no production OAuth
+- no provider behavior change
+- no backend endpoint change
+- no storage model change
 
 ## Deferred major/minor work
 
@@ -36,12 +43,3 @@ Allowed scope:
 - hosted multi-user accounts
 - paid-provider abstraction beyond the current safety model
 - schema-breaking workflow redesign
-
-
-## Current patch
-
-`v1.0.13 — Manual Source Packet Import` adds local structured source-packet import as the safe bridge between source strategy metadata and future evidence scoring.
-
-## Next recommended patch
-
-`v1.0.14 — Evidence Scoring v1` should separate public attention signals from evidence reliability before any live multi-source search, scraping, or portable-auth expansion.
