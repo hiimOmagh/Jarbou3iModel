@@ -737,7 +737,7 @@ html[dir="rtl"] .welcomeEyebrow{
   .uxTab{flex:1 1 130px}
 }
 
-/* v1.0.10 screen discipline patch: collapse duplicate control surfaces and compress empty states */
+/* v1.0.11 screen discipline patch: collapse duplicate control surfaces and compress empty states */
 #researchLabPanel.screenDiscipline{--discipline-gap:14px;}
 #researchLabPanel.screenDiscipline .researchGrid{align-items:start;grid-auto-flow:row dense;}
 #researchLabPanel.screenDiscipline .researchCard{min-height:unset;}
