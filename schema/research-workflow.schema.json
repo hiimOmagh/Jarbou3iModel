@@ -8,6 +8,7 @@
     "analysis_template",
     "research_plan",
     "evidence_matrix",
+    "evidence_scoring_report",
     "causal_links",
     "analysis_brief",
     "diagnostics",
@@ -48,7 +49,7 @@
   ],
   "properties": {
     "workflow_version": {
-      "const": "1.0.13"
+      "const": "1.0.14"
     },
     "generated_at": {
       "type": "string"
@@ -308,7 +309,7 @@
       "additionalProperties": true,
       "properties": {
         "quality_gate_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "generated_at": {
           "type": "string"
@@ -417,7 +418,7 @@
       ],
       "properties": {
         "export_pack_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "format": {
           "const": "export_pack_v2"
@@ -454,10 +455,10 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "proxy_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "status": {
           "type": "string"
@@ -528,7 +529,7 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "release_type": {
           "const": "patch_only_browser_qa_visual_regression"
@@ -591,7 +592,7 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "demo_stage": {
           "const": "public_demo_ready"
@@ -675,10 +676,10 @@
       "additionalProperties": true,
       "properties": {
         "release_notes_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "release_title": {
-          "const": "v1.0.13 — Manual Source Packet Import"
+          "const": "v1.0.14 \u2014 Evidence Scoring v1"
         },
         "release_type": {
           "const": "patch"
@@ -726,7 +727,7 @@
       ],
       "properties": {
         "onboarding_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "generated_at": {
           "type": "string"
@@ -817,7 +818,7 @@
       "additionalProperties": true,
       "properties": {
         "hosted_demo_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "deployment_stage": {
           "const": "hosted_demo_verification"
@@ -895,7 +896,7 @@
       "additionalProperties": true,
       "properties": {
         "browser_evidence_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "evidence_mode": {
           "const": "playwright_capture_attach_and_write_artifacts"
@@ -956,7 +957,7 @@
       "additionalProperties": true,
       "properties": {
         "smoke_fixes_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "deployment_stage": {
           "const": "hosted_demo_smoke_fixes"
@@ -1027,7 +1028,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_review_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "review_stage": {
           "const": "hosted_demo_evidence_review"
@@ -1078,6 +1079,9 @@
     },
     "source_capability_registry": {
       "$ref": "#/$defs/source_capability_registry"
+    },
+    "evidence_scoring_report": {
+      "$ref": "#/$defs/evidence_scoring_report"
     }
   },
   "$defs": {
@@ -1096,7 +1100,7 @@
       ],
       "properties": {
         "plan_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "topic": {
           "type": "string",
@@ -1191,7 +1195,8 @@
         "public_signal_score",
         "supports",
         "contradicts",
-        "confidence"
+        "confidence",
+        "evidence_scoring"
       ],
       "properties": {
         "evidence_id": {
@@ -1259,6 +1264,9 @@
         },
         "notes": {
           "type": "string"
+        },
+        "evidence_scoring": {
+          "$ref": "#/$defs/evidence_scoring"
         }
       },
       "additionalProperties": true
@@ -1381,7 +1389,7 @@
       ],
       "properties": {
         "brief_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "generated_at": {
           "type": "string"
@@ -1452,7 +1460,7 @@
           ],
           "properties": {
             "fit_version": {
-              "const": "1.0.13"
+              "const": "1.0.14"
             },
             "template_id": {
               "type": "string"
@@ -1503,7 +1511,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "provider": {
           "type": "string"
@@ -1590,7 +1598,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "generated_at": {
           "type": "string"
@@ -1663,7 +1671,7 @@
       ],
       "properties": {
         "validation_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "validated_at": {
           "type": "string"
@@ -1744,7 +1752,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "checked_at": {
           "type": "string"
@@ -1827,7 +1835,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "fixture_count": {
           "type": "number"
@@ -1859,7 +1867,7 @@
       ],
       "properties": {
         "policy_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "generated_at": {
           "type": "string"
@@ -1919,7 +1927,7 @@
       ],
       "properties": {
         "request_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "created_at": {
           "type": "string"
@@ -1992,7 +2000,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "checked_at": {
           "type": "string"
@@ -2060,7 +2068,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "fixture_count": {
           "type": "number"
@@ -2099,7 +2107,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "connector": {
           "type": "string"
@@ -2171,7 +2179,7 @@
       ],
       "properties": {
         "import_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "imported_at": {
           "type": "string"
@@ -2316,7 +2324,7 @@
       ],
       "properties": {
         "review_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "generated_at": {
           "type": "string"
@@ -2519,7 +2527,7 @@
       ],
       "properties": {
         "portable_account_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -2628,7 +2636,7 @@
           ]
         },
         "oauth_spike_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         }
       },
       "additionalProperties": true
@@ -2655,7 +2663,7 @@
       ],
       "properties": {
         "guard_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "safe": {
           "type": "boolean"
@@ -2691,7 +2699,7 @@
           }
         },
         "audit_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "release_gate": {
           "enum": [
@@ -2747,13 +2755,13 @@
       ],
       "properties": {
         "migration_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "source_version": {
           "type": "string"
         },
         "target_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "started_at": {
           "type": "string"
@@ -2814,7 +2822,7 @@
       ],
       "properties": {
         "workspace_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "storage_mode": {
           "const": "local_only"
@@ -2857,7 +2865,7 @@
           ],
           "properties": {
             "diagnostics_version": {
-              "const": "1.0.13"
+              "const": "1.0.14"
             },
             "available": {
               "type": "boolean"
@@ -2903,7 +2911,7 @@
           "type": "string"
         },
         "template_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "display_name": {
           "type": "string"
@@ -2969,7 +2977,7 @@
           "type": "string"
         },
         "result_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "connector": {
           "type": "string"
@@ -3020,7 +3028,7 @@
       ],
       "properties": {
         "identity_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "provider_id": {
           "type": "string"
@@ -3092,7 +3100,7 @@
       ],
       "properties": {
         "budget_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "max_queries": {
           "type": "integer",
@@ -3152,7 +3160,7 @@
       ],
       "properties": {
         "search_policy_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "provider_identity": {
           "$ref": "#/$defs/search_provider_identity"
@@ -3210,7 +3218,7 @@
       ],
       "properties": {
         "oauth_spike_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3348,7 +3356,7 @@
       ],
       "properties": {
         "release_candidate_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "generated_at": {
           "type": "string"
@@ -3366,7 +3374,7 @@
           ],
           "properties": {
             "release_version": {
-              "const": "1.0.13"
+              "const": "1.0.14"
             },
             "release_stage": {
               "const": "public_beta_stable"
@@ -3451,7 +3459,7 @@
           ]
         },
         "stable_release_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "stable_ready": {
           "type": "boolean"
@@ -3471,7 +3479,7 @@
       ],
       "properties": {
         "source_strategy_version": {
-          "const": "1.0.13"
+          "const": "1.0.14"
         },
         "release_gate": {
           "const": "source_strategy_blueprint_checked"
@@ -3522,7 +3530,7 @@
           ],
           "properties": {
             "registry_version": {
-              "const": "1.0.13"
+              "const": "1.0.14"
             },
             "new_live_connector_enabled": {
               "const": false
@@ -3544,6 +3552,167 @@
         }
       },
       "additionalProperties": true
+    },
+    "evidence_scoring": {
+      "type": "object",
+      "required": [
+        "scoring_version",
+        "scorer_version",
+        "attention_signal_score",
+        "reliability_score",
+        "traceability_score",
+        "specificity_score",
+        "recency_score",
+        "contradiction_value_score",
+        "synthesis_weight",
+        "attention_is_truth_score",
+        "policy",
+        "risk_flags"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "scoring_version": {
+          "const": "evidence_scoring.v1"
+        },
+        "scorer_version": {
+          "const": "1.0.14"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "attention_signal_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "reliability_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "traceability_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "specificity_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "recency_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "contradiction_value_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "synthesis_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "attention_is_truth_score": {
+          "const": false
+        },
+        "policy": {
+          "const": "attention_signal_is_not_evidence_reliability"
+        },
+        "risk_flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evidence_scoring_report": {
+      "type": "object",
+      "required": [
+        "evidence_scoring_version",
+        "scoring_model",
+        "item_count",
+        "average_reliability_score",
+        "average_attention_signal_score",
+        "average_traceability_score",
+        "average_synthesis_weight",
+        "high_reliability_count",
+        "attention_dominance_risk_count",
+        "weak_traceability_count",
+        "policy",
+        "release_gate",
+        "risk_flags"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "evidence_scoring_version": {
+          "const": "1.0.14"
+        },
+        "scoring_model": {
+          "const": "evidence_scoring.v1"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "item_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "average_reliability_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "average_attention_signal_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "average_traceability_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "average_synthesis_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "high_reliability_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "attention_dominance_risk_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "high_attention_social_signal_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "weak_traceability_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "policy": {
+          "const": "public attention is tracked separately from evidence reliability"
+        },
+        "release_gate": {
+          "enum": [
+            "pass",
+            "review_required"
+          ]
+        },
+        "risk_flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }
