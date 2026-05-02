@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.10
+# Release Manifest — v1.0.11
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.10`
-- Release name: `Hosted URL CI Artifact Review + Module-Type Warning Fix`
+- Version: `1.0.11`
+- Release name: `Repository Hygiene + Stale Artifact Cleanup`
 - Release type: patch
 - Runtime capability change: no
 
@@ -52,7 +52,7 @@
 
 ## Compatibility boundary
 
-v1.0.10 must not change provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to change package metadata, warning-clean CI validation, release docs, migration/privacy snapshots, and QA wrappers.
+v1.0.11 must not change provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to change package metadata, release hygiene checks, migration/privacy snapshots, release docs, and QA wrappers.
 
 ## Required no-browser gates
 
@@ -67,11 +67,12 @@ npm run test:quality
 npm run test:migrations
 npm run test:release-packaging
 npm run test:repo:hygiene
+npm run test:repo:cleanup
 npm run test:public-demo
 npm run test:hosted-demo
 npm run test:hosted-demo:evidence-review
 npm run test:module-type-warning
-npm run test:v110:no-browser
+npm run test:v111:no-browser
 ```
 
 ## Required browser gates before publishing
@@ -111,6 +112,7 @@ The gate rejects stale duplicate release docs, orphan temporary files, generated
 - `docs/v1.0.8-hosted-demo-deployment-browser-evidence.md`
 - `docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md`
 - `docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md`
+- `docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md`
 - `tests/hosted-demo-deployment-check.mjs`
 - `tests/hosted-demo-evidence-review-check.mjs`
 - `tests/hosted-demo-browser-evidence.spec.mjs`

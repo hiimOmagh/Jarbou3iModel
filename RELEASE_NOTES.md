@@ -1,27 +1,34 @@
-# Release Notes — v1.0.10
+# Release Notes — v1.0.11
 
-## v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix
+## v1.0.11 — Repository Hygiene + Stale Artifact Cleanup
 
-This patch rebuilds the failed-download v1.0.10 from the confirmed v1.0.9 baseline. It keeps the hosted-demo evidence workflow intact and removes the Node ESM warning emitted during backend Worker smoke validation.
+This patch tightens repo hygiene and stale-artifact protection after the v1.0.11 module-type warning fix. It does not add runtime features and does not enable new provider, OAuth, backend, source connector, or storage behavior.
 
-### Added
+## What changed
 
-- Package-level ESM declaration with `"type": "module"`.
-- `tests/module-type-warning-fix-check.mjs` to assert the Worker smoke test exits without `MODULE_TYPELESS_PACKAGE_JSON` or ESM reparsing warnings.
-- `tests/v110-no-browser-suite.mjs` as the canonical v1.0.10 no-browser suite.
-- v1.0.10 migration and privacy snapshots.
-- v1.0.10 release documentation and manifest updates.
+- Added `tests/repository-hygiene-cleanup-check.mjs`.
+- Added `tests/v111-no-browser-suite.mjs`.
+- Added `docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md`.
+- Added v1.0.11 migration and privacy snapshots.
+- Added the missing `fixtures/migrations/v1.0.4-packet.json` coverage fixture.
+- Updated repo hygiene and release packaging checks to include v1.0.11.
+- Kept the v1.0.11 module-type warning fix active.
 
-### Compatibility boundary
-
-No provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, browser runtime behavior, or storage behavior changed. Manual/private mode remains the default.
-
-### Required validation
+## Validation
 
 ```bash
-npm run test:module-type-warning
-npm run test:v110:no-browser
 npm run test:ci:no-browser
+npm run test:v111:no-browser
+npm run test:repo:cleanup
+npm run test:repo:hygiene
 ```
 
-The Public Demo layer remains active; this patch only improves CI/module hygiene around the existing hosted-demo evidence workflow.
+Browser validation remains required before updating a hosted demo:
+
+```bash
+npm run test:ci:browser
+```
+
+## Runtime boundary
+
+Runtime capability change: no. Public Demo behavior and manual/private defaults remain unchanged.

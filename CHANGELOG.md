@@ -1,4 +1,12 @@
-## v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix
+## v1.0.11 — Repository Hygiene + Stale Artifact Cleanup
+
+- Added repository hygiene cleanup gates for stale artifacts, duplicate release docs, generated outputs, secret-bearing local config, and migration fixture drift.
+- Added `tests/repository-hygiene-cleanup-check.mjs` and `tests/v111-no-browser-suite.mjs`.
+- Added v1.0.11 migration/privacy snapshots and `docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md`.
+- Added missing `fixtures/migrations/v1.0.4-packet.json` coverage for a supported stable migration source.
+- Preserved provider/OAuth/backend/source/storage behavior and kept manual/private mode first-class.
+
+## v1.0.11 — Repository Hygiene + Stale Artifact Cleanup
 
 - Rebuilt the failed-download v1.0.10 patch from the confirmed v1.0.9 baseline.
 - Added package-level ESM mode via `"type": "module"` to remove Node's `MODULE_TYPELESS_PACKAGE_JSON` warning during Worker smoke validation.
