@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.13
+# Release Manifest — v1.0.14
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.13`
-- Release name: `Manual Source Packet Import`
+- Version: `1.0.14`
+- Release name: `Evidence Scoring v1`
 - Release type: patch
 - Runtime capability change: no
 
@@ -52,15 +52,16 @@
 
 ## Compatibility boundary
 
-v1.0.13 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/manual source packet import parsing, schema/fixture coverage, release docs, and QA wrappers.
+v1.0.14 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/evidence scoring v1 parsing, schema/fixture coverage, release docs, and QA wrappers.
 
 ## Required no-browser gates
 
 ```bash
+npm run test:evidence:scoring
 npm run test:source:packet
 npm run test:source:import
 npm run test:source:capabilities
-npm run test:v113:no-browser
+npm run test:v114:no-browser
 npm run test:ci:no-browser
 ```
 
@@ -74,13 +75,21 @@ npm run test:ci:browser
 
 Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, and local environment files must not be shipped in release archives. See `.releaseignore`.
 
+## v1.0.14 evidence scoring artifacts
+
+- `src/research/evidence-scorer.js`
+- `schema/research-workflow.schema.json`
+- `fixtures/migrations/v1.0.14-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.14.json`
+- `tests/evidence-scoring-check.mjs`
+- `tests/v114-no-browser-suite.mjs`
+- `docs/v1.0.14-evidence-scoring-v1.md`
+
 ## v1.0.13 manual source packet artifacts
 
 - `src/research/source-packet-importer.js`
 - `src/research/source-import-adapter.js`
 - `fixtures/research/source-packet-sample.json`
-- `fixtures/migrations/v1.0.13-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.13.json`
 - `tests/source-packet-import-check.mjs`
 - `tests/v113-no-browser-suite.mjs`
 - `docs/v1.0.13-manual-source-packet-import.md`

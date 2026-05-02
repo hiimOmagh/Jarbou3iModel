@@ -1,6 +1,6 @@
-### v1.0.13 — Manual Source Packet Import
+### v1.0.14 — Evidence Scoring v1
 
-Adds structured manual source packet JSON import. User-collected source packets are converted into reviewable evidence candidates without live fetching, scraping, verification claims, OAuth, provider changes, backend endpoint changes, or storage changes.
+Adds a conservative local evidence-scoring layer that separates **attention signal** from **evidence reliability** before synthesis. The patch adds per-evidence scoring metadata, packet-level scoring reports, schema/fixture coverage, Quality Gate v3 integration, and CI checks.
 
 # Jarbou3i Research Engine
 
@@ -8,17 +8,20 @@ Experimental research-to-strategy workflow layer for schema-governed strategic a
 
 ## Current version
 
-`v1.0.13 — Manual Source Packet Import`
+`v1.0.14 — Evidence Scoring v1`
 
-This patch adds a local/manual structured source packet import path. Imported packets are review-gated and remain explicitly unverified until the user accepts or edits candidates.
+This patch does **not** add live scraping, production OAuth, provider behavior changes, backend endpoint changes, or storage changes.
 
 ## What this patch changes
 
-- Adds `"type": "module"` to `package.json` because the Worker, Playwright config, and browser specs already use ESM syntax.
-- Adds `tests/module-type-warning-fix-check.mjs` to prove `tests/backend-worker-smoke.mjs` exits without `MODULE_TYPELESS_PACKAGE_JSON` or ESM reparsing warnings.
-- Adds `tests/v111-no-browser-suite.mjs` as the canonical v1.0.11 no-browser suite.
-- Adds v1.0.11 migration/privacy snapshots, a repository cleanup gate, and release documentation.
-- Keeps v1.0.9 hosted URL evidence capture, metadata snapshot, and artifact upload behavior unchanged.
+- Adds `src/research/evidence-scorer.js`.
+- Adds per-evidence `evidence_scoring` metadata.
+- Adds packet-level `evidence_scoring_report`.
+- Tracks reliability, attention, traceability, specificity, recency, contradiction value, and synthesis weight.
+- Flags attention-without-reliability and high-attention social signals for review.
+- Updates source import paths so imported candidates are scored while remaining review-gated.
+- Updates Quality Gate v3 with evidence reliability and attention-integrity dimensions.
+- Adds `tests/evidence-scoring-check.mjs` and `tests/v114-no-browser-suite.mjs`.
 
 ## Compatibility boundary
 
@@ -29,7 +32,7 @@ This patch adds a local/manual structured source packet import path. Imported pa
 - No browser runtime behavior change.
 - No storage model change.
 - Manual/private mode remains first-class.
-- Existing advanced panels remain collapsed by default.
+- Imported candidates remain unverified until human review.
 
 ## Stable workflow
 

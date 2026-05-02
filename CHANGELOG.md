@@ -1,3 +1,14 @@
+## v1.0.14 — Evidence Scoring v1
+
+- Added `src/research/evidence-scorer.js` for local evidence scoring.
+- Added per-evidence `evidence_scoring` metadata and packet-level `evidence_scoring_report`.
+- Separated `attention_signal_score` from `reliability_score`; attention is explicitly not treated as truth.
+- Added traceability, specificity, recency, contradiction-value, and synthesis-weight scoring.
+- Added Quality Gate v3 evidence reliability and attention-integrity dimensions.
+- Updated source import and source-packet import paths so imported candidates are scored but remain review-gated.
+- Added schema, fixtures, migration/privacy snapshots, `tests/evidence-scoring-check.mjs`, and `tests/v114-no-browser-suite.mjs`.
+- Preserved provider/OAuth/backend/source/storage behavior and manual/private mode.
+
 ## v1.0.13 — Manual Source Packet Import
 
 - Added `src/research/source-packet-importer.js` for structured manual source packet JSON import.
