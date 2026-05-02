@@ -49,7 +49,7 @@
   ],
   "properties": {
     "workflow_version": {
-      "const": "1.0.14"
+      "const": "1.0.15"
     },
     "generated_at": {
       "type": "string"
@@ -309,7 +309,7 @@
       "additionalProperties": true,
       "properties": {
         "quality_gate_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -418,7 +418,7 @@
       ],
       "properties": {
         "export_pack_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "format": {
           "const": "export_pack_v2"
@@ -455,10 +455,10 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "proxy_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "status": {
           "type": "string"
@@ -529,7 +529,7 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "release_type": {
           "const": "patch_only_browser_qa_visual_regression"
@@ -592,7 +592,7 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "demo_stage": {
           "const": "public_demo_ready"
@@ -676,10 +676,10 @@
       "additionalProperties": true,
       "properties": {
         "release_notes_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "release_title": {
-          "const": "v1.0.14 \u2014 Evidence Scoring v1"
+          "const": "v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass"
         },
         "release_type": {
           "const": "patch"
@@ -727,7 +727,7 @@
       ],
       "properties": {
         "onboarding_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -818,7 +818,7 @@
       "additionalProperties": true,
       "properties": {
         "hosted_demo_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "deployment_stage": {
           "const": "hosted_demo_verification"
@@ -896,7 +896,7 @@
       "additionalProperties": true,
       "properties": {
         "browser_evidence_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "evidence_mode": {
           "const": "playwright_capture_attach_and_write_artifacts"
@@ -957,7 +957,7 @@
       "additionalProperties": true,
       "properties": {
         "smoke_fixes_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "deployment_stage": {
           "const": "hosted_demo_smoke_fixes"
@@ -1028,7 +1028,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_review_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "review_stage": {
           "const": "hosted_demo_evidence_review"
@@ -1100,7 +1100,7 @@
       ],
       "properties": {
         "plan_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "topic": {
           "type": "string",
@@ -1389,7 +1389,7 @@
       ],
       "properties": {
         "brief_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -1460,7 +1460,7 @@
           ],
           "properties": {
             "fit_version": {
-              "const": "1.0.14"
+              "const": "1.0.15"
             },
             "template_id": {
               "type": "string"
@@ -1511,7 +1511,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "provider": {
           "type": "string"
@@ -1598,7 +1598,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -1671,7 +1671,7 @@
       ],
       "properties": {
         "validation_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "validated_at": {
           "type": "string"
@@ -1752,7 +1752,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "checked_at": {
           "type": "string"
@@ -1835,7 +1835,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "fixture_count": {
           "type": "number"
@@ -1867,7 +1867,7 @@
       ],
       "properties": {
         "policy_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -1927,7 +1927,7 @@
       ],
       "properties": {
         "request_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "created_at": {
           "type": "string"
@@ -2000,7 +2000,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "checked_at": {
           "type": "string"
@@ -2068,7 +2068,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "fixture_count": {
           "type": "number"
@@ -2107,7 +2107,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "connector": {
           "type": "string"
@@ -2179,7 +2179,7 @@
       ],
       "properties": {
         "import_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "imported_at": {
           "type": "string"
@@ -2324,7 +2324,7 @@
       ],
       "properties": {
         "review_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -2527,7 +2527,7 @@
       ],
       "properties": {
         "portable_account_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -2636,7 +2636,7 @@
           ]
         },
         "oauth_spike_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         }
       },
       "additionalProperties": true
@@ -2663,7 +2663,7 @@
       ],
       "properties": {
         "guard_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "safe": {
           "type": "boolean"
@@ -2699,7 +2699,7 @@
           }
         },
         "audit_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "release_gate": {
           "enum": [
@@ -2755,13 +2755,13 @@
       ],
       "properties": {
         "migration_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "source_version": {
           "type": "string"
         },
         "target_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "started_at": {
           "type": "string"
@@ -2822,7 +2822,7 @@
       ],
       "properties": {
         "workspace_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "storage_mode": {
           "const": "local_only"
@@ -2865,7 +2865,7 @@
           ],
           "properties": {
             "diagnostics_version": {
-              "const": "1.0.14"
+              "const": "1.0.15"
             },
             "available": {
               "type": "boolean"
@@ -2911,7 +2911,7 @@
           "type": "string"
         },
         "template_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "display_name": {
           "type": "string"
@@ -2977,7 +2977,7 @@
           "type": "string"
         },
         "result_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "connector": {
           "type": "string"
@@ -3028,7 +3028,7 @@
       ],
       "properties": {
         "identity_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "provider_id": {
           "type": "string"
@@ -3100,7 +3100,7 @@
       ],
       "properties": {
         "budget_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "max_queries": {
           "type": "integer",
@@ -3160,7 +3160,7 @@
       ],
       "properties": {
         "search_policy_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "provider_identity": {
           "$ref": "#/$defs/search_provider_identity"
@@ -3218,7 +3218,7 @@
       ],
       "properties": {
         "oauth_spike_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3356,7 +3356,7 @@
       ],
       "properties": {
         "release_candidate_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -3374,7 +3374,7 @@
           ],
           "properties": {
             "release_version": {
-              "const": "1.0.14"
+              "const": "1.0.15"
             },
             "release_stage": {
               "const": "public_beta_stable"
@@ -3459,7 +3459,7 @@
           ]
         },
         "stable_release_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "stable_ready": {
           "type": "boolean"
@@ -3479,7 +3479,7 @@
       ],
       "properties": {
         "source_strategy_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "release_gate": {
           "const": "source_strategy_blueprint_checked"
@@ -3530,7 +3530,7 @@
           ],
           "properties": {
             "registry_version": {
-              "const": "1.0.14"
+              "const": "1.0.15"
             },
             "new_live_connector_enabled": {
               "const": false
@@ -3567,7 +3567,17 @@
         "synthesis_weight",
         "attention_is_truth_score",
         "policy",
-        "risk_flags"
+        "risk_flags",
+        "calibration_version",
+        "reliability_band",
+        "attention_band",
+        "traceability_band",
+        "synthesis_band",
+        "calibration_warnings",
+        "calibration_profile",
+        "calibration_thresholds",
+        "score_theater_guard",
+        "explanation_policy"
       ],
       "additionalProperties": true,
       "properties": {
@@ -3575,7 +3585,7 @@
           "const": "evidence_scoring.v1"
         },
         "scorer_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "generated_at": {
           "type": "string"
@@ -3626,6 +3636,65 @@
           "items": {
             "type": "string"
           }
+        },
+        "calibration_version": {
+          "const": "evidence_scoring_calibration.v1"
+        },
+        "reliability_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "attention_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "traceability_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "synthesis_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "calibration_warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "calibration_profile": {
+          "const": "conservative_editorial_research"
+        },
+        "calibration_thresholds": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "score_theater_guard": {
+          "const": "scores_explain_prioritization_not_truth"
+        },
+        "explanation_policy": {
+          "type": "object",
+          "additionalProperties": true
         }
       }
     },
@@ -3644,12 +3713,22 @@
         "weak_traceability_count",
         "policy",
         "release_gate",
-        "risk_flags"
+        "risk_flags",
+        "calibration_version",
+        "calibration_warning_count",
+        "reliability_band",
+        "attention_band",
+        "traceability_band",
+        "synthesis_band",
+        "calibration_profile",
+        "calibration_thresholds",
+        "score_theater_guard",
+        "explanation_policy"
       ],
       "additionalProperties": true,
       "properties": {
         "evidence_scoring_version": {
-          "const": "1.0.14"
+          "const": "1.0.15"
         },
         "scoring_model": {
           "const": "evidence_scoring.v1"
@@ -3711,6 +3790,63 @@
           "items": {
             "type": "string"
           }
+        },
+        "calibration_version": {
+          "const": "evidence_scoring_calibration.v1"
+        },
+        "calibration_warning_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "reliability_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "attention_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "traceability_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "synthesis_band": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "strong",
+            "very_strong"
+          ]
+        },
+        "calibration_profile": {
+          "const": "conservative_editorial_research"
+        },
+        "calibration_thresholds": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "score_theater_guard": {
+          "const": "scores_explain_prioritization_not_truth"
+        },
+        "explanation_policy": {
+          "type": "object",
+          "additionalProperties": true
         }
       }
     }
