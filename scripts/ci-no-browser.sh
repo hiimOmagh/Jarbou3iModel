@@ -55,6 +55,7 @@ run_node tests/provider-fixtures-check.mjs
 run_node tests/backend-proxy-check.mjs
 run_node tests/backend-hardening-check.mjs
 run_node tests/backend-worker-smoke.mjs
+run_node tests/module-type-warning-fix-check.mjs
 run_node tests/source-planning-check.mjs
 run_node tests/source-import-check.mjs
 run_node tests/evidence-review-queue-check.mjs
@@ -79,6 +80,8 @@ run_node --check tests/browser-layout-persistence.spec.mjs
 run_node --check tests/browser-visual-regression.spec.mjs
 run_node --check tests/hosted-demo-browser-evidence.spec.mjs
 run_node --check tests/hosted-demo-evidence-review-check.mjs
+run_node --check tests/module-type-warning-fix-check.mjs
+run_node --check tests/v110-no-browser-suite.mjs
 run_node --check tests/v105-no-browser-suite.mjs
 run_node --check tests/v106-no-browser-suite.mjs
 run_node --check tests/v107-no-browser-suite.mjs
