@@ -16,27 +16,27 @@ const releasePackagingCheck = read('tests/release-packaging-cleanup-check.mjs');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.18-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.18.json');
+const migrationFixture = json('fixtures/migrations/v1.0.19-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.19.json');
 
-assert.equal(pkg.version, '1.0.18');
+assert.equal(pkg.version, '1.0.19');
 assert.ok(pkg.description.includes('evidence scoring'));
-assert.equal(schema.properties.workflow_version.const, '1.0.18');
-assert.equal(sample.workflow_version, '1.0.18');
-assert.equal(migrationFixture.workflow_version, '1.0.18');
-assert.equal(privacyFixture.workflow_version, '1.0.18');
-assert.equal(sample.release_notes.release_title, 'v1.0.18 — Source Packet Builder Export Roundtrip QA');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.0.18 — Source Packet Builder Export Roundtrip QA');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.0.18 — Source Packet Builder Export Roundtrip QA');
+assert.equal(schema.properties.workflow_version.const, '1.0.19');
+assert.equal(sample.workflow_version, '1.0.19');
+assert.equal(migrationFixture.workflow_version, '1.0.19');
+assert.equal(privacyFixture.workflow_version, '1.0.19');
+assert.equal(sample.release_notes.release_title, 'v1.0.19 — Source Packet Template Presets');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.0.19 — Source Packet Template Presets');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.0.19 — Source Packet Template Presets');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
   'docs/v1.0.12-research-source-strategy-blueprint.md',
   'docs/v1.0.13-manual-source-packet-import.md',
-  'docs/v1.0.18-source-packet-builder-export-roundtrip-qa.md',
+  'docs/v1.0.19-source-packet-template-presets.md',
   'fixtures/migrations/v1.0.4-packet.json',
-  'fixtures/migrations/v1.0.18-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.0.18.json',
+  'fixtures/migrations/v1.0.19-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.0.19.json',
   'tests/repository-hygiene-cleanup-check.mjs',
   'tests/v111-no-browser-suite.mjs',
   'tests/v112-no-browser-suite.mjs',
@@ -45,29 +45,30 @@ for (const file of [
   'tests/v117-no-browser-suite.mjs',
   'tests/v118-no-browser-suite.mjs',
   'tests/source-packet-builder-browser-qa-check.mjs',
-  'tests/source-packet-roundtrip-check.mjs'
+  'tests/source-packet-roundtrip-check.mjs',
+  'tests/source-packet-template-presets-check.mjs'
 ]) {
-  assert.ok(fs.existsSync(file), `missing v1.0.18 cleanup artifact: ${file}`);
+  assert.ok(fs.existsSync(file), `missing v1.0.19 cleanup artifact: ${file}`);
 }
 
 assert.equal(json('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
 assert.ok(migrationSource.includes("'1.0.4'"), 'v1.0.4 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.18'"), 'v1.0.18 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.18'"), 'v1.0.18 must be the current migration target/source');
-assert.ok(migrationSource.includes("const TARGET_VERSION = '1.0.18'"));
-assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.0.18'"));
+assert.ok(migrationSource.includes("'1.0.19'"), 'v1.0.19 must remain a supported migration source');
+assert.ok(migrationSource.includes("'1.0.19'"), 'v1.0.19 must be the current migration target/source');
+assert.ok(migrationSource.includes("const TARGET_VERSION = '1.0.19'"));
+assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.0.19'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
-  assert.ok(corpus.includes('v1.0.18'), 'release corpus missing v1.0.18');
-  assert.ok(corpus.includes('Source Packet Builder Export Roundtrip QA'), 'release corpus missing evidence scoring title');
+  assert.ok(corpus.includes('v1.0.19'), 'release corpus missing v1.0.19');
+  assert.ok(corpus.includes('Source Packet Template Presets'), 'release corpus missing evidence scoring title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));
 assert.ok(hygieneCheck.includes('docs/v1.0.13-manual-source-packet-import.md'));
-assert.ok(hygieneCheck.includes('docs/v1.0.18-source-packet-builder-export-roundtrip-qa.md'));
+assert.ok(hygieneCheck.includes('docs/v1.0.19-source-packet-template-presets.md'));
 assert.ok(releasePackagingCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));
 assert.ok(releasePackagingCheck.includes('docs/v1.0.13-manual-source-packet-import.md'));
-assert.ok(releasePackagingCheck.includes('docs/v1.0.18-source-packet-builder-export-roundtrip-qa.md'));
+assert.ok(releasePackagingCheck.includes('docs/v1.0.19-source-packet-template-presets.md'));
 assert.ok(ciNoBrowser.includes('tests/repository-hygiene-cleanup-check.mjs'));
 assert.ok(ciNoBrowser.includes('tests/v111-no-browser-suite.mjs',
   'tests/v112-no-browser-suite.mjs',
@@ -76,7 +77,8 @@ assert.ok(ciNoBrowser.includes('tests/v111-no-browser-suite.mjs',
   'tests/v117-no-browser-suite.mjs',
   'tests/v118-no-browser-suite.mjs',
   'tests/source-packet-builder-browser-qa-check.mjs',
-  'tests/source-packet-roundtrip-check.mjs'));
+  'tests/source-packet-roundtrip-check.mjs',
+  'tests/source-packet-template-presets-check.mjs'));
 assert.ok(pkg.scripts['test:repo:cleanup'].includes('repository-hygiene-cleanup-check.mjs'));
 assert.ok(pkg.scripts['test:v111:no-browser'].includes('v111-no-browser-suite.mjs'));
 assert.ok(pkg.scripts['test:v112:no-browser'].includes('v112-no-browser-suite.mjs'));

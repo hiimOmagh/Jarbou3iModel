@@ -29,6 +29,7 @@ const tests = [
   'tests/onboarding-first-run-check.mjs',
   'tests/release-packaging-cleanup-check.mjs',
   'tests/repo-file-hygiene-check.mjs',
+  'tests/repository-hygiene-cleanup-check.mjs',
   'tests/public-demo-readiness-check.mjs',
   'tests/hosted-demo-deployment-check.mjs',
   'tests/hosted-demo-evidence-review-check.mjs',
@@ -36,12 +37,21 @@ const tests = [
   'tests/provider-fixtures-check.mjs',
   'tests/source-planning-check.mjs',
   'tests/source-import-check.mjs',
+  'tests/source-packet-import-check.mjs',
+  'tests/evidence-scoring-check.mjs',
+  'tests/evidence-scoring-calibration-check.mjs',
+  'tests/source-packet-builder-check.mjs',
+  'tests/source-packet-builder-browser-qa-check.mjs',
+  'tests/source-packet-roundtrip-check.mjs',
+  'tests/source-packet-template-presets-check.mjs',
   'tests/evidence-review-queue-check.mjs',
   'tests/github-source-connector-check.mjs',
   'tests/web-search-provider-check.mjs',
   'tests/backend-proxy-check.mjs',
   'tests/backend-hardening-check.mjs',
-  'tests/backend-worker-smoke.mjs'
+  'tests/backend-worker-smoke.mjs',
+  'tests/module-type-warning-fix-check.mjs',
+  'tests/source-capability-registry-check.mjs'
 ];
 
 for (const test of tests) {
