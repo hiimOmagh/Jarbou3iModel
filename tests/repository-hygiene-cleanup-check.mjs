@@ -16,54 +16,54 @@ const releasePackagingCheck = read('tests/release-packaging-cleanup-check.mjs');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.14-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.14.json');
+const migrationFixture = json('fixtures/migrations/v1.0.15-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.15.json');
 
-assert.equal(pkg.version, '1.0.14');
+assert.equal(pkg.version, '1.0.15');
 assert.ok(pkg.description.includes('evidence scoring'));
-assert.equal(schema.properties.workflow_version.const, '1.0.14');
-assert.equal(sample.workflow_version, '1.0.14');
-assert.equal(migrationFixture.workflow_version, '1.0.14');
-assert.equal(privacyFixture.workflow_version, '1.0.14');
-assert.equal(sample.release_notes.release_title, 'v1.0.14 — Evidence Scoring v1');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.0.14 — Evidence Scoring v1');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.0.14 — Evidence Scoring v1');
+assert.equal(schema.properties.workflow_version.const, '1.0.15');
+assert.equal(sample.workflow_version, '1.0.15');
+assert.equal(migrationFixture.workflow_version, '1.0.15');
+assert.equal(privacyFixture.workflow_version, '1.0.15');
+assert.equal(sample.release_notes.release_title, 'v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
   'docs/v1.0.12-research-source-strategy-blueprint.md',
   'docs/v1.0.13-manual-source-packet-import.md',
-  'docs/v1.0.14-evidence-scoring-v1.md',
+  'docs/v1.0.15-evidence-scoring-ui-calibration.md',
   'fixtures/migrations/v1.0.4-packet.json',
-  'fixtures/migrations/v1.0.14-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.0.14.json',
+  'fixtures/migrations/v1.0.15-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.0.15.json',
   'tests/repository-hygiene-cleanup-check.mjs',
   'tests/v111-no-browser-suite.mjs',
   'tests/v112-no-browser-suite.mjs',
   'tests/v113-no-browser-suite.mjs',
   'tests/v114-no-browser-suite.mjs'
 ]) {
-  assert.ok(fs.existsSync(file), `missing v1.0.14 cleanup artifact: ${file}`);
+  assert.ok(fs.existsSync(file), `missing v1.0.15 cleanup artifact: ${file}`);
 }
 
 assert.equal(json('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
 assert.ok(migrationSource.includes("'1.0.4'"), 'v1.0.4 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.14'"), 'v1.0.14 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.14'"), 'v1.0.14 must be the current migration target/source');
-assert.ok(migrationSource.includes("const TARGET_VERSION = '1.0.14'"));
-assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.0.14'"));
+assert.ok(migrationSource.includes("'1.0.15'"), 'v1.0.15 must remain a supported migration source');
+assert.ok(migrationSource.includes("'1.0.15'"), 'v1.0.15 must be the current migration target/source');
+assert.ok(migrationSource.includes("const TARGET_VERSION = '1.0.15'"));
+assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.0.15'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
-  assert.ok(corpus.includes('v1.0.14'), 'release corpus missing v1.0.14');
-  assert.ok(corpus.includes('Evidence Scoring v1'), 'release corpus missing evidence scoring title');
+  assert.ok(corpus.includes('v1.0.15'), 'release corpus missing v1.0.15');
+  assert.ok(corpus.includes('Evidence Scoring UI Explanation + Calibration Pass'), 'release corpus missing evidence scoring title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));
 assert.ok(hygieneCheck.includes('docs/v1.0.13-manual-source-packet-import.md'));
-assert.ok(hygieneCheck.includes('docs/v1.0.14-evidence-scoring-v1.md'));
+assert.ok(hygieneCheck.includes('docs/v1.0.15-evidence-scoring-ui-calibration.md'));
 assert.ok(releasePackagingCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));
 assert.ok(releasePackagingCheck.includes('docs/v1.0.13-manual-source-packet-import.md'));
-assert.ok(releasePackagingCheck.includes('docs/v1.0.14-evidence-scoring-v1.md'));
+assert.ok(releasePackagingCheck.includes('docs/v1.0.15-evidence-scoring-ui-calibration.md'));
 assert.ok(ciNoBrowser.includes('tests/repository-hygiene-cleanup-check.mjs'));
 assert.ok(ciNoBrowser.includes('tests/v111-no-browser-suite.mjs',
   'tests/v112-no-browser-suite.mjs',
