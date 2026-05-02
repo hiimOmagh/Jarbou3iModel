@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.11 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.12 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.11';
+  const VERSION = '1.0.12';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -21,6 +21,7 @@
   const qualityGate = modules.qualityGate;
   const providerController = modules.providerController;
   const sourceController = modules.sourceController;
+  const sourceCapabilityRegistry = modules.sourceCapabilityRegistry;
   const evidenceReviewController = modules.evidenceReviewController;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
@@ -184,6 +185,11 @@
     return hostedDemoVerification?.buildHostedDemoSmokeFixes ? hostedDemoVerification.buildHostedDemoSmokeFixes({}, {version:VERSION, now:nowIso()}) : null;
   }
 
+
+  function sourceCapabilityRegistryReport(){
+    return sourceCapabilityRegistry?.strategyBlueprint ? sourceCapabilityRegistry.strategyBlueprint({version:VERSION, now:nowIso()}) : null;
+  }
+
   function hostedDemoEvidenceReviewReport(){
     return hostedDemoVerification?.buildHostedDemoEvidenceReview ? hostedDemoVerification.buildHostedDemoEvidenceReview({}, {version:VERSION, now:nowIso()}) : null;
   }
@@ -223,6 +229,7 @@
       provider_diagnostics: state.provider_diagnostics || null,
       provider_fixture_report: state.provider_fixture_report || null,
       source_policy: state.source_policy || sourcePolicy(),
+      source_capability_registry: state.source_capability_registry || sourceCapabilityRegistryReport(),
       source_diagnostics: state.source_diagnostics || null,
       source_fixture_report: state.source_fixture_report || null,
       source_requests: state.last_source_request ? [state.last_source_request] : [],
