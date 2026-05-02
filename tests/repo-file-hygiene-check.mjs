@@ -123,7 +123,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md',
   'docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md',
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
-  'docs/v1.0.12-research-source-strategy-blueprint.md'
+  'docs/v1.0.12-research-source-strategy-blueprint.md',
+  'docs/v1.0.13-manual-source-packet-import.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

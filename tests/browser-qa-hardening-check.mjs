@@ -11,7 +11,7 @@ const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const docs = fs.existsSync('docs/v1.0.4-browser-qa-visual-regression-hardening.md') ? fs.readFileSync('docs/v1.0.4-browser-qa-visual-regression-hardening.md', 'utf8') : '';
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
 
-assert.equal(pkg.version, '1.0.12');
+assert.equal(pkg.version, '1.0.13');
 for (const script of ['test:browser:layout','test:browser:visual','test:browser:visual:strict','test:browser:qa','test:v105:no-browser','test:v105']) {
   assert.ok(pkg.scripts[script], `missing package script ${script}`);
 }
@@ -33,9 +33,9 @@ for (const token of ['panelStorageKey','persistedPanelState','sessionStorage.set
   assert.ok(engine.includes(token), `engine missing persistence token ${token}`);
 }
 assert.ok(playwrightConfig.includes('chromium') && playwrightConfig.includes('mobile-chrome'), 'Playwright projects must retain desktop and mobile coverage');
-assert.ok(docs.includes('Browser QA + Visual Regression Hardening'), 'v1.0.12 docs missing');
-assert.equal(fixture.workflow_version, '1.0.12');
-assert.equal(fixture.browser_qa_hardening?.hardening_version, '1.0.12');
+assert.ok(docs.includes('Browser QA + Visual Regression Hardening'), 'v1.0.13 docs missing');
+assert.equal(fixture.workflow_version, '1.0.13');
+assert.equal(fixture.browser_qa_hardening?.hardening_version, '1.0.13');
 assert.equal(fixture.browser_qa_hardening?.feature_surface_added, false);
 assert.equal(fixture.browser_qa_hardening?.visual_regression.mode, 'capture_or_strict_baseline');
 
