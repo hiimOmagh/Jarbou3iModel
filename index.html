@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jarbou3i Research Engine — v1.0.12</title>
+<title>Jarbou3i Research Engine — v1.0.13</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,14 +11,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#255ee8" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020817" />
 <meta name="color-scheme" content="light dark" />
-<meta property="og:title" content="Jarbou3i Research Engine — v1.0.12" />
+<meta property="og:title" content="Jarbou3i Research Engine — v1.0.13" />
 <meta property="og:description" content="Client-side trilingual workbench for schema-governed six-layer strategic analysis." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/jarbou3i-mascot-512.png" />
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
 <meta name="twitter:card" content="summary" />
-<meta name="app-version" content="1.0.12" />
+<meta name="app-version" content="1.0.13" />
 <link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
@@ -47,7 +47,7 @@
     <section class="panel researchLabPanel" id="researchLabPanel">
       <div class="panelHeader researchHeader">
         <div>
-          <div class="researchEyebrow" data-r-i18n="alphaBadge">v1.0.12 · Research Source Strategy Blueprint</div>
+          <div class="researchEyebrow" data-r-i18n="alphaBadge">v1.0.13 · Manual Source Packet Import</div>
           <h2 data-r-i18n="researchTitle">Research Workflow Lab</h2>
           <p data-r-i18n="researchSubtitle">Experimental research-to-strategy pipeline. Manual mode remains untouched.</p>
         </div>
@@ -87,7 +87,7 @@
         <div>
           <div class="researchEyebrow">Hosted demo verification</div>
           <h3>Publish only after browser evidence exists</h3>
-          <p class="muted">v1.0.12 tightens repository hygiene, repairs migration fixture coverage, hardens stale-artifact gates, and keeps provider/OAuth/backend/source behavior unchanged.</p>
+          <p class="muted">v1.0.13 adds manual source packet JSON import, routes candidates through the review queue, and keeps provider/OAuth/backend/live-source behavior unchanged.</p>
         </div>
         <div class="hostedDemoChecklist">
           <span>Hosted URL checked</span>
@@ -101,7 +101,7 @@
         <div>
           <div class="researchEyebrow">Evidence review gate</div>
           <h3>Review screenshots and metadata before publish</h3>
-          <p class="muted">v1.0.12 turns cleanup discipline into CI evidence: stale files, duplicate release docs, secret-bearing local config, root ZIPs, and migration fixture gaps are blocked before publishing.</p>
+          <p class="muted">v1.0.13 turns structured source packets into reviewable evidence candidates without fetching, scraping, or verification claims.</p>
         </div>
         <div class="evidenceReviewChecklist">
           <span>Hosted URL smoke</span>
@@ -323,9 +323,9 @@
 
         <article class="card researchCard sourceImportCard">
           <h3 data-r-i18n="sourceImportTitle">Source Import Adapter</h3>
-          <p class="muted" data-r-i18n="sourceImportSubtitle">Paste deep-research / last30days-style outputs and convert them into reviewable Evidence Matrix candidates. No live fetching is performed.</p>
+          <p class="muted" data-r-i18n="sourceImportSubtitle">Paste deep-research / last30days-style outputs or manual source packet JSON and convert them into reviewable Evidence Matrix candidates. No live fetching is performed.</p>
           <div class="researchFormGrid">
-            <div class="field"><label class="label" for="sourceImportFormat" data-r-i18n="sourceImportFormat">Import format</label><select id="sourceImportFormat"><option value="auto" data-r-i18n="formatAuto">Auto detect</option><option value="last30days">last30days-style</option><option value="deep_research">Deep research-style</option><option value="generic_research_report">Generic report</option></select></div>
+            <div class="field"><label class="label" for="sourceImportFormat" data-r-i18n="sourceImportFormat">Import format</label><select id="sourceImportFormat"><option value="auto" data-r-i18n="formatAuto">Auto detect</option><option value="last30days">last30days-style</option><option value="deep_research">Deep research-style</option><option value="generic_research_report">Generic report</option><option value="source_packet">Manual source packet JSON</option></select></div>
             <div class="field span2"><label class="label" for="sourceImportText" data-r-i18n="sourceImportText">Source output</label><textarea id="sourceImportText" class="sourceImportTextArea" data-r-placeholder="sourceImportPlaceholder" placeholder="Paste external research output, source notes, links, or signal summaries here."></textarea></div>
           </div>
           <p class="muted providerSafetyNote" data-r-i18n="sourceImportPolicyNote">Import adapter is manual-only: it extracts candidate evidence but does not verify, fetch, or scrape sources.</p>
@@ -510,6 +510,7 @@
 <script src="src/research/backend-proxy-provider.js" defer></script>
 <script src="src/research/source-capability-registry.js" defer></script>
 <script src="src/research/source-connectors.js" defer></script>
+<script src="src/research/source-packet-importer.js" defer></script>
 <script src="src/research/source-import-adapter.js" defer></script>
 <script src="src/research-engine.js" defer></script>
 </body>

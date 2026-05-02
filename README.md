@@ -1,6 +1,6 @@
-### v1.0.12 — Research Source Strategy Blueprint
+### v1.0.13 — Manual Source Packet Import
 
-Adds a compatibility-safe source capability registry so future source and auth work is explicit about availability, auth mode, freshness, evidence type, privacy risk, and demo visibility. No new live connector, OAuth path, backend behavior, or provider behavior is enabled.
+Adds structured manual source packet JSON import. User-collected source packets are converted into reviewable evidence candidates without live fetching, scraping, verification claims, OAuth, provider changes, backend endpoint changes, or storage changes.
 
 # Jarbou3i Research Engine
 
@@ -8,9 +8,9 @@ Experimental research-to-strategy workflow layer for schema-governed strategic a
 
 ## Current version
 
-`v1.0.11 — Repository Hygiene + Stale Artifact Cleanup`
+`v1.0.13 — Manual Source Packet Import`
 
-This patch tightens repository hygiene and stale-artifact cleanup after the v1.0.10 module-type warning fix. It repairs migration fixture coverage, adds release-drift gates, and preserves all runtime boundaries.
+This patch adds a local/manual structured source packet import path. Imported packets are review-gated and remain explicitly unverified until the user accepts or edits candidates.
 
 ## What this patch changes
 

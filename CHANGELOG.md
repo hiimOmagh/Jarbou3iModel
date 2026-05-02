@@ -1,3 +1,10 @@
+## v1.0.13 — Manual Source Packet Import
+
+- Added `src/research/source-packet-importer.js` for structured manual source packet JSON import.
+- Extended the source import adapter with `source_packet` detection and conversion.
+- Added review-gated source packet fixtures, schema coverage, and `tests/source-packet-import-check.mjs`.
+- Preserved manual/private mode, disabled live scraping, and kept OAuth/provider/backend/storage behavior unchanged.
+
 ## v1.0.12 — Research Source Strategy Blueprint
 
 - Added source capability registry for availability/auth/freshness/evidence/privacy/demo-visibility contracts.
@@ -168,3 +175,5 @@
 ## v0.15.0-beta — Portable Account Mock Flow
 
 - Added local portable-account/OAuth mock lifecycle without real OAuth credentials, raw tokens, or vendor dependency.
+
+Public Demo boundary remains unchanged.
