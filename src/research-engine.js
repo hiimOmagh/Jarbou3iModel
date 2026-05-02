@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.17 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.18 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.17';
+  const VERSION = '1.0.18';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -23,6 +23,7 @@
   const providerController = modules.providerController;
   const sourceController = modules.sourceController;
   const sourceCapabilityRegistry = modules.sourceCapabilityRegistry;
+  const sourcePacketRoundtrip = modules.sourcePacketRoundtrip;
   const evidenceReviewController = modules.evidenceReviewController;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
@@ -248,6 +249,7 @@
       source_import_report: state.source_import_report || null,
       source_packet_builder_report: state.source_packet_builder_report || null,
       last_built_source_packet: state.last_built_source_packet || null,
+      source_packet_roundtrip_report: state.source_packet_roundtrip_report || null,
       ai_runs: state.ai_runs || [],
       critique: state.critique
     };
@@ -1013,16 +1015,25 @@
     state.source_packet_builder_report = packet?.builder_report || null;
     return packet;
   }
+  function updateSourcePacketRoundtripReport(items){
+    if(!sourcePacketRoundtrip?.runSourcePacketRoundtrip) return null;
+    try{return state.source_packet_roundtrip_report=sourcePacketRoundtrip.runSourcePacketRoundtrip(items||[],{now:nowIso()}).report||null;}
+    catch(_){return state.source_packet_roundtrip_report={roundtrip_version:VERSION,roundtrip_model:'source_packet_roundtrip.v1',live_fetching_performed:false,verification_claimed:false,release_gate:'roundtrip_review_required',risk_flags:['roundtrip_exception']};}
+  }
   function buildSourcePacketFromEvidence(){
-    const packet = sourcePacketBuilder().buildSourcePacket(state.evidence || [], {now: nowIso()});
+    const items = state.evidence || [];
+    const packet = sourcePacketBuilder().buildSourcePacket(items, {now: nowIso()});
     storeBuiltSourcePacket(packet);
+    updateSourcePacketRoundtripReport(items);
     save(); render();
     setStatus(packet.builder_report.evidence_item_count ? tr('statusSourcePacketBuilt') : tr('statusSourcePacketEmpty'), packet.builder_report.evidence_item_count ? 'good' : 'warn');
     return packet;
   }
   function buildSourcePacketFromReview(){
-    const packet = sourcePacketBuilder().buildSourcePacket(reviewedEvidenceCandidates(), {now: nowIso()});
+    const items = reviewedEvidenceCandidates();
+    const packet = sourcePacketBuilder().buildSourcePacket(items, {now: nowIso()});
     storeBuiltSourcePacket(packet);
+    updateSourcePacketRoundtripReport(items);
     save(); render();
     setStatus(packet.builder_report.evidence_item_count ? tr('statusSourcePacketBuilt') : tr('statusSourcePacketEmpty'), packet.builder_report.evidence_item_count ? 'good' : 'warn');
     return packet;
@@ -1539,6 +1550,7 @@
     state.evidence_review_queue = Array.isArray(nextPacket.evidence_review_queue) ? nextPacket.evidence_review_queue.slice(-200) : [];
     state.evidence_review_report = nextPacket.evidence_review_report || null;
     state.source_import_report = nextPacket.source_import_report || null;
+    state.source_packet_roundtrip_report = nextPacket.source_packet_roundtrip_report || null;
     state.packet_migration_report = nextPacket.packet_migration_report || migrated.report || null;
     state.quality_gate = nextPacket.quality_gate || null;
     state.export_pack = nextPacket.export_pack || null;

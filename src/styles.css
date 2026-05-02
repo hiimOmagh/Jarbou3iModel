@@ -788,7 +788,7 @@ html[dir="rtl"] .welcomeEyebrow{
 
 /* v1.0.15 screen discipline patch compatibility token retained for stable patch QA. */
 
-/* v1.0.17 — Source Packet Builder Browser QA + UX Tightening */
+/* v1.0.18 — Source Packet Builder Export Roundtrip QA */
 .sourcePacketBuilderCard{overflow:hidden;contain:layout paint;}
 .sourcePacketBuilderGuardrail{border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));border-radius:16px;padding:10px 12px;background:color-mix(in srgb,var(--accent) 6%,var(--surface-solid));color:var(--text);font-size:12.6px;font-weight:850;line-height:1.5;overflow-wrap:anywhere;}
 .sourcePacketBuilderActions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:stretch!important;}
