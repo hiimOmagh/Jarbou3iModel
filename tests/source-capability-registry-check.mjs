@@ -8,8 +8,8 @@ const json = (file) => JSON.parse(read(file));
 const pkg = json('package.json');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.17-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.17.json');
+const migrationFixture = json('fixtures/migrations/v1.0.18-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.18.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const moduleSource = read('src/research/source-capability-registry.js');
@@ -26,21 +26,21 @@ vm.createContext(context);
 vm.runInContext(moduleSource, context, { filename: 'src/research/source-capability-registry.js' });
 const registry = context.Jarbou3iResearchModules.sourceCapabilityRegistry;
 
-assert.equal(pkg.version, '1.0.17');
+assert.equal(pkg.version, '1.0.18');
 assert.ok(pkg.description.includes('source strategy'));
-assert.equal(registry.VERSION, '1.0.17');
+assert.equal(registry.VERSION, '1.0.18');
 assert.equal(typeof registry.strategyBlueprint, 'function');
 assert.equal(typeof registry.auditRegistry, 'function');
 assert.ok(index.includes('src/research/source-capability-registry.js'));
 assert.ok(engine.includes('sourceCapabilityRegistryReport'));
 assert.ok(engine.includes('source_capability_registry'));
-assert.ok(fs.existsSync('docs/v1.0.17-source-packet-builder-browser-qa-ux-tightening.md'));
+assert.ok(fs.existsSync('docs/v1.0.18-source-packet-builder-export-roundtrip-qa.md'));
 assert.ok(fs.existsSync('tests/v112-no-browser-suite.mjs'));
-assert.ok(fs.existsSync('fixtures/migrations/v1.0.17-packet.json'));
-assert.ok(fs.existsSync('fixtures/privacy/browser-generated-export-v1.0.17.json'));
+assert.ok(fs.existsSync('fixtures/migrations/v1.0.18-packet.json'));
+assert.ok(fs.existsSync('fixtures/privacy/browser-generated-export-v1.0.18.json'));
 
-const blueprint = registry.strategyBlueprint({version:'1.0.17', now:'2026-05-02T00:00:00.000Z'});
-assert.equal(blueprint.source_strategy_version, '1.0.17');
+const blueprint = registry.strategyBlueprint({version:'1.0.18', now:'2026-05-02T00:00:00.000Z'});
+assert.equal(blueprint.source_strategy_version, '1.0.18');
 assert.equal(blueprint.runtime_capability_change, false);
 assert.equal(blueprint.provider_behavior_changed, false);
 assert.equal(blueprint.oauth_behavior_changed, false);
@@ -68,19 +68,19 @@ for (const item of blueprint.registry) {
 }
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.0.17');
-  assert.equal(packet.source_capability_registry.source_strategy_version, '1.0.17');
+  assert.equal(packet.workflow_version, '1.0.18');
+  assert.equal(packet.source_capability_registry.source_strategy_version, '1.0.18');
   assert.equal(packet.source_capability_registry.runtime_capability_change, false);
   assert.equal(packet.source_capability_registry.audit.new_live_connector_enabled, false);
   assert.equal(packet.source_capability_registry.audit.production_oauth_enabled, false);
   assert.equal(packet.source_capability_registry.audit.auth_material_export_allowed, false);
   assert.equal(packet.source_capability_registry.audit.verdict, 'source_capability_registry_ready_manual_packet_import');
-  assert.equal(packet.release_notes.release_title, 'v1.0.17 — Source Packet Builder Browser QA + UX Tightening');
+  assert.equal(packet.release_notes.release_title, 'v1.0.18 — Source Packet Builder Export Roundtrip QA');
 }
 
-assert.equal(schema.properties.workflow_version.const, '1.0.17');
+assert.equal(schema.properties.workflow_version.const, '1.0.18');
 assert.ok(schema.required.includes('source_capability_registry'));
-assert.equal(schema.$defs.source_capability_registry.properties.source_strategy_version.const, '1.0.17');
+assert.equal(schema.$defs.source_capability_registry.properties.source_strategy_version.const, '1.0.18');
 assert.equal(schema.$defs.source_capability_registry.properties.runtime_capability_change.const, false);
 assert.ok(pkg.scripts['test:source:capabilities'].includes('source-capability-registry-check.mjs'));
 assert.ok(pkg.scripts['test:v112:no-browser'].includes('v112-no-browser-suite.mjs'));
@@ -89,8 +89,8 @@ assert.ok(pkg.scripts['test:patch'].includes('source-capability-registry-check.m
 assert.ok(ciNoBrowser.includes('tests/source-capability-registry-check.mjs'));
 assert.ok(ciNoBrowser.includes('tests/v112-no-browser-suite.mjs'));
 for (const corpus of [manifest, changelog, roadmap, qaMatrix]) {
-  assert.ok(corpus.includes('v1.0.17'), 'release corpus missing v1.0.17');
-  assert.ok(corpus.includes('Source Packet Builder Browser QA + UX Tightening'), 'release corpus missing v1.0.17 title');
+  assert.ok(corpus.includes('v1.0.18'), 'release corpus missing v1.0.18');
+  assert.ok(corpus.includes('Source Packet Builder Export Roundtrip QA'), 'release corpus missing v1.0.18 title');
 }
 
 console.log('Source capability registry checks passed.');
