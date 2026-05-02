@@ -39,7 +39,10 @@
 | v1.0.4 | Browser QA hardening | `npm run test:browser:qa` | Runs provider, layout, and visual browser gates. |
 | v1.0.5 | Onboarding | `npm run test:onboarding` | Verifies first-run guide and export-safe onboarding metadata. |
 | v1.0.6 | Release packaging | `npm run test:release-packaging` | Verifies corrected release labels, manifest, archive hygiene, and current snapshots. |
-| v1.0.8 | Public demo readiness | `npm run test:public-demo` | Verifies public demo metadata, release notes, first-screen demo panel, and unchanged runtime boundaries. |
+| v1.0.7 | Public demo readiness | `npm run test:public-demo` | Verifies public demo metadata, release notes, first-screen demo panel, and unchanged runtime boundaries. |
+| v1.0.8 | Hosted demo verification | `npm run test:hosted-demo` | Verifies hosted-demo verification metadata, browser evidence capture metadata, and unchanged runtime boundaries. |
+| v1.0.9 | Hosted demo evidence review | `npm run test:hosted-demo:evidence-review` | Verifies hosted URL routing, stable evidence artifacts, metadata snapshot contract, and evidence-review release gate. |
+| v1.0.10 | Module type warning fix | `npm run test:module-type-warning` | Verifies package-level ESM mode and warning-clean backend Worker smoke validation. |
 
 ## Browser gates
 
@@ -48,13 +51,14 @@
 | Provider browser QA | `npm run test:browser:provider` | Validates provider UI flows. |
 | Layout persistence | `npm run test:browser:layout` | Checks overflow and tab/collapse persistence across viewports. |
 | Visual capture | `npm run test:browser:visual` | Captures screenshots as CI artifacts. |
+| Hosted demo evidence | `npm run test:browser:evidence` | Captures hosted-demo screenshots and writes `hosted-demo-metadata.json`. |
 | Strict visual baseline | `npm run test:browser:visual:strict` | Enforces approved Playwright baselines. |
 | Full browser suite | `npm run test:browser` | Runs all Playwright tests. |
 
 ## Current release gates
 
 ```bash
-npm run test:v107:no-browser
+npm run test:v110:no-browser
 npm run test:ci:no-browser
 npm run test:ci:browser
 ```
