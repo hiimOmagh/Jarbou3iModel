@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine evidence scoring v1er v1.0.14. No live fetching. */
+/* Jarbou3i Research Engine evidence scoring UI calibrationer v1.0.15. No live fetching. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.14';
+  const VERSION = '1.0.15';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
 
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }

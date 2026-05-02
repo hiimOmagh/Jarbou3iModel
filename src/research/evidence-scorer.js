@@ -1,9 +1,10 @@
-/* Jarbou3i Research Engine evidence scoring v1 — v1.0.14. Separates attention from reliability. */
+/* Jarbou3i Research Engine evidence scoring UI calibration — v1.0.15. Separates attention from reliability and explains score meaning. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.14';
+  const VERSION = '1.0.15';
   const SCORING_VERSION = 'evidence_scoring.v1';
+  const CALIBRATION_VERSION = 'evidence_scoring_calibration.v1';
   const SOURCE_RELIABILITY_BASE = Object.freeze({
     official: 86,
     academic: 84,
@@ -15,6 +16,21 @@
     other: 28
   });
   const CONFIDENCE_WEIGHT = Object.freeze({low: 35, medium: 62, high: 85});
+  const CALIBRATION_THRESHOLDS = Object.freeze({
+    low: 0,
+    moderate: 45,
+    strong: 70,
+    very_strong: 85,
+    attention_warning: 70,
+    reliability_floor_for_high_attention: 55,
+    traceability_warning: 55
+  });
+  const EXPLANATION_POLICY = Object.freeze({
+    reliability: 'Reliability = source strength, traceability, specificity, confidence, and recency.',
+    attention: 'Attention = public visibility only. It is not a truth score.',
+    synthesis_weight: 'Synthesis weight = prioritization aid, not automated truth.',
+    review_gate: 'Scores are calibration aids; human review remains required for publication.'
+  });
 
   function clamp(value, min = 0, max = 100){
     const n = Number(value);
@@ -52,6 +68,13 @@
     if(views > 0 || direct > 0) return 42;
     if(odds > 0) return Math.max(35, Math.min(80, odds));
     return 20;
+  }
+  function bandFor(value){
+    const v = clamp(value);
+    if(v >= CALIBRATION_THRESHOLDS.very_strong) return 'very_strong';
+    if(v >= CALIBRATION_THRESHOLDS.strong) return 'strong';
+    if(v >= CALIBRATION_THRESHOLDS.moderate) return 'moderate';
+    return 'low';
   }
   function traceabilityScore(item = {}){
     return round(
@@ -92,10 +115,33 @@
     if(!text(item.source_url)) flags.push('no_source_url');
     if(!hasKnownDate(item.source_date)) flags.push('unknown_source_date');
     if(!arr(item.supports).length && !arr(item.contradicts).length) flags.push('no_layer_links');
-    if(sourceType(item.source_type) === 'social' && scores.attention_signal_score >= 70) flags.push('high_attention_social_signal');
-    if(scores.attention_signal_score >= 70 && scores.reliability_score < 55) flags.push('attention_without_reliability');
-    if(scores.traceability_score < 55) flags.push('weak_traceability');
+    if(sourceType(item.source_type) === 'social' && scores.attention_signal_score >= CALIBRATION_THRESHOLDS.attention_warning) flags.push('high_attention_social_signal');
+    if(scores.attention_signal_score >= CALIBRATION_THRESHOLDS.attention_warning && scores.reliability_score < CALIBRATION_THRESHOLDS.reliability_floor_for_high_attention) flags.push('attention_without_reliability');
+    if(scores.traceability_score < CALIBRATION_THRESHOLDS.traceability_warning) flags.push('weak_traceability');
     return flags;
+  }
+  function calibrationWarnings(scores = {}){
+    const warnings = [];
+    if(scores.attention_signal_score >= CALIBRATION_THRESHOLDS.attention_warning && scores.reliability_score < CALIBRATION_THRESHOLDS.reliability_floor_for_high_attention) warnings.push('attention_signal_must_not_be_read_as_truth');
+    if(scores.traceability_score < CALIBRATION_THRESHOLDS.traceability_warning) warnings.push('low_traceability_limits_publication_confidence');
+    if(scores.reliability_score >= CALIBRATION_THRESHOLDS.strong && scores.attention_signal_score < CALIBRATION_THRESHOLDS.moderate) warnings.push('strong_low_attention_evidence_should_not_be_buried');
+    if(scores.synthesis_weight >= CALIBRATION_THRESHOLDS.strong && scores.reliability_score < CALIBRATION_THRESHOLDS.strong) warnings.push('synthesis_weight_requires_reliability_context');
+    return warnings;
+  }
+  function calibrateScores(scores = {}){
+    const calibrated = {
+      calibration_version: CALIBRATION_VERSION,
+      reliability_band: bandFor(scores.reliability_score),
+      attention_band: bandFor(scores.attention_signal_score),
+      traceability_band: bandFor(scores.traceability_score),
+      synthesis_band: bandFor(scores.synthesis_weight),
+      calibration_warnings: calibrationWarnings(scores),
+      calibration_profile: 'conservative_editorial_research',
+      calibration_thresholds: CALIBRATION_THRESHOLDS,
+      score_theater_guard: 'scores_explain_prioritization_not_truth',
+      explanation_policy: EXPLANATION_POLICY
+    };
+    return calibrated;
   }
   function scoreEvidenceItem(item = {}, options = {}){
     const attention = attentionSignalScore(item);
@@ -121,7 +167,7 @@
       risk_flags: []
     };
     scores.risk_flags = riskFlags(item, scores);
-    return scores;
+    return Object.assign(scores, calibrateScores(scores));
   }
   function attachEvidenceScoring(item = {}, options = {}){
     const existing = item && typeof item === 'object' ? item : {};
@@ -132,12 +178,14 @@
     const scores = scored.map((item) => item.evidence_scoring || scoreEvidenceItem(item, options));
     const avg = (key) => scores.length ? round(scores.reduce((sum, score) => sum + Number(score[key] || 0), 0) / scores.length) : 0;
     const attentionDominance = scores.filter((score) => score.risk_flags.includes('attention_without_reliability')).length;
-    const highReliability = scores.filter((score) => score.reliability_score >= 70).length;
-    const weakTraceability = scores.filter((score) => score.traceability_score < 55).length;
+    const highReliability = scores.filter((score) => score.reliability_score >= CALIBRATION_THRESHOLDS.strong).length;
+    const weakTraceability = scores.filter((score) => score.traceability_score < CALIBRATION_THRESHOLDS.traceability_warning).length;
     const socialHighAttention = scores.filter((score) => score.risk_flags.includes('high_attention_social_signal')).length;
+    const calibrationWarningCount = scores.reduce((sum, score) => sum + arr(score.calibration_warnings).length, 0);
     return {
       evidence_scoring_version: VERSION,
       scoring_model: SCORING_VERSION,
+      calibration_version: CALIBRATION_VERSION,
       generated_at: options.now || new Date().toISOString(),
       item_count: scored.length,
       average_reliability_score: avg('reliability_score'),
@@ -148,22 +196,37 @@
       attention_dominance_risk_count: attentionDominance,
       high_attention_social_signal_count: socialHighAttention,
       weak_traceability_count: weakTraceability,
+      calibration_warning_count: calibrationWarningCount,
+      reliability_band: bandFor(avg('reliability_score')),
+      attention_band: bandFor(avg('attention_signal_score')),
+      traceability_band: bandFor(avg('traceability_score')),
+      synthesis_band: bandFor(avg('synthesis_weight')),
+      calibration_profile: 'conservative_editorial_research',
+      calibration_thresholds: CALIBRATION_THRESHOLDS,
+      score_theater_guard: 'scores_explain_prioritization_not_truth',
+      explanation_policy: EXPLANATION_POLICY,
       policy: 'public attention is tracked separately from evidence reliability',
       release_gate: attentionDominance || weakTraceability ? 'review_required' : 'pass',
       risk_flags: [
         attentionDominance ? 'attention_without_reliability_present' : '',
         weakTraceability ? 'weak_traceability_present' : '',
-        socialHighAttention ? 'social_attention_requires_context' : ''
+        socialHighAttention ? 'social_attention_requires_context' : '',
+        calibrationWarningCount ? 'calibration_warning_present' : ''
       ].filter(Boolean)
     };
   }
   root.evidenceScorer = Object.freeze({
     VERSION,
     SCORING_VERSION,
+    CALIBRATION_VERSION,
     SOURCE_RELIABILITY_BASE,
+    CALIBRATION_THRESHOLDS,
+    EXPLANATION_POLICY,
     scoreEvidenceItem,
     attachEvidenceScoring,
     scoreEvidenceSet,
+    calibrateScores,
+    bandFor,
     attentionSignalScore,
     reliabilityScore,
     traceabilityScore,
