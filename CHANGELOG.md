@@ -1,4 +1,5 @@
-## v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
+## v1.0.16 — Source Packet Builder UI + Scoring Review Controls
+- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
 
 - Added `src/research/evidence-scorer.js` for local evidence scoring.
 - Added per-evidence `evidence_scoring` metadata and packet-level `evidence_scoring_report`.

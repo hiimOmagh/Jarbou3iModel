@@ -1,4 +1,5 @@
-### v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
+### v1.0.16 — Source Packet Builder UI + Scoring Review Controls
+- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
 
 Adds a conservative local evidence-scoring layer that separates **attention signal** from **evidence reliability** before synthesis. The patch adds per-evidence scoring metadata, packet-level scoring reports, schema/fixture coverage, Quality Gate v3 integration, and CI checks.
 

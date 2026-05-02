@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jarbou3i Research Engine — v1.0.15</title>
+<title>Jarbou3i Research Engine — v1.0.16</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,14 +11,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#255ee8" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020817" />
 <meta name="color-scheme" content="light dark" />
-<meta property="og:title" content="Jarbou3i Research Engine — v1.0.15" />
+<meta property="og:title" content="Jarbou3i Research Engine — v1.0.16" />
 <meta property="og:description" content="Client-side trilingual workbench for schema-governed six-layer strategic analysis." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/jarbou3i-mascot-512.png" />
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
 <meta name="twitter:card" content="summary" />
-<meta name="app-version" content="1.0.15" />
+<meta name="app-version" content="1.0.16" />
 <link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
@@ -47,7 +47,7 @@
     <section class="panel researchLabPanel" id="researchLabPanel">
       <div class="panelHeader researchHeader">
         <div>
-          <div class="researchEyebrow" data-r-i18n="alphaBadge">v1.0.15 · Evidence Scoring Calibration</div>
+          <div class="researchEyebrow" data-r-i18n="alphaBadge">v1.0.16 · Source Packet Builder</div>
           <h2 data-r-i18n="researchTitle">Research Workflow Lab</h2>
           <p data-r-i18n="researchSubtitle">Experimental research-to-strategy pipeline. Manual mode remains untouched.</p>
         </div>
@@ -87,7 +87,7 @@
         <div>
           <div class="researchEyebrow">Hosted demo verification</div>
           <h3>Publish only after browser evidence exists</h3>
-          <p class="muted">v1.0.15 adds evidence scoring UI calibration: reliability, attention, traceability, recency, contradiction value, and synthesis weight remain separate and review-gated.</p>
+          <p class="muted">v1.0.16 adds source packet builder UI and scoring review controls: reliability, attention, traceability, recency, contradiction value, and synthesis weight remain separate and review-gated.</p>
         </div>
         <div class="hostedDemoChecklist">
           <span>Hosted URL checked</span>
@@ -101,7 +101,7 @@
         <div>
           <div class="researchEyebrow">Evidence review gate</div>
           <h3>Review screenshots and metadata before publish</h3>
-          <p class="muted">v1.0.15 keeps manual imports review-gated while separating popularity/attention from evidentiary reliability before synthesis. Attention = public visibility only. Reliability is source strength plus traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth.</p>
+          <p class="muted">v1.0.16 keeps manual imports review-gated while separating popularity/attention from evidentiary reliability before synthesis. Attention = public visibility only. Reliability is source strength plus traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth.</p>
         </div>
         <div class="evidenceReviewChecklist">
           <span>Hosted URL smoke</span>
@@ -338,6 +338,19 @@
           <div id="sourceImportOutput" class="researchOutput"></div>
         </article>
 
+        <article class="card researchCard sourcePacketBuilderCard">
+          <h3 data-r-i18n="sourcePacketBuilderTitle">Source Packet Builder</h3>
+          <p class="muted" data-r-i18n="sourcePacketBuilderSubtitle">Build local manual source packet JSON from the Evidence Matrix or review queue. No live fetching, scraping, or verification is performed.</p>
+          <p class="muted providerSafetyNote" data-r-i18n="sourcePacketBuilderPolicyNote">Builder output is a transport format, not source verification. Scoring flags remain review-gated.</p>
+          <div class="actions verticalActions">
+            <button class="btn primary" id="buildSourcePacketFromEvidenceBtn" type="button" data-r-i18n="buildSourcePacketFromEvidence">Build from evidence matrix</button>
+            <button class="btn" id="buildSourcePacketFromReviewBtn" type="button" data-r-i18n="buildSourcePacketFromReview">Build from review queue</button>
+            <button class="btn" id="copySourcePacketBuilderBtn" type="button" data-r-i18n="copySourcePacketBuilder">Copy source packet</button>
+            <button class="btn" id="exportSourcePacketBuilderBtn" type="button" data-r-i18n="exportSourcePacketBuilder">Export source packet</button>
+          </div>
+          <div id="sourcePacketBuilderOutput" class="researchOutput"></div>
+        </article>
+
         <article class="card researchCard evidenceReviewCard">
           <h3 data-r-i18n="evidenceReviewTitle">Evidence Review Queue</h3>
           <p class="muted" data-r-i18n="evidenceReviewSubtitle">Imported source candidates must be accepted, edited, or rejected before entering the Evidence Matrix.</p>
@@ -512,6 +525,7 @@
 <script src="src/research/source-capability-registry.js" defer></script>
 <script src="src/research/source-connectors.js" defer></script>
 <script src="src/research/source-packet-importer.js" defer></script>
+<script src="src/research/source-packet-builder.js" defer></script>
 <script src="src/research/source-import-adapter.js" defer></script>
 <script src="src/research-engine.js" defer></script>
 </body>

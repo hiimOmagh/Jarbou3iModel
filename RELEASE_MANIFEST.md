@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.15
+# Release Manifest — v1.0.16
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.15`
-- Release name: `Evidence Scoring UI Explanation + Calibration Pass`
+- Version: `1.0.16`
+- Release name: `Source Packet Builder UI + Scoring Review Controls`
 - Release type: patch
 - Runtime capability change: no
 
@@ -32,7 +32,6 @@
 ## Required root files
 
 - `.nojekyll`
-- `.gitignore`
 - `.releaseignore`
 - `BROWSER_EVIDENCE.md`
 - `CHANGELOG.md`
@@ -48,20 +47,17 @@
 - `manifest.webmanifest`
 - `package.json`
 - `playwright.config.js`
-- `wrangler.toml`
 
 ## Compatibility boundary
 
-v1.0.15 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/evidence scoring UI calibration parsing, schema/fixture coverage, release docs, and QA wrappers.
+v1.0.16 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/manual source packet builder UI, scoring review controls, schema/fixture coverage, release docs, and QA wrappers.
 
 ## Required no-browser gates
 
 ```bash
-npm run test:evidence:scoring
-npm run test:source:packet
-npm run test:source:import
-npm run test:source:capabilities
-npm run test:v114:no-browser
+npm run test:source:packet-builder
+npm run test:evidence:calibration
+npm run test:v116:no-browser
 npm run test:ci:no-browser
 ```
 
@@ -75,30 +71,11 @@ npm run test:ci:browser
 
 Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, and local environment files must not be shipped in release archives. See `.releaseignore`.
 
-## v1.0.15 evidence scoring artifacts
+## v1.0.16 source packet builder artifacts
 
-- `src/research/evidence-scorer.js`
-- `schema/research-workflow.schema.json`
-- `fixtures/migrations/v1.0.15-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.15.json`
-- `tests/evidence-scoring-check.mjs`
-- `tests/v114-no-browser-suite.mjs`
-- `docs/v1.0.15-evidence-scoring-v1.md`
-
-## v1.0.13 manual source packet artifacts
-
-- `src/research/source-packet-importer.js`
-- `src/research/source-import-adapter.js`
-- `fixtures/research/source-packet-sample.json`
-- `tests/source-packet-import-check.mjs`
-- `tests/v113-no-browser-suite.mjs`
-- `docs/v1.0.13-manual-source-packet-import.md`
-
-## v1.0.12 source strategy artifacts
-
-- `src/research/source-capability-registry.js`
-- `tests/source-capability-registry-check.mjs`
-- `tests/v112-no-browser-suite.mjs`
-- `docs/v1.0.12-research-source-strategy-blueprint.md`
-
-Runtime capability change: no
+- `src/research/source-packet-builder.js`
+- `tests/source-packet-builder-check.mjs`
+- `tests/v116-no-browser-suite.mjs`
+- `docs/v1.0.16-source-packet-builder-ui-scoring-review-controls.md`
+- `fixtures/migrations/v1.0.16-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.16.json`

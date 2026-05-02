@@ -1,4 +1,5 @@
-## v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
+## v1.0.16 — Source Packet Builder UI + Scoring Review Controls
+- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
 
 Patch release. Adds local evidence scoring UI calibration so attention signals are tracked separately from evidence reliability before synthesis.
 
