@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.0.11';
+const VERSION = '1.0.12';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 
@@ -76,7 +76,7 @@ async function assertHostedDemoReady(page) {
   await expect(page.locator('#hostedDemoEvidenceReviewPanel')).toBeVisible();
 }
 
-test.describe('v1.0.11 hosted demo smoke/evidence capture', () => {
+test.describe('v1.0.12 hosted demo smoke/evidence capture', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     await assertHostedDemoReady(page);

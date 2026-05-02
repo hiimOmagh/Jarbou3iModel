@@ -13,16 +13,16 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.11-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.11.json');
+const migrationFixture = json('fixtures/migrations/v1.0.12-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.12.json');
 
-assert.equal(pkg.version, '1.0.11');
-assert.ok(pkg.description.includes('repository hygiene'));
+assert.equal(pkg.version, '1.0.12');
+assert.ok(pkg.description.includes('source strategy'));
 assert.equal(pkg.type, 'module');
-assert.equal(schema.properties.workflow_version.const, '1.0.11');
-assert.equal(fixture.workflow_version, '1.0.11');
-assert.equal(migrationFixture.workflow_version, '1.0.11');
-assert.equal(privacyFixture.workflow_version, '1.0.11');
+assert.equal(schema.properties.workflow_version.const, '1.0.12');
+assert.equal(fixture.workflow_version, '1.0.12');
+assert.equal(migrationFixture.workflow_version, '1.0.12');
+assert.equal(privacyFixture.workflow_version, '1.0.12');
 assert.equal(privacyFixture.privacy_export.release_gate, 'pass');
 assert.equal(privacyFixture.privacy_export.raw_token_exported, false);
 assert.equal(privacyFixture.privacy_export.key_exported, false);
@@ -37,7 +37,8 @@ for (const file of [
   'tests/release-packaging-cleanup-check.mjs',
   'tests/repo-file-hygiene-check.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
-  'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'
+  'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
+  'docs/v1.0.12-research-source-strategy-blueprint.md'
 ]) {
   assert.ok(fs.existsSync(file), `missing release cleanup file: ${file}`);
 }
@@ -55,7 +56,8 @@ const expectedDocHeadings = new Map([
   ['docs/v1.0.8-hosted-demo-deployment-browser-evidence.md', '# v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture'],
   ['docs/v1.0.9-hosted-demo-smoke-fixes-evidence-review.md', '# v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review'],
   ['docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md', '# v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix'],
-  ['docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md', '# v1.0.11 — Repository Hygiene + Stale Artifact Cleanup']
+  ['docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md', '# v1.0.11 — Repository Hygiene + Stale Artifact Cleanup'],
+  ['docs/v1.0.12-research-source-strategy-blueprint.md', '# v1.0.12 — Research Source Strategy Blueprint']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
   assert.equal(read(file).split('\n')[0], heading, `${file} heading drifted`);
@@ -63,6 +65,7 @@ for (const [file, heading] of expectedDocHeadings) {
 
 const docsCorpus = [readme, changelog, roadmap, qaMatrix, ...[...expectedDocHeadings.keys()].map(read)].join('\n');
 for (const token of [
+  'v1.0.12 — Research Source Strategy Blueprint',
   'v1.0.11 — Repository Hygiene + Stale Artifact Cleanup',
   'v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix',
   'v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review',
@@ -89,10 +92,10 @@ for (const token of [
 for (const token of ['node_modules/','playwright-report/','test-results/','*.zip','backend/.dev.vars']) {
   assert.ok(releaseIgnore.includes(token), `.releaseignore missing ${token}`);
 }
-for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.0.11`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions']) {
+for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.0.12`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions']) {
   assert.ok(manifest.includes(token), `release manifest missing ${token}`);
 }
-for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:v107:no-browser','test:v107','test:v108:no-browser','test:v108','test:v109:no-browser','test:v109','test:v110:no-browser','test:v110','test:hosted-demo:evidence-review','test:module-type-warning','test:repo:cleanup','test:v111:no-browser','test:v111']) {
+for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:v107:no-browser','test:v107','test:v108:no-browser','test:v108','test:v109:no-browser','test:v109','test:v110:no-browser','test:v110','test:hosted-demo:evidence-review','test:module-type-warning','test:repo:cleanup','test:v111:no-browser','test:v111','test:source:capabilities','test:v112:no-browser','test:v112']) {
   assert.ok(pkg.scripts[script], `missing package script ${script}`);
 }
 assert.ok(pkg.scripts['test:patch'].includes('release-packaging-cleanup-check.mjs'));
