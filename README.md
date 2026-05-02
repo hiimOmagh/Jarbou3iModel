@@ -2,13 +2,13 @@
 
 ## Current version
 
-`v1.0.18 — Source Packet Builder Export Roundtrip QA`
+`v1.0.19 — Source Packet Template Presets`
 
 A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
 ## What this patch changes
 
-- Adds local/manual source packet export → import roundtrip QA.
+- Adds local/manual source packet export → import template presets.
 - Confirms generated packets re-import through the source packet importer.
 - Preserves scoring review metadata as import metadata.
 - Confirms re-imported evidence remains queue-only and unverified.
@@ -54,18 +54,18 @@ npx playwright install --with-deps
 npm run test:ci:browser
 ```
 
-Targeted v1.0.18 checks:
+Targeted v1.0.19 checks:
 
 ```bash
-npm run test:source:packet-roundtrip
+npm run test:source:packet-templates
 npm run test:source:packet-builder
-npm run test:v118:no-browser
+npm run test:v119:no-browser
 npm run test:ci:no-browser
 ```
 
 ## Release history
 
-- v1.0.18 — Source Packet Builder Export Roundtrip QA
+- v1.0.19 — Source Packet Template Presets
 - v1.0.17 — Source Packet Builder Browser QA + UX Tightening
 - v1.0.16 — Source Packet Builder UI + Scoring Review Controls
 - v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass

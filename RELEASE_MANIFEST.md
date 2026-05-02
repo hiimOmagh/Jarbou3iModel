@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.18
+# Release Manifest — v1.0.19
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.18`
-- Release name: `Source Packet Builder Export Roundtrip QA`
+- Version: `1.0.19`
+- Release name: `Source Packet Template Presets`
 - Release type: patch
 - Runtime capability change: no
 
@@ -50,14 +50,14 @@
 
 ## Compatibility boundary
 
-v1.0.18 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/manual source packet export/import roundtrip QA, scoring-review preservation checks, release docs, fixtures, and QA wrappers.
+v1.0.19 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/manual source packet template presets, scoring-review preservation checks, release docs, fixtures, and QA wrappers.
 
 ## Required no-browser gates
 
 ```bash
-npm run test:source:packet-roundtrip
+npm run test:source:packet-templates
 npm run test:source:packet-builder
-npm run test:v118:no-browser
+npm run test:v119:no-browser
 npm run test:ci:no-browser
 ```
 
@@ -71,14 +71,16 @@ npm run test:ci:browser
 
 Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, local environment files, and ZIP archives must not be shipped inside the committed release tree. See `.releaseignore`.
 
-## v1.0.18 source packet roundtrip QA artifacts
+## v1.0.19 source packet template preset artifacts
 
 - `src/research/source-packet-roundtrip.js`
+- `src/research/source-packet-templates.js`
 - `tests/source-packet-roundtrip-check.mjs`
-- `tests/v118-no-browser-suite.mjs`
-- `docs/v1.0.18-source-packet-builder-export-roundtrip-qa.md`
-- `fixtures/migrations/v1.0.18-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.18.json`
+- `tests/source-packet-template-presets-check.mjs`
+- `tests/v119-no-browser-suite.mjs`
+- `docs/v1.0.19-source-packet-template-presets.md`
+- `fixtures/migrations/v1.0.19-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.19.json`
 
 ## Retained v1.0.16 artifacts
 

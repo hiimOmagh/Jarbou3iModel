@@ -1,4 +1,4 @@
-## v1.0.18 — Source Packet Builder Export Roundtrip QA
+## v1.0.19 — Source Packet Template Presets
 
 This patch verifies that a generated local/manual source packet can be exported and re-imported without changing the product's trust boundary.
 
@@ -6,7 +6,7 @@ This patch verifies that a generated local/manual source packet can be exported 
 
 - `src/research/source-packet-roundtrip.js`.
 - `tests/source-packet-roundtrip-check.mjs`.
-- `tests/v118-no-browser-suite.mjs`.
+- `tests/v119-no-browser-suite.mjs`.
 - `source_packet_roundtrip_report` in schema, fixtures, migrations, and exported research packets.
 - Import metadata preservation for source packet scoring reviews.
 
@@ -32,8 +32,8 @@ This patch verifies that a generated local/manual source packet can be exported 
 ### Required validation
 
 ```bash
-npm run test:source:packet-roundtrip
-npm run test:v118:no-browser
+npm run test:source:packet-templates
+npm run test:v119:no-browser
 npm run test:ci:no-browser
 npx playwright install --with-deps
 npm run test:ci:browser

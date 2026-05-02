@@ -1,8 +1,8 @@
-## v1.0.18 — Source Packet Builder Export Roundtrip QA
+## v1.0.19 — Source Packet Template Presets
 
-- Added `src/research/source-packet-roundtrip.js` for local/manual source packet export/import roundtrip QA.
+- Added `src/research/source-packet-roundtrip.js` for local/manual source packet template presets.
 - Added `tests/source-packet-roundtrip-check.mjs`.
-- Added `tests/v118-no-browser-suite.mjs`.
+- Added `tests/v119-no-browser-suite.mjs`.
 - Preserved source packet scoring review metadata as import metadata.
 - Added `source_packet_roundtrip_report` to schema, fixtures, migrations, and exported research packets.
 - Confirmed re-imported evidence remains queue-only, unverified, and locally scored.

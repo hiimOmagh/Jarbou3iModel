@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jarbou3i Research Engine — v1.0.18</title>
+<title>Jarbou3i Research Engine — v1.0.19</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,14 +11,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#255ee8" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020817" />
 <meta name="color-scheme" content="light dark" />
-<meta property="og:title" content="Jarbou3i Research Engine — v1.0.18" />
+<meta property="og:title" content="Jarbou3i Research Engine — v1.0.19" />
 <meta property="og:description" content="Client-side trilingual workbench for schema-governed six-layer strategic analysis." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/jarbou3i-mascot-512.png" />
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
 <meta name="twitter:card" content="summary" />
-<meta name="app-version" content="1.0.18" />
+<meta name="app-version" content="1.0.19" />
 <link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
@@ -47,7 +47,7 @@
     <section class="panel researchLabPanel" id="researchLabPanel">
       <div class="panelHeader researchHeader">
         <div>
-          <div class="researchEyebrow" data-r-i18n="alphaBadge">v1.0.18 · Source Packet Builder</div>
+          <div class="researchEyebrow" data-r-i18n="alphaBadge">v1.0.19 · Source Packet Templates</div>
           <h2 data-r-i18n="researchTitle">Research Workflow Lab</h2>
           <p data-r-i18n="researchSubtitle">Experimental research-to-strategy pipeline. Manual mode remains untouched.</p>
         </div>
@@ -87,7 +87,7 @@
         <div>
           <div class="researchEyebrow">Hosted demo verification</div>
           <h3>Publish only after browser evidence exists</h3>
-          <p class="muted">v1.0.18 adds source packet builder browser QA and UX tightening: reliability, attention, traceability, recency, contradiction value, and synthesis weight remain separate and review-gated.</p>
+          <p class="muted">v1.0.19 adds source packet builder browser QA and UX tightening: reliability, attention, traceability, recency, contradiction value, and synthesis weight remain separate and review-gated.</p>
         </div>
         <div class="hostedDemoChecklist">
           <span>Hosted URL checked</span>
@@ -101,7 +101,7 @@
         <div>
           <div class="researchEyebrow">Evidence review gate</div>
           <h3>Review screenshots and metadata before publish</h3>
-          <p class="muted">v1.0.18 keeps manual imports review-gated while separating popularity/attention from evidentiary reliability before synthesis. Attention = public visibility only. Reliability is source strength plus traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth.</p>
+          <p class="muted">v1.0.19 keeps manual imports review-gated while separating popularity/attention from evidentiary reliability before synthesis. Attention = public visibility only. Reliability is source strength plus traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth.</p>
         </div>
         <div class="evidenceReviewChecklist">
           <span>Hosted URL smoke</span>
@@ -343,8 +343,20 @@
           <p class="muted" data-r-i18n="sourcePacketBuilderSubtitle">Build local manual source packet JSON from the Evidence Matrix or review queue. No live fetching, scraping, or verification is performed.</p>
           <p class="muted providerSafetyNote" data-r-i18n="sourcePacketBuilderPolicyNote">Builder output is a transport format, not source verification. Scoring flags remain review-gated.</p>
           <div class="sourcePacketBuilderGuardrail" data-r-i18n="sourcePacketBuilderGuardrail">Browser QA guardrail: generated packets remain local/manual, copy/export controls must stay visible, and warning chips must wrap without horizontal overflow.</div>
+          <label class="field sourcePacketTemplateField">
+            <span data-r-i18n="sourcePacketTemplateLabel">Template preset</span>
+            <select id="sourcePacketTemplateSelect" aria-label="Source packet template preset">
+              <option value="official_report">Official report / institutional document</option>
+              <option value="reddit_thread">Reddit thread / public discussion</option>
+              <option value="youtube_transcript">YouTube video / transcript</option>
+              <option value="market_signal">Prediction market / market signal</option>
+              <option value="github_release">GitHub release / repository signal</option>
+              <option value="generic_article">Generic article / web source</option>
+            </select>
+          </label>
           <div class="actions verticalActions sourcePacketBuilderActions">
             <button class="btn primary" id="buildSourcePacketFromEvidenceBtn" type="button" data-r-i18n="buildSourcePacketFromEvidence">Build from evidence matrix</button>
+            <button class="btn" id="buildSourcePacketFromTemplateBtn" type="button" data-r-i18n="buildSourcePacketFromTemplate">Build from template preset</button>
             <button class="btn" id="buildSourcePacketFromReviewBtn" type="button" data-r-i18n="buildSourcePacketFromReview">Build from review queue</button>
             <button class="btn" id="copySourcePacketBuilderBtn" type="button" data-r-i18n="copySourcePacketBuilder">Copy source packet</button>
             <button class="btn" id="exportSourcePacketBuilderBtn" type="button" data-r-i18n="exportSourcePacketBuilder">Export source packet</button>
@@ -526,6 +538,7 @@
 <script src="src/research/source-capability-registry.js" defer></script>
 <script src="src/research/source-connectors.js" defer></script>
 <script src="src/research/source-packet-importer.js" defer></script>
+<script src="src/research/source-packet-templates.js" defer></script>
 <script src="src/research/source-packet-builder.js" defer></script>
 <script src="src/research/source-packet-roundtrip.js" defer></script>
 <script src="src/research/source-import-adapter.js" defer></script>
