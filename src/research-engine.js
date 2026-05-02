@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.13 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.14 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.13';
+  const VERSION = '1.0.14';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -15,6 +15,7 @@
   const analysisTemplates = modules.analysisTemplates;
   const stateStore = modules.stateStore;
   const evidenceController = modules.evidenceController;
+  const evidenceScorer = modules.evidenceScorer;
   const exportController = modules.exportController;
   const releaseCandidate = modules.releaseCandidate;
   const exportPack = modules.exportPack;
@@ -42,6 +43,8 @@
   function clampScore(v){return evidenceController.clampScore(v);}
   function validId(id){return evidenceController.validId(id);}
   function normalizeEvidenceIds(ids){return evidenceController.normalizeEvidenceIds(ids);}
+  function scoreEvidence(item){return evidenceScorer?.attachEvidenceScoring ? evidenceScorer.attachEvidenceScoring(item, {version: VERSION, now: nowIso()}) : item;}
+  function evidenceScoringReport(items = state.evidence){return evidenceScorer?.scoreEvidenceSet ? evidenceScorer.scoreEvidenceSet(items, {version: VERSION, now: nowIso()}) : {evidence_scoring_version: VERSION, scoring_model:'unavailable', item_count:(items || []).length, release_gate:'review_required'};}
 
   function defaultState(){return stateStore.defaultState({version: VERSION});}
   function migrate(parsed){return stateStore.migrate(parsed, {version: VERSION});}
@@ -214,7 +217,8 @@
       project_workspace: projectWorkspace?.metadata ? projectWorkspace.metadata(state, workspace) : null,
       export_pack: {export_pack_version: VERSION, format: 'export_pack_v2', files: ['research-packet.json','analysis-brief.md','evidence-matrix.csv','review-queue.csv','provider-run-ledger.json','quality-report.json','privacy-audit.json'], release_gate: 'privacy_audit_required'},
       research_plan: state.plan,
-      evidence_matrix: state.evidence,
+      evidence_matrix: (state.evidence || []).map(item => scoreEvidence(item)),
+      evidence_scoring_report: evidenceScoringReport(),
       causal_links: state.causal_links,
       analysis_brief: state.analysis_brief,
       diagnostics: diagnosticReport(),
@@ -267,7 +271,7 @@
       notes: ($('evNotes')?.value || '').trim()
     };
     if(!entry.claim) throw new Error('claim_required');
-    return entry;
+    return scoreEvidence(entry);
   }
 
   function clearEvidenceForm(){
@@ -311,7 +315,7 @@
       {evidence_id:'E1', claim:`Observable actor incentives shape the strategic trajectory of ${t}.`, source_title:'Demo chronology note', source_url:'', source_type:'other', source_date:'unknown', time_relevance_score:3, evidence_strength:3, public_signal_score:2, supports:['I1','A1'], contradicts:[], confidence:'medium', notes:'Placeholder evidence; replace with real source-backed material before publication.'},
       {evidence_id:'E2', claim:'Declared narratives do not fully explain tool selection or outcome distribution.', source_title:'Demo contradiction note', source_url:'', source_type:'other', source_date:'unknown', time_relevance_score:3, evidence_strength:3, public_signal_score:2, supports:['N1','T1'], contradicts:['R1'], confidence:'medium', notes:'Used to test contradiction handling.'},
       {evidence_id:'E3', claim:'Future scenarios depend on whether feedback loops amplify or dampen current incentives.', source_title:'Demo scenario note', source_url:'', source_type:'other', source_date:'unknown', time_relevance_score:4, evidence_strength:3, public_signal_score:1, supports:['F1','S1'], contradicts:[], confidence:'medium', notes:'Used to test scenario and falsifier discipline.'}
-    ];
+    ].map(item => scoreEvidence(item));
     inferCausalLinks();
     save(); render();
   }
@@ -1027,10 +1031,10 @@
       status: 'pending',
       decision_at: null,
       accepted_evidence_id: null,
-      evidence: Object.assign({}, e, {
+      evidence: scoreEvidence(Object.assign({}, e, {
         evidence_id: `CAND${existing.length + idx + 1}`,
         notes: [e.notes || '', 'Review required before promotion to Evidence Matrix.'].filter(Boolean).join(' ')
-      }),
+      })),
       review_notes: 'Imported candidate; source metadata and layer links require human review.'
     }));
     state.evidence_review_queue = existing.concat(queued);
@@ -1052,12 +1056,13 @@
     const evidence = Object.assign({}, overrideEvidence || item.evidence || {});
     evidence.evidence_id = `E${state.evidence.length + 1}`;
     evidence.notes = [evidence.notes || '', `Promoted from review queue ${item.review_id}.`].filter(Boolean).join(' ');
-    state.evidence.push(evidence);
+    const scoredEvidence = scoreEvidence(evidence);
+    state.evidence.push(scoredEvidence);
     renumberEvidence();
     item.status = 'accepted';
     item.decision_at = nowIso();
     item.accepted_evidence_id = state.evidence[state.evidence.length - 1]?.evidence_id || evidence.evidence_id;
-    item.evidence = Object.assign({}, evidence, {evidence_id: item.evidence?.evidence_id || item.review_id});
+    item.evidence = scoreEvidence(Object.assign({}, scoredEvidence, {evidence_id: item.evidence?.evidence_id || item.review_id}));
     state.evidence_review_report = evidenceReviewReport();
     return evidence;
   }
@@ -1454,7 +1459,7 @@
     const nextPacket = migrated.packet;
     if(!validateWorkflowPacket(nextPacket)) throw new Error('invalid_packet');
     state.plan = Object.assign({}, nextPacket.research_plan, {plan_version: VERSION});
-    state.evidence = nextPacket.evidence_matrix.map((item, idx) => Object.assign({}, item, {evidence_id:`E${idx+1}`}));
+    state.evidence = nextPacket.evidence_matrix.map((item, idx) => scoreEvidence(Object.assign({}, item, {evidence_id:`E${idx+1}`})));
     state.causal_links = Array.isArray(nextPacket.causal_links) ? nextPacket.causal_links.filter(link => link && validId(link.from) && validId(link.to) && Array.isArray(link.evidence_ids)) : [];
     state.analysis_brief = nextPacket.analysis_brief || null;
     state.diagnostics = nextPacket.diagnostics || null;
@@ -1600,7 +1605,7 @@
     const el = $('evidenceMatrixOutput');
     if(!el) return;
     if(!state.evidence.length){el.innerHTML = emptyState(tr('matrixEmpty'), 'Add evidence manually, load demo evidence, or import source candidates through the review queue.', tr('addEvidence')); return;}
-    el.innerHTML = `<div class="researchTableWrap"><table class="researchTable"><thead><tr><th>ID</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('strength'))}</th><th>${esc(tr('supports'))}</th><th>${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${state.evidence.map((e,i)=>`<tr><td>${esc(e.evidence_id)}</td><td><b>${esc(e.claim)}</b><small>${esc(e.notes || '')}</small></td><td>${esc([e.source_title,e.source_type,e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td><td>${esc(e.evidence_strength)}/5</td><td>${esc((e.supports || []).join(', ') || '—')}</td><td>${esc((e.contradicts || []).join(', ') || '—')}</td><td><div class="rowActions"><button class="btn ghost researchEdit" type="button" data-index="${i}">${esc(tr('edit'))}</button><button class="btn ghost researchDelete" type="button" data-index="${i}">${esc(tr('remove'))}</button></div></td></tr>`).join('')}</tbody></table></div>`;
+    el.innerHTML = `<div class="researchTableWrap"><table class="researchTable"><thead><tr><th>ID</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('strength'))}</th><th>Reliability</th><th>Attention</th><th>${esc(tr('supports'))}</th><th>${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${state.evidence.map((raw,i)=>{ const e = scoreEvidence(raw); const sc = e.evidence_scoring || {}; return `<tr><td>${esc(e.evidence_id)}</td><td><b>${esc(e.claim)}</b><small>${esc(e.notes || '')}</small>${(sc.risk_flags || []).length ? `<small>flags: ${esc(sc.risk_flags.join(', '))}</small>` : ''}</td><td>${esc([e.source_title,e.source_type,e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td><td>${esc(e.evidence_strength)}/5</td><td>${esc(sc.reliability_score ?? '—')}/100</td><td>${esc(sc.attention_signal_score ?? '—')}/100</td><td>${esc((e.supports || []).join(', ') || '—')}</td><td>${esc((e.contradicts || []).join(', ') || '—')}</td><td><div class="rowActions"><button class="btn ghost researchEdit" type="button" data-index="${i}">${esc(tr('edit'))}</button><button class="btn ghost researchDelete" type="button" data-index="${i}">${esc(tr('remove'))}</button></div></td></tr>`; }).join('')}</tbody></table></div>`;
     document.querySelectorAll('.researchEdit').forEach(btn => btn.addEventListener('click', () => fillEvidenceForm(state.evidence[Number(btn.dataset.index)], Number(btn.dataset.index))));
     document.querySelectorAll('.researchDelete').forEach(btn => btn.addEventListener('click', () => {
       const removedId = state.evidence[Number(btn.dataset.index)]?.evidence_id;
@@ -1693,7 +1698,7 @@
       return `<tr>
         <td>${esc(item.review_id)}<small>${esc(item.import_id || '')}</small></td>
         <td><span class="reviewStatus ${esc(item.status)}">${esc(tr(item.status === 'needs_edit' ? 'needsEdit' : item.status))}</span><small>${esc(item.accepted_evidence_id || '')}</small></td>
-        <td><b>${esc(e.claim || '')}</b><small>${esc(e.notes || '')}</small></td>
+        <td><b>${esc(e.claim || '')}</b><small>${esc(e.notes || '')}</small><small>R:${esc(e.evidence_scoring?.reliability_score ?? '—')} · A:${esc(e.evidence_scoring?.attention_signal_score ?? '—')} · W:${esc(e.evidence_scoring?.synthesis_weight ?? '—')}</small></td>
         <td>${esc([e.source_title,e.source_type,e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td>
         <td>${esc((e.supports || []).join(', ') || '—')} / ${esc((e.contradicts || []).join(', ') || '—')}</td>
         <td><div class="rowActions">${resolved ? '' : `<button class="btn ghost reviewAccept" type="button" data-index="${i}">${esc(tr('accept'))}</button><button class="btn ghost reviewEdit" type="button" data-index="${i}">${esc(tr('editCandidate'))}</button><button class="btn ghost reviewReject" type="button" data-index="${i}">${esc(tr('reject'))}</button>`}</div></td>
@@ -1913,6 +1918,8 @@
       ['qualityV3Score', scores.qualityV3],
       ['completenessScore', scores.completeness],
       ['evidenceStrengthScore', scores.evidenceStrength],
+      ['evidenceReliabilityScore', scores.evidenceReliability],
+      ['attentionSignalIntegrityScore', scores.attentionSignalIntegrity],
       ['contradictionCoverageScore', scores.contradictionCoverage],
       ['sourceDiversityScore', scores.sourceDiversity],
       ['actorLayerCoverageScore', scores.actorLayerCoverage],
@@ -1934,7 +1941,9 @@
     const scoreHtml = rows.map(([label,value]) => '<div class="researchScore"><span>' + esc(tr(label)) + '</span><strong>' + esc(value) + '</strong><meter min="0" max="100" value="' + esc(value) + '"></meter></div>').join('');
     const weakestHtml = report.weakest_dimensions.map(item => '<li><strong>' + esc(item.dimension) + '</strong>: ' + esc(item.score) + ' · ' + esc(item.severity) + '</li>').join('');
     const actionsHtml = report.fix_actions.map(action => '<li>' + esc(action) + '</li>').join('');
-    const reportHtml = '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(report.publication_readiness) + '</h4><div class="miniChips"><span>' + esc(report.release_gate) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' blockers</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
+    const scoringReport = evidenceScoringReport();
+    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>Evidence Scoring v1</h4><div class="miniChips"><span>reliability ' + esc(scoringReport.average_reliability_score || 0) + '/100</span><span>attention ' + esc(scoringReport.average_attention_signal_score || 0) + '/100</span><span>traceability ' + esc(scoringReport.average_traceability_score || 0) + '/100</span><span>risk ' + esc(scoringReport.attention_dominance_risk_count || 0) + '</span></div><small>' + esc(scoringReport.policy || '') + '</small></div>';
+    const reportHtml = scoringHtml + '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(report.publication_readiness) + '</h4><div class="miniChips"><span>' + esc(report.release_gate) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' blockers</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
     el.innerHTML = scoreHtml + reportHtml;
   }
   function render(){renderLabels(); renderOnboarding(); renderWorkspace(); renderAnalysisTemplate(); renderPlan(); renderEvidence(); renderCausalLinks(); renderAnalysisBrief(); renderSourceLayer(); renderSourceImportAdapter(); renderEvidenceReviewQueue(); renderProviderHarness(); renderCritique(); renderQuality(); renderReleaseHealth(); updateReliabilityControls(); applyUxTab();}
