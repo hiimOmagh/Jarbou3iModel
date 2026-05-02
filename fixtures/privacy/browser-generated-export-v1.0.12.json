@@ -2145,7 +2145,7 @@
       },
       {
         "source_id": "manual_source_packet",
-        "label": "Manual source packet import",
+        "label": "Evidence scoring v1",
         "availability": "manual",
         "auth_mode": "none",
         "freshness": "user_supplied",
@@ -2156,7 +2156,7 @@
         "export_allowed": true,
         "status": "planned_next_safe_increment",
         "notes": [
-          "Future v1.0.13 candidate. Import structured source packets collected by the user."
+          "Future v1.0.14 candidate. Import structured source packets collected by the user."
         ]
       },
       {
@@ -2235,7 +2235,7 @@
       "ok": true,
       "verdict": "source_capability_registry_ready_no_runtime_expansion"
     },
-    "next_safe_increment": "v1.0.13 manual source packet import",
+    "next_safe_increment": "v1.0.14 evidence scoring v1",
     "blocked_until_threat_modeled": [
       "production OAuth / portable account auth",
       "live Reddit/X/YouTube/TikTok scraping",
