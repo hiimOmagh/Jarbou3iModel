@@ -6,16 +6,18 @@ const fail = (message) => {
   process.exit(1);
 };
 const read = (file) => fs.readFileSync(file, 'utf8');
+const scorerText = read('src/research/evidence-scorer.js');
 const moduleText = read('src/research/source-import-adapter.js');
 const index = read('index.html');
 const researchApp = read('src/research-engine.js');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-try { new vm.Script(moduleText, { filename: 'src/research/source-import-adapter.js' }); }
+try { new vm.Script(scorerText, { filename: 'src/research/evidence-scorer.js' }); new vm.Script(moduleText, { filename: 'src/research/source-import-adapter.js' }); }
 catch (error) { fail(`source import adapter syntax error: ${error.message}`); }
 const context = { window: { Jarbou3iResearchModules: {} }, URL };
 context.global = context.window;
 vm.createContext(context);
+new vm.Script(scorerText).runInContext(context);
 new vm.Script(moduleText).runInContext(context);
 const adapter = context.window.Jarbou3iResearchModules.sourceImportAdapter;
 if (!adapter) fail('sourceImportAdapter namespace missing');
@@ -30,6 +32,9 @@ if (parsed.report.verification_claimed !== false) fail('source import must not c
 if (parsed.evidence.length < 3) fail('sample import should produce at least 3 evidence items');
 if (!parsed.evidence.some((e) => e.source_url)) fail('imported evidence should include URLs');
 if (!parsed.evidence.every((e) => Array.isArray(e.supports) && Array.isArray(e.contradicts))) fail('imported evidence needs supports/contradicts arrays');
+if (!parsed.evidence.every((e) => e.evidence_scoring?.scoring_version === 'evidence_scoring.v1')) fail('imported evidence needs evidence scoring v1');
+if (!parsed.evidence.every((e) => e.evidence_scoring?.attention_is_truth_score === false)) fail('attention must not be treated as truth score');
+if (!index.includes('src="src/research/evidence-scorer.js" defer')) fail('evidence scorer module missing from index');
 if (!index.includes('src="src/research/source-import-adapter.js" defer')) fail('source import adapter module missing from index');
 for (const id of ['sourceImportText','previewSourceImportBtn','importSourceEvidenceBtn','sourceImportOutput']) {
   if (!index.includes(`id="${id}"`)) fail(`source import UI missing ${id}`);
@@ -43,9 +48,10 @@ if (!schema.$defs.source_import) fail('schema missing source_import definition')
 if (!schema.$defs.source_import_report) fail('schema missing source_import_report definition');
 if (schema.$defs.source_import_report.properties.live_fetching_performed.const !== false) fail('import report must force live_fetching_performed=false');
 if (schema.$defs.source_import_report.properties.verification_claimed.const !== false) fail('import report must force verification_claimed=false');
-if (fixture.workflow_version !== '1.0.13') fail('research fixture version mismatch');
+if (fixture.workflow_version !== '1.0.14') fail('research fixture version mismatch');
 if (!fixture.source_import_report || fixture.source_import_report.live_fetching_performed !== false) fail('fixture import report missing or unsafe');
 if (!Array.isArray(fixture.source_imports) || !fixture.source_imports.length) fail('fixture source_imports missing');
-if (!fixture.source_imports.some((item) => item.queue_only === true)) fail('source imports should be queue_only in v0.14');
+if (!fixture.source_imports.some((item) => item.queue_only === true)) fail('source imports should be queue_only in v1.0.14');
+if (!fixture.evidence_scoring_report || fixture.evidence_scoring_report.scoring_model !== 'evidence_scoring.v1') fail('fixture needs evidence scoring report');
 console.log('Source import checks passed.');
 process.exit(0);

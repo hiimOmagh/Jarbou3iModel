@@ -23,6 +23,7 @@ const analysisTemplates = read('src/research/analysis-templates.js');
 const exportPack = read('src/research/export-pack.js');
 const migrations = read('src/research/migrations.js');
 const sourceImportAdapter = read('src/research/source-import-adapter.js');
+const evidenceScorer = read('src/research/evidence-scorer.js');
 const css = read('src/styles.css');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 const pkg = JSON.parse(read('package.json'));
@@ -43,6 +44,7 @@ try {
   new vm.Script(exportPack, { filename: 'src/research/export-pack.js' });
   new vm.Script(migrations, { filename: 'src/research/migrations.js' });
   new vm.Script(sourceImportAdapter, { filename: 'src/research/source-import-adapter.js' });
+  new vm.Script(evidenceScorer, { filename: 'src/research/evidence-scorer.js' });
 } catch (error) {
   fail(`JavaScript syntax error: ${error.message}`);
 }
@@ -88,6 +90,7 @@ const requiredFiles = [
   ,'src/research/ux-reliability.js'
   ,'src/research/analysis-templates.js'
   ,'src/research/export-pack.js'
+  ,'src/research/evidence-scorer.js'
 ];
 for (const file of requiredFiles) {
   if (!fs.existsSync(file)) fail(`missing required file: ${file}`);
@@ -130,6 +133,8 @@ if (!index.includes('id="providerModeGuide"')) fail('provider mode guide missing
 if (!uxReliability.includes('providerModeGuideHtml') || !uxReliability.includes('exportConfirmationText')) fail('UX reliability helpers missing release-gate functions');
 if (!index.includes('src="src/research/search-provider-abstraction.js" defer')) fail('search provider abstraction module missing from index');
 if (!index.includes('src="src/research/source-connectors.js" defer')) fail('source connectors module missing from index');
+if (!index.includes('src="src/research/evidence-scorer.js" defer')) fail('evidence scorer module missing from index');
+if (!evidenceScorer.includes('SCORING_VERSION') || !evidenceScorer.includes('attention_signal_is_not_evidence_reliability')) fail('evidence scorer must separate attention from reliability');
 if (!index.includes('src="src/research/source-import-adapter.js" defer')) fail('source import adapter module missing from index');
 if (!index.includes('id="sourcePlanningOutput"')) fail('source planning panel missing');
 if (!researchApp.includes('runSourceTask')) fail('source planning workflow missing');
@@ -151,8 +156,8 @@ if (!app.includes('schema_version')) fail('schema_version support is missing');
 if (!app.includes('modeResearch')) fail('research prompt mode is missing');
 if (!app.includes('qualityGateHtml')) fail('quality gate UI is missing');
 if (!app.includes('actorPowerScore')) fail('computed API scoring is missing');
-if (pkg.version !== '1.0.13') fail('package version must be 1.0.13');
-if (!index.includes('name="app-version" content="1.0.13"')) fail('app version metadata missing');
+if (pkg.version !== '1.0.14') fail('package version must be 1.0.14');
+if (!index.includes('name="app-version" content="1.0.14"')) fail('app version metadata missing');
 
 console.log('Static checks passed.');
 process.exit(0);

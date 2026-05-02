@@ -36,13 +36,17 @@ const tests = [
   'tests/provider-fixtures-check.mjs',
   'tests/source-planning-check.mjs',
   'tests/source-import-check.mjs',
+  'tests/source-packet-import-check.mjs',
+  'tests/evidence-scoring-check.mjs',
   'tests/evidence-review-queue-check.mjs',
   'tests/github-source-connector-check.mjs',
   'tests/web-search-provider-check.mjs',
   'tests/backend-proxy-check.mjs',
   'tests/backend-hardening-check.mjs',
   'tests/backend-worker-smoke.mjs',
-  'tests/module-type-warning-fix-check.mjs'
+  'tests/module-type-warning-fix-check.mjs',
+  'tests/repository-hygiene-cleanup-check.mjs',
+  'tests/source-capability-registry-check.mjs'
 ];
 
 for (const test of tests) {
