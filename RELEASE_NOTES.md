@@ -1,6 +1,6 @@
-## v1.0.14 — Evidence Scoring v1
+## v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
 
-Patch release. Adds local evidence scoring v1 so attention signals are tracked separately from evidence reliability before synthesis.
+Patch release. Adds local evidence scoring UI calibration so attention signals are tracked separately from evidence reliability before synthesis.
 
 Runtime capability change: no. Manual/private mode remains default. No live scraping, production OAuth, provider behavior, backend endpoint behavior, source connector behavior, or storage behavior is enabled.
 

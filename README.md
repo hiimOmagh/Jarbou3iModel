@@ -1,4 +1,4 @@
-### v1.0.14 — Evidence Scoring v1
+### v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
 
 Adds a conservative local evidence-scoring layer that separates **attention signal** from **evidence reliability** before synthesis. The patch adds per-evidence scoring metadata, packet-level scoring reports, schema/fixture coverage, Quality Gate v3 integration, and CI checks.
 
@@ -8,7 +8,7 @@ Experimental research-to-strategy workflow layer for schema-governed strategic a
 
 ## Current version
 
-`v1.0.14 — Evidence Scoring v1`
+`v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass`
 
 This patch does **not** add live scraping, production OAuth, provider behavior changes, backend endpoint changes, or storage changes.
 

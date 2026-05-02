@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.14
+# Release Manifest — v1.0.15
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.14`
-- Release name: `Evidence Scoring v1`
+- Version: `1.0.15`
+- Release name: `Evidence Scoring UI Explanation + Calibration Pass`
 - Release type: patch
 - Runtime capability change: no
 
@@ -52,7 +52,7 @@
 
 ## Compatibility boundary
 
-v1.0.14 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/evidence scoring v1 parsing, schema/fixture coverage, release docs, and QA wrappers.
+v1.0.15 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/evidence scoring UI calibration parsing, schema/fixture coverage, release docs, and QA wrappers.
 
 ## Required no-browser gates
 
@@ -75,15 +75,15 @@ npm run test:ci:browser
 
 Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, and local environment files must not be shipped in release archives. See `.releaseignore`.
 
-## v1.0.14 evidence scoring artifacts
+## v1.0.15 evidence scoring artifacts
 
 - `src/research/evidence-scorer.js`
 - `schema/research-workflow.schema.json`
-- `fixtures/migrations/v1.0.14-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.14.json`
+- `fixtures/migrations/v1.0.15-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.15.json`
 - `tests/evidence-scoring-check.mjs`
 - `tests/v114-no-browser-suite.mjs`
-- `docs/v1.0.14-evidence-scoring-v1.md`
+- `docs/v1.0.15-evidence-scoring-v1.md`
 
 ## v1.0.13 manual source packet artifacts
 
