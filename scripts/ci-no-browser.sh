@@ -59,6 +59,7 @@ run_node tests/backend-worker-smoke.mjs
 run_node tests/module-type-warning-fix-check.mjs
 run_node tests/source-planning-check.mjs
 run_node tests/source-import-check.mjs
+run_node tests/source-packet-import-check.mjs
 run_node tests/evidence-review-queue-check.mjs
 run_node tests/github-source-connector-check.mjs
 run_node tests/web-search-provider-check.mjs
@@ -73,6 +74,7 @@ run_node --check src/research/release-candidate.js
 run_node --check src/research/portable-oauth-spike.js
 run_node --check src/research/search-provider-abstraction.js
 run_node --check src/research/source-capability-registry.js
+run_node --check src/research/source-packet-importer.js
 run_node --check src/research/source-connectors.js
 run_node --check backend/cloudflare-worker.js
 run_node --check tests/provider-mode-browser.spec.mjs
@@ -85,6 +87,8 @@ run_node --check tests/hosted-demo-browser-evidence.spec.mjs
 run_node --check tests/hosted-demo-evidence-review-check.mjs
 run_node --check tests/module-type-warning-fix-check.mjs
 run_node --check tests/repository-hygiene-cleanup-check.mjs
+run_node --check tests/source-packet-import-check.mjs
+run_node --check tests/v113-no-browser-suite.mjs
 run_node --check tests/v112-no-browser-suite.mjs
 run_node --check tests/v111-no-browser-suite.mjs
 run_node --check tests/v110-no-browser-suite.mjs
