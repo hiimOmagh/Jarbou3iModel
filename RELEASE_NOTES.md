@@ -1,32 +1,37 @@
-## v1.0.16 — Source Packet Builder UI + Scoring Review Controls
-- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
+## v1.0.17 — Source Packet Builder Browser QA + UX Tightening
 
-Patch release. Adds local evidence scoring UI calibration so attention signals are tracked separately from evidence reliability before synthesis.
+This patch tightens the browser-facing Source Packet Builder introduced in v1.0.16.
 
-Runtime capability change: no. Manual/private mode remains default. No live scraping, production OAuth, provider behavior, backend endpoint behavior, source connector behavior, or storage behavior is enabled.
+### Added
 
-## What changed
+- Browser-QA hook on the Source Packet Builder card.
+- Explicit local/manual guardrail copy.
+- Responsive builder action layout.
+- Bounded metadata preview for generated source packets.
+- Overflow-safe builder chips, warnings, and preview content.
+- Dedicated static browser-QA check.
+- Dedicated Playwright browser spec for source packet builder UI.
 
-- Added `src/research/evidence-scorer.js`.
-- Added `evidence_scoring` to each evidence item.
-- Added `evidence_scoring_report` to exported research packets.
-- Added schema and fixture coverage for `evidence_scoring.v1`.
-- Added Quality Gate v3 dimensions for evidence reliability and attention-signal integrity.
-- Added risk flags for high-attention/low-reliability items.
-- Preserved the manual source import review queue.
+### Preserved
 
-## Validation
+- No live scraping.
+- No production OAuth.
+- No provider behavior change.
+- No backend endpoint behavior change.
+- No source connector behavior change.
+- No storage behavior change.
+- Manual/private mode remains default.
+- Builder output remains transport metadata, not source verification.
+
+### Required validation
 
 ```bash
-npm run test:evidence:scoring
-npm run test:v114:no-browser
+npm run test:source:packet-builder:browser-qa
+npm run test:source:packet-builder
+npm run test:v117:no-browser
 npm run test:ci:no-browser
-```
-
-Browser validation remains required before updating a hosted demo:
-
-```bash
+npx playwright install --with-deps
 npm run test:ci:browser
 ```
 
-Public Demo boundary remains unchanged: use manual/mock mode unless browser QA and release gates pass.
+Public Demo boundary: hosted/static demo remains honest about local/manual behavior and unavailable live features.

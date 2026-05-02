@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.16
+# Release Manifest — v1.0.17
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.16`
-- Release name: `Source Packet Builder UI + Scoring Review Controls`
+- Version: `1.0.17`
+- Release name: `Source Packet Builder Browser QA + UX Tightening`
 - Release type: patch
 - Runtime capability change: no
 
@@ -50,28 +50,38 @@
 
 ## Compatibility boundary
 
-v1.0.16 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, browser runtime behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add local/manual source packet builder UI, scoring review controls, schema/fixture coverage, release docs, and QA wrappers.
+v1.0.17 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, or schema-breaking workflow structure. The patch is allowed to add browser QA, layout guardrails, source packet builder copy/preview tightening, release docs, fixtures, and QA wrappers.
 
 ## Required no-browser gates
 
 ```bash
+npm run test:source:packet-builder:browser-qa
 npm run test:source:packet-builder
-npm run test:evidence:calibration
-npm run test:v116:no-browser
+npm run test:v117:no-browser
 npm run test:ci:no-browser
 ```
 
 ## Required browser gates before publishing
 
 ```bash
+npm run test:browser:source-packet-builder
 npm run test:ci:browser
 ```
 
 ## Release archive exclusions
 
-Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, and local environment files must not be shipped in release archives. See `.releaseignore`.
+Generated dependency folders, test reports, browser screenshots, coverage output, OS metadata, logs, local environment files, and ZIP archives must not be shipped inside the committed release tree. See `.releaseignore`.
 
-## v1.0.16 source packet builder artifacts
+## v1.0.17 source packet builder browser QA artifacts
+
+- `tests/source-packet-builder-browser-qa-check.mjs`
+- `tests/source-packet-builder-browser.spec.mjs`
+- `tests/v117-no-browser-suite.mjs`
+- `docs/v1.0.17-source-packet-builder-browser-qa-ux-tightening.md`
+- `fixtures/migrations/v1.0.17-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.17.json`
+
+## Retained v1.0.16 artifacts
 
 - `src/research/source-packet-builder.js`
 - `tests/source-packet-builder-check.mjs`

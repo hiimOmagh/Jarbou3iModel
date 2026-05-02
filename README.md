@@ -1,39 +1,30 @@
-### v1.0.16 — Source Packet Builder UI + Scoring Review Controls
-- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
-
-Adds a conservative local evidence-scoring layer that separates **attention signal** from **evidence reliability** before synthesis. The patch adds per-evidence scoring metadata, packet-level scoring reports, schema/fixture coverage, Quality Gate v3 integration, and CI checks.
-
 # Jarbou3i Research Engine
-
-Experimental research-to-strategy workflow layer for schema-governed strategic analysis. The app remains a static, browser-first workspace with manual/private mode preserved as the default operating mode.
 
 ## Current version
 
-`v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass`
+`v1.0.17 — Source Packet Builder Browser QA + UX Tightening`
 
-This patch does **not** add live scraping, production OAuth, provider behavior changes, backend endpoint changes, or storage changes.
+A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
 ## What this patch changes
 
-- Adds `src/research/evidence-scorer.js`.
-- Adds per-evidence `evidence_scoring` metadata.
-- Adds packet-level `evidence_scoring_report`.
-- Tracks reliability, attention, traceability, specificity, recency, contradiction value, and synthesis weight.
-- Flags attention-without-reliability and high-attention social signals for review.
-- Updates source import paths so imported candidates are scored while remaining review-gated.
-- Updates Quality Gate v3 with evidence reliability and attention-integrity dimensions.
-- Adds `tests/evidence-scoring-check.mjs` and `tests/v114-no-browser-suite.mjs`.
+- Adds browser-QA hooks and UX guardrail copy for the Source Packet Builder.
+- Keeps build/copy/export controls visible and responsive across desktop, tablet, and mobile layouts.
+- Adds bounded packet metadata preview in the builder output.
+- Adds overflow-safe styling for builder chips, warnings, and preview content.
+- Ensures the builder appears in the Sources and Quality workflow tabs.
+- Adds static browser-QA checks and a dedicated Playwright browser spec.
 
 ## Compatibility boundary
 
+- No live scraping.
+- No production OAuth.
 - No provider behavior change.
-- No OAuth behavior change.
 - No backend endpoint behavior change.
 - No source connector behavior change.
-- No browser runtime behavior change.
-- No storage model change.
-- Manual/private mode remains first-class.
-- Imported candidates remain unverified until human review.
+- No storage behavior change.
+- Manual/private mode remains default.
+- Builder output is transport metadata, not source verification.
 
 ## Stable workflow
 
@@ -42,172 +33,60 @@ Topic/context
 → Research Plan
 → Evidence Matrix
 → Evidence Review Queue
+→ Source Packet Builder
 → Causal Links
 → Analysis Brief Compiler
-→ Provider Harness: mock / dry-run / BYOK / hosted proxy / portable mock
+→ Provider Harness
 → Provider Response Validation
 → Controlled Repair Loop
 → Privacy Export Guard
-→ Privacy Audit Release Gate
 → Quality Gate
 → Export Pack
 → Hosted Demo Evidence Review
-```
-
-## First-run workflow
-
-The v1.0.5 onboarding layer remains active in v1.0.11:
-
-```text
-Topic → Plan → Evidence → Review queue → Quality gate → Safe export
-```
-
-The first-run state is local-only and exports only safe onboarding metadata.
-
-## Hosted demo evidence workflow
-
-```text
-Local/browser CI
-→ optional HOSTED_DEMO_URL verification
-→ desktop screenshot
-→ mobile screenshot
-→ provider-mode screenshot
-→ quality/export screenshot
-→ hosted-demo-metadata.json
-→ evidence review gate
-```
-
-Run against a deployed URL:
-
-```bash
-HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
-```
-
-## Source connector contract
-
-```text
-GitHub public metadata → source result ledger → Evidence Review Queue → human review → Evidence Matrix
-```
-
-The first real connector is intentionally limited to public GitHub repository/release/language metadata. It preserves source URLs and dates, records source fetching in the source run ledger, and queues evidence candidates for review.
-
-## Backend hardening contract
-
-The optional hosted proxy enforces:
-
-```text
-Structured errors: error_code + error_category + retryable + request_id
-CORS allow-list: ALLOWED_ORIGINS
-Rate limiting: RATE_LIMIT_SECONDS
-Request limits: MAX_BODY_BYTES + MAX_PROMPT_CHARS
-Upstream limits: MAX_UPSTREAM_BYTES + PROVIDER_TIMEOUT_MS
-Model policy: ALLOWED_MODELS
-Audit policy: AUDIT_LOGS_ENABLED with metadata-only redaction
-```
-
-## Privacy export contract
-
-Final exported payloads must report:
-
-```text
-privacy_export.release_gate: pass
-privacy_export.post_redaction_issue_count: 0
-privacy_export.key_exported: false
-privacy_export.raw_token_exported: false
-privacy_export.access_token_exported: false
-privacy_export.refresh_token_exported: false
-```
-
-Safe derived metadata such as token hashes and exported-false flags remains allowed. Raw keys, raw tokens, bearer strings, and secret-shaped values are blocked from final export payloads.
-
-## Provider safety model
-
-```text
-Default: MockProvider / dry-run only
-BYOK live calls: require provider=openai_compatible + API key + live opt-in
-Hosted live calls: require provider=backend_proxy + proxy endpoint + live opt-in
-Portable account mode: provider=portable_oauth uses a local mock OAuth lifecycle only
-Backend key storage: server environment secret only
-Portable account storage: token hash only; no raw access/refresh token exists
-Exports: keys and raw tokens are blocked by privacy guard and audit release gate
-Validation: provider output must pass contract checks before application
 ```
 
 ## Local QA
 
 ```bash
 npm install
-npm run test:qa
-npm run test:privacy
-npm run test:provider
-npm run test:source
-npm run test:backend
-npm run test:export-pack
-npm run test:quality
-npm run test:migrations
-npm run test:release-packaging
-npm run test:repo:hygiene
-npm run test:hosted-demo
-npm run test:hosted-demo:evidence-review
-npm run test:module-type-warning
-npm run test:v111:no-browser
-```
-
-Browser tests require Playwright browsers:
-
-```bash
+npm run test:ci:no-browser
 npx playwright install --with-deps
-npm run test:browser:provider
-npm run test:browser:layout
-npm run test:browser:visual
-npm run test:browser:evidence
+npm run test:ci:browser
 ```
 
-Full release gate:
+Targeted v1.0.17 checks:
 
 ```bash
-npm run test:ci
+npm run test:source:packet-builder:browser-qa
+npm run test:source:packet-builder
+npm run test:v117:no-browser
+npm run test:browser:source-packet-builder
 ```
 
-## Deployment
+## Release history
 
-The app remains static and GitHub Pages-compatible. The optional Cloudflare Worker backend scaffold is present for hosted proxy experiments, but the app must continue to work without it.
-
-## Release history map
-
-| Version | Release focus | Runtime capability added? |
-|---|---|---:|
-| v1.0.11 | Repository Hygiene + Stale Artifact Cleanup | No |
-| v1.0.9 | Hosted Demo Smoke Fixes + Evidence Review | No |
-| v1.0.8 | Hosted Demo Deployment Verification + Browser Evidence Capture | No |
-| v1.0.7 | Public Demo Readiness + Release Notes Polish | No |
-| v1.0.6 | Documentation + Release Packaging Cleanup | No |
-| v1.0.5 | Onboarding + First-Run Success | Yes, local-only onboarding metadata/UI |
-| v1.0.4 | Browser QA + Visual Regression Hardening | No |
-| v1.0.3 | Screen Discipline Patch | No |
-| v1.0.2 | UX Stabilization Patch | No |
-| v1.0.1 | Patch-only Stabilization | No |
-| v1.0.0 | Public Beta / Stable Research Engine | No, release promotion |
-| v0.29.0-rc.1 | Release Candidate Freeze | No, freeze metadata |
-| v0.28.0-beta | Real Portable OAuth Spike | Development spike only; no production OAuth |
-| v0.27.0-beta | Web Search Provider Abstraction | Dry-run abstraction only |
-| v0.26.0-beta | Real Source Connector Prototype | Review-gated GitHub public metadata connector |
-| v0.25.0-beta | Real Backend Provider Hardening | Optional hosted proxy hardening |
-| v0.24.0-beta | Export Pack v2 | Structured export bundle |
-| v0.23.0-beta | Advanced Quality Gate v3 | Quality diagnostics |
-| v0.22.0-beta | Analysis Template System | Template selection |
-| v0.21.0-beta | Project Workspace + Local Storage Management | Local-only project storage |
-| v0.20.0-beta | UX Reliability Pass | Reliability helpers |
-| v0.19.0-beta | Privacy Audit Hardening | Privacy audit gate |
-| v0.18.0-beta | Module Split | Architecture/module split |
-| v0.17.0-beta | State Migration + Version Compatibility Layer | Migration layer |
-| v0.16.0-beta | Provider Mode Browser QA + Privacy Export Tests | QA hardening |
-| v0.15.0-beta | Portable Account Mock Flow | Local mock flow only |
-
-## Repository hygiene guard
-
-```bash
-npm run test:repo:hygiene
-```
-
-The gate rejects stale duplicate release docs, orphan temporary files, generated dependency/build/test artifacts, root ZIP archives, and local secret/config files.
+- v1.0.17 — Source Packet Builder Browser QA + UX Tightening
+- v1.0.16 — Source Packet Builder UI + Scoring Review Controls
+- v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
+- v1.0.14 — Evidence Scoring v1
+- v1.0.13 — Manual Source Packet Import
+- v1.0.12 — Research Source Strategy Blueprint
+- v1.0.11 — Repository Hygiene + Stale Artifact Cleanup
+- v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix
+- v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review
+- v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture
+- v1.0.7 — Public Demo Readiness + Release Notes Polish
+- v1.0.6 — Documentation + Release Packaging Cleanup
+- v1.0.5 — Onboarding + First-Run Success
+- v1.0.4 — Browser QA + Visual Regression Hardening
+- v1.0.3 — Screen Discipline Patch
+- v1.0.2 — UX Stabilization Patch
+- v1.0.1 — Patch-only Stabilization
+- v1.0.0 — Public Beta / Stable Research Engine
+- v0.29.0-rc.1 — Release Candidate Freeze
+- v0.28.0-beta — Real Portable OAuth Spike
+- v0.27.0-beta — Web Search Provider Abstraction
+- v0.26.0-beta — Real Source Connector Prototype
+- v0.25.0-beta — Real Backend Provider Hardening
+- v0.24.0-beta — Export Pack v2
+- v0.23.0-beta — Advanced Quality Gate v3
