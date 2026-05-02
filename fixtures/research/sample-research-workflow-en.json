@@ -1,8 +1,8 @@
 {
-  "workflow_version": "1.0.14",
+  "workflow_version": "1.0.15",
   "generated_at": "2026-04-28T00:00:00.000Z",
   "research_plan": {
-    "plan_version": "1.0.14",
+    "plan_version": "1.0.15",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
     "mode": "source-heavy",
@@ -78,7 +78,7 @@
       "notes": "Fixture source is illustrative; replace before publication.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.0.14",
+        "scorer_version": "1.0.15",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 80,
@@ -89,7 +89,32 @@
         "synthesis_weight": 70,
         "attention_is_truth_score": false,
         "policy": "attention_signal_is_not_evidence_reliability",
-        "risk_flags": []
+        "risk_flags": [],
+        "calibration_version": "evidence_scoring_calibration.v1",
+        "reliability_band": "strong",
+        "attention_band": "low",
+        "traceability_band": "very_strong",
+        "synthesis_band": "strong",
+        "calibration_warnings": [
+          "strong_low_attention_evidence_should_not_be_buried"
+        ],
+        "calibration_profile": "conservative_editorial_research",
+        "calibration_thresholds": {
+          "low": 0,
+          "moderate": 45,
+          "strong": 70,
+          "very_strong": 85,
+          "attention_warning": 70,
+          "reliability_floor_for_high_attention": 55,
+          "traceability_warning": 55
+        },
+        "score_theater_guard": "scores_explain_prioritization_not_truth",
+        "explanation_policy": {
+          "reliability": "Reliability = source strength, traceability, specificity, confidence, and recency.",
+          "attention": "Attention = public visibility only. It is not a truth score.",
+          "synthesis_weight": "Synthesis weight = prioritization aid, not automated truth.",
+          "review_gate": "Scores are calibration aids; human review remains required for publication."
+        }
       }
     },
     {
@@ -113,7 +138,7 @@
       "notes": "Used to test contradiction links.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.0.14",
+        "scorer_version": "1.0.15",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 60,
         "reliability_score": 71,
@@ -124,7 +149,30 @@
         "synthesis_weight": 76,
         "attention_is_truth_score": false,
         "policy": "attention_signal_is_not_evidence_reliability",
-        "risk_flags": []
+        "risk_flags": [],
+        "calibration_version": "evidence_scoring_calibration.v1",
+        "reliability_band": "strong",
+        "attention_band": "moderate",
+        "traceability_band": "very_strong",
+        "synthesis_band": "strong",
+        "calibration_warnings": [],
+        "calibration_profile": "conservative_editorial_research",
+        "calibration_thresholds": {
+          "low": 0,
+          "moderate": 45,
+          "strong": 70,
+          "very_strong": 85,
+          "attention_warning": 70,
+          "reliability_floor_for_high_attention": 55,
+          "traceability_warning": 55
+        },
+        "score_theater_guard": "scores_explain_prioritization_not_truth",
+        "explanation_policy": {
+          "reliability": "Reliability = source strength, traceability, specificity, confidence, and recency.",
+          "attention": "Attention = public visibility only. It is not a truth score.",
+          "synthesis_weight": "Synthesis weight = prioritization aid, not automated truth.",
+          "review_gate": "Scores are calibration aids; human review remains required for publication."
+        }
       }
     },
     {
@@ -146,7 +194,7 @@
       "notes": "Used to test feedback loops.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.0.14",
+        "scorer_version": "1.0.15",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 69,
@@ -157,7 +205,30 @@
         "synthesis_weight": 66,
         "attention_is_truth_score": false,
         "policy": "attention_signal_is_not_evidence_reliability",
-        "risk_flags": []
+        "risk_flags": [],
+        "calibration_version": "evidence_scoring_calibration.v1",
+        "reliability_band": "moderate",
+        "attention_band": "low",
+        "traceability_band": "very_strong",
+        "synthesis_band": "moderate",
+        "calibration_warnings": [],
+        "calibration_profile": "conservative_editorial_research",
+        "calibration_thresholds": {
+          "low": 0,
+          "moderate": 45,
+          "strong": 70,
+          "very_strong": 85,
+          "attention_warning": 70,
+          "reliability_floor_for_high_attention": 55,
+          "traceability_warning": 55
+        },
+        "score_theater_guard": "scores_explain_prioritization_not_truth",
+        "explanation_policy": {
+          "reliability": "Reliability = source strength, traceability, specificity, confidence, and recency.",
+          "attention": "Attention = public visibility only. It is not a truth score.",
+          "synthesis_weight": "Synthesis weight = prioritization aid, not automated truth.",
+          "review_gate": "Scores are calibration aids; human review remains required for publication."
+        }
       }
     }
   ],
@@ -191,11 +262,11 @@
     }
   ],
   "critique": {
-    "critique_version": "1.0.14",
+    "critique_version": "1.0.15",
     "summary": "Fixture has enough structure for research-packet validation, not publication."
   },
   "analysis_brief": {
-    "brief_version": "1.0.14",
+    "brief_version": "1.0.15",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
@@ -337,10 +408,10 @@
     "handoff_summary": "Compile the fixture evidence into a strategic analysis of semiconductor export controls as an adaptive system.",
     "analysis_template": {
       "template_id": "strategic_analysis_engine",
-      "template_version": "1.0.14",
+      "template_version": "1.0.15",
       "display_name": "Strategic Analysis Engine",
       "short_name": "Strategic",
-      "description": "Default Interests \u2192 Actors \u2192 Tools \u2192 Narrative \u2192 Outcomes \u2192 Feedback model with evidence review discipline.",
+      "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
       "output_focus": [
         "interests",
         "actors",
@@ -382,7 +453,7 @@
       ]
     },
     "template_fit_report": {
-      "fit_version": "1.0.14",
+      "fit_version": "1.0.15",
       "template_id": "strategic_analysis_engine",
       "required_layers": [
         "interests",
@@ -404,7 +475,7 @@
       "fit_score": 100
     },
     "quality_gate_report": {
-      "quality_gate_version": "1.0.14",
+      "quality_gate_version": "1.0.15",
       "generated_at": "2026-04-28T21:08:50.659Z",
       "gate_name": "Advanced Quality Gate v3",
       "overall_score": 84,
@@ -520,7 +591,7 @@
         "readiness": 85
       },
       "evidence_scoring_report": {
-        "evidence_scoring_version": "1.0.14",
+        "evidence_scoring_version": "1.0.15",
         "scoring_model": "evidence_scoring.v1",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "item_count": 3,
@@ -541,10 +612,52 @@
     "quality_fix_actions": [
       "Add traceable evidence with URLs, dates, source types, and stronger evidence_strength values.",
       "Add counter-evidence and contradiction-linked claims before treating the analysis as robust."
-    ]
+    ],
+    "evidence_scoring_report": {
+      "evidence_scoring_version": "1.0.15",
+      "scoring_model": "evidence_scoring.v1",
+      "calibration_version": "evidence_scoring_calibration.v1",
+      "generated_at": "2026-05-02T00:00:00.000Z",
+      "item_count": 3,
+      "average_reliability_score": 73,
+      "average_attention_signal_score": 47,
+      "average_traceability_score": 85,
+      "average_synthesis_weight": 71,
+      "high_reliability_count": 2,
+      "attention_dominance_risk_count": 0,
+      "high_attention_social_signal_count": 0,
+      "weak_traceability_count": 0,
+      "calibration_warning_count": 1,
+      "reliability_band": "strong",
+      "attention_band": "moderate",
+      "traceability_band": "very_strong",
+      "synthesis_band": "strong",
+      "calibration_profile": "conservative_editorial_research",
+      "calibration_thresholds": {
+        "low": 0,
+        "moderate": 45,
+        "strong": 70,
+        "very_strong": 85,
+        "attention_warning": 70,
+        "reliability_floor_for_high_attention": 55,
+        "traceability_warning": 55
+      },
+      "score_theater_guard": "scores_explain_prioritization_not_truth",
+      "explanation_policy": {
+        "reliability": "Reliability = source strength, traceability, specificity, confidence, and recency.",
+        "attention": "Attention = public visibility only. It is not a truth score.",
+        "synthesis_weight": "Synthesis weight = prioritization aid, not automated truth.",
+        "review_gate": "Scores are calibration aids; human review remains required for publication."
+      },
+      "policy": "public attention is tracked separately from evidence reliability",
+      "release_gate": "pass",
+      "risk_flags": [
+        "calibration_warning_present"
+      ]
+    }
   },
   "diagnostics": {
-    "diagnostics_version": "1.0.14",
+    "diagnostics_version": "1.0.15",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "linked_ids": [
       "A1",
@@ -576,7 +689,7 @@
   "ai_runs": [
     {
       "run_id": "RUN-FIXTURE-001",
-      "run_version": "1.0.14",
+      "run_version": "1.0.15",
       "provider": "mock",
       "task": "synthesis",
       "status": "ok",
@@ -609,7 +722,7 @@
         "verdict": "mock_safe"
       },
       "response_validation": {
-        "validation_version": "1.0.14",
+        "validation_version": "1.0.15",
         "validated_at": "2026-04-28T00:00:00.060Z",
         "task": "synthesis",
         "expected_type": "strategic_analysis",
@@ -666,7 +779,7 @@
     "remember_key": false
   },
   "provider_validation": {
-    "validation_version": "1.0.14",
+    "validation_version": "1.0.15",
     "validated_at": "2026-04-28T00:00:00.060Z",
     "task": "synthesis",
     "expected_type": "strategic_analysis",
@@ -681,7 +794,7 @@
     "status": "not_required"
   },
   "provider_diagnostics": {
-    "diagnostics_version": "1.0.14",
+    "diagnostics_version": "1.0.15",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "task": "synthesis",
     "provider": "mock",
@@ -732,7 +845,7 @@
     }
   },
   "provider_fixture_report": {
-    "suite_version": "1.0.14",
+    "suite_version": "1.0.15",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -792,7 +905,7 @@
     ]
   },
   "source_policy": {
-    "policy_version": "1.0.14",
+    "policy_version": "1.0.15",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "live_fetching_enabled": false,
     "current_layer": "planning_only",
@@ -813,10 +926,10 @@
       "source URL/date/type preservation"
     ],
     "verdict": "safe_planning_layer_only",
-    "source_policy_version": "1.0.14"
+    "source_policy_version": "1.0.15"
   },
   "source_diagnostics": {
-    "diagnostics_version": "1.0.14",
+    "diagnostics_version": "1.0.15",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "connector": "manual_mock",
     "task": "source_plan",
@@ -836,7 +949,7 @@
     ]
   },
   "source_fixture_report": {
-    "suite_version": "1.0.14",
+    "suite_version": "1.0.15",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -881,7 +994,7 @@
   },
   "source_requests": [
     {
-      "request_version": "1.0.14",
+      "request_version": "1.0.15",
       "created_at": "2026-04-28T00:00:00.000Z",
       "connector": "manual_mock",
       "task": "source_plan",
@@ -908,7 +1021,7 @@
         "China"
       ],
       "safety_policy": {
-        "policy_version": "1.0.14",
+        "policy_version": "1.0.15",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "live_fetching_enabled": false,
         "current_layer": "planning_only",
@@ -935,7 +1048,7 @@
   "source_runs": [
     {
       "run_id": "SRC-FIXTURE-1",
-      "run_version": "1.0.14",
+      "run_version": "1.0.15",
       "connector": "manual_mock",
       "task": "source_plan",
       "status": "planned",
@@ -948,7 +1061,7 @@
     }
   ],
   "source_import_report": {
-    "import_version": "1.0.14",
+    "import_version": "1.0.15",
     "imported_at": "2026-05-02T00:00:00.000Z",
     "input_format": "source_packet",
     "source_packet_schema": "manual_source_packet.v1",
@@ -976,7 +1089,7 @@
       "import_id": "IMP-fixture-v113",
       "imported_at": "2026-05-02T00:00:00.000Z",
       "report": {
-        "import_version": "1.0.14",
+        "import_version": "1.0.15",
         "imported_at": "2026-05-02T00:00:00.000Z",
         "input_format": "source_packet",
         "source_packet_schema": "manual_source_packet.v1",
@@ -1119,7 +1232,7 @@
     }
   ],
   "evidence_review_report": {
-    "review_version": "1.0.14",
+    "review_version": "1.0.15",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "queue_count": 3,
     "pending_count": 2,
@@ -1164,7 +1277,7 @@
     ]
   },
   "portable_account": {
-    "portable_account_version": "1.0.14",
+    "portable_account_version": "1.0.15",
     "provider_id": "portable_oauth",
     "status": "connected_mock",
     "account_id": "pa_fixture0001",
@@ -1195,8 +1308,8 @@
     "code_verifier_exported": false
   },
   "privacy_export": {
-    "audit_version": "1.0.14",
-    "guard_version": "1.0.14",
+    "audit_version": "1.0.15",
+    "guard_version": "1.0.15",
     "safe": true,
     "release_gate": "pass",
     "issue_count": 0,
@@ -1218,9 +1331,9 @@
     }
   },
   "packet_migration_report": {
-    "migration_version": "1.0.14",
-    "source_version": "1.0.14",
-    "target_version": "1.0.14",
+    "migration_version": "1.0.15",
+    "source_version": "1.0.15",
+    "target_version": "1.0.15",
     "started_at": "2026-04-28T00:00:00.000Z",
     "completed_at": "2026-04-28T00:00:00.000Z",
     "migrated": false,
@@ -1233,7 +1346,7 @@
     "import_safe": true
   },
   "project_workspace": {
-    "workspace_version": "1.0.14",
+    "workspace_version": "1.0.15",
     "storage_mode": "local_only",
     "active_project_id": null,
     "active_project_name": null,
@@ -1241,7 +1354,7 @@
     "storage_warning": "Projects are stored only in this browser localStorage.",
     "last_saved_at": null,
     "quota": {
-      "diagnostics_version": "1.0.14",
+      "diagnostics_version": "1.0.15",
       "available": true,
       "storage_mode": "local_only",
       "project_count": 0,
@@ -1252,10 +1365,10 @@
   },
   "analysis_template": {
     "template_id": "strategic_analysis_engine",
-    "template_version": "1.0.14",
+    "template_version": "1.0.15",
     "display_name": "Strategic Analysis Engine",
     "short_name": "Strategic",
-    "description": "Default Interests \u2192 Actors \u2192 Tools \u2192 Narrative \u2192 Outcomes \u2192 Feedback model with evidence review discipline.",
+    "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
     "output_focus": [
       "interests",
       "actors",
@@ -1297,7 +1410,7 @@
     ]
   },
   "quality_gate": {
-    "quality_gate_version": "1.0.14",
+    "quality_gate_version": "1.0.15",
     "generated_at": "2026-04-28T21:08:50.659Z",
     "gate_name": "Advanced Quality Gate v3",
     "overall_score": 84,
@@ -1413,8 +1526,9 @@
       "readiness": 85
     },
     "evidence_scoring_report": {
-      "evidence_scoring_version": "1.0.14",
+      "evidence_scoring_version": "1.0.15",
       "scoring_model": "evidence_scoring.v1",
+      "calibration_version": "evidence_scoring_calibration.v1",
       "generated_at": "2026-05-02T00:00:00.000Z",
       "item_count": 3,
       "average_reliability_score": 73,
@@ -1425,13 +1539,37 @@
       "attention_dominance_risk_count": 0,
       "high_attention_social_signal_count": 0,
       "weak_traceability_count": 0,
+      "calibration_warning_count": 1,
+      "reliability_band": "strong",
+      "attention_band": "moderate",
+      "traceability_band": "very_strong",
+      "synthesis_band": "strong",
+      "calibration_profile": "conservative_editorial_research",
+      "calibration_thresholds": {
+        "low": 0,
+        "moderate": 45,
+        "strong": 70,
+        "very_strong": 85,
+        "attention_warning": 70,
+        "reliability_floor_for_high_attention": 55,
+        "traceability_warning": 55
+      },
+      "score_theater_guard": "scores_explain_prioritization_not_truth",
+      "explanation_policy": {
+        "reliability": "Reliability = source strength, traceability, specificity, confidence, and recency.",
+        "attention": "Attention = public visibility only. It is not a truth score.",
+        "synthesis_weight": "Synthesis weight = prioritization aid, not automated truth.",
+        "review_gate": "Scores are calibration aids; human review remains required for publication."
+      },
       "policy": "public attention is tracked separately from evidence reliability",
       "release_gate": "pass",
-      "risk_flags": []
+      "risk_flags": [
+        "calibration_warning_present"
+      ]
     }
   },
   "export_pack": {
-    "export_pack_version": "1.0.14",
+    "export_pack_version": "1.0.15",
     "format": "export_pack_v2",
     "files": [
       "research-packet.json",
@@ -1445,8 +1583,8 @@
     "release_gate": "privacy_audit_required"
   },
   "backend_hardening": {
-    "hardening_version": "1.0.14",
-    "proxy_version": "1.0.14",
+    "hardening_version": "1.0.15",
+    "proxy_version": "1.0.15",
     "status": "optional_backend_hardened",
     "rate_limiting": {
       "supported": true,
@@ -1487,7 +1625,7 @@
   "source_results": [
     {
       "result_id": "SR-FIXTURE-1",
-      "result_version": "1.0.14",
+      "result_version": "1.0.15",
       "connector": "github_public_repo",
       "task": "source_plan",
       "created_at": "2026-04-28T00:00:00.000Z",
@@ -1504,7 +1642,7 @@
     }
   ],
   "search_provider_identity": {
-    "identity_version": "1.0.14",
+    "identity_version": "1.0.15",
     "provider_id": "mock_search",
     "display_name": "Mock Search Provider",
     "status": "available_dry_run",
@@ -1526,7 +1664,7 @@
     ]
   },
   "search_query_budget": {
-    "budget_version": "1.0.14",
+    "budget_version": "1.0.15",
     "max_queries": 6,
     "max_results_per_query": 5,
     "max_total_results": 30,
@@ -1540,9 +1678,9 @@
     "live_search_enabled": false
   },
   "search_policy": {
-    "search_policy_version": "1.0.14",
+    "search_policy_version": "1.0.15",
     "provider_identity": {
-      "identity_version": "1.0.14",
+      "identity_version": "1.0.15",
       "provider_id": "mock_search",
       "display_name": "Mock Search Provider",
       "status": "available_dry_run",
@@ -1564,7 +1702,7 @@
       ]
     },
     "query_budget": {
-      "budget_version": "1.0.14",
+      "budget_version": "1.0.15",
       "max_queries": 6,
       "max_results_per_query": 5,
       "max_total_results": 30,
@@ -1603,7 +1741,7 @@
     "verdict": "web_search_abstraction_ready_no_live_fetch"
   },
   "portable_oauth_spike": {
-    "oauth_spike_version": "1.0.14",
+    "oauth_spike_version": "1.0.15",
     "provider_id": "portable_oauth",
     "status": "disconnected",
     "mode": "real_oauth_pkce_spike",
@@ -1625,11 +1763,11 @@
     "safety_verdict": "oauth_dev_disconnected_token_state_cleared"
   },
   "release_candidate": {
-    "release_candidate_version": "1.0.14",
-    "stable_release_version": "1.0.14",
+    "release_candidate_version": "1.0.15",
+    "stable_release_version": "1.0.15",
     "generated_at": "2026-04-29T18:54:43.435Z",
     "policy": {
-      "release_version": "1.0.14",
+      "release_version": "1.0.15",
       "release_stage": "public_beta_stable",
       "rc_number": null,
       "freeze_status": "stable_feature_baseline",
@@ -1692,7 +1830,7 @@
         "gate": "migration_report_present",
         "required": false,
         "passed": true,
-        "notes": "1.0.14"
+        "notes": "1.0.15"
       },
       {
         "gate": "oauth_tokens_not_exported",
@@ -1719,15 +1857,15 @@
     "verdict": "public_beta_stable_ready"
   },
   "ci_validation": {
-    "ci_validation_version": "1.0.14",
+    "ci_validation_version": "1.0.15",
     "external_ci_passed": true,
     "browser_provider_passed": true,
     "full_browser_passed": true,
     "source": "user_reported_new_ci_succeeded",
-    "notes": "External CI/browser validation reported as successful before v1.0.14 promotion."
+    "notes": "External CI/browser validation reported as successful before v1.0.15 promotion."
   },
   "browser_qa_hardening": {
-    "hardening_version": "1.0.14",
+    "hardening_version": "1.0.15",
     "release_type": "patch_only_browser_qa_visual_regression",
     "feature_surface_added": false,
     "browser_gate": {
@@ -1757,7 +1895,7 @@
     "release_gate": "browser_qa_hardened"
   },
   "onboarding": {
-    "onboarding_version": "1.0.14",
+    "onboarding_version": "1.0.15",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "first_run": false,
     "dismissed": false,
@@ -1845,7 +1983,7 @@
     ]
   },
   "public_demo": {
-    "public_demo_version": "1.0.14",
+    "public_demo_version": "1.0.15",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "demo_stage": "public_demo_ready",
     "release_type": "patch",
@@ -1929,14 +2067,14 @@
     "release_gate": "public_demo_ready_checked"
   },
   "release_notes": {
-    "release_notes_version": "1.0.14",
+    "release_notes_version": "1.0.15",
     "generated_at": "2026-05-02T00:00:00.000Z",
-    "release_title": "v1.0.14 \u2014 Evidence Scoring v1",
+    "release_title": "v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass",
     "release_type": "patch",
     "runtime_capability_change": false,
-    "summary": "Adds evidence scoring v1 so attention signals, reliability, traceability, contradiction value, and synthesis weight remain separate before publication review.",
+    "summary": "Adds evidence scoring UI calibration so attention signals, reliability, traceability, contradiction value, and synthesis weight remain separate before publication review.",
     "notable_changes": [
-      "Added a evidence scoring v1er for structured JSON source packets.",
+      "Added a evidence scoring UI calibrationer for structured JSON source packets.",
       "Extended the source import adapter with source_packet detection and conversion.",
       "Queued imported packet evidence for human review before Evidence Matrix promotion.",
       "Added schema, fixtures, and no-browser tests for manual packet imports."
@@ -1955,10 +2093,11 @@
       "Verify GitHub Pages deployment uses the current package files.",
       "Confirm release archive excludes generated and secret-bearing files."
     ],
-    "release_gate": "release_notes_polished"
+    "release_gate": "release_notes_polished",
+    "release_version": "1.0.15"
   },
   "hosted_demo_verification": {
-    "hosted_demo_version": "1.0.14",
+    "hosted_demo_version": "1.0.15",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_verification",
@@ -2046,7 +2185,7 @@
     "release_gate": "hosted_demo_verified"
   },
   "browser_evidence_capture": {
-    "browser_evidence_version": "1.0.14",
+    "browser_evidence_version": "1.0.15",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "evidence_mode": "playwright_capture_attach_and_write_artifacts",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -2100,7 +2239,7 @@
     "metadata_written_by_default": true
   },
   "hosted_demo_smoke_fixes": {
-    "smoke_fixes_version": "1.0.14",
+    "smoke_fixes_version": "1.0.15",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_smoke_fixes",
@@ -2182,7 +2321,7 @@
     "release_gate": "hosted_demo_smoke_fixed"
   },
   "hosted_demo_evidence_review": {
-    "evidence_review_version": "1.0.14",
+    "evidence_review_version": "1.0.15",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "review_stage": "hosted_demo_evidence_review",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -2257,7 +2396,7 @@
     "release_gate": "evidence_review_complete"
   },
   "source_capability_registry": {
-    "source_strategy_version": "1.0.14",
+    "source_strategy_version": "1.0.15",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "release_gate": "source_strategy_blueprint_checked",
     "runtime_capability_change": false,
@@ -2311,7 +2450,7 @@
         "export_allowed": true,
         "status": "available_manual_import",
         "notes": [
-          "Available in v1.0.14. Imports structured user-collected source packets into the review queue. No live fetching, scraping, or verification claims."
+          "Available in v1.0.15. Imports structured user-collected source packets into the review queue. No live fetching, scraping, or verification claims."
         ]
       },
       {
@@ -2364,7 +2503,7 @@
       }
     ],
     "audit": {
-      "registry_version": "1.0.14",
+      "registry_version": "1.0.15",
       "generated_at": "2026-05-02T00:00:00.000Z",
       "capability_count": 6,
       "visible_demo_capabilities": [
@@ -2390,7 +2529,7 @@
       "ok": true,
       "verdict": "source_capability_registry_ready_manual_packet_import"
     },
-    "next_safe_increment": "v1.0.14 evidence scoring v1",
+    "next_safe_increment": "v1.0.15 evidence scoring UI calibration",
     "blocked_until_threat_modeled": [
       "production OAuth / portable account auth",
       "live Reddit/X/YouTube/TikTok scraping",
@@ -2399,8 +2538,9 @@
     "scoring_warning": "Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength."
   },
   "evidence_scoring_report": {
-    "evidence_scoring_version": "1.0.14",
+    "evidence_scoring_version": "1.0.15",
     "scoring_model": "evidence_scoring.v1",
+    "calibration_version": "evidence_scoring_calibration.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "item_count": 3,
     "average_reliability_score": 73,
@@ -2411,8 +2551,32 @@
     "attention_dominance_risk_count": 0,
     "high_attention_social_signal_count": 0,
     "weak_traceability_count": 0,
+    "calibration_warning_count": 1,
+    "reliability_band": "strong",
+    "attention_band": "moderate",
+    "traceability_band": "very_strong",
+    "synthesis_band": "strong",
+    "calibration_profile": "conservative_editorial_research",
+    "calibration_thresholds": {
+      "low": 0,
+      "moderate": 45,
+      "strong": 70,
+      "very_strong": 85,
+      "attention_warning": 70,
+      "reliability_floor_for_high_attention": 55,
+      "traceability_warning": 55
+    },
+    "score_theater_guard": "scores_explain_prioritization_not_truth",
+    "explanation_policy": {
+      "reliability": "Reliability = source strength, traceability, specificity, confidence, and recency.",
+      "attention": "Attention = public visibility only. It is not a truth score.",
+      "synthesis_weight": "Synthesis weight = prioritization aid, not automated truth.",
+      "review_gate": "Scores are calibration aids; human review remains required for publication."
+    },
     "policy": "public attention is tracked separately from evidence reliability",
     "release_gate": "pass",
-    "risk_flags": []
+    "risk_flags": [
+      "calibration_warning_present"
+    ]
   }
 }
