@@ -787,3 +787,18 @@ html[dir="rtl"] .welcomeEyebrow{
 @media(max-width:760px){.evidenceReviewPanel{grid-template-columns:1fr}.evidenceReviewChecklist{grid-template-columns:1fr}.evidenceReviewChecklist span{text-align:start}}
 
 /* v1.0.15 screen discipline patch compatibility token retained for stable patch QA. */
+
+/* v1.0.17 — Source Packet Builder Browser QA + UX Tightening */
+.sourcePacketBuilderCard{overflow:hidden;contain:layout paint;}
+.sourcePacketBuilderGuardrail{border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));border-radius:16px;padding:10px 12px;background:color-mix(in srgb,var(--accent) 6%,var(--surface-solid));color:var(--text);font-size:12.6px;font-weight:850;line-height:1.5;overflow-wrap:anywhere;}
+.sourcePacketBuilderActions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:stretch!important;}
+.sourcePacketBuilderActions .btn{width:100%;min-width:0;white-space:normal;text-align:center;line-height:1.2;}
+.sourcePacketBuilderOutput{max-width:100%;overflow:auto;}
+.sourcePacketBuilderQaCard{max-width:100%;min-width:0;overflow:hidden;}
+.sourcePacketBuilderChips{max-width:100%;min-width:0;}
+.sourcePacketBuilderChips span{max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere;word-break:normal;}
+.sourcePacketBuilderRiskGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:100%;}
+.sourcePacketBuilderRiskGrid span,.sourcePacketBuilderQaChecklist span{border:1px solid var(--line);border-radius:14px;padding:8px 10px;background:var(--surface-solid);font-size:12px;font-weight:900;color:var(--text);overflow-wrap:anywhere;min-width:0;}
+.sourcePacketBuilderQaChecklist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:100%;}
+.sourcePacketBuilderPreview{max-width:100%;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--line);border-radius:14px;padding:10px;background:color-mix(in srgb,var(--surface-solid) 96%,transparent);font-size:11.5px;line-height:1.45;color:var(--muted);}
+@media(max-width:780px){.sourcePacketBuilderActions,.sourcePacketBuilderRiskGrid,.sourcePacketBuilderQaChecklist{grid-template-columns:1fr}.sourcePacketBuilderOutput{overflow-x:hidden}.sourcePacketBuilderPreview{font-size:11px}}

@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.16 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.17 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.16';
+  const VERSION = '1.0.17';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -1739,12 +1739,26 @@
     const packet = state.last_built_source_packet || null;
     const report = state.source_packet_builder_report || packet?.builder_report || null;
     if(!packet && !report){
-      el.innerHTML = `<p class="muted">${esc(tr('sourcePacketBuilderPolicyNote'))}</p>`;
+      el.innerHTML = `<p class="muted">${esc(tr('sourcePacketBuilderPolicyNote'))}</p><div class="sourcePacketBuilderQaChecklist"><span>${esc(tr('sourcePacketBuilderQaNoLive'))}</span><span>${esc(tr('sourcePacketBuilderQaLocalOnly'))}</span><span>${esc(tr('sourcePacketBuilderQaWrap'))}</span></div>`;
       return;
     }
     const review = report?.scoring_review || {};
     const packetCount = packet?.source_packets?.length || report?.packet_count || 0;
-    el.innerHTML = `<div class="researchJsonCard sourcePacketBuilderReportCard"><h4>${esc(tr('sourcePacketBuilderTitle'))}</h4><div class="miniChips"><span>${esc(packetCount)} packets</span><span>${esc(report?.evidence_item_count || 0)} evidence</span><span>live:${esc(report?.live_fetching_performed)}</span><span>verified:${esc(report?.verification_claimed)}</span><span>${esc(review.release_gate || 'review_required')}</span></div><small>${esc(report?.policy || 'local_manual_source_packet_builder_no_fetch_no_verification')}</small><small>Warnings:${esc(review.calibration_warning_count || 0)} · weak traceability:${esc(review.weak_traceability_count || 0)} · attention/reliability risks:${esc(review.attention_without_reliability_count || 0)}</small></div>`;
+    const releaseGate = review.release_gate || 'review_required';
+    const warningCount = review.calibration_warning_count || 0;
+    const weakTraceability = review.weak_traceability_count || 0;
+    const attentionRisk = review.attention_without_reliability_count || 0;
+    const packetPreview = packet ? JSON.stringify({
+      source_packet_version: packet.source_packet_version,
+      builder_version: packet.builder_version,
+      workflow_version: packet.workflow_version,
+      packet_count: packetCount,
+      evidence_item_count: report?.evidence_item_count || 0,
+      release_gate: releaseGate,
+      live_fetching_performed: report?.live_fetching_performed === true,
+      verification_claimed: report?.verification_claimed === true
+    }, null, 2) : '';
+    el.innerHTML = `<div class="researchJsonCard sourcePacketBuilderReportCard sourcePacketBuilderQaCard"><h4>${esc(tr('sourcePacketBuilderTitle'))}</h4><div class="miniChips sourcePacketBuilderChips"><span>${esc(packetCount)} ${esc(tr('sourcePacketPackets'))}</span><span>${esc(report?.evidence_item_count || 0)} ${esc(tr('sourcePacketEvidence'))}</span><span>live:${esc(report?.live_fetching_performed)}</span><span>verified:${esc(report?.verification_claimed)}</span><span>${esc(releaseGate)}</span></div><div class="sourcePacketBuilderRiskGrid"><span>${esc(tr('sourcePacketWarnings'))}: ${esc(warningCount)}</span><span>${esc(tr('sourcePacketWeakTraceability'))}: ${esc(weakTraceability)}</span><span>${esc(tr('sourcePacketAttentionReliabilityRisks'))}: ${esc(attentionRisk)}</span></div><small>${esc(report?.policy || 'local_manual_source_packet_builder_no_fetch_no_verification')}</small><small>${esc(tr('sourcePacketBuilderBrowserQaNote'))}</small>${packetPreview ? `<pre class="sourcePacketBuilderPreview" aria-label="Source packet builder preview">${esc(packetPreview)}</pre>` : ''}</div>`;
   }
 
 
@@ -1836,6 +1850,7 @@
     providerTitle:['advanced'],
     sourcePlanningTitle:['sources','advanced'],
     sourceImportTitle:['sources'],
+    sourcePacketBuilderTitle:['sources','quality'],
     evidenceReviewTitle:['evidence','sources','quality'],
     workflowTitle:['analysis','advanced'],
     qualityTitle:['quality']
@@ -2011,7 +2026,7 @@
     const weakestHtml = report.weakest_dimensions.map(item => '<li><strong>' + esc(item.dimension) + '</strong>: ' + esc(item.score) + ' · ' + esc(item.severity) + '</li>').join('');
     const actionsHtml = report.fix_actions.map(action => '<li>' + esc(action) + '</li>').join('');
     const scoringReport = evidenceScoringReport();
-    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>Source Packet Builder UI + Scoring Review Controls</h4><div class="miniChips"><span>reliability ' + esc(scoringReport.average_reliability_score || 0) + '/100 · ' + esc(scoringReport.reliability_band || '—') + '</span><span>attention ' + esc(scoringReport.average_attention_signal_score || 0) + '/100 · ' + esc(scoringReport.attention_band || '—') + '</span><span>traceability ' + esc(scoringReport.average_traceability_score || 0) + '/100 · ' + esc(scoringReport.traceability_band || '—') + '</span><span>calibration warnings ' + esc(scoringReport.calibration_warning_count || 0) + '</span></div><small>' + esc(scoringReport.policy || '') + '</small><small>Attention = public visibility only. Reliability = source strength, traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth. Guard: ' + esc(scoringReport.score_theater_guard || 'score_theater_guard') + '</small></div>';
+    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>Source Packet Builder Browser QA + UX Tightening</h4><div class="miniChips"><span>reliability ' + esc(scoringReport.average_reliability_score || 0) + '/100 · ' + esc(scoringReport.reliability_band || '—') + '</span><span>attention ' + esc(scoringReport.average_attention_signal_score || 0) + '/100 · ' + esc(scoringReport.attention_band || '—') + '</span><span>traceability ' + esc(scoringReport.average_traceability_score || 0) + '/100 · ' + esc(scoringReport.traceability_band || '—') + '</span><span>calibration warnings ' + esc(scoringReport.calibration_warning_count || 0) + '</span></div><small>' + esc(scoringReport.policy || '') + '</small><small>Attention = public visibility only. Reliability = source strength, traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth. Guard: ' + esc(scoringReport.score_theater_guard || 'score_theater_guard') + '</small></div>';
     const reportHtml = scoringHtml + '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(report.publication_readiness) + '</h4><div class="miniChips"><span>' + esc(report.release_gate) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' blockers</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
     el.innerHTML = scoreHtml + reportHtml;
   }
