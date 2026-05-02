@@ -2,7 +2,7 @@
 
 ## Current stable patch
 
-`v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix` is the current stable patch. It removes the Node ESM/module-type warning from backend Worker smoke validation, preserves hosted-demo browser evidence capture, and keeps provider/OAuth/backend/source/storage behavior unchanged.
+`v1.0.11 — Repository Hygiene + Stale Artifact Cleanup` is the current stable patch. It tightens repo hygiene, repairs migration fixture coverage, blocks stale artifacts, and keeps provider/OAuth/backend/source/storage behavior unchanged.
 
 ## Recently completed
 
@@ -36,3 +36,8 @@ Allowed scope:
 - hosted multi-user accounts
 - paid-provider abstraction beyond the current safety model
 - schema-breaking workflow redesign
+
+
+## Next recommended patch
+
+`v1.0.12 — Research Source Strategy Blueprint` should define source capability metadata before any live multi-source search, scraping, or portable-auth expansion.

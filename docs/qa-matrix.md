@@ -43,6 +43,7 @@
 | v1.0.8 | Hosted demo verification | `npm run test:hosted-demo` | Verifies hosted-demo verification metadata, browser evidence capture metadata, and unchanged runtime boundaries. |
 | v1.0.9 | Hosted demo evidence review | `npm run test:hosted-demo:evidence-review` | Verifies hosted URL routing, stable evidence artifacts, metadata snapshot contract, and evidence-review release gate. |
 | v1.0.10 | Module type warning fix | `npm run test:module-type-warning` | Verifies package-level ESM mode and warning-clean backend Worker smoke validation. |
+| v1.0.11 | Repository Hygiene + Stale Artifact Cleanup | `npm run test:repo:cleanup` | Verifies stale-artifact gates, release drift checks, and migration fixture coverage. |
 
 ## Browser gates
 
@@ -58,7 +59,7 @@
 ## Current release gates
 
 ```bash
-npm run test:v110:no-browser
+npm run test:v111:no-browser
 npm run test:ci:no-browser
 npm run test:ci:browser
 ```
