@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source packet builder browser QA and UX tighteninger v1.0.17. No live fetching. */
+/* Jarbou3i Research Engine source packet importer v1.0.18. No live fetching. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.17';
+  const VERSION = '1.0.18';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
 
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }
@@ -74,6 +74,8 @@
         verification_status: 'unverified_manual_import',
         live_fetching_performed: false,
         verification_claimed: false,
+        source_packet_scoring_review: item.scoring_review && typeof item.scoring_review === 'object' ? Object.assign({}, item.scoring_review, {attention_is_truth_score:false}) : null,
+        scoring_review_preserved: !!(item.scoring_review && typeof item.scoring_review === 'object'),
         engagement: Object.assign({}, packet.engagement || item.engagement || {})
       }
     };
