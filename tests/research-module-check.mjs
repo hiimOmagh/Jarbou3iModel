@@ -49,10 +49,11 @@ for (const token of [
   'Jarbou3iResearchModules.openAICompatibleProvider.call',
   'Jarbou3iResearchModules.backendProxyProvider.call',
   'Jarbou3iResearchModules.sourceConnectors.buildSourceTaskRequest',
-  'window.Jarbou3iResearchModules.sourceImportAdapter'
+  'window.Jarbou3iResearchModules.sourceImportAdapter',
+  'window.Jarbou3iResearchModules.sourcePacketBuilder'
 ]) {
   if (!engine.includes(token)) fail(`research engine does not delegate to module token: ${token}`);
 }
-if (engine.length > 140000) fail(`research-engine.js exceeded v1.0.15 orchestration ceiling: ${engine.length} bytes`);
+if (engine.length > 146000) fail(`research-engine.js exceeded v1.0.16 orchestration ceiling: ${engine.length} bytes`);
 console.log('Research module checks passed.');
 process.exit(0);

@@ -126,7 +126,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.12-research-source-strategy-blueprint.md',
   'docs/v1.0.13-manual-source-packet-import.md',
   'docs/v1.0.14-evidence-scoring-v1.md',
-  'docs/v1.0.15-evidence-scoring-ui-calibration.md'
+  'docs/v1.0.15-evidence-scoring-ui-calibration.md',
+  'docs/v1.0.16-source-packet-builder-ui-scoring-review-controls.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

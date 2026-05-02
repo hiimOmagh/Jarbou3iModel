@@ -39,6 +39,7 @@ const tests = [
   'tests/source-packet-import-check.mjs',
   'tests/evidence-scoring-check.mjs',
   'tests/evidence-scoring-calibration-check.mjs',
+  'tests/source-packet-builder-check.mjs',
   'tests/evidence-review-queue-check.mjs',
   'tests/github-source-connector-check.mjs',
   'tests/web-search-provider-check.mjs',
