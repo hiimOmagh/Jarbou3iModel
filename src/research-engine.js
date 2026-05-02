@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.15 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.16 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.15';
+  const VERSION = '1.0.16';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -246,6 +246,8 @@
       evidence_review_queue: state.evidence_review_queue || [],
       evidence_review_report: evidenceReviewReport(),
       source_import_report: state.source_import_report || null,
+      source_packet_builder_report: state.source_packet_builder_report || null,
+      last_built_source_packet: state.last_built_source_packet || null,
       ai_runs: state.ai_runs || [],
       critique: state.critique
     };
@@ -995,6 +997,56 @@
     save(); render(); setStatus(tr('statusSourceImportCleared'), 'warn');
   }
 
+  function sourcePacketBuilder(){
+    const builder = window.Jarbou3iResearchModules.sourcePacketBuilder;
+    if(!builder) throw new Error('source_packet_builder_missing');
+    return builder;
+  }
+  function reviewedEvidenceCandidates(){
+    return (state.evidence_review_queue || [])
+      .filter(item => item && item.status !== 'rejected')
+      .map(item => item.evidence)
+      .filter(Boolean);
+  }
+  function storeBuiltSourcePacket(packet){
+    state.last_built_source_packet = packet;
+    state.source_packet_builder_report = packet?.builder_report || null;
+    return packet;
+  }
+  function buildSourcePacketFromEvidence(){
+    const packet = sourcePacketBuilder().buildSourcePacket(state.evidence || [], {now: nowIso()});
+    storeBuiltSourcePacket(packet);
+    save(); render();
+    setStatus(packet.builder_report.evidence_item_count ? tr('statusSourcePacketBuilt') : tr('statusSourcePacketEmpty'), packet.builder_report.evidence_item_count ? 'good' : 'warn');
+    return packet;
+  }
+  function buildSourcePacketFromReview(){
+    const packet = sourcePacketBuilder().buildSourcePacket(reviewedEvidenceCandidates(), {now: nowIso()});
+    storeBuiltSourcePacket(packet);
+    save(); render();
+    setStatus(packet.builder_report.evidence_item_count ? tr('statusSourcePacketBuilt') : tr('statusSourcePacketEmpty'), packet.builder_report.evidence_item_count ? 'good' : 'warn');
+    return packet;
+  }
+  async function copyBuiltSourcePacket(){
+    const packet = state.last_built_source_packet || buildSourcePacketFromEvidence();
+    await copyText(JSON.stringify(packet, null, 2));
+    setStatus(tr('statusSourcePacketCopied'), 'good');
+  }
+  function exportBuiltSourcePacket(){
+    const packet = state.last_built_source_packet || buildSourcePacketFromEvidence();
+    downloadJson(`jarbou3i-manual-source-packet-${Date.now()}.json`, packet);
+    setStatus(tr('statusSourcePacketExported'), 'good');
+  }
+  function markReviewItemNeedsEdit(index){
+    const item = (state.evidence_review_queue || [])[index];
+    if(!item || item.status === 'accepted' || item.status === 'rejected') return;
+    const controls = sourcePacketBuilder().reviewControlsForEvidence(item.evidence || {});
+    item.status = 'needs_edit';
+    item.review_notes = [item.review_notes || '', `Scoring review controls: ${controls.controls.join(', ') || 'manual_review'}.`].filter(Boolean).join(' ');
+    item.scoring_review_controls = controls;
+    state.evidence_review_report = evidenceReviewReport();
+  }
+
 
   function pendingReviewItems(){
     return (state.evidence_review_queue || []).filter(item => item && (item.status === 'pending' || item.status === 'needs_edit'));
@@ -1681,6 +1733,20 @@
     el.innerHTML = reportHtml + sampleRows;
   }
 
+  function renderSourcePacketBuilder(){
+    const el = $('sourcePacketBuilderOutput');
+    if(!el) return;
+    const packet = state.last_built_source_packet || null;
+    const report = state.source_packet_builder_report || packet?.builder_report || null;
+    if(!packet && !report){
+      el.innerHTML = `<p class="muted">${esc(tr('sourcePacketBuilderPolicyNote'))}</p>`;
+      return;
+    }
+    const review = report?.scoring_review || {};
+    const packetCount = packet?.source_packets?.length || report?.packet_count || 0;
+    el.innerHTML = `<div class="researchJsonCard sourcePacketBuilderReportCard"><h4>${esc(tr('sourcePacketBuilderTitle'))}</h4><div class="miniChips"><span>${esc(packetCount)} packets</span><span>${esc(report?.evidence_item_count || 0)} evidence</span><span>live:${esc(report?.live_fetching_performed)}</span><span>verified:${esc(report?.verification_claimed)}</span><span>${esc(review.release_gate || 'review_required')}</span></div><small>${esc(report?.policy || 'local_manual_source_packet_builder_no_fetch_no_verification')}</small><small>Warnings:${esc(review.calibration_warning_count || 0)} · weak traceability:${esc(review.weak_traceability_count || 0)} · attention/reliability risks:${esc(review.attention_without_reliability_count || 0)}</small></div>`;
+  }
+
 
   function renderEvidenceReviewQueue(){
     const el = $('evidenceReviewOutput');
@@ -1695,19 +1761,22 @@
       const i = queue.length - 1 - revIdx;
       const e = item.evidence || {};
       const resolved = item.status === 'accepted' || item.status === 'rejected';
+      const controls = window.Jarbou3iResearchModules.sourcePacketBuilder?.reviewControlsForEvidence ? window.Jarbou3iResearchModules.sourcePacketBuilder.reviewControlsForEvidence(e) : (item.scoring_review_controls || {});
+      const controlText = (controls.controls || []).join(', ') || 'manual_review';
       return `<tr>
         <td>${esc(item.review_id)}<small>${esc(item.import_id || '')}</small></td>
-        <td><span class="reviewStatus ${esc(item.status)}">${esc(tr(item.status === 'needs_edit' ? 'needsEdit' : item.status))}</span><small>${esc(item.accepted_evidence_id || '')}</small></td>
-        <td><b>${esc(e.claim || '')}</b><small>${esc(e.notes || '')}</small><small>R:${esc(e.evidence_scoring?.reliability_score ?? '—')} · A:${esc(e.evidence_scoring?.attention_signal_score ?? '—')} · W:${esc(e.evidence_scoring?.synthesis_weight ?? '—')}</small></td>
+        <td><span class="reviewStatus ${esc(item.status)}">${esc(tr(item.status === 'needs_edit' ? 'needsEdit' : item.status))}</span><small>${esc(item.accepted_evidence_id || '')}</small><small>${esc(controls.review_gate || 'reviewable')}</small></td>
+        <td><b>${esc(e.claim || '')}</b><small>${esc(e.notes || '')}</small><small>R:${esc(e.evidence_scoring?.reliability_score ?? '—')} · A:${esc(e.evidence_scoring?.attention_signal_score ?? '—')} · W:${esc(e.evidence_scoring?.synthesis_weight ?? '—')}</small><small>${esc(controlText)}</small></td>
         <td>${esc([e.source_title,e.source_type,e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td>
         <td>${esc((e.supports || []).join(', ') || '—')} / ${esc((e.contradicts || []).join(', ') || '—')}</td>
-        <td><div class="rowActions">${resolved ? '' : `<button class="btn ghost reviewAccept" type="button" data-index="${i}">${esc(tr('accept'))}</button><button class="btn ghost reviewEdit" type="button" data-index="${i}">${esc(tr('editCandidate'))}</button><button class="btn ghost reviewReject" type="button" data-index="${i}">${esc(tr('reject'))}</button>`}</div></td>
+        <td><div class="rowActions">${resolved ? '' : `<button class="btn ghost reviewAccept" type="button" data-index="${i}">${esc(tr('accept'))}</button><button class="btn ghost reviewNeedsEdit" type="button" data-index="${i}">${esc(tr('needsEdit'))}</button><button class="btn ghost reviewEdit" type="button" data-index="${i}">${esc(tr('editCandidate'))}</button><button class="btn ghost reviewReject" type="button" data-index="${i}">${esc(tr('reject'))}</button>`}</div></td>
       </tr>`;
     }).join('');
     el.innerHTML = `<div class="researchJsonCard evidenceReviewReportCard"><h4>${esc(tr('evidenceReviewTitle'))}</h4><div class="miniChips"><span>${esc(report.pending_count)} ${esc(tr('pending'))}</span><span>${esc(report.accepted_count)} ${esc(tr('accepted'))}</span><span>${esc(report.rejected_count)} ${esc(tr('rejected'))}</span><span>verified:${esc(report.verification_claimed)}</span></div></div><div class="researchTableWrap"><table class="researchTable evidenceReviewTable"><thead><tr><th>ID</th><th>${esc(tr('reviewStatus'))}</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('supports'))}/${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
     document.querySelectorAll('.reviewAccept').forEach(btn => btn.addEventListener('click', () => { promoteReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceAccepted'), 'good'); }));
     document.querySelectorAll('.reviewReject').forEach(btn => btn.addEventListener('click', () => { rejectReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceRejected'), 'warn'); }));
     document.querySelectorAll('.reviewEdit').forEach(btn => btn.addEventListener('click', () => { editReviewItem(Number(btn.dataset.index)); save(); render(); }));
+    document.querySelectorAll('.reviewNeedsEdit').forEach(btn => btn.addEventListener('click', () => { markReviewItemNeedsEdit(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceNeedsEdit'), 'warn'); }));
   }
 
   function renderProviderHarness(){
@@ -1942,11 +2011,11 @@
     const weakestHtml = report.weakest_dimensions.map(item => '<li><strong>' + esc(item.dimension) + '</strong>: ' + esc(item.score) + ' · ' + esc(item.severity) + '</li>').join('');
     const actionsHtml = report.fix_actions.map(action => '<li>' + esc(action) + '</li>').join('');
     const scoringReport = evidenceScoringReport();
-    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>Evidence Scoring UI Explanation + Calibration Pass</h4><div class="miniChips"><span>reliability ' + esc(scoringReport.average_reliability_score || 0) + '/100 · ' + esc(scoringReport.reliability_band || '—') + '</span><span>attention ' + esc(scoringReport.average_attention_signal_score || 0) + '/100 · ' + esc(scoringReport.attention_band || '—') + '</span><span>traceability ' + esc(scoringReport.average_traceability_score || 0) + '/100 · ' + esc(scoringReport.traceability_band || '—') + '</span><span>calibration warnings ' + esc(scoringReport.calibration_warning_count || 0) + '</span></div><small>' + esc(scoringReport.policy || '') + '</small><small>Attention = public visibility only. Reliability = source strength, traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth. Guard: ' + esc(scoringReport.score_theater_guard || 'score_theater_guard') + '</small></div>';
+    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>Source Packet Builder UI + Scoring Review Controls</h4><div class="miniChips"><span>reliability ' + esc(scoringReport.average_reliability_score || 0) + '/100 · ' + esc(scoringReport.reliability_band || '—') + '</span><span>attention ' + esc(scoringReport.average_attention_signal_score || 0) + '/100 · ' + esc(scoringReport.attention_band || '—') + '</span><span>traceability ' + esc(scoringReport.average_traceability_score || 0) + '/100 · ' + esc(scoringReport.traceability_band || '—') + '</span><span>calibration warnings ' + esc(scoringReport.calibration_warning_count || 0) + '</span></div><small>' + esc(scoringReport.policy || '') + '</small><small>Attention = public visibility only. Reliability = source strength, traceability, specificity, confidence, and recency. Synthesis weight = prioritization aid, not truth. Guard: ' + esc(scoringReport.score_theater_guard || 'score_theater_guard') + '</small></div>';
     const reportHtml = scoringHtml + '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(report.publication_readiness) + '</h4><div class="miniChips"><span>' + esc(report.release_gate) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' blockers</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
     el.innerHTML = scoreHtml + reportHtml;
   }
-  function render(){renderLabels(); renderOnboarding(); renderWorkspace(); renderAnalysisTemplate(); renderPlan(); renderEvidence(); renderCausalLinks(); renderAnalysisBrief(); renderSourceLayer(); renderSourceImportAdapter(); renderEvidenceReviewQueue(); renderProviderHarness(); renderCritique(); renderQuality(); renderReleaseHealth(); updateReliabilityControls(); applyUxTab();}
+  function render(){renderLabels(); renderOnboarding(); renderWorkspace(); renderAnalysisTemplate(); renderPlan(); renderEvidence(); renderCausalLinks(); renderAnalysisBrief(); renderSourceLayer(); renderSourceImportAdapter(); renderSourcePacketBuilder(); renderEvidenceReviewQueue(); renderProviderHarness(); renderCritique(); renderQuality(); renderReleaseHealth(); updateReliabilityControls(); applyUxTab();}
 
   function wire(){
     setupUxStabilization();
@@ -2057,6 +2126,10 @@
     $('exportSourcePolicyBtn')?.addEventListener('click', exportSourcePolicy);
     $("previewSourceImportBtn")?.addEventListener("click", previewSourceImport);
     $("importSourceEvidenceBtn")?.addEventListener("click", importSourceEvidence);
+    $("buildSourcePacketFromEvidenceBtn")?.addEventListener("click", buildSourcePacketFromEvidence);
+    $("buildSourcePacketFromReviewBtn")?.addEventListener("click", buildSourcePacketFromReview);
+    $("copySourcePacketBuilderBtn")?.addEventListener("click", copyBuiltSourcePacket);
+    $("exportSourcePacketBuilderBtn")?.addEventListener("click", exportBuiltSourcePacket);
     $("acceptAllReviewEvidenceBtn")?.addEventListener("click", acceptAllReviewEvidence);
     $("acceptEditedReviewEvidenceBtn")?.addEventListener("click", acceptEditedReviewEvidence);
     $("exportEvidenceReviewQueueBtn")?.addEventListener("click", exportEvidenceReviewQueue);
