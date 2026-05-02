@@ -4,6 +4,11 @@ on:
   push:
   pull_request:
 
+env:
+  NPM_CONFIG_AUDIT: "false"
+  NPM_CONFIG_FUND: "false"
+  NPM_CONFIG_IGNORE_SCRIPTS: "true"
+
 jobs:
   no-browser:
     runs-on: ubuntu-latest
@@ -12,7 +17,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund --ignore-scripts
       - run: npm run test:ci:no-browser
 
   browser:
@@ -22,7 +29,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund --ignore-scripts
       - run: npx playwright install --with-deps
       - run: npm run test:ci:browser
       - name: Upload hosted demo evidence

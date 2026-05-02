@@ -41,6 +41,7 @@ run_node tests/screen-discipline-patch-check.mjs
 run_node tests/browser-qa-hardening-check.mjs
 run_node tests/onboarding-first-run-check.mjs
 run_node tests/release-packaging-cleanup-check.mjs
+run_node tests/ci-workflow-install-check.mjs
 run_node tests/repo-file-hygiene-check.mjs
 run_node tests/repository-hygiene-cleanup-check.mjs
 run_node tests/public-demo-readiness-check.mjs
@@ -96,6 +97,7 @@ run_node --check tests/browser-visual-regression.spec.mjs
 run_node --check tests/hosted-demo-browser-evidence.spec.mjs
 run_node --check tests/hosted-demo-evidence-review-check.mjs
 run_node --check tests/module-type-warning-fix-check.mjs
+run_node --check tests/ci-workflow-install-check.mjs
 run_node --check tests/repository-hygiene-cleanup-check.mjs
 run_node --check tests/source-packet-import-check.mjs
 run_node --check tests/evidence-scoring-check.mjs
