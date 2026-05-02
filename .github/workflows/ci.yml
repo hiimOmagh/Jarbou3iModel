@@ -16,8 +16,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
+      - name: Validate public npm lockfile
+        run: node tests/lockfile-public-registry-check.mjs
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund --ignore-scripts
       - run: npm run test:ci:no-browser
@@ -28,8 +30,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
+      - name: Validate public npm lockfile
+        run: node tests/lockfile-public-registry-check.mjs
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund --ignore-scripts
       - run: npx playwright install --with-deps

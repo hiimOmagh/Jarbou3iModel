@@ -135,7 +135,8 @@
     "test:source:packet-templates": "node tests/source-packet-template-presets-check.mjs",
     "test:v119:no-browser": "node tests/v119-no-browser-suite.mjs",
     "test:v119": "npm run test:v119:no-browser && npm run test:ci:browser",
-    "test:ci:workflow-install": "node tests/ci-workflow-install-check.mjs"
+    "test:ci:workflow-install": "node tests/ci-workflow-install-check.mjs",
+    "test:lockfile:registry": "node tests/lockfile-public-registry-check.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",
