@@ -34,9 +34,20 @@ async function buildDryRun(page) {
   await expect(page.locator('#providerRunOutput')).toBeVisible();
 }
 
+async function openProviderHarness(page) {
+  await page.locator('#researchModeNav .uxTab[data-ux-tab="advanced"]').click();
+  await expect(page.locator('.providerHarnessCard')).toBeVisible();
+  const providerCard = page.locator('.providerHarnessCard');
+  if (await providerCard.evaluate((node) => node.classList.contains('uxAccordionClosed'))) {
+    await providerCard.locator('h3').click();
+  }
+  await expect(page.locator('#providerName')).toBeVisible();
+}
+
 test.describe('v1.0.19 — Provider Mode Browser QA', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
+    await openProviderHarness(page);
   });
 
   test('provider modes are selectable and remain credential-safe in UI', async ({ page }) => {

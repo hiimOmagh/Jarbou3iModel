@@ -118,8 +118,12 @@ assert.ok(pkg.scripts['test:stable'].includes('release-packaging-cleanup-check.m
 assert.ok(pkg.scripts['test:stable'].includes('module-type-warning-fix-check.mjs'));
 assert.ok(pkg.scripts['test:patch'].includes('module-type-warning-fix-check.mjs'));
 
-const rootFiles = fs.readdirSync('.').filter((name) => name.endsWith('.zip') || name === 'node_modules' || name === 'playwright-report' || name === 'test-results');
-assert.deepEqual(rootFiles, [], `release tree contains generated archive/dependency/test-output artifacts: ${rootFiles.join(', ')}`);
+const rootArtifacts = fs.readdirSync('.').filter((name) => name.endsWith('.zip') || name === 'playwright-report' || name === 'test-results');
+assert.deepEqual(rootArtifacts, [], `release tree contains generated archive/test-output artifacts: ${rootArtifacts.join(', ')}`);
+if (fs.existsSync('node_modules')) {
+  assert.ok(fs.statSync('node_modules').isDirectory(), 'node_modules must only be a dependency directory created by package installation');
+  assert.ok(releaseIgnore.includes('node_modules/'), 'CI-created node_modules must stay excluded from release archives');
+}
 for (const orphan of ['scripts/XXKuyryP','src/XXSyA2D3','src/XXvKXvVS']) {
   assert.equal(fs.existsSync(orphan), false, `orphan temporary file must not ship: ${orphan}`);
 }
