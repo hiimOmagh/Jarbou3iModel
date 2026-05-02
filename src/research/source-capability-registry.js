@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source capability registry v1.0.12. No live source expansion. */
+/* Jarbou3i Research Engine source capability registry v1.0.13. No live source expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.12';
+  const VERSION = '1.0.13';
 
   const ALLOWED = Object.freeze({
     availability:['local','mock','manual','external','unavailable','controlled_backend'],
@@ -53,8 +53,8 @@
       demo_visibility:'show',
       live_fetching_enabled:false,
       export_allowed:true,
-      status:'planned_next_safe_increment',
-      notes:['Future v1.0.13 candidate. Import structured source packets collected by the user.']
+      status:'available_manual_import',
+      notes:['Available in v1.0.13. Imports structured user-collected source packets into the review queue. No live fetching, scraping, or verification claims.']
     },
     web_search_api_dry_run: {
       source_id:'web_search_api_dry_run',
@@ -117,8 +117,8 @@
     }
     if(item?.live_fetching_enabled && !['controlled_backend'].includes(item.availability)) issues.push(`${sourceId}:live_requires_controlled_backend`);
     if(item?.privacy_risk === 'high' && item?.demo_visibility === 'show') issues.push(`${sourceId}:high_risk_must_not_be_visible_in_demo`);
-    if(item?.auth_mode === 'oauth_pkce' && item?.availability !== 'unavailable') issues.push(`${sourceId}:oauth_pkce_must_remain_unavailable_in_v1_0_12`);
-    if(item?.auth_mode === 'user_token') issues.push(`${sourceId}:user_token_not_allowed_in_v1_0_12`);
+    if(item?.auth_mode === 'oauth_pkce' && item?.availability !== 'unavailable') issues.push(`${sourceId}:oauth_pkce_must_remain_unavailable_in_v1_0_13`);
+    if(item?.auth_mode === 'user_token') issues.push(`${sourceId}:user_token_not_allowed_in_v1_0_13`);
     if(item?.export_allowed && item?.auth_mode === 'oauth_pkce') issues.push(`${sourceId}:oauth_export_not_allowed`);
     return {source_id:sourceId, ok:issues.length === 0, issues};
   }
@@ -144,7 +144,7 @@
       reports,
       issues,
       ok:issues.length === 0,
-      verdict:issues.length ? 'source_capability_registry_blocked' : 'source_capability_registry_ready_no_runtime_expansion'
+      verdict:issues.length ? 'source_capability_registry_blocked' : 'source_capability_registry_ready_manual_packet_import'
     };
   }
 
@@ -161,7 +161,7 @@
       source_behavior_changed:false,
       registry:values(),
       audit,
-      next_safe_increment:'v1.0.13 manual source packet import',
+      next_safe_increment:'v1.0.14 evidence scoring v1',
       blocked_until_threat_modeled:['production OAuth / portable account auth','live Reddit/X/YouTube/TikTok scraping','external RAG dependency as core runtime'],
       scoring_warning:'Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength.'
     };

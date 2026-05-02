@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source import adapter v1.0.12. */
+/* Jarbou3i Research Engine source import adapter v1.0.13. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.12';
+  const VERSION = '1.0.13';
   const URL_RE = /https?:\/\/[^\s)\]>"']+/gi;
   const DATE_RE = /\b(20\d{2}[-/.](0?[1-9]|1[0-2])[-/.](0?[1-9]|[12]\d|3[01])|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+20\d{2}|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+20\d{2})\b/i;
   const BULLET_RE = /^\s*(?:[-*•]|\d+[.)]|\[[x ]\])\s+/;
@@ -13,6 +13,8 @@
   function inferFormat(text, requested='auto'){
     if(requested && requested !== 'auto') return requested;
     const lower=String(text||'').toLowerCase();
+    if(/^\s*[\[{]/.test(String(text||'')) && /source_packet_version|source_packets|packet_id|\"evidence\"/.test(String(text||''))) return 'source_packet';
+    if(lower.includes('source_packet_version') || lower.includes('manual_source_packet')) return 'source_packet';
     if(lower.includes('last 30 days') || lower.includes('last30days') || lower.includes('engagement') || lower.includes('recency')) return 'last30days';
     if(lower.includes('deep research') || lower.includes('research plan') || lower.includes('sources') || lower.includes('findings')) return 'deep_research';
     return 'generic_research_report';
@@ -69,6 +71,13 @@
   function parseSourceImportText(text, options={}){
     const raw=normalizeText(text);
     const format=inferFormat(raw, options.format || 'auto');
+    if(format === 'source_packet'){
+      const importer = root.sourcePacketImporter;
+      if(!importer || typeof importer.parseSourcePacketImportText !== 'function'){
+        return {ok:false, evidence:[], report:{import_version:VERSION, imported_at:new Date().toISOString(), input_format:'source_packet', source_packet_schema:'manual_source_packet.v1', live_fetching_performed:false, verification_claimed:false, raw_fingerprint:stableHash(raw), detected_line_count:0, converted_count:0, rejected_count:1, source_type_count:0, url_count:0, date_count:0, source_types:[], queue_only:true, warnings:['source_packet_importer_missing'], rejected:[{reason:'source_packet_importer_missing'}]}, warnings:['source_packet_importer_missing']};
+      }
+      return importer.parseSourcePacketImportText(raw, options);
+    }
     const lines=extractCandidateLines(raw);
     const warnings=[];
     if(!raw) warnings.push('empty import text');
