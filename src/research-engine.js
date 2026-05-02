@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.18 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.19 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.18';
+  const VERSION = '1.0.19';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -23,6 +23,7 @@
   const providerController = modules.providerController;
   const sourceController = modules.sourceController;
   const sourceCapabilityRegistry = modules.sourceCapabilityRegistry;
+  const sourcePacketTemplates = modules.sourcePacketTemplates;
   const sourcePacketRoundtrip = modules.sourcePacketRoundtrip;
   const evidenceReviewController = modules.evidenceReviewController;
   const onboarding = modules.onboarding;
@@ -249,6 +250,7 @@
       source_import_report: state.source_import_report || null,
       source_packet_builder_report: state.source_packet_builder_report || null,
       last_built_source_packet: state.last_built_source_packet || null,
+      source_packet_template_report: state.source_packet_template_report || (sourcePacketTemplates?.templateReport ? sourcePacketTemplates.templateReport(state.active_source_packet_template || 'generic_article') : null),
       source_packet_roundtrip_report: state.source_packet_roundtrip_report || null,
       ai_runs: state.ai_runs || [],
       critique: state.critique
@@ -1004,6 +1006,11 @@
     if(!builder) throw new Error('source_packet_builder_missing');
     return builder;
   }
+  function sourcePacketTemplatePresets(){
+    const templates = window.Jarbou3iResearchModules.sourcePacketTemplates;
+    if(!templates) throw new Error('source_packet_templates_missing');
+    return templates;
+  }
   function reviewedEvidenceCandidates(){
     return (state.evidence_review_queue || [])
       .filter(item => item && item.status !== 'rejected')
@@ -1013,6 +1020,11 @@
   function storeBuiltSourcePacket(packet){
     state.last_built_source_packet = packet;
     state.source_packet_builder_report = packet?.builder_report || null;
+    if(packet?.template_model && sourcePacketTemplates?.templateReport){
+      const templateId = packet.source_packets?.[0]?.template_id || state.active_source_packet_template || 'generic_article';
+      state.active_source_packet_template = templateId;
+      state.source_packet_template_report = sourcePacketTemplates.templateReport(templateId);
+    }
     return packet;
   }
   function updateSourcePacketRoundtripReport(items){
@@ -1036,6 +1048,17 @@
     updateSourcePacketRoundtripReport(items);
     save(); render();
     setStatus(packet.builder_report.evidence_item_count ? tr('statusSourcePacketBuilt') : tr('statusSourcePacketEmpty'), packet.builder_report.evidence_item_count ? 'good' : 'warn');
+    return packet;
+  }
+  function buildSourcePacketFromTemplate(){
+    const templateId = $('sourcePacketTemplateSelect')?.value || state.active_source_packet_template || 'generic_article';
+    state.active_source_packet_template = templateId;
+    const packet = sourcePacketTemplatePresets().sourcePacketFromTemplate(templateId, {title: `${templateId.replace(/_/g, ' ')} source`, captured_at: nowIso()}, {now: nowIso()});
+    storeBuiltSourcePacket(packet);
+    const parsed = window.Jarbou3iResearchModules.sourcePacketImporter?.parseSourcePacketImportText(JSON.stringify(packet));
+    state.source_packet_roundtrip_report = sourcePacketRoundtrip?.buildRoundtripReport ? sourcePacketRoundtrip.buildRoundtripReport(packet, parsed, {now:nowIso()}) : state.source_packet_roundtrip_report;
+    save(); render();
+    setStatus(tr('statusSourcePacketTemplateBuilt'), 'good');
     return packet;
   }
   async function copyBuiltSourcePacket(){
@@ -1551,6 +1574,7 @@
     state.evidence_review_report = nextPacket.evidence_review_report || null;
     state.source_import_report = nextPacket.source_import_report || null;
     state.source_packet_roundtrip_report = nextPacket.source_packet_roundtrip_report || null;
+    state.source_packet_template_report = nextPacket.source_packet_template_report || null;
     state.packet_migration_report = nextPacket.packet_migration_report || migrated.report || null;
     state.quality_gate = nextPacket.quality_gate || null;
     state.export_pack = nextPacket.export_pack || null;
@@ -1755,6 +1779,7 @@
       return;
     }
     const review = report?.scoring_review || {};
+    const templateReport = state.source_packet_template_report || (sourcePacketTemplates?.templateReport ? sourcePacketTemplates.templateReport(state.active_source_packet_template || packet?.source_packets?.[0]?.template_id || 'generic_article') : null);
     const packetCount = packet?.source_packets?.length || report?.packet_count || 0;
     const releaseGate = review.release_gate || 'review_required';
     const warningCount = review.calibration_warning_count || 0;
@@ -1770,7 +1795,8 @@
       live_fetching_performed: report?.live_fetching_performed === true,
       verification_claimed: report?.verification_claimed === true
     }, null, 2) : '';
-    el.innerHTML = `<div class="researchJsonCard sourcePacketBuilderReportCard sourcePacketBuilderQaCard"><h4>${esc(tr('sourcePacketBuilderTitle'))}</h4><div class="miniChips sourcePacketBuilderChips"><span>${esc(packetCount)} ${esc(tr('sourcePacketPackets'))}</span><span>${esc(report?.evidence_item_count || 0)} ${esc(tr('sourcePacketEvidence'))}</span><span>live:${esc(report?.live_fetching_performed)}</span><span>verified:${esc(report?.verification_claimed)}</span><span>${esc(releaseGate)}</span></div><div class="sourcePacketBuilderRiskGrid"><span>${esc(tr('sourcePacketWarnings'))}: ${esc(warningCount)}</span><span>${esc(tr('sourcePacketWeakTraceability'))}: ${esc(weakTraceability)}</span><span>${esc(tr('sourcePacketAttentionReliabilityRisks'))}: ${esc(attentionRisk)}</span></div><small>${esc(report?.policy || 'local_manual_source_packet_builder_no_fetch_no_verification')}</small><small>${esc(tr('sourcePacketBuilderBrowserQaNote'))}</small>${packetPreview ? `<pre class="sourcePacketBuilderPreview" aria-label="Source packet builder preview">${esc(packetPreview)}</pre>` : ''}</div>`;
+    const templateHtml = templateReport ? `<div class="researchJsonCard sourcePacketTemplateReportCard"><h4>${esc(tr('sourcePacketTemplateReportTitle'))}</h4><div class="miniChips sourcePacketBuilderChips"><span>${esc(templateReport.template_count)} presets</span><span>${esc(templateReport.active_template_id)}</span><span>live:${esc(templateReport.live_fetching_performed)}</span><span>verified:${esc(templateReport.verification_claimed)}</span><span>${esc(templateReport.release_gate)}</span></div><small>${esc(templateReport.policy)}</small></div>` : '';
+    el.innerHTML = templateHtml + `<div class="researchJsonCard sourcePacketBuilderReportCard sourcePacketBuilderQaCard"><h4>${esc(tr('sourcePacketBuilderTitle'))}</h4><div class="miniChips sourcePacketBuilderChips"><span>${esc(packetCount)} ${esc(tr('sourcePacketPackets'))}</span><span>${esc(report?.evidence_item_count || 0)} ${esc(tr('sourcePacketEvidence'))}</span><span>live:${esc(report?.live_fetching_performed)}</span><span>verified:${esc(report?.verification_claimed)}</span><span>${esc(releaseGate)}</span></div><div class="sourcePacketBuilderRiskGrid"><span>${esc(tr('sourcePacketWarnings'))}: ${esc(warningCount)}</span><span>${esc(tr('sourcePacketWeakTraceability'))}: ${esc(weakTraceability)}</span><span>${esc(tr('sourcePacketAttentionReliabilityRisks'))}: ${esc(attentionRisk)}</span></div><small>${esc(report?.policy || 'local_manual_source_packet_builder_no_fetch_no_verification')}</small><small>${esc(tr('sourcePacketBuilderBrowserQaNote'))}</small>${packetPreview ? `<pre class="sourcePacketBuilderPreview" aria-label="Source packet builder preview">${esc(packetPreview)}</pre>` : ''}</div>`;
   }
 
 
@@ -2154,6 +2180,7 @@
     $("previewSourceImportBtn")?.addEventListener("click", previewSourceImport);
     $("importSourceEvidenceBtn")?.addEventListener("click", importSourceEvidence);
     $("buildSourcePacketFromEvidenceBtn")?.addEventListener("click", buildSourcePacketFromEvidence);
+    $("buildSourcePacketFromTemplateBtn")?.addEventListener("click", buildSourcePacketFromTemplate);
     $("buildSourcePacketFromReviewBtn")?.addEventListener("click", buildSourcePacketFromReview);
     $("copySourcePacketBuilderBtn")?.addEventListener("click", copyBuiltSourcePacket);
     $("exportSourcePacketBuilderBtn")?.addEventListener("click", exportBuiltSourcePacket);
