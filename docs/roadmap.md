@@ -1,8 +1,10 @@
+`v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass` is the current stable patch. It keeps `evidence_scoring.v1`, adds `evidence_scoring_calibration.v1`, and explains that attention is not truth while preserving manual/private mode.
+
 # Roadmap
 
 ## Current stable patch
 
-`v1.0.14 — Evidence Scoring v1` is the current stable patch. It separates attention signals from evidence reliability and adds traceability, specificity, recency, contradiction-value, and synthesis-weight scoring without enabling live source fetching or provider/OAuth expansion.
+`v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass` is the current stable patch. It separates attention signals from evidence reliability and adds traceability, specificity, recency, contradiction-value, and synthesis-weight scoring without enabling live source fetching or provider/OAuth expansion.
 
 ## Recently completed
 

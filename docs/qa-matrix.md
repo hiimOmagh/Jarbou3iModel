@@ -37,7 +37,7 @@
 | v1.0.11 | Repository hygiene cleanup | `npm run test:repo:cleanup` | Verifies stale-artifact gates, release drift checks, and migration fixture coverage. |
 | v1.0.12 | Source capability registry | `npm run test:source:capabilities` | Verifies source availability/auth/freshness/privacy/demo contracts without enabling live source behavior. |
 | v1.0.13 | Manual source packet import | `npm run test:source:packet` | Verifies structured manual source packet import with no live fetching or verification claims. |
-| v1.0.14 | Evidence Scoring v1 | `npm run test:evidence:scoring` | Verifies reliability, attention, traceability, contradiction value, synthesis weight, and attention-not-truth guardrails. |
+| v1.0.15 | Evidence Scoring UI Explanation + Calibration Pass | `npm run test:evidence:scoring` | Verifies reliability, attention, traceability, contradiction value, synthesis weight, and attention-not-truth guardrails. |
 
 ## Browser gates
 
