@@ -10,7 +10,7 @@ async function goToWorkflowTab(page, tab) {
   await expect(page.locator(`#researchModeNav .uxTab[data-ux-tab="${tab}"]`)).toHaveAttribute('aria-selected', 'true');
 }
 
-test.describe('v1.0.22 browser layout and persistence hardening', () => {
+test.describe('v1.0.23 browser layout and persistence hardening', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });

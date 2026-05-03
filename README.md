@@ -2,15 +2,16 @@
 
 ## Current version
 
-`v1.0.22 — Release Evidence + Repo Hygiene Verification`
+`v1.0.23 — CI Result Review + Browser Evidence Artifact Audit`
 
 A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
 ## What this patch changes
 
-- Adds release evidence and repository hygiene verification.
+- Adds CI result review and browser evidence artifact audit discipline.
 - Preserves Node 24 GitHub Actions compatibility.
 - Verifies hosted-demo evidence artifact upload remains inspectable but not sufficient for release approval.
+- Records public repository alignment as a release approval requirement.
 - Keeps public npm lockfile registry validation before `npm ci`.
 - Allows GitHub browser CI to skip duplicate Playwright installation with `PLAYWRIGHT_SKIP_INSTALL=1`.
 - Keeps repository hygiene guards against stale `XX*` orphan files and documents required `git rm` cleanup.
@@ -60,17 +61,19 @@ npx playwright install --with-deps
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-Targeted v1.0.22 checks:
+Targeted v1.0.23 checks:
 
 ```bash
 npm run test:release:evidence
+npm run test:ci:result-review
 npm run test:ci:node24
-npm run test:v122:no-browser
+npm run test:v123:no-browser
 npm run test:browser:visual-scope
 ```
 
 ## Release history
 
+- v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
 - v1.0.22 — Release Evidence + Repo Hygiene Verification
 - v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration
 - v1.0.20 — Source Packet Template Browser QA + Copy Safety
