@@ -805,3 +805,90 @@ html[dir="rtl"] .welcomeEyebrow{
 .sourcePacketTemplateField{display:grid;gap:8px;margin:12px 0 14px;min-width:0;}
 .sourcePacketTemplateField span{font-size:12px;color:var(--muted);font-weight:900;letter-spacing:.035em;text-transform:uppercase;}
 .sourcePacketTemplateField select{max-width:100%;min-width:0;}
+
+/* v1.0.23 browser RTL/mobile overflow hotfix
+   Keeps the Arabic 390px review flow inside the viewport without masking desktop layout. */
+@media(max-width:720px){
+  html,body{
+    max-width:100%;
+    overflow-x:clip;
+  }
+  .app,.top,.shell,.panel,.card,.researchLabPanel,.commandPanel,.reviewShell,.sideNav,.contentPanel,
+  .summaryGrid,.intelBrief,.briefHero,.scoreBox,.schemaCard,.scoreSystemGrid,.scoreMetricCard,
+  .healthGrid,.healthCard,.nextAction,.warning,.list,.item,.accordion,.accHead,.accBody,
+  .conflictGrid,.scenarioGrid,.evidenceLedger,.ledgerRow,.evidenceRow,.assumptionGrid,.assumptionCard,
+  .researchGrid,.researchCard,.researchOutput,.researchFormGrid,.sourcePacketBuilderCard,
+  .sourcePacketBuilderOutput,.sourcePacketBuilderQaCard,.sourcePacketBuilderPreview{
+    min-width:0!important;
+    max-width:100%!important;
+  }
+  .panel,.card,.contentPanel,.briefHero,.scoreBox,.schemaCard,.scoreMetricCard,.healthCard,.warning,
+  .item,.accordion,.conflictCard,.forecastCard,.ledgerRow,.assumptionCard,.researchCard,.researchOutput{
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  .contentPanel,.summaryGrid,.scoreBox,.schemaCard,.researchCard,.researchOutput{
+    overflow-x:hidden!important;
+  }
+  .topActions,.actions,.chips,.miniChips,.scoreBandLegend,.itemMeta,.conflictTop,.forecastHead,
+  .assumptionTop,.metricHead,.compactActions{
+    min-width:0!important;
+    max-width:100%!important;
+    flex-wrap:wrap!important;
+  }
+  .segment{
+    min-width:0!important;
+    max-width:100%!important;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .segBtn{
+    flex:1 1 0;
+    min-width:0;
+    white-space:normal;
+  }
+  .btn,.chip,.badge,.bandChip,.pill,.navBtn,.researchEyebrow,.stageItem,
+  .publicDemoChecklist span,.hostedDemoChecklist span,.evidenceReviewChecklist span,
+  .sourcePacketBuilderChips span,.sourcePacketBuilderRiskGrid span,.sourcePacketBuilderQaChecklist span,
+  .workspaceSummary span,.emptyState span,.formulaWeight{
+    min-width:0!important;
+    max-width:100%!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+    text-align:center;
+  }
+  .navBtn{
+    grid-template-columns:auto minmax(0,1fr) auto!important;
+  }
+  .navText,.navTitle,.navHint,.itemTitle,.itemText,.sourceNote,.evidenceClaim,
+  .briefHero .itemText,.scoreHelp,.metricHint,.diagnosticNote,.scoreTopicBox strong,
+  .nextAction,.warning,.status,.miniBlock,.assumptionDetails p{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow-wrap:anywhere!important;
+  }
+  .scoreBox{
+    margin-inline:0!important;
+    justify-self:stretch!important;
+  }
+  .scoreSystemGrid,.healthGrid,.forecastCols,.exportGrid,.assumptionGrid,.premiumAssumptions,
+  .sourcePacketBuilderActions,.sourcePacketBuilderRiskGrid,.sourcePacketBuilderQaChecklist,
+  .formulaGrid,.firstRunChecklist,.publicDemoChecklist,.hostedDemoChecklist,.evidenceReviewChecklist{
+    grid-template-columns:1fr!important;
+  }
+  .metricHead{
+    align-items:flex-start;
+  }
+  .metricHead .metricRing.xs{
+    flex:0 0 42px;
+  }
+  .researchEyebrow{
+    width:100%!important;
+    justify-content:center;
+  }
+  .researchTableWrap,.providerModeGuide,.providerModeGuideInner,.sourcePacketBuilderOutput{
+    max-width:100%!important;
+    overflow-x:auto!important;
+  }
+}
