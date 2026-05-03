@@ -892,3 +892,140 @@ html[dir="rtl"] .welcomeEyebrow{
     overflow-x:auto!important;
   }
 }
+
+
+/* v1.0.23 RTL/mobile smoke alignment hardening
+   Keeps the expanded Command Center + Arabic review flow inside the viewport and gives
+   Chromium/mobile Chrome less room for flex/grid intrinsic-width leaks. */
+@media(max-width:720px){
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    overflow-x:clip;
+  }
+  .app,
+  .shell,
+  .top,
+  .brand,
+  .brand > div,
+  .topActions,
+  .panel,
+  .panelHeader,
+  .panelHeader > div,
+  .grid2,
+  .detailsGrid,
+  .stage,
+  .welcomeCard,
+  .welcomeText,
+  .reviewShell,
+  .sideNav,
+  .contentPanel,
+  .researchLabPanel,
+  .researchGrid,
+  .researchCard,
+  .researchOutput,
+  .researchTableWrap,
+  .sourcePacketBuilderCard,
+  .sourcePacketBuilderOutput,
+  .sourcePacketBuilderPreview{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+  }
+  .brand,
+  .panelHeader,
+  .topActions,
+  .actions,
+  .chips,
+  .miniChips,
+  .itemMeta,
+  .conflictTop,
+  .forecastHead,
+  .assumptionTop,
+  .metricHead,
+  .compactActions{
+    flex-wrap:wrap!important;
+  }
+  .brand h1,
+  .brand p,
+  .panelHeader h2,
+  .panelHeader h3,
+  .panelHeader p,
+  .welcomeTitle,
+  .welcomeBody,
+  .status,
+  .miniGuide,
+  .miniGuide li,
+  .navText,
+  .navTitle,
+  .navHint,
+  .itemTitle,
+  .itemText,
+  .briefHero .itemText,
+  .sourceNote,
+  .evidenceClaim,
+  .scoreHelp,
+  .metricHint,
+  .diagnosticNote,
+  .scoreTopicBox strong,
+  .nextAction,
+  .warning,
+  .assumptionDetails p{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal;
+  }
+  .navBtn{
+    display:grid!important;
+    grid-template-columns:minmax(0,auto) minmax(0,1fr) minmax(0,auto)!important;
+    align-items:center!important;
+    min-width:0!important;
+    max-width:100%!important;
+    white-space:normal!important;
+  }
+  .navText{
+    display:grid!important;
+    gap:2px;
+  }
+  .badge,
+  .chip,
+  .bandChip,
+  .pill,
+  .stageItem,
+  .researchEyebrow,
+  .publicDemoChecklist span,
+  .hostedDemoChecklist span,
+  .evidenceReviewChecklist span,
+  .sourcePacketBuilderChips span,
+  .sourcePacketBuilderRiskGrid span,
+  .sourcePacketBuilderQaChecklist span,
+  .workspaceSummary span,
+  .emptyState span,
+  .formulaWeight{
+    min-width:0!important;
+    max-width:100%!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+  }
+  .researchTableWrap,
+  .providerModeGuide,
+  .providerModeGuideInner,
+  .sourcePacketBuilderOutput{
+    overflow-x:auto!important;
+    overflow-y:hidden;
+    overscroll-behavior-inline:contain;
+  }
+  .researchTable{
+    max-width:none!important;
+  }
+  img,
+  svg,
+  canvas,
+  video{
+    max-width:100%;
+    height:auto;
+  }
+}
