@@ -29,6 +29,11 @@ assert.ok(browserSpec.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser evidence sp
 assert.ok(browserSpec.includes('hosted-demo-metadata.json'), 'browser evidence spec must write metadata snapshot');
 assert.ok(browserSpec.includes('assertNoHorizontalOverflow'), 'browser evidence spec must check horizontal overflow');
 assert.ok(browserSpec.includes('hostedDemoEvidenceReviewPanel'), 'browser evidence spec must assert evidence review panel');
+assert.ok(browserSpec.includes('async function openProviderHarness'), 'browser evidence spec must open provider harness accordion before asserting provider controls');
+assert.ok(browserSpec.includes("providerCard.locator('h3').click()"), 'browser evidence spec must expand provider harness when advanced accordion is closed');
+assert.ok(browserSpec.includes('async function openQualityExport'), 'browser evidence spec must open quality/export tab through a helper');
+assert.ok(browserSpec.includes("#exportSourcePacketBuilderBtn"), 'quality/export evidence capture must assert a visible export control that belongs to the quality tab');
+assert.ok(!browserSpec.includes("expect(page.locator('#exportWorkflowBtn')).toBeVisible()"), 'quality/export evidence capture must not assert hidden Evidence-tab exportWorkflowBtn');
 assert.ok(ci.includes('npm run test:browser:evidence'), 'browser CI must run evidence capture');
 assert.ok(!ci.includes('npm run test:browser\n'), 'browser CI must avoid duplicate full-suite run after targeted suites');
 assert.ok(workflow.includes('hosted-demo-evidence'), 'GitHub workflow must upload hosted demo evidence artifact');

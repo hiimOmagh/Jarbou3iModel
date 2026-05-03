@@ -67,6 +67,23 @@ async function writeMetadata(page, captures = []) {
   return metadata;
 }
 
+
+async function openProviderHarness(page) {
+  await page.locator('#researchModeNav .uxTab[data-ux-tab="advanced"]').click();
+  await expect(page.locator('.providerHarnessCard')).toBeVisible();
+  const providerCard = page.locator('.providerHarnessCard');
+  if (await providerCard.evaluate((node) => node.classList.contains('uxAccordionClosed'))) {
+    await providerCard.locator('h3').click();
+  }
+  await expect(page.locator('#providerName')).toBeVisible();
+}
+
+async function openQualityExport(page) {
+  await page.locator('#researchModeNav .uxTab[data-ux-tab="quality"]').click();
+  await expect(page.locator('#researchQualityOutput')).toBeVisible();
+  await expect(page.locator('#exportSourcePacketBuilderBtn')).toBeVisible();
+}
+
 async function assertHostedDemoReady(page) {
   await page.waitForLoadState('domcontentloaded');
   await expect(page.locator('meta[name="app-version"]')).toHaveAttribute('content', VERSION);
@@ -98,11 +115,9 @@ test.describe('v1.0.20 hosted demo smoke/evidence capture', () => {
 
   test('captures provider and quality/export evidence states', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 950 });
-    await page.locator('#researchModeNav .uxTab[data-ux-tab="advanced"]').click();
-    await expect(page.locator('#providerName')).toBeVisible();
+    await openProviderHarness(page);
     const provider = await capture(page, 'provider-mode');
-    await page.locator('#researchModeNav .uxTab[data-ux-tab="quality"]').click();
-    await expect(page.locator('#exportWorkflowBtn')).toBeVisible();
+    await openQualityExport(page);
     const quality = await capture(page, 'quality-export');
     const metadata = await writeMetadata(page, [provider, quality]);
     expect(metadata.page.storage_keys_visible).toEqual(expect.arrayContaining([]));
