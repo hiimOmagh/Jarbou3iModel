@@ -14,11 +14,11 @@ const changelog = read('CHANGELOG.md');
 const manifest = read('RELEASE_MANIFEST.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const doc = read('docs/v1.0.21-node-24-ci-compatibility.md');
+const node24Doc = read('docs/v1.0.21-node-24-ci-compatibility.md');
 
-assert.equal(pkg.version, '1.0.21', 'package.json must identify v1.0.21');
-assert.equal(lock.version, '1.0.21', 'package-lock root version must identify v1.0.21');
-assert.equal(lock.packages[''].version, '1.0.21', 'package-lock package root must identify v1.0.21');
+assert.equal(pkg.version, '1.0.22', 'package.json must identify v1.0.22');
+assert.equal(lock.version, '1.0.22', 'package-lock root version must identify v1.0.22');
+assert.equal(lock.packages[''].version, '1.0.22', 'package-lock package root must identify v1.0.22');
 
 for (const forbidden of [
   'actions/checkout@v4',
@@ -58,10 +58,12 @@ assert.ok(ciNoBrowser.includes('tests/node24-ci-compat-check.mjs'), 'no-browser 
 assert.equal(ciNoBrowser.includes('run_node tests/v121-no-browser-suite.mjs'), false, 'no-browser CI must not recursively invoke v121 wrapper');
 assert.ok(ciNoBrowser.includes('run_node --check tests/v121-no-browser-suite.mjs'), 'no-browser CI must syntax-check v121 wrapper');
 
-for (const text of [releaseNotes, changelog, manifest, roadmap, qaMatrix, doc]) {
-  assert.ok(text.includes('v1.0.21'), 'release documentation must mention v1.0.21');
+for (const text of [releaseNotes, changelog, manifest, roadmap, qaMatrix]) {
+  assert.ok(text.includes('v1.0.22'), 'release documentation must mention v1.0.22');
   assert.ok(text.includes('Node 24'), 'release documentation must mention Node 24');
 }
+assert.ok(node24Doc.includes('v1.0.21'), 'retained Node 24 compatibility doc must keep its original release identity');
+assert.ok(node24Doc.includes('Node 24'), 'retained Node 24 compatibility doc must mention Node 24');
 
 for (const file of ['tests/node24-ci-compat-check.mjs', 'tests/v121-no-browser-suite.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });

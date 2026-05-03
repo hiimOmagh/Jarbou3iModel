@@ -43,6 +43,7 @@ run_node tests/onboarding-first-run-check.mjs
 run_node tests/release-packaging-cleanup-check.mjs
 run_node tests/ci-workflow-install-check.mjs
 run_node tests/node24-ci-compat-check.mjs
+run_node tests/release-evidence-repo-hygiene-check.mjs
 run_node tests/lockfile-public-registry-check.mjs
 run_node tests/browser-visual-project-scope-check.mjs
 run_node tests/repo-file-hygiene-check.mjs
@@ -115,7 +116,9 @@ run_node --check tests/source-packet-builder-browser.spec.mjs
 run_node --check tests/v119-no-browser-suite.mjs
 run_node --check tests/v120-no-browser-suite.mjs
 run_node --check tests/v121-no-browser-suite.mjs
+run_node --check tests/v122-no-browser-suite.mjs
 run_node --check tests/node24-ci-compat-check.mjs
+run_node --check tests/release-evidence-repo-hygiene-check.mjs
 run_node --check tests/source-packet-template-browser.spec.mjs
 run_node --check tests/source-packet-template-browser-qa-check.mjs
 run_node --check tests/browser-visual-project-scope-check.mjs

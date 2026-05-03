@@ -1,10 +1,10 @@
-# Release Manifest — v1.0.21
+# Release Manifest — v1.0.22
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.21`
-- Release name: `Node 24 CI Compatibility + Action Runtime Migration`
+- Version: `1.0.22`
+- Release name: `Release Evidence + Repo Hygiene Verification`
 - Release type: patch
 - Runtime capability change: no
 
@@ -49,9 +49,14 @@
 - `package-lock.json`
 - `playwright.config.js`
 
+## CI runtime
+
+- GitHub Actions runtime: Node 24.
+- Browser CI installs Playwright once before using `PLAYWRIGHT_SKIP_INSTALL=1`.
+
 ## Compatibility boundary
 
-v1.0.21 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, or product capability surface. The patch updates CI action/runtime compatibility and adds static guards/docs only.
+v1.0.22 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, or product capability surface. The patch adds release evidence and repository hygiene verification only.
 
 ## Required no-browser gates
 
@@ -59,7 +64,8 @@ v1.0.21 must not change provider behavior, OAuth behavior, backend endpoint beha
 npm run test:lockfile:registry
 npm run test:ci:workflow-install
 npm run test:ci:node24
-npm run test:v121:no-browser
+npm run test:release:evidence
+npm run test:v122:no-browser
 npm run test:ci:no-browser
 ```
 
@@ -70,7 +76,15 @@ npx playwright install --with-deps
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-## v1.0.21 artifacts
+## v1.0.22 artifacts
+
+- `tests/release-evidence-repo-hygiene-check.mjs`
+- `tests/v122-no-browser-suite.mjs`
+- `docs/v1.0.22-release-evidence-repo-hygiene-verification.md`
+- `fixtures/migrations/v1.0.22-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.22.json`
+
+## Retained v1.0.21 artifacts
 
 - `tests/node24-ci-compat-check.mjs`
 - `tests/v121-no-browser-suite.mjs`
@@ -78,15 +92,20 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `fixtures/migrations/v1.0.21-packet.json`
 - `fixtures/privacy/browser-generated-export-v1.0.21.json`
 
-## Retained v1.0.20 artifacts
+## Release evidence rules
 
-- `tests/source-packet-template-browser-qa-check.mjs`
-- `tests/source-packet-template-browser.spec.mjs`
-- `tests/browser-visual-project-scope-check.mjs`
-- `tests/v120-no-browser-suite.mjs`
-- `docs/v1.0.20-source-packet-template-browser-qa-copy-safety.md`
-- `fixtures/migrations/v1.0.20-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.20.json`
+- Browser evidence artifacts may be uploaded for inspection, but upload alone is not a pass condition.
+- The release is not approved unless no-browser and browser CI pass.
+- ZIP absence is not proof of Git deletion; stale tracked files must be removed with `git rm`.
+
+## Required cleanup commands
+
+```bash
+git rm -f --ignore-unmatch docs/v1.0.5-browser-qa-visual-regression-hardening.md
+git rm -f --ignore-unmatch scripts/XXKuyryP
+git rm -f --ignore-unmatch src/XXSyA2D3
+git rm -f --ignore-unmatch src/XXvKXvVS
+```
 
 ## Release archive exclusions
 

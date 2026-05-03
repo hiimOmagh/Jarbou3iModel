@@ -2,20 +2,19 @@
 
 ## Current version
 
-`v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration`
+`v1.0.22 — Release Evidence + Repo Hygiene Verification`
 
 A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
 ## What this patch changes
 
-- Adds browser QA for local/manual source packet template presets.
-- Verifies template selector visibility across desktop, tablet, and mobile.
-- Verifies all six presets build source packet JSON without live-fetch or verification claims.
-- Verifies copy/export controls remain visible and copied JSON remains policy-safe.
-- Scopes desktop visual screenshots to `chromium` and mobile visual screenshots to `mobile-chrome`.
+- Adds release evidence and repository hygiene verification.
+- Preserves Node 24 GitHub Actions compatibility.
+- Verifies hosted-demo evidence artifact upload remains inspectable but not sufficient for release approval.
 - Keeps public npm lockfile registry validation before `npm ci`.
 - Allows GitHub browser CI to skip duplicate Playwright installation with `PLAYWRIGHT_SKIP_INSTALL=1`.
-- Keeps repository hygiene guards against stale `XX*` orphan files.
+- Keeps repository hygiene guards against stale `XX*` orphan files and documents required `git rm` cleanup.
+- Preserves source packet template browser QA and copy/export safety from v1.0.20.
 
 ## Compatibility boundary
 
@@ -61,18 +60,20 @@ npx playwright install --with-deps
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-Targeted v1.0.21 checks:
+Targeted v1.0.22 checks:
 
 ```bash
-npm run test:source:packet-templates
-npm run test:source:packet-template-browser-qa
+npm run test:release:evidence
+npm run test:ci:node24
+npm run test:v122:no-browser
 npm run test:browser:visual-scope
-npm run test:v120:no-browser
 ```
 
 ## Release history
 
+- v1.0.22 — Release Evidence + Repo Hygiene Verification
 - v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration
+- v1.0.20 — Source Packet Template Browser QA + Copy Safety
 - v1.0.19 — Source Packet Template Presets
 - v1.0.18 — Source Packet Builder Export Roundtrip QA
 - v1.0.17 — Source Packet Builder Browser QA + UX Tightening
