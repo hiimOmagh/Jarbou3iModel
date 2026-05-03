@@ -43,6 +43,7 @@ run_node tests/onboarding-first-run-check.mjs
 run_node tests/release-packaging-cleanup-check.mjs
 run_node tests/ci-workflow-install-check.mjs
 run_node tests/lockfile-public-registry-check.mjs
+run_node tests/browser-visual-project-scope-check.mjs
 run_node tests/repo-file-hygiene-check.mjs
 run_node tests/repository-hygiene-cleanup-check.mjs
 run_node tests/public-demo-readiness-check.mjs
@@ -68,6 +69,7 @@ run_node tests/source-packet-builder-check.mjs
 run_node tests/source-packet-builder-browser-qa-check.mjs
 run_node tests/source-packet-roundtrip-check.mjs
 run_node tests/source-packet-template-presets-check.mjs
+run_node tests/source-packet-template-browser-qa-check.mjs
 run_node tests/evidence-review-queue-check.mjs
 run_node tests/github-source-connector-check.mjs
 run_node tests/web-search-provider-check.mjs
@@ -110,6 +112,10 @@ run_node --check tests/source-packet-roundtrip-check.mjs
 run_node --check tests/source-packet-template-presets-check.mjs
 run_node --check tests/source-packet-builder-browser.spec.mjs
 run_node --check tests/v119-no-browser-suite.mjs
+run_node --check tests/v120-no-browser-suite.mjs
+run_node --check tests/source-packet-template-browser.spec.mjs
+run_node --check tests/source-packet-template-browser-qa-check.mjs
+run_node --check tests/browser-visual-project-scope-check.mjs
 run_node --check tests/v118-no-browser-suite.mjs
 run_node --check tests/v117-no-browser-suite.mjs
 run_node --check tests/v116-no-browser-suite.mjs

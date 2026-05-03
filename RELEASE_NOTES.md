@@ -1,42 +1,30 @@
-## v1.0.19 — Source Packet Template Presets
+## v1.0.20 — Source Packet Template Browser QA + Copy Safety
 
-This patch verifies that a generated local/manual source packet can be exported and re-imported without changing the product's trust boundary.
+This patch consolidates v1.0.19 follow-through work and adds browser-level QA for local/manual Source Packet Template Presets.
 
 ### Added
 
-- `src/research/source-packet-roundtrip.js`.
-- `tests/source-packet-roundtrip-check.mjs`.
-- `tests/v119-no-browser-suite.mjs`.
-- `source_packet_roundtrip_report` in schema, fixtures, migrations, and exported research packets.
-- Import metadata preservation for source packet scoring reviews.
+- Source packet template browser QA for all six presets.
+- Copy/export safety checks for generated source packet JSON.
+- Static guard for Playwright visual-regression project scoping.
+- v1.0.20 migration and privacy fixtures.
+- v1.0.20 no-browser suite wrapper.
 
-### Verified
+### Fixed
 
-- Generated source packets use `manual_source_packet.v1`.
-- Re-import uses the source packet importer.
-- Re-imported evidence remains queue-only and unverified.
-- Evidence scoring remains attached after re-import.
-- Attention remains explicitly separated from truth/reliability.
-- No live fetching or verification claim is introduced.
+- Desktop visual screenshot capture is scoped to `chromium` only.
+- Mobile visual screenshot capture is scoped to `mobile-chrome` only.
+- Browser CI can skip duplicate Playwright install with `PLAYWRIGHT_SKIP_INSTALL=1` after workflow-level browser installation.
+- CI keeps the public npm lockfile registry guard before `npm ci`.
+- Repository hygiene remains defensive against tracked orphan `XX*` files.
 
-### Preserved
+### Unchanged boundaries
 
 - No live scraping.
-- No production OAuth.
-- No provider behavior change.
-- No backend endpoint behavior change.
-- No source connector behavior change.
-- No storage behavior change.
+- No real OAuth or PKCE.
+- No provider expansion.
+- No backend endpoint expansion.
 - Manual/private mode remains default.
+- Source packet templates remain drafting scaffolds, not source verification.
 
-### Required validation
-
-```bash
-npm run test:source:packet-templates
-npm run test:v119:no-browser
-npm run test:ci:no-browser
-npx playwright install --with-deps
-npm run test:ci:browser
-```
-
-Public Demo boundary: hosted/static demo remains honest about local/manual behavior and unavailable live features.
+- Public Demo boundaries remain unchanged: manual/private mode stays default and no fake-live source behavior is exposed.

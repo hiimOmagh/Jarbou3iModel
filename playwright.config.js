@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 const hostedDemoUrl = process.env.HOSTED_DEMO_URL?.trim();
 const localBaseUrl = 'http://127.0.0.1:4173';
 const baseURL = hostedDemoUrl || localBaseUrl;
+const chromiumExecutablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH?.trim();
 
 export default defineConfig({
   testDir: './tests',
@@ -19,7 +20,8 @@ export default defineConfig({
   },
   use: {
     baseURL,
-    trace: 'on-first-retry'
+    trace: 'on-first-retry',
+    launchOptions: chromiumExecutablePath ? { executablePath: chromiumExecutablePath } : undefined
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },

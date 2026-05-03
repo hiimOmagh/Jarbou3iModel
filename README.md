@@ -2,18 +2,20 @@
 
 ## Current version
 
-`v1.0.19 — Source Packet Template Presets`
+`v1.0.20 — Source Packet Template Browser QA + Copy Safety`
 
 A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
 ## What this patch changes
 
-- Adds local/manual source packet export → import template presets.
-- Confirms generated packets re-import through the source packet importer.
-- Preserves scoring review metadata as import metadata.
-- Confirms re-imported evidence remains queue-only and unverified.
-- Confirms evidence scoring survives the roundtrip without treating attention as truth.
-- Adds a dedicated roundtrip module and no-browser test gate.
+- Adds browser QA for local/manual source packet template presets.
+- Verifies template selector visibility across desktop, tablet, and mobile.
+- Verifies all six presets build source packet JSON without live-fetch or verification claims.
+- Verifies copy/export controls remain visible and copied JSON remains policy-safe.
+- Scopes desktop visual screenshots to `chromium` and mobile visual screenshots to `mobile-chrome`.
+- Keeps public npm lockfile registry validation before `npm ci`.
+- Allows GitHub browser CI to skip duplicate Playwright installation with `PLAYWRIGHT_SKIP_INSTALL=1`.
+- Keeps repository hygiene guards against stale `XX*` orphan files.
 
 ## Compatibility boundary
 
@@ -24,7 +26,7 @@ A dark editorial intelligence workspace that turns messy AI/user research output
 - No source connector behavior change.
 - No storage behavior change.
 - Manual/private mode remains default.
-- Builder output is transport metadata, not source verification.
+- Template output is transport metadata and a drafting scaffold, not source verification.
 
 ## Stable workflow
 
@@ -34,6 +36,7 @@ Topic/context
 → Evidence Matrix
 → Evidence Review Queue
 → Source Packet Builder
+→ Source Packet Template Presets
 → Causal Links
 → Analysis Brief Compiler
 → Provider Harness
@@ -48,24 +51,30 @@ Topic/context
 ## Local QA
 
 ```bash
-npm install
+npm ci --no-audit --no-fund --ignore-scripts
+npm run test:lockfile:registry
+npm run test:ci:workflow-install
+npm run test:browser:visual-scope
+npm run test:source:packet-template-browser-qa
 npm run test:ci:no-browser
 npx playwright install --with-deps
-npm run test:ci:browser
+PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-Targeted v1.0.19 checks:
+Targeted v1.0.20 checks:
 
 ```bash
 npm run test:source:packet-templates
-npm run test:source:packet-builder
-npm run test:v119:no-browser
-npm run test:ci:no-browser
+npm run test:source:packet-template-browser-qa
+npm run test:browser:visual-scope
+npm run test:v120:no-browser
 ```
 
 ## Release history
 
+- v1.0.20 — Source Packet Template Browser QA + Copy Safety
 - v1.0.19 — Source Packet Template Presets
+- v1.0.18 — Source Packet Builder Export Roundtrip QA
 - v1.0.17 — Source Packet Builder Browser QA + UX Tightening
 - v1.0.16 — Source Packet Builder UI + Scoring Review Controls
 - v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass

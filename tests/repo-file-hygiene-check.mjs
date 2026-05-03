@@ -143,7 +143,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.16-source-packet-builder-ui-scoring-review-controls.md',
   'docs/v1.0.17-source-packet-builder-browser-qa-ux-tightening.md',
   'docs/v1.0.18-source-packet-builder-export-roundtrip-qa.md',
-  'docs/v1.0.19-source-packet-template-presets.md'
+  'docs/v1.0.19-source-packet-template-presets.md',
+  'docs/v1.0.20-source-packet-template-browser-qa-copy-safety.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

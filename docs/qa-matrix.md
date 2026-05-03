@@ -2,7 +2,9 @@
 
 | Version | Area | Primary gate | Purpose |
 |---|---|---|---|
+| v1.0.20 | Source Packet Template Browser QA + Copy Safety | `npm run test:source:packet-template-browser-qa` + `npm run test:browser:source-packet-template` + `npm run test:browser:visual-scope` | Verifies template selector visibility, copy/export safety, no-fetch/no-verification claims, browser layout safety, and Playwright project scoping. |
 | v1.0.19 | Source Packet Template Presets | `npm run test:source:packet-templates` | Verifies local template presets, template reports, source-packet re-import compatibility, queue-only discipline, and no-fetch/no-verification boundaries. |
+| v1.0.18 | Source Packet Builder Export Roundtrip QA | `npm run test:source:packet-roundtrip` | Verifies source packet export/import roundtrip integrity and scoring-review metadata preservation. |
 | v1.0.17 | Source Packet Builder Browser QA + UX Tightening | `npm run test:source:packet-builder:browser-qa` + `npm run test:browser:source-packet-builder` | Verifies builder visibility, overflow safety, local/manual semantics, and copy/export control reachability. |
 | v1.0.16 | Source Packet Builder UI + Scoring Review Controls | `npm run test:source:packet-builder` | Verifies local/manual source packet builder output and scoring review controls. |
 | v1.0.15 | Evidence Scoring UI Explanation + Calibration Pass | `npm run test:evidence:calibration` | Verifies scoring interpretation and calibration guardrails. |

@@ -23,24 +23,26 @@ async function selectTab(page, tab) {
   await expect(page.locator(`#researchModeNav .uxTab[data-ux-tab="${tab}"]`)).toHaveAttribute('aria-selected', 'true');
 }
 
-test.describe('v1.0.19 visual regression capture', () => {
+test.describe('v1.0.20 visual regression capture', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
-  test('captures stable desktop workflow states', async ({ page }) => {
+  test('captures stable desktop workflow states', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'chromium', 'Desktop visual screenshots are scoped to the chromium project.');
     await page.setViewportSize({ width: 1440, height: 950 });
     for (const tab of ['analysis', 'evidence', 'sources', 'quality', 'advanced']) {
       await selectTab(page, tab);
-      await captureOrCompare(page, `v105-desktop-${tab}`);
+      await captureOrCompare(page, `v120-desktop-${tab}`);
     }
   });
 
-  test('captures stable mobile workflow states', async ({ page }) => {
+  test('captures stable mobile workflow states', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'mobile-chrome', 'Mobile visual screenshots are scoped to the mobile-chrome project.');
     await page.setViewportSize({ width: 390, height: 844 });
     await selectTab(page, 'analysis');
-    await captureOrCompare(page, 'v105-mobile-analysis');
+    await captureOrCompare(page, 'v120-mobile-analysis');
     await selectTab(page, 'evidence');
-    await captureOrCompare(page, 'v105-mobile-evidence');
+    await captureOrCompare(page, 'v120-mobile-evidence');
   });
 });

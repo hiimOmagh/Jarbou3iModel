@@ -1,9 +1,9 @@
 {
   "name": "jarbou3i-research-engine",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "private": true,
   "type": "module",
-  "description": "Jarbou3i Research Engine v1.0.19 source packet builder browser QA and UX tightening patch: builds local/manual source packet JSON from evidence or review queue candidates, surfaces scoring review controls, and preserves no-fetch/no-OAuth boundaries. evidence scoring calibration remains active. The source strategy registry remains enforced.",
+  "description": "Jarbou3i Research Engine v1.0.20 source packet template browser QA and copy safety consolidation patch with evidence scoring preservation, public npm lockfile guard, repository hygiene gates, source strategy registry preservation, PLAYWRIGHT_SKIP_INSTALL browser CI support, and visual regression project scoping. Manual/private mode remains default; no live scraping, real OAuth, or backend expansion is added.",
   "scripts": {
     "dev": "http-server . -p 4173 -c-1",
     "test": "npm run test:qa && npm run test:browser",
@@ -73,10 +73,10 @@
     "test:ci:no-browser": "bash scripts/ci-no-browser.sh",
     "test:ci:browser": "bash scripts/ci-browser.sh",
     "test:ci": "npm run test:ci:no-browser && npm run test:ci:browser",
-    "test:stable": "node tests/stable-release-check.mjs && node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/ci-workflow-install-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs && node tests/source-capability-registry-check.mjs && node tests/source-packet-import-check.mjs && node tests/evidence-scoring-check.mjs && node tests/evidence-scoring-calibration-check.mjs && node tests/source-packet-builder-check.mjs && node tests/source-packet-builder-browser-qa-check.mjs && node tests/source-packet-roundtrip-check.mjs && node tests/source-packet-template-presets-check.mjs",
+    "test:stable": "node tests/stable-release-check.mjs && node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/ci-workflow-install-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs && node tests/source-capability-registry-check.mjs && node tests/source-packet-import-check.mjs && node tests/evidence-scoring-check.mjs && node tests/evidence-scoring-calibration-check.mjs && node tests/source-packet-builder-check.mjs && node tests/source-packet-builder-browser-qa-check.mjs && node tests/source-packet-roundtrip-check.mjs && node tests/source-packet-template-presets-check.mjs && node tests/source-packet-template-browser-qa-check.mjs",
     "test:v100:no-browser": "node tests/v100-no-browser-suite.mjs",
     "test:v100": "npm run test:v100:no-browser && npm run test:browser:provider",
-    "test:patch": "node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/ci-workflow-install-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs && node tests/source-capability-registry-check.mjs && node tests/source-packet-import-check.mjs && node tests/evidence-scoring-check.mjs && node tests/evidence-scoring-calibration-check.mjs && node tests/source-packet-builder-check.mjs && node tests/source-packet-builder-browser-qa-check.mjs && node tests/source-packet-roundtrip-check.mjs && node tests/source-packet-template-presets-check.mjs",
+    "test:patch": "node tests/patch-stabilization-check.mjs && node tests/ux-stabilization-patch-check.mjs && node tests/screen-discipline-patch-check.mjs && node tests/browser-qa-hardening-check.mjs && node tests/onboarding-first-run-check.mjs && node tests/release-packaging-cleanup-check.mjs && node tests/ci-workflow-install-check.mjs && node tests/public-demo-readiness-check.mjs && node tests/hosted-demo-deployment-check.mjs && node tests/hosted-demo-evidence-review-check.mjs && node tests/module-type-warning-fix-check.mjs && node tests/repository-hygiene-cleanup-check.mjs && node tests/source-capability-registry-check.mjs && node tests/source-packet-import-check.mjs && node tests/evidence-scoring-check.mjs && node tests/evidence-scoring-calibration-check.mjs && node tests/source-packet-builder-check.mjs && node tests/source-packet-builder-browser-qa-check.mjs && node tests/source-packet-roundtrip-check.mjs && node tests/source-packet-template-presets-check.mjs && node tests/source-packet-template-browser-qa-check.mjs",
     "test:v102:no-browser": "node tests/v102-no-browser-suite.mjs",
     "test:v102": "npm run test:v102:no-browser && npm run test:browser:provider",
     "test:ux:stabilization": "node tests/ux-stabilization-patch-check.mjs",
@@ -122,7 +122,7 @@
     "test:evidence:calibration": "node tests/evidence-scoring-calibration-check.mjs",
     "test:v115:no-browser": "node tests/v115-no-browser-suite.mjs",
     "test:v115": "npm run test:v115:no-browser && npm run test:ci:browser",
-    "test:source:packet-builder": "node tests/source-packet-builder-check.mjs && node tests/source-packet-builder-browser-qa-check.mjs && node tests/source-packet-roundtrip-check.mjs && node tests/source-packet-template-presets-check.mjs",
+    "test:source:packet-builder": "node tests/source-packet-builder-check.mjs && node tests/source-packet-builder-browser-qa-check.mjs && node tests/source-packet-roundtrip-check.mjs && node tests/source-packet-template-presets-check.mjs && node tests/source-packet-template-browser-qa-check.mjs",
     "test:v116:no-browser": "node tests/v116-no-browser-suite.mjs",
     "test:v116": "npm run test:v116:no-browser && npm run test:ci:browser",
     "test:source:packet-builder:browser-qa": "node tests/source-packet-builder-browser-qa-check.mjs",
@@ -136,7 +136,12 @@
     "test:v119:no-browser": "node tests/v119-no-browser-suite.mjs",
     "test:v119": "npm run test:v119:no-browser && npm run test:ci:browser",
     "test:ci:workflow-install": "node tests/ci-workflow-install-check.mjs",
-    "test:lockfile:registry": "node tests/lockfile-public-registry-check.mjs"
+    "test:lockfile:registry": "node tests/lockfile-public-registry-check.mjs",
+    "test:browser:visual-scope": "node tests/browser-visual-project-scope-check.mjs",
+    "test:source:packet-template-browser-qa": "node tests/source-packet-template-browser-qa-check.mjs",
+    "test:browser:source-packet-template": "./node_modules/.bin/playwright test tests/source-packet-template-browser.spec.mjs",
+    "test:v120:no-browser": "node tests/v120-no-browser-suite.mjs",
+    "test:v120": "npm run test:v120:no-browser && npm run test:ci:browser"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

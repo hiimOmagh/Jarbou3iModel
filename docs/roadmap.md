@@ -2,19 +2,20 @@
 
 ## Current patch
 
-`v1.0.18 — Source Packet Template Presets`
+`v1.0.20 — Source Packet Template Browser QA + Copy Safety`
 
-Purpose: prove source packet export/import roundtrip integrity before adding presets or live source capability.
+Purpose: consolidate v1.0.19 CI follow-through and browser-test local/manual source packet template presets before any controlled source workflow expansion.
 
 ## Immediate next candidates
 
-1. `v1.0.19 — Source Packet Template Presets`
-   - Add local-only templates for Reddit thread, official report, YouTube transcript, market signal, GitHub release, and generic article packets.
+1. `v1.0.21 — Release Evidence + Repo Hygiene Verification`
+   - Confirm GitHub Actions no-browser and browser CI pass from the real repository state.
+   - Confirm stale tracked orphan files are deleted through Git, not merely absent from extracted ZIPs.
 
 2. `v1.1.0 — Controlled Source Workflow MVP`
-   - Only after browser QA, template presets, and templates are stable.
+   - Only after browser QA, template presets, and copy/export safety are stable.
 
-## Blocked until later
+## Blocked until explicitly scoped
 
 - Live scraping.
 - Production OAuth.

@@ -26,9 +26,13 @@ const tests = [
   'tests/ux-stabilization-patch-check.mjs',
   'tests/screen-discipline-patch-check.mjs',
   'tests/browser-qa-hardening-check.mjs',
+  'tests/browser-visual-project-scope-check.mjs',
   'tests/onboarding-first-run-check.mjs',
   'tests/release-packaging-cleanup-check.mjs',
+  'tests/ci-workflow-install-check.mjs',
+  'tests/lockfile-public-registry-check.mjs',
   'tests/repo-file-hygiene-check.mjs',
+  'tests/repository-hygiene-cleanup-check.mjs',
   'tests/public-demo-readiness-check.mjs',
   'tests/hosted-demo-deployment-check.mjs',
   'tests/hosted-demo-evidence-review-check.mjs',
@@ -40,6 +44,10 @@ const tests = [
   'tests/evidence-scoring-check.mjs',
   'tests/evidence-scoring-calibration-check.mjs',
   'tests/source-packet-builder-check.mjs',
+  'tests/source-packet-builder-browser-qa-check.mjs',
+  'tests/source-packet-roundtrip-check.mjs',
+  'tests/source-packet-template-presets-check.mjs',
+  'tests/source-packet-template-browser-qa-check.mjs',
   'tests/evidence-review-queue-check.mjs',
   'tests/github-source-connector-check.mjs',
   'tests/web-search-provider-check.mjs',
@@ -47,12 +55,11 @@ const tests = [
   'tests/backend-hardening-check.mjs',
   'tests/backend-worker-smoke.mjs',
   'tests/module-type-warning-fix-check.mjs',
-  'tests/repository-hygiene-cleanup-check.mjs',
   'tests/source-capability-registry-check.mjs'
 ];
 
-for (const test of tests) {
-  const result = spawnSync(process.execPath, [test], { stdio: 'inherit' });
+for (const file of tests) {
+  const result = spawnSync(process.execPath, [file], { stdio: 'inherit' });
   if (result.status !== 0) process.exit(result.status || 1);
 }
 console.log(`v1.0.20 no-browser suite passed (${tests.length} checks).`);
