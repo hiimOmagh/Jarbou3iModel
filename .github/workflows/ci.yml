@@ -43,4 +43,4 @@ jobs:
         if: always()
         with:
           name: hosted-demo-evidence
-          path: test-results/hosted-demo-evidence
+          path: ci-artifacts/hosted-demo-evidence

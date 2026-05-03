@@ -53,7 +53,7 @@ for (const required of [
   'npx playwright install --with-deps',
   'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser',
   'name: hosted-demo-evidence',
-  'path: test-results/hosted-demo-evidence',
+  'path: ci-artifacts/hosted-demo-evidence',
   'if: always()'
 ]) {
   assert.ok(workflow.includes(required), `workflow missing release evidence/runtime token: ${required}`);
@@ -80,6 +80,8 @@ assert.ok(installIndex < playwrightIndex, 'npm ci must run before Playwright ins
 assert.ok(playwrightIndex < browserIndex, 'Playwright must install once before browser CI skip flag');
 
 assert.ok(ciBrowser.includes('PLAYWRIGHT_SKIP_INSTALL'), 'ci-browser must support install skip flag');
+assert.ok(ciBrowser.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'ci-browser must preserve hosted demo evidence outside Playwright test-results cleanup');
+assert.ok(ciBrowser.includes('ci-artifacts/hosted-demo-evidence'), 'ci-browser must default hosted demo evidence to a non-test-results artifact path');
 assert.ok(ciBrowser.includes('npm run test:browser:evidence'), 'ci-browser must include hosted demo evidence test');
 assert.ok(ciBrowser.includes('npm run test:browser:visual'), 'ci-browser must include visual regression test');
 assert.ok(ciNoBrowser.includes('tests/release-evidence-repo-hygiene-check.mjs'), 'no-browser CI must include release evidence guard');

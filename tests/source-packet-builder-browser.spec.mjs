@@ -10,6 +10,18 @@ async function selectWorkflowTab(page, tab) {
   await expect(page.locator(`#researchModeNav .uxTab[data-ux-tab="${tab}"]`)).toHaveAttribute('aria-selected', 'true');
 }
 
+async function assertLocalizedGuardrail(page) {
+  const guardrail = page.locator('.sourcePacketBuilderGuardrail');
+  await expect(guardrail).toBeVisible();
+  await expect(guardrail).toHaveAttribute('data-r-i18n', 'sourcePacketBuilderGuardrail');
+  const text = await guardrail.innerText();
+  expect([
+    /Browser QA|No live fetching|local\/manual/i,
+    /ضابط QA للمتصفح|محلية\/يدوية|لا جلب مباشر/i,
+    /Garde-fou QA navigateur|locaux\/manuels|Aucun fetch live/i
+  ].some((pattern) => pattern.test(text))).toBeTruthy();
+}
+
 async function seedEvidence(page) {
   await selectWorkflowTab(page, 'evidence');
   await page.locator('#evClaim').fill('Traceable official source documents the implementation boundary for the source packet builder.');
@@ -45,7 +57,7 @@ test.describe('v1.0.22 source packet builder browser QA', () => {
       await expect(page.locator('#buildSourcePacketFromReviewBtn')).toBeVisible();
       await expect(page.locator('#copySourcePacketBuilderBtn')).toBeVisible();
       await expect(page.locator('#exportSourcePacketBuilderBtn')).toBeVisible();
-      await expect(page.locator('.sourcePacketBuilderGuardrail')).toContainText(/No live fetching|Browser QA/i);
+      await assertLocalizedGuardrail(page);
       await assertNoHorizontalOverflow(page);
     });
   }

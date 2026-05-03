@@ -11,6 +11,10 @@ if [ "${PLAYWRIGHT_SKIP_INSTALL:-0}" != "1" ]; then
 else
   echo "Skipping Playwright browser install because PLAYWRIGHT_SKIP_INSTALL=1."
 fi
+
+export HOSTED_DEMO_EVIDENCE_DIR="${HOSTED_DEMO_EVIDENCE_DIR:-ci-artifacts/hosted-demo-evidence}"
+mkdir -p "$HOSTED_DEMO_EVIDENCE_DIR"
+
 npm run test:browser:provider
 npm run test:browser:layout
 npm run test:browser:visual

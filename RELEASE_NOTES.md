@@ -43,3 +43,9 @@ Do not claim v1.0.22 complete until both no-browser and browser CI pass in GitHu
 ## Public Demo boundary
 
 The Public Demo remains manual/private, local-first, and release-gated. Evidence upload does not equal release approval.
+
+
+## Browser CI retry note
+
+- Source packet builder browser QA is language-agnostic for EN/AR/FR guardrail copy.
+- Hosted demo evidence is written to `ci-artifacts/hosted-demo-evidence` so later Playwright suites do not clear the upload payload.
