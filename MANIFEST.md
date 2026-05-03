@@ -1,19 +1,17 @@
-# v1.0.23 RTL/mobile browser smoke alignment hotfix
+# v1.0.23 RTL/mobile collapsed-welcome assertion hotfix
 
-Apply this patch after `jarbou3i-research-engine-v1.0.23-ci-result-review-browser-evidence-audit-patch.zip`.
+Apply this patch after `jarbou3i-research-engine-v1.0.23-rtl-mobile-spec-alignment-hotfix-patch.zip`.
 
 Changed files:
 
 - `tests/rtl-mobile.spec.js`
-- `src/styles.css`
 
 Purpose:
 
-- Align the RTL/mobile smoke test with the v1.0.3+ screen-discipline default where the Command Center is collapsed by default.
-- Expand the Command Center before clicking `#loadSampleBtn`, matching the already-correct helper pattern used in `tests/smoke.spec.js`.
-- Preserve the strict horizontal overflow assertion instead of weakening it.
-- Add overflow offender diagnostics to the assertion message so future CI failures identify the exact overflowing node.
-- Keep the mobile CSS guard defensive for Arabic 390px Chromium/mobile-Chrome rendering.
+- Fix the remaining RTL/mobile CI failure where `.welcomeCard` is expected to be visible while the Command Center is still intentionally collapsed.
+- Preserve the app behavior: `#workflowPanel` starts with `screenDisciplineCollapsed`; content below `.panelHeader`, including `#welcomeCard`, is hidden until the panel is expanded.
+- Keep the smoke test strict: it still verifies Arabic RTL mode, expands the workflow panel, runs the sample flow, checks review visibility, and checks horizontal overflow with diagnostic offender reporting.
+- Align the assertion order with the actual UI state: expand first, then assert `#workflowPanel:not(.screenDisciplineCollapsed) #welcomeCard` is visible.
 
 Validation performed locally:
 
@@ -21,14 +19,13 @@ Validation performed locally:
 node tests/v123-no-browser-suite.mjs
 ```
 
-Browser validation still required in GitHub Actions:
+Browser validation required in GitHub Actions:
 
 ```bash
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-Reason browser validation is limited in this sandbox:
+Expected result:
 
-- Playwright's bundled Chromium is unavailable locally.
-- The system Chromium blocks normal localhost navigation with `net::ERR_BLOCKED_BY_ADMINISTRATOR`.
-- An inline Chromium harness was used to verify the patched Arabic 390px flow reports `documentElement.scrollWidth === documentElement.clientWidth`.
+- `tests/rtl-mobile.spec.js` should no longer fail at `.welcomeCard` visibility before panel expansion.
+- If a true layout overflow remains, the assertion will print `Horizontal overflow report` with the offending DOM nodes.
