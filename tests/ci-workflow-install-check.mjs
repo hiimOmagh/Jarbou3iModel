@@ -21,14 +21,20 @@ assert.ok(
 );
 
 assert.equal(
+  workflow.includes('node-version: 20'),
+  false,
+  'CI workflow must not pin Node 20 after v1.0.21 Node 24 action-runtime migration'
+);
+
+assert.equal(
   workflow.includes('node-version: 22'),
   false,
-  'CI workflow must not pin Node 22 while GitHub runner npm 10.9.x install instability is active'
+  'CI workflow must not pin Node 22 while prior npm 10.9.x install instability remains out of scope'
 );
 
 assert.ok(
-  workflow.includes('node-version: 20'),
-  'CI workflow should pin project test runtime to Node 20 until the Node 22/npm 10.9.x install instability is cleared'
+  workflow.includes('node-version: 24'),
+  'CI workflow must pin project test runtime to Node 24 for v1.0.21 compatibility validation'
 );
 
 assert.ok(
