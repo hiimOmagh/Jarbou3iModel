@@ -1,60 +1,15 @@
-# v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
+## v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 
-## Added
+- Promoted current release metadata to v1.0.24.
+- Added v1.0.24 migration and privacy export fixtures.
+- Added repo hygiene/stale documentation guard and v1.0.24 no-browser wrapper.
+- Corrected stale current-state documentation in AI integration, architecture, and privacy audit docs.
+- Corrected the historical v0.19 privacy-audit document heading mismatch.
+- Preserved Node 24 CI, Playwright install discipline, browser evidence review, Public Demo manual/private boundaries, and manual/private runtime boundaries.
+
+## v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
 
 - Added CI result review and browser evidence artifact audit guard.
 - Added v1.0.23 no-browser suite wrapper.
 - Added v1.0.23 migration and privacy fixtures.
-- Added release documentation for GitHub Actions run review, browser evidence artifact inspection, and public repository alignment.
-- Expanded roadmap sequencing through `v1.0.25`, `v1.1.x`, and the controlled live retrieval phase.
-
-### Preserved
-
-- Node 24 CI workflow compatibility from v1.0.21/v1.0.22.
-- Public npm lockfile registry guard.
-- `npm ci --no-audit --no-fund --ignore-scripts` install path.
-- Browser CI single Playwright installation with `PLAYWRIGHT_SKIP_INSTALL=1`.
-- Manual/private mode as default.
-- No live scraping, real OAuth, provider expansion, or backend endpoint expansion.
-
-### Audit finding
-
-- Local no-browser CI passed on the uploaded source archive.
-- Public GitHub repository state observed during this patch was not aligned with the uploaded archive; visible workflow evidence still showed an older `checkout@v4/setup-node@v4/node-version: 22/npm install` shape.
-- Release approval must wait for a passing GitHub Actions run on the intended release commit.
-
-### Verification
-
-- `npm run test:ci:result-review`
-- `npm run test:v123:no-browser`
-- `npm run test:ci:no-browser`
-- `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`
-
-## v1.0.22 — Release Evidence + Repo Hygiene Verification
-
-### Additions
-
-- Added release evidence and repository hygiene verification guard.
-- Added v1.0.22 no-browser suite wrapper.
-- Added v1.0.22 migration and privacy fixtures.
-- Added release documentation for Git-tracked orphan deletion and evidence artifact discipline.
-
-### Preserved in v1.0.22
-
-- Node 24 CI workflow compatibility from v1.0.21.
-- Public npm lockfile registry guard.
-- `npm ci --no-audit --no-fund --ignore-scripts` install path.
-- Browser CI single Playwright installation with `PLAYWRIGHT_SKIP_INSTALL=1`.
-- Manual/private mode as default.
-- No live scraping, real OAuth, provider expansion, or backend endpoint expansion.
-
-### Verification for v1.0.22
-
-- `npm run test:release:evidence`
-- `npm run test:v122:no-browser`
-- `npm run test:ci:no-browser`
-- `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`
-
-## Public Demo boundary
-
-The Public Demo remains manual/private, local-first, and release-gated. Evidence upload does not equal release approval.
+- Preserved runtime capability boundaries while verifying GitHub Actions state and browser evidence upload discipline.

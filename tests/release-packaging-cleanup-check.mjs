@@ -4,8 +4,8 @@ import fs from 'node:fs';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.0.23';
-const RELEASE = 'v1.0.23 — CI Result Review + Browser Evidence Artifact Audit';
+const VERSION = '1.0.24';
+const RELEASE = 'v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction';
 const pkg = json('package.json');
 const manifest = read('RELEASE_MANIFEST.md');
 const releaseIgnore = read('.releaseignore');
@@ -15,8 +15,8 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.23-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.23.json');
+const migrationFixture = json('fixtures/migrations/v1.0.24-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.24.json');
 
 assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes('release evidence'));
@@ -42,16 +42,16 @@ for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
   'docs/v1.0.20-source-packet-template-browser-qa-copy-safety.md',
   'docs/v1.0.21-node-24-ci-compatibility.md',
-  'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
+  'docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md',
   'tests/release-packaging-cleanup-check.mjs',
   'tests/repo-file-hygiene-check.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/v122-no-browser-suite.mjs',
   'fixtures/migrations/v1.0.21-packet.json',
-  'fixtures/migrations/v1.0.23-packet.json',
+  'fixtures/migrations/v1.0.24-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.21.json',
-  'fixtures/privacy/browser-generated-export-v1.0.23.json'
+  'fixtures/privacy/browser-generated-export-v1.0.24.json'
 ]) {
   assert.ok(fs.existsSync(file), `missing release cleanup file: ${file}`);
 }
@@ -80,7 +80,7 @@ const expectedDocHeadings = new Map([
   ['docs/v1.0.19-source-packet-template-presets.md', '# v1.0.19 — Source Packet Template Presets'],
   ['docs/v1.0.20-source-packet-template-browser-qa-copy-safety.md', '# v1.0.20 — Source Packet Template Browser QA + Copy Safety'],
   ['docs/v1.0.21-node-24-ci-compatibility.md', '# v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration'],
-  ['docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md', '# v1.0.23 — CI Result Review + Browser Evidence Artifact Audit']
+  ['docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md', '# v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
   assert.equal(read(file).split('\n')[0], heading, `${file} heading drifted`);
@@ -125,7 +125,7 @@ for (const token of [
 for (const token of ['node_modules/','playwright-report/','test-results/','*.zip','backend/.dev.vars']) {
   assert.ok(releaseIgnore.includes(token), `.releaseignore missing ${token}`);
 }
-for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.0.23`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
+for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.0.24`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
   assert.ok(manifest.includes(token), `release manifest missing ${token}`);
 }
 for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:ci:node24','test:v121:no-browser','test:v121','test:release:evidence','test:v122:no-browser','test:v122']) {

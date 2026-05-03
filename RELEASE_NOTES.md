@@ -1,52 +1,46 @@
-# v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
+# v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 
-## Summary
-
-v1.0.23 is an audit-only patch. It does not expand product capability. It adds a dedicated contract for reviewing the real GitHub Actions result, the no-browser/browser CI split, and uploaded browser evidence artifacts before release approval.
+v1.0.24 is a release-hygiene patch. It does not expand product capability. It updates the current release metadata, corrects stale current-state documentation, adds v1.0.24 fixtures, and strengthens the guard that keeps generated artifacts and local secrets out of the committed/release tree.
 
 ## Added
 
-- CI result review and browser evidence artifact audit guard.
-- v1.0.23 no-browser suite.
-- v1.0.23 migration fixture.
-- v1.0.23 privacy export fixture.
-- Release documentation that distinguishes browser evidence upload from release approval.
-- Roadmap detail for `v1.0.24`, `v1.0.25`, and the controlled source workflow sequence.
+- v1.0.24 no-browser suite wrapper.
+- v1.0.24 migration fixture.
+- v1.0.24 privacy export fixture.
+- Dedicated repo hygiene and stale documentation guard.
+- v1.0.24 release hygiene documentation.
 
-## CI boundary
+## Corrected
 
-The workflow must remain on Node 24 and continue to use:
+- `docs/ai-integration.md` now identifies the current state as v1.0.24 instead of v0.20.0-beta.
+- `docs/architecture.md` now reflects the current research/source/export/release-hygiene pipeline.
+- `docs/privacy-audit.md` now reflects the current privacy/export/repository hygiene boundary.
+- `docs/v0.19.0-beta-privacy-audit-hardening.md` no longer carries the wrong v0.20 heading.
+- Migration support preserves v1.0.23 as a valid source version and appends v1.0.24 as the current target.
 
-```bash
-npm ci --no-audit --no-fund --ignore-scripts
-npx playwright install --with-deps
-PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
-```
+## Preserved
 
-## Audit finding
+- Node 24 GitHub Actions compatibility.
+- Public npm lockfile registry validation before `npm ci`.
+- Single workflow-level Playwright install followed by `PLAYWRIGHT_SKIP_INSTALL=1` browser CI.
+- Browser evidence artifact upload as inspection material, not release approval.
+- Manual/private mode as the default operating model.
+- Local/manual source packet workflow without live scraping or source verification claims.
 
-The uploaded v1.0.22 source archive is locally consistent and passes no-browser CI, but the visible public GitHub repository state observed during this patch was not aligned with the archive. The public workflow page still exposed an older workflow using `actions/checkout@v4`, `actions/setup-node@v4`, `node-version: 22`, and `npm install`.
+## Compatibility boundary
 
-That mismatch means local ZIP validation alone is insufficient. The release must not be approved until the intended release commit is pushed and the exact GitHub Actions run for that commit passes both no-browser and browser jobs.
-
-## Manual/private boundary
-
-Manual/private mode remains default. v1.0.23 does not add live scraping, real OAuth, provider behavior expansion, backend endpoint expansion, or new live source connectors.
+Manual/private mode remains default. v1.0.24 does not add live scraping, real OAuth, provider behavior expansion, backend endpoint expansion, new live source connectors, storage behavior changes, or public-demo capability expansion.
 
 ## Required validation
 
 ```bash
-npm run test:ci:result-review
-npm run test:v123:no-browser
+npm run test:repo:hygiene-execution
+npm run test:v124:no-browser
 npm run test:ci:no-browser
 npx playwright install --with-deps
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-## Release decision rule
+## Release decision
 
-Do not claim v1.0.23 complete from local/sandbox results alone. Completion requires a reviewed GitHub Actions run for the intended release commit, with both no-browser and browser jobs passing, plus inspection of the uploaded browser evidence artifact.
-
-## Public Demo boundary
-
-The Public Demo remains manual/private, local-first, and release-gated. Evidence upload does not equal release approval.
+Do not approve v1.0.24 from a local ZIP alone. Completion requires a clean source tree, corrected stale current-state docs, passing no-browser/browser CI, and reviewed browser evidence artifacts for the intended release commit.

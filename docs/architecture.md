@@ -1,20 +1,25 @@
 # Architecture
 
-## Current v0.20.0-beta pipeline
+## Current v1.0.24 pipeline
 
 ```text
 Topic/context
 → Research Plan
 → Evidence Matrix
 → Evidence Review Queue
+→ Source Packet Builder
+→ Source Packet Template Presets
 → Causal Links
 → Analysis Brief Compiler
 → Provider Harness
 → Provider Response Validation
 → Controlled Repair Loop
 → Critique
-→ Quality Gate v2
-→ Export
+→ Privacy Export Guard
+→ Quality Gate
+→ Export Pack
+→ Hosted Demo Evidence Review
+→ Release Hygiene Guard
 ```
 
 ## Provider architecture
@@ -43,6 +48,14 @@ The provider identity layer models `auth_type`, `billing_owner`, `key_exposure`,
 
 It never creates or exports a raw token.
 
+## Source workflow boundary
+
+The current source workflow is manual/import-first. Source packets, templates, and evidence review metadata are local drafting and organization structures. They do not perform live scraping and do not verify source truth.
+
 ## Backend layer
 
 The Cloudflare Worker scaffold remains optional. The static app must remain functional without backend deployment.
+
+## Release hygiene layer
+
+v1.0.24 adds no runtime capability. It verifies that stale current-state documentation, generated artifacts, ZIPs, logs, test outputs, and secret-bearing local config files do not pollute the source/release boundary.

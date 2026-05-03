@@ -1,31 +1,166 @@
-# v1.0.23 RTL/mobile collapsed-welcome assertion hotfix
+# v1.0.24 Patch Manifest
 
-Apply this patch after `jarbou3i-research-engine-v1.0.23-rtl-mobile-spec-alignment-hotfix-patch.zip`.
+## Patch
 
-Changed files:
+`v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction`
 
-- `tests/rtl-mobile.spec.js`
+## Apply after
 
-Purpose:
+The completed v1.0.23 CI/browser evidence patch and RTL/mobile/a11y hotfixes.
 
-- Fix the remaining RTL/mobile CI failure where `.welcomeCard` is expected to be visible while the Command Center is still intentionally collapsed.
-- Preserve the app behavior: `#workflowPanel` starts with `screenDisciplineCollapsed`; content below `.panelHeader`, including `#welcomeCard`, is hidden until the panel is expanded.
-- Keep the smoke test strict: it still verifies Arabic RTL mode, expands the workflow panel, runs the sample flow, checks review visibility, and checks horizontal overflow with diagnostic offender reporting.
-- Align the assertion order with the actual UI state: expand first, then assert `#workflowPanel:not(.screenDisciplineCollapsed) #welcomeCard` is visible.
+## Added files
 
-Validation performed locally:
+- `docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md`
+- `fixtures/migrations/v1.0.24-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.24.json`
+- `tests/repo-hygiene-execution-stale-docs-check.mjs`
+- `tests/v124-no-browser-suite.mjs`
 
-```bash
-node tests/v123-no-browser-suite.mjs
-```
+## Modified files
 
-Browser validation required in GitHub Actions:
+- `CHANGELOG.md`
+- `README.md`
+- `RELEASE_MANIFEST.md`
+- `RELEASE_NOTES.md`
+- `backend/cloudflare-worker.js`
+- `docs/ai-integration.md`
+- `docs/architecture.md`
+- `docs/privacy-audit.md`
+- `docs/qa-matrix.md`
+- `docs/roadmap.md`
+- `docs/v0.19.0-beta-privacy-audit-hardening.md`
+- `fixtures/research/sample-research-workflow-en.json`
+- `index.html`
+- `package-lock.json`
+- `package.json`
+- `schema/research-workflow.schema.json`
+- `scripts/ci-no-browser.sh`
+- `src/app.js`
+- `src/research-engine.js`
+- `src/research/analysis-templates.js`
+- `src/research/backend-proxy-provider.js`
+- `src/research/evidence-controller.js`
+- `src/research/evidence-review-controller.js`
+- `src/research/evidence-scorer.js`
+- `src/research/export-controller.js`
+- `src/research/export-pack.js`
+- `src/research/hosted-demo-verification.js`
+- `src/research/migrations.js`
+- `src/research/mock-provider.js`
+- `src/research/onboarding.js`
+- `src/research/openai-compatible-provider.js`
+- `src/research/portable-account-mock.js`
+- `src/research/portable-oauth-spike.js`
+- `src/research/privacy-audit.js`
+- `src/research/privacy-export-guard.js`
+- `src/research/project-workspace.js`
+- `src/research/prompt-builders.js`
+- `src/research/provider-controller.js`
+- `src/research/provider-core.js`
+- `src/research/provider-fixtures.js`
+- `src/research/public-demo-readiness.js`
+- `src/research/quality-gate.js`
+- `src/research/release-candidate.js`
+- `src/research/render-helpers.js`
+- `src/research/search-provider-abstraction.js`
+- `src/research/source-capability-registry.js`
+- `src/research/source-connectors.js`
+- `src/research/source-controller.js`
+- `src/research/source-import-adapter.js`
+- `src/research/source-packet-builder.js`
+- `src/research/source-packet-importer.js`
+- `src/research/source-packet-roundtrip.js`
+- `src/research/source-packet-templates.js`
+- `src/research/state-store.js`
+- `src/research/ux-reliability.js`
+- `tests/analysis-template-check.mjs`
+- `tests/backend-hardening-check.mjs`
+- `tests/backend-worker-smoke.mjs`
+- `tests/browser-layout-persistence.spec.mjs`
+- `tests/browser-qa-hardening-check.mjs`
+- `tests/browser-visual-project-scope-check.mjs`
+- `tests/browser-visual-regression.spec.mjs`
+- `tests/ci-result-review-browser-evidence-audit-check.mjs`
+- `tests/ci-workflow-install-check.mjs`
+- `tests/evidence-review-queue-check.mjs`
+- `tests/evidence-scoring-calibration-check.mjs`
+- `tests/evidence-scoring-check.mjs`
+- `tests/export-pack-v2-check.mjs`
+- `tests/github-source-connector-check.mjs`
+- `tests/hosted-demo-browser-evidence.spec.mjs`
+- `tests/hosted-demo-deployment-check.mjs`
+- `tests/hosted-demo-evidence-review-check.mjs`
+- `tests/migration-check.mjs`
+- `tests/module-type-warning-fix-check.mjs`
+- `tests/node24-ci-compat-check.mjs`
+- `tests/onboarding-first-run-check.mjs`
+- `tests/patch-stabilization-check.mjs`
+- `tests/portable-account-check.mjs`
+- `tests/portable-oauth-spike-check.mjs`
+- `tests/privacy-audit-check.mjs`
+- `tests/privacy-export-guard-check.mjs`
+- `tests/privacy-release-gate-check.mjs`
+- `tests/project-workspace-check.mjs`
+- `tests/provider-fixtures-check.mjs`
+- `tests/provider-mode-browser.spec.mjs`
+- `tests/public-demo-readiness-check.mjs`
+- `tests/qa-check.mjs`
+- `tests/quality-gate-v3-check.mjs`
+- `tests/release-evidence-repo-hygiene-check.mjs`
+- `tests/release-packaging-cleanup-check.mjs`
+- `tests/repo-file-hygiene-check.mjs`
+- `tests/repository-hygiene-cleanup-check.mjs`
+- `tests/research-module-check.mjs`
+- `tests/research-workflow-check.mjs`
+- `tests/screen-discipline-patch-check.mjs`
+- `tests/source-capability-registry-check.mjs`
+- `tests/source-import-check.mjs`
+- `tests/source-packet-builder-browser-qa-check.mjs`
+- `tests/source-packet-builder-browser.spec.mjs`
+- `tests/source-packet-builder-check.mjs`
+- `tests/source-packet-import-check.mjs`
+- `tests/source-packet-roundtrip-check.mjs`
+- `tests/source-packet-template-browser-qa-check.mjs`
+- `tests/source-packet-template-browser.spec.mjs`
+- `tests/source-packet-template-presets-check.mjs`
+- `tests/source-planning-check.mjs`
+- `tests/stable-release-check.mjs`
+- `tests/static-check.mjs`
+- `tests/ux-reliability-check.mjs`
+- `tests/ux-stabilization-patch-check.mjs`
+- `tests/v100-no-browser-suite.mjs`
+- `tests/v101-no-browser-suite.mjs`
+- `tests/v102-no-browser-suite.mjs`
+- `tests/v103-no-browser-suite.mjs`
+- `tests/v104-no-browser-suite.mjs`
+- `tests/v105-no-browser-suite.mjs`
+- `tests/v106-no-browser-suite.mjs`
+- `tests/v109-no-browser-suite.mjs`
+- `tests/v110-no-browser-suite.mjs`
+- `tests/v111-no-browser-suite.mjs`
+- `tests/v112-no-browser-suite.mjs`
+- `tests/v113-no-browser-suite.mjs`
+- `tests/v114-no-browser-suite.mjs`
+- `tests/v115-no-browser-suite.mjs`
+- `tests/v116-no-browser-suite.mjs`
+- `tests/v117-no-browser-suite.mjs`
+- `tests/v118-no-browser-suite.mjs`
+- `tests/v119-no-browser-suite.mjs`
+- `tests/v120-no-browser-suite.mjs`
+- `tests/v121-no-browser-suite.mjs`
+- `tests/v122-no-browser-suite.mjs`
+- `tests/v123-no-browser-suite.mjs`
+- `tests/web-search-provider-check.mjs`
 
-```bash
-PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
-```
+## Removed files
 
-Expected result:
+None.
 
-- `tests/rtl-mobile.spec.js` should no longer fail at `.welcomeCard` visibility before panel expansion.
-- If a true layout overflow remains, the assertion will print `Horizontal overflow report` with the offending DOM nodes.
+## Validation
+
+- `npm ci --no-audit --no-fund --ignore-scripts` — passed.
+- `npm run test:repo:hygiene-execution` — passed.
+- `npm run test:v124:no-browser` — passed.
+- Targeted no-browser groups after the full command hit sandbox timeout — passed.
+- Syntax checks from `scripts/ci-no-browser.sh` — passed.
+- Browser CI was attempted locally with `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`, but the sandbox timed out before completion; rerun in GitHub Actions/browser CI.

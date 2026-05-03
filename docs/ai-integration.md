@@ -1,6 +1,6 @@
 # AI Integration Policy
 
-## Current state: v0.20.0-beta
+## Current state: v1.0.24
 
 The research engine supports four provider modes:
 
@@ -8,6 +8,8 @@ The research engine supports four provider modes:
 2. `openai_compatible` — BYOK direct provider mode, live only with explicit opt-in.
 3. `backend_proxy` — hosted proxy scaffold, live only with explicit opt-in.
 4. `portable_oauth` — local portable-account mock flow; no real OAuth or live calls.
+
+v1.0.24 does not expand provider behavior. It corrects stale documentation and preserves the manual/private default while the repository hygiene and release archive boundaries are verified.
 
 ## Portable account mock flow
 
@@ -31,6 +33,7 @@ No real OAuth authorization endpoint is contacted. No access token or refresh to
 - Portable-account live calls remain blocked.
 - Hosted proxy secrets must stay server-side.
 - AI output must pass response-contract validation before it can affect app state.
+- Repository hygiene patches must not introduce provider capability changes.
 
 ## Future real OAuth integration requirements
 

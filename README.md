@@ -2,19 +2,19 @@
 
 ## Current version
 
-`v1.0.23 — CI Result Review + Browser Evidence Artifact Audit`
+`v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction`
 
 A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
 ## What this patch changes
 
-- Adds CI result review and browser evidence artifact audit discipline.
+- Promotes current release metadata to v1.0.24.
+- Adds v1.0.24 migration and privacy export fixtures.
+- Corrects stale current-state documentation in AI integration, architecture, and privacy audit docs.
+- Adds a dedicated repo hygiene and stale documentation guard.
+- Keeps repository hygiene guards against stale `XX*` orphan files and generated artifact pollution.
 - Preserves Node 24 GitHub Actions compatibility.
-- Verifies hosted-demo evidence artifact upload remains inspectable but not sufficient for release approval.
-- Records public repository alignment as a release approval requirement.
-- Keeps public npm lockfile registry validation before `npm ci`.
-- Allows GitHub browser CI to skip duplicate Playwright installation with `PLAYWRIGHT_SKIP_INSTALL=1`.
-- Keeps repository hygiene guards against stale `XX*` orphan files and documents required `git rm` cleanup.
+- Preserves browser evidence artifact upload as inspection data, not release approval.
 - Preserves source packet template browser QA and copy/export safety from v1.0.20.
 
 ## Compatibility boundary
@@ -46,6 +46,7 @@ Topic/context
 → Quality Gate
 → Export Pack
 → Hosted Demo Evidence Review
+→ Release Hygiene Guard
 ```
 
 ## Local QA
@@ -56,23 +57,26 @@ npm run test:lockfile:registry
 npm run test:ci:workflow-install
 npm run test:browser:visual-scope
 npm run test:source:packet-template-browser-qa
+npm run test:repo:hygiene-execution
 npm run test:ci:no-browser
 npx playwright install --with-deps
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-Targeted v1.0.23 checks:
+Targeted v1.0.24 checks:
 
 ```bash
 npm run test:release:evidence
 npm run test:ci:result-review
+npm run test:repo:hygiene-execution
 npm run test:ci:node24
-npm run test:v123:no-browser
+npm run test:v124:no-browser
 npm run test:browser:visual-scope
 ```
 
 ## Release history
 
+- v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 - v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
 - v1.0.22 — Release Evidence + Repo Hygiene Verification
 - v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration

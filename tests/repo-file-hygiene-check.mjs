@@ -147,7 +147,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.20-source-packet-template-browser-qa-copy-safety.md',
   'docs/v1.0.21-node-24-ci-compatibility.md',
   'docs/v1.0.22-release-evidence-repo-hygiene-verification.md',
-  'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md'
+  'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
+  'docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

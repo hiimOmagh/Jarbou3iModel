@@ -3,47 +3,38 @@
 ## Phase 0 — Stabilize release evidence before new features
 
 | Stage | Version | Title | Status |
-| ---: | --- | --- | --- |
-| Current patch | `v1.0.23` | **CI Result Review + Browser Evidence Artifact Audit** | Current |
-| Immediate next | `v1.0.24` | **Repo Hygiene Execution + Stale Documentation Correction** | Next candidate |
-| Release lock | `v1.0.25` | **Public Demo Release Lock** | After hygiene |
+|---|---:|---|---|
+| Current patch | `v1.0.24` | **Repo Hygiene Execution + Stale Documentation Correction** | Current |
+| Release lock | `v1.0.25` | **Public Demo Release Lock** | Next candidate |
 | Next capability jump | `v1.1.0` | **Controlled Source Workflow MVP** | Only after QA/release stability |
 | Blocked | — | Live scraping, production OAuth, BrainLink/OpenRouter PKCE, new live connectors, provider behavior changes | Explicitly blocked |
 
 ### `v1.0.23 — CI Result Review + Browser Evidence Artifact Audit`
 
+Status: completed after both no-browser and browser CI went green.
+
 Purpose: verify the real GitHub Actions state, not just local or sandbox assumptions.
 
-Must do:
+Completed outcomes:
 
-- review actual GitHub Actions logs;
-- verify no-browser CI;
-- verify browser CI;
-- inspect uploaded browser evidence artifacts;
-- confirm evidence upload is not treated as release approval;
-- confirm Playwright install discipline remains correct;
-- confirm Node 24 workflow is stable;
-- confirm public repository state matches the release archive.
-
-Acceptance gate:
-
-```bash
-npm run test:ci:no-browser
-npx playwright install --with-deps
-PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
-```
-
-No new product features.
+- no-browser CI reviewed;
+- browser CI reviewed;
+- RTL/mobile and runtime accessibility test-contract mismatches corrected;
+- browser evidence artifacts treated as inspection data rather than release approval;
+- Node 24 workflow and Playwright install discipline preserved;
+- public repository state must match the release archive before release approval.
 
 ### `v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction`
 
-Purpose: execute cleanup that is currently documented but still needs Git-level verification.
+Purpose: execute cleanup that is currently documented but still needs Git-level and documentation-state verification.
 
 Must do:
 
-- run documented `git rm` cleanup commands;
+- run documented `git rm` cleanup commands when stale tracked files exist;
 - verify stale tracked files are actually gone from Git;
-- correct stale docs such as `docs/ai-integration.md`;
+- correct stale current-state docs such as `docs/ai-integration.md`, `docs/architecture.md`, and `docs/privacy-audit.md`;
+- preserve historical v1.0.23 release docs and fixtures;
+- add v1.0.24 migration and privacy export fixtures;
 - rebuild release archive;
 - confirm `.releaseignore` excludes generated artifacts;
 - confirm no ZIP/test-report/browser artifact pollution.
@@ -53,10 +44,11 @@ Acceptance gate:
 ```bash
 git status --short
 git ls-files | grep -E 'node_modules|test-results|playwright-report|\.zip|XX'
+npm run test:repo:hygiene-execution
 npm run test:ci:no-browser
 ```
 
-Expected result: clean repo, clean docs, clean artifact boundary.
+Expected result: clean repo, clean current-state docs, clean artifact boundary.
 
 ### `v1.0.25 — Public Demo Release Lock`
 
@@ -70,7 +62,8 @@ Must do:
 - verify export safety;
 - verify source packet builder UX;
 - verify no unavailable feature is visually advertised as live;
-- verify hosted demo docs match actual UI.
+- verify hosted demo docs match actual UI;
+- verify v1.0.24 hygiene fixes stayed intact.
 
 Acceptance gate:
 

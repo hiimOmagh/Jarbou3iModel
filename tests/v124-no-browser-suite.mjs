@@ -6,6 +6,7 @@ const tests = [
   'tests/node24-ci-compat-check.mjs',
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/ci-result-review-browser-evidence-audit-check.mjs',
+  'tests/repo-hygiene-execution-stale-docs-check.mjs',
   'tests/repo-file-hygiene-check.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
   'tests/release-packaging-cleanup-check.mjs',

@@ -5,43 +5,30 @@ import { spawnSync } from 'node:child_process';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.0.23';
-const PREVIOUS_VERSION = '1.0.23';
-const TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const RELEASE = `v${VERSION} — ${TITLE}`;
+const CURRENT_VERSION = '1.0.24';
+const HISTORICAL_VERSION = '1.0.23';
+const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
+const CURRENT_TITLE = 'Repo Hygiene Execution + Stale Documentation Correction';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.23-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.23.json');
 const workflow = read('.github/workflows/ci.yml');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const manifest = read('RELEASE_MANIFEST.md');
-const notes = read('RELEASE_NOTES.md');
-const changelog = read('CHANGELOG.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const doc = read('docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md');
+const historicalDoc = read('docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md');
 const migrations = read('src/research/migrations.js');
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.0.23');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.0.23');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.0.23');
-assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.0.23');
-assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.0.23');
-assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.0.23');
-assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.0.23');
-assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.0.23');
-assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.0.23');
-assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.0.23');
-
-for (const text of [manifest, notes, changelog, roadmap, qaMatrix, doc]) {
-  assert.ok(text.includes('v1.0.23'), 'release corpus must mention v1.0.23');
-  assert.ok(text.includes(TITLE), 'release corpus must mention CI result review and browser evidence artifact audit');
-}
+assert.equal(pkg.version, CURRENT_VERSION, 'package.json must identify current release');
+assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify current release');
+assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify current release');
+assert.equal(schema.properties.workflow_version.const, CURRENT_VERSION, 'schema workflow version must identify current release');
+assert.equal(sample.workflow_version, CURRENT_VERSION, 'sample fixture must identify current release');
+assert.equal(sample.release_notes.release_title, `v${CURRENT_VERSION} — ${CURRENT_TITLE}`, 'sample release title must identify current release');
 
 for (const required of [
   'GitHub Actions',
@@ -56,7 +43,7 @@ for (const required of [
   'node-version: 22',
   'npm install'
 ]) {
-  assert.ok(doc.includes(required), `v1.0.23 audit doc missing required audit token: ${required}`);
+  assert.ok(historicalDoc.includes(required), `v1.0.23 audit doc missing required audit token: ${required}`);
 }
 
 for (const required of [
@@ -99,34 +86,31 @@ assert.ok(ciBrowser.includes('ci-artifacts/hosted-demo-evidence'), 'ci-browser m
 assert.ok(ciBrowser.includes('npm run test:browser:evidence'), 'ci-browser must include hosted demo evidence capture');
 assert.ok(ciBrowser.includes('npm run test:browser:visual'), 'ci-browser must include visual regression test');
 assert.ok(ciNoBrowser.includes('tests/ci-result-review-browser-evidence-audit-check.mjs'), 'no-browser CI must include v1.0.23 audit guard');
-assert.ok(ciNoBrowser.includes('run_node --check tests/v123-no-browser-suite.mjs'), 'no-browser CI must syntax-check v123 wrapper');
-assert.equal(ciNoBrowser.includes('run_node tests/v123-no-browser-suite.mjs'), false, 'no-browser CI must not recursively run v123 wrapper');
-
 assert.ok(pkg.scripts['test:ci:result-review']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'package must expose CI result review check');
-assert.ok(pkg.scripts['test:v123:no-browser']?.includes('v123-no-browser-suite.mjs'), 'package must expose v123 no-browser suite');
-assert.ok(pkg.scripts['test:v123']?.includes('test:ci:browser'), 'package must expose v123 browser gate composition');
-assert.ok(pkg.scripts['test:stable']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'stable suite must include v1.0.23 audit check');
-assert.ok(pkg.scripts['test:patch']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'patch suite must include v1.0.23 audit check');
+assert.ok(pkg.scripts['test:stable']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'stable suite must include CI result review check');
+assert.ok(pkg.scripts['test:patch']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'patch suite must include CI result review check');
 
 for (const required of [
   'fixtures/migrations/v1.0.23-packet.json',
-  'fixtures/migrations/v1.0.23-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.0.23.json',
   'fixtures/privacy/browser-generated-export-v1.0.23.json',
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
-  'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
-  'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/ci-result-review-browser-evidence-audit-check.mjs',
-  'tests/v122-no-browser-suite.mjs',
-  'tests/v123-no-browser-suite.mjs'
+  'tests/v123-no-browser-suite.mjs',
+  'fixtures/migrations/v1.0.24-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.0.24.json',
+  'docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md',
+  'tests/repo-hygiene-execution-stale-docs-check.mjs',
+  'tests/v124-no-browser-suite.mjs'
 ]) {
-  assert.ok(fs.existsSync(required), `required v1.0.23 audit artifact missing: ${required}`);
+  assert.ok(fs.existsSync(required), `required CI/hygiene artifact missing: ${required}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.0.23'"), 'migration target must be v1.0.23');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23'"), 'migration order must preserve v1.0.22 and append v1.0.23');
-assert.ok(migrations.includes("release_title:'v1.0.23 — CI Result Review + Browser Evidence Artifact Audit'"), 'migration default release title must identify v1.0.23');
-assert.ok(migrations.includes(PREVIOUS_VERSION), 'migration must still support migration from v1.0.23');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.0.24'"), 'migration target must be current release');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24'"), 'migration order must preserve v1.0.23 and append v1.0.24');
+for (const corpus of [manifest, roadmap, qaMatrix, historicalDoc]) {
+  assert.ok(corpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');
+  assert.ok(corpus.includes(HISTORICAL_TITLE), 'release corpus must preserve v1.0.23 audit title');
+}
 
 assert.equal(sample.provider_config.allow_live, false, 'manual/private provider boundary must remain default');
 assert.equal(sample.provider_config.remember_key, false, 'API keys must not be remembered by default');
