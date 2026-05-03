@@ -2,7 +2,7 @@
 
 ## Current version
 
-`v1.0.20 — Source Packet Template Browser QA + Copy Safety`
+`v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration`
 
 A dark editorial intelligence workspace that turns messy AI/user research output into structured strategic briefs.
 
@@ -61,7 +61,7 @@ npx playwright install --with-deps
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-Targeted v1.0.20 checks:
+Targeted v1.0.21 checks:
 
 ```bash
 npm run test:source:packet-templates
@@ -72,7 +72,7 @@ npm run test:v120:no-browser
 
 ## Release history
 
-- v1.0.20 — Source Packet Template Browser QA + Copy Safety
+- v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration
 - v1.0.19 — Source Packet Template Presets
 - v1.0.18 — Source Packet Builder Export Roundtrip QA
 - v1.0.17 — Source Packet Builder Browser QA + UX Tightening

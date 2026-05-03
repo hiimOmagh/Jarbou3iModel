@@ -1,3 +1,13 @@
+## v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration
+
+- Migrated GitHub Actions workflow from Node 20-era action majors to Node 24-compatible action majors.
+- Updated CI runtime pin from Node 20 to Node 24.
+- Retained public npm lockfile registry validation before `npm ci`.
+- Retained locked install path: `npm ci --no-audit --no-fund --ignore-scripts`.
+- Retained one-time Playwright installation plus `PLAYWRIGHT_SKIP_INSTALL=1` browser CI behavior.
+- Added Node 24 CI compatibility static guard and v1.0.21 no-browser suite.
+- No live scraping, OAuth, provider, backend, or storage behavior expansion.
+
 ## v1.0.20 — Source Packet Template Browser QA + Copy Safety
 
 - Added browser QA for Source Packet Template Presets.

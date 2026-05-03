@@ -1,30 +1,36 @@
-## v1.0.20 — Source Packet Template Browser QA + Copy Safety
+# v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration
 
-This patch consolidates v1.0.19 follow-through work and adds browser-level QA for local/manual Source Packet Template Presets.
+This patch migrates the GitHub Actions runtime path to Node 24-compatible action majors while preserving the stable manual/private product boundary.
 
-### Added
+## Added
 
-- Source packet template browser QA for all six presets.
-- Copy/export safety checks for generated source packet JSON.
-- Static guard for Playwright visual-regression project scoping.
-- v1.0.20 migration and privacy fixtures.
-- v1.0.20 no-browser suite wrapper.
+- Node 24 CI compatibility guard.
+- v1.0.21 no-browser suite wrapper.
+- v1.0.21 release documentation.
 
-### Fixed
+## Changed
 
-- Desktop visual screenshot capture is scoped to `chromium` only.
-- Mobile visual screenshot capture is scoped to `mobile-chrome` only.
-- Browser CI can skip duplicate Playwright install with `PLAYWRIGHT_SKIP_INSTALL=1` after workflow-level browser installation.
-- CI keeps the public npm lockfile registry guard before `npm ci`.
-- Repository hygiene remains defensive against tracked orphan `XX*` files.
+- `actions/checkout@v6`
+- `actions/setup-node@v6`
+- `actions/upload-artifact@v6`
+- `node-version: 24`
 
-### Unchanged boundaries
+## Preserved
+
+- Public npm lockfile registry validation before install.
+- `npm ci --no-audit --no-fund --ignore-scripts`.
+- Single Playwright browser installation in workflow.
+- `PLAYWRIGHT_SKIP_INSTALL=1` inside browser CI.
+- Manual/private mode as default.
+
+## Unchanged boundaries
 
 - No live scraping.
 - No real OAuth or PKCE.
 - No provider expansion.
 - No backend endpoint expansion.
-- Manual/private mode remains default.
-- Source packet templates remain drafting scaffolds, not source verification.
+- No storage-model expansion.
 
-- Public Demo boundaries remain unchanged: manual/private mode stays default and no fake-live source behavior is exposed.
+## Public Demo boundary
+
+The Public Demo remains manual/private by default. v1.0.21 changes CI runtime compatibility only; it does not add live scraping, real OAuth, provider expansion, or backend endpoint expansion.

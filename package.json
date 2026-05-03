@@ -1,9 +1,9 @@
 {
   "name": "jarbou3i-research-engine",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "private": true,
   "type": "module",
-  "description": "Jarbou3i Research Engine v1.0.20 source packet template browser QA and copy safety consolidation patch with evidence scoring preservation, public npm lockfile guard, repository hygiene gates, source strategy registry preservation, PLAYWRIGHT_SKIP_INSTALL browser CI support, and visual regression project scoping. Manual/private mode remains default; no live scraping, real OAuth, or backend expansion is added.",
+  "description": "Jarbou3i Research Engine v1.0.21 Node 24 CI compatibility and action runtime migration patch with source strategy, evidence scoring preservation, public npm lockfile guard, repository hygiene gates, PLAYWRIGHT_SKIP_INSTALL browser CI support, and visual regression project scoping. Manual/private mode remains default; no live scraping, real OAuth, or backend expansion is added.",
   "scripts": {
     "dev": "http-server . -p 4173 -c-1",
     "test": "npm run test:qa && npm run test:browser",
@@ -141,7 +141,10 @@
     "test:source:packet-template-browser-qa": "node tests/source-packet-template-browser-qa-check.mjs",
     "test:browser:source-packet-template": "./node_modules/.bin/playwright test tests/source-packet-template-browser.spec.mjs",
     "test:v120:no-browser": "node tests/v120-no-browser-suite.mjs",
-    "test:v120": "npm run test:v120:no-browser && npm run test:ci:browser"
+    "test:v120": "npm run test:v120:no-browser && npm run test:ci:browser",
+    "test:ci:node24": "node tests/node24-ci-compat-check.mjs",
+    "test:v121:no-browser": "node tests/v121-no-browser-suite.mjs",
+    "test:v121": "npm run test:v121:no-browser && npm run test:ci:browser"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",
