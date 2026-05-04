@@ -1,6 +1,11 @@
 # Architecture
 
-## Current v1.0.25 pipeline
+## v1.0.26 — Release Apply Integrity Gate
+
+Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
+
+
+## Current v1.0.26 pipeline
 
 ```text
 Topic/context

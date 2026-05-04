@@ -1,6 +1,11 @@
 # Privacy Audit Release Gate
 
-`v1.0.25` treats every exported JSON payload as a security boundary and preserves the privacy gate while public-demo release approval is locked.
+## v1.0.26 — Release Apply Integrity Gate
+
+Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
+
+
+`v1.0.26` treats every exported JSON payload as a security boundary and preserves the privacy gate while public-demo release approval is locked.
 
 The privacy system has two layers:
 

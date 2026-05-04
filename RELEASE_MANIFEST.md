@@ -1,18 +1,25 @@
-# Release Manifest — v1.0.25
+# Release Manifest — v1.0.26
+
+## v1.0.26 — Release Apply Integrity Gate
+
+This patch adds a release-application integrity gate for changed-files-only handoffs. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. The patch must be applied to the intended base, validated with CI, and reviewed against manifest/SHA evidence before publication.
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.25`
-- Release name: `Public Demo Release Lock`
+- Version: `1.0.26`
+- Release name: `Release Apply Integrity Gate`
 - Release type: patch
+- Patch type: `changed-files-only over v1.0.25`
 - Runtime capability change: no
+- Artifact: `jarbou3i-research-engine-v1.0.26-release-apply-integrity-gate-patch.zip`
 
 ## Entry points
 
 - Static app: `index.html`
 - Main UI script: `src/app.js`
 - Research runtime: `src/research-engine.js`
+- Release apply integrity module: `src/research/release-apply-integrity.js`
 - Workflow schema: `schema/research-workflow.schema.json`
 - Strategic output schema: `schema/strategic-analysis.schema.json`
 - Optional backend worker: `backend/cloudflare-worker.js`
@@ -49,6 +56,14 @@
 - `package-lock.json`
 - `playwright.config.js`
 
+## Required v1.0.26 release-lock files
+
+- `docs/v1.0.26-release-apply-integrity-gate.md`
+- `fixtures/migrations/v1.0.26-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.26.json`
+- `tests/release-apply-integrity-check.mjs`
+- `tests/v126-no-browser-suite.mjs`
+
 ## CI runtime
 
 - GitHub Actions runtime: Node 24.
@@ -57,7 +72,20 @@
 
 ## Compatibility boundary
 
-v1.0.25 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks public-demo release approval only.
+v1.0.26 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks release-application integrity only.
+
+## Required apply sequence
+
+```bash
+unzip -o jarbou3i-research-engine-v1.0.26-release-apply-integrity-gate-patch.zip -d .
+npm ci --no-audit --no-fund --ignore-scripts
+npm run test:v126:no-browser
+npm run test:ci:no-browser
+PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
+git add .
+git commit -m "chore: add release apply integrity gate"
+git push
+```
 
 ## Required no-browser gates
 
@@ -65,8 +93,8 @@ v1.0.25 must not change provider behavior, OAuth behavior, backend endpoint beha
 npm run test:lockfile:registry
 npm run test:ci:workflow-install
 npm run test:ci:node24
-npm run test:public-demo-release-lock
-npm run test:v125:no-browser
+npm run test:release-apply-integrity
+npm run test:v126:no-browser
 npm run test:ci:no-browser
 ```
 
@@ -79,12 +107,12 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 ## Release approval rule
 
-Screenshots alone are insufficient. A ZIP archive alone is insufficient. Public demo release approval requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, aligned public claims, privacy/export safety, and a clean archive boundary for the intended release commit.
+Screenshots alone are insufficient. A ZIP archive alone is insufficient. Public demo release approval requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, aligned public claims, privacy/export safety, artifact SHA256, and a clean archive boundary for the intended release commit.
 
-## Retained v1.0.23 audit boundary
+## Retained v1.0.25 audit boundary
 
-- v1.0.23 — CI Result Review + Browser Evidence Artifact Audit remains the historical CI/browser evidence audit patch.
-- Evidence upload is still inspection material, not release approval.
+- v1.0.25 — Public Demo Release Lock remains the historical public-demo approval boundary.
+- Evidence upload remains inspection material, not release approval.
 
 ## Release archive exclusions
 
@@ -96,6 +124,7 @@ No generated artifact, orphan `XX*` temporary file, ZIP archive, test report, or
 
 ## Release history map
 
+- v1.0.26 — Release Apply Integrity Gate
 - v1.0.25 — Public Demo Release Lock
 - v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 - v1.0.23 — CI Result Review + Browser Evidence Artifact Audit

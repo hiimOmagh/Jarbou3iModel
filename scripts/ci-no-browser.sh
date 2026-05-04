@@ -47,6 +47,7 @@ run_node tests/release-evidence-repo-hygiene-check.mjs
 run_node tests/ci-result-review-browser-evidence-audit-check.mjs
 run_node tests/repo-hygiene-execution-stale-docs-check.mjs
 run_node tests/public-demo-release-lock-check.mjs
+run_node tests/release-apply-integrity-check.mjs
 run_node tests/lockfile-public-registry-check.mjs
 run_node tests/browser-visual-project-scope-check.mjs
 run_node tests/repo-file-hygiene-check.mjs
@@ -83,6 +84,7 @@ run_node tests/source-capability-registry-check.mjs
 echo "CI no-browser gate: syntax"
 run_node --check src/research-engine.js
 run_node --check src/research/public-demo-readiness.js
+run_node --check src/research/release-apply-integrity.js
 run_node --check src/research/hosted-demo-verification.js
 run_node --check src/research/render-helpers.js
 run_node --check src/research/release-candidate.js
@@ -126,6 +128,7 @@ run_node --check tests/node24-ci-compat-check.mjs
 run_node --check tests/release-evidence-repo-hygiene-check.mjs
 run_node --check tests/ci-result-review-browser-evidence-audit-check.mjs
 run_node --check tests/repo-hygiene-execution-stale-docs-check.mjs
+run_node --check tests/release-apply-integrity-check.mjs
 run_node --check tests/source-packet-template-browser.spec.mjs
 run_node --check tests/source-packet-template-browser-qa-check.mjs
 run_node --check tests/browser-visual-project-scope-check.mjs
@@ -147,3 +150,4 @@ run_node --check tests/v109-no-browser-suite.mjs
 echo "CI no-browser gate passed."
 
 run_node --check tests/v125-no-browser-suite.mjs
+run_node --check tests/v126-no-browser-suite.mjs

@@ -1,6 +1,32 @@
-# v1.0.25 Public Demo Release Lock Patch Manifest
+# v1.0.26 Release Apply Integrity Gate Patch Manifest
 
-Base: v1.0.24 repository state.
+Base: v1.0.25 repository state.
+Patch type: changed-files-only.
+Artifact: `jarbou3i-research-engine-v1.0.26-release-apply-integrity-gate-patch.zip`
+
+Changed files: 148
+Removed files: 0
+
+## Compatibility boundary
+
+- Runtime capability change: no
+- Provider behavior change: no
+- OAuth behavior change: no
+- Backend endpoint expansion: no
+- Source connector behavior change: no
+- Storage behavior change: no
+- Public demo capability expansion: no
+- Live scraping enabled: no
+- Real OAuth enabled: no
+- Live source verification enabled: no
+
+## Required validation
+
+```bash
+npm run test:v126:no-browser
+npm run test:ci:no-browser
+PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
+```
 
 ## Changed files
 
@@ -20,10 +46,9 @@ Base: v1.0.24 repository state.
 - `docs/privacy-audit.md`
 - `docs/qa-matrix.md`
 - `docs/roadmap.md`
-- `docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md`
-- `docs/v1.0.25-public-demo-release-lock.md`
-- `fixtures/migrations/v1.0.25-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.25.json`
+- `docs/v1.0.26-release-apply-integrity-gate.md`
+- `fixtures/migrations/v1.0.26-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.26.json`
 - `fixtures/research/sample-research-workflow-en.json`
 - `index.html`
 - `package-lock.json`
@@ -55,6 +80,7 @@ Base: v1.0.24 repository state.
 - `src/research/provider-fixtures.js`
 - `src/research/public-demo-readiness.js`
 - `src/research/quality-gate.js`
+- `src/research/release-apply-integrity.js`
 - `src/research/release-candidate.js`
 - `src/research/render-helpers.js`
 - `src/research/search-provider-abstraction.js`
@@ -102,6 +128,7 @@ Base: v1.0.24 repository state.
 - `tests/public-demo-release-lock-check.mjs`
 - `tests/qa-check.mjs`
 - `tests/quality-gate-v3-check.mjs`
+- `tests/release-apply-integrity-check.mjs`
 - `tests/release-evidence-repo-hygiene-check.mjs`
 - `tests/release-packaging-cleanup-check.mjs`
 - `tests/repo-file-hygiene-check.mjs`
@@ -149,4 +176,9 @@ Base: v1.0.24 repository state.
 - `tests/v123-no-browser-suite.mjs`
 - `tests/v124-no-browser-suite.mjs`
 - `tests/v125-no-browser-suite.mjs`
+- `tests/v126-no-browser-suite.mjs`
 - `tests/web-search-provider-check.mjs`
+
+## Removed files
+
+None.

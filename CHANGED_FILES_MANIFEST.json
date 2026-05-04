@@ -1,8 +1,12 @@
 {
-  "version": "1.0.25",
-  "release": "v1.0.25 — Public Demo Release Lock",
-  "base": "v1.0.24 repository state",
+  "version": "1.0.26",
+  "release": "v1.0.26 — Release Apply Integrity Gate",
+  "base": "v1.0.25 repository state",
   "patch_type": "changed-files-only",
+  "artifact": "jarbou3i-research-engine-v1.0.26-release-apply-integrity-gate-patch.zip",
+  "generated_at": "2026-05-04T01:56:57.507163Z",
+  "changed_file_count": 148,
+  "removed_file_count": 0,
   "changed_files": [
     "BROWSER_EVIDENCE.md",
     "CHANGED_FILES_MANIFEST.json",
@@ -20,10 +24,9 @@
     "docs/privacy-audit.md",
     "docs/qa-matrix.md",
     "docs/roadmap.md",
-    "docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md",
-    "docs/v1.0.25-public-demo-release-lock.md",
-    "fixtures/migrations/v1.0.25-packet.json",
-    "fixtures/privacy/browser-generated-export-v1.0.25.json",
+    "docs/v1.0.26-release-apply-integrity-gate.md",
+    "fixtures/migrations/v1.0.26-packet.json",
+    "fixtures/privacy/browser-generated-export-v1.0.26.json",
     "fixtures/research/sample-research-workflow-en.json",
     "index.html",
     "package-lock.json",
@@ -55,6 +58,7 @@
     "src/research/provider-fixtures.js",
     "src/research/public-demo-readiness.js",
     "src/research/quality-gate.js",
+    "src/research/release-apply-integrity.js",
     "src/research/release-candidate.js",
     "src/research/render-helpers.js",
     "src/research/search-provider-abstraction.js",
@@ -102,6 +106,7 @@
     "tests/public-demo-release-lock-check.mjs",
     "tests/qa-check.mjs",
     "tests/quality-gate-v3-check.mjs",
+    "tests/release-apply-integrity-check.mjs",
     "tests/release-evidence-repo-hygiene-check.mjs",
     "tests/release-packaging-cleanup-check.mjs",
     "tests/repo-file-hygiene-check.mjs",
@@ -149,13 +154,57 @@
     "tests/v123-no-browser-suite.mjs",
     "tests/v124-no-browser-suite.mjs",
     "tests/v125-no-browser-suite.mjs",
+    "tests/v126-no-browser-suite.mjs",
     "tests/web-search-provider-check.mjs"
   ],
   "removed_files": [],
-  "validation": [
-    "npm run test:v125:no-browser",
+  "compatibility_boundary": {
+    "runtime_capability_change": false,
+    "provider_behavior_changed": false,
+    "oauth_behavior_changed": false,
+    "backend_endpoint_changed": false,
+    "source_connector_behavior_changed": false,
+    "storage_behavior_changed": false,
+    "public_demo_capability_expanded": false,
+    "manual_private_default": true,
+    "live_scraping_enabled": false,
+    "real_oauth_enabled": false,
+    "live_source_verification_enabled": false
+  },
+  "release_apply_integrity": {
+    "base_version": "1.0.25",
+    "target_version": "1.0.26",
+    "artifact_name": "jarbou3i-research-engine-v1.0.26-release-apply-integrity-gate-patch.zip",
+    "zip_existence_sufficient": false,
+    "changed_files_manifest_required": true,
+    "apply_verification_required": true,
+    "gate": "release_apply_integrity_pass"
+  },
+  "validation": {
+    "passed": [
+      "npm run test:v126:no-browser",
+      "node tests/release-apply-integrity-check.mjs",
+      "node tests/release-packaging-cleanup-check.mjs",
+      "node tests/source-capability-registry-check.mjs",
+      "node tests/source-packet-builder-check.mjs",
+      "node tests/source-packet-builder-browser-qa-check.mjs",
+      "node tests/source-packet-roundtrip-check.mjs",
+      "node tests/source-packet-template-presets-check.mjs",
+      "node tests/source-packet-template-browser-qa-check.mjs",
+      "node tests/evidence-review-queue-check.mjs",
+      "node tests/github-source-connector-check.mjs",
+      "node tests/web-search-provider-check.mjs"
+    ],
+    "wrapper_note": "npm run test:ci:no-browser was started after fixes and ran deep into the source/evidence suite in this sandbox, but the wrapper exceeded the local execution timeout. The previously failing gates were fixed and the remaining tail was validated modularly."
+  },
+  "apply_commands": [
+    "unzip -o jarbou3i-research-engine-v1.0.26-release-apply-integrity-gate-patch.zip -d .",
+    "npm ci --no-audit --no-fund --ignore-scripts",
+    "npm run test:v126:no-browser",
     "npm run test:ci:no-browser",
-    "unzip -t jarbou3i-research-engine-v1.0.25-public-demo-release-lock-patch.zip"
-  ],
-  "browser_validation": "Not run in this sandbox; run PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser in GitHub Actions after applying the patch."
+    "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser",
+    "git add .",
+    "git commit -m \"chore: add release apply integrity gate\"",
+    "git push"
+  ]
 }
