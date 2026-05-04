@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine hosted demo smoke fixes + evidence review helpers v1.0.27. */
+/* Jarbou3i Research Engine hosted demo smoke fixes + evidence review helpers v1.0.28. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.27';
+  const VERSION = '1.0.28';
   const DEPLOYMENT_CHECKS = Object.freeze([
     {check_id:'static_host_ready', label:'Static host serves index, assets, manifest, and modules', required:true},
     {check_id:'app_version_matches_package', label:'Hosted app version matches package metadata', required:true},
@@ -23,12 +23,13 @@
     {check_id:'ci_browser_not_duplicating_full_suite', label:'Browser CI avoids duplicate full-suite evidence reruns', required:true},
     {check_id:'runtime_boundary_unchanged', label:'No provider, OAuth, backend, source, or storage behavior changed', required:true}
   ]);
+  const EXPECTED_CAPTURE_NAMES = Object.freeze(['desktop-first-screen','mobile-first-screen','provider-mode','quality-export']);
   const EVIDENCE_ARTIFACTS = Object.freeze([
-    {artifact_id:'desktop_first_screen', path:'test-results/hosted-demo-evidence/desktop-first-screen.png', required:true},
-    {artifact_id:'mobile_first_screen', path:'test-results/hosted-demo-evidence/mobile-first-screen.png', required:true},
-    {artifact_id:'provider_mode', path:'test-results/hosted-demo-evidence/provider-mode.png', required:true},
-    {artifact_id:'quality_export', path:'test-results/hosted-demo-evidence/quality-export.png', required:true},
-    {artifact_id:'metadata_snapshot', path:'test-results/hosted-demo-evidence/hosted-demo-metadata.json', required:true}
+    {artifact_id:'desktop_first_screen', capture_name:'desktop-first-screen', path:'test-results/hosted-demo-evidence/desktop-first-screen.png', required:true, viewport:'desktop'},
+    {artifact_id:'mobile_first_screen', capture_name:'mobile-first-screen', path:'test-results/hosted-demo-evidence/mobile-first-screen.png', required:true, viewport:'mobile'},
+    {artifact_id:'provider_mode', capture_name:'provider-mode', path:'test-results/hosted-demo-evidence/provider-mode.png', required:true, viewport:'desktop'},
+    {artifact_id:'quality_export', capture_name:'quality-export', path:'test-results/hosted-demo-evidence/quality-export.png', required:true, viewport:'desktop'},
+    {artifact_id:'metadata_snapshot', capture_name:'hosted-demo-metadata', path:'test-results/hosted-demo-evidence/hosted-demo-metadata.json', required:true, viewport:'metadata'}
   ]);
   const EVIDENCE_REVIEW_ITEMS = Object.freeze([
     {artifact_id:'desktop_first_screen', label:'Desktop first-screen screenshot reviewed', required:true},
@@ -36,6 +37,8 @@
     {artifact_id:'provider_mode', label:'Provider-mode screenshot reviewed', required:true},
     {artifact_id:'quality_export', label:'Quality/export screenshot reviewed', required:true},
     {artifact_id:'metadata_snapshot', label:'Hosted-demo metadata snapshot reviewed', required:true},
+    {artifact_id:'complete_capture_manifest', label:'Single final metadata manifest contains all required captures', required:true},
+    {artifact_id:'screenshot_sanity', label:'Viewport, screenshot dimensions, bytes, and overflow metadata reviewed', required:true},
     {artifact_id:'version_consistency', label:'Version consistency reviewed across package, DOM, schema, and packet', required:true},
     {artifact_id:'privacy_boundary', label:'Evidence artifacts reviewed for secret/export boundary regressions', required:true}
   ]);
@@ -90,6 +93,12 @@
       generated_at:now,
       evidence_mode:'playwright_capture_attach_and_write_artifacts',
       artifact_root:'test-results/hosted-demo-evidence',
+      manifest_policy:'single_final_metadata_with_all_required_captures',
+      expected_capture_names:EXPECTED_CAPTURE_NAMES.slice(),
+      capture_manifest_required:true,
+      viewport_dimensions_required:true,
+      screenshot_dimensions_required:true,
+      horizontal_overflow_metadata_required:true,
       artifacts,
       required_artifact_count:artifacts.length,
       missing_artifact_count:missing.length,
@@ -165,9 +174,13 @@
       missing_review_count:missing.length,
       screenshots_required:true,
       metadata_snapshot_required:true,
+      metadata_manifest_required:true,
+      screenshot_sanity_required:true,
       raw_artifacts_allowed:false,
       reviewer_notes:[
         'Review attached screenshots before publishing the hosted demo.',
+        'Confirm hosted-demo metadata contains desktop, mobile, provider-mode, and quality/export captures in one final manifest.',
+        'Confirm viewport/image dimensions and horizontal overflow metrics are recorded for each screenshot.',
         'Confirm the hosted URL is the same build as package metadata.',
         'Treat evidence review as a release gate, not as cosmetic QA.'
       ],
@@ -178,6 +191,7 @@
     VERSION,
     DEPLOYMENT_CHECKS,
     SMOKE_FIX_CHECKS,
+    EXPECTED_CAPTURE_NAMES,
     EVIDENCE_ARTIFACTS,
     EVIDENCE_REVIEW_ITEMS,
     defaultDeploymentInput,

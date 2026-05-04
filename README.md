@@ -1,6 +1,6 @@
 # Jarbou3i Research Engine
 
-## v1.0.27 — Release Provenance Ledger Gate
+## v1.0.28 — Hosted Demo Evidence Manifest Gate
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -83,3 +83,7 @@ npm run test:browser:visual-scope
 - v1.0.25 — Public Demo Release Lock
 - v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 - v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
+
+## v1.0.28 evidence-manifest hardening
+
+The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.0.28 no-browser gate.

@@ -12,8 +12,8 @@ const ci = read('scripts/ci-browser.sh');
 const workflow = read('.github/workflows/ci.yml');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.27-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.27.json');
+const migrationFixture = json('fixtures/migrations/v1.0.28-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.28.json');
 const docs = read('docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md');
 
 const sandbox = { window: {}, console };
@@ -22,7 +22,7 @@ vm.createContext(sandbox);
 vm.runInContext(read('src/research/hosted-demo-verification.js'), sandbox, { filename:'src/research/hosted-demo-verification.js' });
 const hosted = sandbox.window.Jarbou3iResearchModules.hostedDemoVerification;
 
-assert.equal(pkg.version, '1.0.27');
+assert.equal(pkg.version, '1.0.28');
 assert.ok(config.includes('HOSTED_DEMO_URL'), 'Playwright config must support hosted URL verification');
 assert.ok(config.includes('webServer: hostedDemoUrl ? undefined'), 'hosted URL mode must not launch local webServer');
 assert.ok(browserSpec.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser evidence spec must support artifact directory override');
@@ -38,10 +38,10 @@ assert.ok(ci.includes('npm run test:browser:evidence'), 'browser CI must run evi
 assert.ok(!ci.includes('npm run test:browser\n'), 'browser CI must avoid duplicate full-suite run after targeted suites');
 assert.ok(workflow.includes('hosted-demo-evidence'), 'GitHub workflow must upload hosted demo evidence artifact');
 
-const smoke = hosted.buildHostedDemoSmokeFixes({ metadata_artifact_written:false }, { version:'1.0.27', now:'2026-05-01T00:00:00.000Z' });
+const smoke = hosted.buildHostedDemoSmokeFixes({ metadata_artifact_written:false }, { version:'1.0.28', now:'2026-05-01T00:00:00.000Z' });
 assert.equal(smoke.release_gate, 'hosted_demo_smoke_blocked');
 assert.equal(smoke.fail_count, 1);
-const smokeOk = hosted.buildHostedDemoSmokeFixes({}, { version:'1.0.27', now:'2026-05-01T00:00:00.000Z' });
+const smokeOk = hosted.buildHostedDemoSmokeFixes({}, { version:'1.0.28', now:'2026-05-01T00:00:00.000Z' });
 assert.equal(smokeOk.release_gate, 'hosted_demo_smoke_fixed');
 assert.equal(smokeOk.provider_behavior_changed, false);
 assert.equal(smokeOk.oauth_behavior_changed, false);
@@ -49,10 +49,10 @@ assert.equal(smokeOk.backend_behavior_changed, false);
 assert.equal(smokeOk.source_behavior_changed, false);
 assert.equal(smokeOk.storage_behavior_changed, false);
 
-const review = hosted.buildHostedDemoEvidenceReview({ provider_mode:false }, { version:'1.0.27', now:'2026-05-01T00:00:00.000Z' });
+const review = hosted.buildHostedDemoEvidenceReview({ provider_mode:false }, { version:'1.0.28', now:'2026-05-01T00:00:00.000Z' });
 assert.equal(review.release_gate, 'evidence_review_blocked');
 assert.equal(review.missing_review_count, 1);
-const reviewOk = hosted.buildHostedDemoEvidenceReview({}, { version:'1.0.27', now:'2026-05-01T00:00:00.000Z' });
+const reviewOk = hosted.buildHostedDemoEvidenceReview({}, { version:'1.0.28', now:'2026-05-01T00:00:00.000Z' });
 assert.equal(reviewOk.release_gate, 'evidence_review_complete');
 assert.equal(reviewOk.raw_artifacts_allowed, false);
 
@@ -63,10 +63,10 @@ assert.equal(schema.properties.hosted_demo_evidence_review.properties.release_ga
 assert.equal(schema.properties.hosted_demo_evidence_review.properties.raw_artifacts_allowed.const, false);
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.hosted_demo_smoke_fixes.smoke_fixes_version, '1.0.27');
+  assert.equal(packet.hosted_demo_smoke_fixes.smoke_fixes_version, '1.0.28');
   assert.equal(packet.hosted_demo_smoke_fixes.release_gate, 'hosted_demo_smoke_fixed');
   assert.equal(packet.hosted_demo_smoke_fixes.runtime_capability_change, false);
-  assert.equal(packet.hosted_demo_evidence_review.evidence_review_version, '1.0.27');
+  assert.equal(packet.hosted_demo_evidence_review.evidence_review_version, '1.0.28');
   assert.equal(packet.hosted_demo_evidence_review.release_gate, 'evidence_review_complete');
   assert.equal(packet.hosted_demo_evidence_review.raw_artifacts_allowed, false);
 }
@@ -77,7 +77,7 @@ for (const token of [
   'evidence review',
   'No provider, OAuth, backend, source, or storage behavior changed'
 ]) {
-  assert.ok(docs.includes(token), `v1.0.27 doc missing ${token}`);
+  assert.ok(docs.includes(token), `v1.0.28 doc missing ${token}`);
 }
 
 console.log('Hosted demo evidence review checks passed.');

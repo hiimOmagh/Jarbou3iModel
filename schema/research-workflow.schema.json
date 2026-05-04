@@ -56,7 +56,7 @@
   ],
   "properties": {
     "workflow_version": {
-      "const": "1.0.27"
+      "const": "1.0.28"
     },
     "generated_at": {
       "type": "string"
@@ -316,7 +316,7 @@
       "additionalProperties": true,
       "properties": {
         "quality_gate_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -425,7 +425,7 @@
       ],
       "properties": {
         "export_pack_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "format": {
           "const": "export_pack_v2"
@@ -462,10 +462,10 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "proxy_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "status": {
           "type": "string"
@@ -536,7 +536,7 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "release_type": {
           "const": "patch_only_browser_qa_visual_regression"
@@ -599,7 +599,7 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "demo_stage": {
           "const": "public_demo_ready"
@@ -683,10 +683,10 @@
       "additionalProperties": true,
       "properties": {
         "release_notes_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "release_title": {
-          "const": "v1.0.27 — Release Provenance Ledger Gate"
+          "const": "v1.0.28 — Hosted Demo Evidence Manifest Gate"
         },
         "release_type": {
           "const": "patch"
@@ -734,7 +734,7 @@
       ],
       "properties": {
         "onboarding_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -825,7 +825,7 @@
       "additionalProperties": true,
       "properties": {
         "hosted_demo_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "deployment_stage": {
           "const": "hosted_demo_verification"
@@ -903,7 +903,7 @@
       "additionalProperties": true,
       "properties": {
         "browser_evidence_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "evidence_mode": {
           "const": "playwright_capture_attach_and_write_artifacts"
@@ -943,6 +943,33 @@
         },
         "metadata_written_by_default": {
           "const": true
+        },
+        "manifest_policy": {
+          "type": "string",
+          "const": "single_final_metadata_with_all_required_captures"
+        },
+        "expected_capture_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 4
+        },
+        "capture_manifest_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "viewport_dimensions_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "screenshot_dimensions_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "horizontal_overflow_metadata_required": {
+          "type": "boolean",
+          "const": true
         }
       }
     },
@@ -964,7 +991,7 @@
       "additionalProperties": true,
       "properties": {
         "smoke_fixes_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "deployment_stage": {
           "const": "hosted_demo_smoke_fixes"
@@ -1035,7 +1062,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_review_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "review_stage": {
           "const": "hosted_demo_evidence_review"
@@ -1081,6 +1108,14 @@
         },
         "release_gate": {
           "const": "evidence_review_complete"
+        },
+        "metadata_manifest_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "screenshot_sanity_required": {
+          "type": "boolean",
+          "const": true
         }
       }
     },
@@ -1145,10 +1180,10 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_release_lock_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "release_title": {
-          "const": "v1.0.27 — Public Demo Release Lock"
+          "const": "v1.0.28 — Public Demo Release Lock"
         },
         "lock_stage": {
           "const": "public_demo_release_locked"
@@ -1271,10 +1306,10 @@
       "additionalProperties": true,
       "properties": {
         "release_apply_integrity_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "release_title": {
-          "const": "v1.0.27 — Release Provenance Ledger Gate"
+          "const": "v1.0.28 — Hosted Demo Evidence Manifest Gate"
         },
         "integrity_stage": {
           "const": "release_apply_integrity_checked"
@@ -1286,13 +1321,13 @@
           "const": "changed_files_only"
         },
         "base_version": {
-          "const": "1.0.26"
-        },
-        "target_version": {
           "const": "1.0.27"
         },
+        "target_version": {
+          "const": "1.0.28"
+        },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.0.27-release-provenance-ledger-gate-patch.zip"
+          "const": "jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip"
         },
         "runtime_capability_change": {
           "const": false
@@ -1373,10 +1408,10 @@
       "additionalProperties": true,
       "properties": {
         "release_provenance_ledger_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "release_title": {
-          "const": "v1.0.27 — Release Provenance Ledger Gate"
+          "const": "v1.0.28 — Hosted Demo Evidence Manifest Gate"
         },
         "provenance_stage": {
           "const": "release_provenance_ledger_checked"
@@ -1388,13 +1423,13 @@
           "const": "changed_files_only"
         },
         "base_version": {
-          "const": "1.0.26"
-        },
-        "target_version": {
           "const": "1.0.27"
         },
+        "target_version": {
+          "const": "1.0.28"
+        },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.0.27-release-provenance-ledger-gate-patch.zip"
+          "const": "jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip"
         },
         "changed_files_manifest_required": {
           "const": true
@@ -1464,7 +1499,7 @@
       ],
       "properties": {
         "plan_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "topic": {
           "type": "string",
@@ -1753,7 +1788,7 @@
       ],
       "properties": {
         "brief_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -1824,7 +1859,7 @@
           ],
           "properties": {
             "fit_version": {
-              "const": "1.0.27"
+              "const": "1.0.28"
             },
             "template_id": {
               "type": "string"
@@ -1875,7 +1910,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "provider": {
           "type": "string"
@@ -1962,7 +1997,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -2035,7 +2070,7 @@
       ],
       "properties": {
         "validation_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "validated_at": {
           "type": "string"
@@ -2116,7 +2151,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "checked_at": {
           "type": "string"
@@ -2199,7 +2234,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "fixture_count": {
           "type": "number"
@@ -2231,7 +2266,7 @@
       ],
       "properties": {
         "policy_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -2291,7 +2326,7 @@
       ],
       "properties": {
         "request_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "created_at": {
           "type": "string"
@@ -2364,7 +2399,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "checked_at": {
           "type": "string"
@@ -2432,7 +2467,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "fixture_count": {
           "type": "number"
@@ -2471,7 +2506,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "connector": {
           "type": "string"
@@ -2543,7 +2578,7 @@
       ],
       "properties": {
         "import_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "imported_at": {
           "type": "string"
@@ -2688,7 +2723,7 @@
       ],
       "properties": {
         "review_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -2891,7 +2926,7 @@
       ],
       "properties": {
         "portable_account_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3000,7 +3035,7 @@
           ]
         },
         "oauth_spike_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         }
       },
       "additionalProperties": true
@@ -3027,7 +3062,7 @@
       ],
       "properties": {
         "guard_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "safe": {
           "type": "boolean"
@@ -3063,7 +3098,7 @@
           }
         },
         "audit_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "release_gate": {
           "enum": [
@@ -3119,13 +3154,13 @@
       ],
       "properties": {
         "migration_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "source_version": {
           "type": "string"
         },
         "target_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "started_at": {
           "type": "string"
@@ -3186,7 +3221,7 @@
       ],
       "properties": {
         "workspace_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "storage_mode": {
           "const": "local_only"
@@ -3229,7 +3264,7 @@
           ],
           "properties": {
             "diagnostics_version": {
-              "const": "1.0.27"
+              "const": "1.0.28"
             },
             "available": {
               "type": "boolean"
@@ -3275,7 +3310,7 @@
           "type": "string"
         },
         "template_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "display_name": {
           "type": "string"
@@ -3341,7 +3376,7 @@
           "type": "string"
         },
         "result_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "connector": {
           "type": "string"
@@ -3392,7 +3427,7 @@
       ],
       "properties": {
         "identity_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "provider_id": {
           "type": "string"
@@ -3464,7 +3499,7 @@
       ],
       "properties": {
         "budget_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "max_queries": {
           "type": "integer",
@@ -3524,7 +3559,7 @@
       ],
       "properties": {
         "search_policy_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "provider_identity": {
           "$ref": "#/$defs/search_provider_identity"
@@ -3582,7 +3617,7 @@
       ],
       "properties": {
         "oauth_spike_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3720,7 +3755,7 @@
       ],
       "properties": {
         "release_candidate_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -3738,7 +3773,7 @@
           ],
           "properties": {
             "release_version": {
-              "const": "1.0.27"
+              "const": "1.0.28"
             },
             "release_stage": {
               "const": "public_beta_stable"
@@ -3823,7 +3858,7 @@
           ]
         },
         "stable_release_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "stable_ready": {
           "type": "boolean"
@@ -3843,7 +3878,7 @@
       ],
       "properties": {
         "source_strategy_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "release_gate": {
           "const": "source_strategy_blueprint_checked"
@@ -3894,7 +3929,7 @@
           ],
           "properties": {
             "registry_version": {
-              "const": "1.0.27"
+              "const": "1.0.28"
             },
             "new_live_connector_enabled": {
               "const": false
@@ -3949,7 +3984,7 @@
           "const": "evidence_scoring.v1"
         },
         "scorer_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "generated_at": {
           "type": "string"
@@ -4092,7 +4127,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_scoring_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "scoring_model": {
           "const": "evidence_scoring.v1"
@@ -4230,7 +4265,7 @@
       "additionalProperties": true,
       "properties": {
         "builder_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "packet_schema": {
           "const": "manual_source_packet.v1"
@@ -4282,7 +4317,7 @@
           "const": "source_packet_builder.v1"
         },
         "workflow_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "built_at": {
           "type": "string"
@@ -4317,7 +4352,7 @@
       "additionalProperties": true,
       "properties": {
         "roundtrip_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "roundtrip_model": {
           "const": "source_packet_roundtrip.v1"
@@ -4403,7 +4438,7 @@
       "additionalProperties": true,
       "properties": {
         "template_report_version": {
-          "const": "1.0.27"
+          "const": "1.0.28"
         },
         "template_model": {
           "const": "source_packet_template_presets.v1"

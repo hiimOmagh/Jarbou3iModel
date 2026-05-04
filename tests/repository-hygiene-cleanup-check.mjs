@@ -17,8 +17,8 @@ const releasePackagingCheck = read('tests/release-packaging-cleanup-check.mjs');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.27-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.27.json');
+const migrationFixture = json('fixtures/migrations/v1.0.28-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.28.json');
 const trackedPaths = (() => {
   try {
     return new Set(execSync('git ls-files', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
@@ -30,15 +30,15 @@ const trackedPaths = (() => {
   }
 })();
 
-assert.equal(pkg.version, '1.0.27');
+assert.equal(pkg.version, '1.0.28');
 assert.ok(pkg.description.includes('evidence scoring'));
-assert.equal(schema.properties.workflow_version.const, '1.0.27');
-assert.equal(sample.workflow_version, '1.0.27');
-assert.equal(migrationFixture.workflow_version, '1.0.27');
-assert.equal(privacyFixture.workflow_version, '1.0.27');
-assert.equal(sample.release_notes.release_title, 'v1.0.27 — Release Provenance Ledger Gate');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.0.27 — Release Provenance Ledger Gate');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.0.27 — Release Provenance Ledger Gate');
+assert.equal(schema.properties.workflow_version.const, '1.0.28');
+assert.equal(sample.workflow_version, '1.0.28');
+assert.equal(migrationFixture.workflow_version, '1.0.28');
+assert.equal(privacyFixture.workflow_version, '1.0.28');
+assert.equal(sample.release_notes.release_title, 'v1.0.28 — Hosted Demo Evidence Manifest Gate');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.0.28 — Hosted Demo Evidence Manifest Gate');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.0.28 — Hosted Demo Evidence Manifest Gate');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
@@ -49,8 +49,8 @@ for (const file of [
   'docs/v1.0.21-node-24-ci-compatibility.md',
   'docs/v1.0.25-public-demo-release-lock.md',
   'fixtures/migrations/v1.0.4-packet.json',
-  'fixtures/migrations/v1.0.27-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.0.27.json',
+  'fixtures/migrations/v1.0.28-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.0.28.json',
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/v122-no-browser-suite.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
@@ -70,19 +70,19 @@ for (const file of [
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/v122-no-browser-suite.mjs'
 ]) {
-  assert.ok(fs.existsSync(file), `missing v1.0.27 cleanup artifact: ${file}`);
+  assert.ok(fs.existsSync(file), `missing v1.0.28 cleanup artifact: ${file}`);
 }
 
 assert.equal(json('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
 assert.ok(migrationSource.includes("'1.0.4'"), 'v1.0.4 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.27'"), 'v1.0.27 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27'"), 'v1.0.19 must migrate into v1.0.27');
-assert.ok(migrationSource.includes("const TARGET_VERSION = '1.0.27'"));
-assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.0.27'"));
+assert.ok(migrationSource.includes("'1.0.28'"), 'v1.0.28 must remain a supported migration source');
+assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28'"), 'v1.0.19 must migrate into v1.0.28');
+assert.ok(migrationSource.includes("const TARGET_VERSION = '1.0.28'"));
+assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.0.28'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
-  assert.ok(corpus.includes('v1.0.27'), 'release corpus missing v1.0.27');
-  assert.ok(corpus.includes('Release Provenance Ledger Gate'), 'release corpus missing v1.0.27 release title');
+  assert.ok(corpus.includes('v1.0.28'), 'release corpus missing v1.0.28');
+  assert.ok(corpus.includes('Hosted Demo Evidence Manifest Gate'), 'release corpus missing v1.0.28 release title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));

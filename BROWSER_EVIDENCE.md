@@ -1,6 +1,6 @@
 # Browser Evidence
 
-## v1.0.27 — Release Provenance Ledger Gate
+## v1.0.28 — Hosted Demo Evidence Manifest Gate
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -50,3 +50,7 @@ The screenshots must show no horizontal overflow, visible first-run/public-demo/
 Browser evidence must be reviewed together with CI status, release metadata, privacy/export boundaries, public-demo documentation, and archive hygiene. Screenshots alone are not sufficient for public-demo release approval.
 
 ZIP existence alone is also not sufficient for public-demo release approval.
+
+## v1.0.28 evidence-manifest hardening
+
+The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.0.28 no-browser gate.

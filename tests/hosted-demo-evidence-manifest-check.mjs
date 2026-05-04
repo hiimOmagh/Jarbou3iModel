@@ -1,0 +1,134 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import { spawnSync } from 'node:child_process';
+
+const VERSION = '1.0.28';
+const TITLE = 'Hosted Demo Evidence Manifest Gate';
+const RELEASE = `v${VERSION} — ${TITLE}`;
+const ARTIFACT = 'jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip';
+const read = (file) => fs.readFileSync(file, 'utf8');
+const json = (file) => JSON.parse(read(file));
+const exists = (file) => fs.existsSync(file);
+
+const pkg = json('package.json');
+const lock = json('package-lock.json');
+const schema = json('schema/research-workflow.schema.json');
+const sample = json('fixtures/research/sample-research-workflow-en.json');
+const migrationFixture = json('fixtures/migrations/v1.0.28-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.28.json');
+const spec = read('tests/hosted-demo-browser-evidence.spec.mjs');
+const ciBrowser = read('scripts/ci-browser.sh');
+const ciNoBrowser = read('scripts/ci-no-browser.sh');
+const workflow = read('.github/workflows/ci.yml');
+const hostedModule = read('src/research/hosted-demo-verification.js');
+const migrations = read('src/research/migrations.js');
+
+assert.equal(pkg.version, VERSION);
+assert.equal(lock.version, VERSION);
+assert.equal(lock.packages[''].version, VERSION);
+assert.equal(schema.properties.workflow_version.const, VERSION);
+assert.equal(sample.workflow_version, VERSION);
+assert.equal(migrationFixture.workflow_version, VERSION);
+assert.equal(privacyFixture.workflow_version, VERSION);
+assert.equal(sample.release_notes.release_title, RELEASE);
+assert.equal(migrationFixture.release_notes.release_title, RELEASE);
+assert.equal(privacyFixture.release_notes.release_title, RELEASE);
+assert.equal(sample.release_apply_integrity.base_version, '1.0.27');
+assert.equal(sample.release_apply_integrity.artifact_name, ARTIFACT);
+assert.equal(sample.release_provenance_ledger.base_version, '1.0.27');
+assert.equal(sample.release_provenance_ledger.artifact_name, ARTIFACT);
+
+for (const packet of [sample, migrationFixture, privacyFixture]) {
+  assert.equal(packet.browser_evidence_capture.browser_evidence_version, VERSION);
+  assert.equal(packet.hosted_demo_evidence_review.evidence_review_version, VERSION);
+  assert.equal(packet.hosted_demo_evidence_review.metadata_snapshot_required, true);
+  assert.equal(packet.hosted_demo_evidence_review.metadata_manifest_required, true);
+  assert.deepEqual(packet.browser_evidence_capture.expected_capture_names, ['desktop-first-screen','mobile-first-screen','provider-mode','quality-export']);
+  assert.equal(packet.browser_evidence_capture.capture_manifest_required, true);
+  assert.equal(packet.browser_evidence_capture.viewport_dimensions_required, true);
+  assert.equal(packet.browser_evidence_capture.screenshot_dimensions_required, true);
+}
+
+for (const required of [
+  "const VERSION = '1.0.28'",
+  'EXPECTED_CAPTURE_NAMES',
+  'single_final_metadata_with_all_required_captures',
+  'all_required_captures_present',
+  'screenshot_sanity',
+  'pngDimensions',
+  'image_width',
+  'viewport_width',
+  'horizontal_overflow_px',
+  'capture_count',
+  "captures.push(await capture(page, 'desktop-first-screen'))",
+  "captures.push(await capture(page, 'mobile-first-screen'))",
+  "captures.push(await capture(page, 'provider-mode'))",
+  "captures.push(await capture(page, 'quality-export'))"
+]) {
+  assert.ok(spec.includes(required), `browser evidence spec missing ${required}`);
+}
+
+assert.equal((spec.match(/writeMetadata\(page, captures\)/g) || []).length, 1, 'metadata must be written exactly once from the final complete capture list');
+assert.equal(spec.includes("writeMetadata(page, [captureResult])"), false, 'metadata must not be overwritten by one-capture tests');
+assert.ok(ciBrowser.includes('npm run test:browser:evidence'), 'browser CI must still capture hosted-demo evidence');
+assert.ok(ciBrowser.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser CI must preserve evidence artifact directory');
+assert.ok(ciNoBrowser.includes('tests/hosted-demo-evidence-manifest-check.mjs'), 'no-browser CI must include evidence manifest gate');
+assert.ok(ciNoBrowser.includes('run_node --check tests/hosted-demo-evidence-manifest-check.mjs'), 'no-browser syntax gate must cover evidence manifest check');
+assert.ok(workflow.includes('path: ci-artifacts/hosted-demo-evidence'), 'workflow must upload hosted-demo evidence artifact directory');
+
+const sandbox = { window: {}, console };
+sandbox.window.Jarbou3iResearchModules = {};
+vm.createContext(sandbox);
+vm.runInContext(hostedModule, sandbox, { filename:'src/research/hosted-demo-verification.js' });
+const hosted = sandbox.window.Jarbou3iResearchModules.hostedDemoVerification;
+assert.equal(hosted.VERSION, VERSION);
+const evidence = hosted.buildBrowserEvidence({}, { version:VERSION, now:'2026-05-04T00:00:00.000Z' });
+assert.equal(evidence.capture_manifest_required, true);
+assert.equal(evidence.viewport_dimensions_required, true);
+assert.equal(evidence.screenshot_dimensions_required, true);
+assert.equal(JSON.stringify(evidence.expected_capture_names), JSON.stringify(['desktop-first-screen','mobile-first-screen','provider-mode','quality-export']));
+const review = hosted.buildHostedDemoEvidenceReview({}, { version:VERSION, now:'2026-05-04T00:00:00.000Z' });
+assert.equal(review.metadata_manifest_required, true);
+assert.ok(review.review_items.some((item) => item.artifact_id === 'complete_capture_manifest'));
+
+assert.ok(migrations.includes("const TARGET_VERSION = '1.0.28'"));
+assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28'"), 'migration order must preserve v1.0.27 and append v1.0.28');
+assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration defaults must include evidence manifest metadata requirement');
+
+for (const file of [
+  'docs/v1.0.27-release-provenance-ledger-gate.md',
+  'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
+  'fixtures/migrations/v1.0.27-packet.json',
+  'fixtures/migrations/v1.0.28-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.0.27.json',
+  'fixtures/privacy/browser-generated-export-v1.0.28.json',
+  'tests/hosted-demo-evidence-manifest-check.mjs',
+  'tests/v128-no-browser-suite.mjs'
+]) assert.ok(exists(file), `missing ${file}`);
+
+for (const corpus of [
+  read('README.md'),
+  read('RELEASE_NOTES.md'),
+  read('RELEASE_MANIFEST.md'),
+  read('CHANGELOG.md'),
+  read('BROWSER_EVIDENCE.md'),
+  read('HOSTED_DEMO_VERIFICATION.md'),
+  read('docs/roadmap.md'),
+  read('docs/qa-matrix.md'),
+  read('docs/architecture.md'),
+  read('docs/ai-integration.md'),
+  read('docs/privacy-audit.md'),
+  read('docs/v1.0.28-hosted-demo-evidence-manifest-gate.md')
+]) {
+  assert.ok(corpus.includes('v1.0.28') || corpus.includes('1.0.28'), 'release corpus must mention v1.0.28');
+  assert.ok(/Hosted Demo Evidence Manifest Gate|evidence manifest|single final metadata|capture manifest/i.test(corpus), 'release corpus must describe evidence manifest gate');
+}
+
+for (const file of ['tests/hosted-demo-browser-evidence.spec.mjs', 'tests/hosted-demo-evidence-manifest-check.mjs', 'tests/v128-no-browser-suite.mjs', 'src/research/hosted-demo-verification.js']) {
+  const syntax = spawnSync(process.execPath, ['--check', file], { encoding:'utf8' });
+  assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax check failed`);
+}
+
+console.log('Hosted demo evidence manifest checks passed.');
+process.exit(0);

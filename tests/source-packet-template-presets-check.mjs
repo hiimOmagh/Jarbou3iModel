@@ -8,8 +8,8 @@ const json = (file) => JSON.parse(read(file));
 const pkg = json('package.json');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.27-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.27.json');
+const migrationFixture = json('fixtures/migrations/v1.0.28-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.28.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const templatesSource = read('src/research/source-packet-templates.js');
@@ -33,8 +33,8 @@ const templates = context.window.Jarbou3iResearchModules.sourcePacketTemplates;
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const roundtrip = context.window.Jarbou3iResearchModules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.0.27');
-assert.equal(templates.VERSION, '1.0.27');
+assert.equal(pkg.version, '1.0.28');
+assert.equal(templates.VERSION, '1.0.28');
 assert.equal(templates.TEMPLATE_MODEL, 'source_packet_template_presets.v1');
 assert.equal(templates.PACKET_SCHEMA, 'manual_source_packet.v1');
 assert.equal(typeof templates.listTemplates, 'function');
@@ -47,7 +47,7 @@ for (const id of expectedIds) {
   const packet = templates.sourcePacketFromTemplate(id, {title:`${id} title`, url:`https://example.com/${id}`, claim:`Template ${id} claim is explicit enough for review.`, quote:`Template ${id} excerpt.`}, {now:'2026-05-02T00:00:00.000Z'});
   assert.equal(packet.source_packet_version, 'manual_source_packet.v1');
   assert.equal(packet.builder_version, 'source_packet_builder.v1');
-  assert.equal(packet.workflow_version, '1.0.27');
+  assert.equal(packet.workflow_version, '1.0.28');
   assert.equal(packet.template_model, 'source_packet_template_presets.v1');
   assert.equal(packet.builder_report.live_fetching_performed, false);
   assert.equal(packet.builder_report.verification_claimed, false);
@@ -75,17 +75,17 @@ assert.ok(engine.includes('sourcePacketTemplatePresets'), 'engine must expose te
 assert.ok(engine.includes('buildSourcePacketFromTemplate'), 'engine must build template packets');
 assert.ok(engine.includes('source_packet_template_report'), 'research packet must export template report');
 
-assert.equal(schema.properties.workflow_version.const, '1.0.27');
+assert.equal(schema.properties.workflow_version.const, '1.0.28');
 assert.ok(schema.required.includes('source_packet_template_report'));
-assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.0.27');
+assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.0.28');
 assert.equal(schema.$defs.source_packet_template_report.properties.template_model.const, 'source_packet_template_presets.v1');
 assert.equal(schema.$defs.source_packet_template_report.properties.live_fetching_performed.const, false);
 assert.equal(schema.$defs.source_packet_template_report.properties.verification_claimed.const, false);
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.0.27');
-  assert.equal(packet.release_notes.release_title, 'v1.0.27 — Release Provenance Ledger Gate');
-  assert.equal(packet.source_packet_template_report.template_report_version, '1.0.27');
+  assert.equal(packet.workflow_version, '1.0.28');
+  assert.equal(packet.release_notes.release_title, 'v1.0.28 — Hosted Demo Evidence Manifest Gate');
+  assert.equal(packet.source_packet_template_report.template_report_version, '1.0.28');
   assert.equal(packet.source_packet_template_report.template_model, 'source_packet_template_presets.v1');
   assert.equal(packet.source_packet_template_report.template_count, 6);
   assert.equal(packet.source_packet_template_report.live_fetching_performed, false);

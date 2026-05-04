@@ -1,10 +1,10 @@
-# v1.0.27 Release Provenance Ledger Gate Patch Manifest
+# v1.0.28 Hosted Demo Evidence Manifest Gate Patch Manifest
 
-Base: v1.0.26 repository state.
+Base: v1.0.27 repository state.
 Patch type: changed-files-only.
-Artifact: `jarbou3i-research-engine-v1.0.27-release-provenance-ledger-gate-patch.zip`
+Artifact: `jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip`
 
-Changed files: 150
+Changed files: 151
 Removed files: 0
 
 ## Compatibility boundary
@@ -23,7 +23,7 @@ Removed files: 0
 ## Required validation
 
 ```bash
-npm run test:v127:no-browser
+npm run test:v128:no-browser
 npm run test:ci:no-browser
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
@@ -46,9 +46,9 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `docs/privacy-audit.md`
 - `docs/qa-matrix.md`
 - `docs/roadmap.md`
-- `docs/v1.0.27-release-provenance-ledger-gate.md`
-- `fixtures/migrations/v1.0.27-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.27.json`
+- `docs/v1.0.28-hosted-demo-evidence-manifest-gate.md`
+- `fixtures/migrations/v1.0.28-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.28.json`
 - `fixtures/research/sample-research-workflow-en.json`
 - `index.html`
 - `package-lock.json`
@@ -111,6 +111,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `tests/github-source-connector-check.mjs`
 - `tests/hosted-demo-browser-evidence.spec.mjs`
 - `tests/hosted-demo-deployment-check.mjs`
+- `tests/hosted-demo-evidence-manifest-check.mjs`
 - `tests/hosted-demo-evidence-review-check.mjs`
 - `tests/migration-check.mjs`
 - `tests/module-type-warning-fix-check.mjs`
@@ -178,5 +179,5 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `tests/v123-no-browser-suite.mjs`
 - `tests/v124-no-browser-suite.mjs`
 - `tests/v125-no-browser-suite.mjs`
-- `tests/v127-no-browser-suite.mjs`
+- `tests/v128-no-browser-suite.mjs`
 - `tests/web-search-provider-check.mjs`
