@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.26 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.27 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.26';
+  const VERSION = '1.0.27';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -30,6 +30,7 @@
   const publicDemoReadiness = modules.publicDemoReadiness;
   const hostedDemoVerification = modules.hostedDemoVerification;
   const releaseApplyIntegrity = modules.releaseApplyIntegrity;
+  const releaseProvenanceLedger = modules.releaseProvenanceLedger;
   const esc = (value) => renderHelpers.esc(value);
   const nowIso = () => new Date().toISOString();
 
@@ -186,7 +187,11 @@
 
 
   function releaseApplyIntegrityReport(){
-    return releaseApplyIntegrity?.buildReleaseApplyIntegrity ? releaseApplyIntegrity.buildReleaseApplyIntegrity({}, {version:VERSION, baseVersion:'1.0.25', now:nowIso()}) : null;
+    return releaseApplyIntegrity?.buildReleaseApplyIntegrity ? releaseApplyIntegrity.buildReleaseApplyIntegrity({}, {version:VERSION, baseVersion:'1.0.26', now:nowIso()}) : null;
+  }
+
+  function releaseProvenanceLedgerReport(){
+    return releaseProvenanceLedger?.buildReleaseProvenanceLedger ? releaseProvenanceLedger.buildReleaseProvenanceLedger({}, {version:VERSION, baseVersion:'1.0.26', now:nowIso()}) : null;
   }
 
 
@@ -234,6 +239,7 @@
       release_notes: state.release_notes || releaseNotesReport(),
       public_demo_release_lock: state.public_demo_release_lock || publicDemoReleaseLockReport(),
       release_apply_integrity: state.release_apply_integrity || releaseApplyIntegrityReport(),
+      release_provenance_ledger: state.release_provenance_ledger || releaseProvenanceLedgerReport(),
       hosted_demo_verification: state.hosted_demo_verification || hostedDemoReport(),
       browser_evidence_capture: state.browser_evidence_capture || browserEvidenceReport(),
       hosted_demo_smoke_fixes: state.hosted_demo_smoke_fixes || hostedDemoSmokeFixesReport(),
