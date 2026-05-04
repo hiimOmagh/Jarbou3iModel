@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source capability registry v1.0.28. No live source expansion. */
+/* Jarbou3i Research Engine source capability registry v1.0.29. No live source expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.28';
+  const VERSION = '1.0.29';
 
   const ALLOWED = Object.freeze({
     availability:['local','mock','manual','external','unavailable','controlled_backend'],
@@ -54,7 +54,7 @@
       live_fetching_enabled:false,
       export_allowed:true,
       status:'available_manual_import',
-      notes:['Available in v1.0.28. Imports structured user-collected source packets into the review queue. No live fetching, scraping, or verification claims.']
+      notes:['Available in v1.0.29. Imports structured user-collected source packets into the review queue. No live fetching, scraping, or verification claims.']
     },
     web_search_api_dry_run: {
       source_id:'web_search_api_dry_run',
@@ -161,7 +161,7 @@
       source_behavior_changed:false,
       registry:values(),
       audit,
-      next_safe_increment:'v1.0.28 source packet builder browser QA and UX tightening',
+      next_safe_increment:'v1.0.29 source packet builder browser QA and UX tightening',
       blocked_until_threat_modeled:['production OAuth / portable account auth','live Reddit/X/YouTube/TikTok scraping','external RAG dependency as core runtime'],
       scoring_warning:'Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength.'
     };

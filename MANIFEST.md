@@ -1,8 +1,8 @@
-# v1.0.28 Hosted Demo Evidence Manifest Gate Patch Manifest
+# v1.0.29 Final Public Demo Hardening / Release Freeze Audit Patch Manifest
 
-Base: v1.0.27 repository state.
+Base: v1.0.28 repository state.
 Patch type: changed-files-only.
-Artifact: `jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip`
+Artifact: `jarbou3i-research-engine-v1.0.29-final-public-demo-hardening-release-freeze-audit-patch.zip`
 
 Changed files: 151
 Removed files: 0
@@ -23,7 +23,7 @@ Removed files: 0
 ## Required validation
 
 ```bash
-npm run test:v128:no-browser
+npm run test:v129:no-browser
 npm run test:ci:no-browser
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
@@ -46,9 +46,9 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `docs/privacy-audit.md`
 - `docs/qa-matrix.md`
 - `docs/roadmap.md`
-- `docs/v1.0.28-hosted-demo-evidence-manifest-gate.md`
-- `fixtures/migrations/v1.0.28-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.28.json`
+- `docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md`
+- `fixtures/migrations/v1.0.29-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.29.json`
 - `fixtures/research/sample-research-workflow-en.json`
 - `index.html`
 - `package-lock.json`
@@ -179,5 +179,5 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `tests/v123-no-browser-suite.mjs`
 - `tests/v124-no-browser-suite.mjs`
 - `tests/v125-no-browser-suite.mjs`
-- `tests/v128-no-browser-suite.mjs`
+- `tests/v129-no-browser-suite.mjs`
 - `tests/web-search-provider-check.mjs`

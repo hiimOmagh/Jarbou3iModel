@@ -4,11 +4,11 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.0.28';
-const BASE_VERSION = '1.0.27';
-const TITLE = 'Hosted Demo Evidence Manifest Gate';
+const VERSION = '1.0.29';
+const BASE_VERSION = '1.0.28';
+const TITLE = 'Final Public Demo Hardening / Release Freeze Audit';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.0.29-final-public-demo-hardening-release-freeze-audit-patch.zip';
 const repoRoot = process.cwd();
 const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -18,8 +18,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.28-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.28.json');
+const migrationFixture = json('fixtures/migrations/v1.0.29-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.29.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const migrations = read('src/research/migrations.js');
@@ -34,7 +34,7 @@ for (const [actual, label] of [
   [sample.workflow_version, 'sample'],
   [migrationFixture.workflow_version, 'migration fixture'],
   [privacyFixture.workflow_version, 'privacy fixture']
-]) assert.equal(actual, VERSION, `${label} must be v1.0.28`);
+]) assert.equal(actual, VERSION, `${label} must be v1.0.29`);
 
 assert.ok(schema.required.includes('release_provenance_ledger'), 'schema must require release provenance ledger');
 assert.equal(schema.properties.release_provenance_ledger.properties.release_provenance_ledger_version.const, VERSION);
@@ -49,7 +49,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
   assert.equal(packet.release_notes.release_title, RELEASE, 'release title mismatch');
   assert.equal(packet.release_apply_integrity.base_version, BASE_VERSION, 'apply integrity base mismatch');
   assert.equal(packet.release_apply_integrity.artifact_name, ARTIFACT, 'apply integrity artifact mismatch');
-  assert.ok(packet.release_apply_integrity.required_commands.some((cmd) => cmd.includes('npm run test:v128:no-browser')), 'apply integrity must require v128 gate');
+  assert.ok(packet.release_apply_integrity.required_commands.some((cmd) => cmd.includes('npm run test:v129:no-browser')), 'apply integrity must require v128 gate');
   const ledger = packet.release_provenance_ledger;
   assert.equal(ledger.release_provenance_ledger_version, VERSION, 'ledger version mismatch');
   assert.equal(ledger.release_title, RELEASE, 'ledger title mismatch');
@@ -73,7 +73,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
   assert.equal(ledger.live_source_verification_enabled, false);
   assert.equal(ledger.release_gate, 'release_provenance_ledger_pass');
   assert.ok(Array.isArray(ledger.ledger_evidence) && ledger.ledger_evidence.length >= 8);
-  assert.ok(ledger.required_commands.some((cmd) => cmd.includes('npm run test:v128:no-browser')));
+  assert.ok(ledger.required_commands.some((cmd) => cmd.includes('npm run test:v129:no-browser')));
   assert.ok(ledger.blocked_claims.some((claim) => /named artifact as provenance/i.test(claim)));
 }
 
@@ -92,17 +92,17 @@ assert.equal(provenance.buildReleaseProvenanceLedger({ artifact_sha256_recorded:
 assert.ok(index.includes('src/research/release-provenance-ledger.js'), 'index must load provenance module');
 assert.ok(engine.includes('releaseProvenanceLedgerReport()'), 'engine must build provenance report');
 assert.ok(engine.includes('release_provenance_ledger'), 'research packet must export provenance ledger');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.0.28'"), 'migration target mismatch');
-assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28'"), 'migration order must preserve v1.0.26 and append v1.0.28');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.0.29'"), 'migration target mismatch');
+assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29'"), 'migration order must preserve v1.0.26 and append v1.0.29');
 assert.ok(migrations.includes('defaultReleaseProvenanceLedger'), 'migration defaults must include provenance ledger');
 
 for (const required of [
   'src/research/release-provenance-ledger.js',
   'tests/release-provenance-ledger-check.mjs',
-  'tests/v128-no-browser-suite.mjs',
-  'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
-  'fixtures/migrations/v1.0.28-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.0.28.json',
+  'tests/v129-no-browser-suite.mjs',
+  'docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md',
+  'fixtures/migrations/v1.0.29-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.0.29.json',
   'fixtures/migrations/v1.0.26-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.26.json'
 ]) assert.ok(exists(required), `missing ${required}`);
@@ -120,24 +120,24 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  read('docs/v1.0.28-hosted-demo-evidence-manifest-gate.md')
+  read('docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md')
 ]) {
-  assert.ok(corpus.includes('v1.0.28') || corpus.includes('1.0.28'), 'release corpus must mention v1.0.28');
-  assert.ok(/Hosted Demo Evidence Manifest Gate|provenance ledger|changed-files-only/i.test(corpus), 'release corpus must describe provenance gate');
+  assert.ok(corpus.includes('v1.0.29') || corpus.includes('1.0.29'), 'release corpus must mention v1.0.29');
+  assert.ok(/Final Public Demo Hardening \/ Release Freeze Audit|provenance ledger|changed-files-only/i.test(corpus), 'release corpus must describe provenance gate');
 }
 
 assert.ok(pkg.scripts['test:release-provenance-ledger']?.includes('release-provenance-ledger-check.mjs'));
-assert.ok(pkg.scripts['test:v128:no-browser']?.includes('v128-no-browser-suite.mjs'));
+assert.ok(pkg.scripts['test:v129:no-browser']?.includes('v129-no-browser-suite.mjs'));
 assert.ok(pkg.scripts['test:v128']?.includes('test:ci:browser'));
 assert.ok(pkg.scripts['test:stable']?.includes('release-provenance-ledger-check.mjs'));
 assert.ok(pkg.scripts['test:patch']?.includes('release-provenance-ledger-check.mjs'));
 assert.ok(ciNoBrowser.includes('tests/release-provenance-ledger-check.mjs'));
 assert.ok(ciNoBrowser.includes('run_node --check src/research/release-provenance-ledger.js'));
 assert.ok(ciNoBrowser.includes('run_node --check tests/release-provenance-ledger-check.mjs'));
-assert.ok(ciNoBrowser.includes('run_node --check tests/v128-no-browser-suite.mjs'));
-assert.equal(ciNoBrowser.includes('run_node tests/v128-no-browser-suite.mjs'), false, 'CI wrapper must not recursively run v128 suite');
+assert.ok(ciNoBrowser.includes('run_node --check tests/v129-no-browser-suite.mjs'));
+assert.equal(ciNoBrowser.includes('run_node tests/v129-no-browser-suite.mjs'), false, 'CI wrapper must not recursively run v128 suite');
 
-for (const file of ['src/research/release-provenance-ledger.js', 'tests/release-provenance-ledger-check.mjs', 'tests/v128-no-browser-suite.mjs']) {
+for (const file of ['src/research/release-provenance-ledger.js', 'tests/release-provenance-ledger-check.mjs', 'tests/v129-no-browser-suite.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout);
 }

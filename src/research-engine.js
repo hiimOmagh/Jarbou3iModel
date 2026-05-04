@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.28 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.29 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.28';
+  const VERSION = '1.0.29';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -187,11 +187,11 @@
 
 
   function releaseApplyIntegrityReport(){
-    return releaseApplyIntegrity?.buildReleaseApplyIntegrity ? releaseApplyIntegrity.buildReleaseApplyIntegrity({}, {version:VERSION, baseVersion:'1.0.27', now:nowIso()}) : null;
+    return releaseApplyIntegrity?.buildReleaseApplyIntegrity ? releaseApplyIntegrity.buildReleaseApplyIntegrity({}, {version:VERSION, baseVersion:'1.0.28', now:nowIso()}) : null;
   }
 
   function releaseProvenanceLedgerReport(){
-    return releaseProvenanceLedger?.buildReleaseProvenanceLedger ? releaseProvenanceLedger.buildReleaseProvenanceLedger({}, {version:VERSION, baseVersion:'1.0.27', now:nowIso()}) : null;
+    return releaseProvenanceLedger?.buildReleaseProvenanceLedger ? releaseProvenanceLedger.buildReleaseProvenanceLedger({}, {version:VERSION, baseVersion:'1.0.28', now:nowIso()}) : null;
   }
 
 

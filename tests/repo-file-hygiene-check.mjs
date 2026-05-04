@@ -152,7 +152,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.25-public-demo-release-lock.md',
   'docs/v1.0.26-release-apply-integrity-gate.md',
   'docs/v1.0.27-release-provenance-ledger-gate.md',
-  'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md'
+  'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
+  'docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

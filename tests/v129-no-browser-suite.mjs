@@ -19,7 +19,8 @@ const tests = [
   'tests/hosted-demo-evidence-review-check.mjs',
   'tests/hosted-demo-evidence-manifest-check.mjs',
   'tests/browser-visual-project-scope-check.mjs',
-  'tests/source-packet-template-browser-qa-check.mjs'
+  'tests/source-packet-template-browser-qa-check.mjs',
+  'tests/final-public-demo-freeze-audit-check.mjs'
 ];
 
 for (const file of tests) {

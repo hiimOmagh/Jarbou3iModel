@@ -1,18 +1,18 @@
-# Release Manifest — v1.0.28
+# Release Manifest — v1.0.29
 
-## v1.0.28 — Hosted Demo Evidence Manifest Gate
+## v1.0.29 — Final Public Demo Hardening / Release Freeze Audit
 
 This patch adds a release-application integrity gate for changed-files-only handoffs. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. The patch must be applied to the intended base, validated with CI, and reviewed against manifest/SHA evidence before publication.
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.28`
-- Release name: `Hosted Demo Evidence Manifest Gate`
+- Version: `1.0.29`
+- Release name: `Final Public Demo Hardening / Release Freeze Audit`
 - Release type: patch
 - Patch type: `changed-files-only over v1.0.25`
 - Runtime capability change: no
-- Artifact: `jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip`
+- Artifact: `jarbou3i-research-engine-v1.0.29-final-public-demo-hardening-release-freeze-audit-patch.zip`
 
 ## Entry points
 
@@ -56,11 +56,11 @@ This patch adds a release-application integrity gate for changed-files-only hand
 - `package-lock.json`
 - `playwright.config.js`
 
-## Required v1.0.28 release-lock files
+## Required v1.0.29 release-lock files
 
-- `docs/v1.0.28-hosted-demo-evidence-manifest-gate.md`
-- `fixtures/migrations/v1.0.28-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.28.json`
+- `docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md`
+- `fixtures/migrations/v1.0.29-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.29.json`
 - `tests/release-apply-integrity-check.mjs`
 - `tests/v126-no-browser-suite.mjs`
 
@@ -72,12 +72,12 @@ This patch adds a release-application integrity gate for changed-files-only hand
 
 ## Compatibility boundary
 
-v1.0.28 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks release-application integrity only.
+v1.0.29 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks release-application integrity only.
 
 ## Required apply sequence
 
 ```bash
-unzip -o jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip -d .
+unzip -o jarbou3i-research-engine-v1.0.29-final-public-demo-hardening-release-freeze-audit-patch.zip -d .
 npm ci --no-audit --no-fund --ignore-scripts
 npm run test:v126:no-browser
 npm run test:ci:no-browser
@@ -124,7 +124,7 @@ No generated artifact, orphan `XX*` temporary file, ZIP archive, test report, or
 
 ## Release history map
 
-- v1.0.28 — Hosted Demo Evidence Manifest Gate
+- v1.0.29 — Final Public Demo Hardening / Release Freeze Audit
 - v1.0.25 — Public Demo Release Lock
 - v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 - v1.0.23 — CI Result Review + Browser Evidence Artifact Audit

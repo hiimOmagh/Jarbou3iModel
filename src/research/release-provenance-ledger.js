@@ -1,14 +1,14 @@
-/* Jarbou3i Research Engine release provenance ledger helpers v1.0.28. */
+/* Jarbou3i Research Engine release provenance ledger helpers v1.0.29. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.28';
-  const BASE_VERSION = '1.0.27';
-  const RELEASE_TITLE = 'v1.0.28 — Hosted Demo Evidence Manifest Gate';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.0.28-hosted-demo-evidence-manifest-gate-patch.zip';
+  const VERSION = '1.0.29';
+  const BASE_VERSION = '1.0.28';
+  const RELEASE_TITLE = 'v1.0.29 — Final Public Demo Hardening / Release Freeze Audit';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.0.29-final-public-demo-hardening-release-freeze-audit-patch.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
-    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.0.28', required:true},
-    {evidence_id:'base_version_recorded', label:'base version v1.0.27 is recorded', required:true},
+    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.0.29', required:true},
+    {evidence_id:'base_version_recorded', label:'base version v1.0.28 is recorded', required:true},
     {evidence_id:'artifact_name_recorded', label:'artifact name is versioned and fixed', required:true},
     {evidence_id:'changed_files_manifest_present', label:'changed-files manifest is required for handoff review', required:true},
     {evidence_id:'artifact_sha256_recorded', label:'artifact SHA256 is recorded after packaging', required:true},
@@ -33,7 +33,7 @@
     return {
       release_provenance_ledger_version: version,
       generated_at: now,
-      release_title: `v${version} — Hosted Demo Evidence Manifest Gate`,
+      release_title: `v${version} — Final Public Demo Hardening / Release Freeze Audit`,
       provenance_stage: 'release_provenance_ledger_checked',
       release_type: 'patch',
       patch_type: 'changed_files_only',
@@ -61,13 +61,13 @@
       required_commands: [
         `unzip -o ${artifactName} -d .`,
         'npm ci --no-audit --no-fund --ignore-scripts',
-        'npm run test:v128:no-browser',
+        'npm run test:v129:no-browser',
         'npm run test:ci:no-browser',
         'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'
       ],
       blocked_claims: [
         'Do not treat a named artifact as provenance unless the changed-files manifest and SHA256 are reviewed.',
-        'Do not publish from a patch that was not applied to v1.0.27 and revalidated.',
+        'Do not publish from a patch that was not applied to v1.0.28 and revalidated.',
         'Do not claim live scraping, production OAuth, provider behavior changes, backend endpoint expansion, source connector expansion, or storage expansion.',
         'Do not approve public demo release from screenshots or ZIP existence alone.'
       ],
