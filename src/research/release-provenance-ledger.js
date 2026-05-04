@@ -1,14 +1,14 @@
-/* Jarbou3i Research Engine release provenance ledger helpers v1.0.30. */
+/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.1. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.30';
-  const BASE_VERSION = '1.0.29';
-  const RELEASE_TITLE = 'v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze-patch.zip';
+  const VERSION = '1.1.0-alpha.1';
+  const BASE_VERSION = '1.0.30';
+  const RELEASE_TITLE = 'v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate-patch.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
-    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.0.30', required:true},
-    {evidence_id:'base_version_recorded', label:'base version v1.0.29 is recorded', required:true},
+    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.1', required:true},
+    {evidence_id:'base_version_recorded', label:'base version v1.0.30 is recorded', required:true},
     {evidence_id:'artifact_name_recorded', label:'artifact name is versioned and fixed', required:true},
     {evidence_id:'changed_files_manifest_present', label:'changed-files manifest is required for handoff review', required:true},
     {evidence_id:'artifact_sha256_recorded', label:'artifact SHA256 is recorded after packaging', required:true},
@@ -33,7 +33,7 @@
     return {
       release_provenance_ledger_version: version,
       generated_at: now,
-      release_title: `v${version} — Mobile Header Geometry Lock / Final Public Demo Visual Freeze`,
+      release_title: `v${version} — Post-Freeze Product Expansion Planning Gate`,
       provenance_stage: 'release_provenance_ledger_checked',
       release_type: 'patch',
       patch_type: 'changed_files_only',
@@ -61,7 +61,7 @@
       required_commands: [
         `unzip -o ${artifactName} -d .`,
         'npm ci --no-audit --no-fund --ignore-scripts',
-        'npm run test:v129:no-browser',
+        'npm run test:v110a1:no-browser',
         'npm run test:ci:no-browser',
         'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'
       ],

@@ -1,6 +1,6 @@
 # AI Integration Policy
 
-## v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+## v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -9,7 +9,7 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 This guide applies to v1.0.25 — Public Demo Release Lock.
 
-## Current state: v1.0.30
+## Current state: v1.1.0-alpha.1
 
 The research engine supports four provider modes:
 

@@ -59,6 +59,7 @@ run_node tests/hosted-demo-evidence-review-check.mjs
 run_node tests/hosted-demo-evidence-manifest-check.mjs
 run_node tests/final-public-demo-freeze-audit-check.mjs
 run_node tests/mobile-header-logo-geometry-check.mjs
+run_node tests/post-freeze-planning-gate-check.mjs
 
 echo "CI no-browser gate: provider/OAuth/backend/source"
 run_node tests/provider-identity-check.mjs
@@ -88,6 +89,7 @@ run_node tests/source-capability-registry-check.mjs
 echo "CI no-browser gate: syntax"
 run_node --check src/research-engine.js
 run_node --check src/research/public-demo-readiness.js
+run_node --check src/research/post-freeze-planning-gate.js
 run_node --check src/research/release-apply-integrity.js
 run_node --check src/research/release-provenance-ledger.js
 run_node --check src/research/hosted-demo-verification.js
@@ -114,6 +116,8 @@ run_node --check tests/hosted-demo-evidence-review-check.mjs
 run_node --check tests/hosted-demo-evidence-manifest-check.mjs
 run_node --check tests/final-public-demo-freeze-audit-check.mjs
 run_node --check tests/mobile-header-logo-geometry-check.mjs
+run_node --check tests/post-freeze-planning-gate-check.mjs
+run_node --check tests/v110a1-no-browser-suite.mjs
 run_node --check tests/module-type-warning-fix-check.mjs
 run_node --check tests/ci-workflow-install-check.mjs
 run_node --check tests/lockfile-public-registry-check.mjs

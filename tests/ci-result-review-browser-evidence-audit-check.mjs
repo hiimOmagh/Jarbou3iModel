@@ -5,10 +5,10 @@ import { spawnSync } from 'node:child_process';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.0.30';
+const CURRENT_VERSION = '1.1.0-alpha.1';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Mobile Header Geometry Lock / Final Public Demo Visual Freeze';
+const CURRENT_TITLE = 'Post-Freeze Product Expansion Planning Gate';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -96,8 +96,8 @@ for (const required of [
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
   'tests/ci-result-review-browser-evidence-audit-check.mjs',
   'tests/v123-no-browser-suite.mjs',
-  'fixtures/migrations/v1.0.30-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.0.30.json',
+  'fixtures/migrations/v1.1.0-alpha.1-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.1.json',
   'docs/v1.0.25-public-demo-release-lock.md',
   'tests/public-demo-release-lock-check.mjs',
   'tests/v124-no-browser-suite.mjs'
@@ -105,8 +105,8 @@ for (const required of [
   assert.ok(fs.existsSync(required), `required CI/hygiene artifact missing: ${required}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.0.30'"), 'migration target must be current release');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30'"), 'migration order must preserve v1.0.24 and append v1.0.30');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.1'"), 'migration target must be current release');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.1');
 for (const corpus of [manifest, roadmap, qaMatrix, historicalDoc]) {
   assert.ok(corpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');
   assert.ok(corpus.includes(HISTORICAL_TITLE), 'release corpus must preserve v1.0.23 audit title');

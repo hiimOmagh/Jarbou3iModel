@@ -1,32 +1,10 @@
-# v1.0.30 Mobile Header Geometry Lock / Final Public Demo Visual Freeze Patch Manifest
+# v1.1.0-alpha.1 Post-Freeze Product Expansion Planning Gate Patch Manifest
 
-Base: v1.0.28 repository state.
-Patch type: changed-files-only.
-Artifact: `jarbou3i-research-engine-v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze-patch.zip`
+Artifact: `jarbou3i-research-engine-v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate-patch.zip`
 
-Changed files: 151
-Removed files: 0
+Base: `v1.0.30` public-demo visual-freeze state.
 
-## Compatibility boundary
-
-- runtime capability change: no
-- provider behavior change: no
-- oauth behavior change: no
-- backend endpoint expansion: no
-- source connector behavior change: no
-- storage behavior change: no
-- public demo capability expansion: no
-- live scraping enabled: no
-- real oauth enabled: no
-- live source verification enabled: no
-
-## Required validation
-
-```bash
-npm run test:v129:no-browser
-npm run test:ci:no-browser
-PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
-```
+Scope: planning gate only; no implementation exposure and no runtime capability expansion.
 
 ## Changed files
 
@@ -46,9 +24,9 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `docs/privacy-audit.md`
 - `docs/qa-matrix.md`
 - `docs/roadmap.md`
-- `docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md`
-- `fixtures/migrations/v1.0.30-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.30.json`
+- `docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md`
+- `fixtures/migrations/v1.1.0-alpha.1-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.1.0-alpha.1.json`
 - `fixtures/research/sample-research-workflow-en.json`
 - `index.html`
 - `package-lock.json`
@@ -71,6 +49,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `src/research/openai-compatible-provider.js`
 - `src/research/portable-account-mock.js`
 - `src/research/portable-oauth-spike.js`
+- `src/research/post-freeze-planning-gate.js`
 - `src/research/privacy-audit.js`
 - `src/research/privacy-export-guard.js`
 - `src/research/project-workspace.js`
@@ -108,18 +87,21 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `tests/evidence-scoring-calibration-check.mjs`
 - `tests/evidence-scoring-check.mjs`
 - `tests/export-pack-v2-check.mjs`
+- `tests/final-public-demo-freeze-audit-check.mjs`
 - `tests/github-source-connector-check.mjs`
 - `tests/hosted-demo-browser-evidence.spec.mjs`
 - `tests/hosted-demo-deployment-check.mjs`
 - `tests/hosted-demo-evidence-manifest-check.mjs`
 - `tests/hosted-demo-evidence-review-check.mjs`
 - `tests/migration-check.mjs`
+- `tests/mobile-header-logo-geometry-check.mjs`
 - `tests/module-type-warning-fix-check.mjs`
 - `tests/node24-ci-compat-check.mjs`
 - `tests/onboarding-first-run-check.mjs`
 - `tests/patch-stabilization-check.mjs`
 - `tests/portable-account-check.mjs`
 - `tests/portable-oauth-spike-check.mjs`
+- `tests/post-freeze-planning-gate-check.mjs`
 - `tests/privacy-audit-check.mjs`
 - `tests/privacy-export-guard-check.mjs`
 - `tests/privacy-release-gate-check.mjs`
@@ -164,6 +146,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `tests/v106-no-browser-suite.mjs`
 - `tests/v109-no-browser-suite.mjs`
 - `tests/v110-no-browser-suite.mjs`
+- `tests/v110a1-no-browser-suite.mjs`
 - `tests/v111-no-browser-suite.mjs`
 - `tests/v112-no-browser-suite.mjs`
 - `tests/v113-no-browser-suite.mjs`
@@ -179,5 +162,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `tests/v123-no-browser-suite.mjs`
 - `tests/v124-no-browser-suite.mjs`
 - `tests/v125-no-browser-suite.mjs`
-- `tests/v129-no-browser-suite.mjs`
+- `tests/v128-no-browser-suite.mjs`
+- `tests/v130-no-browser-suite.mjs`
 - `tests/web-search-provider-check.mjs`

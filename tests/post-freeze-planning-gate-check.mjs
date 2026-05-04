@@ -1,0 +1,84 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+
+const repoRoot = process.cwd();
+const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
+const json = (file) => JSON.parse(read(file));
+const exists = (file) => fs.existsSync(path.join(repoRoot, file));
+
+const VERSION = '1.1.0-alpha.1';
+const BASELINE = '1.0.30';
+const TITLE = 'Post-Freeze Product Expansion Planning Gate';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate-patch.zip';
+
+const pkg = json('package.json');
+const lock = json('package-lock.json');
+const index = read('index.html');
+const moduleSource = read('src/research/post-freeze-planning-gate.js');
+const releaseDoc = read('docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md');
+const migrations = read('src/research/migrations.js');
+const schema = json('schema/research-workflow.schema.json');
+const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.1-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.1.json');
+
+assert.equal(pkg.version, VERSION);
+assert.equal(lock.version, VERSION);
+assert.equal(lock.packages[''].version, VERSION);
+assert.ok(pkg.description.includes('post-freeze product expansion planning gate'));
+assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose post-freeze planning identity');
+assert.ok(index.includes('Planning gate only'), 'index must state planning gate only');
+assert.ok(index.includes('implementation'), 'index must mention implementation boundary');
+
+assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.1'"));
+assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
+assert.ok(moduleSource.includes('implementation_allowed:false'));
+assert.ok(moduleSource.includes('runtime_capability_change:false'));
+assert.ok(moduleSource.includes('Do not claim live scraping'));
+
+await import(`file://${path.join(repoRoot, 'src/research/post-freeze-planning-gate.js')}`);
+const gate = globalThis.Jarbou3iResearchModules.postFreezePlanningGate.buildPostFreezePlanningGate({}, {now:'2026-05-05T00:00:00.000Z'});
+assert.equal(gate.post_freeze_planning_version, VERSION);
+assert.equal(gate.baseline_version, BASELINE);
+assert.equal(gate.implementation_allowed, false);
+assert.equal(gate.runtime_capability_change, false);
+assert.equal(gate.provider_behavior_changed, false);
+assert.equal(gate.oauth_behavior_changed, false);
+assert.equal(gate.backend_behavior_changed, false);
+assert.equal(gate.source_behavior_changed, false);
+assert.equal(gate.storage_behavior_changed, false);
+assert.equal(gate.public_demo_freeze_preserved, true);
+assert.ok(gate.lanes.length >= 5);
+assert.ok(gate.lanes.every(lane => lane.implementation_allowed === false));
+assert.ok(gate.blocked_claims.some(claim => claim.includes('live scraping')));
+assert.equal(gate.release_gate, 'post_freeze_planning_ready');
+
+for (const packet of [migrationFixture, privacyFixture]) {
+  assert.equal(packet.workflow_version, VERSION);
+  assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
+  assert.equal(packet.release_apply_integrity.base_version, BASELINE);
+  assert.equal(packet.release_apply_integrity.artifact_name, ARTIFACT);
+  assert.equal(packet.release_apply_integrity.runtime_capability_change, false);
+  assert.equal(packet.release_apply_integrity.provider_behavior_changed, false);
+  assert.equal(packet.release_apply_integrity.oauth_behavior_changed, false);
+  assert.equal(packet.release_apply_integrity.backend_behavior_changed, false);
+  assert.equal(packet.release_apply_integrity.source_behavior_changed, false);
+  assert.equal(packet.release_apply_integrity.storage_behavior_changed, false);
+}
+
+assert.equal(schema.properties.workflow_version.const, VERSION);
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.1'"));
+assert.ok(migrations.includes("'1.0.29','1.0.30','1.1.0-alpha.1'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0-alpha.1');
+assert.ok(exists('docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md'), 'v1.0.30 freeze doc must remain present');
+assert.ok(releaseDoc.includes('Planning gate only'));
+assert.ok(releaseDoc.includes('No live scraping'));
+assert.ok(releaseDoc.includes('No real OAuth'));
+
+for (const file of ['src/research/post-freeze-planning-gate.js','tests/post-freeze-planning-gate-check.mjs']) {
+  const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
+  assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax failed`);
+}
+
+console.log('Post-freeze planning gate checks passed.');
+process.exit(0);

@@ -1,6 +1,6 @@
 # Roadmap
 
-## v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+## v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -9,7 +9,7 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 | Stage | Version | Title | Status |
 |---|---:|---|---|
-| Current patch | `v1.0.30` | **Mobile Header Geometry Lock / Final Public Demo Visual Freeze** | Current |
+| Current patch | `v1.1.0-alpha.1` | **Post-Freeze Product Expansion Planning Gate** | Current |
 | Previous patch | `v1.0.25` | **Public Demo Release Lock** | Completed |
 | Previous patch | `v1.0.24` | **Repo Hygiene Execution + Stale Documentation Correction** | Completed |
 | Next capability jump | `v1.1.0` | **Controlled Source Workflow MVP** | Only after QA/release stability |
@@ -77,6 +77,6 @@ Node 24 remains the GitHub Actions runtime baseline for v1.0.25.
 - Evidence upload is still inspection material, not release approval.
 
 
-### `v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze`
+### `v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate`
 
 Purpose: changed-files-only patch apply verification before capability expansion.

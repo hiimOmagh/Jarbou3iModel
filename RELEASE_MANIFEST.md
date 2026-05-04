@@ -1,18 +1,18 @@
-# Release Manifest — v1.0.30
+# Release Manifest — v1.1.0-alpha.1
 
-## v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+## v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate
 
 This patch adds a release-application integrity gate for changed-files-only handoffs. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. The patch must be applied to the intended base, validated with CI, and reviewed against manifest/SHA evidence before publication.
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.0.30`
-- Release name: `Mobile Header Geometry Lock / Final Public Demo Visual Freeze`
+- Version: `1.1.0-alpha.1`
+- Release name: `Post-Freeze Product Expansion Planning Gate`
 - Release type: patch
 - Patch type: `changed-files-only over v1.0.25`
 - Runtime capability change: no
-- Artifact: `jarbou3i-research-engine-v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze-patch.zip`
+- Artifact: `jarbou3i-research-engine-v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate-patch.zip`
 
 ## Entry points
 
@@ -56,11 +56,11 @@ This patch adds a release-application integrity gate for changed-files-only hand
 - `package-lock.json`
 - `playwright.config.js`
 
-## Required v1.0.30 release-lock files
+## Required v1.1.0-alpha.1 release-lock files
 
-- `docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md`
-- `fixtures/migrations/v1.0.30-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.30.json`
+- `docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md`
+- `fixtures/migrations/v1.1.0-alpha.1-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.1.0-alpha.1.json`
 - `tests/release-apply-integrity-check.mjs`
 - `tests/v126-no-browser-suite.mjs`
 
@@ -72,12 +72,12 @@ This patch adds a release-application integrity gate for changed-files-only hand
 
 ## Compatibility boundary
 
-v1.0.30 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks release-application integrity only.
+v1.1.0-alpha.1 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks release-application integrity only.
 
 ## Required apply sequence
 
 ```bash
-unzip -o jarbou3i-research-engine-v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze-patch.zip -d .
+unzip -o jarbou3i-research-engine-v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate-patch.zip -d .
 npm ci --no-audit --no-fund --ignore-scripts
 npm run test:v126:no-browser
 npm run test:ci:no-browser
@@ -124,7 +124,7 @@ No generated artifact, orphan `XX*` temporary file, ZIP archive, test report, or
 
 ## Release history map
 
-- v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+- v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate
 - v1.0.25 — Public Demo Release Lock
 - v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 - v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
