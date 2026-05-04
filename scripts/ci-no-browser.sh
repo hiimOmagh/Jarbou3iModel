@@ -58,6 +58,7 @@ run_node tests/hosted-demo-deployment-check.mjs
 run_node tests/hosted-demo-evidence-review-check.mjs
 run_node tests/hosted-demo-evidence-manifest-check.mjs
 run_node tests/final-public-demo-freeze-audit-check.mjs
+run_node tests/mobile-header-logo-geometry-check.mjs
 
 echo "CI no-browser gate: provider/OAuth/backend/source"
 run_node tests/provider-identity-check.mjs
@@ -112,6 +113,7 @@ run_node --check tests/hosted-demo-browser-evidence.spec.mjs
 run_node --check tests/hosted-demo-evidence-review-check.mjs
 run_node --check tests/hosted-demo-evidence-manifest-check.mjs
 run_node --check tests/final-public-demo-freeze-audit-check.mjs
+run_node --check tests/mobile-header-logo-geometry-check.mjs
 run_node --check tests/module-type-warning-fix-check.mjs
 run_node --check tests/ci-workflow-install-check.mjs
 run_node --check tests/lockfile-public-registry-check.mjs
@@ -161,3 +163,4 @@ run_node --check tests/v126-no-browser-suite.mjs
 
 run_node --check tests/v128-no-browser-suite.mjs
 run_node --check tests/v129-no-browser-suite.mjs
+run_node --check tests/v130-no-browser-suite.mjs

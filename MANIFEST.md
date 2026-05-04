@@ -1,8 +1,8 @@
-# v1.0.29 Final Public Demo Hardening / Release Freeze Audit Patch Manifest
+# v1.0.30 Mobile Header Geometry Lock / Final Public Demo Visual Freeze Patch Manifest
 
 Base: v1.0.28 repository state.
 Patch type: changed-files-only.
-Artifact: `jarbou3i-research-engine-v1.0.29-final-public-demo-hardening-release-freeze-audit-patch.zip`
+Artifact: `jarbou3i-research-engine-v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze-patch.zip`
 
 Changed files: 151
 Removed files: 0
@@ -46,9 +46,9 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 - `docs/privacy-audit.md`
 - `docs/qa-matrix.md`
 - `docs/roadmap.md`
-- `docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md`
-- `fixtures/migrations/v1.0.29-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.29.json`
+- `docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md`
+- `fixtures/migrations/v1.0.30-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.30.json`
 - `fixtures/research/sample-research-workflow-en.json`
 - `index.html`
 - `package-lock.json`

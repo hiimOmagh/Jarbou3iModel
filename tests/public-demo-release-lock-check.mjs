@@ -4,8 +4,8 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.0.29';
-const TITLE = 'Final Public Demo Hardening / Release Freeze Audit';
+const VERSION = '1.0.30';
+const TITLE = 'Mobile Header Geometry Lock / Final Public Demo Visual Freeze';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const LOCK_RELEASE = `v${VERSION} — Public Demo Release Lock`;
 const repoRoot = process.cwd();
@@ -17,8 +17,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.29-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.29.json');
+const migrationFixture = json('fixtures/migrations/v1.0.30-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.30.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const publicDemoModule = read('src/research/public-demo-readiness.js');
@@ -36,18 +36,18 @@ const qaMatrix = read('docs/qa-matrix.md');
 const architecture = read('docs/architecture.md');
 const aiIntegration = read('docs/ai-integration.md');
 const privacyAudit = read('docs/privacy-audit.md');
-const releaseDoc = `${read('docs/v1.0.25-public-demo-release-lock.md')}\n${read('docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md')}`;
+const releaseDoc = `${read('docs/v1.0.25-public-demo-release-lock.md')}\n${read('docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md')}`;
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.0.29');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.0.29');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.0.29');
-assert.equal(schema.properties.workflow_version.const, VERSION, 'workflow schema target must identify v1.0.29');
-assert.equal(sample.workflow_version, VERSION, 'sample workflow must identify v1.0.29');
-assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.0.29');
-assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.0.29');
+assert.equal(pkg.version, VERSION, 'package.json must identify v1.0.30');
+assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.0.30');
+assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.0.30');
+assert.equal(schema.properties.workflow_version.const, VERSION, 'workflow schema target must identify v1.0.30');
+assert.equal(sample.workflow_version, VERSION, 'sample workflow must identify v1.0.30');
+assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.0.30');
+assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.0.30');
 
 for (const packet of [sample, migrationFixture, privacyFixture]) {
-  assert.equal(packet.release_notes.release_title, RELEASE, 'release notes title must identify v1.0.29 release lock');
+  assert.equal(packet.release_notes.release_title, RELEASE, 'release notes title must identify v1.0.30 release lock');
   assert.equal(packet.public_demo_release_lock.public_demo_release_lock_version, VERSION, 'release-lock packet version mismatch');
   assert.equal(packet.public_demo_release_lock.release_title, LOCK_RELEASE, 'release-lock title mismatch');
   assert.equal(packet.public_demo_release_lock.lock_stage, 'public_demo_release_locked');
@@ -87,7 +87,7 @@ sandbox.window.Jarbou3iResearchModules = {};
 vm.createContext(sandbox);
 vm.runInContext(publicDemoModule, sandbox, { filename:'src/research/public-demo-readiness.js' });
 const publicDemo = sandbox.window.Jarbou3iResearchModules.publicDemoReadiness;
-assert.equal(publicDemo.VERSION, VERSION, 'public demo module must identify v1.0.29');
+assert.equal(publicDemo.VERSION, VERSION, 'public demo module must identify v1.0.30');
 const locked = publicDemo.buildPublicDemoReleaseLock({}, {version:VERSION, now:'2026-05-04T00:00:00.000Z'});
 assert.equal(locked.release_gate, 'public_demo_release_locked');
 assert.equal(locked.screenshots_alone_sufficient, false);
@@ -99,12 +99,12 @@ assert.equal(blocked.fail_count, 1);
 
 assert.ok(engine.includes('publicDemoReleaseLockReport()'), 'research engine must build release-lock metadata');
 assert.ok(engine.includes('public_demo_release_lock'), 'research packet must include public_demo_release_lock');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.0.29'"), 'migrations target must be v1.0.29');
-assert.ok(migrations.includes("'1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29'"), 'migration order must preserve v1.0.24 and append v1.0.29');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.0.30'"), 'migrations target must be v1.0.30');
+assert.ok(migrations.includes("'1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30'"), 'migration order must preserve v1.0.24 and append v1.0.30');
 assert.ok(migrations.includes('defaultPublicDemoReleaseLock'), 'migrations must add default public demo release lock');
 
 for (const corpus of [readme, releaseNotes, releaseManifest, changelog, publicDemoGuide, browserEvidence, hostedDemo, roadmap, qaMatrix, architecture, aiIntegration, privacyAudit, releaseDoc]) {
-  assert.ok(corpus.includes('v1.0.29') || corpus.includes('1.0.29'), 'release corpus must mention v1.0.29');
+  assert.ok(corpus.includes('v1.0.30') || corpus.includes('1.0.30'), 'release corpus must mention v1.0.30');
   assert.ok(corpus.includes(TITLE) || corpus.includes('release-lock') || corpus.includes('release lock'), 'release corpus must mention release lock');
 }
 for (const corpus of [readme, releaseNotes, releaseManifest, publicDemoGuide, browserEvidence, hostedDemo, qaMatrix, releaseDoc]) {
@@ -114,8 +114,8 @@ for (const corpus of [readme, releaseNotes, releaseManifest, publicDemoGuide, br
 
 for (const required of [
   'docs/v1.0.25-public-demo-release-lock.md',
-  'fixtures/migrations/v1.0.29-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.0.29.json',
+  'fixtures/migrations/v1.0.30-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.0.30.json',
   'fixtures/migrations/v1.0.24-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.24.json',
   'tests/public-demo-release-lock-check.mjs',

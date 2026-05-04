@@ -909,7 +909,7 @@ html[dir="rtl"] .welcomeEyebrow{
   .shell,
   .top,
   .brand,
-  .brand > div,
+  .brand > div:not(.logo),
   .topActions,
   .panel,
   .panelHeader,
@@ -934,6 +934,24 @@ html[dir="rtl"] .welcomeEyebrow{
     min-width:0!important;
     max-width:100%!important;
   }
+
+  .brand > .logo{
+    width:48px!important;
+    height:48px!important;
+    min-width:48px!important;
+    max-width:48px!important;
+    flex:0 0 48px!important;
+    border-radius:16px!important;
+    overflow:hidden!important;
+  }
+  .brand > .logo img{
+    width:100%!important;
+    height:100%!important;
+    max-width:100%!important;
+    object-fit:cover!important;
+    display:block!important;
+  }
+
   .brand,
   .panelHeader,
   .topActions,

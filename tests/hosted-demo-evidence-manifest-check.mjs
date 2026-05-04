@@ -3,10 +3,10 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.0.29';
-const TITLE = 'Final Public Demo Hardening / Release Freeze Audit';
+const VERSION = '1.0.30';
+const TITLE = 'Mobile Header Geometry Lock / Final Public Demo Visual Freeze';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.0.29-final-public-demo-hardening-release-freeze-audit-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze-patch.zip';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fs.existsSync(file);
@@ -15,8 +15,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.29-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.29.json');
+const migrationFixture = json('fixtures/migrations/v1.0.30-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.30.json');
 const spec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -34,9 +34,9 @@ assert.equal(privacyFixture.workflow_version, VERSION);
 assert.equal(sample.release_notes.release_title, RELEASE);
 assert.equal(migrationFixture.release_notes.release_title, RELEASE);
 assert.equal(privacyFixture.release_notes.release_title, RELEASE);
-assert.equal(sample.release_apply_integrity.base_version, '1.0.28');
+assert.equal(sample.release_apply_integrity.base_version, '1.0.29');
 assert.equal(sample.release_apply_integrity.artifact_name, ARTIFACT);
-assert.equal(sample.release_provenance_ledger.base_version, '1.0.28');
+assert.equal(sample.release_provenance_ledger.base_version, '1.0.29');
 assert.equal(sample.release_provenance_ledger.artifact_name, ARTIFACT);
 
 for (const packet of [sample, migrationFixture, privacyFixture]) {
@@ -51,7 +51,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.0.29'",
+  "const VERSION = '1.0.30'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',
@@ -92,18 +92,18 @@ const review = hosted.buildHostedDemoEvidenceReview({}, { version:VERSION, now:'
 assert.equal(review.metadata_manifest_required, true);
 assert.ok(review.review_items.some((item) => item.artifact_id === 'complete_capture_manifest'));
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.0.29'"));
-assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29'"), 'migration order must preserve v1.0.28 and append v1.0.29');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.0.30'"));
+assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30'"), 'migration order must preserve v1.0.28 and append v1.0.30');
 assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration defaults must include evidence manifest metadata requirement');
 
 for (const file of [
   'docs/v1.0.27-release-provenance-ledger-gate.md',
   'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
-  'docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md',
+  'docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md',
   'fixtures/migrations/v1.0.28-packet.json',
-  'fixtures/migrations/v1.0.29-packet.json',
+  'fixtures/migrations/v1.0.30-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.28.json',
-  'fixtures/privacy/browser-generated-export-v1.0.29.json',
+  'fixtures/privacy/browser-generated-export-v1.0.30.json',
   'tests/hosted-demo-evidence-manifest-check.mjs',
   'tests/v129-no-browser-suite.mjs'
 ]) assert.ok(exists(file), `missing ${file}`);
@@ -120,10 +120,10 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  read('docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md')
+  read('docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md')
 ]) {
-  assert.ok(corpus.includes('v1.0.29') || corpus.includes('1.0.29'), 'release corpus must mention v1.0.29');
-  assert.ok(/Final Public Demo Hardening \/ Release Freeze Audit|evidence manifest|single final metadata|capture manifest/i.test(corpus), 'release corpus must describe evidence manifest gate');
+  assert.ok(corpus.includes('v1.0.30') || corpus.includes('1.0.30'), 'release corpus must mention v1.0.30');
+  assert.ok(/Mobile Header Geometry Lock \/ Final Public Demo Visual Freeze|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
 }
 
 for (const file of ['tests/hosted-demo-browser-evidence.spec.mjs', 'tests/hosted-demo-evidence-manifest-check.mjs', 'tests/v129-no-browser-suite.mjs', 'src/research/hosted-demo-verification.js']) {
