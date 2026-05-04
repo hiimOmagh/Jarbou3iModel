@@ -2072,7 +2072,7 @@
     "release_title": "v1.1.0-alpha.2 \u2014 Expansion Lane Acceptance Criteria Matrix",
     "release_type": "patch",
     "runtime_capability_change": false,
-    "summary": "Completes a mobile header geometry lock over v1.0.29, reconciling version identity, public-demo wording, browser evidence discipline, primary-action visibility, privacy/export safety, and provider/OAuth/source honesty without enabling new runtime capabilities.",
+    "summary": "Completes a mobile header geometry lock over v1.0.30, reconciling version identity, public-demo wording, browser evidence discipline, primary-action visibility, privacy/export safety, and provider/OAuth/source honesty without enabling new runtime capabilities.",
     "notable_changes": [
       "Converted hosted-demo evidence metadata from per-test overwrite risk to a single complete capture manifest.",
       "Added viewport/image dimension and horizontal-overflow sanity metadata for every required screenshot.",

@@ -1,6 +1,6 @@
 # v1.0.25 — Public Demo Release Lock
 
-## v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate
+## v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -49,6 +49,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 Do not approve v1.0.25 from screenshots, a local ZIP, or a passing partial suite alone. Approval requires the intended release commit to have green no-browser CI, green browser CI, reviewed hosted-demo evidence, current metadata, public claim alignment, and a clean release archive boundary.
 
-## v1.1.0-alpha.1 evidence-manifest hardening
+## v1.1.0-alpha.2 evidence-manifest hardening
 
-The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.1.0-alpha.1 no-browser gate.
+The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.1.0-alpha.2 no-browser gate.

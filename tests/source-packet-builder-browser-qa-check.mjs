@@ -14,17 +14,17 @@ const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.1-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.1.json');
+const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.2-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.2.json');
 
-assert.equal(pkg.version, '1.1.0-alpha.1');
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.1');
+assert.equal(pkg.version, '1.1.0-alpha.2');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.2');
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.1.0-alpha.1');
-  assert.equal(packet.source_packet_builder_report.builder_version, '1.1.0-alpha.1');
-  assert.equal(packet.last_built_source_packet.workflow_version, '1.1.0-alpha.1');
+  assert.equal(packet.workflow_version, '1.1.0-alpha.2');
+  assert.equal(packet.source_packet_builder_report.builder_version, '1.1.0-alpha.2');
+  assert.equal(packet.last_built_source_packet.workflow_version, '1.1.0-alpha.2');
   assert.equal(packet.last_built_source_packet.builder_version, 'source_packet_builder.v1');
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix');
 }
 
 assert.ok(index.includes('data-browser-qa="source-packet-builder"'), 'builder card must expose a browser-QA hook');

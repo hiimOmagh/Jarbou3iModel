@@ -155,7 +155,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
   'docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md',
   'docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md',
-  'docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md'
+  'docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md',
+  'docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

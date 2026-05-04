@@ -1,14 +1,14 @@
-/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.1. */
+/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.2. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.1';
+  const VERSION = '1.1.0-alpha.2';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate-patch.zip';
+  const RELEASE_TITLE = 'v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix-patch.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
-    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.1', required:true},
-    {evidence_id:'base_version_recorded', label:'base version v1.0.30 is recorded', required:true},
+    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.2', required:true},
+    {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},
     {evidence_id:'artifact_name_recorded', label:'artifact name is versioned and fixed', required:true},
     {evidence_id:'changed_files_manifest_present', label:'changed-files manifest is required for handoff review', required:true},
     {evidence_id:'artifact_sha256_recorded', label:'artifact SHA256 is recorded after packaging', required:true},
@@ -33,7 +33,7 @@
     return {
       release_provenance_ledger_version: version,
       generated_at: now,
-      release_title: `v${version} — Post-Freeze Product Expansion Planning Gate`,
+      release_title: `v${version} — Expansion Lane Acceptance Criteria Matrix`,
       provenance_stage: 'release_provenance_ledger_checked',
       release_type: 'patch',
       patch_type: 'changed_files_only',
