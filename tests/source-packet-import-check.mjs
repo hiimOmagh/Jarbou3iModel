@@ -10,8 +10,8 @@ const sample = read('fixtures/research/source-packet-sample.json');
 const index = read('index.html');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-const migrationFixture = JSON.parse(read('fixtures/migrations/v1.0.24-packet.json'));
-const privacyFixture = JSON.parse(read('fixtures/privacy/browser-generated-export-v1.0.24.json'));
+const migrationFixture = JSON.parse(read('fixtures/migrations/v1.0.25-packet.json'));
+const privacyFixture = JSON.parse(read('fixtures/privacy/browser-generated-export-v1.0.25.json'));
 
 new vm.Script(scorerSource, {filename:'src/research/evidence-scorer.js'});
 new vm.Script(importerSource, {filename:'src/research/source-packet-importer.js'});
@@ -26,7 +26,7 @@ vm.runInContext(adapterSource, context, {filename:'src/research/source-import-ad
 
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const adapter = context.window.Jarbou3iResearchModules.sourceImportAdapter;
-assert.equal(importer.VERSION, '1.0.24');
+assert.equal(importer.VERSION, '1.0.25');
 assert.equal(importer.PACKET_SCHEMA, 'manual_source_packet.v1');
 assert.equal(typeof importer.parseSourcePacketImportText, 'function');
 assert.equal(adapter.inferFormat(sample), 'source_packet');
@@ -57,14 +57,14 @@ assert.equal(viaAdapter.evidence.length, 3);
 assert.ok(index.includes('src/research/source-packet-importer.js'), 'source packet importer must load before adapter');
 assert.ok(index.indexOf('source-packet-importer.js') < index.indexOf('source-import-adapter.js'), 'packet importer must load before source import adapter');
 assert.ok(index.includes('value="source_packet"'), 'source packet format option missing');
-assert.equal(schema.$defs.source_import_report.properties.import_version.const, '1.0.24');
+assert.equal(schema.$defs.source_import_report.properties.import_version.const, '1.0.25');
 assert.equal(schema.$defs.evidence_scoring.properties.scoring_version.const, 'evidence_scoring.v1');
 assert.ok(schema.$defs.source_import_report.properties.input_format.enum.includes('source_packet'));
 assert.equal(schema.$defs.source_import_report.properties.source_packet_schema.const, 'manual_source_packet.v1');
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.0.24');
-  assert.equal(packet.source_import_report.import_version, '1.0.24');
+  assert.equal(packet.workflow_version, '1.0.25');
+  assert.equal(packet.source_import_report.import_version, '1.0.25');
   assert.equal(packet.evidence_scoring_report.scoring_model, 'evidence_scoring.v1');
   assert.equal(packet.source_import_report.input_format, 'source_packet');
   assert.equal(packet.source_import_report.source_packet_schema, 'manual_source_packet.v1');
@@ -72,9 +72,9 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.source_import_report.verification_claimed, false);
   assert.ok(packet.source_import_report.packet_count >= 1);
   assert.ok(Array.isArray(packet.source_imports) && packet.source_imports.some((item) => item.queue_only === true));
-  assert.equal(packet.source_capability_registry.source_strategy_version, '1.0.24');
+  assert.equal(packet.source_capability_registry.source_strategy_version, '1.0.25');
   assert.ok(packet.source_capability_registry.registry.some((item) => item.source_id === 'manual_source_packet' && item.status === 'available_manual_import'));
-  assert.equal(packet.release_notes.release_title, 'v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction');
+  assert.equal(packet.release_notes.release_title, 'v1.0.25 — Public Demo Release Lock');
 }
 
 console.log('Source packet import checks passed.');

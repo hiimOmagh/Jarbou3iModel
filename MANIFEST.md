@@ -1,24 +1,16 @@
-# v1.0.24 Patch Manifest
+# v1.0.25 Public Demo Release Lock Patch Manifest
 
-## Patch
+Base: v1.0.24 repository state.
 
-`v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction`
+## Changed files
 
-## Apply after
-
-The completed v1.0.23 CI/browser evidence patch and RTL/mobile/a11y hotfixes.
-
-## Added files
-
-- `docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md`
-- `fixtures/migrations/v1.0.24-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.0.24.json`
-- `tests/repo-hygiene-execution-stale-docs-check.mjs`
-- `tests/v124-no-browser-suite.mjs`
-
-## Modified files
-
+- `BROWSER_EVIDENCE.md`
+- `CHANGED_FILES_MANIFEST.json`
 - `CHANGELOG.md`
+- `HOSTED_DEMO_VERIFICATION.md`
+- `MANIFEST.json`
+- `MANIFEST.md`
+- `PUBLIC_DEMO.md`
 - `README.md`
 - `RELEASE_MANIFEST.md`
 - `RELEASE_NOTES.md`
@@ -28,7 +20,10 @@ The completed v1.0.23 CI/browser evidence patch and RTL/mobile/a11y hotfixes.
 - `docs/privacy-audit.md`
 - `docs/qa-matrix.md`
 - `docs/roadmap.md`
-- `docs/v0.19.0-beta-privacy-audit-hardening.md`
+- `docs/v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md`
+- `docs/v1.0.25-public-demo-release-lock.md`
+- `fixtures/migrations/v1.0.25-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.0.25.json`
 - `fixtures/research/sample-research-workflow-en.json`
 - `index.html`
 - `package-lock.json`
@@ -104,11 +99,13 @@ The completed v1.0.23 CI/browser evidence patch and RTL/mobile/a11y hotfixes.
 - `tests/provider-fixtures-check.mjs`
 - `tests/provider-mode-browser.spec.mjs`
 - `tests/public-demo-readiness-check.mjs`
+- `tests/public-demo-release-lock-check.mjs`
 - `tests/qa-check.mjs`
 - `tests/quality-gate-v3-check.mjs`
 - `tests/release-evidence-repo-hygiene-check.mjs`
 - `tests/release-packaging-cleanup-check.mjs`
 - `tests/repo-file-hygiene-check.mjs`
+- `tests/repo-hygiene-execution-stale-docs-check.mjs`
 - `tests/repository-hygiene-cleanup-check.mjs`
 - `tests/research-module-check.mjs`
 - `tests/research-workflow-check.mjs`
@@ -150,17 +147,6 @@ The completed v1.0.23 CI/browser evidence patch and RTL/mobile/a11y hotfixes.
 - `tests/v121-no-browser-suite.mjs`
 - `tests/v122-no-browser-suite.mjs`
 - `tests/v123-no-browser-suite.mjs`
+- `tests/v124-no-browser-suite.mjs`
+- `tests/v125-no-browser-suite.mjs`
 - `tests/web-search-provider-check.mjs`
-
-## Removed files
-
-None.
-
-## Validation
-
-- `npm ci --no-audit --no-fund --ignore-scripts` — passed.
-- `npm run test:repo:hygiene-execution` — passed.
-- `npm run test:v124:no-browser` — passed.
-- Targeted no-browser groups after the full command hit sandbox timeout — passed.
-- Syntax checks from `scripts/ci-no-browser.sh` — passed.
-- Browser CI was attempted locally with `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`, but the sandbox timed out before completion; rerun in GitHub Actions/browser CI.

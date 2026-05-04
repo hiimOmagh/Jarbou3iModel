@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine public demo readiness + release notes helpers v1.0.24. */
+/* Jarbou3i Research Engine public demo readiness + release notes helpers v1.0.25. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.24';
+  const VERSION = '1.0.25';
   const DEMO_CHECKS = Object.freeze([
     {check_id:'manual_private_default', label:'Manual/private mode is the default', required:true},
     {check_id:'first_run_path_visible', label:'First-run path is visible before advanced setup', required:true},
@@ -11,6 +11,18 @@
     {check_id:'provider_boundary_unchanged', label:'Provider/OAuth/backend/source behavior unchanged', required:true},
     {check_id:'release_notes_polished', label:'Release notes are ready for public handoff', required:true},
     {check_id:'repo_hygiene_checked', label:'Repo hygiene and package exclusions are checked', required:true}
+  ]);
+
+  const RELEASE_LOCK_CHECKS = Object.freeze([
+    {check_id:'no_browser_ci_green', label:'No-browser CI is green for the intended release commit', required:true},
+    {check_id:'browser_ci_green', label:'Browser CI is green for provider, layout, visual, evidence, smoke, RTL, and a11y flows', required:true},
+    {check_id:'hosted_demo_evidence_reviewed', label:'Hosted-demo screenshots and metadata are reviewed before publication', required:true},
+    {check_id:'public_claims_match_available_features', label:'Public demo claims match only currently available features', required:true},
+    {check_id:'manual_private_default_preserved', label:'Manual/private mode remains the default operating boundary', required:true},
+    {check_id:'no_live_scraping_claim', label:'No live scraping, live fetching, or source verification is claimed', required:true},
+    {check_id:'no_real_oauth_enabled', label:'No real OAuth/portable account production flow is enabled', required:true},
+    {check_id:'export_privacy_boundary_preserved', label:'Export privacy and credential redaction boundaries are preserved', required:true},
+    {check_id:'release_archive_hygiene_checked', label:'Release archive excludes generated artifacts, reports, ZIPs, and secret-bearing files', required:true}
   ]);
   const DEMO_SCRIPT = Object.freeze([
     'Define a concrete research topic and context in the first screen.',
@@ -41,15 +53,15 @@
     return {
       release_notes_version:version,
       generated_at:now,
-      release_title:'v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction',
+      release_title:`v${version} — Public Demo Release Lock`,
       release_type:'patch',
       runtime_capability_change:false,
-      summary:'Public-demo-facing documentation, release notes, and readiness metadata were polished without enabling new live provider, OAuth, backend, or source behavior.',
+      summary:'Public demo approval is now locked behind CI, hosted-demo evidence review, public-claim alignment, and explicit unavailable-feature boundaries without enabling new live provider, OAuth, backend, source, storage, or scraping behavior.',
       notable_changes:[
-        'Added a public demo checklist and operator script for first-run demonstrations.',
-        'Added release notes that clearly separate visible polish from unchanged runtime boundaries.',
-        'Added schema/fixture coverage for public demo readiness and release-note metadata.',
-        'Extended no-browser CI with a public-demo readiness gate.'
+        'Added a public demo release-lock checklist that blocks approval from screenshots or ZIP existence alone.',
+        'Added schema/fixture coverage for public demo release-lock metadata.',
+        'Added no-browser CI coverage for release-lock claim boundaries.',
+        'Preserved hosted-demo evidence review, source packet safety, and manual/private default boundaries.'
       ],
       unchanged_boundaries:[
         'Manual/private mode remains the default.',
@@ -95,5 +107,73 @@
       release_gate:failCount === 0 ? 'public_demo_ready_checked' : 'public_demo_blocked'
     };
   }
-  root.publicDemoReadiness = Object.freeze({VERSION, DEMO_CHECKS, DEMO_SCRIPT, defaultReadinessInput, buildChecklist, releaseNotes, buildPublicDemoReadiness});
+
+  function defaultReleaseLockInput(){
+    return {
+      no_browser_ci_green:true,
+      browser_ci_green:true,
+      hosted_demo_evidence_reviewed:true,
+      public_claims_match_available_features:true,
+      manual_private_default_preserved:true,
+      no_live_scraping_claim:true,
+      no_real_oauth_enabled:true,
+      export_privacy_boundary_preserved:true,
+      release_archive_hygiene_checked:true
+    };
+  }
+  function buildReleaseLockChecklist(input = {}){
+    const merged = Object.assign(defaultReleaseLockInput(), input || {});
+    return RELEASE_LOCK_CHECKS.map((check, index) => {
+      const passed = bool(merged[check.check_id]);
+      return Object.assign({}, check, {order:index + 1, passed, status:passed ? 'pass' : 'fail'});
+    });
+  }
+  function buildPublicDemoReleaseLock(input = {}, {version = VERSION, now = nowIso()} = {}){
+    const checklist = buildReleaseLockChecklist(input);
+    const passCount = checklist.filter(item => item.passed).length;
+    const failCount = checklist.length - passCount;
+    return {
+      public_demo_release_lock_version:version,
+      generated_at:now,
+      release_title:`v${version} — Public Demo Release Lock`,
+      lock_stage:'public_demo_release_locked',
+      release_type:'patch',
+      release_approval_state:failCount === 0 ? 'locked_for_public_demo' : 'blocked_for_public_demo',
+      runtime_capability_change:false,
+      provider_behavior_changed:false,
+      oauth_behavior_changed:false,
+      backend_behavior_changed:false,
+      source_behavior_changed:false,
+      storage_behavior_changed:false,
+      manual_private_default:true,
+      live_scraping_enabled:false,
+      real_oauth_enabled:false,
+      live_source_verification_enabled:false,
+      unreviewed_artifacts_allowed:false,
+      screenshots_alone_sufficient:false,
+      zip_existence_sufficient:false,
+      ci_required:true,
+      browser_evidence_required:true,
+      hosted_url_required:true,
+      checklist,
+      pass_count:passCount,
+      fail_count:failCount,
+      release_claims:[
+        'Public demo is manual/private by default.',
+        'Source packets are local/manual drafting scaffolds only.',
+        'Hosted-demo screenshots and metadata require human review before release approval.',
+        'Browser evidence is inspection material, not standalone approval.',
+        'No real OAuth, live scraping, provider expansion, backend expansion, or storage expansion is introduced.'
+      ],
+      blocked_claims:[
+        'Do not claim live web scraping.',
+        'Do not claim production OAuth or account login.',
+        'Do not claim automated source verification.',
+        'Do not claim screenshots alone approve the release.',
+        'Do not claim a ZIP archive alone proves public-demo readiness.'
+      ],
+      release_gate:failCount === 0 ? 'public_demo_release_locked' : 'public_demo_release_blocked'
+    };
+  }
+  root.publicDemoReadiness = Object.freeze({VERSION, DEMO_CHECKS, RELEASE_LOCK_CHECKS, DEMO_SCRIPT, defaultReadinessInput, defaultReleaseLockInput, buildChecklist, buildReleaseLockChecklist, releaseNotes, buildPublicDemoReadiness, buildPublicDemoReleaseLock});
 })(window);

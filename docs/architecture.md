@@ -1,6 +1,6 @@
 # Architecture
 
-## Current v1.0.24 pipeline
+## Current v1.0.25 pipeline
 
 ```text
 Topic/context
@@ -19,7 +19,7 @@ Topic/context
 → Quality Gate
 → Export Pack
 → Hosted Demo Evidence Review
-→ Release Hygiene Guard
+→ Public Demo Release Lock
 ```
 
 ## Provider architecture
@@ -37,16 +37,7 @@ The provider identity layer models `auth_type`, `billing_owner`, `key_exposure`,
 
 ## Portable account mock
 
-`portable_oauth` is not a real OAuth integration yet. It is a local simulation that creates safe account metadata:
-
-- account ID
-- token hash
-- token expiry timestamp
-- scopes
-- spending limit metadata
-- safety verdict
-
-It never creates or exports a raw token.
+`portable_oauth` is not a real OAuth integration yet. It is a local simulation that creates safe account metadata: account ID, token hash, token expiry timestamp, scopes, spending limit metadata, and safety verdict. It never creates or exports a raw token.
 
 ## Source workflow boundary
 
@@ -56,6 +47,6 @@ The current source workflow is manual/import-first. Source packets, templates, a
 
 The Cloudflare Worker scaffold remains optional. The static app must remain functional without backend deployment.
 
-## Release hygiene layer
+## Release lock layer
 
-v1.0.24 adds no runtime capability. It verifies that stale current-state documentation, generated artifacts, ZIPs, logs, test outputs, and secret-bearing local config files do not pollute the source/release boundary.
+v1.0.25 adds no runtime capability. It locks public-demo release approval behind green CI, reviewed hosted-demo evidence, current public claims, privacy/export safety, and clean archive boundaries.

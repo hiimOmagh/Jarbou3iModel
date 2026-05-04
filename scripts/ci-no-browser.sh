@@ -46,6 +46,7 @@ run_node tests/node24-ci-compat-check.mjs
 run_node tests/release-evidence-repo-hygiene-check.mjs
 run_node tests/ci-result-review-browser-evidence-audit-check.mjs
 run_node tests/repo-hygiene-execution-stale-docs-check.mjs
+run_node tests/public-demo-release-lock-check.mjs
 run_node tests/lockfile-public-registry-check.mjs
 run_node tests/browser-visual-project-scope-check.mjs
 run_node tests/repo-file-hygiene-check.mjs
@@ -144,3 +145,5 @@ run_node --check tests/v108-no-browser-suite.mjs
 run_node --check tests/v109-no-browser-suite.mjs
 
 echo "CI no-browser gate passed."
+
+run_node --check tests/v125-no-browser-suite.mjs

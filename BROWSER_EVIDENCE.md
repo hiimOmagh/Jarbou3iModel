@@ -1,6 +1,10 @@
 # Browser Evidence
 
-Browser evidence is the proof bundle for the public hosted demo.
+Browser evidence is the proof bundle for inspecting the public hosted demo. It is not standalone release approval.
+
+## v1.0.25 — Public Demo Release Lock
+
+This guide applies to v1.0.25 — Public Demo Release Lock.
 
 ## Artifact root
 
@@ -32,4 +36,12 @@ HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run tes
 
 ## Evidence Review standard
 
-The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, and reachable provider/export states. The metadata snapshot must show app version `1.0.10` and the evidence-review panel present.
+The evidence review gate remains active before public-demo approval.
+
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, and reachable provider/export states. The metadata snapshot must show app version `1.0.25` and the evidence-review panel present.
+
+## Release lock rule
+
+Browser evidence must be reviewed together with CI status, release metadata, privacy/export boundaries, public-demo documentation, and archive hygiene. Screenshots alone are not sufficient for public-demo release approval.
+
+ZIP existence alone is also not sufficient for public-demo release approval.

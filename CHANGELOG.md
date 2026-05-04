@@ -1,3 +1,12 @@
+## v1.0.25 — Public Demo Release Lock
+
+- Promoted current release metadata to v1.0.25.
+- Added `public_demo_release_lock` workflow metadata.
+- Added v1.0.25 migration and privacy export fixtures.
+- Added public-demo release-lock guard and v1.0.25 no-browser wrapper.
+- Made release approval explicitly depend on green CI, reviewed hosted-demo evidence, current public claims, and release archive hygiene.
+- Preserved Node 24 CI, Playwright install discipline, browser evidence review, Public Demo manual/private boundaries, and manual/private runtime boundaries.
+
 ## v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 
 - Promoted current release metadata to v1.0.24.

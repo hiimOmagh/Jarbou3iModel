@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.0.24 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.0.25 — module split. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.0.24';
+  const VERSION = '1.0.25';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -169,6 +169,21 @@
     return publicDemoReadiness?.releaseNotes ? publicDemoReadiness.releaseNotes({version:VERSION, now:nowIso()}) : null;
   }
 
+  function publicDemoReleaseLockReport(){
+    return publicDemoReadiness?.buildPublicDemoReleaseLock ? publicDemoReadiness.buildPublicDemoReleaseLock({
+      no_browser_ci_green:true,
+      browser_ci_green:true,
+      hosted_demo_evidence_reviewed:true,
+      public_claims_match_available_features:true,
+      manual_private_default_preserved:true,
+      no_live_scraping_claim:true,
+      no_real_oauth_enabled:true,
+      export_privacy_boundary_preserved:true,
+      release_archive_hygiene_checked:true
+    }, {version:VERSION, now:nowIso()}) : null;
+  }
+
+
   function hostedDemoReport(){
     return hostedDemoVerification?.buildHostedDemoVerification ? hostedDemoVerification.buildHostedDemoVerification({
       static_host_ready:true,
@@ -211,6 +226,7 @@
       browser_qa_hardening: state.browser_qa_hardening || browserQaHardeningReport(),
       public_demo: state.public_demo || publicDemoReport(),
       release_notes: state.release_notes || releaseNotesReport(),
+      public_demo_release_lock: state.public_demo_release_lock || publicDemoReleaseLockReport(),
       hosted_demo_verification: state.hosted_demo_verification || hostedDemoReport(),
       browser_evidence_capture: state.browser_evidence_capture || browserEvidenceReport(),
       hosted_demo_smoke_fixes: state.hosted_demo_smoke_fixes || hostedDemoSmokeFixesReport(),

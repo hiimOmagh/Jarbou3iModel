@@ -5,16 +5,16 @@ import { spawnSync, execSync } from 'node:child_process';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.0.24';
-const TITLE = 'Repo Hygiene Execution + Stale Documentation Correction';
+const VERSION = '1.0.25';
+const TITLE = 'Public Demo Release Lock';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.0.24-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.24.json');
+const migrationFixture = json('fixtures/migrations/v1.0.25-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.0.25.json');
 const workflow = read('.github/workflows/ci.yml');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -23,24 +23,24 @@ const notes = read('RELEASE_NOTES.md');
 const changelog = read('CHANGELOG.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const doc = read('docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md');
+const doc = read('docs/v1.0.25-public-demo-release-lock.md');
 const migrations = read('src/research/migrations.js');
 const evidenceSpec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.0.24');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.0.24');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.0.24');
-assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.0.24');
-assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.0.24');
-assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.0.24');
-assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.0.24');
-assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.0.24');
-assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.0.24');
-assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.0.24');
+assert.equal(pkg.version, VERSION, 'package.json must identify v1.0.25');
+assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.0.25');
+assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.0.25');
+assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.0.25');
+assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.0.25');
+assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.0.25');
+assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.0.25');
+assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.0.25');
+assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.0.25');
+assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.0.25');
 
 for (const text of [manifest, notes, changelog, roadmap, qaMatrix, doc]) {
-  assert.ok(text.includes('v1.0.24'), 'release corpus must mention v1.0.24');
-  assert.ok(text.includes(TITLE), 'release corpus must mention repo hygiene execution + stale documentation correction');
+  assert.ok(text.includes('v1.0.25'), 'release corpus must mention v1.0.25');
+  assert.ok(text.includes(TITLE) || /release[- ]lock/i.test(text), 'release corpus must mention public demo release lock');
 }
 
 for (const required of [
@@ -96,11 +96,11 @@ assert.ok(pkg.scripts['test:patch']?.includes('release-evidence-repo-hygiene-che
 
 for (const required of [
   'fixtures/migrations/v1.0.21-packet.json',
-  'fixtures/migrations/v1.0.24-packet.json',
+  'fixtures/migrations/v1.0.25-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.21.json',
-  'fixtures/privacy/browser-generated-export-v1.0.24.json',
+  'fixtures/privacy/browser-generated-export-v1.0.25.json',
   'docs/v1.0.21-node-24-ci-compatibility.md',
-  'docs/v1.0.24-repo-hygiene-execution-stale-documentation-correction.md',
+  'docs/v1.0.25-public-demo-release-lock.md',
   'tests/node24-ci-compat-check.mjs',
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/v121-no-browser-suite.mjs',
@@ -130,16 +130,17 @@ const trackedPaths = (() => {
 assert.equal([...trackedPaths].some((file) => file === 'node_modules' || file.startsWith('node_modules/')), false, 'node_modules must not be committed');
 
 for (const token of [
-  'git rm -f --ignore-unmatch docs/v1.0.5-browser-qa-visual-regression-hardening.md',
-  'git rm -f --ignore-unmatch scripts/XXKuyryP',
-  'git rm -f --ignore-unmatch src/XXSyA2D3',
-  'git rm -f --ignore-unmatch src/XXvKXvVS'
+  'Screenshots alone are insufficient',
+  'A ZIP archive alone is insufficient',
+  'green no-browser CI',
+  'green browser CI',
+  'reviewed hosted-demo evidence'
 ]) {
-  assert.ok(manifest.includes(token), `manifest must document tracked deletion command: ${token}`);
+  assert.ok(manifest.includes(token), `manifest must document release-lock requirement: ${token}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.0.24'"), 'migration target must be v1.0.24');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24'"), 'migration order must preserve v1.0.22 and append v1.0.24');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.0.25'"), 'migration target must be v1.0.25');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25'"), 'migration order must preserve v1.0.24 and append v1.0.25');
 assert.ok(evidenceSpec.includes('async function openProviderHarness'), 'hosted demo evidence spec must keep provider accordion helper');
 assert.ok(evidenceSpec.includes("providerCard.locator('h3').click()"), 'hosted demo evidence spec must expand provider harness accordion when closed');
 assert.equal(evidenceSpec.includes("expect(page.locator('#exportWorkflowBtn')).toBeVisible()"), false, 'hosted demo evidence must not assert hidden Evidence-tab exportWorkflowBtn from Quality tab');

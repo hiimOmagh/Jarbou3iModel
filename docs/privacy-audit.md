@@ -1,6 +1,6 @@
 # Privacy Audit Release Gate
 
-`v1.0.24` treats every exported JSON payload as a security boundary and preserves the privacy gate while repository hygiene is tightened.
+`v1.0.25` treats every exported JSON payload as a security boundary and preserves the privacy gate while public-demo release approval is locked.
 
 The privacy system has two layers:
 
@@ -38,9 +38,11 @@ raw_token_exported: false
 
 The scanner allows safe derived metadata such as `token_hash`, `key_exported:false`, and `raw_token_exported:false`. It does not allow raw secret fields or secret-shaped values in the final payload.
 
-## Repository hygiene interaction
+## Public demo release-lock interaction
 
-Privacy is not only an export issue. Release hygiene also requires local secret files and generated artifacts to stay out of the committed tree and out of release archives:
+Privacy is part of release approval. Public demo release approval is blocked if privacy/export gates fail, if raw artifacts contain secrets, or if generated artifacts are treated as approval without review.
+
+## Repository hygiene interaction
 
 - `.env`, `.env.*`, and `backend/.dev.vars*` stay excluded.
 - ZIPs, logs, temp files, `node_modules`, `test-results`, `playwright-report`, build folders, and coverage folders stay excluded.
@@ -52,7 +54,5 @@ Privacy is not only an export issue. Release hygiene also requires local secret 
 npm run test:privacy
 npm run test:privacy:audit
 npm run test:privacy:release-gate
-npm run test:repo:hygiene-execution
+npm run test:public-demo-release-lock
 ```
-
-Release-gate candidates include workflow fixtures, migration fixtures, schema JSON, browser-generated export fixtures, and repository hygiene checks.

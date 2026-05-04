@@ -1,22 +1,21 @@
-# v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
+# v1.0.25 — Public Demo Release Lock
 
-v1.0.24 is a release-hygiene patch. It does not expand product capability. It updates the current release metadata, corrects stale current-state documentation, adds v1.0.24 fixtures, and strengthens the guard that keeps generated artifacts and local secrets out of the committed/release tree.
+v1.0.25 is a public-demo release-lock patch. It does not expand product capability. It makes release approval explicit: passing CI, reviewed hosted-demo evidence, public-claim alignment, privacy/export safety, and release archive hygiene must all agree before the demo is treated as publishable.
 
 ## Added
 
-- v1.0.24 no-browser suite wrapper.
-- v1.0.24 migration fixture.
-- v1.0.24 privacy export fixture.
-- Dedicated repo hygiene and stale documentation guard.
-- v1.0.24 release hygiene documentation.
+- `public_demo_release_lock` workflow metadata.
+- v1.0.25 migration fixture.
+- v1.0.25 privacy export fixture.
+- Dedicated public-demo release-lock guard.
+- v1.0.25 no-browser suite wrapper.
+- v1.0.25 release-lock documentation.
 
 ## Corrected
 
-- `docs/ai-integration.md` now identifies the current state as v1.0.24 instead of v0.20.0-beta.
-- `docs/architecture.md` now reflects the current research/source/export/release-hygiene pipeline.
-- `docs/privacy-audit.md` now reflects the current privacy/export/repository hygiene boundary.
-- `docs/v0.19.0-beta-privacy-audit-hardening.md` no longer carries the wrong v0.20 heading.
-- Migration support preserves v1.0.23 as a valid source version and appends v1.0.24 as the current target.
+- Current public-demo documentation now states that screenshots alone are not release approval.
+- Current release docs now state that ZIP existence alone is not release approval.
+- Current docs now identify v1.0.25 as the active release and v1.0.24 as historical.
 
 ## Preserved
 
@@ -29,13 +28,13 @@ v1.0.24 is a release-hygiene patch. It does not expand product capability. It up
 
 ## Compatibility boundary
 
-Manual/private mode remains default. v1.0.24 does not add live scraping, real OAuth, provider behavior expansion, backend endpoint expansion, new live source connectors, storage behavior changes, or public-demo capability expansion.
+Manual/private mode remains default. v1.0.25 does not add live scraping, real OAuth, provider behavior expansion, backend endpoint expansion, new live source connectors, storage behavior changes, or public-demo capability expansion.
 
 ## Required validation
 
 ```bash
-npm run test:repo:hygiene-execution
-npm run test:v124:no-browser
+npm run test:public-demo-release-lock
+npm run test:v125:no-browser
 npm run test:ci:no-browser
 npx playwright install --with-deps
 PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
@@ -43,4 +42,4 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 ## Release decision
 
-Do not approve v1.0.24 from a local ZIP alone. Completion requires a clean source tree, corrected stale current-state docs, passing no-browser/browser CI, and reviewed browser evidence artifacts for the intended release commit.
+Do not approve v1.0.25 from screenshots, a local ZIP, or a passing partial suite alone. Approval requires the intended release commit to have green no-browser CI, green browser CI, reviewed hosted-demo evidence, current metadata, public claim alignment, and a clean release archive boundary.

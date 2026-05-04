@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source packet builder v1.0.24. Local/manual only. */
+/* Jarbou3i Research Engine source packet builder v1.0.25. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.24';
+  const VERSION = '1.0.25';
   const BUILDER_VERSION = 'source_packet_builder.v1';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }

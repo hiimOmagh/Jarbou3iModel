@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source packet importer v1.0.24. No live fetching. */
+/* Jarbou3i Research Engine source packet importer v1.0.25. No live fetching. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.0.24';
+  const VERSION = '1.0.25';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
 
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }

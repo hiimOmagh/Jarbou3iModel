@@ -1,8 +1,12 @@
 # Public Demo Operator Guide
 
+## v1.0.25 — Public Demo Release Lock
+
+This guide applies to v1.0.25 — Public Demo Release Lock.
+
 ## Demo goal
 
-Show that the research engine turns a topic into a structured, evidence-aware strategic workflow without requiring a live provider, OAuth account, backend key, or source connector.
+Show that the research engine turns a topic into a structured, evidence-aware strategic workflow without requiring a live provider, OAuth account, backend key, source connector, or live scraping.
 
 ## Recommended demo path
 
@@ -12,6 +16,7 @@ Show that the research engine turns a topic into a structured, evidence-aware st
 4. Review the evidence queue before promotion.
 5. Compile/check the quality gate.
 6. Export only after verifying privacy/export gates.
+7. Treat hosted-demo screenshots and metadata as review evidence, not automatic approval.
 
 ## Boundaries to state during the demo
 
@@ -19,8 +24,11 @@ Show that the research engine turns a topic into a structured, evidence-aware st
 - Live provider behavior is not part of this patch.
 - Production OAuth is not enabled.
 - Source automation remains planning/review-gated.
+- Source packet templates are local/manual scaffolds, not verification claims.
 - Exported files must not contain provider keys or raw tokens.
+- Screenshots alone do not approve the release.
+- ZIP existence alone does not approve the release.
 
 ## Stop conditions
 
-Do not publish the public demo package if no-browser CI, browser QA, privacy export, or repo hygiene checks fail.
+Do not publish the public demo package if no-browser CI, browser QA, privacy export, hosted-demo evidence review, public-claim alignment, or repo hygiene checks fail.

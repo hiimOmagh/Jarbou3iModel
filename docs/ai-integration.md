@@ -1,6 +1,10 @@
 # AI Integration Policy
 
-## Current state: v1.0.24
+## v1.0.25 — Public Demo Release Lock
+
+This guide applies to v1.0.25 — Public Demo Release Lock.
+
+## Current state: v1.0.25
 
 The research engine supports four provider modes:
 
@@ -9,11 +13,9 @@ The research engine supports four provider modes:
 3. `backend_proxy` — hosted proxy scaffold, live only with explicit opt-in.
 4. `portable_oauth` — local portable-account mock flow; no real OAuth or live calls.
 
-v1.0.24 does not expand provider behavior. It corrects stale documentation and preserves the manual/private default while the repository hygiene and release archive boundaries are verified.
+v1.0.25 does not expand provider behavior. It locks public-demo release approval while preserving the manual/private default, privacy/export boundary, and unavailable-feature discipline.
 
 ## Portable account mock flow
-
-The portable account flow simulates the future BrainLink/OpenRouter-style pattern:
 
 ```text
 Connect mock portable account
@@ -33,7 +35,7 @@ No real OAuth authorization endpoint is contacted. No access token or refresh to
 - Portable-account live calls remain blocked.
 - Hosted proxy secrets must stay server-side.
 - AI output must pass response-contract validation before it can affect app state.
-- Repository hygiene patches must not introduce provider capability changes.
+- Public-demo release approval requires CI and evidence review, not screenshots or ZIP existence alone.
 
 ## Future real OAuth integration requirements
 
