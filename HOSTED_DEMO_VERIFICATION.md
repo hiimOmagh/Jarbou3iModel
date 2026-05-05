@@ -1,6 +1,6 @@
 # Hosted Demo Verification
 
-## v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry
+## v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -43,12 +43,12 @@ HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run tes
 - `evidence_review_complete`
 - `public_demo_release_locked`
 
-## v1.1.0-alpha.3 evidence-manifest hardening
+## v1.1.0-alpha.4 evidence-manifest hardening
 
-The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.1.0-alpha.3 no-browser gate.
+The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.1.0-alpha.4 no-browser gate.
 
 
 Boundary reminder: No live scraping, no real OAuth/account login, and no automated source verification are enabled by this public-demo freeze audit. Screenshots and ZIP existence alone remain insufficient for release approval.
 
 
-Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.4 preserves the single final metadata hosted-demo evidence manifest gate.

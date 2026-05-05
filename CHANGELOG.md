@@ -1,6 +1,6 @@
-## v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry
+## v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation
 
-Audit-only repository reduction gate. Adds a machine-readable retention registry and consolidation classifier for active files, security gates, migration/privacy fixtures, historical version-suite wrappers, release docs, and generated artifacts. No files are deleted and no runtime/provider/OAuth/backend/source/storage behavior changes are introduced.
+Audit-only repository reduction gate. Adds a machine-readable fixture registry and consolidation classifier for active files, security gates, migration/privacy fixtures, historical version-suite wrappers, release docs, and generated artifacts. No files are deleted and no runtime/provider/OAuth/backend/source/storage behavior changes are introduced.
 
 ## v1.0.25 — Public Demo Release Lock
 
@@ -33,4 +33,4 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 - Preserved runtime capability boundaries while verifying GitHub Actions state and browser evidence upload discipline.
 
 
-Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.4 preserves the single final metadata hosted-demo evidence manifest gate.

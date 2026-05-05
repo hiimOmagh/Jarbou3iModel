@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
+import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -17,8 +18,8 @@ const releasePackagingCheck = read('tests/release-packaging-cleanup-check.mjs');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.3-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.4-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json');
 const trackedPaths = (() => {
   try {
     return new Set(execSync('git ls-files', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
@@ -30,15 +31,15 @@ const trackedPaths = (() => {
   }
 })();
 
-assert.equal(pkg.version, '1.1.0-alpha.3');
+assert.equal(pkg.version, '1.1.0-alpha.4');
 assert.ok(pkg.description.includes('evidence scoring'));
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.3');
-assert.equal(sample.workflow_version, '1.1.0-alpha.3');
-assert.equal(migrationFixture.workflow_version, '1.1.0-alpha.3');
-assert.equal(privacyFixture.workflow_version, '1.1.0-alpha.3');
-assert.equal(sample.release_notes.release_title, 'v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.4');
+assert.equal(sample.workflow_version, '1.1.0-alpha.4');
+assert.equal(migrationFixture.workflow_version, '1.1.0-alpha.4');
+assert.equal(privacyFixture.workflow_version, '1.1.0-alpha.4');
+assert.equal(sample.release_notes.release_title, 'v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
@@ -49,8 +50,8 @@ for (const file of [
   'docs/v1.0.21-node-24-ci-compatibility.md',
   'docs/v1.0.25-public-demo-release-lock.md',
   'fixtures/migrations/v1.0.4-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.3-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json',
+  'fixtures/migrations/v1.1.0-alpha.4-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json',
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/v122-no-browser-suite.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
@@ -70,19 +71,19 @@ for (const file of [
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/v122-no-browser-suite.mjs'
 ]) {
-  assert.ok(fs.existsSync(file), `missing v1.1.0-alpha.3 cleanup artifact: ${file}`);
+  assert.ok(fixturePathExists(file), `missing v1.1.0-alpha.4 cleanup artifact: ${file}`);
 }
 
-assert.equal(json('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
+assert.equal(getMigrationFixture('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
 assert.ok(migrationSource.includes("'1.0.4'"), 'v1.0.4 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.1.0-alpha.3'"), 'v1.1.0-alpha.3 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3'"), 'v1.0.19 must migrate into v1.1.0-alpha.3');
-assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-alpha.3'"));
-assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-alpha.3'"));
+assert.ok(migrationSource.includes("'1.1.0-alpha.4'"), 'v1.1.0-alpha.4 must remain a supported migration source');
+assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.4'"), 'v1.0.19 must migrate into v1.1.0-alpha.4');
+assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-alpha.4'"));
+assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-alpha.4'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.3'), 'release corpus missing v1.1.0-alpha.3');
-  assert.ok(corpus.includes('Repository Consolidation Audit + Retention Registry'), 'release corpus missing v1.1.0-alpha.3 release title');
+  assert.ok(corpus.includes('v1.1.0-alpha.4'), 'release corpus missing v1.1.0-alpha.4');
+  assert.ok(corpus.includes('Migration + Privacy Fixture Registry Consolidation'), 'release corpus missing v1.1.0-alpha.4 release title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));
@@ -137,7 +138,7 @@ const forbidden = [
   '.env',
   'backend/.dev.vars'
 ];
-for (const file of forbidden) assert.equal(fs.existsSync(file), false, `stale or secret-bearing artifact must not exist: ${file}`);
+for (const file of forbidden) assert.equal(fixturePathExists(file), false, `stale or secret-bearing artifact must not exist: ${file}`);
 
 const rootGenerated = fs.readdirSync('.').filter((name) => name.endsWith('.zip') || ['playwright-report','test-results','coverage','dist','build'].includes(name));
 assert.deepEqual(rootGenerated, [], `generated artifacts must stay outside committed repo: ${rootGenerated.join(', ')}`);

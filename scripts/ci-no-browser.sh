@@ -62,6 +62,7 @@ run_node tests/mobile-header-logo-geometry-check.mjs
 run_node tests/post-freeze-planning-gate-check.mjs
 run_node tests/expansion-lane-acceptance-matrix-check.mjs
 run_node tests/repository-consolidation-audit-check.mjs
+run_node tests/fixture-registry-consolidation-check.mjs
 
 echo "CI no-browser gate: provider/OAuth/backend/source"
 run_node tests/provider-identity-check.mjs
@@ -122,6 +123,9 @@ run_node --check tests/mobile-header-logo-geometry-check.mjs
 run_node --check tests/post-freeze-planning-gate-check.mjs
 run_node --check tests/expansion-lane-acceptance-matrix-check.mjs
 run_node --check tests/repository-consolidation-audit-check.mjs
+run_node --check tests/fixture-registry-loader.mjs
+run_node --check tests/fixture-registry-consolidation-check.mjs
+run_node --check tests/v110a4-no-browser-suite.mjs
 run_node --check tests/v110a3-no-browser-suite.mjs
 run_node --check tests/v110a1-no-browser-suite.mjs
 run_node --check tests/v110a2-no-browser-suite.mjs

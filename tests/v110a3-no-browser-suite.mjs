@@ -19,4 +19,4 @@ for (const [cmd, args] of commands) {
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
 
-console.log('v1.1.0-alpha.3 no-browser consolidation suite passed.');
+console.log('v1.1.0-alpha.4 no-browser consolidation suite passed.');

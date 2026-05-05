@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { getPrivacyFixture, migrationFixtureEntries, privacyFixtureEntries, fixturePathExists } from './fixture-registry-loader.mjs';
 
 const root = process.cwd();
 const context = { console, globalThis: {} };
@@ -23,21 +24,20 @@ function walk(dir, files = []) {
 }
 
 const exportCandidates = [
-  ...walk('fixtures/research'),
-  ...walk('fixtures/migrations'),
-  ...walk('fixtures/privacy'),
-  ...walk('schema')
-].filter((file) => fs.existsSync(file));
+  ...walk('fixtures/research').map((file) => ({ label: path.relative(root, file), json: JSON.parse(fs.readFileSync(file, 'utf8')) })),
+  ...walk('schema').map((file) => ({ label: path.relative(root, file), json: JSON.parse(fs.readFileSync(file, 'utf8')) })),
+  ...migrationFixtureEntries().map((entry) => ({ label: `fixtures/migrations/migration-registry.json#${entry.file}`, json: entry.packet })),
+  ...privacyFixtureEntries().map((entry) => ({ label: `fixtures/privacy/privacy-export-registry.json#${entry.file}`, json: entry.packet }))
+];
 
 assert.ok(exportCandidates.length > 0, 'release gate needs JSON candidates');
-for (const file of exportCandidates) {
-  const json = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const report = audit.assertPrivacyReleaseGate(json, { throw: false });
-  assert.equal(report.safe, true, `${path.relative(root, file)} failed privacy release gate:\n${report.issues.map((issue) => `- ${issue.path}: ${issue.code}/${issue.pattern_id}`).join('\n')}`);
+for (const candidate of exportCandidates) {
+  const report = audit.assertPrivacyReleaseGate(candidate.json, { throw: false });
+  assert.equal(report.safe, true, `${candidate.label} failed privacy release gate:\n${report.issues.map((issue) => `- ${issue.path}: ${issue.code}/${issue.pattern_id}`).join('\n')}`);
 }
 
-const sample = JSON.parse(fs.readFileSync('fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json', 'utf8'));
-assert.equal(sample.privacy_export.audit_version, '1.1.0-alpha.3');
+const sample = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json');
+assert.equal(sample.privacy_export.audit_version, '1.1.0-alpha.4');
 assert.equal(sample.privacy_export.release_gate, 'pass');
 assert.equal(sample.privacy_export.post_redaction_issue_count, 0);
 assert.equal(sample.privacy_export.key_exported, false);

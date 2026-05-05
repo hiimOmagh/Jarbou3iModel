@@ -157,7 +157,7 @@ const expectedReleaseDocs = [
   'docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md',
   'docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md',
   'docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md',
-  'docs/v1.1.0-alpha.3-repository-consolidation-audit-retention-registry.md'
+  'docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

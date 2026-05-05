@@ -1,9 +1,9 @@
 {
   "name": "jarbou3i-research-engine",
-  "version": "1.1.0-alpha.3",
+  "version": "1.1.0-alpha.4",
   "private": true,
   "type": "module",
-  "description": "Jarbou3i Research Engine v1.1.0-alpha.3 repository hygiene and repository consolidation audit and retention registry: machine-readable file-retention classes, merge/archive/delete-later candidates, reference-safe cleanup sequencing, audit-only repository reduction planning, no deletion, no runtime behavior change, no provider/OAuth/backend/source/storage behavior change, public-demo freeze preservation, privacy/export safety preservation, release evidence discipline, and deterministic consolidation-registry regression checks. No live scraping, real OAuth, provider execution, backend endpoint expansion, source connector expansion, storage change, deletion, or public-demo capability expansion is added. PLAYWRIGHT_SKIP_INSTALL preservation. evidence scoring preservation. source strategy preservation.",
+  "description": "Jarbou3i Research Engine v1.1.0-alpha.4 migration and privacy fixture registry consolidation patch. Historical per-version migration and privacy fixture files are merged into compact registries, unused oversized mascot asset is removed, and runtime/provider/OAuth/backend/source/storage behavior remains unchanged. release evidence repository hygiene PLAYWRIGHT_SKIP_INSTALL preservation. evidence scoring preservation. source packet preservation. browser evidence preservation. public demo preservation. source strategy preservation. source capability registry preservation. manual source packet preservation.",
   "scripts": {
     "dev": "http-server . -p 4173 -c-1",
     "test": "npm run test:qa && npm run test:browser",
@@ -178,7 +178,10 @@
     "test:v110a2": "npm run test:v110a2:no-browser && npm run test:ci:browser",
     "test:repo:consolidation": "node tests/repository-consolidation-audit-check.mjs",
     "test:v110a3:no-browser": "node tests/v110a3-no-browser-suite.mjs",
-    "test:v110a3": "npm run test:v110a3:no-browser && npm run test:ci:browser"
+    "test:v110a3": "npm run test:v110a3:no-browser && npm run test:ci:browser",
+    "test:fixture-registry": "node tests/fixture-registry-consolidation-check.mjs",
+    "test:v110a4:no-browser": "node tests/v110a4-no-browser-suite.mjs",
+    "test:v110a4": "npm run test:v110a4:no-browser && npm run test:ci:browser"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

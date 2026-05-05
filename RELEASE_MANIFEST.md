@@ -1,18 +1,18 @@
-# Release Manifest — v1.1.0-alpha.3
+# Release Manifest — v1.1.0-alpha.4
 
-## v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry
+## v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation
 
 This patch adds a release-application integrity gate for changed-files-only handoffs. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. The patch must be applied to the intended base, validated with CI, and reviewed against manifest/SHA evidence before publication.
 
 ## Package identity
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.1.0-alpha.3`
-- Release name: `Repository Consolidation Audit + Retention Registry`
+- Version: `1.1.0-alpha.4`
+- Release name: `Migration + Privacy Fixture Registry Consolidation`
 - Release type: patch
 - Patch type: `changed-files-only over v1.0.25`
 - Runtime capability change: no
-- Artifact: `jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip`
+- Artifact: `jarbou3i-research-engine-v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation-patch.zip`
 
 ## Entry points
 
@@ -56,11 +56,11 @@ This patch adds a release-application integrity gate for changed-files-only hand
 - `package-lock.json`
 - `playwright.config.js`
 
-## Required v1.1.0-alpha.3 release-lock files
+## Required v1.1.0-alpha.4 release-lock files
 
-- `docs/v1.1.0-alpha.3-repository-consolidation-audit-retention-registry.md`
-- `fixtures/migrations/v1.1.0-alpha.3-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json`
+- `docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md`
+- `fixtures/migrations/v1.1.0-alpha.4-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json`
 - `tests/release-apply-integrity-check.mjs`
 - `tests/v126-no-browser-suite.mjs`
 
@@ -72,12 +72,12 @@ This patch adds a release-application integrity gate for changed-files-only hand
 
 ## Compatibility boundary
 
-v1.1.0-alpha.3 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks release-application integrity only.
+v1.1.0-alpha.4 must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface. The patch locks release-application integrity only.
 
 ## Required apply sequence
 
 ```bash
-unzip -o jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip -d .
+unzip -o jarbou3i-research-engine-v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation-patch.zip -d .
 npm ci --no-audit --no-fund --ignore-scripts
 npm run test:v126:no-browser
 npm run test:ci:no-browser
@@ -124,7 +124,7 @@ No generated artifact, orphan `XX*` temporary file, ZIP archive, test report, or
 
 ## Release history map
 
-- v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry
+- v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation
 - v1.0.25 — Public Demo Release Lock
 - v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
 - v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
@@ -160,4 +160,4 @@ No generated artifact, orphan `XX*` temporary file, ZIP archive, test report, or
 - v0.23.0-beta — Advanced Quality Gate v3
 
 
-Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.4 preserves the single final metadata hosted-demo evidence manifest gate.
