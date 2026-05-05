@@ -3,35 +3,36 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const repoRoot = process.cwd();
 const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0-alpha.4';
+const VERSION = '1.1.0-alpha.5';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'Migration + Privacy Fixture Registry Consolidation';
-const DOC = 'docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation-patch.zip';
+const TITLE = 'Version Suite Registry + Package Script Compression';
+const DOC = 'docs/v1.1.0-alpha.5-version-suite-registry-package-script-compression.md';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.5-version-suite-registry-package-script-compression-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
-const releaseDoc = read(DOC);
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.4-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json');
+const releaseDoc = readReleaseDoc(DOC);
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.5-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
 assert.equal(lock.packages[''].version, VERSION);
-assert.ok(pkg.description.includes('migration and privacy fixture registry consolidation'));
+assert.ok(pkg.description.includes('version suite registry and package script compression'));
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
 assert.ok(index.includes('audit repo retention'), 'index must keep repository audit workflow visible');
 assert.ok(index.includes('prove safe consolidation'), 'index must mention proof before reduction');
-assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.4'"));
+assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.5'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('acceptance_criteria'));
@@ -87,14 +88,14 @@ for (const packet of [migrationFixture, privacyFixture]) {
   assert.equal(packet.release_apply_integrity.storage_behavior_changed, false);
 }
 
-assert.ok(exists('docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md'), 'alpha.1 baseline doc must remain present');
-assert.ok(exists(DOC), 'alpha.2 release doc must exist');
+assert.ok(releaseDocExists('docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md'), 'alpha.1 baseline doc must remain present');
+assert.ok(releaseDocExists(DOC), 'alpha.2 release doc must exist');
 assert.ok(releaseDoc.includes('fixture registry'));
 assert.ok(releaseDoc.includes('MERGE_TO_REGISTRY'));
 assert.ok(releaseDoc.includes('No live scraping'));
 assert.ok(releaseDoc.includes('No files are deleted'));
 
-for (const file of ['src/research/post-freeze-planning-gate.js','tests/expansion-lane-acceptance-matrix-check.mjs','tests/post-freeze-planning-gate-check.mjs','tests/v110a3-no-browser-suite.mjs']) {
+for (const file of ['src/research/post-freeze-planning-gate.js','tests/expansion-lane-acceptance-matrix-check.mjs','tests/post-freeze-planning-gate-check.mjs','tests/version-suite-registry-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax failed`);
 }

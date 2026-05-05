@@ -1,4 +1,4 @@
-## v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation
+## v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression
 
 Audit-only repository reduction gate. Adds a machine-readable fixture registry and consolidation classifier for active files, security gates, migration/privacy fixtures, historical version-suite wrappers, release docs, and generated artifacts. No files are deleted and no runtime/provider/OAuth/backend/source/storage behavior changes are introduced.
 
@@ -58,4 +58,4 @@ Do not approve v1.0.25 from screenshots, a local ZIP, or a passing partial suite
 The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.1.0-alpha.2 no-browser gate.
 
 
-Evidence manifest continuity: v1.1.0-alpha.4 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.5 preserves the single final metadata hosted-demo evidence manifest gate.

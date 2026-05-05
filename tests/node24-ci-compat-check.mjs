@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -14,11 +15,11 @@ const changelog = read('CHANGELOG.md');
 const manifest = read('RELEASE_MANIFEST.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const node24Doc = read('docs/v1.0.21-node-24-ci-compatibility.md');
+const node24Doc = readReleaseDoc('docs/v1.0.21-node-24-ci-compatibility.md');
 
-assert.equal(pkg.version, '1.1.0-alpha.4', 'package.json must identify v1.1.0-alpha.4');
-assert.equal(lock.version, '1.1.0-alpha.4', 'package-lock root version must identify v1.1.0-alpha.4');
-assert.equal(lock.packages[''].version, '1.1.0-alpha.4', 'package-lock package root must identify v1.1.0-alpha.4');
+assert.equal(pkg.version, '1.1.0-alpha.5', 'package.json must identify v1.1.0-alpha.5');
+assert.equal(lock.version, '1.1.0-alpha.5', 'package-lock root version must identify v1.1.0-alpha.5');
+assert.equal(lock.packages[''].version, '1.1.0-alpha.5', 'package-lock package root must identify v1.1.0-alpha.5');
 
 for (const forbidden of [
   'actions/checkout@v4',
@@ -53,19 +54,19 @@ assert.ok(installIndex < playwrightInstallIndex, 'npm ci must run before Playwri
 assert.ok(playwrightInstallIndex < browserIndex, 'browser workflow must install Playwright once before skipping duplicate install in ci-browser.sh');
 
 assert.ok(pkg.scripts['test:ci:node24']?.includes('tests/node24-ci-compat-check.mjs'), 'package script for Node 24 CI compatibility check missing');
-assert.ok(pkg.scripts['test:v121:no-browser']?.includes('tests/v121-no-browser-suite.mjs'), 'package script for v1.0.21 no-browser suite missing');
+assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'), 'package script for v1.0.21 no-browser suite missing');
 assert.ok(ciNoBrowser.includes('tests/node24-ci-compat-check.mjs'), 'no-browser CI must include Node 24 compatibility guard');
-assert.equal(ciNoBrowser.includes('run_node tests/v121-no-browser-suite.mjs'), false, 'no-browser CI must not recursively invoke v121 wrapper');
-assert.ok(ciNoBrowser.includes('run_node --check tests/v121-no-browser-suite.mjs'), 'no-browser CI must syntax-check v121 wrapper');
+assert.ok(ciNoBrowser.includes('run_node tests/version-suite-registry-check.mjs'), 'no-browser CI must run version-suite registry gate');
+assert.ok(ciNoBrowser.includes('run_node --check tests/version-suite-registry-check.mjs'), 'no-browser CI must syntax-check version-suite registry');
 
 for (const text of [releaseNotes, changelog, manifest, roadmap, qaMatrix]) {
-  assert.ok(text.includes('v1.1.0-alpha.4'), 'release documentation must mention v1.1.0-alpha.4');
+  assert.ok(text.includes('v1.1.0-alpha.5'), 'release documentation must mention v1.1.0-alpha.5');
   assert.ok(text.includes('Node 24'), 'release documentation must mention Node 24');
 }
 assert.ok(node24Doc.includes('v1.0.21'), 'retained Node 24 compatibility doc must keep its original release identity');
 assert.ok(node24Doc.includes('Node 24'), 'retained Node 24 compatibility doc must mention Node 24');
 
-for (const file of ['tests/node24-ci-compat-check.mjs', 'tests/v121-no-browser-suite.mjs']) {
+for (const file of ['tests/node24-ci-compat-check.mjs', 'tests/version-suite-registry-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax check failed`);
 }

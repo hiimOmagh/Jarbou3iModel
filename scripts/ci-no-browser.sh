@@ -63,6 +63,7 @@ run_node tests/post-freeze-planning-gate-check.mjs
 run_node tests/expansion-lane-acceptance-matrix-check.mjs
 run_node tests/repository-consolidation-audit-check.mjs
 run_node tests/fixture-registry-consolidation-check.mjs
+run_node tests/version-suite-registry-check.mjs
 
 echo "CI no-browser gate: provider/OAuth/backend/source"
 run_node tests/provider-identity-check.mjs
@@ -125,10 +126,8 @@ run_node --check tests/expansion-lane-acceptance-matrix-check.mjs
 run_node --check tests/repository-consolidation-audit-check.mjs
 run_node --check tests/fixture-registry-loader.mjs
 run_node --check tests/fixture-registry-consolidation-check.mjs
-run_node --check tests/v110a4-no-browser-suite.mjs
-run_node --check tests/v110a3-no-browser-suite.mjs
-run_node --check tests/v110a1-no-browser-suite.mjs
-run_node --check tests/v110a2-no-browser-suite.mjs
+run_node --check tests/version-suite-registry-check.mjs
+run_node --check tests/current-no-browser-suite.mjs
 run_node --check tests/module-type-warning-fix-check.mjs
 run_node --check tests/ci-workflow-install-check.mjs
 run_node --check tests/lockfile-public-registry-check.mjs
@@ -141,12 +140,6 @@ run_node --check tests/source-packet-builder-browser-qa-check.mjs
 run_node --check tests/source-packet-roundtrip-check.mjs
 run_node --check tests/source-packet-template-presets-check.mjs
 run_node --check tests/source-packet-builder-browser.spec.mjs
-run_node --check tests/v119-no-browser-suite.mjs
-run_node --check tests/v120-no-browser-suite.mjs
-run_node --check tests/v121-no-browser-suite.mjs
-run_node --check tests/v122-no-browser-suite.mjs
-run_node --check tests/v123-no-browser-suite.mjs
-run_node --check tests/v124-no-browser-suite.mjs
 run_node --check tests/node24-ci-compat-check.mjs
 run_node --check tests/release-evidence-repo-hygiene-check.mjs
 run_node --check tests/ci-result-review-browser-evidence-audit-check.mjs
@@ -156,26 +149,7 @@ run_node --check tests/release-provenance-ledger-check.mjs
 run_node --check tests/source-packet-template-browser.spec.mjs
 run_node --check tests/source-packet-template-browser-qa-check.mjs
 run_node --check tests/browser-visual-project-scope-check.mjs
-run_node --check tests/v118-no-browser-suite.mjs
-run_node --check tests/v117-no-browser-suite.mjs
-run_node --check tests/v116-no-browser-suite.mjs
-run_node --check tests/v115-no-browser-suite.mjs
-run_node --check tests/v114-no-browser-suite.mjs
-run_node --check tests/v113-no-browser-suite.mjs
-run_node --check tests/v112-no-browser-suite.mjs
-run_node --check tests/v111-no-browser-suite.mjs
-run_node --check tests/v110-no-browser-suite.mjs
-run_node --check tests/v105-no-browser-suite.mjs
-run_node --check tests/v106-no-browser-suite.mjs
-run_node --check tests/v107-no-browser-suite.mjs
-run_node --check tests/v108-no-browser-suite.mjs
-run_node --check tests/v109-no-browser-suite.mjs
 
 echo "CI no-browser gate passed."
 
-run_node --check tests/v125-no-browser-suite.mjs
-run_node --check tests/v126-no-browser-suite.mjs
 
-run_node --check tests/v128-no-browser-suite.mjs
-run_node --check tests/v129-no-browser-suite.mjs
-run_node --check tests/v130-no-browser-suite.mjs

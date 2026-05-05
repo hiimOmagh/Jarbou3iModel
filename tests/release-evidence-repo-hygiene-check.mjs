@@ -2,20 +2,21 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync, execSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.1.0-alpha.4';
-const TITLE = 'Migration + Privacy Fixture Registry Consolidation';
+const VERSION = '1.1.0-alpha.5';
+const TITLE = 'Version Suite Registry + Package Script Compression';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.4-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.5-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json');
 const workflow = read('.github/workflows/ci.yml');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -24,23 +25,23 @@ const notes = read('RELEASE_NOTES.md');
 const changelog = read('CHANGELOG.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const doc = `${read('docs/v1.0.25-public-demo-release-lock.md')}\n${read('docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md')}`;
+const doc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-alpha.5-version-suite-registry-package-script-compression.md')}`;
 const migrations = read('src/research/migrations.js');
 const evidenceSpec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0-alpha.4');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0-alpha.4');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0-alpha.4');
-assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0-alpha.4');
-assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0-alpha.4');
-assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0-alpha.4');
-assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.1.0-alpha.4');
-assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.1.0-alpha.4');
-assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.1.0-alpha.4');
-assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.1.0-alpha.4');
+assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0-alpha.5');
+assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0-alpha.5');
+assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0-alpha.5');
+assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0-alpha.5');
+assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0-alpha.5');
+assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0-alpha.5');
+assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.1.0-alpha.5');
+assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.1.0-alpha.5');
+assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.1.0-alpha.5');
+assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.1.0-alpha.5');
 
 for (const text of [manifest, notes, changelog, roadmap, qaMatrix, doc]) {
-  assert.ok(text.includes('v1.1.0-alpha.4'), 'release corpus must mention v1.1.0-alpha.4');
+  assert.ok(text.includes('v1.1.0-alpha.5'), 'release corpus must mention v1.1.0-alpha.5');
   assert.ok(text.includes(TITLE) || /release[- ]lock/i.test(text), 'release corpus must mention public demo release lock');
 }
 
@@ -86,28 +87,28 @@ assert.ok(ciBrowser.includes('ci-artifacts/hosted-demo-evidence'), 'ci-browser m
 assert.ok(ciBrowser.includes('npm run test:browser:evidence'), 'ci-browser must include hosted demo evidence test');
 assert.ok(ciBrowser.includes('npm run test:browser:visual'), 'ci-browser must include visual regression test');
 assert.ok(ciNoBrowser.includes('tests/release-evidence-repo-hygiene-check.mjs'), 'no-browser CI must include release evidence guard');
-assert.ok(ciNoBrowser.includes('run_node --check tests/v123-no-browser-suite.mjs'), 'no-browser CI must syntax-check v123 wrapper');
-assert.equal(ciNoBrowser.includes('run_node tests/v123-no-browser-suite.mjs'), false, 'no-browser CI must not recursively run v123 wrapper');
+assert.ok(ciNoBrowser.includes('run_node --check tests/version-suite-registry-check.mjs'), 'no-browser CI must syntax-check version-suite registry');
+assert.ok(ciNoBrowser.includes('run_node tests/version-suite-registry-check.mjs'), 'no-browser CI must run version-suite registry gate');
 
 assert.ok(pkg.scripts['test:release:evidence']?.includes('release-evidence-repo-hygiene-check.mjs'), 'package must expose release evidence check');
-assert.ok(pkg.scripts['test:v123:no-browser']?.includes('v123-no-browser-suite.mjs'), 'package must expose v123 no-browser suite');
-assert.ok(pkg.scripts['test:v123']?.includes('test:ci:browser'), 'package must expose v123 browser gate composition');
+assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'), 'package must expose v123 no-browser suite');
+assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'), 'package must expose v123 browser gate composition');
 assert.ok(pkg.scripts['test:stable']?.includes('release-evidence-repo-hygiene-check.mjs'), 'stable suite must include release evidence check');
 assert.ok(pkg.scripts['test:patch']?.includes('release-evidence-repo-hygiene-check.mjs'), 'patch suite must include release evidence check');
 
 for (const required of [
   'fixtures/migrations/v1.0.21-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.4-packet.json',
+  'fixtures/migrations/v1.1.0-alpha.5-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.21.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json',
   'docs/v1.0.21-node-24-ci-compatibility.md',
   'docs/v1.0.25-public-demo-release-lock.md',
   'tests/node24-ci-compat-check.mjs',
   'tests/release-evidence-repo-hygiene-check.mjs',
-  'tests/v121-no-browser-suite.mjs',
-  'tests/v123-no-browser-suite.mjs'
+  'tests/version-suite-registry-check.mjs',
+  'tests/version-suite-registry-check.mjs'
 ]) {
-  assert.ok(fixturePathExists(required), `required release evidence artifact missing: ${required}`);
+  assert.ok(fixturePathExists(required) || releaseDocExists(required), `required release evidence artifact missing: ${required}`);
 }
 
 for (const forbidden of [
@@ -140,8 +141,8 @@ for (const token of [
   assert.ok(manifest.includes(token), `manifest must document release-lock requirement: ${token}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.4'"), 'migration target must be v1.1.0-alpha.4');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.4'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.4');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.5'"), 'migration target must be v1.1.0-alpha.5');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.5'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.5');
 assert.ok(evidenceSpec.includes('async function openProviderHarness'), 'hosted demo evidence spec must keep provider accordion helper');
 assert.ok(evidenceSpec.includes("providerCard.locator('h3').click()"), 'hosted demo evidence spec must expand provider harness accordion when closed');
 assert.equal(evidenceSpec.includes("expect(page.locator('#exportWorkflowBtn')).toBeVisible()"), false, 'hosted demo evidence must not assert hidden Evidence-tab exportWorkflowBtn from Quality tab');
@@ -155,7 +156,7 @@ assert.equal(sample.release_candidate.policy.production_oauth_allowed, false, 'p
 assert.equal(sample.release_candidate.policy.new_live_connectors_allowed, false, 'new live connectors must remain blocked');
 assert.equal(sample.release_candidate.policy.breaking_changes_allowed, false, 'breaking changes must remain blocked');
 
-for (const file of ['tests/release-evidence-repo-hygiene-check.mjs', 'tests/v123-no-browser-suite.mjs']) {
+for (const file of ['tests/release-evidence-repo-hygiene-check.mjs', 'tests/version-suite-registry-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax check failed`);
 }

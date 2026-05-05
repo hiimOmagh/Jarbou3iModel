@@ -1,12 +1,13 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.1.0-alpha.4';
-const RELEASE = 'v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation';
+const VERSION = '1.1.0-alpha.5';
+const RELEASE = 'v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression';
 const pkg = json('package.json');
 const manifest = read('RELEASE_MANIFEST.md');
 const releaseIgnore = read('.releaseignore');
@@ -16,8 +17,8 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.4-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.5-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json');
 
 assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes('release evidence'));
@@ -48,16 +49,16 @@ for (const file of [
   'tests/repo-file-hygiene-check.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
   'tests/release-evidence-repo-hygiene-check.mjs',
-  'tests/v122-no-browser-suite.mjs',
+  'tests/version-suite-registry-check.mjs',
   'fixtures/migrations/v1.0.21-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.4-packet.json',
+  'fixtures/migrations/v1.1.0-alpha.5-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.21.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json'
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json'
 ]) {
-  assert.ok(fixturePathExists(file), `missing release cleanup file: ${file}`);
+  assert.ok(fixturePathExists(file) || releaseDocExists(file), `missing release cleanup file or release-history entry: ${file}`);
 }
 
-assert.equal(fs.existsSync('docs/v1.0.5-browser-qa-visual-regression-hardening.md'), false, 'duplicate/misnamed v1.0.5 browser-QA doc must be removed');
+assert.equal(releaseDocExists('docs/v1.0.5-browser-qa-visual-regression-hardening.md'), false, 'duplicate/misnamed v1.0.5 browser-QA doc must be removed');
 
 const expectedDocHeadings = new Map([
   ['docs/v1.0.0-public-beta-stable-research-engine.md', '# v1.0.0 — Public Beta / Stable Research Engine'],
@@ -85,13 +86,13 @@ const expectedDocHeadings = new Map([
   ['docs/v1.0.26-release-apply-integrity-gate.md', '# v1.0.26 — Release Apply Integrity Gate'],
   ['docs/v1.0.27-release-provenance-ledger-gate.md', '# v1.0.27 — Release Provenance Ledger Gate'],
   ['docs/v1.0.28-hosted-demo-evidence-manifest-gate.md', '# v1.0.28 — Hosted Demo Evidence Manifest Gate'],
-  ['docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md', '# v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation']
+  ['docs/v1.1.0-alpha.5-version-suite-registry-package-script-compression.md', '# v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
-  assert.equal(read(file).split('\n')[0], heading, `${file} heading drifted`);
+  assert.equal(readReleaseDoc(file).split('\n')[0], heading, `${file} heading drifted`);
 }
 
-const docsCorpus = [readme, changelog, roadmap, qaMatrix, manifest, ...[...expectedDocHeadings.keys()].map(read)].join('\n');
+const docsCorpus = [readme, changelog, roadmap, qaMatrix, manifest, ...[...expectedDocHeadings.keys()].map(readReleaseDoc)].join('\n');
 for (const token of [
   RELEASE,
   'v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration',
@@ -130,10 +131,10 @@ for (const token of [
 for (const token of ['node_modules/','playwright-report/','test-results/','*.zip','backend/.dev.vars']) {
   assert.ok(releaseIgnore.includes(token), `.releaseignore missing ${token}`);
 }
-for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.1.0-alpha.4`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
+for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.1.0-alpha.5`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
   assert.ok(manifest.includes(token), `release manifest missing ${token}`);
 }
-for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:ci:node24','test:v121:no-browser','test:v121','test:release:evidence','test:v122:no-browser','test:v122']) {
+for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:ci:node24','test:version-registry','test:current:no-browser','test:release:evidence']) {
   assert.ok(pkg.scripts[script], `missing package script ${script}`);
 }
 assert.ok(pkg.scripts['test:patch'].includes('release-packaging-cleanup-check.mjs'));

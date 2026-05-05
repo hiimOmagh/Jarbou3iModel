@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine migration and privacy fixture registry consolidation v1.1.0-alpha.4. */
+/* Jarbou3i Research Engine version suite registry and package script compression v1.1.0-alpha.5. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.4';
+  const VERSION = '1.1.0-alpha.5';
   const PREVIOUS_VERSION = '1.1.0-alpha.3';
   const FREEZE_BASELINE = '1.0.30';
 
@@ -134,8 +134,8 @@
       previous_version:PREVIOUS_VERSION,
       freeze_baseline_version:FREEZE_BASELINE,
       generated_at:now,
-      stage:'migration_privacy_fixture_registry_consolidation',
-      release_type:'alpha_audit_gate',
+      stage:'version_suite_registry_consolidation',
+      release_type:'alpha_cleanup_gate',
       audit_only:false,
       implementation_allowed:true,
       runtime_capability_change:false,
@@ -161,20 +161,20 @@
         delete_only_if_unreferenced:deleteCandidates.map(entry => entry.path)
       },
       sample_entries:entries.slice(0, 25),
-      completed_actions:['Merged fixtures/migrations/v*-packet.json into fixtures/migrations/migration-registry.json.','Merged fixtures/privacy/browser-generated-export-*.json into fixtures/privacy/privacy-export-registry.json.','Deleted unused oversized mascot asset assets/jarbou3i-mascot.png.'], blocked_actions:[
-        'File deletion limited to registry-consolidated fixture shards and one proven-unused oversized mascot asset.',
+      completed_actions:['Merged historical tests/v*-no-browser-suite.mjs wrappers into tests/version-suite-registry.json.','Compressed package.json by removing historical numeric test:v* scripts.','Added tests/current-no-browser-suite.mjs as the compact current release gate.'], blocked_actions:[
+        'File deletion limited to registry-consolidated version-suite wrapper files.',
         'No runtime behavior consolidation in this release.',
         'No provider/OAuth/backend/source/storage behavior change in this release.',
-        'No migration/privacy fixture merge before reference checks and registry replacement tests exist.',
+        'No package script compression before registry replacement tests exist.',
         'No release-doc archive before docs references are mapped.'
       ],
       next_safe_steps:[
-        'Next safe step: consolidate version-suite wrappers into a registry-driven test after this fixture registry patch is green.',
+        'Next safe step: consolidate versioned release documentation into timeline documents after this version-suite registry patch is green.',
         'Replace thin version-suite wrappers with a parameterized registry only after script references are mapped.',
         'Compress historical docs into a release-history timeline only after release-gate references are proven safe.',
         'Delete generated artifacts only when unreferenced and outside official release evidence packages.'
       ],
-      release_gate:'fixture_registry_consolidated'
+      release_gate:'version_suite_registry_consolidated'
     };
   }
   root.repositoryConsolidationAudit = Object.freeze({VERSION, PREVIOUS_VERSION, FREEZE_BASELINE, RETENTION_CLASSES, CONSOLIDATION_RULES, REQUIRED_AUDIT_FIELDS, classifyFile, buildRepositoryConsolidationAudit});

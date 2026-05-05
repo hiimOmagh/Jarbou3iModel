@@ -15,17 +15,17 @@ const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.4-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.5-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json');
 
-assert.equal(pkg.version, '1.1.0-alpha.4');
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.4');
+assert.equal(pkg.version, '1.1.0-alpha.5');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.5');
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.1.0-alpha.4');
-  assert.equal(packet.source_packet_builder_report.builder_version, '1.1.0-alpha.4');
-  assert.equal(packet.last_built_source_packet.workflow_version, '1.1.0-alpha.4');
+  assert.equal(packet.workflow_version, '1.1.0-alpha.5');
+  assert.equal(packet.source_packet_builder_report.builder_version, '1.1.0-alpha.5');
+  assert.equal(packet.last_built_source_packet.workflow_version, '1.1.0-alpha.5');
   assert.equal(packet.last_built_source_packet.builder_version, 'source_packet_builder.v1');
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression');
 }
 
 assert.ok(index.includes('data-browser-qa="source-packet-builder"'), 'builder card must expose a browser-QA hook');
@@ -72,11 +72,11 @@ assert.ok(browserSpec.includes('verification_claimed'), 'browser spec must asser
 
 assert.ok(pkg.scripts['test:source:packet-builder:browser-qa'].includes('source-packet-builder-browser-qa-check.mjs'));
 assert.ok(pkg.scripts['test:browser:source-packet-builder'].includes('source-packet-builder-browser.spec.mjs'));
-assert.ok(pkg.scripts['test:v117:no-browser'].includes('v117-no-browser-suite.mjs'));
-assert.ok(pkg.scripts['test:v117'].includes('test:v117:no-browser'));
+assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
+assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
 assert.ok(ciBrowser.includes('npm run test:browser:source-packet-builder'), 'browser CI must include source packet builder browser QA');
 assert.ok(ciNoBrowser.includes('tests/source-packet-builder-browser-qa-check.mjs'), 'no-browser CI must include static builder browser QA guard');
-assert.ok(ciNoBrowser.includes('tests/v117-no-browser-suite.mjs'), 'syntax gate must include v117 suite');
+assert.ok(ciNoBrowser.includes('tests/version-suite-registry-check.mjs'), 'syntax gate must include v117 suite');
 
 console.log('Source packet builder browser QA checks passed.');
 process.exit(0);

@@ -1,6 +1,6 @@
 # Public Demo Operator Guide
 
-## v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation
+## v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -39,4 +39,4 @@ Show that the research engine turns a topic into a structured, evidence-aware st
 Do not publish the public demo package if no-browser CI, browser QA, privacy export, hosted-demo evidence review, public-claim alignment, or repo hygiene checks fail.
 
 
-Evidence manifest continuity: v1.1.0-alpha.4 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.5 preserves the single final metadata hosted-demo evidence manifest gate.

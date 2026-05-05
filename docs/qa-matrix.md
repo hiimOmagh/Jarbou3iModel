@@ -1,6 +1,6 @@
 # QA Matrix
 
-## v1.1.0-alpha.2 — Migration + Privacy Fixture Registry Consolidation
+## v1.1.0-alpha.2 — Version Suite Registry + Package Script Compression
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -46,7 +46,7 @@ The public demo remains local/manual/private by default in v1.0.25. No live scra
 
 - v1.0.25 — Public Demo Release Lock is the active public-demo approval gate.
 
-- v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation: audit-only fixture registry, no deletion, no runtime behavior change.
+- v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression: audit-only fixture registry, no deletion, no runtime behavior change.
 
 
-Evidence manifest continuity: v1.1.0-alpha.4 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.5 preserves the single final metadata hosted-demo evidence manifest gate.

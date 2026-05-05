@@ -2,14 +2,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { fixturePathExists } from './fixture-registry-loader.mjs';
+import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.1.0-alpha.4';
+const CURRENT_VERSION = '1.1.0-alpha.5';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Migration + Privacy Fixture Registry Consolidation';
+const CURRENT_TITLE = 'Version Suite Registry + Package Script Compression';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -21,7 +22,7 @@ const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const manifest = read('RELEASE_MANIFEST.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const historicalDoc = read('docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md');
+const historicalDoc = readReleaseDoc('docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md');
 const migrations = read('src/research/migrations.js');
 
 assert.equal(pkg.version, CURRENT_VERSION, 'package.json must identify current release');
@@ -96,18 +97,18 @@ for (const required of [
   'fixtures/privacy/browser-generated-export-v1.0.23.json',
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
   'tests/ci-result-review-browser-evidence-audit-check.mjs',
-  'tests/v123-no-browser-suite.mjs',
-  'fixtures/migrations/v1.1.0-alpha.4-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.4.json',
+  'tests/version-suite-registry-check.mjs',
+  'fixtures/migrations/v1.1.0-alpha.5-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json',
   'docs/v1.0.25-public-demo-release-lock.md',
   'tests/public-demo-release-lock-check.mjs',
-  'tests/v124-no-browser-suite.mjs'
+  'tests/version-suite-registry-check.mjs'
 ]) {
-  assert.ok(fixturePathExists(required), `required CI/hygiene artifact missing: ${required}`);
+  assert.ok(fixturePathExists(required) || releaseDocExists(required), `required CI/hygiene artifact missing: ${required}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.4'"), 'migration target must be current release');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.4'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.4');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.5'"), 'migration target must be current release');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.5'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.5');
 for (const corpus of [manifest, roadmap, qaMatrix, historicalDoc]) {
   assert.ok(corpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');
   assert.ok(corpus.includes(HISTORICAL_TITLE), 'release corpus must preserve v1.0.23 audit title');
@@ -122,7 +123,7 @@ assert.equal(sample.release_candidate.policy.production_oauth_allowed, false, 'p
 assert.equal(sample.release_candidate.policy.new_live_connectors_allowed, false, 'new live connectors must remain blocked');
 assert.equal(sample.release_candidate.policy.breaking_changes_allowed, false, 'breaking changes must remain blocked');
 
-for (const file of ['tests/ci-result-review-browser-evidence-audit-check.mjs', 'tests/v123-no-browser-suite.mjs']) {
+for (const file of ['tests/ci-result-review-browser-evidence-audit-check.mjs', 'tests/version-suite-registry-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax check failed`);
 }

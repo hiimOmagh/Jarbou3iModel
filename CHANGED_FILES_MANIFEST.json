@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.4",
-  "release_title": "v1.1.0-alpha.4 \u2014 Migration + Privacy Fixture Registry Consolidation",
+  "version": "1.1.0-alpha.5",
+  "release_title": "v1.1.0-alpha.5 \u2014 Version Suite Registry + Package Script Compression",
   "changed_files": [
     "package.json",
     "package-lock.json",
@@ -17,7 +17,7 @@
     "tests/privacy-release-gate-check.mjs",
     "tests/repository-consolidation-audit-check.mjs",
     "scripts/ci-no-browser.sh",
-    "docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md",
+    "docs/v1.1.0-alpha.5-migration-privacy-fixture-registry-consolidation.md",
     "assets/jarbou3i-mascot.png"
   ],
   "deleted_files": [

@@ -1,6 +1,6 @@
 {
   "version": "1.1.0-alpha.2",
-  "release": "v1.1.0-alpha.2 — Migration + Privacy Fixture Registry Consolidation",
+  "release": "v1.1.0-alpha.2 — Version Suite Registry + Package Script Compression",
   "base": "v1.0.30 public-demo visual-freeze state",
   "patch_type": "changed-files-only",
   "artifact": "jarbou3i-research-engine-v1.1.0-alpha.2-migration-privacy-fixture-registry-consolidation-patch.zip",

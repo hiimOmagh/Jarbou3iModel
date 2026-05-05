@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
+import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const repoRoot = process.cwd();
 const exists = (relativePath) => fs.existsSync(path.join(repoRoot, relativePath));
@@ -157,7 +158,8 @@ const expectedReleaseDocs = [
   'docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md',
   'docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md',
   'docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md',
-  'docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md'
+  'docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md',
+  'docs/v1.1.0-alpha.5-version-suite-registry-package-script-compression.md'
 ];
 
 const actualReleaseDocs = [...allPaths]
@@ -165,11 +167,15 @@ const actualReleaseDocs = [...allPaths]
   .sort();
 
 for (const expected of expectedReleaseDocs) {
-  if (!allPaths.has(expected)) failures.push(`RESTORE ${expected} — expected versioned release document missing`);
+  if (!releaseDocExists(expected)) failures.push(`RESTORE ${expected} — expected release-history entry missing`);
 }
 
 const unexpectedReleaseDocs = actualReleaseDocs.filter((file) => !expectedReleaseDocs.includes(file));
-for (const file of unexpectedReleaseDocs) failures.push(`REVIEW ${file} — unexpected versioned release document`);
+for (const file of unexpectedReleaseDocs) failures.push(`REVIEW ${file} — unexpected standalone versioned release document`);
+
+if (actualReleaseDocs.length !== 0) {
+  failures.push(`MERGE ${actualReleaseDocs.length} standalone versioned release docs into docs/release-history.md`);
+}
 
 if (failures.length) {
   console.error('Repository file hygiene check failed. Required actions:');
