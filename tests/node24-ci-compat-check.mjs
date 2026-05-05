@@ -2,8 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
+import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const read = (file) => fs.readFileSync(file, 'utf8');
+const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
 const pkg = json('package.json');
@@ -17,9 +18,9 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const node24Doc = readReleaseDoc('docs/v1.0.21-node-24-ci-compatibility.md');
 
-assert.equal(pkg.version, '1.1.0-alpha.5', 'package.json must identify v1.1.0-alpha.5');
-assert.equal(lock.version, '1.1.0-alpha.5', 'package-lock root version must identify v1.1.0-alpha.5');
-assert.equal(lock.packages[''].version, '1.1.0-alpha.5', 'package-lock package root must identify v1.1.0-alpha.5');
+assert.equal(pkg.version, '1.1.0-alpha.6', 'package.json must identify v1.1.0-alpha.6');
+assert.equal(lock.version, '1.1.0-alpha.6', 'package-lock root version must identify v1.1.0-alpha.6');
+assert.equal(lock.packages[''].version, '1.1.0-alpha.6', 'package-lock package root must identify v1.1.0-alpha.6');
 
 for (const forbidden of [
   'actions/checkout@v4',
@@ -60,7 +61,7 @@ assert.ok(ciNoBrowser.includes('run_node tests/version-suite-registry-check.mjs'
 assert.ok(ciNoBrowser.includes('run_node --check tests/version-suite-registry-check.mjs'), 'no-browser CI must syntax-check version-suite registry');
 
 for (const text of [releaseNotes, changelog, manifest, roadmap, qaMatrix]) {
-  assert.ok(text.includes('v1.1.0-alpha.5'), 'release documentation must mention v1.1.0-alpha.5');
+  assert.ok(text.includes('v1.1.0-alpha.6'), 'release documentation must mention v1.1.0-alpha.6');
   assert.ok(text.includes('Node 24'), 'release documentation must mention Node 24');
 }
 assert.ok(node24Doc.includes('v1.0.21'), 'retained Node 24 compatibility doc must keep its original release identity');

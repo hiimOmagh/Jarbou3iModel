@@ -2,15 +2,16 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { fixturePathExists } from './fixture-registry-loader.mjs';
-import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
+import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
+import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const read = (file) => fs.readFileSync(file, 'utf8');
+const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.1.0-alpha.5';
+const CURRENT_VERSION = '1.1.0-alpha.6';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Version Suite Registry + Package Script Compression';
+const CURRENT_TITLE = 'Root Manifest + Release Artifact Consolidation';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -98,8 +99,8 @@ for (const required of [
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
   'tests/ci-result-review-browser-evidence-audit-check.mjs',
   'tests/version-suite-registry-check.mjs',
-  'fixtures/migrations/v1.1.0-alpha.5-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json',
+  'fixtures/migrations/v1.1.0-alpha.6-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json',
   'docs/v1.0.25-public-demo-release-lock.md',
   'tests/public-demo-release-lock-check.mjs',
   'tests/version-suite-registry-check.mjs'
@@ -107,12 +108,11 @@ for (const required of [
   assert.ok(fixturePathExists(required) || releaseDocExists(required), `required CI/hygiene artifact missing: ${required}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.5'"), 'migration target must be current release');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.5'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.5');
-for (const corpus of [manifest, roadmap, qaMatrix, historicalDoc]) {
-  assert.ok(corpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');
-  assert.ok(corpus.includes(HISTORICAL_TITLE), 'release corpus must preserve v1.0.23 audit title');
-}
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.6'"), 'migration target must be current release');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.6'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.6');
+const releaseCorpus = [manifest, roadmap, qaMatrix, releaseHistory(), historicalDoc].join('\n');
+assert.ok(releaseCorpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');
+assert.ok(releaseCorpus.includes(HISTORICAL_TITLE), 'release corpus must preserve v1.0.23 audit title');
 
 assert.equal(sample.provider_config.allow_live, false, 'manual/private provider boundary must remain default');
 assert.equal(sample.provider_config.remember_key, false, 'API keys must not be remembered by default');

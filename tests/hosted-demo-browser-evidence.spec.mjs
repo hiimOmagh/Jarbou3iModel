@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.1.0-alpha.5';
+const VERSION = '1.1.0-alpha.6';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const EXPECTED_CAPTURE_NAMES = Object.freeze([
@@ -147,7 +147,7 @@ async function assertHostedDemoReady(page) {
   await expect(page.locator('#hostedDemoEvidenceReviewPanel')).toBeVisible();
 }
 
-test.describe('v1.1.0-alpha.5 hosted demo smoke/evidence manifest capture', () => {
+test.describe('v1.1.0-alpha.6 hosted demo smoke/evidence manifest capture', () => {
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }) => {
     const captures = [];
 

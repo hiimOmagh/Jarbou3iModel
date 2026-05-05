@@ -1,36 +1,12 @@
-## v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression
+## v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
 
-Audit-only repository reduction gate. Adds a machine-readable fixture registry and consolidation classifier for active files, security gates, migration/privacy fixtures, historical version-suite wrappers, release docs, and generated artifacts. No files are deleted and no runtime/provider/OAuth/backend/source/storage behavior changes are introduced.
+Cleanup-only repository reduction gate. Consolidates root-level release and evidence artifacts into `docs/current-release.md`, `docs/release-and-evidence.md`, and `MANIFEST.json`. No runtime/provider/OAuth/backend/source/storage behavior changes are introduced.
 
-## v1.0.25 — Public Demo Release Lock
+## Historical release history
 
-## v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix
+Detailed historical release notes are consolidated in `docs/release-history.md`.
 
-Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
+Evidence manifest continuity: v1.1.0-alpha.6 preserves the single final metadata hosted-demo evidence manifest gate.
 
-
-- Promoted current release metadata to v1.0.25.
-- Added `public_demo_release_lock` workflow metadata.
-- Added v1.0.25 migration and privacy export fixtures.
-- Added public-demo release-lock guard and v1.0.25 no-browser wrapper.
-- Made release approval explicitly depend on green CI, reviewed hosted-demo evidence, current public claims, and release archive hygiene.
-- Preserved Node 24 CI, Playwright install discipline, browser evidence review, Public Demo manual/private boundaries, and manual/private runtime boundaries.
-
-## v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
-
-- Promoted current release metadata to v1.0.24.
-- Added v1.0.24 migration and privacy export fixtures.
-- Added repo hygiene/stale documentation guard and v1.0.24 no-browser wrapper.
-- Corrected stale current-state documentation in AI integration, architecture, and privacy audit docs.
-- Corrected the historical v0.19 privacy-audit document heading mismatch.
-- Preserved Node 24 CI, Playwright install discipline, browser evidence review, Public Demo manual/private boundaries, and manual/private runtime boundaries.
-
-## v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
-
-- Added CI result review and browser evidence artifact audit guard.
-- Added v1.0.23 no-browser suite wrapper.
-- Added v1.0.23 migration and privacy fixtures.
-- Preserved runtime capability boundaries while verifying GitHub Actions state and browser evidence upload discipline.
-
-
-Evidence manifest continuity: v1.1.0-alpha.5 preserves the single final metadata hosted-demo evidence manifest gate.
+Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v6, npm ci --no-audit --no-fund --ignore-scripts, and PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser.
+Public Demo boundaries remain preserved.

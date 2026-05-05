@@ -4,12 +4,13 @@ import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
+import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.5';
-const TITLE = 'Version Suite Registry + Package Script Compression';
+const VERSION = '1.1.0-alpha.6';
+const TITLE = 'Root Manifest + Release Artifact Consolidation';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.5-version-suite-registry-package-script-compression-patch.zip';
-const read = (file) => fs.readFileSync(file, 'utf8');
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip';
+const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || releaseDocExists(file);
 
@@ -17,8 +18,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.5-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.6-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json');
 const spec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -53,7 +54,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.1.0-alpha.5'",
+  "const VERSION = '1.1.0-alpha.6'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',
@@ -94,18 +95,18 @@ const review = hosted.buildHostedDemoEvidenceReview({}, { version:VERSION, now:'
 assert.equal(review.metadata_manifest_required, true);
 assert.ok(review.review_items.some((item) => item.artifact_id === 'complete_capture_manifest'));
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.5'"));
-assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.5'"), 'migration order must preserve v1.0.28 and append v1.1.0-alpha.5');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.6'"));
+assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.6'"), 'migration order must preserve v1.0.28 and append v1.1.0-alpha.6');
 assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration defaults must include evidence manifest metadata requirement');
 
 for (const file of [
   'docs/v1.0.27-release-provenance-ledger-gate.md',
   'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
-  'docs/v1.1.0-alpha.5-version-suite-registry-package-script-compression.md',
+  'docs/v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md',
   'fixtures/migrations/v1.0.28-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.5-packet.json',
+  'fixtures/migrations/v1.1.0-alpha.6-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.28.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.5.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json',
   'tests/hosted-demo-evidence-manifest-check.mjs',
   'tests/version-suite-registry-check.mjs'
 ]) assert.ok(exists(file), `missing ${file}`);
@@ -122,10 +123,10 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  readReleaseDoc('docs/v1.1.0-alpha.5-version-suite-registry-package-script-compression.md')
+  readReleaseDoc('docs/v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.5') || corpus.includes('1.1.0-alpha.5'), 'release corpus must mention v1.1.0-alpha.5');
-  assert.ok(/Migration \+ Privacy Fixture Registry Consolidation|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
+  assert.ok(corpus.includes('v1.1.0-alpha.6') || corpus.includes('1.1.0-alpha.6'), 'release corpus must mention v1.1.0-alpha.6');
+  assert.ok(/Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
 }
 
 for (const file of ['tests/hosted-demo-browser-evidence.spec.mjs', 'tests/hosted-demo-evidence-manifest-check.mjs', 'tests/version-suite-registry-check.mjs', 'src/research/hosted-demo-verification.js']) {

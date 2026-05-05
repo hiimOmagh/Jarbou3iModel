@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.1.0-alpha.5",
-  "release_title": "v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression",
+  "version_suite_registry_version": "1.1.0-alpha.6",
+  "release_title": "v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

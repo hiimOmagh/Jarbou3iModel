@@ -563,7 +563,7 @@ npm run test:browser:provider
 
 <!-- release-file:v0.23.0-beta-advanced-quality-gate-v3.md -->
 
-# v1.0.0 — Advanced Quality Gate v3
+# v0.23.0-beta — Advanced Quality Gate v3
 
 ## Purpose
 
@@ -622,7 +622,7 @@ Quality Gate v3 scores:
 
 <!-- release-file:v0.24.0-beta-export-pack-v2.md -->
 
-# v1.0.0 — Export Pack v2
+# v0.24.0-beta — Export Pack v2
 
 ## Purpose
 
@@ -732,7 +732,7 @@ npm run test:browser:provider
 
 <!-- release-file:v0.25.0-beta-real-backend-provider-hardening.md -->
 
-# v1.0.0 — Real Backend Provider Hardening
+# v0.25.0-beta — Real Backend Provider Hardening
 
 This release hardens the optional hosted backend proxy. It does not add real OAuth, real source fetching, cloud accounts, or mandatory backend dependency.
 
@@ -789,7 +789,7 @@ AUDIT_LOGS_ENABLED         true enables metadata-only audit logs
 
 <!-- release-file:v0.26.0-beta-real-source-connector-prototype.md -->
 
-# v1.0.0 — Real Source Connector Prototype
+# v0.26.0-beta — Real Source Connector Prototype
 
 ## Purpose
 
@@ -867,7 +867,7 @@ npm run test:v026:no-browser
 
 <!-- release-file:v0.27.0-beta-web-search-provider-abstraction.md -->
 
-# v1.0.0 — Web Search Provider Abstraction
+# v0.27.0-beta — Web Search Provider Abstraction
 
 ## Purpose
 
@@ -968,7 +968,7 @@ npm run test:v027
 
 <!-- release-file:v0.28.0-beta-real-portable-oauth-spike.md -->
 
-# v1.0.0 — Real Portable OAuth Spike
+# v0.28.0-beta — Real Portable OAuth Spike
 
 ## Purpose
 
@@ -1062,7 +1062,7 @@ authorization header
 
 <!-- release-file:v0.29.0-rc.1-release-candidate-freeze.md -->
 
-# v1.0.0 — Release Candidate Freeze
+# v0.29.0-rc.1 — Release Candidate Freeze
 
 ## Purpose
 
@@ -2882,7 +2882,7 @@ This release is invalid if it enables any runtime capability, exposes a planned 
 
 <!-- release-file:v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md -->
 
-# v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression
+# v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
 
 ## Scope
 
@@ -2918,7 +2918,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 ## Next safe cleanup
 
-v1.1.0-alpha.5 should consolidate version-suite wrappers into a registry-driven no-browser suite.
+v1.1.0-alpha.6 should consolidate version-suite wrappers into a registry-driven no-browser suite.
 
 This fixture registry consolidation preserves coverage while reducing fixture sprawl.
 
@@ -2935,9 +2935,9 @@ MERGE_TO_REGISTRY is now executed for migration and privacy fixtures. No files a
 <!-- /release-file:v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md -->
 
 
-<!-- release-file:v1.1.0-alpha.5-version-suite-registry-package-script-compression.md -->
+<!-- release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->
 
-# v1.1.0-alpha.5 — Version Suite Registry + Package Script Compression
+# v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
 
 ## Release type
 
@@ -3011,7 +3011,7 @@ Fixture registry consolidation retains the unused oversized asset cleanup from a
 No files are deleted from runtime behavior; historical documents are merged into this release-history registry.
 
 Retention class continuity: MERGE_TO_REGISTRY remains the policy for historical wrappers, release docs, migration fixtures, and privacy fixtures.
-<!-- /release-file:v1.1.0-alpha.5-version-suite-registry-package-script-compression.md -->
+<!-- /release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->
 
 
 <!-- release-file:visual-qa.md -->
@@ -3071,3 +3071,39 @@ Complete this before a public release.
 - [ ] The 2048 px source image is not loaded by the runtime page
 
 <!-- /release-file:visual-qa.md -->
+
+<!-- release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->
+# v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
+
+Cleanup-only repository reduction gate. Consolidates root-level release/evidence artifacts into canonical docs and `MANIFEST.json` while preserving release provenance, hosted-demo evidence rules, and public-demo honesty boundaries.
+
+## What changed
+
+- Consolidated `BROWSER_EVIDENCE.md` into `docs/release-and-evidence.md`.
+- Consolidated `HOSTED_DEMO_VERIFICATION.md` into `docs/release-and-evidence.md`.
+- Consolidated `RELEASE_MANIFEST.md` and `RELEASE_NOTES.md` into `docs/current-release.md` and `docs/release-and-evidence.md`.
+- Consolidated `MANIFEST.md`, `CHANGED_FILES_MANIFEST.json`, and `DELETE_FILES_MANIFEST.json` into `MANIFEST.json`.
+- Added `tests/release-artifacts-loader.mjs` and `tests/root-release-artifact-consolidation-check.mjs`.
+- Removed stale patch-application cleanup script from `scripts/`.
+
+## What did not change
+
+- No runtime behavior change.
+- No provider behavior change.
+- No OAuth behavior change.
+- No backend/source/storage behavior change.
+- No live scraping.
+- No automated source verification.
+- No public-demo capability expansion.
+
+## Validation
+
+- `npm run test:root-release-artifacts`
+- `npm run test:current:no-browser`
+- `npm run test:ci:no-browser`
+- `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`
+
+## Disproven if
+
+This release is invalid if any consolidated root artifact is restored as a full standalone release file, if public-demo evidence rules are weakened, or if provider/OAuth/backend/source/storage behavior changes.
+<!-- /release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->

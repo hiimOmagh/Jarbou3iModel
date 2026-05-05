@@ -64,6 +64,7 @@ run_node tests/expansion-lane-acceptance-matrix-check.mjs
 run_node tests/repository-consolidation-audit-check.mjs
 run_node tests/fixture-registry-consolidation-check.mjs
 run_node tests/version-suite-registry-check.mjs
+run_node tests/root-release-artifact-consolidation-check.mjs
 
 echo "CI no-browser gate: provider/OAuth/backend/source"
 run_node tests/provider-identity-check.mjs
@@ -128,6 +129,8 @@ run_node --check tests/fixture-registry-loader.mjs
 run_node --check tests/fixture-registry-consolidation-check.mjs
 run_node --check tests/version-suite-registry-check.mjs
 run_node --check tests/current-no-browser-suite.mjs
+run_node --check tests/release-artifacts-loader.mjs
+run_node --check tests/root-release-artifact-consolidation-check.mjs
 run_node --check tests/module-type-warning-fix-check.mjs
 run_node --check tests/ci-workflow-install-check.mjs
 run_node --check tests/lockfile-public-registry-check.mjs
