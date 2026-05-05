@@ -158,3 +158,6 @@ No generated artifact, orphan `XX*` temporary file, ZIP archive, test report, or
 - v0.25.0-beta — Real Backend Provider Hardening
 - v0.24.0-beta — Export Pack v2
 - v0.23.0-beta — Advanced Quality Gate v3
+
+
+Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.

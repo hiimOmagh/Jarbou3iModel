@@ -47,3 +47,6 @@ The public demo remains local/manual/private by default in v1.0.25. No live scra
 - v1.0.25 — Public Demo Release Lock is the active public-demo approval gate.
 
 - v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry: audit-only retention registry, no deletion, no runtime behavior change.
+
+
+Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.

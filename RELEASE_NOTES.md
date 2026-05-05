@@ -56,3 +56,6 @@ Do not approve v1.0.25 from screenshots, a local ZIP, or a passing partial suite
 ## v1.1.0-alpha.2 evidence-manifest hardening
 
 The hosted-demo evidence artifact must now contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, and horizontal-overflow sanity. Partial per-test metadata overwrites are blocked by the v1.1.0-alpha.2 no-browser gate.
+
+
+Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.

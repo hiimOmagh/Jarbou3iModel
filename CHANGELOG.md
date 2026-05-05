@@ -31,3 +31,6 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 - Added v1.0.23 no-browser suite wrapper.
 - Added v1.0.23 migration and privacy fixtures.
 - Preserved runtime capability boundaries while verifying GitHub Actions state and browser evidence upload discipline.
+
+
+Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.

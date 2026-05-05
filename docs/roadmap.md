@@ -39,3 +39,9 @@ Node 24 remains the GitHub Actions runtime baseline for v1.0.25.
 ### `v1.1.0-alpha.2 — Repository Consolidation Audit + Retention Registry`
 
 Purpose: changed-files-only patch apply verification before capability expansion.
+
+
+Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.
+
+
+Release approval reminder: screenshots alone and ZIP existence alone are insufficient for public-demo approval.

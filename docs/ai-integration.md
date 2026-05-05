@@ -1,6 +1,6 @@
 # AI Integration Policy
 
-## v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix
+## v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -9,7 +9,7 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 This guide applies to v1.0.25 — Public Demo Release Lock.
 
-## Current state: v1.1.0-alpha.2
+## Current state: v1.1.0-alpha.3
 
 The research engine supports four provider modes:
 
@@ -51,3 +51,6 @@ Before adding a real portable account provider:
 - Token refresh must be explicit and auditable.
 - Billing owner and spending control must be shown clearly.
 - Provider terms, privacy, and reliability must be reviewed.
+
+
+Evidence manifest continuity: v1.1.0-alpha.3 preserves the single final metadata hosted-demo evidence manifest gate.
