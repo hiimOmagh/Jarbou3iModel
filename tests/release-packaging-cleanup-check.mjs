@@ -4,8 +4,8 @@ import fs from 'node:fs';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.1.0-alpha.2';
-const RELEASE = 'v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix';
+const VERSION = '1.1.0-alpha.3';
+const RELEASE = 'v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry';
 const pkg = json('package.json');
 const manifest = read('RELEASE_MANIFEST.md');
 const releaseIgnore = read('.releaseignore');
@@ -15,8 +15,8 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.2-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.2.json');
+const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.3-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json');
 
 assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes('release evidence'));
@@ -49,9 +49,9 @@ for (const file of [
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/v122-no-browser-suite.mjs',
   'fixtures/migrations/v1.0.21-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.2-packet.json',
+  'fixtures/migrations/v1.1.0-alpha.3-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.21.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.2.json'
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json'
 ]) {
   assert.ok(fs.existsSync(file), `missing release cleanup file: ${file}`);
 }
@@ -84,7 +84,7 @@ const expectedDocHeadings = new Map([
   ['docs/v1.0.26-release-apply-integrity-gate.md', '# v1.0.26 — Release Apply Integrity Gate'],
   ['docs/v1.0.27-release-provenance-ledger-gate.md', '# v1.0.27 — Release Provenance Ledger Gate'],
   ['docs/v1.0.28-hosted-demo-evidence-manifest-gate.md', '# v1.0.28 — Hosted Demo Evidence Manifest Gate'],
-  ['docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md', '# v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix']
+  ['docs/v1.1.0-alpha.3-repository-consolidation-audit-retention-registry.md', '# v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
   assert.equal(read(file).split('\n')[0], heading, `${file} heading drifted`);
@@ -129,7 +129,7 @@ for (const token of [
 for (const token of ['node_modules/','playwright-report/','test-results/','*.zip','backend/.dev.vars']) {
   assert.ok(releaseIgnore.includes(token), `.releaseignore missing ${token}`);
 }
-for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.1.0-alpha.2`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
+for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.1.0-alpha.3`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
   assert.ok(manifest.includes(token), `release manifest missing ${token}`);
 }
 for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:ci:node24','test:v121:no-browser','test:v121','test:release:evidence','test:v122:no-browser','test:v122']) {

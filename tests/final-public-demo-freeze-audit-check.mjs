@@ -3,12 +3,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.2';
+const VERSION = '1.1.0-alpha.3';
 const BASE_VERSION = '1.0.30';
-const TITLE = 'Expansion Lane Acceptance Criteria Matrix';
+const TITLE = 'Repository Consolidation Audit + Retention Registry';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const LOCK_RELEASE = `v${VERSION} — Public Demo Release Lock`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip';
 const repoRoot = process.cwd();
 const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -18,8 +18,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.2-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.2.json');
+const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.3-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const publicDemo = read('src/research/public-demo-readiness.js');
@@ -28,7 +28,7 @@ const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const ciBrowser = read('scripts/ci-browser.sh');
 const browserA11y = read('tests/a11y.spec.js');
 const smoke = read('tests/smoke.spec.js');
-const releaseDoc = read('docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md');
+const releaseDoc = read('docs/v1.1.0-alpha.3-repository-consolidation-audit-retention-registry.md');
 
 for (const [actual, label] of [[pkg.version,'package.json'],[lock.version,'package-lock root'],[lock.packages[''].version,'package-lock package root'],[schema.properties.workflow_version.const,'schema workflow_version'],[sample.workflow_version,'sample workflow'],[migrationFixture.workflow_version,'migration fixture'],[privacyFixture.workflow_version,'privacy fixture']]) assert.equal(actual, VERSION, `${label} must identify v${VERSION}`);
 
@@ -61,7 +61,7 @@ assert.equal(schema.properties.release_apply_integrity.properties.base_version.c
 assert.equal(schema.properties.release_apply_integrity.properties.artifact_name.const, ARTIFACT);
 assert.equal(schema.properties.release_provenance_ledger.properties.base_version.const, BASE_VERSION);
 assert.equal(schema.properties.release_provenance_ledger.properties.artifact_name.const, ARTIFACT);
-assert.ok(index.includes('v1.1.0-alpha.2 · Expansion Lane Acceptance Criteria Matrix'), 'index badge must expose final freeze audit identity');
+assert.ok(index.includes('v1.1.0-alpha.3 · Repository Consolidation Audit + Retention Registry'), 'index badge must expose final freeze audit identity');
 assert.ok(index.includes('id="loadSampleBtn"'), 'load sample primary action must remain in DOM');
 assert.ok(browserA11y.includes("page.locator('#loadSampleBtn')"), 'runtime a11y smoke must target loadSampleBtn visibility');
 assert.ok(browserA11y.includes("await page.locator('#loadSampleBtn').click()"), 'runtime a11y smoke must click loadSampleBtn');
@@ -72,14 +72,14 @@ for (const text of [index, publicDemo, releaseDoc, read('README.md'), read('RELE
   assert.ok(/No real OAuth|production OAuth|real OAuth/i.test(text), 'public corpus must keep OAuth boundary');
   assert.ok(/screenshots.*alone|screenshots, hosted evidence, and ZIPs|ZIP existence alone|ZIP archive alone/i.test(text), 'public corpus must reject screenshot/ZIP-only approval');
 }
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.2'"), 'migration target must be v1.1.0-alpha.2');
-assert.ok(migrations.includes("'1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0-alpha.2');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.3'"), 'migration target must be v1.1.0-alpha.3');
+assert.ok(migrations.includes("'1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0-alpha.3');
 assert.ok(engine.includes("baseVersion:'1.0.30'"), 'engine apply/provenance reports must use v1.0.30 freeze baseline');
 assert.ok(ciNoBrowser.includes('tests/final-public-demo-freeze-audit-check.mjs'), 'no-browser CI must run final freeze audit');
 assert.ok(ciNoBrowser.includes('run_node --check tests/final-public-demo-freeze-audit-check.mjs'), 'no-browser syntax gate must cover final freeze audit');
 assert.ok(ciNoBrowser.includes('run_node --check tests/v129-no-browser-suite.mjs'), 'no-browser syntax gate must cover v129 wrapper');
 assert.ok(ciBrowser.includes('npm run test:browser:evidence'), 'browser CI must preserve hosted evidence capture');
-for (const file of ['fixtures/migrations/v1.0.28-packet.json','fixtures/privacy/browser-generated-export-v1.0.28.json','fixtures/migrations/v1.1.0-alpha.2-packet.json','fixtures/privacy/browser-generated-export-v1.1.0-alpha.2.json','docs/v1.0.28-hosted-demo-evidence-manifest-gate.md','docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md','tests/v129-no-browser-suite.mjs']) assert.ok(exists(file), `missing required baseline/current artifact: ${file}`);
+for (const file of ['fixtures/migrations/v1.0.28-packet.json','fixtures/privacy/browser-generated-export-v1.0.28.json','fixtures/migrations/v1.1.0-alpha.3-packet.json','fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json','docs/v1.0.28-hosted-demo-evidence-manifest-gate.md','docs/v1.1.0-alpha.3-repository-consolidation-audit-retention-registry.md','tests/v129-no-browser-suite.mjs']) assert.ok(exists(file), `missing required baseline/current artifact: ${file}`);
 for (const file of ['tests/final-public-demo-freeze-audit-check.mjs','tests/v129-no-browser-suite.mjs']) { const syntax = spawnSync(process.execPath, ['--check', file], {encoding:'utf8'}); assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax failed`); }
 console.log('Final public demo freeze audit checks passed.');
 process.exit(0);

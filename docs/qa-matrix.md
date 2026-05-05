@@ -1,6 +1,6 @@
 # QA Matrix
 
-## v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix
+## v1.1.0-alpha.2 — Repository Consolidation Audit + Retention Registry
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -45,3 +45,5 @@ The public demo remains local/manual/private by default in v1.0.25. No live scra
 ## Current release
 
 - v1.0.25 — Public Demo Release Lock is the active public-demo approval gate.
+
+- v1.1.0-alpha.3 — Repository Consolidation Audit + Retention Registry: audit-only retention registry, no deletion, no runtime behavior change.

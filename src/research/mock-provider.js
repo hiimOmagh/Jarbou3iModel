@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine mock provider v1.1.0-alpha.2. */
+/* Jarbou3i Research Engine mock provider v1.1.0-alpha.3. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};

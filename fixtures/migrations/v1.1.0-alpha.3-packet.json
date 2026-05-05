@@ -2072,7 +2072,7 @@
     "release_title": "v1.1.0-alpha.3 \u2014 Repository Consolidation Audit + Retention Registry",
     "release_type": "patch",
     "runtime_capability_change": false,
-    "summary": "Completes a mobile header geometry lock over v1.0.29, reconciling version identity, public-demo wording, browser evidence discipline, primary-action visibility, privacy/export safety, and provider/OAuth/source honesty without enabling new runtime capabilities.",
+    "summary": "Completes a mobile header geometry lock over v1.0.30, reconciling version identity, public-demo wording, browser evidence discipline, primary-action visibility, privacy/export safety, and provider/OAuth/source honesty without enabling new runtime capabilities.",
     "notable_changes": [
       "Converted hosted-demo evidence metadata from per-test overwrite risk to a single complete capture manifest.",
       "Added viewport/image dimension and horizontal-overflow sanity metadata for every required screenshot.",
@@ -2844,7 +2844,7 @@
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
     "target_version": "1.1.0-alpha.3",
-    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.3-expansion-lane-acceptance-criteria-matrix-patch.zip",
+    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip",
     "artifact_sha256": "computed_after_packaging",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
@@ -2937,7 +2937,7 @@
       }
     ],
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.3-expansion-lane-acceptance-criteria-matrix-patch.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:v110a1:no-browser",
       "npm run test:ci:no-browser",
@@ -2959,7 +2959,7 @@
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
     "target_version": "1.1.0-alpha.3",
-    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.3-expansion-lane-acceptance-criteria-matrix-patch.zip",
+    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip",
     "artifact_sha256": "computed_after_packaging",
     "changed_files_manifest_required": true,
     "release_apply_integrity_required": true,
@@ -2979,7 +2979,7 @@
     "fail_count": 0,
     "release_gate": "release_provenance_ledger_pass",
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.3-expansion-lane-acceptance-criteria-matrix-patch.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:v110a1:no-browser",
       "npm run test:ci:no-browser",

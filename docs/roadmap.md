@@ -1,6 +1,6 @@
 # Roadmap
 
-## v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix
+## v1.1.0-alpha.2 — Repository Consolidation Audit + Retention Registry
 
 Current post-freeze alpha gate. Converts the v1.1.0-alpha.1 planning lanes into explicit acceptance criteria, falsifiers, evidence requirements, owners, and blocked-until gates. Implementation remains blocked. No live scraping, production OAuth, live provider execution, backend expansion, source connector expansion, storage expansion, or automated verification is introduced.
 
@@ -8,10 +8,10 @@ Current post-freeze alpha gate. Converts the v1.1.0-alpha.1 planning lanes into 
 
 | Stage | Version | Title | Status |
 |---|---:|---|---|
-| Current alpha | `v1.1.0-alpha.2` | **Expansion Lane Acceptance Criteria Matrix** | Current |
+| Current alpha | `v1.1.0-alpha.2` | **Repository Consolidation Audit + Retention Registry** | Current |
 | Previous alpha | `v1.1.0-alpha.1` | **Post-Freeze Product Expansion Planning Gate** | Completed |
 | Freeze baseline | `v1.0.30` | **Mobile Header Geometry Lock / Final Public Demo Visual Freeze** | Locked |
-| Next implementation candidate | `v1.1.0-alpha.3` | **Selected Lane ADR + Implementation Readiness Gate** | Planned |
+| Next implementation candidate | `v1.1.0-alpha.3` | **Repository Consolidation Audit + Retention Registry** | Planned |
 | Blocked | — | Live scraping, production OAuth, real provider execution, new live connectors, storage expansion | Explicitly blocked |
 
 ## Boundary assertions
@@ -36,6 +36,6 @@ Node 24 remains the GitHub Actions runtime baseline for v1.0.25.
 - Evidence upload is still inspection material, not release approval.
 
 
-### `v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix`
+### `v1.1.0-alpha.2 — Repository Consolidation Audit + Retention Registry`
 
 Purpose: changed-files-only patch apply verification before capability expansion.

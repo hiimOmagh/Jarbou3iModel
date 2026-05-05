@@ -8,29 +8,29 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0-alpha.2';
+const VERSION = '1.1.0-alpha.3';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'Expansion Lane Acceptance Criteria Matrix';
-const DOC = 'docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix-patch.zip';
+const TITLE = 'Repository Consolidation Audit + Retention Registry';
+const DOC = 'docs/v1.1.0-alpha.3-repository-consolidation-audit-retention-registry.md';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
 const releaseDoc = read(DOC);
-const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.2-packet.json');
-const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.2.json');
+const migrationFixture = json('fixtures/migrations/v1.1.0-alpha.3-packet.json');
+const privacyFixture = json('fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
 assert.equal(lock.packages[''].version, VERSION);
-assert.ok(pkg.description.includes('expansion lane acceptance criteria matrix'));
+assert.ok(pkg.description.includes('repository consolidation audit and retention registry'));
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
-assert.ok(index.includes('choose a post-freeze lane'), 'index must keep post-freeze lane workflow visible');
-assert.ok(index.includes('acceptance criteria'), 'index must mention acceptance criteria before implementation');
-assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.2'"));
+assert.ok(index.includes('audit repo retention'), 'index must keep repository audit workflow visible');
+assert.ok(index.includes('prove safe consolidation'), 'index must mention proof before reduction');
+assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.3'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('acceptance_criteria'));
@@ -88,12 +88,12 @@ for (const packet of [migrationFixture, privacyFixture]) {
 
 assert.ok(exists('docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md'), 'alpha.1 baseline doc must remain present');
 assert.ok(exists(DOC), 'alpha.2 release doc must exist');
-assert.ok(releaseDoc.includes('acceptance criteria'));
-assert.ok(releaseDoc.includes('falsifiers'));
+assert.ok(releaseDoc.includes('retention registry'));
+assert.ok(releaseDoc.includes('MERGE_TO_REGISTRY'));
 assert.ok(releaseDoc.includes('No live scraping'));
-assert.ok(releaseDoc.includes('implementation remains blocked'));
+assert.ok(releaseDoc.includes('No files are deleted'));
 
-for (const file of ['src/research/post-freeze-planning-gate.js','tests/expansion-lane-acceptance-matrix-check.mjs','tests/post-freeze-planning-gate-check.mjs','tests/v110a2-no-browser-suite.mjs']) {
+for (const file of ['src/research/post-freeze-planning-gate.js','tests/expansion-lane-acceptance-matrix-check.mjs','tests/post-freeze-planning-gate-check.mjs','tests/v110a3-no-browser-suite.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax failed`);
 }

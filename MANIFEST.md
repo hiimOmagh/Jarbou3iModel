@@ -1,6 +1,6 @@
-# v1.1.0-alpha.2 Expansion Lane Acceptance Criteria Matrix Patch Manifest
+# v1.1.0-alpha.3 Repository Consolidation Audit + Retention Registry Patch Manifest
 
-Artifact: `jarbou3i-research-engine-v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix-patch.zip`
+Artifact: `jarbou3i-research-engine-v1.1.0-alpha.3-repository-consolidation-audit-retention-registry-patch.zip`
 
 Base: `v1.0.30` public-demo visual-freeze state.
 
@@ -24,9 +24,9 @@ Scope: planning gate only; no implementation exposure and no runtime capability 
 - `docs/privacy-audit.md`
 - `docs/qa-matrix.md`
 - `docs/roadmap.md`
-- `docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md`
-- `fixtures/migrations/v1.1.0-alpha.2-packet.json`
-- `fixtures/privacy/browser-generated-export-v1.1.0-alpha.2.json`
+- `docs/v1.1.0-alpha.3-repository-consolidation-audit-retention-registry.md`
+- `fixtures/migrations/v1.1.0-alpha.3-packet.json`
+- `fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json`
 - `fixtures/research/sample-research-workflow-en.json`
 - `index.html`
 - `package-lock.json`
