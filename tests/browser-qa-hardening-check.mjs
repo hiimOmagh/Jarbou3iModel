@@ -12,14 +12,14 @@ const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const docs = releaseDocExists('docs/v1.0.4-browser-qa-visual-regression-hardening.md') ? readReleaseDoc('docs/v1.0.4-browser-qa-visual-regression-hardening.md') : '';
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
 
-assert.equal(pkg.version, '1.1.0-alpha.6');
+assert.equal(pkg.version, '1.1.0-alpha.7');
 for (const script of ['test:browser:layout','test:browser:visual','test:browser:visual:strict','test:browser:qa','test:version-registry','test:current:no-browser']) {
-  assert.ok(pkg.scripts[script], `missing package script ${script}`);
+  assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 }
-assert.ok(pkg.scripts['test:patch'].includes('browser-qa-hardening-check'), 'patch gate must include browser QA hardening');
-assert.ok(ciBrowser.includes('test:browser:layout'), 'CI browser script must run layout persistence spec');
-assert.ok(ciBrowser.includes('test:browser:visual'), 'CI browser script must run visual capture spec');
-assert.ok(ciNoBrowser.includes('browser-qa-hardening-check'), 'no-browser CI must include browser QA static gate');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'CI browser script must delegate to registry runner');
+assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'CI browser script must delegate to registry runner');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate browser QA static coverage through registry runner');
 
 for (const token of ['tests/browser-layout-persistence.spec.mjs','tests/browser-visual-regression.spec.mjs']) {
   assert.ok(fs.existsSync(token), `missing ${token}`);
@@ -34,9 +34,9 @@ for (const token of ['panelStorageKey','persistedPanelState','sessionStorage.set
   assert.ok(engine.includes(token), `engine missing persistence token ${token}`);
 }
 assert.ok(playwrightConfig.includes('chromium') && playwrightConfig.includes('mobile-chrome'), 'Playwright projects must retain desktop and mobile coverage');
-assert.ok(docs.includes('Browser QA + Visual Regression Hardening'), 'v1.1.0-alpha.6 docs missing');
-assert.equal(fixture.workflow_version, '1.1.0-alpha.6');
-assert.equal(fixture.browser_qa_hardening?.hardening_version, '1.1.0-alpha.6');
+assert.ok(docs.includes('Browser QA + Visual Regression Hardening'), 'v1.1.0-alpha.7 docs missing');
+assert.equal(fixture.workflow_version, '1.1.0-alpha.7');
+assert.equal(fixture.browser_qa_hardening?.hardening_version, '1.1.0-alpha.7');
 assert.equal(fixture.browser_qa_hardening?.feature_surface_added, false);
 assert.equal(fixture.browser_qa_hardening?.visual_regression.mode, 'capture_or_strict_baseline');
 

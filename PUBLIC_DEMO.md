@@ -1,6 +1,6 @@
 # Public Demo Operator Guide
 
-## v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
+## v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
 
 This guide preserves the public-demo operating boundary after root release/evidence artifacts were consolidated into the docs layer.
 
@@ -34,4 +34,4 @@ Show that the research engine turns a topic into a structured, evidence-aware st
 
 Do not publish the public demo package if no-browser CI, browser QA, privacy export, hosted-demo evidence review, public-claim alignment, or repo hygiene checks fail.
 
-Evidence manifest continuity: v1.1.0-alpha.6 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.7 preserves the single final metadata hosted-demo evidence manifest gate.

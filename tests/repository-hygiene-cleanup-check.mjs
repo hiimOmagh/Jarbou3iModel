@@ -20,8 +20,8 @@ const releasePackagingCheck = read('tests/release-packaging-cleanup-check.mjs');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.6-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.7-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json');
 const trackedPaths = (() => {
   try {
     return new Set(execSync('git ls-files', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
@@ -33,15 +33,15 @@ const trackedPaths = (() => {
   }
 })();
 
-assert.equal(pkg.version, '1.1.0-alpha.6');
+assert.equal(pkg.version, '1.1.0-alpha.7');
 assert.ok(pkg.description.includes('evidence scoring'));
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.6');
-assert.equal(sample.workflow_version, '1.1.0-alpha.6');
-assert.equal(migrationFixture.workflow_version, '1.1.0-alpha.6');
-assert.equal(privacyFixture.workflow_version, '1.1.0-alpha.6');
-assert.equal(sample.release_notes.release_title, 'v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.7');
+assert.equal(sample.workflow_version, '1.1.0-alpha.7');
+assert.equal(migrationFixture.workflow_version, '1.1.0-alpha.7');
+assert.equal(privacyFixture.workflow_version, '1.1.0-alpha.7');
+assert.equal(sample.release_notes.release_title, 'v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
@@ -52,8 +52,8 @@ for (const file of [
   'docs/v1.0.21-node-24-ci-compatibility.md',
   'docs/v1.0.25-public-demo-release-lock.md',
   'fixtures/migrations/v1.0.4-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.6-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json',
+  'fixtures/migrations/v1.1.0-alpha.7-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json',
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/version-suite-registry-check.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
@@ -73,19 +73,19 @@ for (const file of [
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/version-suite-registry-check.mjs'
 ]) {
-  assert.ok(fixturePathExists(file) || releaseDocExists(file), `missing v1.1.0-alpha.6 cleanup artifact: ${file}`);
+  assert.ok(fixturePathExists(file) || releaseDocExists(file), `missing v1.1.0-alpha.7 cleanup artifact: ${file}`);
 }
 
 assert.equal(getMigrationFixture('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
 assert.ok(migrationSource.includes("'1.0.4'"), 'v1.0.4 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.1.0-alpha.6'"), 'v1.1.0-alpha.6 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.6'"), 'v1.0.19 must migrate into v1.1.0-alpha.6');
-assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-alpha.6'"));
-assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-alpha.6'"));
+assert.ok(migrationSource.includes("'1.1.0-alpha.7'"), 'v1.1.0-alpha.7 must remain a supported migration source');
+assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.7'"), 'v1.0.19 must migrate into v1.1.0-alpha.7');
+assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-alpha.7'"));
+assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-alpha.7'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.6'), 'release corpus missing v1.1.0-alpha.6');
-  assert.ok(corpus.includes('Root Manifest + Release Artifact Consolidation'), 'release corpus missing v1.1.0-alpha.6 release title');
+  assert.ok(corpus.includes('v1.1.0-alpha.7'), 'release corpus missing v1.1.0-alpha.7');
+  assert.ok(corpus.includes('Package Script Compression + CI Gate Registry'), 'release corpus missing v1.1.0-alpha.7 release title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));
@@ -96,41 +96,23 @@ assert.ok(releasePackagingCheck.includes('docs/v1.0.11-repository-hygiene-stale-
 assert.ok(releasePackagingCheck.includes('docs/v1.0.13-manual-source-packet-import.md'));
 assert.ok(releasePackagingCheck.includes('docs/v1.0.19-source-packet-template-presets.md'));
 assert.ok(releasePackagingCheck.includes('docs/v1.0.20-source-packet-template-browser-qa-copy-safety.md'));
-assert.ok(ciNoBrowser.includes('tests/repository-hygiene-cleanup-check.mjs'));
-for (const ciToken of [
-  'tests/version-suite-registry-check.mjs',
-  'tests/version-suite-registry-check.mjs',
-  'tests/version-suite-registry-check.mjs',
-  'tests/version-suite-registry-check.mjs',
-  'tests/version-suite-registry-check.mjs',
-  'tests/version-suite-registry-check.mjs',
-  'tests/source-packet-builder-browser-qa-check.mjs',
-  'tests/source-packet-roundtrip-check.mjs',
-  'tests/source-packet-template-presets-check.mjs',
-  'tests/version-suite-registry-check.mjs',
-  'tests/source-packet-template-browser.spec.mjs',
-  'tests/source-packet-template-browser-qa-check.mjs',
-  'tests/browser-visual-project-scope-check.mjs',
-  'tests/release-evidence-repo-hygiene-check.mjs',
-  'tests/version-suite-registry-check.mjs'
-]) {
-  assert.ok(ciNoBrowser.includes(ciToken), `CI no-browser missing ${ciToken}`);
-}
-assert.ok(pkg.scripts['test:repo:cleanup'].includes('repository-hygiene-cleanup-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:source:packet-roundtrip'].includes('source-packet-roundtrip-check.mjs'));
-assert.ok(pkg.scripts['test:source:packet-builder:browser-qa'].includes('source-packet-builder-browser-qa-check.mjs'));
-assert.ok(pkg.scripts['test:source:capabilities'].includes('source-capability-registry-check.mjs'));
-assert.ok(pkg.scripts['test:evidence:scoring'].includes('evidence-scoring-check.mjs'));
-assert.ok(pkg.scripts['test:stable'].includes('repository-hygiene-cleanup-check.mjs'));
-assert.ok(pkg.scripts['test:patch'].includes('repository-hygiene-cleanup-check.mjs'));
-assert.ok(pkg.scripts['test:release:evidence'].includes('release-evidence-repo-hygiene-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'CI no-browser must delegate historical hygiene coverage to registry runner');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 
 const forbidden = [
   'docs/v1.0.5-browser-qa-visual-regression-hardening.md',

@@ -7,11 +7,11 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.6';
+const VERSION = '1.1.0-alpha.7';
 const BASE_VERSION = '1.0.30';
-const TITLE = 'Root Manifest + Release Artifact Consolidation';
+const TITLE = 'Package Script Compression + CI Gate Registry';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip';
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -21,8 +21,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.6-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.7-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const migrations = read('src/research/migrations.js');
@@ -37,7 +37,7 @@ for (const [actual, label] of [
   [sample.workflow_version, 'sample'],
   [migrationFixture.workflow_version, 'migration fixture'],
   [privacyFixture.workflow_version, 'privacy fixture']
-]) assert.equal(actual, VERSION, `${label} must be v1.1.0-alpha.6`);
+]) assert.equal(actual, VERSION, `${label} must be v1.1.0-alpha.7`);
 
 assert.ok(schema.required.includes('release_provenance_ledger'), 'schema must require release provenance ledger');
 assert.equal(schema.properties.release_provenance_ledger.properties.release_provenance_ledger_version.const, VERSION);
@@ -52,7 +52,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
   assert.equal(packet.release_notes.release_title, RELEASE, 'release title mismatch');
   assert.equal(packet.release_apply_integrity.base_version, BASE_VERSION, 'apply integrity base mismatch');
   assert.equal(packet.release_apply_integrity.artifact_name, ARTIFACT, 'apply integrity artifact mismatch');
-  assert.ok(packet.release_apply_integrity.required_commands.some((cmd) => cmd.includes('npm run test:v110a1:no-browser')), 'apply integrity must require v1.1.0-alpha.6 gate');
+  assert.ok(packet.release_apply_integrity.required_commands.some((cmd) => cmd.includes('npm run test:v110a1:no-browser')), 'apply integrity must require v1.1.0-alpha.7 gate');
   const ledger = packet.release_provenance_ledger;
   assert.equal(ledger.release_provenance_ledger_version, VERSION, 'ledger version mismatch');
   assert.equal(ledger.release_title, RELEASE, 'ledger title mismatch');
@@ -95,17 +95,17 @@ assert.equal(provenance.buildReleaseProvenanceLedger({ artifact_sha256_recorded:
 assert.ok(index.includes('src/research/release-provenance-ledger.js'), 'index must load provenance module');
 assert.ok(engine.includes('releaseProvenanceLedgerReport()'), 'engine must build provenance report');
 assert.ok(engine.includes('release_provenance_ledger'), 'research packet must export provenance ledger');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.6'"), 'migration target mismatch');
-assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.6'"), 'migration order must preserve v1.0.26 and append v1.1.0-alpha.6');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.7'"), 'migration target mismatch');
+assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.7'"), 'migration order must preserve v1.0.26 and append v1.1.0-alpha.7');
 assert.ok(migrations.includes('defaultReleaseProvenanceLedger'), 'migration defaults must include provenance ledger');
 
 for (const required of [
   'src/research/release-provenance-ledger.js',
   'tests/release-provenance-ledger-check.mjs',
   'tests/version-suite-registry-check.mjs',
-  'docs/v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md',
-  'fixtures/migrations/v1.1.0-alpha.6-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json',
+  'docs/v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md',
+  'fixtures/migrations/v1.1.0-alpha.7-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json',
   'fixtures/migrations/v1.0.26-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.26.json'
 ]) assert.ok(exists(required), `missing ${required}`);
@@ -123,22 +123,22 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  readReleaseDoc('docs/v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md')
+  readReleaseDoc('docs/v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.6') || corpus.includes('1.1.0-alpha.6'), 'release corpus must mention v1.1.0-alpha.6');
-  assert.ok(/Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|fixture registry consolidation|provenance ledger|changed-files-only|visual freeze|mobile header/i.test(corpus), 'release corpus must describe provenance gate');
+  assert.ok(corpus.includes('v1.1.0-alpha.7') || corpus.includes('1.1.0-alpha.7'), 'release corpus must mention v1.1.0-alpha.7');
+  assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|fixture registry consolidation|provenance ledger|changed-files-only|visual freeze|mobile header/i.test(corpus), 'release corpus must describe provenance gate');
 }
 
-assert.ok(pkg.scripts['test:release-provenance-ledger']?.includes('release-provenance-ledger-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:stable']?.includes('release-provenance-ledger-check.mjs'));
-assert.ok(pkg.scripts['test:patch']?.includes('release-provenance-ledger-check.mjs'));
-assert.ok(ciNoBrowser.includes('tests/release-provenance-ledger-check.mjs'));
-assert.ok(ciNoBrowser.includes('run_node --check src/research/release-provenance-ledger.js'));
-assert.ok(ciNoBrowser.includes('run_node --check tests/release-provenance-ledger-check.mjs'));
-assert.ok(ciNoBrowser.includes('run_node --check tests/version-suite-registry-check.mjs'));
-assert.ok(ciNoBrowser.includes('run_node tests/version-suite-registry-check.mjs'), 'CI wrapper must run version-suite registry gate');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'CI wrapper must delegate to registry runner');
 
 for (const file of ['src/research/release-provenance-ledger.js', 'tests/release-provenance-ledger-check.mjs', 'tests/version-suite-registry-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });

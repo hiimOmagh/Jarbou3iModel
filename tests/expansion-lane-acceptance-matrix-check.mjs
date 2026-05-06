@@ -10,29 +10,29 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0-alpha.6';
+const VERSION = '1.1.0-alpha.7';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'Root Manifest + Release Artifact Consolidation';
-const DOC = 'docs/v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip';
+const TITLE = 'Package Script Compression + CI Gate Registry';
+const DOC = 'docs/v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
 const releaseDoc = readReleaseDoc(DOC);
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.6-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.7-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
 assert.equal(lock.packages[''].version, VERSION);
-assert.ok(pkg.description.includes('root manifest and release artifact consolidation'));
+assert.ok(pkg.description.includes('package script compression and CI gate registry'));
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
 assert.ok(index.includes('audit repo retention'), 'index must keep repository audit workflow visible');
 assert.ok(index.includes('prove safe consolidation'), 'index must mention proof before reduction');
-assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.6'"));
+assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.7'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('acceptance_criteria'));

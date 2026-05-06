@@ -6,10 +6,10 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.6';
-const TITLE = 'Root Manifest + Release Artifact Consolidation';
+const VERSION = '1.1.0-alpha.7';
+const TITLE = 'Package Script Compression + CI Gate Registry';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip';
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || releaseDocExists(file);
@@ -18,8 +18,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.6-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.7-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json');
 const spec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -54,7 +54,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.1.0-alpha.6'",
+  "const VERSION = '1.1.0-alpha.7'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',
@@ -74,10 +74,10 @@ for (const required of [
 
 assert.equal((spec.match(/writeMetadata\(page, captures\)/g) || []).length, 1, 'metadata must be written exactly once from the final complete capture list');
 assert.equal(spec.includes("writeMetadata(page, [captureResult])"), false, 'metadata must not be overwritten by one-capture tests');
-assert.ok(ciBrowser.includes('npm run test:browser:evidence'), 'browser CI must still capture hosted-demo evidence');
+assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'browser CI must preserve hosted-demo evidence through registry runner');
 assert.ok(ciBrowser.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser CI must preserve evidence artifact directory');
-assert.ok(ciNoBrowser.includes('tests/hosted-demo-evidence-manifest-check.mjs'), 'no-browser CI must include evidence manifest gate');
-assert.ok(ciNoBrowser.includes('run_node --check tests/hosted-demo-evidence-manifest-check.mjs'), 'no-browser syntax gate must cover evidence manifest check');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must include evidence manifest through registry runner');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
 assert.ok(workflow.includes('path: ci-artifacts/hosted-demo-evidence'), 'workflow must upload hosted-demo evidence artifact directory');
 
 const sandbox = { window: {}, console };
@@ -95,18 +95,18 @@ const review = hosted.buildHostedDemoEvidenceReview({}, { version:VERSION, now:'
 assert.equal(review.metadata_manifest_required, true);
 assert.ok(review.review_items.some((item) => item.artifact_id === 'complete_capture_manifest'));
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.6'"));
-assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.6'"), 'migration order must preserve v1.0.28 and append v1.1.0-alpha.6');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.7'"));
+assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.7'"), 'migration order must preserve v1.0.28 and append v1.1.0-alpha.7');
 assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration defaults must include evidence manifest metadata requirement');
 
 for (const file of [
   'docs/v1.0.27-release-provenance-ledger-gate.md',
   'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
-  'docs/v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md',
+  'docs/v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md',
   'fixtures/migrations/v1.0.28-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.6-packet.json',
+  'fixtures/migrations/v1.1.0-alpha.7-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.28.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json',
   'tests/hosted-demo-evidence-manifest-check.mjs',
   'tests/version-suite-registry-check.mjs'
 ]) assert.ok(exists(file), `missing ${file}`);
@@ -123,10 +123,10 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  readReleaseDoc('docs/v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md')
+  readReleaseDoc('docs/v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.6') || corpus.includes('1.1.0-alpha.6'), 'release corpus must mention v1.1.0-alpha.6');
-  assert.ok(/Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
+  assert.ok(corpus.includes('v1.1.0-alpha.7') || corpus.includes('1.1.0-alpha.7'), 'release corpus must mention v1.1.0-alpha.7');
+  assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
 }
 
 for (const file of ['tests/hosted-demo-browser-evidence.spec.mjs', 'tests/hosted-demo-evidence-manifest-check.mjs', 'tests/version-suite-registry-check.mjs', 'src/research/hosted-demo-verification.js']) {

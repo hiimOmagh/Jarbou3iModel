@@ -1,6 +1,6 @@
 # QA Matrix
 
-## v1.1.0-alpha.2 — Root Manifest + Release Artifact Consolidation
+## v1.1.0-alpha.2 — Package Script Compression + CI Gate Registry
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -46,9 +46,9 @@ The public demo remains local/manual/private by default in v1.0.25. No live scra
 
 - v1.0.25 — Public Demo Release Lock is the active public-demo approval gate.
 
-- v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation: audit-only fixture registry, no deletion, no runtime behavior change.
+- v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry: audit-only fixture registry, no deletion, no runtime behavior change.
 
 
-Evidence manifest continuity: v1.1.0-alpha.6 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.7 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v6, npm ci --no-audit --no-fund --ignore-scripts, and PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser.

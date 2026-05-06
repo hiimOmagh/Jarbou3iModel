@@ -8,10 +8,10 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.1.0-alpha.6';
+const CURRENT_VERSION = '1.1.0-alpha.7';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Root Manifest + Release Artifact Consolidation';
+const CURRENT_TITLE = 'Package Script Compression + CI Gate Registry';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -86,12 +86,12 @@ assert.ok(playwrightIndex < browserIndex, 'Playwright must install before skip-f
 assert.ok(ciBrowser.includes('PLAYWRIGHT_SKIP_INSTALL'), 'ci-browser must support install skip flag');
 assert.ok(ciBrowser.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'ci-browser must preserve hosted demo evidence outside Playwright cleanup');
 assert.ok(ciBrowser.includes('ci-artifacts/hosted-demo-evidence'), 'ci-browser must default hosted demo evidence to CI artifact path');
-assert.ok(ciBrowser.includes('npm run test:browser:evidence'), 'ci-browser must include hosted demo evidence capture');
-assert.ok(ciBrowser.includes('npm run test:browser:visual'), 'ci-browser must include visual regression test');
-assert.ok(ciNoBrowser.includes('tests/ci-result-review-browser-evidence-audit-check.mjs'), 'no-browser CI must include v1.0.23 audit guard');
-assert.ok(pkg.scripts['test:ci:result-review']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'package must expose CI result review check');
-assert.ok(pkg.scripts['test:stable']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'stable suite must include CI result review check');
-assert.ok(pkg.scripts['test:patch']?.includes('ci-result-review-browser-evidence-audit-check.mjs'), 'patch suite must include CI result review check');
+assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'ci-browser must delegate to registry runner');
+assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'ci-browser must delegate to registry runner');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must include CI-result review through registry runner');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 
 for (const required of [
   'fixtures/migrations/v1.0.23-packet.json',
@@ -99,8 +99,8 @@ for (const required of [
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
   'tests/ci-result-review-browser-evidence-audit-check.mjs',
   'tests/version-suite-registry-check.mjs',
-  'fixtures/migrations/v1.1.0-alpha.6-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json',
+  'fixtures/migrations/v1.1.0-alpha.7-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json',
   'docs/v1.0.25-public-demo-release-lock.md',
   'tests/public-demo-release-lock-check.mjs',
   'tests/version-suite-registry-check.mjs'
@@ -108,8 +108,8 @@ for (const required of [
   assert.ok(fixturePathExists(required) || releaseDocExists(required), `required CI/hygiene artifact missing: ${required}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.6'"), 'migration target must be current release');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.6'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.6');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.7'"), 'migration target must be current release');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.7'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.7');
 const releaseCorpus = [manifest, roadmap, qaMatrix, releaseHistory(), historicalDoc].join('\n');
 assert.ok(releaseCorpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');
 assert.ok(releaseCorpus.includes(HISTORICAL_TITLE), 'release corpus must preserve v1.0.23 audit title');

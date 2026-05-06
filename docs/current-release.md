@@ -1,6 +1,6 @@
 # Current Release
 
-## v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
+## v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
 
 This cleanup release consolidates root-level release and evidence documents into the maintained documentation layer while preserving release-provenance, public-demo, hosted-evidence, and changed-files-only discipline.
 
@@ -46,7 +46,7 @@ Release approval still requires green no-browser CI, green browser CI, reviewed 
 ## Consolidated release manifest compatibility
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.1.0-alpha.6`
+- Version: `1.1.0-alpha.7`
 - Runtime capability change: no
 - Required browser gates before publishing
 - Release archive exclusions

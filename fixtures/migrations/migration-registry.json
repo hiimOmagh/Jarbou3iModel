@@ -1,8 +1,8 @@
 {
-  "registry_version": "1.1.0-alpha.6",
+  "registry_version": "1.1.0-alpha.7",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "migration_fixture_registry",
-  "release_title": "v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation",
+  "release_title": "v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry",
   "replacement_for": "fixtures/migrations/v*-packet.json",
   "entry_count": 55,
   "coverage_policy": "historical packets preserved as registry entries; per-version files removed",
@@ -103222,14 +103222,14 @@
       }
     },
     {
-      "file": "v1.1.0-alpha.6-packet.json",
-      "version": "1.1.0-alpha.6",
-      "path": "fixtures/migrations/v1.1.0-alpha.6-packet.json",
+      "file": "v1.1.0-alpha.7-packet.json",
+      "version": "1.1.0-alpha.7",
+      "path": "fixtures/migrations/v1.1.0-alpha.7-packet.json",
       "packet": {
-        "workflow_version": "1.1.0-alpha.6",
+        "workflow_version": "1.1.0-alpha.7",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "research_plan": {
-          "plan_version": "1.1.0-alpha.6",
+          "plan_version": "1.1.0-alpha.7",
           "topic": "Sample: US-China chip war",
           "context": "2022-2026 technology competition",
           "mode": "source-heavy",
@@ -103305,7 +103305,7 @@
             "notes": "Fixture source is illustrative; replace before publication.",
             "evidence_scoring": {
               "scoring_version": "evidence_scoring.v1",
-              "scorer_version": "1.1.0-alpha.6",
+              "scorer_version": "1.1.0-alpha.7",
               "generated_at": "2026-05-02T00:00:00.000Z",
               "attention_signal_score": 40,
               "reliability_score": 80,
@@ -103365,7 +103365,7 @@
             "notes": "Used to test contradiction links.",
             "evidence_scoring": {
               "scoring_version": "evidence_scoring.v1",
-              "scorer_version": "1.1.0-alpha.6",
+              "scorer_version": "1.1.0-alpha.7",
               "generated_at": "2026-05-02T00:00:00.000Z",
               "attention_signal_score": 60,
               "reliability_score": 71,
@@ -103421,7 +103421,7 @@
             "notes": "Used to test feedback loops.",
             "evidence_scoring": {
               "scoring_version": "evidence_scoring.v1",
-              "scorer_version": "1.1.0-alpha.6",
+              "scorer_version": "1.1.0-alpha.7",
               "generated_at": "2026-05-02T00:00:00.000Z",
               "attention_signal_score": 40,
               "reliability_score": 69,
@@ -103489,11 +103489,11 @@
           }
         ],
         "critique": {
-          "critique_version": "1.1.0-alpha.6",
+          "critique_version": "1.1.0-alpha.7",
           "summary": "Fixture has enough structure for research-packet validation, not publication."
         },
         "analysis_brief": {
-          "brief_version": "1.1.0-alpha.6",
+          "brief_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-28T00:00:00.000Z",
           "topic": "Sample: US-China chip war",
           "context": "2022-2026 technology competition",
@@ -103635,7 +103635,7 @@
           "handoff_summary": "Compile the fixture evidence into a strategic analysis of semiconductor export controls as an adaptive system.",
           "analysis_template": {
             "template_id": "strategic_analysis_engine",
-            "template_version": "1.1.0-alpha.6",
+            "template_version": "1.1.0-alpha.7",
             "display_name": "Strategic Analysis Engine",
             "short_name": "Strategic",
             "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -103680,7 +103680,7 @@
             ]
           },
           "template_fit_report": {
-            "fit_version": "1.1.0-alpha.6",
+            "fit_version": "1.1.0-alpha.7",
             "template_id": "strategic_analysis_engine",
             "required_layers": [
               "interests",
@@ -103702,7 +103702,7 @@
             "fit_score": 100
           },
           "quality_gate_report": {
-            "quality_gate_version": "1.1.0-alpha.6",
+            "quality_gate_version": "1.1.0-alpha.7",
             "generated_at": "2026-04-28T21:08:50.659Z",
             "gate_name": "Advanced Quality Gate v3",
             "overall_score": 84,
@@ -103818,7 +103818,7 @@
               "readiness": 85
             },
             "evidence_scoring_report": {
-              "evidence_scoring_version": "1.1.0-alpha.6",
+              "evidence_scoring_version": "1.1.0-alpha.7",
               "scoring_model": "evidence_scoring.v1",
               "generated_at": "2026-05-02T00:00:00.000Z",
               "item_count": 3,
@@ -103841,7 +103841,7 @@
             "Add counter-evidence and contradiction-linked claims before treating the analysis as robust."
           ],
           "evidence_scoring_report": {
-            "evidence_scoring_version": "1.1.0-alpha.6",
+            "evidence_scoring_version": "1.1.0-alpha.7",
             "scoring_model": "evidence_scoring.v1",
             "calibration_version": "evidence_scoring_calibration.v1",
             "generated_at": "2026-05-02T00:00:00.000Z",
@@ -103884,7 +103884,7 @@
           }
         },
         "diagnostics": {
-          "diagnostics_version": "1.1.0-alpha.6",
+          "diagnostics_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-28T00:00:00.000Z",
           "linked_ids": [
             "A1",
@@ -103916,7 +103916,7 @@
         "ai_runs": [
           {
             "run_id": "RUN-FIXTURE-001",
-            "run_version": "1.1.0-alpha.6",
+            "run_version": "1.1.0-alpha.7",
             "provider": "mock",
             "task": "synthesis",
             "status": "ok",
@@ -103949,7 +103949,7 @@
               "verdict": "mock_safe"
             },
             "response_validation": {
-              "validation_version": "1.1.0-alpha.6",
+              "validation_version": "1.1.0-alpha.7",
               "validated_at": "2026-04-28T00:00:00.060Z",
               "task": "synthesis",
               "expected_type": "strategic_analysis",
@@ -104006,7 +104006,7 @@
           "remember_key": false
         },
         "provider_validation": {
-          "validation_version": "1.1.0-alpha.6",
+          "validation_version": "1.1.0-alpha.7",
           "validated_at": "2026-04-28T00:00:00.060Z",
           "task": "synthesis",
           "expected_type": "strategic_analysis",
@@ -104021,7 +104021,7 @@
           "status": "not_required"
         },
         "provider_diagnostics": {
-          "diagnostics_version": "1.1.0-alpha.6",
+          "diagnostics_version": "1.1.0-alpha.7",
           "checked_at": "2026-04-28T00:00:00.000Z",
           "task": "synthesis",
           "provider": "mock",
@@ -104072,7 +104072,7 @@
           }
         },
         "provider_fixture_report": {
-          "suite_version": "1.1.0-alpha.6",
+          "suite_version": "1.1.0-alpha.7",
           "fixture_count": 5,
           "pass_count": 5,
           "fail_count": 0,
@@ -104132,7 +104132,7 @@
           ]
         },
         "source_policy": {
-          "policy_version": "1.1.0-alpha.6",
+          "policy_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-28T00:00:00.000Z",
           "live_fetching_enabled": false,
           "current_layer": "planning_only",
@@ -104153,10 +104153,10 @@
             "source URL/date/type preservation"
           ],
           "verdict": "safe_planning_layer_only",
-          "source_policy_version": "1.1.0-alpha.6"
+          "source_policy_version": "1.1.0-alpha.7"
         },
         "source_diagnostics": {
-          "diagnostics_version": "1.1.0-alpha.6",
+          "diagnostics_version": "1.1.0-alpha.7",
           "checked_at": "2026-04-28T00:00:00.000Z",
           "connector": "manual_mock",
           "task": "source_plan",
@@ -104176,7 +104176,7 @@
           ]
         },
         "source_fixture_report": {
-          "suite_version": "1.1.0-alpha.6",
+          "suite_version": "1.1.0-alpha.7",
           "fixture_count": 5,
           "pass_count": 5,
           "fail_count": 0,
@@ -104221,7 +104221,7 @@
         },
         "source_requests": [
           {
-            "request_version": "1.1.0-alpha.6",
+            "request_version": "1.1.0-alpha.7",
             "created_at": "2026-04-28T00:00:00.000Z",
             "connector": "manual_mock",
             "task": "source_plan",
@@ -104248,7 +104248,7 @@
               "China"
             ],
             "safety_policy": {
-              "policy_version": "1.1.0-alpha.6",
+              "policy_version": "1.1.0-alpha.7",
               "generated_at": "2026-04-28T00:00:00.000Z",
               "live_fetching_enabled": false,
               "current_layer": "planning_only",
@@ -104275,7 +104275,7 @@
         "source_runs": [
           {
             "run_id": "SRC-FIXTURE-1",
-            "run_version": "1.1.0-alpha.6",
+            "run_version": "1.1.0-alpha.7",
             "connector": "manual_mock",
             "task": "source_plan",
             "status": "planned",
@@ -104288,7 +104288,7 @@
           }
         ],
         "source_import_report": {
-          "import_version": "1.1.0-alpha.6",
+          "import_version": "1.1.0-alpha.7",
           "imported_at": "2026-05-02T00:00:00.000Z",
           "input_format": "source_packet",
           "source_packet_schema": "manual_source_packet.v1",
@@ -104316,7 +104316,7 @@
             "import_id": "IMP-fixture-v113",
             "imported_at": "2026-05-02T00:00:00.000Z",
             "report": {
-              "import_version": "1.1.0-alpha.6",
+              "import_version": "1.1.0-alpha.7",
               "imported_at": "2026-05-02T00:00:00.000Z",
               "input_format": "source_packet",
               "source_packet_schema": "manual_source_packet.v1",
@@ -104459,7 +104459,7 @@
           }
         ],
         "evidence_review_report": {
-          "review_version": "1.1.0-alpha.6",
+          "review_version": "1.1.0-alpha.7",
           "generated_at": "2026-05-02T00:00:00.000Z",
           "queue_count": 3,
           "pending_count": 2,
@@ -104504,7 +104504,7 @@
           ]
         },
         "portable_account": {
-          "portable_account_version": "1.1.0-alpha.6",
+          "portable_account_version": "1.1.0-alpha.7",
           "provider_id": "portable_oauth",
           "status": "connected_mock",
           "account_id": "pa_fixture0001",
@@ -104535,8 +104535,8 @@
           "code_verifier_exported": false
         },
         "privacy_export": {
-          "audit_version": "1.1.0-alpha.6",
-          "guard_version": "1.1.0-alpha.6",
+          "audit_version": "1.1.0-alpha.7",
+          "guard_version": "1.1.0-alpha.7",
           "safe": true,
           "release_gate": "pass",
           "issue_count": 0,
@@ -104558,9 +104558,9 @@
           }
         },
         "packet_migration_report": {
-          "migration_version": "1.1.0-alpha.6",
-          "source_version": "1.1.0-alpha.6",
-          "target_version": "1.1.0-alpha.6",
+          "migration_version": "1.1.0-alpha.7",
+          "source_version": "1.1.0-alpha.7",
+          "target_version": "1.1.0-alpha.7",
           "started_at": "2026-04-28T00:00:00.000Z",
           "completed_at": "2026-04-28T00:00:00.000Z",
           "migrated": false,
@@ -104573,7 +104573,7 @@
           "import_safe": true
         },
         "project_workspace": {
-          "workspace_version": "1.1.0-alpha.6",
+          "workspace_version": "1.1.0-alpha.7",
           "storage_mode": "local_only",
           "active_project_id": null,
           "active_project_name": null,
@@ -104581,7 +104581,7 @@
           "storage_warning": "Projects are stored only in this browser localStorage.",
           "last_saved_at": null,
           "quota": {
-            "diagnostics_version": "1.1.0-alpha.6",
+            "diagnostics_version": "1.1.0-alpha.7",
             "available": true,
             "storage_mode": "local_only",
             "project_count": 0,
@@ -104592,7 +104592,7 @@
         },
         "analysis_template": {
           "template_id": "strategic_analysis_engine",
-          "template_version": "1.1.0-alpha.6",
+          "template_version": "1.1.0-alpha.7",
           "display_name": "Strategic Analysis Engine",
           "short_name": "Strategic",
           "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -104637,7 +104637,7 @@
           ]
         },
         "quality_gate": {
-          "quality_gate_version": "1.1.0-alpha.6",
+          "quality_gate_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-28T21:08:50.659Z",
           "gate_name": "Advanced Quality Gate v3",
           "overall_score": 84,
@@ -104753,7 +104753,7 @@
             "readiness": 85
           },
           "evidence_scoring_report": {
-            "evidence_scoring_version": "1.1.0-alpha.6",
+            "evidence_scoring_version": "1.1.0-alpha.7",
             "scoring_model": "evidence_scoring.v1",
             "calibration_version": "evidence_scoring_calibration.v1",
             "generated_at": "2026-05-02T00:00:00.000Z",
@@ -104796,7 +104796,7 @@
           }
         },
         "export_pack": {
-          "export_pack_version": "1.1.0-alpha.6",
+          "export_pack_version": "1.1.0-alpha.7",
           "format": "export_pack_v2",
           "files": [
             "research-packet.json",
@@ -104810,8 +104810,8 @@
           "release_gate": "privacy_audit_required"
         },
         "backend_hardening": {
-          "hardening_version": "1.1.0-alpha.6",
-          "proxy_version": "1.1.0-alpha.6",
+          "hardening_version": "1.1.0-alpha.7",
+          "proxy_version": "1.1.0-alpha.7",
           "status": "optional_backend_hardened",
           "rate_limiting": {
             "supported": true,
@@ -104852,7 +104852,7 @@
         "source_results": [
           {
             "result_id": "SR-FIXTURE-1",
-            "result_version": "1.1.0-alpha.6",
+            "result_version": "1.1.0-alpha.7",
             "connector": "github_public_repo",
             "task": "source_plan",
             "created_at": "2026-04-28T00:00:00.000Z",
@@ -104869,7 +104869,7 @@
           }
         ],
         "search_provider_identity": {
-          "identity_version": "1.1.0-alpha.6",
+          "identity_version": "1.1.0-alpha.7",
           "provider_id": "mock_search",
           "display_name": "Mock Search Provider",
           "status": "available_dry_run",
@@ -104891,7 +104891,7 @@
           ]
         },
         "search_query_budget": {
-          "budget_version": "1.1.0-alpha.6",
+          "budget_version": "1.1.0-alpha.7",
           "max_queries": 6,
           "max_results_per_query": 5,
           "max_total_results": 30,
@@ -104905,9 +104905,9 @@
           "live_search_enabled": false
         },
         "search_policy": {
-          "search_policy_version": "1.1.0-alpha.6",
+          "search_policy_version": "1.1.0-alpha.7",
           "provider_identity": {
-            "identity_version": "1.1.0-alpha.6",
+            "identity_version": "1.1.0-alpha.7",
             "provider_id": "mock_search",
             "display_name": "Mock Search Provider",
             "status": "available_dry_run",
@@ -104929,7 +104929,7 @@
             ]
           },
           "query_budget": {
-            "budget_version": "1.1.0-alpha.6",
+            "budget_version": "1.1.0-alpha.7",
             "max_queries": 6,
             "max_results_per_query": 5,
             "max_total_results": 30,
@@ -104968,7 +104968,7 @@
           "verdict": "web_search_abstraction_ready_no_live_fetch"
         },
         "portable_oauth_spike": {
-          "oauth_spike_version": "1.1.0-alpha.6",
+          "oauth_spike_version": "1.1.0-alpha.7",
           "provider_id": "portable_oauth",
           "status": "disconnected",
           "mode": "real_oauth_pkce_spike",
@@ -104990,11 +104990,11 @@
           "safety_verdict": "oauth_dev_disconnected_token_state_cleared"
         },
         "release_candidate": {
-          "release_candidate_version": "1.1.0-alpha.6",
-          "stable_release_version": "1.1.0-alpha.6",
+          "release_candidate_version": "1.1.0-alpha.7",
+          "stable_release_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-29T18:54:43.435Z",
           "policy": {
-            "release_version": "1.1.0-alpha.6",
+            "release_version": "1.1.0-alpha.7",
             "release_stage": "public_beta_stable",
             "rc_number": null,
             "freeze_status": "stable_feature_baseline",
@@ -105057,7 +105057,7 @@
               "gate": "migration_report_present",
               "required": false,
               "passed": true,
-              "notes": "1.1.0-alpha.6"
+              "notes": "1.1.0-alpha.7"
             },
             {
               "gate": "oauth_tokens_not_exported",
@@ -105084,15 +105084,15 @@
           "verdict": "public_beta_stable_ready"
         },
         "ci_validation": {
-          "ci_validation_version": "1.1.0-alpha.6",
+          "ci_validation_version": "1.1.0-alpha.7",
           "external_ci_passed": true,
           "browser_provider_passed": true,
           "full_browser_passed": true,
           "source": "user_reported_new_ci_succeeded",
-          "notes": "External CI/browser validation reported as successful before v1.1.0-alpha.6 promotion."
+          "notes": "External CI/browser validation reported as successful before v1.1.0-alpha.7 promotion."
         },
         "browser_qa_hardening": {
-          "hardening_version": "1.1.0-alpha.6",
+          "hardening_version": "1.1.0-alpha.7",
           "release_type": "patch_only_browser_qa_visual_regression",
           "feature_surface_added": false,
           "browser_gate": {
@@ -105122,7 +105122,7 @@
           "release_gate": "browser_qa_hardened"
         },
         "onboarding": {
-          "onboarding_version": "1.1.0-alpha.6",
+          "onboarding_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-30T00:00:00.000Z",
           "first_run": false,
           "dismissed": false,
@@ -105210,7 +105210,7 @@
           ]
         },
         "public_demo": {
-          "public_demo_version": "1.1.0-alpha.6",
+          "public_demo_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-30T00:00:00.000Z",
           "demo_stage": "public_demo_ready",
           "release_type": "patch",
@@ -105294,9 +105294,9 @@
           "release_gate": "public_demo_ready_checked"
         },
         "release_notes": {
-          "release_notes_version": "1.1.0-alpha.6",
+          "release_notes_version": "1.1.0-alpha.7",
           "generated_at": "2026-05-02T00:00:00.000Z",
-          "release_title": "v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation",
+          "release_title": "v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry",
           "release_type": "patch",
           "runtime_capability_change": false,
           "summary": "Consolidates historical migration and privacy fixtures into compact registries while preserving regression coverage and public-demo safety boundaries.",
@@ -105322,10 +105322,10 @@
             "Confirm release archive excludes generated and secret-bearing files."
           ],
           "release_gate": "release_notes_polished",
-          "release_version": "1.1.0-alpha.6"
+          "release_version": "1.1.0-alpha.7"
         },
         "hosted_demo_verification": {
-          "hosted_demo_version": "1.1.0-alpha.6",
+          "hosted_demo_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-30T00:00:00.000Z",
           "release_type": "patch",
           "deployment_stage": "hosted_demo_verification",
@@ -105413,7 +105413,7 @@
           "release_gate": "hosted_demo_verified"
         },
         "browser_evidence_capture": {
-          "browser_evidence_version": "1.1.0-alpha.6",
+          "browser_evidence_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-30T00:00:00.000Z",
           "evidence_mode": "playwright_capture_attach_and_write_artifacts",
           "artifact_root": "test-results/hosted-demo-evidence",
@@ -105483,7 +105483,7 @@
           "horizontal_overflow_metadata_required": true
         },
         "hosted_demo_smoke_fixes": {
-          "smoke_fixes_version": "1.1.0-alpha.6",
+          "smoke_fixes_version": "1.1.0-alpha.7",
           "generated_at": "2026-05-01T00:00:00.000Z",
           "release_type": "patch",
           "deployment_stage": "hosted_demo_smoke_fixes",
@@ -105565,7 +105565,7 @@
           "release_gate": "hosted_demo_smoke_fixed"
         },
         "hosted_demo_evidence_review": {
-          "evidence_review_version": "1.1.0-alpha.6",
+          "evidence_review_version": "1.1.0-alpha.7",
           "generated_at": "2026-05-01T00:00:00.000Z",
           "review_stage": "hosted_demo_evidence_review",
           "artifact_root": "test-results/hosted-demo-evidence",
@@ -105658,7 +105658,7 @@
           "screenshot_sanity_required": true
         },
         "source_capability_registry": {
-          "source_strategy_version": "1.1.0-alpha.6",
+          "source_strategy_version": "1.1.0-alpha.7",
           "generated_at": "2026-05-02T00:00:00.000Z",
           "release_gate": "source_strategy_blueprint_checked",
           "runtime_capability_change": false,
@@ -105765,7 +105765,7 @@
             }
           ],
           "audit": {
-            "registry_version": "1.1.0-alpha.6",
+            "registry_version": "1.1.0-alpha.7",
             "generated_at": "2026-05-02T00:00:00.000Z",
             "capability_count": 6,
             "visible_demo_capabilities": [
@@ -105791,7 +105791,7 @@
             "ok": true,
             "verdict": "source_capability_registry_ready_manual_packet_import"
           },
-          "next_safe_increment": "v1.1.0-alpha.6 source packet builder browser QA and UX tightening",
+          "next_safe_increment": "v1.1.0-alpha.7 source packet builder browser QA and UX tightening",
           "blocked_until_threat_modeled": [
             "production OAuth / portable account auth",
             "live Reddit/X/YouTube/TikTok scraping",
@@ -105800,7 +105800,7 @@
           "scoring_warning": "Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength."
         },
         "evidence_scoring_report": {
-          "evidence_scoring_version": "1.1.0-alpha.6",
+          "evidence_scoring_version": "1.1.0-alpha.7",
           "scoring_model": "evidence_scoring.v1",
           "calibration_version": "evidence_scoring_calibration.v1",
           "generated_at": "2026-05-02T00:00:00.000Z",
@@ -105842,7 +105842,7 @@
           ]
         },
         "source_packet_builder_report": {
-          "builder_version": "1.1.0-alpha.6",
+          "builder_version": "1.1.0-alpha.7",
           "packet_schema": "manual_source_packet.v1",
           "built_at": "2026-05-02T00:00:00.000Z",
           "packet_count": 1,
@@ -105851,7 +105851,7 @@
           "verification_claimed": false,
           "queue_only_recommended": true,
           "scoring_review": {
-            "review_version": "1.1.0-alpha.6",
+            "review_version": "1.1.0-alpha.7",
             "builder_version": "source_packet_builder.v1",
             "item_count": 3,
             "high_reliability_count": 1,
@@ -105869,11 +105869,11 @@
         "last_built_source_packet": {
           "source_packet_version": "manual_source_packet.v1",
           "builder_version": "source_packet_builder.v1",
-          "workflow_version": "1.1.0-alpha.6",
+          "workflow_version": "1.1.0-alpha.7",
           "built_at": "2026-05-02T00:00:00.000Z",
           "source_packets": [],
           "builder_report": {
-            "builder_version": "1.1.0-alpha.6",
+            "builder_version": "1.1.0-alpha.7",
             "packet_schema": "manual_source_packet.v1",
             "built_at": "2026-05-02T00:00:00.000Z",
             "packet_count": 1,
@@ -105882,7 +105882,7 @@
             "verification_claimed": false,
             "queue_only_recommended": true,
             "scoring_review": {
-              "review_version": "1.1.0-alpha.6",
+              "review_version": "1.1.0-alpha.7",
               "builder_version": "source_packet_builder.v1",
               "item_count": 3,
               "high_reliability_count": 1,
@@ -105899,7 +105899,7 @@
           }
         },
         "source_packet_roundtrip_report": {
-          "roundtrip_version": "1.1.0-alpha.6",
+          "roundtrip_version": "1.1.0-alpha.7",
           "roundtrip_model": "source_packet_roundtrip.v1",
           "generated_at": "2026-05-02T00:00:00.000Z",
           "builder_version": "source_packet_builder.v1",
@@ -105920,7 +105920,7 @@
           "policy": "local_manual_source_packet_export_import_roundtrip_no_fetch_no_verification"
         },
         "source_packet_template_report": {
-          "template_report_version": "1.1.0-alpha.6",
+          "template_report_version": "1.1.0-alpha.7",
           "template_model": "source_packet_template_presets.v1",
           "generated_at": "2026-05-02T00:00:00.000Z",
           "template_count": 6,
@@ -105949,9 +105949,9 @@
           "policy": "local_manual_source_packet_templates_no_fetch_no_verification"
         },
         "public_demo_release_lock": {
-          "public_demo_release_lock_version": "1.1.0-alpha.6",
+          "public_demo_release_lock_version": "1.1.0-alpha.7",
           "generated_at": "2026-05-04T00:00:00.000Z",
-          "release_title": "v1.1.0-alpha.6 — Public Demo Release Lock",
+          "release_title": "v1.1.0-alpha.7 — Public Demo Release Lock",
           "lock_stage": "public_demo_release_locked",
           "release_type": "patch",
           "release_approval_state": "locked_for_public_demo",
@@ -106064,15 +106064,15 @@
           "release_gate": "public_demo_release_locked"
         },
         "release_apply_integrity": {
-          "release_apply_integrity_version": "1.1.0-alpha.6",
+          "release_apply_integrity_version": "1.1.0-alpha.7",
           "generated_at": "2026-04-28T00:00:00.000Z",
-          "release_title": "v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation",
+          "release_title": "v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry",
           "integrity_stage": "release_apply_integrity_checked",
           "release_type": "patch",
           "patch_type": "changed_files_only",
           "base_version": "1.0.30",
-          "target_version": "1.1.0-alpha.6",
-          "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip",
+          "target_version": "1.1.0-alpha.7",
+          "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip",
           "artifact_sha256": "computed_after_packaging",
           "runtime_capability_change": false,
           "provider_behavior_changed": false,
@@ -106093,7 +106093,7 @@
           "checklist": [
             {
               "check_id": "base_version_known",
-              "label": "Patch is declared as changed-files-only over v1.1.0-alpha.6",
+              "label": "Patch is declared as changed-files-only over v1.1.0-alpha.7",
               "order": 1,
               "required": true,
               "passed": true,
@@ -106165,7 +106165,7 @@
             }
           ],
           "required_commands": [
-            "unzip -o jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip -d .",
+            "unzip -o jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip -d .",
             "npm ci --no-audit --no-fund --ignore-scripts",
             "npm run test:v110a1:no-browser",
             "npm run test:ci:no-browser",
@@ -106179,15 +106179,15 @@
           ]
         },
         "release_provenance_ledger": {
-          "release_provenance_ledger_version": "1.1.0-alpha.6",
+          "release_provenance_ledger_version": "1.1.0-alpha.7",
           "generated_at": "2026-05-04T00:00:00.000Z",
-          "release_title": "v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation",
+          "release_title": "v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry",
           "provenance_stage": "release_provenance_ledger_checked",
           "release_type": "patch",
           "patch_type": "changed_files_only",
           "base_version": "1.0.30",
-          "target_version": "1.1.0-alpha.6",
-          "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip",
+          "target_version": "1.1.0-alpha.7",
+          "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip",
           "artifact_sha256": "computed_after_packaging",
           "changed_files_manifest_required": true,
           "release_apply_integrity_required": true,
@@ -106207,7 +106207,7 @@
           "fail_count": 0,
           "release_gate": "release_provenance_ledger_pass",
           "required_commands": [
-            "unzip -o jarbou3i-research-engine-v1.1.0-alpha.6-root-manifest-release-artifact-consolidation-patch.zip -d .",
+            "unzip -o jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip -d .",
             "npm ci --no-audit --no-fund --ignore-scripts",
             "npm run test:v110a1:no-browser",
             "npm run test:ci:no-browser",
@@ -106215,14 +106215,14 @@
           ],
           "blocked_claims": [
             "Do not treat a named artifact as provenance unless the changed-files manifest and SHA256 are reviewed.",
-            "Do not publish from a patch that was not applied to v1.1.0-alpha.6 and revalidated.",
+            "Do not publish from a patch that was not applied to v1.1.0-alpha.7 and revalidated.",
             "Do not claim live scraping, production OAuth, provider behavior changes, backend endpoint expansion, source connector expansion, or storage expansion.",
             "Do not approve public demo release from screenshots or ZIP existence alone."
           ],
           "ledger_evidence": [
             {
               "evidence_id": "version_lock",
-              "label": "package/schema/fixtures identify v1.1.0-alpha.6",
+              "label": "package/schema/fixtures identify v1.1.0-alpha.7",
               "order": 1,
               "required": true,
               "passed": true,
@@ -106230,7 +106230,7 @@
             },
             {
               "evidence_id": "base_version_recorded",
-              "label": "base version v1.1.0-alpha.6 is recorded",
+              "label": "base version v1.1.0-alpha.7 is recorded",
               "order": 2,
               "required": true,
               "passed": true,

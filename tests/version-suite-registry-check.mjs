@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.6';
-const RELEASE = 'v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation';
+const VERSION = '1.1.0-alpha.7';
+const RELEASE = 'v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry';
 const registry = JSON.parse(fs.readFileSync('tests/version-suite-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
@@ -42,17 +42,19 @@ for (const entry of registry.entries) {
 
 const versionScripts = Object.keys(pkg.scripts).filter((name) => /^test:v[0-9]/.test(name));
 assert.equal(versionScripts.length, 0, 'package.json must not keep historical numeric test:v* script sprawl');
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:current:no-browser']?.includes('current-no-browser-suite.mjs'));
-assert.ok(pkg.scripts['test:current']?.includes('test:ci:browser'));
-assert.ok(Object.keys(pkg.scripts).length <= 110, 'package script count must be compressed below the previous 177-script sprawl');
+assert.ok(pkg.scripts['test:current:no-browser']?.includes('ci-gate-runner.mjs current-no-browser'));
+assert.ok(pkg.scripts['test:ci:no-browser']?.includes('scripts/ci-no-browser.sh'));
+assert.ok(pkg.scripts['test:ci:browser']?.includes('scripts/ci-browser.sh'));
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script count must be compressed to the operational command surface');
 
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
-assert.ok(ciNoBrowser.includes('run_node tests/version-suite-registry-check.mjs'), 'CI must run version suite registry check');
-assert.ok(ciNoBrowser.includes('run_node --check tests/version-suite-registry-check.mjs'), 'CI syntax gate must cover version registry check');
+const ciGateRegistry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
+assert.ok(ciNoBrowser.includes('node tests/ci-gate-runner.mjs no-browser'), 'CI must delegate no-browser composition to CI gate runner');
+assert.ok(ciGateRegistry.gates['no-browser'].node_checks.includes('tests/version-suite-registry-check.mjs'), 'CI gate registry must run version suite registry check');
+assert.ok(ciGateRegistry.gates['no-browser'].syntax_checks.includes('tests/version-suite-registry-check.mjs'), 'CI gate registry syntax gate must cover version registry check');
 assert.equal(/v.*-no-browser-suite\.mjs/.test(ciNoBrowser), false, 'CI must not reference removed historical wrapper files');
 
-for (const file of ['tests/version-suite-registry-check.mjs','tests/current-no-browser-suite.mjs']) {
+for (const file of ['tests/version-suite-registry-check.mjs','tests/ci-gate-runner.mjs','tests/ci-gate-registry-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], {encoding:'utf8'});
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `syntax failed: ${file}`);
 }

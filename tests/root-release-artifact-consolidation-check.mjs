@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.6';
-const TITLE = 'Root Manifest + Release Artifact Consolidation';
+const VERSION = '1.1.0-alpha.7';
+const TITLE = 'Package Script Compression + CI Gate Registry';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

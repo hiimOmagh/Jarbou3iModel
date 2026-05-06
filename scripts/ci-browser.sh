@@ -15,12 +15,4 @@ fi
 export HOSTED_DEMO_EVIDENCE_DIR="${HOSTED_DEMO_EVIDENCE_DIR:-ci-artifacts/hosted-demo-evidence}"
 mkdir -p "$HOSTED_DEMO_EVIDENCE_DIR"
 
-npm run test:browser:provider
-npm run test:browser:layout
-npm run test:browser:visual
-npm run test:browser:evidence
-npm run test:browser:source-packet-builder
-npm run test:browser:source-packet-template
-npm run test:e2e
-npm run test:rtl
-./node_modules/.bin/playwright test tests/a11y.spec.js
+node tests/ci-gate-runner.mjs browser

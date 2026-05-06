@@ -18,9 +18,9 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const node24Doc = readReleaseDoc('docs/v1.0.21-node-24-ci-compatibility.md');
 
-assert.equal(pkg.version, '1.1.0-alpha.6', 'package.json must identify v1.1.0-alpha.6');
-assert.equal(lock.version, '1.1.0-alpha.6', 'package-lock root version must identify v1.1.0-alpha.6');
-assert.equal(lock.packages[''].version, '1.1.0-alpha.6', 'package-lock package root must identify v1.1.0-alpha.6');
+assert.equal(pkg.version, '1.1.0-alpha.7', 'package.json must identify v1.1.0-alpha.7');
+assert.equal(lock.version, '1.1.0-alpha.7', 'package-lock root version must identify v1.1.0-alpha.7');
+assert.equal(lock.packages[''].version, '1.1.0-alpha.7', 'package-lock package root must identify v1.1.0-alpha.7');
 
 for (const forbidden of [
   'actions/checkout@v4',
@@ -54,14 +54,14 @@ assert.ok(validateIndex < installIndex, 'lockfile registry validation must run b
 assert.ok(installIndex < playwrightInstallIndex, 'npm ci must run before Playwright browser installation');
 assert.ok(playwrightInstallIndex < browserIndex, 'browser workflow must install Playwright once before skipping duplicate install in ci-browser.sh');
 
-assert.ok(pkg.scripts['test:ci:node24']?.includes('tests/node24-ci-compat-check.mjs'), 'package script for Node 24 CI compatibility check missing');
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'), 'package script for v1.0.21 no-browser suite missing');
-assert.ok(ciNoBrowser.includes('tests/node24-ci-compat-check.mjs'), 'no-browser CI must include Node 24 compatibility guard');
-assert.ok(ciNoBrowser.includes('run_node tests/version-suite-registry-check.mjs'), 'no-browser CI must run version-suite registry gate');
-assert.ok(ciNoBrowser.includes('run_node --check tests/version-suite-registry-check.mjs'), 'no-browser CI must syntax-check version-suite registry');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must include Node 24 compatibility through registry runner');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
 
 for (const text of [releaseNotes, changelog, manifest, roadmap, qaMatrix]) {
-  assert.ok(text.includes('v1.1.0-alpha.6'), 'release documentation must mention v1.1.0-alpha.6');
+  assert.ok(text.includes('v1.1.0-alpha.7'), 'release documentation must mention v1.1.0-alpha.7');
   assert.ok(text.includes('Node 24'), 'release documentation must mention Node 24');
 }
 assert.ok(node24Doc.includes('v1.0.21'), 'retained Node 24 compatibility doc must keep its original release identity');

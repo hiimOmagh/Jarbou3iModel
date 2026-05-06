@@ -2882,7 +2882,7 @@ This release is invalid if it enables any runtime capability, exposes a planned 
 
 <!-- release-file:v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md -->
 
-# v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
+# v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
 
 ## Scope
 
@@ -2918,7 +2918,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 ## Next safe cleanup
 
-v1.1.0-alpha.6 should consolidate version-suite wrappers into a registry-driven no-browser suite.
+v1.1.0-alpha.7 should consolidate version-suite wrappers into a registry-driven no-browser suite.
 
 This fixture registry consolidation preserves coverage while reducing fixture sprawl.
 
@@ -2935,9 +2935,9 @@ MERGE_TO_REGISTRY is now executed for migration and privacy fixtures. No files a
 <!-- /release-file:v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md -->
 
 
-<!-- release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->
+<!-- release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
 
-# v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
+# v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
 
 ## Release type
 
@@ -2995,7 +2995,7 @@ This release is invalid if:
 
 ## Next safe step
 
-`v1.1.0-alpha.6 — Documentation Timeline Consolidation`
+`v1.1.0-alpha.7 — Documentation Timeline Consolidation`
 
 That release may merge version-specific documentation into timeline-style documents after doc hygiene gates are remapped.
 
@@ -3011,7 +3011,7 @@ Fixture registry consolidation retains the unused oversized asset cleanup from a
 No files are deleted from runtime behavior; historical documents are merged into this release-history registry.
 
 Retention class continuity: MERGE_TO_REGISTRY remains the policy for historical wrappers, release docs, migration fixtures, and privacy fixtures.
-<!-- /release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->
+<!-- /release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
 
 
 <!-- release-file:visual-qa.md -->
@@ -3072,8 +3072,8 @@ Complete this before a public release.
 
 <!-- /release-file:visual-qa.md -->
 
-<!-- release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->
-# v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation
+<!-- release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
+# v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
 
 Cleanup-only repository reduction gate. Consolidates root-level release/evidence artifacts into canonical docs and `MANIFEST.json` while preserving release provenance, hosted-demo evidence rules, and public-demo honesty boundaries.
 
@@ -3106,4 +3106,4 @@ Cleanup-only repository reduction gate. Consolidates root-level release/evidence
 ## Disproven if
 
 This release is invalid if any consolidated root artifact is restored as a full standalone release file, if public-demo evidence rules are weakened, or if provider/OAuth/backend/source/storage behavior changes.
-<!-- /release-file:v1.1.0-alpha.6-root-manifest-release-artifact-consolidation.md -->
+<!-- /release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->

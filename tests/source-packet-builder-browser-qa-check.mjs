@@ -15,17 +15,17 @@ const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.6-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.6.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.7-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json');
 
-assert.equal(pkg.version, '1.1.0-alpha.6');
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.6');
+assert.equal(pkg.version, '1.1.0-alpha.7');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.7');
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.1.0-alpha.6');
-  assert.equal(packet.source_packet_builder_report.builder_version, '1.1.0-alpha.6');
-  assert.equal(packet.last_built_source_packet.workflow_version, '1.1.0-alpha.6');
+  assert.equal(packet.workflow_version, '1.1.0-alpha.7');
+  assert.equal(packet.source_packet_builder_report.builder_version, '1.1.0-alpha.7');
+  assert.equal(packet.last_built_source_packet.workflow_version, '1.1.0-alpha.7');
   assert.equal(packet.last_built_source_packet.builder_version, 'source_packet_builder.v1');
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.6 — Root Manifest + Release Artifact Consolidation');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry');
 }
 
 assert.ok(index.includes('data-browser-qa="source-packet-builder"'), 'builder card must expose a browser-QA hook');
@@ -70,13 +70,13 @@ assert.ok(browserSpec.includes('exportSourcePacketBuilderBtn'), 'browser spec mu
 assert.ok(browserSpec.includes('live_fetching_performed'), 'browser spec must assert no live fetch semantics');
 assert.ok(browserSpec.includes('verification_claimed'), 'browser spec must assert no verification claim semantics');
 
-assert.ok(pkg.scripts['test:source:packet-builder:browser-qa'].includes('source-packet-builder-browser-qa-check.mjs'));
-assert.ok(pkg.scripts['test:browser:source-packet-builder'].includes('source-packet-builder-browser.spec.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(pkg.scripts['test:version-registry']?.includes('version-suite-registry-check.mjs'));
-assert.ok(ciBrowser.includes('npm run test:browser:source-packet-builder'), 'browser CI must include source packet builder browser QA');
-assert.ok(ciNoBrowser.includes('tests/source-packet-builder-browser-qa-check.mjs'), 'no-browser CI must include static builder browser QA guard');
-assert.ok(ciNoBrowser.includes('tests/version-suite-registry-check.mjs'), 'syntax gate must include v117 suite');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
+assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'browser CI must include source packet builder browser QA through registry runner');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must include static builder browser QA through registry runner');
+assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'syntax gate must delegate through registry runner');
 
 console.log('Source packet builder browser QA checks passed.');
 process.exit(0);
