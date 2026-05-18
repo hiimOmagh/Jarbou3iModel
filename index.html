@@ -56,78 +56,78 @@
 
       <section class="firstRunPanel" id="firstRunPanel" aria-label="First-run onboarding">
         <div class="firstRunCopy">
-          <div class="researchEyebrow">First-run guide</div>
-          <h3>Start clean: topic → plan → evidence → quality → export</h3>
-          <p class="muted">A local-only onboarding layer keeps the first session operational without exposing advanced provider, OAuth, backend, or connector internals.</p>
+          <div class="researchEyebrow" data-r-i18n="firstRunGuideEyebrow">دليل البدء الأول</div>
+          <h3 data-r-i18n="firstRunGuideTitle">ابدأ من مسار نظيف: الموضوع → الخطة → الأدلة → الجودة → التصدير</h3>
+          <p class="muted" data-r-i18n="firstRunGuideBody">طبقة بدء محلية فقط تُبقي الجلسة الأولى قابلة للتشغيل دون كشف تفاصيل المزوّد المتقدم أو OAuth أو الخلفية أو الموصلات.</p>
         </div>
         <div class="firstRunProgress" id="firstRunProgress" aria-live="polite"></div>
         <div class="firstRunChecklist" id="firstRunChecklist"></div>
         <div class="actions firstRunActions">
-          <button class="btn primary" id="startFirstRunBtn" type="button">Start guided setup</button>
-          <button class="btn" id="nextFirstRunBtn" type="button">Go to next step</button>
-          <button class="btn ghost" id="dismissFirstRunBtn" type="button">Hide guide</button>
+          <button class="btn primary" id="startFirstRunBtn" type="button" data-r-i18n="startGuidedSetup">ابدأ الإعداد الموجّه</button>
+          <button class="btn" id="nextFirstRunBtn" type="button" data-r-i18n="goToNextStep">انتقل إلى الخطوة التالية</button>
+          <button class="btn ghost" id="dismissFirstRunBtn" type="button" data-r-i18n="hideGuide">إخفاء الدليل</button>
         </div>
       </section>
 
 
       <section class="publicDemoPanel" id="publicDemoReadinessPanel" aria-label="Public demo readiness">
         <div>
-          <div class="researchEyebrow">Public demo ready</div>
-          <h3>Show the workflow without exposing unfinished internals</h3>
-          <p class="muted">Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.</p>
+          <div class="researchEyebrow" data-r-i18n="publicDemoReadyEyebrow">العرض العام جاهز</div>
+          <h3 data-r-i18n="publicDemoReadyTitle">اعرض سير العمل دون كشف الأجزاء الداخلية غير المكتملة</h3>
+          <p class="muted" data-r-i18n="publicDemoReadyBody">استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.</p>
         </div>
         <div class="publicDemoChecklist">
-          <span>Local-only default</span>
-          <span>Safe export boundary</span>
-          <span>No live-provider behavior change</span>
-          <span>Release notes ready</span>
+          <span data-r-i18n="localOnlyDefault">افتراضي محلي فقط</span>
+          <span data-r-i18n="safeExportBoundary">حدود تصدير آمنة</span>
+          <span data-r-i18n="noLiveProviderBehaviorChange">لا تغيير في سلوك المزوّد الحي</span>
+          <span data-r-i18n="releaseNotesReady">ملاحظات الإصدار جاهزة</span>
         </div>
       </section>
 
       <section class="hostedDemoPanel" id="hostedDemoVerificationPanel" aria-label="Hosted demo deployment verification">
         <div>
-          <div class="researchEyebrow">Hosted demo verification</div>
-          <h3>Publish only after browser evidence exists</h3>
-          <p class="muted">Planning gate only: no live scraping, no real OAuth, no provider execution, and no automated source verification are enabled. v1.1.0-alpha.11 adds fixture/test debt ledger, source-file refactor readiness, and hosted evidence capture polish and visual artifact guard gates without changing runtime behavior.</p>
+          <div class="researchEyebrow" data-r-i18n="hostedDemoVerificationEyebrow">التحقق من العرض المستضاف</div>
+          <h3 data-r-i18n="hostedDemoVerificationTitle">لا تنشر إلا بعد توفر أدلة المتصفح</h3>
+          <p class="muted" data-r-i18n="hostedDemoVerificationBody">بوابة تخطيط فقط: لا يوجد استخراج حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.11 سجل دين الاختبارات/الفيكستشرات، وتدقيق جاهزية تفكيك ملفات المصدر، وصقل التقاط أدلة العرض المستضاف مع حارس الشوائب البصرية، دون تغيير سلوك التشغيل.</p>
         </div>
         <div class="hostedDemoChecklist">
-          <span>Hosted URL checked</span>
-          <span>Desktop evidence</span>
-          <span>Mobile evidence</span>
-          <span>Provider/export evidence</span>
+          <span data-r-i18n="hostedUrlChecked">تم فحص رابط الاستضافة</span>
+          <span data-r-i18n="desktopEvidence">دليل سطح المكتب</span>
+          <span data-r-i18n="mobileEvidence">دليل الهاتف</span>
+          <span data-r-i18n="providerExportEvidence">دليل المزوّد/التصدير</span>
         </div>
       </section>
 
       <section class="evidenceReviewPanel" id="hostedDemoEvidenceReviewPanel" aria-label="Hosted demo evidence review">
         <div>
-          <div class="researchEyebrow">Evidence review gate</div>
-          <h3>Review screenshots and metadata before publish</h3>
-          <p class="muted">v1.1.0-alpha.11 preserves the v1.0.30 public-demo freeze while classifying files for future cleanup. Source packets remain local/manual drafting scaffolds; screenshots, hosted evidence, ZIPs, and cleanup candidates are not release approval by themselves.</p>
+          <div class="researchEyebrow" data-r-i18n="evidenceReviewGateEyebrow">بوابة مراجعة الأدلة</div>
+          <h3 data-r-i18n="evidenceReviewGateTitle">راجع اللقطات والبيانات الوصفية قبل النشر</h3>
+          <p class="muted" data-r-i18n="evidenceReviewGateBody">تحافظ v1.1.0-alpha.11 على تجميد العرض العام v1.0.30 مع تصنيف الملفات لتنظيف لاحق. تبقى حزم المصادر قوالب صياغة محلية/يدوية؛ ولا تكفي اللقطات أو أدلة الاستضافة أو ملفات ZIP أو مرشحو التنظيف وحدها لاعتماد الإصدار.</p>
         </div>
         <div class="evidenceReviewChecklist">
-          <span>Hosted URL smoke</span>
-          <span>No overflow proof</span>
-          <span>Metadata artifact</span>
-          <span>Reviewed before publish</span>
+          <span data-r-i18n="hostedUrlSmoke">اختبار دخان لرابط الاستضافة</span>
+          <span data-r-i18n="noOverflowProof">إثبات عدم وجود تجاوز أفقي</span>
+          <span data-r-i18n="metadataArtifact">أثر بيانات وصفية</span>
+          <span data-r-i18n="reviewedBeforePublish">تمت المراجعة قبل النشر</span>
         </div>
       </section>
 
       <section class="uxStabilizer" aria-label="Stable workflow overview">
         <div class="releaseHealthCard" id="releaseHealthCard">
           <div>
-            <div class="researchEyebrow">Stable workflow</div>
-            <h3>Next action: audit repo retention → prove safe consolidation → then reduce files</h3>
-            <p class="muted">Advanced provider, OAuth, backend, source, and release diagnostics are collapsed until a selected post-freeze lane has criteria, falsifiers, and review gates; implementation remains blocked.</p>
+            <div class="researchEyebrow" data-r-i18n="stableWorkflowEyebrow">سير عمل مستقر</div>
+            <h3 data-r-i18n="stableWorkflowTitle">الإجراء التالي: تدقيق الاحتفاظ بالملفات → إثبات الدمج الآمن → ثم تقليل الملفات</h3>
+            <p class="muted" data-r-i18n="stableWorkflowBody">تبقى تشخيصات المزوّد المتقدم وOAuth والخلفية والمصادر والإصدار مطوية حتى يحصل مسار ما بعد التجميد على معايير قبول وشروط إبطال وبوابات مراجعة واضحة؛ ويظل التنفيذ محظورًا.</p>
             <div class="screenDisciplineNextAction" id="screenDisciplineNextAction"><strong>Start:</strong> Select a post-freeze lane, write acceptance criteria, then open implementation only after review gates are explicit.</div>
           </div>
           <div class="releaseHealthMetrics" id="releaseHealthMetrics" aria-live="polite"></div>
         </div>
         <nav class="researchModeNav" id="researchModeNav" aria-label="Research workflow sections">
-          <button class="uxTab active" type="button" data-ux-tab="analysis">Analysis</button>
-          <button class="uxTab" type="button" data-ux-tab="evidence">Evidence</button>
-          <button class="uxTab" type="button" data-ux-tab="sources">Sources</button>
-          <button class="uxTab" type="button" data-ux-tab="quality">Quality & Export</button>
-          <button class="uxTab" type="button" data-ux-tab="advanced">Settings / Advanced</button>
+          <button class="uxTab active" type="button" data-ux-tab="analysis" data-r-i18n="analysisTab">التحليل</button>
+          <button class="uxTab" type="button" data-ux-tab="evidence" data-r-i18n="evidenceTab">الأدلة</button>
+          <button class="uxTab" type="button" data-ux-tab="sources" data-r-i18n="sourcesTab">المصادر</button>
+          <button class="uxTab" type="button" data-ux-tab="quality" data-r-i18n="qualityExportTab">الجودة والتصدير</button>
+          <button class="uxTab" type="button" data-ux-tab="advanced" data-r-i18n="settingsAdvancedTab">الإعدادات / المتقدم</button>
         </nav>
       </section>
 

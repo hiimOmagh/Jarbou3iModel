@@ -70,7 +70,10 @@ assert.ok(browserA11y.includes("page.locator('#loadSampleBtn')"), 'runtime a11y 
 assert.ok(browserA11y.includes("await page.locator('#loadSampleBtn').click()"), 'runtime a11y smoke must click loadSampleBtn');
 assert.ok(smoke.includes('toBeVisible'), 'smoke test must guard primary action visibility');
 assert.ok(smoke.includes('loadSampleBtn'), 'smoke test must guard loadSampleBtn');
-for (const text of [index, publicDemo, releaseDoc, read('README.md'), read('RELEASE_NOTES.md'), read('PUBLIC_DEMO.md'), read('BROWSER_EVIDENCE.md'), read('HOSTED_DEMO_VERIFICATION.md')]) {
+assert.ok(index.includes('data-r-i18n="hostedDemoVerificationBody"') && index.includes('لا يوجد استخراج حي'), 'localized index must keep no-live-scraping boundary');
+assert.ok(index.includes('OAuth حقيقي'), 'localized index must keep OAuth boundary');
+assert.ok(index.includes('لا تكفي اللقطات') && index.includes('ملفات ZIP'), 'localized index must reject screenshot/ZIP-only approval');
+for (const text of [publicDemo, releaseDoc, read('README.md'), read('RELEASE_NOTES.md'), read('PUBLIC_DEMO.md'), read('BROWSER_EVIDENCE.md'), read('HOSTED_DEMO_VERIFICATION.md')]) {
   assert.ok(/no live scraping|No live scraping|live scraping/i.test(text), 'public corpus must keep no-live-scraping boundary');
   assert.ok(/No real OAuth|production OAuth|real OAuth/i.test(text), 'public corpus must keep OAuth boundary');
   assert.ok(/screenshots.*alone|screenshots, hosted evidence, and ZIPs|ZIP existence alone|ZIP archive alone/i.test(text), 'public corpus must reject screenshot/ZIP-only approval');

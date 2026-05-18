@@ -13,7 +13,7 @@ assert.ok(index.includes('id="researchModeNav"'), 'research mode navigation miss
 for (const tab of ['analysis','evidence','sources','quality','advanced']) {
   assert.ok(index.includes(`data-ux-tab="${tab}"`), `missing UX tab: ${tab}`);
 }
-assert.ok(index.includes('Advanced provider, OAuth, backend, source, and release diagnostics are collapsed'), 'advanced-collapse product copy missing');
+assert.ok(index.includes('data-r-i18n="stableWorkflowBody"'), 'localized advanced-collapse product copy hook missing');
 assert.ok(styles.includes('.researchCard.uxHidden'), 'UX hidden-card class missing');
 assert.ok(styles.includes('.researchModeNav'), 'sticky workflow nav styles missing');
 assert.ok(styles.includes('.releaseHealthCard'), 'release health styles missing');

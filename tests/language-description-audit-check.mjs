@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import vm from 'node:vm';
 
 const VERSION = '1.1.0-alpha.11';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
@@ -7,6 +8,12 @@ const app = fs.readFileSync('src/app.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
 const manifest = JSON.parse(fs.readFileSync('manifest.webmanifest', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+const renderHelpersSource = fs.readFileSync('src/research/render-helpers.js', 'utf8');
+const renderContext = { window: { Jarbou3iResearchModules: {}, document: { documentElement: { lang: 'ar' } }, localStorage: { getItem: () => null } } };
+vm.runInNewContext(renderHelpersSource, renderContext, { filename: 'src/research/render-helpers.js' });
+const researchCopy = renderContext.window.Jarbou3iResearchModules.renderHelpers.COPY;
+
 
 function extractI18n(source) {
   const start = source.indexOf('const I18N=');
@@ -61,6 +68,32 @@ assert.ok(index.includes('<html lang="ar" dir="rtl">'), 'Arabic RTL shell must r
 assert.ok(index.includes('Jarbou3i Research Engine is a trilingual, source-aware research-to-strategy workspace'), 'index meta description must be accurate and professional');
 assert.ok(index.includes('Trilingual, client-side strategic research workbench'), 'OpenGraph description must be accurate and professional');
 assert.ok(manifest.description.includes('Trilingual public-demo research-to-strategy workspace'), 'web manifest description must be professional and accurate');
+
+const staticShellKeys = [
+  'firstRunGuideEyebrow','firstRunGuideTitle','firstRunGuideBody','startGuidedSetup','goToNextStep','hideGuide',
+  'publicDemoReadyEyebrow','publicDemoReadyTitle','publicDemoReadyBody','localOnlyDefault','safeExportBoundary','noLiveProviderBehaviorChange','releaseNotesReady',
+  'hostedDemoVerificationEyebrow','hostedDemoVerificationTitle','hostedDemoVerificationBody','hostedUrlChecked','desktopEvidence','mobileEvidence','providerExportEvidence',
+  'evidenceReviewGateEyebrow','evidenceReviewGateTitle','evidenceReviewGateBody','hostedUrlSmoke','noOverflowProof','metadataArtifact','reviewedBeforePublish',
+  'stableWorkflowEyebrow','stableWorkflowTitle','stableWorkflowBody','analysisTab','evidenceTab','sourcesTab','qualityExportTab','settingsAdvancedTab'
+];
+for (const lang of ['ar', 'en', 'fr']) {
+  for (const key of staticShellKeys) {
+    assert.ok(researchCopy[lang][key], `${lang} missing localized static-shell key: ${key}`);
+  }
+}
+for (const phrase of ['First-run guide', 'Start clean:', 'Public demo ready', 'Show the workflow', 'Publish only after browser evidence exists', 'Review screenshots', 'Stable workflow', 'Quality & Export']) {
+  assert.equal(index.includes(`>${phrase}`), false, `default Arabic shell must not expose English fallback copy: ${phrase}`);
+}
+const providerKeys = ['providerEndpoint','providerModel','providerApiKey','rememberProviderKey','enableLiveByok','providerSafety','validateProviderSettings','dryRunProviderRequest','statusProviderDryRun','statusProviderSettingsSaved','statusProviderLiveDisabled','statusProviderLiveError','statusBackendProxyReady'];
+for (const lang of ['ar', 'fr']) {
+  for (const key of providerKeys) {
+    const value = researchCopy[lang][key];
+    assert.ok(value && value !== researchCopy.en[key], `${lang}.${key} must be localized, not inherited English copy`);
+  }
+}
+assert.ok(researchCopy.ar.firstRunGuideTitle.includes('الموضوع') && researchCopy.ar.firstRunGuideTitle.includes('التصدير'), 'Arabic first-run title must be clear and domain-specific');
+assert.ok(researchCopy.fr.firstRunGuideTitle.includes('sujet') && researchCopy.fr.firstRunGuideTitle.includes('export'), 'French first-run title must be clear and domain-specific');
+
 const metadataCorpus = [
   ...Array.from(index.matchAll(/<meta[^>]+content="([^"]*)"/g)).map((match) => match[1]),
   manifest.description

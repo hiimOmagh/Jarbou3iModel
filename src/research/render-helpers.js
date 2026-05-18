@@ -299,6 +299,67 @@
   });
 
 
+  Object.assign(COPY.en, {
+    firstRunGuideEyebrow:'First-run guide',
+    firstRunGuideTitle:'Start clean: topic → plan → evidence → quality → export',
+    firstRunGuideBody:'A local-only onboarding layer keeps the first session operational without exposing advanced provider, OAuth, backend, or connector internals.',
+    startGuidedSetup:'Start guided setup', goToNextStep:'Go to next step', hideGuide:'Hide guide',
+    publicDemoReadyEyebrow:'Public demo ready',
+    publicDemoReadyTitle:'Show the workflow without exposing unfinished internals',
+    publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
+    localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
+    hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
+    hostedDemoVerificationBody:'Planning gate only: no live scraping, no real OAuth, no provider execution, and no automated source verification are enabled. v1.1.0-alpha.11 adds fixture/test debt ledger, source-file refactor readiness, and hosted evidence capture polish and visual artifact guard gates without changing runtime behavior.',
+    hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
+    evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
+    evidenceReviewGateBody:'v1.1.0-alpha.11 preserves the v1.0.30 public-demo freeze while classifying files for future cleanup. Source packets remain local/manual drafting scaffolds; screenshots, hosted evidence, ZIPs, and cleanup candidates are not release approval by themselves.',
+    hostedUrlSmoke:'Hosted URL smoke', noOverflowProof:'No overflow proof', metadataArtifact:'Metadata artifact', reviewedBeforePublish:'Reviewed before publish',
+    stableWorkflowEyebrow:'Stable workflow', stableWorkflowTitle:'Next action: audit repo retention → prove safe consolidation → then reduce files',
+    stableWorkflowBody:'Advanced provider, OAuth, backend, source, and release diagnostics are collapsed until a selected post-freeze lane has criteria, falsifiers, and review gates; implementation remains blocked.',
+    analysisTab:'Analysis', evidenceTab:'Evidence', sourcesTab:'Sources', qualityExportTab:'Quality & Export', settingsAdvancedTab:'Settings / Advanced'
+  });
+  Object.assign(COPY.ar, {
+    firstRunGuideEyebrow:'دليل البدء الأول',
+    firstRunGuideTitle:'ابدأ من مسار نظيف: الموضوع → الخطة → الأدلة → الجودة → التصدير',
+    firstRunGuideBody:'طبقة بدء محلية فقط تُبقي الجلسة الأولى قابلة للتشغيل دون كشف تفاصيل المزوّد المتقدم أو OAuth أو الخلفية أو الموصلات.',
+    startGuidedSetup:'ابدأ الإعداد الموجّه', goToNextStep:'انتقل إلى الخطوة التالية', hideGuide:'إخفاء الدليل',
+    publicDemoReadyEyebrow:'العرض العام جاهز',
+    publicDemoReadyTitle:'اعرض سير العمل دون كشف الأجزاء الداخلية غير المكتملة',
+    publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
+    localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
+    hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
+    hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد استخراج حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.11 سجل دين الاختبارات/الفيكستشرات، وتدقيق جاهزية تفكيك ملفات المصدر، وصقل التقاط أدلة العرض المستضاف مع حارس الشوائب البصرية، دون تغيير سلوك التشغيل.',
+    hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
+    evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
+    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.11 على تجميد العرض العام v1.0.30 مع تصنيف الملفات لتنظيف لاحق. تبقى حزم المصادر قوالب صياغة محلية/يدوية؛ ولا تكفي اللقطات أو أدلة الاستضافة أو ملفات ZIP أو مرشحو التنظيف وحدها لاعتماد الإصدار.',
+    hostedUrlSmoke:'اختبار دخان لرابط الاستضافة', noOverflowProof:'إثبات عدم وجود تجاوز أفقي', metadataArtifact:'أثر بيانات وصفية', reviewedBeforePublish:'تمت المراجعة قبل النشر',
+    stableWorkflowEyebrow:'سير عمل مستقر', stableWorkflowTitle:'الإجراء التالي: تدقيق الاحتفاظ بالملفات → إثبات الدمج الآمن → ثم تقليل الملفات',
+    stableWorkflowBody:'تبقى تشخيصات المزوّد المتقدم وOAuth والخلفية والمصادر والإصدار مطوية حتى يحصل مسار ما بعد التجميد على معايير قبول وشروط إبطال وبوابات مراجعة واضحة؛ ويظل التنفيذ محظورًا.',
+    analysisTab:'التحليل', evidenceTab:'الأدلة', sourcesTab:'المصادر', qualityExportTab:'الجودة والتصدير', settingsAdvancedTab:'الإعدادات / المتقدم',
+    providerEndpoint:'نقطة النهاية', providerModel:'النموذج', providerApiKey:'مفتاح API', rememberProviderKey:'حفظ المفتاح محليًا على هذا الجهاز', enableLiveByok:'تفعيل استدعاءات المزوّد الحية', providerSafety:'الأمان: يبقى النمط اليدوي/الخاص هو الافتراضي. لا تُصدَّر المفاتيح في الحزم أو التقارير أو سجل التشغيل.', validateProviderSettings:'التحقق من إعدادات المزوّد', dryRunProviderRequest:'بناء طلب تجريبي دون تنفيذ', byokScore:'أمان مفتاحك الخاص', backendProxyScore:'وسيط الخلفية', providerIdentityScore:'هوية المزوّد', statusProviderDryRun:'تم بناء حمولة المزوّد دون استدعاء شبكي حي.', statusProviderSettingsSaved:'تم التحقق من إعدادات المزوّد وحفظها.', statusProviderLiveDisabled:'استدعاءات المزوّد الحية معطّلة؛ تم تسجيل استجابة تجريبية/وهمية.', statusProviderLiveError:'فشل استدعاء المزوّد الحي؛ لم يُخزَّن أي مفتاح في سجل التشغيل.', statusBackendProxyReady:'تم اختيار وسيط الخلفية المستضاف. لا يرسل المتصفح مفتاح المزوّد.'
+  });
+  Object.assign(COPY.fr, {
+    firstRunGuideEyebrow:'Guide de première utilisation',
+    firstRunGuideTitle:'Démarrer proprement : sujet → plan → preuves → qualité → export',
+    firstRunGuideBody:'Une couche d’onboarding locale maintient la première session opérationnelle sans exposer les détails avancés du fournisseur, d’OAuth, du backend ou des connecteurs.',
+    startGuidedSetup:'Démarrer le guidage', goToNextStep:'Passer à l’étape suivante', hideGuide:'Masquer le guide',
+    publicDemoReadyEyebrow:'Démo publique prête',
+    publicDemoReadyTitle:'Montrer le workflow sans exposer les internes inachevés',
+    publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
+    localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
+    hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
+    hostedDemoVerificationBody:'Barrière de planification uniquement : aucun scraping live, aucun OAuth réel, aucune exécution fournisseur et aucune vérification automatique des sources ne sont activés. v1.1.0-alpha.11 ajoute le registre de dette tests/fixtures, l’audit de préparation au refactor source, et le durcissement des captures de preuve hébergée sans modifier le comportement runtime.',
+    hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
+    evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
+    evidenceReviewGateBody:'v1.1.0-alpha.11 préserve le gel de démo publique v1.0.30 tout en classant les fichiers pour un nettoyage futur. Les paquets source restent des échafaudages locaux/manuels; captures, preuves hébergées, ZIPs et candidats au nettoyage ne valent pas approbation de release à eux seuls.',
+    hostedUrlSmoke:'Smoke test URL hébergée', noOverflowProof:'Preuve sans débordement', metadataArtifact:'Artefact de métadonnées', reviewedBeforePublish:'Revu avant publication',
+    stableWorkflowEyebrow:'Workflow stable', stableWorkflowTitle:'Action suivante : auditer la rétention repo → prouver la consolidation sûre → réduire les fichiers',
+    stableWorkflowBody:'Les diagnostics fournisseur avancé, OAuth, backend, source et release restent repliés jusqu’à ce qu’un axe post-gel ait critères, falsificateurs et barrières de revue; l’implémentation reste bloquée.',
+    analysisTab:'Analyse', evidenceTab:'Preuves', sourcesTab:'Sources', qualityExportTab:'Qualité & Export', settingsAdvancedTab:'Paramètres / Avancé',
+    providerEndpoint:'Point de terminaison', providerModel:'Modèle', providerApiKey:'Clé API', rememberProviderKey:'Mémoriser localement sur cet appareil', enableLiveByok:'Activer les appels fournisseur live', providerSafety:'Sécurité : le mode manuel/privé reste par défaut. Les clés ne sont jamais exportées dans les paquets, rapports ou journaux.', validateProviderSettings:'Valider les paramètres fournisseur', dryRunProviderRequest:'Construire une requête à blanc', byokScore:'Sécurité BYOK', backendProxyScore:'Proxy backend', providerIdentityScore:'Identité fournisseur', statusProviderDryRun:'Charge fournisseur construite sans appel réseau live.', statusProviderSettingsSaved:'Paramètres fournisseur validés et enregistrés.', statusProviderLiveDisabled:'Appels fournisseur live désactivés; réponse simulée enregistrée.', statusProviderLiveError:'Échec de l’appel fournisseur live; aucune clé n’a été stockée dans le journal.', statusBackendProxyReady:'Proxy backend hébergé sélectionné. Le navigateur n’envoie aucune clé fournisseur.'
+  });
+
+
   const SUPPORTED_LANGS = ['ar','en','fr'];
   function esc(value){ return String(value ?? '').replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
   function getLang(){

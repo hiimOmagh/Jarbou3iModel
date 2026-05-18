@@ -30,9 +30,9 @@ assert.equal(lock.version, VERSION);
 assert.equal(lock.packages[''].version, VERSION);
 assert.ok(pkg.description.includes('package script compression and CI gate registry'));
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose post-freeze planning identity');
-assert.ok(index.includes('Planning gate only'), 'index must state planning gate only');
-assert.ok(index.includes('acceptance criteria'), 'index must state lane criteria before implementation');
-assert.ok(index.includes('implementation'), 'index must mention implementation boundary');
+assert.ok(index.includes('data-r-i18n="hostedDemoVerificationBody"') && index.includes('بوابة تخطيط فقط'), 'localized index must state planning gate only');
+assert.ok(index.includes('data-r-i18n="stableWorkflowBody"') && index.includes('معايير قبول'), 'localized index must state lane criteria before implementation');
+assert.ok(index.includes('يظل التنفيذ محظورًا'), 'localized index must mention implementation boundary');
 
 assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.11'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
