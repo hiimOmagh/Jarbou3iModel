@@ -3006,6 +3006,8 @@ Public-demo boundary continuity: No live scraping, No real OAuth, and screenshot
 
 Mobile Header Geometry Lock remains the v1.0.30 visual-freeze scope preserved by this cleanup release.
 
+fixture registry consolidation continuity: fixture registry payload compression preserves the unused oversized asset cleanup and keeps migration/privacy fixture registries authoritative.
+
 Fixture registry consolidation retains the unused oversized asset cleanup from alpha.4 and keeps the migration/privacy registries authoritative.
 
 No files are deleted from runtime behavior; historical documents are merged into this release-history registry.
@@ -3107,3 +3109,49 @@ Cleanup-only repository reduction gate. Consolidates root-level release/evidence
 
 This release is invalid if any consolidated root artifact is restored as a full standalone release file, if public-demo evidence rules are weakened, or if provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
+
+<!-- release-file:v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md -->
+# v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit
+
+Cleanup-only fixture and QA organization gate. Compresses the oversized migration/privacy fixture registry payloads while preserving historical fixture semantics through `tests/fixture-registry-loader.mjs` expansion, then adds budget and organization checks so the repository does not drift back into registry bloat or unregistered test sprawl.
+
+## What changed
+
+- Converted migration registry packet payloads to deterministic `gzip+base64+json` entries.
+- Converted privacy export registry packet payloads to deterministic `gzip+base64+json` entries.
+- Preserved loader-facing expanded `packet` objects for existing regression tests.
+- Added `tests/fixture-payload-budget-check.mjs` to enforce fixture registry size budgets and semantic-preservation checks.
+- Added `tests/test-organization-audit-check.mjs` to enforce registered checks, script compression, and CI gate consistency.
+- Added current alpha.8 migration and privacy fixtures through the compressed registries.
+
+## What did not change
+
+- No runtime behavior change.
+- No UI behavior change.
+- No provider behavior change.
+- No OAuth behavior change.
+- No backend/source/storage behavior change.
+- No fixture semantic thinning.
+- No source/app/style refactor.
+
+## Validation
+
+- `npm run test:fixtures`
+- `npm run test:current:no-browser`
+- `npm run test:ci:no-browser`
+- `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`
+
+## Public-demo boundary continuity
+
+No live scraping, No real OAuth, and screenshots alone or ZIP archive alone are not sufficient for approval.
+
+Mobile Header Geometry Lock remains the v1.0.30 visual-freeze scope preserved by this cleanup release.
+
+fixture registry consolidation continuity: fixture registry payload compression preserves the unused oversized asset cleanup and keeps migration/privacy fixture registries authoritative.
+
+Retention class continuity: MERGE_TO_REGISTRY remains the policy for historical wrappers, release docs, migration fixtures, and privacy fixtures. No files are deleted from runtime behavior; historical payloads are compressed, not semantically thinned.
+
+## Disproven if
+
+This release is invalid if compressed fixture payloads cannot be expanded by the loader, if registry files exceed the alpha.8 byte budget, if historical migration/privacy fixtures are semantically thinned, or if runtime/provider/OAuth/backend/source/storage behavior changes.
+<!-- /release-file:v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md -->

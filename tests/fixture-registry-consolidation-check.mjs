@@ -4,18 +4,18 @@ import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.7';
-const TITLE = 'Package Script Compression + CI Gate Registry';
-const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.7-package-script-compression-ci-gate-registry-patch.zip';
+const VERSION = '1.1.0-alpha.8';
+const TITLE = 'Fixture Registry Payload Compression + Test Organization Audit';
+const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit-patch.zip';
 
 assert.equal(migrationRegistry.registry_version, VERSION);
 assert.equal(migrationRegistry.registry_type, 'migration_fixture_registry');
 assert.equal(migrationRegistry.entry_count, migrationRegistry.entries.length);
-assert.equal(migrationRegistry.entries.length, 55, 'migration registry preserves 54 historical packets plus current alpha.5');
+assert.equal(migrationRegistry.entries.length, 56, 'migration registry preserves historical packets plus current alpha.8');
 assert.equal(privacyRegistry.registry_version, VERSION);
 assert.equal(privacyRegistry.registry_type, 'privacy_export_fixture_registry');
 assert.equal(privacyRegistry.entry_count, privacyRegistry.entries.length);
-assert.equal(privacyRegistry.entries.length, 45, 'privacy registry preserves 44 historical exports plus current alpha.5');
+assert.equal(privacyRegistry.entries.length, 46, 'privacy registry preserves historical exports plus current alpha.8');
 
 assert.equal(fs.readdirSync('fixtures/migrations').filter((name) => /^v.+-packet\.json$/.test(name)).length, 0, 'old migration packet files must be removed');
 assert.equal(fs.readdirSync('fixtures/privacy').filter((name) => /^browser-generated-export-.+\.json$/.test(name)).length, 0, 'old privacy export files must be removed');
@@ -24,15 +24,15 @@ for (const activeAsset of ['assets/jarbou3i-mascot-192.png','assets/jarbou3i-mas
   assert.equal(fs.existsSync(activeAsset), true, `${activeAsset} must remain`);
 }
 
-for (const version of ['v0.11.0','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.7']) {
+for (const version of ['v0.11.0','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.8']) {
   assert.ok(getMigrationFixture(`fixtures/migrations/${version}-packet.json`), `${version} migration fixture must load from registry`);
 }
-for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.7']) {
+for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.8']) {
   assert.ok(getPrivacyFixture(`fixtures/privacy/browser-generated-export-${version}.json`), `${version} privacy fixture must load from registry`);
 }
 
-const currentMigration = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.7-packet.json');
-const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.7.json');
+const currentMigration = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.8-packet.json');
+const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.8.json');
 for (const packet of [currentMigration, currentPrivacy]) {
   assert.equal(packet.workflow_version, VERSION);
   assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
@@ -54,7 +54,7 @@ assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must re
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${VERSION} · ${TITLE}`));
-assert.ok(releaseDocExists(`docs/v${VERSION}-package-script-compression-ci-gate-registry.md`));
+assert.ok(releaseDocExists(`docs/v${VERSION}-fixture-registry-payload-compression-test-organization-audit.md`));
 
 console.log('Fixture registry consolidation checks passed.');
 process.exit(0);

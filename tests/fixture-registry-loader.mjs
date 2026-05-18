@@ -1,11 +1,56 @@
 import fs from 'node:fs';
-
-const migrationRegistry = JSON.parse(fs.readFileSync('fixtures/migrations/migration-registry.json', 'utf8'));
-const privacyRegistry = JSON.parse(fs.readFileSync('fixtures/privacy/privacy-export-registry.json', 'utf8'));
+import zlib from 'node:zlib';
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
+
+function decodePacket(entry, registryPath) {
+  if (entry.packet && typeof entry.packet === 'object') return clone(entry.packet);
+  if (entry.payload_encoding === 'gzip+base64+json' && typeof entry.packet_gzip_base64 === 'string') {
+    const compressed = Buffer.from(entry.packet_gzip_base64, 'base64');
+    const json = zlib.gunzipSync(compressed).toString('utf8');
+    return JSON.parse(json);
+  }
+  throw new Error(`Unsupported fixture registry payload encoding in ${registryPath}#${entry.file || entry.version || 'unknown'}`);
+}
+
+function makeEntry(rawEntry, registryPath) {
+  let decodedPacket = null;
+  let decoded = false;
+  const entry = {
+    file: rawEntry.file,
+    version: rawEntry.version,
+    path: rawEntry.path,
+    payload_encoding: rawEntry.payload_encoding || 'json',
+    uncompressed_bytes: rawEntry.uncompressed_bytes,
+    compressed_bytes: rawEntry.compressed_bytes
+  };
+  Object.defineProperty(entry, 'packet', {
+    enumerable: true,
+    get() {
+      if (!decoded) {
+        decodedPacket = decodePacket(rawEntry, registryPath);
+        decoded = true;
+      }
+      return decodedPacket;
+    }
+  });
+  return entry;
+}
+
+function readRegistry(registryPath) {
+  const raw = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  if (!Array.isArray(raw.entries)) throw new Error(`Fixture registry entries must be an array: ${registryPath}`);
+
+  return {
+    ...raw,
+    entries: raw.entries.map((entry) => makeEntry(entry, registryPath))
+  };
+}
+
+const migrationRegistry = readRegistry('fixtures/migrations/migration-registry.json');
+const privacyRegistry = readRegistry('fixtures/privacy/privacy-export-registry.json');
 
 function normalizeMigrationKey(input) {
   let key = String(input || '').trim();
@@ -62,7 +107,6 @@ export function registryHasPrivacyFixture(input) {
 }
 
 export { migrationRegistry, privacyRegistry };
-
 
 export function fixturePathExists(input) {
   const text = String(input || '');

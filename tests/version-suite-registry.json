@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.1.0-alpha.7",
-  "release_title": "v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry",
+  "version_suite_registry_version": "1.1.0-alpha.8",
+  "release_title": "v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

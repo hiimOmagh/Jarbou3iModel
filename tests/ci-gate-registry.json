@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.7",
-  "release_title": "v1.1.0-alpha.7 \u2014 Package Script Compression + CI Gate Registry",
+  "ci_gate_registry_version": "1.1.0-alpha.8",
+  "release_title": "v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -77,6 +77,8 @@
         "tests/expansion-lane-acceptance-matrix-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
         "tests/fixture-registry-consolidation-check.mjs",
+        "tests/test-organization-audit-check.mjs",
+        "tests/fixture-payload-budget-check.mjs",
         "tests/version-suite-registry-check.mjs",
         "tests/ci-gate-registry-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
@@ -140,6 +142,8 @@
         "tests/repository-consolidation-audit-check.mjs",
         "tests/fixture-registry-loader.mjs",
         "tests/fixture-registry-consolidation-check.mjs",
+        "tests/test-organization-audit-check.mjs",
+        "tests/fixture-payload-budget-check.mjs",
         "tests/version-suite-registry-check.mjs",
         "tests/current-no-browser-suite.mjs",
         "tests/release-artifacts-loader.mjs",
@@ -178,11 +182,15 @@
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
         "tests/fixture-registry-consolidation-check.mjs",
+        "tests/test-organization-audit-check.mjs",
+        "tests/fixture-payload-budget-check.mjs",
         "tests/repo-file-hygiene-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
-        "tests/ci-gate-registry-check.mjs"
+        "tests/ci-gate-registry-check.mjs",
+        "tests/fixture-payload-budget-check.mjs",
+        "tests/test-organization-audit-check.mjs"
       ],
       "playwright_specs": []
     },
@@ -244,7 +252,9 @@
       "description": "Fixture/schema registry sanity gate.",
       "node_checks": [
         "tests/fixtures-check.mjs",
-        "tests/fixture-registry-consolidation-check.mjs"
+        "tests/fixture-registry-consolidation-check.mjs",
+        "tests/fixture-payload-budget-check.mjs",
+        "tests/test-organization-audit-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
