@@ -114,7 +114,7 @@ const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 for (const forbiddenDynamic of ['Hide Command Center','Show Command Center','Hide Engine Map','Show Engine Map','Next actions</h4>','Template layer coverage is currently complete.','Missing template layers:']) {
   assert.equal(engine.includes(forbiddenDynamic), false, `dynamic runtime shell must not hard-code English visible copy: ${forbiddenDynamic}`);
 }
-const providerKeys = ['providerEndpoint','providerModel','providerApiKey','rememberProviderKey','enableLiveByok','providerSafety','validateProviderSettings','dryRunProviderRequest','statusProviderDryRun','statusProviderSettingsSaved','statusProviderLiveDisabled','statusProviderLiveError','statusBackendProxyReady'];
+const providerKeys = ['providerEndpoint','providerModel','providerApiKey','rememberProviderKey','enableLiveByok','providerSafety','validateProviderSettings','dryRunProviderRequest','statusProviderDryRun','statusProviderSettingsSaved','statusProviderLiveDisabled','statusProviderLiveError','statusBackendProxyReady','providerPromptLabel','providerContractLabel','responseValidationScore','contractFixtureScore','sourcePlanningScore','sourcePolicyScore','sourceFixtureScore','sourceImportScore','providerIdentityScore'];
 for (const lang of ['ar', 'fr']) {
   for (const key of providerKeys) {
     const value = researchCopy[lang][key];
@@ -148,6 +148,36 @@ for (const lang of ['ar', 'fr']) {
   assert.equal(researchCopy[lang].qualityFixProvider.includes('key_exported'), false, `${lang}.qualityFixProvider must not expose raw English implementation flag in visible localized copy`);
   assert.equal(researchCopy[lang].qualityFixProvider.includes('false'), false, `${lang}.qualityFixProvider must not expose raw English boolean in visible localized copy`);
 }
+
+
+const visibleOptionKeys = [
+  'sourceTypeOfficial','sourceTypeAcademic','sourceTypeNews','sourceTypeSocial','sourceTypeMarket','sourceTypeExpert','sourceTypePrimary','sourceTypeOther',
+  'confidenceLow','confidenceMedium','confidenceHigh',
+  'relationshipMotivates','relationshipEnables','relationshipConstrains','relationshipContradicts','relationshipAmplifies',
+  'sourceConnectorManualMock','sourceConnectorWebSearchApi','sourceConnectorGithubRepo',
+  'searchProviderMock','formatLast30Days','formatDeepResearch','formatGenericReport','formatSourcePacket'
+];
+for (const lang of ['ar', 'fr']) {
+  for (const key of visibleOptionKeys) {
+    assert.ok(researchCopy[lang][key], `${lang}.${key} missing visible option localization`);
+  }
+}
+for (const key of visibleOptionKeys) {
+  assert.notEqual(researchCopy.ar[key], researchCopy.en[key], `ar.${key} must not inherit English visible option copy`);
+}
+for (const key of ['sourceConnectorWebSearchApi','sourceConnectorGithubRepo','formatDeepResearch','formatGenericReport','formatSourcePacket']) {
+  assert.notEqual(researchCopy.fr[key], researchCopy.en[key], `fr.${key} must not inherit English residual option copy`);
+}
+const renderHelpersStrictSource = fs.readFileSync('src/research/render-helpers.js', 'utf8');
+assert.ok(renderHelpersStrictSource.includes("localizeSelectOptions('providerName'"), 'provider select options must be localized before hosted evidence capture');
+assert.ok(renderHelpersStrictSource.includes("localizeSelectOptions('sourceImportFormat'"), 'source import format options must be localized before hosted evidence capture');
+for (const lang of ['ar', 'fr']) {
+  for (const key of ['providerPromptLabel','providerContractLabel','sourcePlanningScore','responseValidationScore','contractFixtureScore']) {
+    assert.ok(researchCopy[lang][key], `${lang}.${key} missing residual-visible localization`);
+    assert.notEqual(researchCopy[lang][key], researchCopy.en[key], `${lang}.${key} must not expose English residual copy`);
+  }
+}
+
 
 console.log('Language description audit checks passed.');
 process.exit(0);

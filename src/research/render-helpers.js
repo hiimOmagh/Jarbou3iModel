@@ -617,6 +617,51 @@
     statusScoreTheaterGuard:'garde-fou anti-score-theater actif', reviewable:'révisable', verifiedLabel:'vérifié', manualReview:'revue manuelle'
   });
 
+
+  Object.assign(COPY.en, {
+    sourceTypeOfficial:'official', sourceTypeAcademic:'academic', sourceTypeNews:'news', sourceTypeSocial:'social', sourceTypeMarket:'market', sourceTypeExpert:'expert', sourceTypePrimary:'primary', sourceTypeOther:'other',
+    confidenceLow:'low', confidenceMedium:'medium', confidenceHigh:'high',
+    relationshipMotivates:'motivates', relationshipEnables:'enables', relationshipConstrains:'constrains', relationshipContradicts:'contradicts', relationshipAmplifies:'amplifies',
+    sourceConnectorManualMock:'Manual / Mock', sourceConnectorWebSearchApi:'Web Search API abstraction', sourceConnectorWebSearchPlanned:'Web Search planned legacy', sourceConnectorGithubRepo:'GitHub public repo metadata', sourceConnectorGithubPlanned:'GitHub planned legacy', sourceConnectorHnPlanned:'HN planned', sourceConnectorYoutubePlanned:'YouTube planned', sourceConnectorRedditPlanned:'Reddit planned', sourceConnectorPolymarketPlanned:'Polymarket planned',
+    searchProviderMock:'Mock Search', searchProviderBrave:'Brave Search API planned', searchProviderTavily:'Tavily Search API planned', searchProviderSerpApi:'SerpApi planned', searchProviderCustom:'Custom Search API planned',
+    formatLast30Days:'last30days-style', formatDeepResearch:'Deep research-style', formatGenericReport:'Generic report', formatSourcePacket:'Manual source packet JSON'
+  });
+  Object.assign(COPY.ar, {
+    providerPromptLabel:'معاينة البرومبت',
+    providerContractLabel:'عقد الاستجابة',
+    responseValidationScore:'تحقق الاستجابة',
+    contractFixtureScore:'اختبارات العقود',
+    sourcePlanningScore:'تخطيط المصادر',
+    sourcePolicyScore:'سياسة المصادر',
+    sourceFixtureScore:'اختبارات المصادر',
+    sourceImportScore:'استيراد المصادر',
+    providerIdentityScore:'هوية المزوّد',
+    sourceTypeOfficial:'رسمي', sourceTypeAcademic:'أكاديمي', sourceTypeNews:'إخباري', sourceTypeSocial:'اجتماعي', sourceTypeMarket:'سوقي', sourceTypeExpert:'خبير', sourceTypePrimary:'أولي', sourceTypeOther:'آخر',
+    confidenceLow:'منخفضة', confidenceMedium:'متوسطة', confidenceHigh:'عالية',
+    relationshipMotivates:'يدفع', relationshipEnables:'يمكّن', relationshipConstrains:'يقيّد', relationshipContradicts:'يناقض', relationshipAmplifies:'يضخّم',
+    sourceConnectorManualMock:'يدوي / وهمي', sourceConnectorWebSearchApi:'تجريد API بحث الويب', sourceConnectorWebSearchPlanned:'بحث ويب مخطط قديم', sourceConnectorGithubRepo:'بيانات مستودع GitHub العام', sourceConnectorGithubPlanned:'GitHub مخطط قديم', sourceConnectorHnPlanned:'HN مخطط', sourceConnectorYoutubePlanned:'YouTube مخطط', sourceConnectorRedditPlanned:'Reddit مخطط', sourceConnectorPolymarketPlanned:'Polymarket مخطط',
+    searchProviderMock:'بحث وهمي', searchProviderBrave:'Brave Search API مخطط', searchProviderTavily:'Tavily Search API مخطط', searchProviderSerpApi:'SerpApi مخطط', searchProviderCustom:'API بحث مخصص مخطط',
+    formatLast30Days:'نمط last30days', formatDeepResearch:'نمط البحث العميق', formatGenericReport:'تقرير عام', formatSourcePacket:'JSON حزمة مصادر يدوية'
+  });
+  Object.assign(COPY.fr, {
+    providerPromptLabel:'Aperçu du prompt',
+    providerContractLabel:'Contrat de réponse',
+    responseValidationScore:'Validation de réponse',
+    contractFixtureScore:'Tests de contrat',
+    sourcePlanningScore:'Planification sources',
+    sourcePolicyScore:'Politique sources',
+    sourceFixtureScore:'Tests sources',
+    sourceImportScore:'Import sources',
+    providerIdentityScore:'Identité fournisseur',
+    sourceTypeOfficial:'officiel', sourceTypeAcademic:'académique', sourceTypeNews:'presse', sourceTypeSocial:'réseau social', sourceTypeMarket:'marché', sourceTypeExpert:'expert', sourceTypePrimary:'primaire', sourceTypeOther:'autre',
+    confidenceLow:'faible', confidenceMedium:'moyenne', confidenceHigh:'élevée',
+    relationshipMotivates:'motive', relationshipEnables:'permet', relationshipConstrains:'contraint', relationshipContradicts:'contredit', relationshipAmplifies:'amplifie',
+    sourceConnectorManualMock:'Manuel / simulé', sourceConnectorWebSearchApi:'Abstraction API recherche web', sourceConnectorWebSearchPlanned:'Recherche web planifiée legacy', sourceConnectorGithubRepo:'Métadonnées dépôt GitHub public', sourceConnectorGithubPlanned:'GitHub planifié legacy', sourceConnectorHnPlanned:'HN planifié', sourceConnectorYoutubePlanned:'YouTube planifié', sourceConnectorRedditPlanned:'Reddit planifié', sourceConnectorPolymarketPlanned:'Polymarket planifié',
+    searchProviderMock:'Recherche simulée', searchProviderBrave:'Brave Search API planifié', searchProviderTavily:'Tavily Search API planifié', searchProviderSerpApi:'SerpApi planifié', searchProviderCustom:'API recherche personnalisée planifiée',
+    formatLast30Days:'style last30days', formatDeepResearch:'style recherche approfondie', formatGenericReport:'rapport générique', formatSourcePacket:'paquet source JSON manuel'
+  });
+
+
   const SUPPORTED_LANGS = ['ar','en','fr'];
   function esc(value){ return String(value ?? '').replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
   function getLang(){
@@ -629,12 +674,27 @@
     documentRef.querySelectorAll('[data-r-placeholder]').forEach(el => { el.setAttribute('placeholder', tr(el.getAttribute('data-r-placeholder'))); });
     const projectInput = documentRef.getElementById('projectNameInput');
     if(projectInput) projectInput.setAttribute('placeholder', tr('untitledResearchProject'));
+    const localizeSelectOptions = (selectId, optionKeys) => {
+      const select = documentRef.getElementById(selectId);
+      if(!select) return;
+      Array.from(select.options || []).forEach(option => { option.textContent = tr(optionKeys[option.value] || option.value); });
+    };
     const sourceTemplateSelect = documentRef.getElementById('sourcePacketTemplateSelect');
     if(sourceTemplateSelect){
       sourceTemplateSelect.setAttribute('aria-label', tr('sourcePacketTemplatePresetAria'));
-      const optionKeys = {official_report:'sourceTemplateOfficialReport', reddit_thread:'sourceTemplateRedditThread', youtube_transcript:'sourceTemplateYoutubeTranscript', market_signal:'sourceTemplateMarketSignal', github_release:'sourceTemplateGithubRelease', generic_article:'sourceTemplateGenericArticle'};
-      Array.from(sourceTemplateSelect.options || []).forEach(option => { option.textContent = tr(optionKeys[option.value] || option.value); });
+      localizeSelectOptions('sourcePacketTemplateSelect', {official_report:'sourceTemplateOfficialReport', reddit_thread:'sourceTemplateRedditThread', youtube_transcript:'sourceTemplateYoutubeTranscript', market_signal:'sourceTemplateMarketSignal', github_release:'sourceTemplateGithubRelease', generic_article:'sourceTemplateGenericArticle'});
     }
+    localizeSelectOptions('researchMode', {structural:'modeStructural', recent:'modeRecent', 'source-heavy':'modeSourceHeavy', adversarial:'modeAdversarial'});
+    localizeSelectOptions('evSourceType', {official:'sourceTypeOfficial', academic:'sourceTypeAcademic', news:'sourceTypeNews', social:'sourceTypeSocial', market:'sourceTypeMarket', expert:'sourceTypeExpert', primary:'sourceTypePrimary', other:'sourceTypeOther'});
+    localizeSelectOptions('evConfidence', {low:'confidenceLow', medium:'confidenceMedium', high:'confidenceHigh'});
+    localizeSelectOptions('linkRelationship', {motivates:'relationshipMotivates', enables:'relationshipEnables', constrains:'relationshipConstrains', contradicts:'relationshipContradicts', amplifies:'relationshipAmplifies'});
+    localizeSelectOptions('linkConfidence', {low:'confidenceLow', medium:'confidenceMedium', high:'confidenceHigh'});
+    localizeSelectOptions('providerName', {mock:'providerModeMockName', openai_compatible:'providerModeByokName', backend_proxy:'providerModeBackendName', portable_oauth:'providerModePortableName'});
+    localizeSelectOptions('providerTask', {plan:'taskPlan', synthesis:'taskSynthesis', repair:'taskRepair', critique:'taskCritique', source_discipline:'taskSourceDiscipline'});
+    localizeSelectOptions('sourceConnector', {manual_mock:'sourceConnectorManualMock', web_search_api:'sourceConnectorWebSearchApi', web_search_planned:'sourceConnectorWebSearchPlanned', github_public_repo:'sourceConnectorGithubRepo', github_planned:'sourceConnectorGithubPlanned', hn_planned:'sourceConnectorHnPlanned', youtube_planned:'sourceConnectorYoutubePlanned', reddit_planned:'sourceConnectorRedditPlanned', polymarket_planned:'sourceConnectorPolymarketPlanned'});
+    localizeSelectOptions('sourceTask', {source_plan:'sourceTaskPlan', query_plan:'sourceTaskQuery', claim_extraction:'sourceTaskClaim', evidence_scoring:'sourceTaskScoring', cluster_plan:'sourceTaskCluster'});
+    localizeSelectOptions('searchProviderSelect', {mock_search:'searchProviderMock', brave_search_api:'searchProviderBrave', tavily_search_api:'searchProviderTavily', serpapi:'searchProviderSerpApi', custom_search_api:'searchProviderCustom'});
+    localizeSelectOptions('sourceImportFormat', {auto:'formatAuto', last30days:'formatLast30Days', deep_research:'formatDeepResearch', generic_research_report:'formatGenericReport', source_packet:'formatSourcePacket'});
     documentRef.querySelectorAll('.researchCard').forEach(card => { card.setAttribute('data-collapse-note', tr('advancedDetailsCollapsed')); });
     documentRef.querySelectorAll('.researchCard.disciplineAccordion > h3').forEach(heading => {
       heading.setAttribute('data-accordion-show', tr('show'));
