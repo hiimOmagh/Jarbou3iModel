@@ -20,8 +20,8 @@ const releasePackagingCheck = read('tests/release-packaging-cleanup-check.mjs');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.8-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.8.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.9-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.9.json');
 const trackedPaths = (() => {
   try {
     return new Set(execSync('git ls-files', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
@@ -33,15 +33,15 @@ const trackedPaths = (() => {
   }
 })();
 
-assert.equal(pkg.version, '1.1.0-alpha.8');
+assert.equal(pkg.version, '1.1.0-alpha.9');
 assert.ok(pkg.description.includes('evidence scoring'));
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.8');
-assert.equal(sample.workflow_version, '1.1.0-alpha.8');
-assert.equal(migrationFixture.workflow_version, '1.1.0-alpha.8');
-assert.equal(privacyFixture.workflow_version, '1.1.0-alpha.8');
-assert.equal(sample.release_notes.release_title, 'v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.9');
+assert.equal(sample.workflow_version, '1.1.0-alpha.9');
+assert.equal(migrationFixture.workflow_version, '1.1.0-alpha.9');
+assert.equal(privacyFixture.workflow_version, '1.1.0-alpha.9');
+assert.equal(sample.release_notes.release_title, 'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
@@ -52,8 +52,8 @@ for (const file of [
   'docs/v1.0.21-node-24-ci-compatibility.md',
   'docs/v1.0.25-public-demo-release-lock.md',
   'fixtures/migrations/v1.0.4-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.8-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.8.json',
+  'fixtures/migrations/v1.1.0-alpha.9-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.9.json',
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/version-suite-registry-check.mjs',
   'tests/repository-hygiene-cleanup-check.mjs',
@@ -73,19 +73,19 @@ for (const file of [
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/version-suite-registry-check.mjs'
 ]) {
-  assert.ok(fixturePathExists(file) || releaseDocExists(file), `missing v1.1.0-alpha.8 cleanup artifact: ${file}`);
+  assert.ok(fixturePathExists(file) || releaseDocExists(file), `missing v1.1.0-alpha.9 cleanup artifact: ${file}`);
 }
 
 assert.equal(getMigrationFixture('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
 assert.ok(migrationSource.includes("'1.0.4'"), 'v1.0.4 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.1.0-alpha.8'"), 'v1.1.0-alpha.8 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8'"), 'v1.0.19 must migrate into v1.1.0-alpha.8');
-assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-alpha.8'"));
-assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-alpha.8'"));
+assert.ok(migrationSource.includes("'1.1.0-alpha.9'"), 'v1.1.0-alpha.9 must remain a supported migration source');
+assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9'"), 'v1.0.19 must migrate into v1.1.0-alpha.9');
+assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-alpha.9'"));
+assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-alpha.9'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.8'), 'release corpus missing v1.1.0-alpha.8');
-  assert.ok(corpus.includes('Fixture Registry Payload Compression + Test Organization Audit'), 'release corpus missing v1.1.0-alpha.8 release title');
+  assert.ok(corpus.includes('v1.1.0-alpha.9'), 'release corpus missing v1.1.0-alpha.9');
+  assert.ok(corpus.includes('Test Matrix Runtime Optimization + Release Doc Timeline Pruning'), 'release corpus missing v1.1.0-alpha.9 release title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));

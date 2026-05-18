@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.8",
-  "release_title": "v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit",
+  "version": "1.1.0-alpha.9",
+  "release_title": "v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,
@@ -44,5 +44,5 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Fixture registry payload compression and test organization audit; no runtime behavior change."
+  "release_scope": "Fixture registry runtime optimization and release timeline audit; no runtime behavior change."
 }

@@ -1,6 +1,6 @@
 # Current Release
 
-## v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit
+## v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
 
 This cleanup release consolidates root-level release and evidence documents into the maintained documentation layer while preserving release-provenance, public-demo, hosted-evidence, and changed-files-only discipline.
 
@@ -46,7 +46,7 @@ Release approval still requires green no-browser CI, green browser CI, reviewed 
 ## Consolidated release manifest compatibility
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.1.0-alpha.8`
+- Version: `1.1.0-alpha.9`
 - Runtime capability change: no
 - Required browser gates before publishing
 - Release archive exclusions
@@ -59,3 +59,6 @@ Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-no
 Screenshots alone are insufficient.
 A ZIP archive alone is insufficient.
 This release requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence before approval.
+
+
+Evidence manifest continuity: v1.1.0-alpha.9 preserves hosted-demo evidence manifest discipline, including the single final metadata capture manifest boundary.

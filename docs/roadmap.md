@@ -1,17 +1,18 @@
 # Roadmap
 
-## v1.1.0-alpha.2 — Fixture Registry Payload Compression + Test Organization Audit
+## v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
 
-Current post-freeze alpha gate. Converts the v1.1.0-alpha.1 planning lanes into explicit acceptance criteria, falsifiers, evidence requirements, owners, and blocked-until gates. Implementation remains blocked. No live scraping, production OAuth, live provider execution, backend expansion, source connector expansion, storage expansion, or automated verification is introduced.
+Current cleanup-only alpha gate. The product remains frozen at the public-demo capability boundary while CI/runtime hygiene improves: the long no-browser syntax tail is moved into a bounded parallel syntax matrix, release-history is indexed as a pruned timeline, and existing package-script/fixture-registry consolidation remains intact.
 
-## Phase 1 — Post-freeze expansion gates before implementation
+## Phase 1 — Post-freeze cleanup gates before capability expansion
 
 | Stage | Version | Title | Status |
 |---|---:|---|---|
-| Current alpha | `v1.1.0-alpha.2` | **Fixture Registry Payload Compression + Test Organization Audit** | Current |
-| Previous alpha | `v1.1.0-alpha.1` | **Post-Freeze Product Expansion Planning Gate** | Completed |
+| Current alpha | `v1.1.0-alpha.9` | **Test Matrix Runtime Optimization + Release Doc Timeline Pruning** | Current |
+| Previous alpha | `v1.1.0-alpha.8` | **Fixture Registry Payload Compression + Test Organization Audit** | Completed |
+| Prior cleanup | `v1.1.0-alpha.7` | **Package Script Compression + CI Gate Registry** | Completed |
 | Freeze baseline | `v1.0.30` | **Mobile Header Geometry Lock / Final Public Demo Visual Freeze** | Locked |
-| Next implementation candidate | `v1.1.0-alpha.8` | **Fixture Registry Payload Compression + Test Organization Audit** | Planned |
+| Next implementation candidate | `v1.1.0-alpha.10` | **No-browser Gate Evidence Review + Browser CI Confirmation** | Planned |
 | Blocked | — | Live scraping, production OAuth, real provider execution, new live connectors, storage expansion | Explicitly blocked |
 
 ## Boundary assertions
@@ -28,21 +29,15 @@ Current post-freeze alpha gate. Converts the v1.1.0-alpha.1 planning lanes into 
 
 ## CI baseline
 
-Node 24 remains the GitHub Actions runtime baseline for v1.0.25.
+Node 24 remains the GitHub Actions runtime baseline. Package Script Compression, CI Gate Registry, Version Suite Registry, Root Manifest, Release Artifact Consolidation, Fixture Registry payload compression, and test organization audit continuity are preserved.
 
-## Retained v1.0.23 audit boundary
+## Current alpha.9 validation focus
 
-- v1.0.23 — CI Result Review + Browser Evidence Artifact Audit remains the historical CI/browser evidence audit patch.
-- Evidence upload is still inspection material, not release approval.
+- `tests/syntax-matrix-check.mjs` replaces the serialized no-browser syntax tail with bounded parallel syntax validation.
+- `tests/test-matrix-runtime-optimization-check.mjs` locks the optimization as CI-only and behavior-neutral.
+- `tests/release-doc-timeline-pruning-check.mjs` keeps release-history anchors readable while enforcing a pruned timeline index.
 
-
-### `v1.1.0-alpha.2 — Fixture Registry Payload Compression + Test Organization Audit`
-
-Purpose: changed-files-only patch apply verification before capability expansion.
-
-
-Evidence manifest continuity: v1.1.0-alpha.8 preserves the single final metadata hosted-demo evidence manifest gate.
-
+Evidence manifest continuity: v1.1.0-alpha.9 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Release approval reminder: screenshots alone and ZIP existence alone are insufficient for public-demo approval.
 

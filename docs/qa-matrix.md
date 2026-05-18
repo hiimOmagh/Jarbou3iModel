@@ -1,23 +1,24 @@
 # QA Matrix
 
-## v1.1.0-alpha.2 — Fixture Registry Payload Compression + Test Organization Audit
+## v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
 
-Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
-
+Cleanup-only CI/runtime documentation gate. The release optimizes the no-browser test matrix without changing runtime behavior, UI behavior, provider behavior, OAuth behavior, backend/source/storage behavior, fixture semantics, or public-demo claims.
 
 ## Current targeted gates
 
 | Gate | Command | Purpose |
 |---|---|---|
-| Lockfile registry | `npm run test:lockfile:registry` | Confirms the lockfile uses the public npm registry. |
-| CI workflow install | `npm run test:ci:workflow-install` | Confirms workflow-level install and `PLAYWRIGHT_SKIP_INSTALL=1` discipline. |
-| Node 24 compatibility | `npm run test:ci:node24` | Confirms GitHub Actions Node 24 compatibility. |
-| Browser visual scope | `npm run test:browser:visual-scope` | Confirms visual tests remain scoped and artifact-safe. |
-| Source packet template browser QA | `npm run test:source:packet-template-browser-qa` | Confirms template browser QA/copy safety remains guarded. |
-| Public demo release lock | `npm run test:public-demo-release-lock` | Confirms release approval boundaries and public-demo claims are locked. |
-| v1.0.25 no-browser | `npm run test:v125:no-browser` | Runs the targeted v1.0.25 patch guard suite. |
-| Full no-browser CI | `npm run test:ci:no-browser` | Runs the complete static/schema/privacy/release/source gates. |
+| Current no-browser | `npm run test:current:no-browser` | Runs the current alpha registry, fixture, syntax-matrix, and release-timeline guards. |
+| Full no-browser CI | `npm run test:ci:no-browser` | Runs complete static/schema/privacy/release/source/provider/backend gates through `tests/ci-gate-runner.mjs`. |
 | Browser CI | `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser` | Runs browser suite after workflow-level Playwright installation. |
+| Syntax matrix | `node tests/syntax-matrix-check.mjs` | Runs bounded parallel syntax validation over the previous serialized syntax tail. |
+| Runtime optimization | `node tests/test-matrix-runtime-optimization-check.mjs` | Confirms no-browser syntax-tail compression and behavior-change boundaries. |
+| Release timeline pruning | `node tests/release-doc-timeline-pruning-check.mjs` | Confirms release-history timeline anchors and current alpha.9 documentation. |
+| Fixture registry | `npm run test:fixtures` | Confirms compressed migration/privacy fixture registries remain loader-safe. |
+| Privacy | `npm run test:privacy` | Confirms privacy/export/audit release boundaries. |
+| Provider | `npm run test:provider` | Confirms provider identity/fixtures/OAuth mock behavior remains unchanged. |
+| Backend | `npm run test:backend` | Confirms backend proxy/hardening/Worker smoke behavior remains unchanged. |
+| Source | `npm run test:source` | Confirms source planning/import/packet/scoring/review behavior remains unchanged. |
 
 ## Boundary assertions
 
@@ -35,20 +36,14 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 ## Public Demo boundary
 
-The public demo remains local/manual/private by default in v1.0.25. No live scraping, provider expansion, OAuth expansion, backend endpoint expansion, source connector expansion, storage behavior expansion, or automated source verification is introduced.
-
-## Retained v1.0.23 audit boundary
-
-- v1.0.23 — CI Result Review + Browser Evidence Artifact Audit remains the historical CI/browser evidence audit patch.
-- Evidence upload is still inspection material, not release approval.
+The public demo remains local/manual/private by default. No live scraping, provider expansion, OAuth expansion, backend endpoint expansion, source connector expansion, storage behavior expansion, or automated source verification is introduced.
 
 ## Current release
 
-- v1.0.25 — Public Demo Release Lock is the active public-demo approval gate.
+- v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning: test-matrix runtime optimization, release doc timeline pruning, no runtime behavior change.
+- v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit: compressed fixture registries and test organization audit.
+- v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry: package script surface compression and CI gate registry.
 
-- v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit: audit-only fixture registry, no deletion, no runtime behavior change.
-
-
-Evidence manifest continuity: v1.1.0-alpha.8 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.9 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v6, npm ci --no-audit --no-fund --ignore-scripts, and PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser.

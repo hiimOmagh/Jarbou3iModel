@@ -2,6 +2,67 @@
 
 Consolidated historical release documentation. This file replaces per-release `docs/v*.md` files and the old repository cleanup audit note while preserving release provenance for CI checks.
 
+## Pruned timeline index
+
+timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep concise milestone headings for human review, and move operational detail into current release/evidence docs instead of expanding every historical section.
+
+| Release document | Milestone |
+| --- | --- |
+| `repo-cleanup-audit-v1.0.6.md` | Repository Cleanup Audit — v1.0.6 Hotfix |
+| `v0.16.0-beta-provider-browser-privacy-qa.md` | v0.16.0-beta — Provider Mode Browser QA + Privacy Export Tests |
+| `v0.17.0-beta-state-migration.md` | v0.17.0-beta — State Migration + Version Compatibility Layer |
+| `v0.18.0-beta-module-split.md` | v0.18.0-beta — Research Engine Module Split |
+| `v0.19.0-beta-privacy-audit-hardening.md` | v0.19.0-beta — Privacy Audit Hardening |
+| `v0.20.0-beta-ux-reliability-pass.md` | v0.20.0-beta — UX Reliability Pass |
+| `v0.21.0-beta-project-workspace.md` | v0.21.0-beta — Project Workspace + Local Storage Management |
+| `v0.22.0-beta-analysis-template-system.md` | v0.22.0-beta — Analysis Template System |
+| `v0.23.0-beta-advanced-quality-gate-v3.md` | v0.23.0-beta — Advanced Quality Gate v3 |
+| `v0.24.0-beta-export-pack-v2.md` | v0.24.0-beta — Export Pack v2 |
+| `v0.25.0-beta-real-backend-provider-hardening.md` | v0.25.0-beta — Real Backend Provider Hardening |
+| `v0.26.0-beta-real-source-connector-prototype.md` | v0.26.0-beta — Real Source Connector Prototype |
+| `v0.27.0-beta-web-search-provider-abstraction.md` | v0.27.0-beta — Web Search Provider Abstraction |
+| `v0.28.0-beta-real-portable-oauth-spike.md` | v0.28.0-beta — Real Portable OAuth Spike |
+| `v0.29.0-rc.1-release-candidate-freeze.md` | v0.29.0-rc.1 — Release Candidate Freeze |
+| `v1.0.0-ci-browser-validation.md` | v1.0.0 CI / Browser Validation Status |
+| `v1.0.0-public-beta-stable-research-engine.md` | v1.0.0 — Public Beta / Stable Research Engine |
+| `v1.0.1-patch-only-stabilization.md` | v1.0.1 — Patch-only Stabilization |
+| `v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md` | v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix |
+| `v1.0.11-repository-hygiene-stale-artifact-cleanup.md` | v1.0.11 — Repository Hygiene + Stale Artifact Cleanup |
+| `v1.0.12-research-source-strategy-blueprint.md` | v1.0.12 — Research Source Strategy Blueprint |
+| `v1.0.13-manual-source-packet-import.md` | v1.0.13 — Manual Source Packet Import |
+| `v1.0.14-evidence-scoring-v1.md` | v1.0.14 — Evidence Scoring v1 |
+| `v1.0.15-evidence-scoring-ui-calibration.md` | v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass |
+| `v1.0.16-source-packet-builder-ui-scoring-review-controls.md` | v1.0.16 — Source Packet Builder UI + Scoring Review Controls |
+| `v1.0.17-source-packet-builder-browser-qa-ux-tightening.md` | v1.0.17 — Source Packet Builder Browser QA + UX Tightening |
+| `v1.0.18-source-packet-builder-export-roundtrip-qa.md` | v1.0.18 — Source Packet Builder Export Roundtrip QA |
+| `v1.0.19-source-packet-template-presets.md` | v1.0.19 — Source Packet Template Presets |
+| `v1.0.2-ux-stabilization-patch.md` | v1.0.2 — UX Stabilization Patch |
+| `v1.0.20-source-packet-template-browser-qa-copy-safety.md` | v1.0.20 — Source Packet Template Browser QA + Copy Safety |
+| `v1.0.21-node-24-ci-compatibility.md` | v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration |
+| `v1.0.22-release-evidence-repo-hygiene-verification.md` | v1.0.22 — Release Evidence + Repo Hygiene Verification |
+| `v1.0.23-ci-result-review-browser-evidence-artifact-audit.md` | v1.0.23 — CI Result Review + Browser Evidence Artifact Audit |
+| `v1.0.24-repo-hygiene-execution-stale-documentation-correction.md` | v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction |
+| `v1.0.25-public-demo-release-lock.md` | v1.0.25 — Public Demo Release Lock |
+| `v1.0.26-release-apply-integrity-gate.md` | v1.0.26 — Release Apply Integrity Gate |
+| `v1.0.27-release-provenance-ledger-gate.md` | v1.0.27 — Release Provenance Ledger Gate |
+| `v1.0.28-hosted-demo-evidence-manifest-gate.md` | v1.0.28 — Hosted Demo Evidence Manifest Gate |
+| `v1.0.29-final-public-demo-hardening-release-freeze-audit.md` | v1.0.29 — Final Public Demo Hardening / Release Freeze Audit |
+| `v1.0.3-screen-discipline-patch.md` | v1.0.3 — Screen Discipline Patch |
+| `v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md` | v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze |
+| `v1.0.4-browser-qa-visual-regression-hardening.md` | v1.0.4 — Browser QA + Visual Regression Hardening |
+| `v1.0.5-onboarding-first-run-success.md` | v1.0.5 — Onboarding + First-Run Success |
+| `v1.0.6-documentation-release-packaging-cleanup.md` | v1.0.6 — Documentation + Release Packaging Cleanup |
+| `v1.0.7-public-demo-readiness-release-notes.md` | v1.0.7 — Public Demo Readiness + Release Notes Polish |
+| `v1.0.8-hosted-demo-deployment-browser-evidence.md` | v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture |
+| `v1.0.9-hosted-demo-smoke-fixes-evidence-review.md` | v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review |
+| `v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md` | v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate |
+| `v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md` | v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix |
+| `v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md` | v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry |
+| `v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md` | v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry |
+| `visual-qa.md` | Visual QA Checklist |
+| `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
+| `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
+
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
 
@@ -2660,7 +2721,7 @@ v1.0.8 adds hosted-demo deployment verification and browser evidence capture to 
 ## Unchanged
 
 - No provider behavior change.
-- No OAuth behavior change.
+- No OAuth behavior change. No real OAuth or production OAuth flow is enabled.
 - No backend endpoint behavior change.
 - No source connector behavior change.
 - No storage behavior change.
@@ -3074,42 +3135,6 @@ Complete this before a public release.
 
 <!-- /release-file:visual-qa.md -->
 
-<!-- release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
-# v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
-
-Cleanup-only repository reduction gate. Consolidates root-level release/evidence artifacts into canonical docs and `MANIFEST.json` while preserving release provenance, hosted-demo evidence rules, and public-demo honesty boundaries.
-
-## What changed
-
-- Consolidated `BROWSER_EVIDENCE.md` into `docs/release-and-evidence.md`.
-- Consolidated `HOSTED_DEMO_VERIFICATION.md` into `docs/release-and-evidence.md`.
-- Consolidated `RELEASE_MANIFEST.md` and `RELEASE_NOTES.md` into `docs/current-release.md` and `docs/release-and-evidence.md`.
-- Consolidated `MANIFEST.md`, `CHANGED_FILES_MANIFEST.json`, and `DELETE_FILES_MANIFEST.json` into `MANIFEST.json`.
-- Added `tests/release-artifacts-loader.mjs` and `tests/root-release-artifact-consolidation-check.mjs`.
-- Removed stale patch-application cleanup script from `scripts/`.
-
-## What did not change
-
-- No runtime behavior change.
-- No provider behavior change.
-- No OAuth behavior change.
-- No backend/source/storage behavior change.
-- No live scraping.
-- No automated source verification.
-- No public-demo capability expansion.
-
-## Validation
-
-- `npm run test:root-release-artifacts`
-- `npm run test:current:no-browser`
-- `npm run test:ci:no-browser`
-- `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`
-
-## Disproven if
-
-This release is invalid if any consolidated root artifact is restored as a full standalone release file, if public-demo evidence rules are weakened, or if provider/OAuth/backend/source/storage behavior changes.
-<!-- /release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
-
 <!-- release-file:v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md -->
 # v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit
 
@@ -3155,3 +3180,44 @@ Retention class continuity: MERGE_TO_REGISTRY remains the policy for historical 
 
 This release is invalid if compressed fixture payloads cannot be expanded by the loader, if registry files exceed the alpha.8 byte budget, if historical migration/privacy fixtures are semantically thinned, or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md -->
+
+<!-- release-file:v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md -->
+# v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
+
+Cleanup-only CI and documentation gate. Compresses the expensive no-browser syntax tail into a bounded parallel syntax matrix and prunes the release-history surface into a canonical timeline index while preserving release-file anchors for CI lookup.
+
+## What changed
+
+- Added `tests/syntax-matrix-check.mjs` as the parallel syntax matrix runner.
+- Added `tests/test-matrix-runtime-optimization-check.mjs` to lock CI runtime optimization boundaries.
+- Added `tests/release-doc-timeline-pruning-check.mjs` to keep release-history timeline pruning explicit.
+- Moved the previous serialized no-browser syntax tail into `syntax_matrix.files` inside `tests/ci-gate-registry.json`.
+- Added CI gate timing output in `tests/ci-gate-runner.mjs` with slowest-check reporting.
+- Preserved package script compression from alpha.7 and compressed fixture registry behavior from alpha.8.
+- Preserved post-freeze planning-gate continuity: fixture registry consolidation remains documented, fixture registry behavior remains intact, and unused oversized registry payloads stay compressed rather than semantically thinned.
+- Preserved expansion-lane acceptance matrix continuity, including MERGE_TO_REGISTRY documentation. No files are deleted by this cleanup release.
+- Preserved hosted demo evidence manifest continuity, including the single final metadata manifest boundary.
+- Preserved the existing Mobile Header Geometry Lock as a visual-freeze guard; alpha.9 does not change logo/header geometry.
+
+## What did not change
+
+- No runtime behavior change.
+- No UI behavior change.
+- No provider behavior change.
+- No OAuth behavior change. No real OAuth or production OAuth flow is enabled.
+- No backend/source/storage behavior change.
+- No live scraping.
+- No fixture semantic thinning. Screenshots alone, hosted evidence alone, or ZIP existence alone are not sufficient approval evidence.
+
+## Validation
+
+- `node tests/syntax-matrix-check.mjs`
+- `node tests/test-matrix-runtime-optimization-check.mjs`
+- `node tests/release-doc-timeline-pruning-check.mjs`
+- `npm run test:current:no-browser`
+- `npm run test:ci:no-browser`
+
+## Disproven if
+
+This release is invalid if the syntax matrix drops previous syntax coverage, if the no-browser gate reverts to a long serialized syntax tail, if release-history anchors become unreadable by `tests/release-docs-loader.mjs`, or if runtime/provider/OAuth/backend/source/storage behavior changes.
+<!-- /release-file:v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md -->

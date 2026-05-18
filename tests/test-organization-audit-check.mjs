@@ -2,13 +2,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const VERSION = '1.1.0-alpha.8';
+const VERSION = '1.1.0-alpha.9';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(pkg.version, VERSION);
-assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must stay compressed after alpha.8');
+assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must stay compressed after alpha.9');
 
 const requiredGates = ['no-browser','current-no-browser','privacy','source','provider','backend','fixtures','release','browser'];
 for (const gateName of requiredGates) assert.ok(registry.gates[gateName], `missing CI gate: ${gateName}`);
@@ -21,6 +21,9 @@ for (const target of operationalScriptTargets) {
 }
 
 const allChecks = new Set();
+const syntaxMatrixFiles = new Set(registry.syntax_matrix?.files || []);
+assert.ok(syntaxMatrixFiles.has('tests/ci-gate-runner.mjs'), 'syntax matrix must cover CI gate runner');
+assert.ok(syntaxMatrixFiles.has('tests/provider-mode-browser.spec.mjs'), 'syntax matrix must cover browser specs');
 for (const [gateName, gate] of Object.entries(registry.gates)) {
   for (const collectionName of ['node_checks','syntax_checks','playwright_specs']) {
     const collection = gate[collectionName];
@@ -37,9 +40,12 @@ for (const requiredCheck of [
   'tests/fixture-payload-budget-check.mjs',
   'tests/test-organization-audit-check.mjs',
   'tests/ci-gate-registry-check.mjs',
-  'tests/fixture-registry-consolidation-check.mjs'
+  'tests/fixture-registry-consolidation-check.mjs',
+  'tests/test-matrix-runtime-optimization-check.mjs',
+  'tests/release-doc-timeline-pruning-check.mjs',
+  'tests/syntax-matrix-check.mjs'
 ]) {
-  assert.ok(allChecks.has(requiredCheck), `required alpha.8 check is not registered in CI gate registry: ${requiredCheck}`);
+  assert.ok(allChecks.has(requiredCheck), `required alpha.9 check is not registered in CI gate registry: ${requiredCheck}`);
 }
 
 const testFiles = fs.readdirSync('tests').filter((name) => /\.(mjs|js)$/.test(name)).map((name) => path.join('tests', name));

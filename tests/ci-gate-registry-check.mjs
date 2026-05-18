@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.8';
-const RELEASE = 'v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit';
+const VERSION = '1.1.0-alpha.9';
+const RELEASE = 'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
@@ -64,7 +64,9 @@ for (const requiredGate of ['no-browser','browser','current-no-browser','privacy
 }
 
 assert.ok(registry.gates['no-browser'].node_checks.includes('tests/ci-gate-registry-check.mjs'), 'full no-browser gate must run CI gate registry check');
-assert.ok(registry.gates['no-browser'].syntax_checks.includes('tests/ci-gate-runner.mjs'), 'full no-browser syntax gate must check CI gate runner');
+assert.equal(registry.gates['no-browser'].syntax_checks.length, 0, 'full no-browser gate must not keep the old serialized syntax tail');
+assert.ok(registry.gates['no-browser'].node_checks.includes('tests/syntax-matrix-check.mjs'), 'full no-browser gate must run parallel syntax matrix check');
+assert.ok(registry.syntax_matrix.files.includes('tests/ci-gate-runner.mjs'), 'syntax matrix must preserve CI gate runner syntax coverage');
 assert.ok(registry.gates.browser.playwright_specs.includes('tests/hosted-demo-browser-evidence.spec.mjs'), 'browser gate must preserve hosted-demo evidence capture');
 assert.ok(registry.gates.browser.playwright_specs.includes('tests/browser-visual-regression.spec.mjs'), 'browser gate must preserve visual regression capture');
 assert.ok(registry.gates.browser.playwright_specs.includes('tests/provider-mode-browser.spec.mjs'), 'browser gate must preserve provider-mode browser QA');
@@ -75,7 +77,7 @@ assert.ok(ciBrowser.includes('node tests/ci-gate-runner.mjs browser'), 'browser 
 assert.ok(ciBrowser.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser shell wrapper must preserve hosted evidence directory setup');
 assert.equal(ciBrowser.includes('npm run test:browser:evidence'), false, 'browser shell wrapper must no longer depend on removed package aliases');
 
-for (const file of ['tests/ci-gate-runner.mjs', 'tests/ci-gate-registry-check.mjs']) {
+for (const file of ['tests/ci-gate-runner.mjs', 'tests/ci-gate-registry-check.mjs', 'tests/syntax-matrix-check.mjs', 'tests/test-matrix-runtime-optimization-check.mjs', 'tests/release-doc-timeline-pruning-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax check failed`);
 }

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.8';
-const RELEASE = 'v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit';
+const VERSION = '1.1.0-alpha.9';
+const RELEASE = 'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning';
 const registry = JSON.parse(fs.readFileSync('tests/version-suite-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
@@ -51,7 +51,7 @@ const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
 const ciGateRegistry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 assert.ok(ciNoBrowser.includes('node tests/ci-gate-runner.mjs no-browser'), 'CI must delegate no-browser composition to CI gate runner');
 assert.ok(ciGateRegistry.gates['no-browser'].node_checks.includes('tests/version-suite-registry-check.mjs'), 'CI gate registry must run version suite registry check');
-assert.ok(ciGateRegistry.gates['no-browser'].syntax_checks.includes('tests/version-suite-registry-check.mjs'), 'CI gate registry syntax gate must cover version registry check');
+assert.ok(ciGateRegistry.syntax_matrix.files.includes('tests/version-suite-registry-check.mjs'), 'CI gate registry syntax matrix must cover version registry check');
 assert.equal(/v.*-no-browser-suite\.mjs/.test(ciNoBrowser), false, 'CI must not reference removed historical wrapper files');
 
 for (const file of ['tests/version-suite-registry-check.mjs','tests/ci-gate-runner.mjs','tests/ci-gate-registry-check.mjs']) {
