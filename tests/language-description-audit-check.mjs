@@ -132,5 +132,14 @@ for (const unavailableClaim of ['live scraping', 'production OAuth', 'automated 
   assert.equal(metadataCorpus.includes(unavailableClaim.toLowerCase()), false, `public metadata must not claim unavailable capability: ${unavailableClaim}`);
 }
 
+
+const providerBrowserSpec = fs.readFileSync('tests/provider-mode-browser.spec.mjs', 'utf8');
+assert.ok(providerBrowserSpec.includes('expectProviderKeyNotExported'), 'provider browser QA must use localization-aware exported-key assertions');
+assert.equal(providerBrowserSpec.includes("toContainText(/key_exported:false/)"), false, 'provider browser QA must not require English-only diagnostics copy');
+for (const lang of ['ar', 'fr']) {
+  assert.equal(researchCopy[lang].qualityFixProvider.includes('key_exported'), false, `${lang}.qualityFixProvider must not expose raw English implementation flag in visible localized copy`);
+  assert.equal(researchCopy[lang].qualityFixProvider.includes('false'), false, `${lang}.qualityFixProvider must not expose raw English boolean in visible localized copy`);
+}
+
 console.log('Language description audit checks passed.');
 process.exit(0);

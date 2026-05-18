@@ -34,6 +34,21 @@ async function buildDryRun(page) {
   await expect(page.locator('#providerRunOutput')).toBeVisible();
 }
 
+async function expectProviderKeyNotExported(page) {
+  const diagnosticsText = await page.locator('#providerDiagnosticsOutput').innerText();
+  const localizedFalseEvidence = [
+    /key_exported\s*[:=]\s*false/i,
+    /key exported\s*[:=]\s*(false|no)/i,
+    /تصدير المفتاح\s*[:：]?\s*لا/,
+    /clé exportée\s*[:=]\s*non/i,
+    /cle exportee\s*[:=]\s*non/i
+  ];
+  expect(
+    localizedFalseEvidence.some((pattern) => pattern.test(diagnosticsText)),
+    `Provider diagnostics must prove exported-key=false in the active UI language. Received: ${diagnosticsText}`
+  ).toBe(true);
+}
+
 async function openProviderHarness(page) {
   await page.locator('#researchModeNav .uxTab[data-ux-tab="advanced"]').click();
   await expect(page.locator('.providerHarnessCard')).toBeVisible();
@@ -69,7 +84,7 @@ test.describe('v1.1.0-alpha.11 — Provider Mode Browser QA', () => {
     await assertNoSecretLeak(page);
 
     await buildDryRun(page);
-    await expect(page.locator('#providerDiagnosticsOutput')).toContainText(/key_exported:false/);
+    await expectProviderKeyNotExported(page);
     await assertNoSecretLeak(page);
   });
 
