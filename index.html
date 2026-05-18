@@ -136,7 +136,7 @@
           <h3 data-r-i18n="projectWorkspaceTitle">Project Workspace</h3>
           <p class="muted" data-r-i18n="projectWorkspaceSubtitle">Manage named local-only research projects in this browser.</p>
           <div class="researchFormGrid">
-            <div class="field span2"><label class="label" for="projectNameInput" data-r-i18n="projectName">Project name</label><input id="projectNameInput" type="text" placeholder="Untitled research project"></div>
+            <div class="field span2"><label class="label" for="projectNameInput" data-r-i18n="projectName">Project name</label><input id="projectNameInput" type="text" data-r-placeholder="untitledResearchProject" placeholder="مشروع بحث غير مسمّى"></div>
           </div>
           <div class="actions">
             <button class="btn primary" id="saveProjectBtn" type="button" data-r-i18n="saveProject">Save project locally</button>
@@ -391,7 +391,7 @@
 
         <article class="card researchCard">
           <h3 data-r-i18n="qualityTitle">Quality Gate v3</h3>
-          <p class="muted evidenceScoringCalibrationNote">Attention = public visibility only. Synthesis weight = prioritization aid, not truth.</p>
+          <p class="muted evidenceScoringCalibrationNote" data-r-i18n="evidenceScoringCalibrationShort">الانتباه يعني الظهور العام فقط. وزن التوليف أداة ترتيب أولويات لا حكم حقيقة.</p>
           <div id="researchQualityOutput" class="researchQuality"></div>
           <div class="status" id="researchStatus" role="status" aria-live="polite" data-r-i18n="statusNeedPlan">Generate a research plan first.</div>
         </article>

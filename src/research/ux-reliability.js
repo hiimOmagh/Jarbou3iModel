@@ -102,21 +102,22 @@
     setDisabled($('clearRunLedgerBtn'), !count(state.ai_runs), 'No provider runs to clear.');
   }
 
-  function providerModeRows(){
+  function localizedLabel(t, key, fallback){ const value = t(key); return value === key ? fallback : value; }
+  function providerModeRows(t = (key) => key){
     return [
-      {id:'mock', name:'MockProvider', auth:'None', billing:'None', privacy:'local / deterministic', production:'safe default'},
-      {id:'openai_compatible', name:'OpenAI-compatible BYOK', auth:'User API key', billing:'user-owned', privacy:'key never exported', production:'opt-in live calls'},
-      {id:'backend_proxy', name:'Hosted backend proxy', auth:'server-side key', billing:'app/backend owner', privacy:'browser sends no key', production:'requires deployment hardening'},
-      {id:'portable_oauth', name:'Portable account mock', auth:'mock OAuth seam', billing:'portable account owner', privacy:'token hash only', production:'mock-only'}
+      {id:'mock', name:localizedLabel(t,'providerModeMockName','MockProvider'), auth:localizedLabel(t,'providerModeMockAuth','None'), billing:localizedLabel(t,'providerModeMockBilling','None'), privacy:localizedLabel(t,'providerModeMockPrivacy','local / deterministic'), production:localizedLabel(t,'providerModeMockStatus','safe default')},
+      {id:'openai_compatible', name:localizedLabel(t,'providerModeByokName','OpenAI-compatible BYOK'), auth:localizedLabel(t,'providerModeByokAuth','User API key'), billing:localizedLabel(t,'providerModeByokBilling','user-owned'), privacy:localizedLabel(t,'providerModeByokPrivacy','key never exported'), production:localizedLabel(t,'providerModeByokStatus','opt-in live calls')},
+      {id:'backend_proxy', name:localizedLabel(t,'providerModeBackendName','Hosted backend proxy'), auth:localizedLabel(t,'providerModeBackendAuth','server-side key'), billing:localizedLabel(t,'providerModeBackendBilling','app/backend owner'), privacy:localizedLabel(t,'providerModeBackendPrivacy','browser sends no key'), production:localizedLabel(t,'providerModeBackendStatus','requires deployment hardening')},
+      {id:'portable_oauth', name:localizedLabel(t,'providerModePortableName','Portable account mock'), auth:localizedLabel(t,'providerModePortableAuth','mock OAuth seam'), billing:localizedLabel(t,'providerModePortableBilling','portable account owner'), privacy:localizedLabel(t,'providerModePortablePrivacy','token hash only'), production:localizedLabel(t,'providerModePortableStatus','mock-only')}
     ];
   }
 
-  function providerModeGuideHtml(activeProvider = 'mock'){
-    const rows = providerModeRows().map((row) => {
+  function providerModeGuideHtml(activeProvider = 'mock', t = (key) => key, esc = (value) => String(value ?? '')){
+    const rows = providerModeRows(t).map((row) => {
       const active = row.id === activeProvider ? ' active' : '';
-      return `<tr class="${active.trim()}"><td><strong>${row.name}</strong><small>${row.id}</small></td><td>${row.auth}</td><td>${row.billing}</td><td>${row.privacy}</td><td>${row.production}</td></tr>`;
+      return `<tr class="${active.trim()}"><td><strong>${esc(row.name)}</strong><small>${esc(row.id)}</small></td><td>${esc(row.auth)}</td><td>${esc(row.billing)}</td><td>${esc(row.privacy)}</td><td>${esc(row.production)}</td></tr>`;
     }).join('');
-    return `<div class="providerModeGuideInner"><h4>Provider mode guide</h4><div class="researchTableWrap"><table class="researchTable providerModeTable"><thead><tr><th>Mode</th><th>Auth</th><th>Billing</th><th>Privacy</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+    return `<div class="providerModeGuideInner"><h4>${esc(localizedLabel(t,'providerModeGuideTitle','Provider mode guide'))}</h4><div class="researchTableWrap"><table class="researchTable providerModeTable"><thead><tr><th>${esc(localizedLabel(t,'providerModeColumnMode','Mode'))}</th><th>${esc(localizedLabel(t,'providerModeColumnAuth','Auth'))}</th><th>${esc(localizedLabel(t,'providerModeColumnBilling','Billing'))}</th><th>${esc(localizedLabel(t,'providerModeColumnPrivacy','Privacy'))}</th><th>${esc(localizedLabel(t,'providerModeColumnStatus','Status'))}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
   }
 
   root.uxReliability = Object.freeze({VERSION, workflowSummary, hasMeaningfulWorkflowState, exportConfirmationText, destructiveConfirmationText, emptyStateHtml, setDisabled, updateButtonReliability, providerModeRows, providerModeGuideHtml});

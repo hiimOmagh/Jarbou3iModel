@@ -29,7 +29,9 @@ for (const token of [
   '.disciplineAccordion',
   '.uxAccordionClosed',
   '.screenDisciplineNextAction',
-  'Advanced details collapsed',
+  'content:attr(data-collapse-note)',
+  'content:attr(data-accordion-show)',
+  'content:attr(data-accordion-hide)',
   'v1.0.15 screen discipline patch'
 ]) assert.ok(styles.includes(token), `styles missing screen discipline token: ${token}`);
 

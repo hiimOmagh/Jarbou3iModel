@@ -480,6 +480,143 @@
     layerLabels:{interests:'intérêts', actors:'acteurs', tools:'outils', narrative:'narratif', outcomes:'résultats', results:'résultats', feedback:'rétroaction', contradictions:'contradictions', scenarios:'scénarios'}
   });
 
+
+  Object.assign(COPY.en, {
+    unspecifiedTopic:'Unspecified strategic analysis topic',
+    contextNotSpecified:'Context not specified',
+    analysisBriefEmptyBody:'Compile a brief after the plan and evidence matrix are ready.',
+    sourceImportReviewEmptyBody:'Source imports appear here first. Review candidates before promoting them into the Evidence Matrix.',
+    untitledResearchProject:'Untitled research project',
+    projectSavedLocally:'Project saved locally.',
+    projectLoadedLocally:'Project loaded from local workspace.',
+    projectDuplicatedLocally:'Project duplicated locally.',
+    noProjectToDuplicate:'No project to duplicate.',
+    noActiveProjectToDelete:'No active project to delete.',
+    deleteActiveLocalProject:'Delete active local project?',
+    localProjectDeleted:'Local project deleted.',
+    noLocalProjectDeleted:'No local project deleted.',
+    projectExportGenerated:'Project export generated.',
+    workspaceLocalOnly:'local-only',
+    workspaceProjects:'projects',
+    workspaceBytes:'bytes',
+    workspaceStorageAvailable:'storage available',
+    workspaceStorageUnavailable:'storage unavailable',
+    workspaceProject:'Project',
+    workspaceVersion:'Version',
+    workspaceUpdated:'Updated',
+    workspaceAction:'Action',
+    workspaceLoad:'Load',
+    workspaceEmpty:'No saved local projects yet.',
+    workspaceWarning:'Projects are stored only in this browser localStorage.',
+    evidenceScoringCalibrationShort:'Attention = public visibility only. Synthesis weight = prioritization aid, not truth.',
+    advancedDetailsCollapsed:'Advanced details collapsed — open only when configuring this subsystem.',
+    show:'Show', hide:'Hide',
+    sourceTemplateOfficialReport:'Official report / institutional document',
+    sourceTemplateRedditThread:'Reddit thread / public discussion',
+    sourceTemplateYoutubeTranscript:'YouTube video / transcript',
+    sourceTemplateMarketSignal:'Prediction market / market signal',
+    sourceTemplateGithubRelease:'GitHub release / repository signal',
+    sourceTemplateGenericArticle:'Generic article / web source',
+    sourcePacketTemplatePresetAria:'Source packet template preset',
+    providerModeGuideTitle:'Provider mode guide', providerModeColumnMode:'Mode', providerModeColumnAuth:'Auth', providerModeColumnBilling:'Billing', providerModeColumnPrivacy:'Privacy', providerModeColumnStatus:'Status',
+    providerModeMockName:'MockProvider', providerModeMockAuth:'None', providerModeMockBilling:'None', providerModeMockPrivacy:'local / deterministic', providerModeMockStatus:'safe default',
+    providerModeByokName:'OpenAI-compatible BYOK', providerModeByokAuth:'User API key', providerModeByokBilling:'user-owned', providerModeByokPrivacy:'key never exported', providerModeByokStatus:'opt-in live calls',
+    providerModeBackendName:'Hosted backend proxy', providerModeBackendAuth:'server-side key', providerModeBackendBilling:'app/backend owner', providerModeBackendPrivacy:'browser sends no key', providerModeBackendStatus:'requires deployment hardening',
+    providerModePortableName:'Portable account mock', providerModePortableAuth:'mock OAuth seam', providerModePortableBilling:'portable account owner', providerModePortablePrivacy:'token hash only', providerModePortableStatus:'mock-only',
+    localizedSourceTemplatePolicy:'Local manual source packet templates. No live fetching and no verification claim.',
+    statusScoreTheaterGuard:'score-theater guard active', reviewable:'reviewable', verifiedLabel:'verified', manualReview:'manual review'
+  });
+  Object.assign(COPY.ar, {
+    unspecifiedTopic:'موضوع تحليل استراتيجي غير محدد',
+    contextNotSpecified:'السياق غير محدد',
+    analysisBriefEmptyBody:'أكمل الملخّص بعد أن تصبح الخطة ومصفوفة الأدلة جاهزتين.',
+    sourceImportReviewEmptyBody:'تظهر واردات المصادر هنا أولًا. راجع المرشحات قبل ترقيتها إلى مصفوفة الأدلة.',
+    untitledResearchProject:'مشروع بحث غير مسمّى',
+    projectSavedLocally:'تم حفظ المشروع محليًا.',
+    projectLoadedLocally:'تم تحميل المشروع من مساحة العمل المحلية.',
+    projectDuplicatedLocally:'تم تكرار المشروع محليًا.',
+    noProjectToDuplicate:'لا يوجد مشروع لتكراره.',
+    noActiveProjectToDelete:'لا يوجد مشروع نشط لحذفه.',
+    deleteActiveLocalProject:'هل تريد حذف المشروع المحلي النشط؟',
+    localProjectDeleted:'تم حذف المشروع المحلي.',
+    noLocalProjectDeleted:'لم يتم حذف أي مشروع محلي.',
+    projectExportGenerated:'تم إنشاء تصدير المشروع.',
+    workspaceLocalOnly:'محلي فقط',
+    workspaceProjects:'مشاريع',
+    workspaceBytes:'بايت',
+    workspaceStorageAvailable:'التخزين متاح',
+    workspaceStorageUnavailable:'التخزين غير متاح',
+    workspaceProject:'المشروع',
+    workspaceVersion:'الإصدار',
+    workspaceUpdated:'آخر تحديث',
+    workspaceAction:'الإجراء',
+    workspaceLoad:'تحميل',
+    workspaceEmpty:'لا توجد مشاريع محلية محفوظة بعد.',
+    workspaceWarning:'تُحفظ المشاريع داخل localStorage في هذا المتصفح فقط.',
+    evidenceScoringCalibrationShort:'الانتباه يعني الظهور العام فقط. وزن التوليف أداة ترتيب أولويات لا حكم حقيقة.',
+    advancedDetailsCollapsed:'التفاصيل المتقدمة مطوية — افتحها فقط عند إعداد هذا الجزء.',
+    show:'إظهار', hide:'إخفاء',
+    sourceTemplateOfficialReport:'تقرير رسمي / وثيقة مؤسسية',
+    sourceTemplateRedditThread:'نقاش Reddit / حوار عام',
+    sourceTemplateYoutubeTranscript:'فيديو YouTube / نص تفريغ',
+    sourceTemplateMarketSignal:'سوق توقعات / إشارة سوقية',
+    sourceTemplateGithubRelease:'إصدار GitHub / إشارة مستودع',
+    sourceTemplateGenericArticle:'مقال عام / مصدر ويب',
+    sourcePacketTemplatePresetAria:'قالب حزمة المصادر',
+    providerModeGuideTitle:'دليل أنماط المزوّد', providerModeColumnMode:'النمط', providerModeColumnAuth:'المصادقة', providerModeColumnBilling:'الفوترة', providerModeColumnPrivacy:'الخصوصية', providerModeColumnStatus:'الحالة',
+    providerModeMockName:'مزوّد وهمي', providerModeMockAuth:'لا شيء', providerModeMockBilling:'لا شيء', providerModeMockPrivacy:'محلي / حتمي', providerModeMockStatus:'افتراضي آمن',
+    providerModeByokName:'متوافق مع OpenAI عبر مفتاح المستخدم', providerModeByokAuth:'مفتاح API من المستخدم', providerModeByokBilling:'على حساب المستخدم', providerModeByokPrivacy:'لا يتم تصدير المفتاح', providerModeByokStatus:'نداءات حية باختيار صريح',
+    providerModeBackendName:'وسيط خلفي مستضاف', providerModeBackendAuth:'مفتاح على الخادم', providerModeBackendBilling:'مالك التطبيق/الخلفية', providerModeBackendPrivacy:'المتصفح لا يرسل مفتاح المزوّد', providerModeBackendStatus:'يتطلب تقوية نشر',
+    providerModePortableName:'حساب محمول وهمي', providerModePortableAuth:'وصلة OAuth وهمية', providerModePortableBilling:'مالك الحساب المحمول', providerModePortablePrivacy:'بصمة رمز فقط', providerModePortableStatus:'وهمي فقط',
+    localizedSourceTemplatePolicy:'قوالب محلية يدوية لحزم المصادر: لا جلب حي ولا ادعاء تحقق.',
+    statusScoreTheaterGuard:'حارس منع استعراض الأرقام مفعّل', reviewable:'قابل للمراجعة', verifiedLabel:'متحقق', manualReview:'مراجعة يدوية'
+  });
+  Object.assign(COPY.fr, {
+    unspecifiedTopic:'Sujet d’analyse stratégique non précisé',
+    contextNotSpecified:'Contexte non précisé',
+    analysisBriefEmptyBody:'Compilez un brief lorsque le plan et la matrice de preuves sont prêts.',
+    sourceImportReviewEmptyBody:'Les imports de sources apparaissent d’abord ici. Révisez les candidats avant de les promouvoir dans la matrice de preuves.',
+    untitledResearchProject:'Projet de recherche sans titre',
+    projectSavedLocally:'Projet enregistré localement.',
+    projectLoadedLocally:'Projet chargé depuis l’espace local.',
+    projectDuplicatedLocally:'Projet dupliqué localement.',
+    noProjectToDuplicate:'Aucun projet à dupliquer.',
+    noActiveProjectToDelete:'Aucun projet actif à supprimer.',
+    deleteActiveLocalProject:'Supprimer le projet local actif ?',
+    localProjectDeleted:'Projet local supprimé.',
+    noLocalProjectDeleted:'Aucun projet local supprimé.',
+    projectExportGenerated:'Export du projet généré.',
+    workspaceLocalOnly:'local seulement',
+    workspaceProjects:'projets',
+    workspaceBytes:'octets',
+    workspaceStorageAvailable:'stockage disponible',
+    workspaceStorageUnavailable:'stockage indisponible',
+    workspaceProject:'Projet',
+    workspaceVersion:'Version',
+    workspaceUpdated:'Mis à jour',
+    workspaceAction:'Action',
+    workspaceLoad:'Charger',
+    workspaceEmpty:'Aucun projet local enregistré.',
+    workspaceWarning:'Les projets sont stockés uniquement dans le localStorage de ce navigateur.',
+    evidenceScoringCalibrationShort:'Attention = visibilité publique seulement. Le poids de synthèse aide à prioriser, pas à établir la vérité.',
+    advancedDetailsCollapsed:'Détails avancés repliés — ouvrez-les seulement pour configurer ce sous-système.',
+    show:'Afficher', hide:'Masquer',
+    sourceTemplateOfficialReport:'Rapport officiel / document institutionnel',
+    sourceTemplateRedditThread:'Fil Reddit / discussion publique',
+    sourceTemplateYoutubeTranscript:'Vidéo YouTube / transcription',
+    sourceTemplateMarketSignal:'Marché de prédiction / signal de marché',
+    sourceTemplateGithubRelease:'Release GitHub / signal de dépôt',
+    sourceTemplateGenericArticle:'Article général / source web',
+    sourcePacketTemplatePresetAria:'Préréglage de paquet source',
+    providerModeGuideTitle:'Guide des modes fournisseur', providerModeColumnMode:'Mode', providerModeColumnAuth:'Auth', providerModeColumnBilling:'Facturation', providerModeColumnPrivacy:'Confidentialité', providerModeColumnStatus:'Statut',
+    providerModeMockName:'Fournisseur simulé', providerModeMockAuth:'aucune', providerModeMockBilling:'aucune', providerModeMockPrivacy:'local / déterministe', providerModeMockStatus:'défaut sûr',
+    providerModeByokName:'Compatible OpenAI avec clé utilisateur', providerModeByokAuth:'clé API utilisateur', providerModeByokBilling:'compte utilisateur', providerModeByokPrivacy:'clé jamais exportée', providerModeByokStatus:'appels live sur opt-in',
+    providerModeBackendName:'Proxy backend hébergé', providerModeBackendAuth:'clé côté serveur', providerModeBackendBilling:'propriétaire app/backend', providerModeBackendPrivacy:'le navigateur n’envoie aucune clé', providerModeBackendStatus:'durcissement requis',
+    providerModePortableName:'Compte portable simulé', providerModePortableAuth:'couture OAuth simulée', providerModePortableBilling:'propriétaire du compte portable', providerModePortablePrivacy:'empreinte de jeton seulement', providerModePortableStatus:'simulé seulement',
+    localizedSourceTemplatePolicy:'Modèles locaux et manuels de paquets sources. Aucun fetch live et aucune revendication de vérification.',
+    statusScoreTheaterGuard:'garde-fou anti-score-theater actif', reviewable:'révisable', verifiedLabel:'vérifié', manualReview:'revue manuelle'
+  });
+
   const SUPPORTED_LANGS = ['ar','en','fr'];
   function esc(value){ return String(value ?? '').replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
   function getLang(){
@@ -490,6 +627,19 @@
   function applyLabels(documentRef, updateEvidenceButtonLabel){
     documentRef.querySelectorAll('[data-r-i18n]').forEach(el => { el.textContent = tr(el.getAttribute('data-r-i18n')); });
     documentRef.querySelectorAll('[data-r-placeholder]').forEach(el => { el.setAttribute('placeholder', tr(el.getAttribute('data-r-placeholder'))); });
+    const projectInput = documentRef.getElementById('projectNameInput');
+    if(projectInput) projectInput.setAttribute('placeholder', tr('untitledResearchProject'));
+    const sourceTemplateSelect = documentRef.getElementById('sourcePacketTemplateSelect');
+    if(sourceTemplateSelect){
+      sourceTemplateSelect.setAttribute('aria-label', tr('sourcePacketTemplatePresetAria'));
+      const optionKeys = {official_report:'sourceTemplateOfficialReport', reddit_thread:'sourceTemplateRedditThread', youtube_transcript:'sourceTemplateYoutubeTranscript', market_signal:'sourceTemplateMarketSignal', github_release:'sourceTemplateGithubRelease', generic_article:'sourceTemplateGenericArticle'};
+      Array.from(sourceTemplateSelect.options || []).forEach(option => { option.textContent = tr(optionKeys[option.value] || option.value); });
+    }
+    documentRef.querySelectorAll('.researchCard').forEach(card => { card.setAttribute('data-collapse-note', tr('advancedDetailsCollapsed')); });
+    documentRef.querySelectorAll('.researchCard.disciplineAccordion > h3').forEach(heading => {
+      heading.setAttribute('data-accordion-show', tr('show'));
+      heading.setAttribute('data-accordion-hide', tr('hide'));
+    });
     if(typeof updateEvidenceButtonLabel === 'function') updateEvidenceButtonLabel();
   }
   root.renderHelpers = {COPY, SUPPORTED_LANGS, esc, getLang, tr, applyLabels};

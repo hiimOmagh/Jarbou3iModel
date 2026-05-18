@@ -48,9 +48,10 @@
   function localizedDimension(value){return copyTable('dimensionLabels')[String(value||'')]||String(value||'').replaceAll('_',' ');}
   function localizedList(items){return(items||[]).map(localizedLayer).join(', ');}
   function localizedQualityAction(action){const t=String(action||''),rules=[[/URLs, dates, source types/,'qualityFixEvidence'],[/counter-evidence and contradiction-linked/,'qualityFixContradiction'],[/Diversify source types/,'qualityFixDiversity'],[/Improve evidence reliability/,'qualityFixReliability'],[/Separate public attention/,'qualityFixAttention'],[/causal links across interests/,'qualityFixCausal'],[/provider dry-run/,'qualityFixProvider'],[/privacy export audit/,'qualityFixPrivacy'],[/migration layer/,'qualityFixMigration'],[/Proceed to publication review/,'qualityFixProceed']];return tr((rules.find(([r])=>r.test(t))||[])[1])||t;}
-  function localizedPolicy(value){const t=String(value||'');return t==='public attention is tracked separately from evidence reliability'?tr('evidenceScoringPolicyNote'):t==='local_manual_source_packet_builder_no_fetch_no_verification'?tr('sourcePacketBuilderPolicyNote'):t.replaceAll('_',' ');}
-  function topic(){return ($('topicInput')?.value || '').trim() || 'Unspecified strategic analysis topic';}
-  function context(){return ($('timeframeInput')?.value || '').trim() || 'Context not specified';}
+  function localizedPolicy(value){const t=String(value||'');return t==='public attention is tracked separately from evidence reliability'?tr('evidenceScoringPolicyNote'):t==='local_manual_source_packet_builder_no_fetch_no_verification'?tr('sourcePacketBuilderPolicyNote'):t==='local_manual_source_packet_templates_no_fetch_no_verification'?tr('localizedSourceTemplatePolicy'):t==='score_theater_guard'?tr('statusScoreTheaterGuard'):t.replaceAll('_',' ');}
+  function localizedReviewGate(value){const t=String(value||'');return t==='manual_review'?tr('manualReview'):t==='reviewable'?tr('reviewable'):localizedStatus(t);}
+  function topic(){return ($('topicInput')?.value || '').trim() || tr('unspecifiedTopic');}
+  function context(){return ($('timeframeInput')?.value || '').trim() || tr('contextNotSpecified');}
   function researchMode(){return $('researchMode')?.value || 'structural';}
   function activeTemplateId(){return analysisTemplates?.normalizeTemplateId ? analysisTemplates.normalizeTemplateId($('analysisTemplateSelect')?.value || state.analysis_template_id || 'strategic_analysis_engine') : 'strategic_analysis_engine';}
   function activeTemplate(){return analysisTemplates?.getTemplate ? analysisTemplates.getTemplate(activeTemplateId()) : null;}
@@ -1653,7 +1654,7 @@
     exportController.downloadJson(filename, payload, {version: VERSION});
   }
   function currentProjectId(){return state.active_project_id || workspace?.active_project_id || null;}
-  function projectName(){return ($('projectNameInput')?.value || state.active_project_name || topic()).trim() || 'Untitled research project';}
+  function projectName(){return ($('projectNameInput')?.value || state.active_project_name || topic()).trim() || tr('untitledResearchProject');}
   function renderAnalysisTemplate(){
     const s=$('analysisTemplateSelect'),o=$('analysisTemplateOutput');
     if(!analysisTemplates||!s||!o)return;
@@ -1667,33 +1668,34 @@
   function renderWorkspace(){
     const el = $('projectWorkspaceOutput');
     if(!el || !projectWorkspace?.html) return;
-    el.innerHTML = projectWorkspace.html(workspace);
+    const keys = ['workspaceLocalOnly','workspaceProjects','workspaceBytes','workspaceStorageAvailable','workspaceStorageUnavailable','workspaceProject','workspaceVersion','workspaceUpdated','workspaceAction','workspaceLoad','workspaceEmpty','workspaceWarning'];
+    el.innerHTML = projectWorkspace.html(workspace, Object.fromEntries(keys.map((key)=>[key,tr(key)])));
     const input = $('projectNameInput');
     if(input && !input.value) input.value = state.active_project_name || projectWorkspace.activeProject?.(workspace)?.name || '';
   }
   function saveCurrentProject(){
     if(!projectWorkspace?.upsert) return;
     const result = projectWorkspace.upsert(workspace, privacySafeExportPayload(researchPacket()), projectName(), currentProjectId());
-    workspace = result.workspace; state.active_project_id = result.project.project_id; state.active_project_name = result.project.name; state.project_saved_at = result.project.updated_at; saveWorkspace(); save(); render(); setStatus('Project saved locally.', 'good');
+    workspace = result.workspace; state.active_project_id = result.project.project_id; state.active_project_name = result.project.name; state.project_saved_at = result.project.updated_at; saveWorkspace(); save(); render(); setStatus(tr('projectSavedLocally'), 'good');
   }
   function loadProject(projectId){
     const project = (workspace.projects || []).find((p)=>p.project_id===projectId);
     if(!project) return;
-    importWorkflowPacket(project.packet); state.active_project_id = project.project_id; state.active_project_name = project.name; state.project_saved_at = project.updated_at; workspace.active_project_id = project.project_id; saveWorkspace(); save(); render(); setStatus('Project loaded from local workspace.', 'good');
+    importWorkflowPacket(project.packet); state.active_project_id = project.project_id; state.active_project_name = project.name; state.project_saved_at = project.updated_at; workspace.active_project_id = project.project_id; saveWorkspace(); save(); render(); setStatus(tr('projectLoadedLocally'), 'good');
   }
   function duplicateProject(){
     if(!projectWorkspace?.duplicate) return;
     const result = projectWorkspace.duplicate(workspace, currentProjectId());
-    workspace = result.workspace; if(result.project){state.active_project_id=result.project.project_id; state.active_project_name=result.project.name; state.project_saved_at=result.project.updated_at;} saveWorkspace(); save(); render(); setStatus(result.project ? 'Project duplicated locally.' : 'No project to duplicate.', result.project ? 'good':'warn');
+    workspace = result.workspace; if(result.project){state.active_project_id=result.project.project_id; state.active_project_name=result.project.name; state.project_saved_at=result.project.updated_at;} saveWorkspace(); save(); render(); setStatus(result.project ? tr('projectDuplicatedLocally') : tr('noProjectToDuplicate'), result.project ? 'good':'warn');
   }
   function deleteActiveProject(){
-    if(!projectWorkspace?.remove || !currentProjectId()) return setStatus('No active project to delete.', 'warn');
-    if(!confirmDestructive('Delete active local project?')) return;
-    const result = projectWorkspace.remove(workspace, currentProjectId()); workspace = result.workspace; state.active_project_id = workspace.active_project_id || null; state.active_project_name = projectWorkspace.activeProject?.(workspace)?.name || null; saveWorkspace(); save(); render(); setStatus(result.deleted ? 'Local project deleted.' : 'No local project deleted.', result.deleted ? 'warn':'bad');
+    if(!projectWorkspace?.remove || !currentProjectId()) return setStatus(tr('noActiveProjectToDelete'), 'warn');
+    if(!confirmDestructive(tr('deleteActiveLocalProject'))) return;
+    const result = projectWorkspace.remove(workspace, currentProjectId()); workspace = result.workspace; state.active_project_id = workspace.active_project_id || null; state.active_project_name = projectWorkspace.activeProject?.(workspace)?.name || null; saveWorkspace(); save(); render(); setStatus(result.deleted ? tr('localProjectDeleted') : tr('noLocalProjectDeleted'), result.deleted ? 'warn':'bad');
   }
   function exportActiveProject(){
     if(!projectWorkspace?.exportBundle) return;
-    downloadJson('jarbou3i-project-v0.24-beta.json', projectWorkspace.exportBundle(workspace, currentProjectId())); setStatus('Project export generated.', 'good');
+    downloadJson('jarbou3i-project-v0.24-beta.json', projectWorkspace.exportBundle(workspace, currentProjectId())); setStatus(tr('projectExportGenerated'), 'good');
   }
   function exportPackV2(){
     if(!exportPack?.downloadExportPack) return;
@@ -1751,7 +1753,7 @@
   function renderAnalysisBrief(){
     const el = $('analysisBriefOutput');
     if(!el) return;
-    if(!state.analysis_brief){el.innerHTML = emptyState(tr('noAnalysisBrief'), 'Compile a brief after the plan and evidence matrix are ready.', tr('compileBrief')); renderDiagnostics(); return;}
+    if(!state.analysis_brief){el.innerHTML = emptyState(tr('noAnalysisBrief'), tr('analysisBriefEmptyBody'), tr('compileBrief')); renderDiagnostics(); return;}
     const brief = state.analysis_brief;
     const clusters = brief.source_clusters || [];
     const gaps = brief.gaps || [];
@@ -1802,7 +1804,7 @@
     }
     const sample = preview?.sample_evidence || [];
     const sampleRows = sample.length ? `<div class="researchTableWrap"><table class="researchTable"><thead><tr><th>ID</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('sourceType'))}</th><th>${esc(tr('strength'))}</th></tr></thead><tbody>${sample.map((e,i)=>`<tr><td>${esc(e.evidence_id || `IMP${i+1}`)}</td><td>${esc(e.claim)}</td><td>${esc(e.source_title || '—')}<small>${esc(e.source_url || '')}</small></td><td>${esc(e.source_type || 'other')}</td><td>${esc(e.evidence_strength || 1)}/5</td></tr>`).join('')}</tbody></table></div>` : '';
-    const reportHtml = report ? `<div class="researchJsonCard sourceImportReportCard"><h4>${esc(tr('sourceImportReportTitle'))}</h4><div class="miniChips"><span>${esc(report.input_format || 'unknown')}</span><span>${esc(report.converted_count || 0)} converted</span><span>${esc(report.rejected_count || 0)} rejected</span><span>live:${esc(report.live_fetching_performed)}</span><span>verified:${esc(report.verification_claimed)}</span></div><small>${esc((report.source_types || []).join(', ') || 'no source types')}</small></div>` : '';
+    const reportHtml = report ? `<div class="researchJsonCard sourceImportReportCard"><h4>${esc(tr('sourceImportReportTitle'))}</h4><div class="miniChips"><span>${esc(report.input_format || 'unknown')}</span><span>${esc(report.converted_count || 0)} converted</span><span>${esc(report.rejected_count || 0)} rejected</span><span>live:${esc(report.live_fetching_performed)}</span><span>${esc(tr('verifiedLabel'))}:${esc(localizedBoolean(report.verification_claimed))}</span></div><small>${esc((report.source_types || []).join(', ') || 'no source types')}</small></div>` : '';
     el.innerHTML = reportHtml + sampleRows;
   }
 
@@ -1843,7 +1845,7 @@
     const queue = state.evidence_review_queue || [];
     const report = evidenceReviewReport();
     if(!queue.length){
-      el.innerHTML = emptyState(tr('evidenceReviewEmpty'), 'Source imports appear here first. Review candidates before promoting them into the Evidence Matrix.', tr('previewSourceImport'));
+      el.innerHTML = emptyState(tr('evidenceReviewEmpty'), tr('sourceImportReviewEmptyBody'), tr('previewSourceImport'));
       return;
     }
     const rows = queue.slice().reverse().map((item, revIdx) => {
@@ -1854,14 +1856,14 @@
       const controlText = (controls.controls || []).join(', ') || 'manual_review';
       return `<tr>
         <td>${esc(item.review_id)}<small>${esc(item.import_id || '')}</small></td>
-        <td><span class="reviewStatus ${esc(item.status)}">${esc(tr(item.status === 'needs_edit' ? 'needsEdit' : item.status))}</span><small>${esc(item.accepted_evidence_id || '')}</small><small>${esc(controls.review_gate || 'reviewable')}</small></td>
-        <td><b>${esc(e.claim || '')}</b><small>${esc(e.notes || '')}</small><small>R:${esc(e.evidence_scoring?.reliability_score ?? '—')} · A:${esc(e.evidence_scoring?.attention_signal_score ?? '—')} · W:${esc(e.evidence_scoring?.synthesis_weight ?? '—')}</small><small>${esc(controlText)}</small></td>
+        <td><span class="reviewStatus ${esc(item.status)}">${esc(tr(item.status === 'needs_edit' ? 'needsEdit' : item.status))}</span><small>${esc(item.accepted_evidence_id || '')}</small><small>${esc(localizedReviewGate(controls.review_gate || 'reviewable'))}</small></td>
+        <td><b>${esc(e.claim || '')}</b><small>${esc(e.notes || '')}</small><small>R:${esc(e.evidence_scoring?.reliability_score ?? '—')} · A:${esc(e.evidence_scoring?.attention_signal_score ?? '—')} · W:${esc(e.evidence_scoring?.synthesis_weight ?? '—')}</small><small>${esc(localizedReviewGate(controlText))}</small></td>
         <td>${esc([e.source_title,e.source_type,e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td>
         <td>${esc((e.supports || []).join(', ') || '—')} / ${esc((e.contradicts || []).join(', ') || '—')}</td>
         <td><div class="rowActions">${resolved ? '' : `<button class="btn ghost reviewAccept" type="button" data-index="${i}">${esc(tr('accept'))}</button><button class="btn ghost reviewNeedsEdit" type="button" data-index="${i}">${esc(tr('needsEdit'))}</button><button class="btn ghost reviewEdit" type="button" data-index="${i}">${esc(tr('editCandidate'))}</button><button class="btn ghost reviewReject" type="button" data-index="${i}">${esc(tr('reject'))}</button>`}</div></td>
       </tr>`;
     }).join('');
-    el.innerHTML = `<div class="researchJsonCard evidenceReviewReportCard"><h4>${esc(tr('evidenceReviewTitle'))}</h4><div class="miniChips"><span>${esc(report.pending_count)} ${esc(tr('pending'))}</span><span>${esc(report.accepted_count)} ${esc(tr('accepted'))}</span><span>${esc(report.rejected_count)} ${esc(tr('rejected'))}</span><span>verified:${esc(report.verification_claimed)}</span></div></div><div class="researchTableWrap"><table class="researchTable evidenceReviewTable"><thead><tr><th>ID</th><th>${esc(tr('reviewStatus'))}</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('supports'))}/${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    el.innerHTML = `<div class="researchJsonCard evidenceReviewReportCard"><h4>${esc(tr('evidenceReviewTitle'))}</h4><div class="miniChips"><span>${esc(report.pending_count)} ${esc(tr('pending'))}</span><span>${esc(report.accepted_count)} ${esc(tr('accepted'))}</span><span>${esc(report.rejected_count)} ${esc(tr('rejected'))}</span><span>${esc(tr('verifiedLabel'))}:${esc(localizedBoolean(report.verification_claimed))}</span></div></div><div class="researchTableWrap"><table class="researchTable evidenceReviewTable"><thead><tr><th>ID</th><th>${esc(tr('reviewStatus'))}</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('supports'))}/${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
     document.querySelectorAll('.reviewAccept').forEach(btn => btn.addEventListener('click', () => { promoteReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceAccepted'), 'good'); }));
     document.querySelectorAll('.reviewReject').forEach(btn => btn.addEventListener('click', () => { rejectReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceRejected'), 'warn'); }));
     document.querySelectorAll('.reviewEdit').forEach(btn => btn.addEventListener('click', () => { editReviewItem(Number(btn.dataset.index)); save(); render(); }));
@@ -1880,8 +1882,8 @@
     const fixtureReport = state.provider_fixture_report;
     const portable = portableAccountStatus();
     const guideEl = $('providerModeGuide');
-    if(guideEl && uxReliability?.providerModeGuideHtml){
-      guideEl.innerHTML = uxReliability.providerModeGuideHtml(state.provider || $('providerName')?.value || 'mock');
+    if(guideEl){
+      guideEl.innerHTML = uxReliability?.providerModeGuideHtml ? uxReliability.providerModeGuideHtml(state.provider || $('providerName')?.value || 'mock', tr, esc) : '';
     }
 
     if(contractEl){

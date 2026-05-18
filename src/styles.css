@@ -756,11 +756,11 @@ html[dir="rtl"] .welcomeEyebrow{
 @keyframes disciplineReveal{from{opacity:.65;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .researchCard.disciplineAccordion{transition:box-shadow .16s ease, transform .16s ease, opacity .16s ease;}
 .researchCard.disciplineAccordion > h3{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;border-radius:14px;}
-.researchCard.disciplineAccordion > h3::after{content:'Show';font-size:11px;font-weight:1000;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));background:color-mix(in srgb,var(--accent) 6%,transparent);border-radius:999px;padding:4px 8px;}
-.researchCard.disciplineAccordion:not(.uxAccordionClosed) > h3::after{content:'Hide';}
+.researchCard.disciplineAccordion > h3::after{content:attr(data-accordion-show);font-size:11px;font-weight:1000;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));background:color-mix(in srgb,var(--accent) 6%,transparent);border-radius:999px;padding:4px 8px;}
+.researchCard.disciplineAccordion:not(.uxAccordionClosed) > h3::after{content:attr(data-accordion-hide);}
 .researchCard.uxAccordionClosed{gap:6px;cursor:pointer;}
 .researchCard.uxAccordionClosed > :not(h3):not(.muted){display:none!important;}
-.researchCard.uxAccordionClosed::after{content:'Advanced details collapsed — open only when configuring this subsystem.';color:var(--muted);font-size:12px;line-height:1.35;border:1px dashed color-mix(in srgb,var(--line-strong) 42%,var(--line));border-radius:14px;padding:8px 10px;background:color-mix(in srgb,var(--surface-soft) 72%,transparent);}
+.researchCard.uxAccordionClosed::after{content:attr(data-collapse-note);color:var(--muted);font-size:12px;line-height:1.35;border:1px dashed color-mix(in srgb,var(--line-strong) 42%,var(--line));border-radius:14px;padding:8px 10px;background:color-mix(in srgb,var(--surface-soft) 72%,transparent);}
 #researchLabPanel.screenDiscipline .researchCard > h3{letter-spacing:-.02em;}
 #researchLabPanel.screenDiscipline .verticalActions{align-items:flex-start;flex-direction:row;flex-wrap:wrap;}
 #researchLabPanel.screenDiscipline .verticalActions .btn{justify-content:center;}

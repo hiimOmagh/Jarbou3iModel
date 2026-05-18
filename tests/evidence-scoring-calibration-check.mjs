@@ -7,6 +7,7 @@ const read = (file) => fs.readFileSync(file, 'utf8');
 const scorerSource = read('src/research/evidence-scorer.js');
 const engine = read('src/research-engine.js');
 const index = read('index.html');
+const renderHelpers = read('src/research/render-helpers.js');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
 const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.11-packet.json');
@@ -61,8 +62,8 @@ assert.ok(setReport.calibration_warning_count >= 1);
 assert.ok(setReport.risk_flags.includes('calibration_warning_present'));
 
 assert.ok(index.includes('v1.1.0-alpha.11 · Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit'), 'v1.1.0-alpha.11 badge missing');
-assert.ok(index.includes('Attention = public visibility only'), 'UI must explain attention score');
-assert.ok(index.includes('Synthesis weight = prioritization aid'), 'UI must explain synthesis score');
+assert.ok(index.includes('data-r-i18n="evidenceScoringCalibrationShort"'), 'UI must expose localized evidence-scoring calibration copy');
+assert.ok(renderHelpers.includes('evidenceScoringCalibrationShort'), 'render helpers must provide localized evidence-scoring calibration copy');
 assert.ok(engine.includes('calibration_warning_count'), 'engine UI must surface calibration warning count');
 assert.ok(engine.includes('score_theater_guard'), 'engine UI must expose score-theater guard');
 
