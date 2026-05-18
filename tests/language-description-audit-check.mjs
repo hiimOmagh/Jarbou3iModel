@@ -179,5 +179,26 @@ for (const lang of ['ar', 'fr']) {
 }
 
 
+const residualLanguageKeys = ['runLedgerEmpty','sourceTypesEmpty','convertedLabel','rejectedLabel','policyPrioritizationGuard'];
+for (const lang of ['ar', 'fr']) {
+  for (const key of residualLanguageKeys) {
+    assert.ok(researchCopy[lang][key], `${lang}.${key} missing residual evidence-surface localization`);
+    assert.notEqual(researchCopy[lang][key], researchCopy.en[key], `${lang}.${key} must not inherit English residual evidence-surface copy`);
+  }
+}
+for (const lang of ['ar', 'fr']) {
+  for (const key of ['high','medium','low']) {
+    assert.ok(researchCopy[lang].statusLabels[key], `${lang}.statusLabels.${key} missing localized severity/status label`);
+    assert.notEqual(researchCopy[lang].statusLabels[key], researchCopy.en.statusLabels[key], `${lang}.statusLabels.${key} must not inherit English`);
+  }
+}
+const engineLocalizationSource = fs.readFileSync('src/research-engine.js', 'utf8');
+for (const requiredHelper of ['function lST', 'function lCf', 'function lSTs', 'policyPrioritizationGuard']) {
+  assert.ok(engineLocalizationSource.includes(requiredHelper), `research engine must localize residual evidence/provider text via ${requiredHelper}`);
+}
+for (const residual of ['No provider runs yet.', ' converted</span>', ' rejected</span>', 'no source types']) {
+  assert.equal(engineLocalizationSource.includes(residual), false, `research engine must not render residual English evidence/provider copy: ${residual}`);
+}
+
 console.log('Language description audit checks passed.');
 process.exit(0);
