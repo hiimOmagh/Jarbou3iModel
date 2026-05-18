@@ -133,6 +133,14 @@ for (const unavailableClaim of ['live scraping', 'production OAuth', 'automated 
 }
 
 
+
+const sourcePacketTemplateBrowserSpec = fs.readFileSync('tests/source-packet-template-browser.spec.mjs', 'utf8');
+for (const englishOnlyAssertion of ["toContainText('live:false')", "toContainText('verified:false')"]) {
+  assert.equal(sourcePacketTemplateBrowserSpec.includes(englishOnlyAssertion), false, `source packet template browser QA must not require English-only diagnostics copy: ${englishOnlyAssertion}`);
+}
+assert.ok(sourcePacketTemplateBrowserSpec.includes('live_fetching_performed'), 'source packet template browser QA must assert stable JSON live-fetch proof');
+assert.ok(sourcePacketTemplateBrowserSpec.includes('verification_claimed'), 'source packet template browser QA must assert stable JSON verification proof');
+
 const providerBrowserSpec = fs.readFileSync('tests/provider-mode-browser.spec.mjs', 'utf8');
 assert.ok(providerBrowserSpec.includes('expectProviderKeyNotExported'), 'provider browser QA must use localization-aware exported-key assertions');
 assert.equal(providerBrowserSpec.includes("toContainText(/key_exported:false/)"), false, 'provider browser QA must not require English-only diagnostics copy');

@@ -18,9 +18,10 @@ async function buildTemplatePacket(page, templateId) {
   await expect(page.locator('#sourcePacketTemplateSelect')).toHaveValue(templateId);
   await page.locator('#buildSourcePacketFromTemplateBtn').click();
   await expect(page.locator('#sourcePacketBuilderOutput')).toContainText('source_packet_builder.v1');
-  await expect(page.locator('#sourcePacketBuilderOutput')).toContainText('live:false');
-  await expect(page.locator('#sourcePacketBuilderOutput')).toContainText('verified:false');
-  await expect(page.locator('#sourcePacketBuilderOutput')).toContainText('local_manual_source_packet_templates_no_fetch_no_verification');
+  const outputText = await page.locator('#sourcePacketBuilderOutput').innerText();
+  expect(outputText).toContain('\"live_fetching_performed\": false');
+  expect(outputText).toContain('\"verification_claimed\": false');
+  expect(outputText).toMatch(/no[_ -]fetch[_ -]no[_ -]verification/);
 }
 
 test.describe('v1.1.0-alpha.11 source packet template browser QA + copy safety', () => {
