@@ -118,7 +118,7 @@
             <div class="researchEyebrow" data-r-i18n="stableWorkflowEyebrow">سير عمل مستقر</div>
             <h3 data-r-i18n="stableWorkflowTitle">الإجراء التالي: تدقيق الاحتفاظ بالملفات → إثبات الدمج الآمن → ثم تقليل الملفات</h3>
             <p class="muted" data-r-i18n="stableWorkflowBody">تبقى تشخيصات المزوّد المتقدم وOAuth والخلفية والمصادر والإصدار مطوية حتى يحصل مسار ما بعد التجميد على معايير قبول وشروط إبطال وبوابات مراجعة واضحة؛ ويظل التنفيذ محظورًا.</p>
-            <div class="screenDisciplineNextAction" id="screenDisciplineNextAction"><strong>Start:</strong> Select a post-freeze lane, write acceptance criteria, then open implementation only after review gates are explicit.</div>
+            <div class="screenDisciplineNextAction" id="screenDisciplineNextAction" data-r-i18n-seed="nextActionDefault"><strong>ابدأ:</strong> اختر مسارًا بعد التجميد، اكتب معايير القبول، ولا تفتح التنفيذ إلا بعد توضيح بوابات المراجعة.</div>
           </div>
           <div class="releaseHealthMetrics" id="releaseHealthMetrics" aria-live="polite"></div>
         </div>
@@ -404,7 +404,7 @@
           <h2 data-i18n="workflowTitle">مسار التحليل</h2>
           <p data-i18n="workflowSubtitle">اتبع الخطوات، لكن ابقَ قادرًا على رؤية بنية النموذج والتنقل بين طبقاته.</p>
         </div>
-        <button class="btn collapseToggle" id="workflowPanelToggle" type="button" data-expanded="false">Show Command Center</button>
+        <button class="btn collapseToggle" id="workflowPanelToggle" type="button" data-expanded="false" data-r-toggle-show="showCommandCenter" data-r-toggle-hide="hideCommandCenter" data-en-token="Show Command Center">إظهار مركز القيادة</button>
       </div>
       <div class="welcomeCard" id="welcomeCard">
         <img class="welcomeMascot" src="assets/jarbou3i-mascot-512.png" width="118" height="118" decoding="async" fetchpriority="high" alt="">
@@ -471,7 +471,7 @@
           <h2 data-i18n="engineTitle">خريطة محرك التحليل</h2>
           <p data-i18n="engineSubtitle">هذه ليست أزرارًا زائدة؛ هذه طبقات النموذج نفسها. بعد الاستيراد تصبح كل طبقة قابلة للفحص.</p>
         </div>
-        <button class="btn collapseToggle" id="enginePanelToggle" type="button" data-expanded="false">Show Engine Map</button>
+        <button class="btn collapseToggle" id="enginePanelToggle" type="button" data-expanded="false" data-r-toggle-show="showEngineMap" data-r-toggle-hide="hideEngineMap" data-en-token="Show Engine Map">إظهار خريطة المحرك</button>
         <div class="chips"><span class="chip" id="analysisStateChip" data-i18n="stateNoAnalysis">لا يوجد تحليل بعد</span></div>
       </div>
       <div class="engineNav" id="engineNav"></div>

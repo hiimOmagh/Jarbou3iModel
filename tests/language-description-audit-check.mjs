@@ -84,6 +84,36 @@ for (const lang of ['ar', 'en', 'fr']) {
 for (const phrase of ['First-run guide', 'Start clean:', 'Public demo ready', 'Show the workflow', 'Publish only after browser evidence exists', 'Review screenshots', 'Stable workflow', 'Quality & Export']) {
   assert.equal(index.includes(`>${phrase}`), false, `default Arabic shell must not expose English fallback copy: ${phrase}`);
 }
+
+const dynamicShellKeys = [
+  'projectWorkspaceTitle','providerTitle','sourcePlanningTitle','sourceImportTitle','showCommandCenter','hideCommandCenter','showEngineMap','hideEngineMap',
+  'firstRunSuccessState','inProgressState','notStartedState','doneState','nextState','metricPlan','metricEvidence','metricReview','metricQuality','metricExport','metricReady','metricMissing','metricPending','metricClear','metricBlocked','metricSafe',
+  'noPlanBody','matrixEmptyBody','templateCoverageComplete','missingTemplateLayers','critiqueSummaryWeak','critiqueNextActions',
+  'critiqueActionEvidence','critiqueActionSources','critiqueActionCounter','critiqueActionCausal','critiqueActionFalsifiers'
+];
+for (const lang of ['ar', 'en', 'fr']) {
+  for (const key of dynamicShellKeys) {
+    assert.ok(researchCopy[lang][key], `${lang} missing localized dynamic-shell key: ${key}`);
+  }
+  assert.ok(researchCopy[lang].templateProfiles?.strategic_analysis_engine?.display_name, `${lang} missing localized template profile`);
+}
+for (const key of [...staticShellKeys, ...dynamicShellKeys, ...Array.from(index.matchAll(/data-r-i18n="([^"]+)"/g)).map((m) => m[1])]) {
+  for (const lang of ['ar', 'en', 'fr']) assert.ok(researchCopy[lang][key], `${lang} missing visible shell i18n key: ${key}`);
+}
+for (const [lang, key] of [['ar','showCommandCenter'], ['ar','hideCommandCenter'], ['ar','critiqueSummaryWeak'], ['fr','showCommandCenter'], ['fr','hideCommandCenter'], ['fr','critiqueSummaryWeak']]) {
+  assert.notEqual(researchCopy[lang][key], researchCopy.en[key], `${lang}.${key} must not inherit English copy`);
+}
+for (const lang of ['ar','fr']) {
+  assert.notEqual(researchCopy[lang].templateProfiles.strategic_analysis_engine.display_name, researchCopy.en.templateProfiles.strategic_analysis_engine.display_name, `${lang} strategic template name must be localized`);
+  assert.notEqual(researchCopy[lang].templateProfiles.strategic_analysis_engine.description, researchCopy.en.templateProfiles.strategic_analysis_engine.description, `${lang} strategic template description must be localized`);
+}
+for (const visibleEnglish of ['>Show Command Center', '>Hide Command Center', '>Show Engine Map', '>Hide Engine Map']) {
+  assert.equal(index.includes(visibleEnglish), false, `default Arabic shell must not expose visible English control copy: ${visibleEnglish}`);
+}
+const engine = fs.readFileSync('src/research-engine.js', 'utf8');
+for (const forbiddenDynamic of ['Hide Command Center','Show Command Center','Hide Engine Map','Show Engine Map','Next actions</h4>','Template layer coverage is currently complete.','Missing template layers:']) {
+  assert.equal(engine.includes(forbiddenDynamic), false, `dynamic runtime shell must not hard-code English visible copy: ${forbiddenDynamic}`);
+}
 const providerKeys = ['providerEndpoint','providerModel','providerApiKey','rememberProviderKey','enableLiveByok','providerSafety','validateProviderSettings','dryRunProviderRequest','statusProviderDryRun','statusProviderSettingsSaved','statusProviderLiveDisabled','statusProviderLiveError','statusBackendProxyReady'];
 for (const lang of ['ar', 'fr']) {
   for (const key of providerKeys) {

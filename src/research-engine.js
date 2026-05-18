@@ -36,6 +36,9 @@
 
   function getLang(){return renderHelpers.getLang();}
   function tr(key){return renderHelpers.tr(key);}
+  function localizedTemplateProfile(p){return p?{...p,...(renderHelpers.COPY?.[getLang()]?.templateProfiles?.[p.template_id]||{})}:p;}
+  function localizedStepLabel(id,f=''){const k={topic:'onboardingTopic',plan:'onboardingPlan',evidence:'onboardingEvidence',review:'onboardingReview',quality:'onboardingQuality',export:'onboardingExport'}[id];return k?tr(k):f;}
+  function localizedSuccessState(v){return v==='first_run_success'?tr('firstRunSuccessState'):v==='in_progress'?tr('inProgressState'):v==='not_started'?tr('notStartedState'):String(v||'').replaceAll('_',' ');}
   function topic(){return ($('topicInput')?.value || '').trim() || 'Unspecified strategic analysis topic';}
   function context(){return ($('timeframeInput')?.value || '').trim() || 'Context not specified';}
   function researchMode(){return $('researchMode')?.value || 'structural';}
@@ -1642,18 +1645,13 @@
   function currentProjectId(){return state.active_project_id || workspace?.active_project_id || null;}
   function projectName(){return ($('projectNameInput')?.value || state.active_project_name || topic()).trim() || 'Untitled research project';}
   function renderAnalysisTemplate(){
-    const select = $('analysisTemplateSelect');
-    const output = $('analysisTemplateOutput');
-    if(!analysisTemplates || !select || !output) return;
-    if(!select.options.length){
-      select.innerHTML = analysisTemplates.listTemplates().map(t => '<option value="' + esc(t.template_id) + '">' + esc(t.display_name) + '</option>').join('');
-    }
-    select.value = activeTemplateId();
-    const profile = activeTemplateProfile();
-    const fit = analysisTemplates.templateFitReport(state, profile.template_id);
-    state.analysis_template_id = profile.template_id;
-    state.analysis_template = profile;
-    output.innerHTML = '<div class="researchJsonCard analysisTemplateProfile"><h4>' + esc(profile.display_name) + '</h4><p>' + esc(profile.description) + '</p><div class="miniChips"><span>' + esc(tr('templateScore')) + ': ' + esc(fit.fit_score) + '</span><span>' + esc(tr('templateRequiredLayers')) + ': ' + esc(profile.required_layers.join(', ')) + '</span></div><h5>' + esc(tr('templateOutputFocus')) + '</h5><ul>' + profile.output_focus.map(x=>'<li>'+esc(x)+'</li>').join('') + '</ul><h5>' + esc(tr('templatePromptDirectives')) + '</h5><ul>' + profile.prompt_directives.map(x=>'<li>'+esc(x)+'</li>').join('') + '</ul>' + (fit.missing_layers.length ? '<small>Missing template layers: ' + esc(fit.missing_layers.join(', ')) + '</small>' : '<small>Template layer coverage is currently complete.</small>') + '</div>';
+    const s=$('analysisTemplateSelect'),o=$('analysisTemplateOutput');
+    if(!analysisTemplates||!s||!o)return;
+    if(!s.options.length)s.innerHTML=analysisTemplates.listTemplates().map(localizedTemplateProfile).map(t=>'<option value="'+esc(t.template_id)+'">'+esc(t.display_name)+'</option>').join('');
+    s.value=activeTemplateId();
+    const r=activeTemplateProfile(),p=localizedTemplateProfile(r),f=analysisTemplates.templateFitReport(state,r.template_id),li=x=>'<li>'+esc(x)+'</li>';
+    state.analysis_template_id=r.template_id;state.analysis_template=r;
+    o.innerHTML='<div class="researchJsonCard analysisTemplateProfile"><h4>'+esc(p.display_name)+'</h4><p>'+esc(p.description)+'</p><div class="miniChips"><span>'+esc(tr('templateScore'))+': '+esc(f.fit_score)+'</span><span>'+esc(tr('templateRequiredLayers'))+': '+esc(p.required_layers.join(', '))+'</span></div><h5>'+esc(tr('templateOutputFocus'))+'</h5><ul>'+p.output_focus.map(li).join('')+'</ul><h5>'+esc(tr('templatePromptDirectives'))+'</h5><ul>'+p.prompt_directives.map(li).join('')+'</ul><small>'+esc(f.missing_layers.length?tr('missingTemplateLayers')+': '+f.missing_layers.join(', '):tr('templateCoverageComplete'))+'</small></div>';
   }
 
   function renderWorkspace(){
@@ -1715,14 +1713,14 @@
   function renderPlan(){
     const el = $('researchPlanOutput');
     if(!el) return;
-    if(!state.plan){el.innerHTML = emptyState(tr('noPlan'), 'Generate a plan to create questions, source targets, and counter-evidence targets.', tr('generatePlan')); return;}
-    el.innerHTML = `<div class="researchJsonCard"><div><b>${esc(state.plan.topic)}</b><span>${esc(state.plan.context)} · ${esc(state.plan.mode)}</span></div><h4>Questions</h4><ul>${state.plan.questions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>Target sources</h4><div class="miniChips">${state.plan.target_sources.map(x=>`<span>${esc(x)}</span>`).join('')}</div><h4>Early-warning indicators</h4><ul>${state.plan.early_warning_indicators.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
+    if(!state.plan){el.innerHTML = emptyState(tr('noPlan'), tr('noPlanBody'), tr('generatePlan')); return;}
+    el.innerHTML = `<div class="researchJsonCard"><div><b>${esc(state.plan.topic)}</b><span>${esc(state.plan.context)} · ${esc(state.plan.mode)}</span></div><h4>${esc(tr('questionsTitle'))}</h4><ul>${state.plan.questions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>${esc(tr('targetSourcesTitle'))}</h4><div class="miniChips">${state.plan.target_sources.map(x=>`<span>${esc(x)}</span>`).join('')}</div><h4>${esc(tr('earlyWarningTitle'))}</h4><ul>${state.plan.early_warning_indicators.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
   }
   function renderEvidence(){
     const el = $('evidenceMatrixOutput');
     if(!el) return;
-    if(!state.evidence.length){el.innerHTML = emptyState(tr('matrixEmpty'), 'Add evidence manually, load demo evidence, or import source candidates through the review queue.', tr('addEvidence')); return;}
-    el.innerHTML = `<div class="researchTableWrap"><table class="researchTable"><thead><tr><th>ID</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('strength'))}</th><th>Reliability</th><th>Attention</th><th>${esc(tr('supports'))}</th><th>${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${state.evidence.map((raw,i)=>{ const e = scoreEvidence(raw); const sc = e.evidence_scoring || {}; return `<tr><td>${esc(e.evidence_id)}</td><td><b>${esc(e.claim)}</b><small>${esc(e.notes || '')}</small>${(sc.risk_flags || []).length ? `<small>flags: ${esc(sc.risk_flags.join(', '))}</small>` : ''}</td><td>${esc([e.source_title,e.source_type,e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td><td>${esc(e.evidence_strength)}/5</td><td>${esc(sc.reliability_score ?? '—')}/100</td><td>${esc(sc.attention_signal_score ?? '—')}/100</td><td>${esc((e.supports || []).join(', ') || '—')}</td><td>${esc((e.contradicts || []).join(', ') || '—')}</td><td><div class="rowActions"><button class="btn ghost researchEdit" type="button" data-index="${i}">${esc(tr('edit'))}</button><button class="btn ghost researchDelete" type="button" data-index="${i}">${esc(tr('remove'))}</button></div></td></tr>`; }).join('')}</tbody></table></div>`;
+    if(!state.evidence.length){el.innerHTML = emptyState(tr('matrixEmpty'), tr('matrixEmptyBody'), tr('addEvidence')); return;}
+    el.innerHTML = `<div class="researchTableWrap"><table class="researchTable"><thead><tr><th>ID</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('strength'))}</th><th>${esc(tr('reliability'))}</th><th>${esc(tr('attention'))}</th><th>${esc(tr('supports'))}</th><th>${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${state.evidence.map((raw,i)=>{ const e = scoreEvidence(raw); const sc = e.evidence_scoring || {}; return `<tr><td>${esc(e.evidence_id)}</td><td><b>${esc(e.claim)}</b><small>${esc(e.notes || '')}</small>${(sc.risk_flags || []).length ? `<small>${esc(tr('flags'))}: ${esc(sc.risk_flags.join(', '))}</small>` : ''}</td><td>${esc([e.source_title,e.source_type,e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td><td>${esc(e.evidence_strength)}/5</td><td>${esc(sc.reliability_score ?? '—')}/100</td><td>${esc(sc.attention_signal_score ?? '—')}/100</td><td>${esc((e.supports || []).join(', ') || '—')}</td><td>${esc((e.contradicts || []).join(', ') || '—')}</td><td><div class="rowActions"><button class="btn ghost researchEdit" type="button" data-index="${i}">${esc(tr('edit'))}</button><button class="btn ghost researchDelete" type="button" data-index="${i}">${esc(tr('remove'))}</button></div></td></tr>`; }).join('')}</tbody></table></div>`;
     document.querySelectorAll('.researchEdit').forEach(btn => btn.addEventListener('click', () => fillEvidenceForm(state.evidence[Number(btn.dataset.index)], Number(btn.dataset.index))));
     document.querySelectorAll('.researchDelete').forEach(btn => btn.addEventListener('click', () => {
       const removedId = state.evidence[Number(btn.dataset.index)]?.evidence_id;
@@ -1901,12 +1899,18 @@
     runEl.innerHTML = `<div class="researchTableWrap"><table class="researchTable providerTable"><thead><tr><th>Run</th><th>${esc(tr('providerTask'))}</th><th>${esc(tr('providerName'))}</th><th>Status</th><th>Validation</th><th>Output</th></tr></thead><tbody>${runs.slice().reverse().map(run=>`<tr><td>${esc(run.run_id)}</td><td>${esc(run.task)}</td><td>${esc(run.provider)}</td><td>${esc(run.status)} · ${esc(run.duration_ms)}ms</td><td>${esc(validationSummary(run.response_validation, run.repair_trace))}</td><td>${esc(run.output_summary)}<small>${esc((run.warnings || []).join(' · '))}</small></td></tr>`).join('')}</tbody></table></div>`;
   }
 
+  function localizedCritique(){
+    const e=state.evidence||[],l=state.causal_links||[],u=e.filter(x=>x.source_url).length,t=new Set(e.map(x=>x.source_type).filter(Boolean)).size,c=e.filter(x=>x.contradicts&&x.contradicts.length).length,r=(a,b,o,n)=>({type:tr(a),severity:tr(b?'severityMedium':'severityHigh'),finding:tr(b?o:n)});
+    return{summary:tr(e.length>=5&&l.length>=3?'critiqueSummaryUsable':'critiqueSummaryWeak'),findings:[r('critiqueTypeEvidenceVolume',e.length>=5,'critiqueEvidenceVolumeOk','critiqueEvidenceVolumeWeak'),r('critiqueTypeSourceTraceability',u>=3,'critiqueSourceTraceabilityOk','critiqueSourceTraceabilityWeak'),r('critiqueTypeSourceDiversity',t>=3,'critiqueSourceDiversityOk','critiqueSourceDiversityWeak'),r('critiqueTypeCounterEvidenceGap',c,'critiqueCounterEvidenceOk','critiqueCounterEvidenceWeak'),r('critiqueTypeCausalRisk',l.length>=3,'critiqueCausalRiskOk','critiqueCausalRiskWeak'),{type:tr('critiqueTypePublicationRisk'),severity:tr('severityHigh'),finding:tr('critiquePublicationRisk')}],recommended_next_actions:['critiqueActionEvidence','critiqueActionSources','critiqueActionCounter','critiqueActionCausal','critiqueActionFalsifiers'].map(tr)};
+  }
   function renderCritique(){
     const el = $('critiqueOutput');
     if(!el) return;
     if(!state.critique){el.innerHTML = ''; return;}
-    el.innerHTML = `<div class="researchJsonCard critiqueCard"><b>${esc(state.critique.summary)}</b><ul>${state.critique.findings.map(f=>`<li><strong>${esc(f.type)} · ${esc(f.severity)}</strong>: ${esc(f.finding)}</li>`).join('')}</ul><h4>Next actions</h4><ul>${state.critique.recommended_next_actions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
+    const critique = localizedCritique();
+    el.innerHTML = `<div class="researchJsonCard critiqueCard"><b>${esc(critique.summary)}</b><ul>${critique.findings.map(f=>`<li><strong>${esc(f.type)} · ${esc(f.severity)}</strong>: ${esc(f.finding)}</li>`).join('')}</ul><h4>${esc(tr('critiqueNextActions'))}</h4><ul>${critique.recommended_next_actions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
   }
+
   const UX_CARD_TABS = Object.freeze({
     projectWorkspaceTitle:['advanced'],
     templateTitle:['analysis','advanced'],
@@ -1979,8 +1983,11 @@
     panel.classList.toggle('screenDisciplineCollapsed', !expanded);
     button.dataset.expanded = expanded ? 'true' : 'false';
     button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    if(panelId === 'workflowPanel') button.textContent = expanded ? 'Hide Command Center' : 'Show Command Center';
-    if(panelId === 'enginePanel') button.textContent = expanded ? 'Hide Engine Map' : 'Show Engine Map';
+    const showKey = button.dataset.rToggleShow;
+    const hideKey = button.dataset.rToggleHide;
+    if(showKey && hideKey) button.textContent = expanded ? tr(hideKey) : tr(showKey);
+    else if(panelId === 'workflowPanel') button.textContent = expanded ? tr('hideCommandCenter') : tr('showCommandCenter');
+    else if(panelId === 'enginePanel') button.textContent = expanded ? tr('hideEngineMap') : tr('showEngineMap');
   }
 
   function toggleCollapsiblePanel(panelId, toggleId){
@@ -2001,13 +2008,13 @@
     const el = $('screenDisciplineNextAction');
     if(!el) return;
     const reviewCount = (state.evidence_review_queue || []).filter(item => item.status !== 'accepted' && item.status !== 'rejected').length;
-    let title = 'Start';
-    let body = 'Generate a research plan, then add evidence and validate export readiness.';
-    if(!state.plan){ title = 'Next action'; body = 'Generate the research plan.'; }
-    else if(reviewCount){ title = 'Next action'; body = 'Review pending source candidates before they enter the Evidence Matrix.'; }
-    else if(!state.evidence.length){ title = 'Next action'; body = 'Add evidence manually, import source candidates, or load demo evidence.'; }
-    else if(!state.analysis_brief){ title = 'Next action'; body = 'Compile the analysis brief, then inspect Quality & Export.'; }
-    else { title = 'Next action'; body = 'Open Quality & Export and produce Export Pack v2 when privacy is safe.'; }
+    let title = tr('startTitle');
+    let body = tr('nextActionDefault');
+    if(!state.plan){ title = tr('nextActionTitle'); body = tr('nextActionGeneratePlan'); }
+    else if(reviewCount){ title = tr('nextActionTitle'); body = tr('nextActionReviewQueue'); }
+    else if(!state.evidence.length){ title = tr('nextActionTitle'); body = tr('nextActionAddEvidence'); }
+    else if(!state.analysis_brief){ title = tr('nextActionTitle'); body = tr('nextActionCompileBrief'); }
+    else { title = tr('nextActionTitle'); body = tr('nextActionExportPack'); }
     el.innerHTML = '<strong>' + esc(title) + ':</strong> ' + esc(body);
   }
 
@@ -2019,12 +2026,12 @@
     ensureOnboardingState();
     const report = onboardingReport();
     panel.classList.toggle('firstRunHidden', !!state.onboarding?.dismissed && report.completion_rate >= 100);
-    progressEl.innerHTML = '<strong>' + esc(report.completion_rate) + '%</strong><span>' + esc(report.success_state.replace(/_/g, ' ')) + '</span>';
-    listEl.innerHTML = report.checklist.map(item => '<button class="firstRunStep ' + (item.done ? 'done' : 'open') + '" type="button" data-first-run-step="' + esc(item.step_id) + '" data-first-run-tab="' + esc(item.tab) + '" data-first-run-target="' + esc(item.target) + '"><span>' + esc(item.order) + '</span><b>' + esc(item.label) + '</b><small>' + esc(item.done ? 'done' : 'next') + '</small></button>').join('');
+    progressEl.innerHTML = '<strong>' + esc(report.completion_rate) + '%</strong><span>' + esc(localizedSuccessState(report.success_state)) + '</span>';
+    listEl.innerHTML = report.checklist.map(item => '<button class="firstRunStep ' + (item.done ? 'done' : 'open') + '" type="button" data-first-run-step="' + esc(item.step_id) + '" data-first-run-tab="' + esc(item.tab) + '" data-first-run-target="' + esc(item.target) + '"><span>' + esc(item.order) + '</span><b>' + esc(localizedStepLabel(item.step_id, item.label)) + '</b><small>' + esc(item.done ? tr('doneState') : tr('nextState')) + '</small></button>').join('');
     const nextBtn = $('nextFirstRunBtn');
     if(nextBtn){
       nextBtn.disabled = !report.next_step_id;
-      nextBtn.textContent = report.next_step_label ? 'Go to: ' + report.next_step_label : 'First-run complete';
+      nextBtn.textContent = report.next_step_id ? tr('goToPrefix') + ': ' + localizedStepLabel(report.next_step_id, report.next_step_label) : tr('firstRunComplete');
     }
   }
 
@@ -2041,7 +2048,7 @@
     state.onboarding = onboarding?.resetOnboarding ? onboarding.resetOnboarding({version: VERSION, now: nowIso()}) : state.onboarding;
     if($('topicInput') && !($('topicInput').value || '').trim()) $('topicInput').value = 'Sample: strategic technology shift and institutional adaptation';
     if($('timeframeInput') && !($('timeframeInput').value || '').trim()) $('timeframeInput').value = '2024–2026, international context';
-    save(); render(); setUxTab('analysis'); goToFirstRunStep('plan'); setStatus('First-run guide started. Generate the research plan next.', 'good');
+    save(); render(); setUxTab('analysis'); goToFirstRunStep('plan'); setStatus(tr('firstRunStartedStatus'), 'good');
   }
 
   function renderReleaseHealth(){
@@ -2050,11 +2057,11 @@
     const quality = qualityGateReport();
     const openReview = (state.evidence_review_queue || []).filter(item => item.status !== 'accepted' && item.status !== 'rejected').length;
     const metrics = [
-      ['Plan', state.plan ? 'ready' : 'missing'],
-      ['Evidence', String(state.evidence.length)],
-      ['Review', openReview ? openReview + ' pending' : 'clear'],
-      ['Quality', String(quality.overall_score || quality.readiness_score || 0) + '/100'],
-      ['Export', quality.release_gate === 'blocked' ? 'blocked' : 'safe']
+      [tr('metricPlan'), state.plan ? tr('metricReady') : tr('metricMissing')],
+      [tr('metricEvidence'), String(state.evidence.length)],
+      [tr('metricReview'), openReview ? openReview + ' ' + tr('metricPending') : tr('metricClear')],
+      [tr('metricQuality'), String(quality.overall_score || quality.readiness_score || 0) + '/100'],
+      [tr('metricExport'), quality.release_gate === 'blocked' ? tr('metricBlocked') : tr('metricSafe')]
     ];
     el.innerHTML = metrics.map(([label,value]) => '<span class="releaseMetric"><strong>' + esc(label) + '</strong>' + esc(value) + '</span>').join('');
     renderScreenDisciplineNextAction();
