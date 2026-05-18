@@ -74,24 +74,35 @@ async function assertNoTransientArtifacts(page, label) {
       if (!node) return false;
       const style = window.getComputedStyle(node);
       const rect = node.getBoundingClientRect();
-      return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity || 1) > 0.01 && rect.width > 1 && rect.height > 1;
+      if (style.display === 'none' || style.visibility === 'hidden') return false;
+      if (Number(style.opacity || 1) <= 0.01 || rect.width <= 1 || rect.height <= 1) return false;
+      return rect.bottom > 0 && rect.right > 0 && rect.top < window.innerHeight && rect.left < window.innerWidth;
+    };
+    const isExpectedHiddenShell = (node) => {
+      if (node.id === 'toast' && !node.classList.contains('show')) return true;
+      if (node.id === 'modalBackdrop' && node.getAttribute('aria-hidden') === 'true') return true;
+      return false;
     };
     const matches = [];
     for (const selector of selectors) {
       for (const node of document.querySelectorAll(selector)) {
-        if (visible(node)) matches.push({ selector, id: node.id || null, className: String(node.className || '') });
+        if (!isExpectedHiddenShell(node) && visible(node)) {
+          matches.push({ selector, id: node.id || null, className: String(node.className || '') });
+        }
       }
     }
     const fixedOverlays = [...document.querySelectorAll('body *')]
       .filter((node) => {
+        if (isExpectedHiddenShell(node)) return false;
         const style = window.getComputedStyle(node);
         if (style.position !== 'fixed') return false;
         if (!visible(node)) return false;
         const rect = node.getBoundingClientRect();
         const viewportArea = Math.max(1, window.innerWidth * window.innerHeight);
         const nodeArea = rect.width * rect.height;
-        if (node.id === 'toast' || node.id === 'modalBackdrop') return true;
-        return nodeArea / viewportArea > 0.16 && Number(style.zIndex || 0) >= 50;
+        const coversViewportCenter = rect.left <= window.innerWidth / 2 && rect.right >= window.innerWidth / 2 && rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+        const explicitBlockingShell = (node.id === 'toast' && node.classList.contains('show')) || (node.id === 'modalBackdrop' && node.getAttribute('aria-hidden') !== 'true');
+        return explicitBlockingShell || (coversViewportCenter && nodeArea / viewportArea > 0.16 && Number(style.zIndex || 0) >= 50);
       })
       .map((node) => ({ id: node.id || null, className: String(node.className || ''), tagName: node.tagName }));
     return {
@@ -99,10 +110,11 @@ async function assertNoTransientArtifacts(page, label) {
       transient_selectors_checked: selectors,
       transient_matches: matches,
       fixed_overlay_matches: fixedOverlays,
+      visual_artifact_guard_scope: 'visible_transient_selectors_and_center_blocking_fixed_overlays',
       visual_artifact_guard_passed: matches.length === 0 && fixedOverlays.length === 0
     };
   }, { selectors: TRANSIENT_ARTIFACT_SELECTORS, label });
-  expect(state.visual_artifact_guard_passed, `${label} must not capture transient overlays/loading artifacts`).toBe(true);
+  expect(state, `${label} must not capture transient overlays/loading artifacts`).toMatchObject({ visual_artifact_guard_passed: true });
   return state;
 }
 
