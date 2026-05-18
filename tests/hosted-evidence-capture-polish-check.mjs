@@ -56,6 +56,8 @@ for (const token of [
 assert.ok(spec.includes("'.toast.show'"), 'toast overlay guard missing');
 assert.ok(spec.includes("'.modalBackdrop.show'"), 'modal overlay guard missing');
 assert.ok(spec.includes("'[aria-busy=\"true\"]'"), 'aria-busy guard missing');
+assert.ok(spec.includes('page.evaluate(({ selectors, label }) => {'), 'artifact guard page.evaluate must receive label explicitly');
+assert.ok(spec.includes('}, { selectors: TRANSIENT_ARTIFACT_SELECTORS, label })'), 'artifact guard page.evaluate must pass label into browser context');
 assert.ok(spec.includes("await waitForEvidenceStable(page, 'quality-export-open')"), 'quality/export open path must settle before capture');
 assert.ok(spec.includes('expect(metadata.visual_artifact_guard_required).toBe(true);'));
 assert.ok(spec.includes('expect(metadata.capture_settle_required).toBe(true);'));

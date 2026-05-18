@@ -69,7 +69,7 @@ async function waitForEvidenceStable(page, label) {
 }
 
 async function assertNoTransientArtifacts(page, label) {
-  const state = await page.evaluate((selectors) => {
+  const state = await page.evaluate(({ selectors, label }) => {
     const visible = (node) => {
       if (!node) return false;
       const style = window.getComputedStyle(node);
@@ -101,7 +101,7 @@ async function assertNoTransientArtifacts(page, label) {
       fixed_overlay_matches: fixedOverlays,
       visual_artifact_guard_passed: matches.length === 0 && fixedOverlays.length === 0
     };
-  }, TRANSIENT_ARTIFACT_SELECTORS);
+  }, { selectors: TRANSIENT_ARTIFACT_SELECTORS, label });
   expect(state.visual_artifact_guard_passed, `${label} must not capture transient overlays/loading artifacts`).toBe(true);
   return state;
 }
