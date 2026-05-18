@@ -62,6 +62,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `visual-qa.md` | Visual QA Checklist |
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
+| `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3221,3 +3222,46 @@ Cleanup-only CI and documentation gate. Compresses the expensive no-browser synt
 
 This release is invalid if the syntax matrix drops previous syntax coverage, if the no-browser gate reverts to a long serialized syntax tail, if release-history anchors become unreadable by `tests/release-docs-loader.mjs`, or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md -->
+
+
+<!-- release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
+# v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard
+
+Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waiting for stable DOM/fonts/frames before every screenshot, blocking transient overlays/loading artifacts, and recording settle/artifact guard metadata in the single final hosted-demo manifest.
+
+## What changed
+
+- Added `waitForEvidenceStable` to the hosted-demo browser evidence capture path.
+- Added `assertNoTransientArtifacts` with guards for toast/modal/loading/spinner/skeleton artifacts.
+- Added metadata fields `capture_settled` and `visual_artifact_guard_passed` for every screenshot sanity record.
+- Required quality/export evidence capture to settle after the quality tab opens.
+- Added `tests/hosted-evidence-capture-polish-check.mjs` to lock evidence-capture polish without changing runtime behavior.
+- Preserved alpha.9 syntax-matrix optimization, alpha.8 fixture payload compression, and alpha.7 package script compression.
+- Preserved fixture registry consolidation, fixture registry payload compression, and unused oversized asset cleanup boundaries without deleting runtime files.
+- Preserved MERGE_TO_REGISTRY retention-class continuity for historical wrappers, release docs, migration fixtures, and privacy fixtures.
+- No files are deleted by alpha.10; this is an evidence-capture polish and guard release only.
+- Preserved Mobile Header Geometry Lock / Final Public Demo Visual Freeze scope from v1.0.30.
+
+## What did not change
+
+- No runtime behavior change.
+- No UI redesign.
+- No provider behavior change.
+- No OAuth behavior change. No real OAuth or production OAuth flow is enabled.
+- No backend/source/storage behavior change.
+- No live scraping.
+- No fixture semantic thinning.
+- Screenshots alone, hosted evidence alone, ZIP existence alone, or ZIP archive alone are not sufficient release approval.
+
+## Validation
+
+- `node tests/hosted-evidence-capture-polish-check.mjs`
+- `node tests/hosted-demo-evidence-review-check.mjs`
+- `node tests/hosted-demo-evidence-manifest-check.mjs`
+- `npm run test:current:no-browser`
+- `npm run test:ci:no-browser`
+
+## Disproven if
+
+This release is invalid if screenshots can be captured while transient overlays, modal backdrops, loading indicators, or unstable DOM states are present; if quality/export evidence is taken before the quality tab settles; or if runtime/provider/OAuth/backend/source/storage behavior changes.
+<!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->

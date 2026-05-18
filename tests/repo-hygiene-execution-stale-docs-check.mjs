@@ -6,8 +6,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.9';
-const TITLE = 'Test Matrix Runtime Optimization + Release Doc Timeline Pruning';
+const VERSION = '1.1.0-alpha.10';
+const TITLE = 'Hosted Evidence Capture Polish + Visual Artifact Guard';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
@@ -18,9 +18,9 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.9-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.9.json');
-const releaseDoc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md')}`;
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.10-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json');
+const releaseDoc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md')}`;
 const manifest = read('RELEASE_MANIFEST.md');
 const notes = read('RELEASE_NOTES.md');
 const changelog = read('CHANGELOG.md');
@@ -34,26 +34,26 @@ const releaseignore = read('.releaseignore');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const migrations = read('src/research/migrations.js');
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0-alpha.9');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0-alpha.9');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0-alpha.9');
-assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0-alpha.9');
-assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0-alpha.9');
-assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0-alpha.9');
-assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.1.0-alpha.9');
-assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.1.0-alpha.9');
-assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.1.0-alpha.9');
-assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.1.0-alpha.9');
+assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0-alpha.10');
+assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0-alpha.10');
+assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0-alpha.10');
+assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0-alpha.10');
+assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0-alpha.10');
+assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0-alpha.10');
+assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.1.0-alpha.10');
+assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.1.0-alpha.10');
+assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.1.0-alpha.10');
+assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.1.0-alpha.10');
 
 for (const corpus of [releaseDoc, manifest, notes, changelog, roadmap, qaMatrix]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.9'), 'release corpus must mention v1.1.0-alpha.9');
+  assert.ok(corpus.includes('v1.1.0-alpha.10'), 'release corpus must mention v1.1.0-alpha.10');
   assert.ok(corpus.includes(TITLE), 'release corpus must mention repo hygiene execution title');
 }
 
 for (const required of [
   'docs/v1.0.25-public-demo-release-lock.md',
-  'fixtures/migrations/v1.1.0-alpha.9-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.9.json',
+  'fixtures/migrations/v1.1.0-alpha.10-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json',
   'tests/public-demo-release-lock-check.mjs',
   'tests/version-suite-registry-check.mjs',
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
@@ -63,11 +63,11 @@ for (const required of [
   assert.ok(exists(required), `required release/historical artifact missing: ${required}`);
 }
 
-assert.ok(aiIntegration.includes('## Current state: v1.1.0-alpha.9'), 'AI integration doc must name current v1.1.0-alpha.9 state');
+assert.ok(aiIntegration.includes('## Current state: v1.1.0-alpha.10'), 'AI integration doc must name current v1.1.0-alpha.10 state');
 assert.equal(aiIntegration.includes('## Current state: v0.20.0-beta'), false, 'AI integration doc must not claim v0.20.0-beta as current');
-assert.ok(architecture.includes('## Current v1.1.0-alpha.9 pipeline'), 'architecture doc must name current v1.1.0-alpha.9 pipeline');
+assert.ok(architecture.includes('## Current v1.1.0-alpha.10 pipeline'), 'architecture doc must name current v1.1.0-alpha.10 pipeline');
 assert.equal(architecture.includes('## Current v0.20.0-beta pipeline'), false, 'architecture doc must not claim v0.20.0-beta as current');
-assert.ok(privacyAudit.includes('`v1.1.0-alpha.9` treats every exported JSON payload as a security boundary'), 'privacy audit doc must name v1.1.0-alpha.9 boundary');
+assert.ok(privacyAudit.includes('`v1.1.0-alpha.10` treats every exported JSON payload as a security boundary'), 'privacy audit doc must name v1.1.0-alpha.10 boundary');
 assert.equal(privacyAudit.includes('`v0.20.0-beta` treats every exported JSON payload as a security boundary'), false, 'privacy audit doc must not claim v0.20.0-beta as current');
 assert.ok(v019Doc.startsWith('# v0.19.0-beta — Privacy Audit Hardening'), 'v0.19 historical privacy doc heading must match its filename');
 
@@ -125,9 +125,9 @@ for (const file of releaseTreeFiles) {
   assert.equal(/(^|\/)XX[A-Za-z0-9_-]*$/.test(file), false, `temporary XX artifact must stay outside committed release tree: ${file}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.9'"), 'migration target must be v1.1.0-alpha.9');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.9');
-assert.ok(migrations.includes("release_title:'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning'"), 'migration default release title must identify v1.1.0-alpha.9');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.10'"), 'migration target must be v1.1.0-alpha.10');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10'"), 'migration order must preserve v1.0.24 and append v1.1.0-alpha.10');
+assert.ok(migrations.includes("release_title:'v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard'"), 'migration default release title must identify v1.1.0-alpha.10');
 
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must run release hygiene through registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');

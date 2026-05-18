@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-alpha.9';
-const TITLE = 'Test Matrix Runtime Optimization + Release Doc Timeline Pruning';
+const VERSION = '1.1.0-alpha.10';
+const TITLE = 'Hosted Evidence Capture Polish + Visual Artifact Guard';
 const REGISTRY_BUDGET_BYTES = 900 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
@@ -12,15 +12,15 @@ const registries = [
     label: 'migration',
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
-    expectedEntries: 57,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.1.0-alpha.9-packet.json')
+    expectedEntries: 58,
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.1.0-alpha.10-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
-    expectedEntries: 47,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.9.json')
+    expectedEntries: 48,
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json')
   }
 ];
 
@@ -35,7 +35,7 @@ for (const item of registries) {
   assert.equal(rawRegistry.payload_encoding, 'gzip+base64+json', `${item.label} registry must declare compressed payload encoding`);
   assert.equal(rawRegistry.entry_count, item.expectedEntries, `${item.label} registry entry count mismatch`);
   assert.equal(rawRegistry.entries.length, item.expectedEntries, `${item.label} registry entries length mismatch`);
-  assert.ok(currentBytes <= REGISTRY_BUDGET_BYTES, `${item.label} registry exceeds alpha.9 byte budget: ${currentBytes}`);
+  assert.ok(currentBytes <= REGISTRY_BUDGET_BYTES, `${item.label} registry exceeds alpha.10 byte budget: ${currentBytes}`);
   assert.ok(previousBytes >= currentBytes * MIN_SIZE_REDUCTION_RATIO, `${item.label} registry did not shrink enough: ${previousBytes} -> ${currentBytes}`);
   assert.equal(rawRegistry.payload_compression.semantic_thinning, false, `${item.label} registry must not semantically thin fixtures`);
   assert.equal(rawRegistry.payload_compression.loader, 'tests/fixture-registry-loader.mjs', `${item.label} registry loader declaration mismatch`);

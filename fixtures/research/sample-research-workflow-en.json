@@ -1,8 +1,8 @@
 {
-  "workflow_version": "1.1.0-alpha.9",
+  "workflow_version": "1.1.0-alpha.10",
   "generated_at": "2026-04-28T00:00:00.000Z",
   "research_plan": {
-    "plan_version": "1.1.0-alpha.9",
+    "plan_version": "1.1.0-alpha.10",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
     "mode": "source-heavy",
@@ -78,7 +78,7 @@
       "notes": "Fixture source is illustrative; replace before publication.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.1.0-alpha.9",
+        "scorer_version": "1.1.0-alpha.10",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 80,
@@ -138,7 +138,7 @@
       "notes": "Used to test contradiction links.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.1.0-alpha.9",
+        "scorer_version": "1.1.0-alpha.10",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 60,
         "reliability_score": 71,
@@ -194,7 +194,7 @@
       "notes": "Used to test feedback loops.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.1.0-alpha.9",
+        "scorer_version": "1.1.0-alpha.10",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 69,
@@ -262,11 +262,11 @@
     }
   ],
   "critique": {
-    "critique_version": "1.1.0-alpha.9",
+    "critique_version": "1.1.0-alpha.10",
     "summary": "Fixture has enough structure for research-packet validation, not publication."
   },
   "analysis_brief": {
-    "brief_version": "1.1.0-alpha.9",
+    "brief_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
@@ -408,7 +408,7 @@
     "handoff_summary": "Compile the fixture evidence into a strategic analysis of semiconductor export controls as an adaptive system.",
     "analysis_template": {
       "template_id": "strategic_analysis_engine",
-      "template_version": "1.1.0-alpha.9",
+      "template_version": "1.1.0-alpha.10",
       "display_name": "Strategic Analysis Engine",
       "short_name": "Strategic",
       "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -453,7 +453,7 @@
       ]
     },
     "template_fit_report": {
-      "fit_version": "1.1.0-alpha.9",
+      "fit_version": "1.1.0-alpha.10",
       "template_id": "strategic_analysis_engine",
       "required_layers": [
         "interests",
@@ -475,7 +475,7 @@
       "fit_score": 100
     },
     "quality_gate_report": {
-      "quality_gate_version": "1.1.0-alpha.9",
+      "quality_gate_version": "1.1.0-alpha.10",
       "generated_at": "2026-04-28T21:08:50.659Z",
       "gate_name": "Advanced Quality Gate v3",
       "overall_score": 84,
@@ -591,7 +591,7 @@
         "readiness": 85
       },
       "evidence_scoring_report": {
-        "evidence_scoring_version": "1.1.0-alpha.9",
+        "evidence_scoring_version": "1.1.0-alpha.10",
         "scoring_model": "evidence_scoring.v1",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "item_count": 3,
@@ -614,7 +614,7 @@
       "Add counter-evidence and contradiction-linked claims before treating the analysis as robust."
     ],
     "evidence_scoring_report": {
-      "evidence_scoring_version": "1.1.0-alpha.9",
+      "evidence_scoring_version": "1.1.0-alpha.10",
       "scoring_model": "evidence_scoring.v1",
       "calibration_version": "evidence_scoring_calibration.v1",
       "generated_at": "2026-05-02T00:00:00.000Z",
@@ -657,7 +657,7 @@
     }
   },
   "diagnostics": {
-    "diagnostics_version": "1.1.0-alpha.9",
+    "diagnostics_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "linked_ids": [
       "A1",
@@ -689,7 +689,7 @@
   "ai_runs": [
     {
       "run_id": "RUN-FIXTURE-001",
-      "run_version": "1.1.0-alpha.9",
+      "run_version": "1.1.0-alpha.10",
       "provider": "mock",
       "task": "synthesis",
       "status": "ok",
@@ -722,7 +722,7 @@
         "verdict": "mock_safe"
       },
       "response_validation": {
-        "validation_version": "1.1.0-alpha.9",
+        "validation_version": "1.1.0-alpha.10",
         "validated_at": "2026-04-28T00:00:00.060Z",
         "task": "synthesis",
         "expected_type": "strategic_analysis",
@@ -779,7 +779,7 @@
     "remember_key": false
   },
   "provider_validation": {
-    "validation_version": "1.1.0-alpha.9",
+    "validation_version": "1.1.0-alpha.10",
     "validated_at": "2026-04-28T00:00:00.060Z",
     "task": "synthesis",
     "expected_type": "strategic_analysis",
@@ -794,7 +794,7 @@
     "status": "not_required"
   },
   "provider_diagnostics": {
-    "diagnostics_version": "1.1.0-alpha.9",
+    "diagnostics_version": "1.1.0-alpha.10",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "task": "synthesis",
     "provider": "mock",
@@ -845,7 +845,7 @@
     }
   },
   "provider_fixture_report": {
-    "suite_version": "1.1.0-alpha.9",
+    "suite_version": "1.1.0-alpha.10",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -905,7 +905,7 @@
     ]
   },
   "source_policy": {
-    "policy_version": "1.1.0-alpha.9",
+    "policy_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "live_fetching_enabled": false,
     "current_layer": "planning_only",
@@ -926,10 +926,10 @@
       "source URL/date/type preservation"
     ],
     "verdict": "safe_planning_layer_only",
-    "source_policy_version": "1.1.0-alpha.9"
+    "source_policy_version": "1.1.0-alpha.10"
   },
   "source_diagnostics": {
-    "diagnostics_version": "1.1.0-alpha.9",
+    "diagnostics_version": "1.1.0-alpha.10",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "connector": "manual_mock",
     "task": "source_plan",
@@ -949,7 +949,7 @@
     ]
   },
   "source_fixture_report": {
-    "suite_version": "1.1.0-alpha.9",
+    "suite_version": "1.1.0-alpha.10",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -994,7 +994,7 @@
   },
   "source_requests": [
     {
-      "request_version": "1.1.0-alpha.9",
+      "request_version": "1.1.0-alpha.10",
       "created_at": "2026-04-28T00:00:00.000Z",
       "connector": "manual_mock",
       "task": "source_plan",
@@ -1021,7 +1021,7 @@
         "China"
       ],
       "safety_policy": {
-        "policy_version": "1.1.0-alpha.9",
+        "policy_version": "1.1.0-alpha.10",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "live_fetching_enabled": false,
         "current_layer": "planning_only",
@@ -1048,7 +1048,7 @@
   "source_runs": [
     {
       "run_id": "SRC-FIXTURE-1",
-      "run_version": "1.1.0-alpha.9",
+      "run_version": "1.1.0-alpha.10",
       "connector": "manual_mock",
       "task": "source_plan",
       "status": "planned",
@@ -1061,7 +1061,7 @@
     }
   ],
   "source_import_report": {
-    "import_version": "1.1.0-alpha.9",
+    "import_version": "1.1.0-alpha.10",
     "imported_at": "2026-05-02T00:00:00.000Z",
     "input_format": "source_packet",
     "source_packet_schema": "manual_source_packet.v1",
@@ -1089,7 +1089,7 @@
       "import_id": "IMP-fixture-v113",
       "imported_at": "2026-05-02T00:00:00.000Z",
       "report": {
-        "import_version": "1.1.0-alpha.9",
+        "import_version": "1.1.0-alpha.10",
         "imported_at": "2026-05-02T00:00:00.000Z",
         "input_format": "source_packet",
         "source_packet_schema": "manual_source_packet.v1",
@@ -1232,7 +1232,7 @@
     }
   ],
   "evidence_review_report": {
-    "review_version": "1.1.0-alpha.9",
+    "review_version": "1.1.0-alpha.10",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "queue_count": 3,
     "pending_count": 2,
@@ -1277,7 +1277,7 @@
     ]
   },
   "portable_account": {
-    "portable_account_version": "1.1.0-alpha.9",
+    "portable_account_version": "1.1.0-alpha.10",
     "provider_id": "portable_oauth",
     "status": "connected_mock",
     "account_id": "pa_fixture0001",
@@ -1308,8 +1308,8 @@
     "code_verifier_exported": false
   },
   "privacy_export": {
-    "audit_version": "1.1.0-alpha.9",
-    "guard_version": "1.1.0-alpha.9",
+    "audit_version": "1.1.0-alpha.10",
+    "guard_version": "1.1.0-alpha.10",
     "safe": true,
     "release_gate": "pass",
     "issue_count": 0,
@@ -1331,9 +1331,9 @@
     }
   },
   "packet_migration_report": {
-    "migration_version": "1.1.0-alpha.9",
-    "source_version": "1.1.0-alpha.9",
-    "target_version": "1.1.0-alpha.9",
+    "migration_version": "1.1.0-alpha.10",
+    "source_version": "1.1.0-alpha.10",
+    "target_version": "1.1.0-alpha.10",
     "started_at": "2026-04-28T00:00:00.000Z",
     "completed_at": "2026-04-28T00:00:00.000Z",
     "migrated": false,
@@ -1346,7 +1346,7 @@
     "import_safe": true
   },
   "project_workspace": {
-    "workspace_version": "1.1.0-alpha.9",
+    "workspace_version": "1.1.0-alpha.10",
     "storage_mode": "local_only",
     "active_project_id": null,
     "active_project_name": null,
@@ -1354,7 +1354,7 @@
     "storage_warning": "Projects are stored only in this browser localStorage.",
     "last_saved_at": null,
     "quota": {
-      "diagnostics_version": "1.1.0-alpha.9",
+      "diagnostics_version": "1.1.0-alpha.10",
       "available": true,
       "storage_mode": "local_only",
       "project_count": 0,
@@ -1365,7 +1365,7 @@
   },
   "analysis_template": {
     "template_id": "strategic_analysis_engine",
-    "template_version": "1.1.0-alpha.9",
+    "template_version": "1.1.0-alpha.10",
     "display_name": "Strategic Analysis Engine",
     "short_name": "Strategic",
     "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -1410,7 +1410,7 @@
     ]
   },
   "quality_gate": {
-    "quality_gate_version": "1.1.0-alpha.9",
+    "quality_gate_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-28T21:08:50.659Z",
     "gate_name": "Advanced Quality Gate v3",
     "overall_score": 84,
@@ -1526,7 +1526,7 @@
       "readiness": 85
     },
     "evidence_scoring_report": {
-      "evidence_scoring_version": "1.1.0-alpha.9",
+      "evidence_scoring_version": "1.1.0-alpha.10",
       "scoring_model": "evidence_scoring.v1",
       "calibration_version": "evidence_scoring_calibration.v1",
       "generated_at": "2026-05-02T00:00:00.000Z",
@@ -1569,7 +1569,7 @@
     }
   },
   "export_pack": {
-    "export_pack_version": "1.1.0-alpha.9",
+    "export_pack_version": "1.1.0-alpha.10",
     "format": "export_pack_v2",
     "files": [
       "research-packet.json",
@@ -1583,8 +1583,8 @@
     "release_gate": "privacy_audit_required"
   },
   "backend_hardening": {
-    "hardening_version": "1.1.0-alpha.9",
-    "proxy_version": "1.1.0-alpha.9",
+    "hardening_version": "1.1.0-alpha.10",
+    "proxy_version": "1.1.0-alpha.10",
     "status": "optional_backend_hardened",
     "rate_limiting": {
       "supported": true,
@@ -1625,7 +1625,7 @@
   "source_results": [
     {
       "result_id": "SR-FIXTURE-1",
-      "result_version": "1.1.0-alpha.9",
+      "result_version": "1.1.0-alpha.10",
       "connector": "github_public_repo",
       "task": "source_plan",
       "created_at": "2026-04-28T00:00:00.000Z",
@@ -1642,7 +1642,7 @@
     }
   ],
   "search_provider_identity": {
-    "identity_version": "1.1.0-alpha.9",
+    "identity_version": "1.1.0-alpha.10",
     "provider_id": "mock_search",
     "display_name": "Mock Search Provider",
     "status": "available_dry_run",
@@ -1664,7 +1664,7 @@
     ]
   },
   "search_query_budget": {
-    "budget_version": "1.1.0-alpha.9",
+    "budget_version": "1.1.0-alpha.10",
     "max_queries": 6,
     "max_results_per_query": 5,
     "max_total_results": 30,
@@ -1678,9 +1678,9 @@
     "live_search_enabled": false
   },
   "search_policy": {
-    "search_policy_version": "1.1.0-alpha.9",
+    "search_policy_version": "1.1.0-alpha.10",
     "provider_identity": {
-      "identity_version": "1.1.0-alpha.9",
+      "identity_version": "1.1.0-alpha.10",
       "provider_id": "mock_search",
       "display_name": "Mock Search Provider",
       "status": "available_dry_run",
@@ -1702,7 +1702,7 @@
       ]
     },
     "query_budget": {
-      "budget_version": "1.1.0-alpha.9",
+      "budget_version": "1.1.0-alpha.10",
       "max_queries": 6,
       "max_results_per_query": 5,
       "max_total_results": 30,
@@ -1741,7 +1741,7 @@
     "verdict": "web_search_abstraction_ready_no_live_fetch"
   },
   "portable_oauth_spike": {
-    "oauth_spike_version": "1.1.0-alpha.9",
+    "oauth_spike_version": "1.1.0-alpha.10",
     "provider_id": "portable_oauth",
     "status": "disconnected",
     "mode": "real_oauth_pkce_spike",
@@ -1763,11 +1763,11 @@
     "safety_verdict": "oauth_dev_disconnected_token_state_cleared"
   },
   "release_candidate": {
-    "release_candidate_version": "1.1.0-alpha.9",
-    "stable_release_version": "1.1.0-alpha.9",
+    "release_candidate_version": "1.1.0-alpha.10",
+    "stable_release_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-29T18:54:43.435Z",
     "policy": {
-      "release_version": "1.1.0-alpha.9",
+      "release_version": "1.1.0-alpha.10",
       "release_stage": "public_beta_stable",
       "rc_number": null,
       "freeze_status": "stable_feature_baseline",
@@ -1830,7 +1830,7 @@
         "gate": "migration_report_present",
         "required": false,
         "passed": true,
-        "notes": "1.1.0-alpha.9"
+        "notes": "1.1.0-alpha.10"
       },
       {
         "gate": "oauth_tokens_not_exported",
@@ -1857,15 +1857,15 @@
     "verdict": "public_beta_stable_ready"
   },
   "ci_validation": {
-    "ci_validation_version": "1.1.0-alpha.9",
+    "ci_validation_version": "1.1.0-alpha.10",
     "external_ci_passed": true,
     "browser_provider_passed": true,
     "full_browser_passed": true,
     "source": "user_reported_new_ci_succeeded",
-    "notes": "External CI/browser validation reported as successful before v1.1.0-alpha.9 promotion."
+    "notes": "External CI/browser validation reported as successful before v1.1.0-alpha.10 promotion."
   },
   "browser_qa_hardening": {
-    "hardening_version": "1.1.0-alpha.9",
+    "hardening_version": "1.1.0-alpha.10",
     "release_type": "patch_only_browser_qa_visual_regression",
     "feature_surface_added": false,
     "browser_gate": {
@@ -1895,7 +1895,7 @@
     "release_gate": "browser_qa_hardened"
   },
   "onboarding": {
-    "onboarding_version": "1.1.0-alpha.9",
+    "onboarding_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "first_run": false,
     "dismissed": false,
@@ -1983,7 +1983,7 @@
     ]
   },
   "public_demo": {
-    "public_demo_version": "1.1.0-alpha.9",
+    "public_demo_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "demo_stage": "public_demo_ready",
     "release_type": "patch",
@@ -2067,16 +2067,16 @@
     "release_gate": "public_demo_ready_checked"
   },
   "release_notes": {
-    "release_notes_version": "1.1.0-alpha.9",
+    "release_notes_version": "1.1.0-alpha.10",
     "generated_at": "2026-05-02T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning",
+    "release_title": "v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard",
     "release_type": "patch",
     "runtime_capability_change": false,
     "summary": "Completes a mobile header geometry lock over v1.0.29, reconciling version identity, public-demo wording, browser evidence discipline, primary-action visibility, privacy/export safety, and provider/OAuth/source honesty without enabling new runtime capabilities.",
     "notable_changes": [
       "Converted hosted-demo evidence metadata from per-test overwrite risk to a single complete capture manifest.",
       "Added viewport/image dimension and horizontal-overflow sanity metadata for every required screenshot.",
-      "Added v1.1.0-alpha.9 migration and privacy export fixtures.",
+      "Added v1.1.0-alpha.10 migration and privacy export fixtures.",
       "Preserved provider, OAuth, backend, source, storage, and public-demo behavior boundaries."
     ],
     "unchanged_boundaries": [
@@ -2094,10 +2094,10 @@
       "Confirm release archive excludes generated and secret-bearing files."
     ],
     "release_gate": "release_notes_polished",
-    "release_version": "1.1.0-alpha.9"
+    "release_version": "1.1.0-alpha.10"
   },
   "hosted_demo_verification": {
-    "hosted_demo_version": "1.1.0-alpha.9",
+    "hosted_demo_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_verification",
@@ -2185,7 +2185,7 @@
     "release_gate": "hosted_demo_verified"
   },
   "browser_evidence_capture": {
-    "browser_evidence_version": "1.1.0-alpha.9",
+    "browser_evidence_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "evidence_mode": "playwright_capture_attach_and_write_artifacts",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -2252,10 +2252,21 @@
     "capture_manifest_required": true,
     "viewport_dimensions_required": true,
     "screenshot_dimensions_required": true,
-    "horizontal_overflow_metadata_required": true
+    "horizontal_overflow_metadata_required": true,
+    "capture_settle_required": true,
+    "visual_artifact_guard_required": true,
+    "quality_export_capture_after_settle_required": true,
+    "transient_artifact_selectors": [
+      ".toast.show",
+      ".modalBackdrop.show",
+      "[aria-busy=\"true\"]",
+      "[data-loading=\"true\"]",
+      "[class*=\"spinner\"]",
+      "[class*=\"skeleton\"]"
+    ]
   },
   "hosted_demo_smoke_fixes": {
-    "smoke_fixes_version": "1.1.0-alpha.9",
+    "smoke_fixes_version": "1.1.0-alpha.10",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_smoke_fixes",
@@ -2268,7 +2279,7 @@
     "checks": [
       {
         "check_id": "hosted_url_route_supported",
-        "label": "Playwright can target either local server or HOSTED_DEMO_URL",
+        "label": "Browser QA can target either local static server or HOSTED_DEMO_URL",
         "order": 1,
         "required": true,
         "passed": true,
@@ -2300,7 +2311,7 @@
       },
       {
         "check_id": "no_horizontal_overflow_checked",
-        "label": "Horizontal overflow is checked during browser evidence capture",
+        "label": "Horizontal overflow is checked during evidence capture",
         "order": 5,
         "required": true,
         "passed": true,
@@ -2315,29 +2326,53 @@
         "status": "pass"
       },
       {
-        "check_id": "ci_browser_not_duplicating_full_suite",
-        "label": "Browser CI avoids duplicate full-suite evidence reruns",
+        "check_id": "capture_settle_guard_checked",
+        "label": "Evidence capture waits for stable DOM, fonts, and animation-free frames",
         "order": 7,
         "required": true,
         "passed": true,
         "status": "pass"
       },
       {
-        "check_id": "runtime_boundary_unchanged",
-        "label": "Provider/OAuth/backend/source/storage behavior remains unchanged",
+        "check_id": "visual_artifact_guard_checked",
+        "label": "Evidence capture blocks transient overlays, loading states, and fixed visual artifacts",
         "order": 8,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "quality_export_capture_settled",
+        "label": "Quality/export evidence is captured after the quality tab has settled",
+        "order": 9,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "ci_browser_not_duplicating_full_suite",
+        "label": "Browser CI avoids duplicate full-suite evidence reruns",
+        "order": 10,
+        "required": true,
+        "passed": true,
+        "status": "pass"
+      },
+      {
+        "check_id": "runtime_boundary_unchanged",
+        "label": "No provider, OAuth, backend, source, or storage behavior changed",
+        "order": 11,
         "required": true,
         "passed": true,
         "status": "pass"
       }
     ],
-    "pass_count": 8,
+    "pass_count": 11,
     "fail_count": 0,
     "readiness_score": 100,
     "release_gate": "hosted_demo_smoke_fixed"
   },
   "hosted_demo_evidence_review": {
-    "evidence_review_version": "1.1.0-alpha.9",
+    "evidence_review_version": "1.1.0-alpha.10",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "review_stage": "hosted_demo_evidence_review",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -2345,92 +2380,112 @@
       {
         "artifact_id": "desktop_first_screen",
         "label": "Desktop first-screen screenshot reviewed",
-        "required": true,
         "order": 1,
+        "required": true,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "mobile_first_screen",
         "label": "Mobile first-screen screenshot reviewed",
-        "required": true,
         "order": 2,
+        "required": true,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "provider_mode",
         "label": "Provider-mode screenshot reviewed",
-        "required": true,
         "order": 3,
+        "required": true,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "quality_export",
         "label": "Quality/export screenshot reviewed",
-        "required": true,
         "order": 4,
+        "required": true,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "metadata_snapshot",
         "label": "Hosted-demo metadata snapshot reviewed",
-        "required": true,
         "order": 5,
+        "required": true,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "complete_capture_manifest",
         "label": "Single final metadata manifest contains all required captures",
-        "required": true,
         "order": 6,
+        "required": true,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "screenshot_sanity",
-        "label": "Viewport, screenshot dimensions, bytes, and overflow metadata reviewed",
-        "required": true,
+        "label": "Viewport, screenshot dimensions, bytes, overflow, and settle metadata reviewed",
         "order": 7,
+        "required": true,
+        "reviewed": true,
+        "status": "reviewed"
+      },
+      {
+        "artifact_id": "visual_artifact_guard",
+        "label": "Visual artifact guard confirms no transient overlays or loading bands were captured",
+        "order": 8,
+        "required": true,
+        "reviewed": true,
+        "status": "reviewed"
+      },
+      {
+        "artifact_id": "capture_settle_manifest",
+        "label": "Capture settle manifest confirms screenshots were taken after UI stability checks",
+        "order": 9,
+        "required": true,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "version_consistency",
         "label": "Version consistency reviewed across package, DOM, schema, and packet",
+        "order": 10,
         "required": true,
-        "order": 8,
         "reviewed": true,
         "status": "reviewed"
       },
       {
         "artifact_id": "privacy_boundary",
         "label": "Evidence artifacts reviewed for secret/export boundary regressions",
+        "order": 11,
         "required": true,
-        "order": 9,
         "reviewed": true,
         "status": "reviewed"
       }
     ],
-    "required_review_count": 9,
+    "required_review_count": 11,
     "missing_review_count": 0,
     "screenshots_required": true,
     "metadata_snapshot_required": true,
     "raw_artifacts_allowed": false,
     "reviewer_notes": [
       "Review attached screenshots before publishing the hosted demo.",
+      "Confirm hosted-demo metadata contains desktop, mobile, provider-mode, and quality/export captures in one final manifest.",
+      "Confirm viewport/image dimensions, horizontal overflow metrics, settle status, and visual artifact guard status are recorded for each screenshot.",
       "Confirm the hosted URL is the same build as package metadata.",
       "Treat evidence review as a release gate, not as cosmetic QA."
     ],
     "release_gate": "evidence_review_complete",
     "metadata_manifest_required": true,
-    "screenshot_sanity_required": true
+    "screenshot_sanity_required": true,
+    "capture_settle_manifest_required": true,
+    "visual_artifact_guard_required": true
   },
   "source_capability_registry": {
-    "source_strategy_version": "1.1.0-alpha.9",
+    "source_strategy_version": "1.1.0-alpha.10",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "release_gate": "source_strategy_blueprint_checked",
     "runtime_capability_change": false,
@@ -2537,7 +2592,7 @@
       }
     ],
     "audit": {
-      "registry_version": "1.1.0-alpha.9",
+      "registry_version": "1.1.0-alpha.10",
       "generated_at": "2026-05-02T00:00:00.000Z",
       "capability_count": 6,
       "visible_demo_capabilities": [
@@ -2563,7 +2618,7 @@
       "ok": true,
       "verdict": "source_capability_registry_ready_manual_packet_import"
     },
-    "next_safe_increment": "v1.1.0-alpha.9 source packet builder browser QA and UX tightening",
+    "next_safe_increment": "v1.1.0-alpha.10 source packet builder browser QA and UX tightening",
     "blocked_until_threat_modeled": [
       "production OAuth / portable account auth",
       "live Reddit/X/YouTube/TikTok scraping",
@@ -2572,7 +2627,7 @@
     "scoring_warning": "Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength."
   },
   "evidence_scoring_report": {
-    "evidence_scoring_version": "1.1.0-alpha.9",
+    "evidence_scoring_version": "1.1.0-alpha.10",
     "scoring_model": "evidence_scoring.v1",
     "calibration_version": "evidence_scoring_calibration.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
@@ -2614,7 +2669,7 @@
     ]
   },
   "source_packet_builder_report": {
-    "builder_version": "1.1.0-alpha.9",
+    "builder_version": "1.1.0-alpha.10",
     "packet_schema": "manual_source_packet.v1",
     "built_at": "2026-05-02T00:00:00.000Z",
     "packet_count": 1,
@@ -2623,7 +2678,7 @@
     "verification_claimed": false,
     "queue_only_recommended": true,
     "scoring_review": {
-      "review_version": "1.1.0-alpha.9",
+      "review_version": "1.1.0-alpha.10",
       "builder_version": "source_packet_builder.v1",
       "item_count": 3,
       "high_reliability_count": 1,
@@ -2641,11 +2696,11 @@
   "last_built_source_packet": {
     "source_packet_version": "manual_source_packet.v1",
     "builder_version": "source_packet_builder.v1",
-    "workflow_version": "1.1.0-alpha.9",
+    "workflow_version": "1.1.0-alpha.10",
     "built_at": "2026-05-02T00:00:00.000Z",
     "source_packets": [],
     "builder_report": {
-      "builder_version": "1.1.0-alpha.9",
+      "builder_version": "1.1.0-alpha.10",
       "packet_schema": "manual_source_packet.v1",
       "built_at": "2026-05-02T00:00:00.000Z",
       "packet_count": 1,
@@ -2654,7 +2709,7 @@
       "verification_claimed": false,
       "queue_only_recommended": true,
       "scoring_review": {
-        "review_version": "1.1.0-alpha.9",
+        "review_version": "1.1.0-alpha.10",
         "builder_version": "source_packet_builder.v1",
         "item_count": 3,
         "high_reliability_count": 1,
@@ -2671,7 +2726,7 @@
     }
   },
   "source_packet_roundtrip_report": {
-    "roundtrip_version": "1.1.0-alpha.9",
+    "roundtrip_version": "1.1.0-alpha.10",
     "roundtrip_model": "source_packet_roundtrip.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "builder_version": "source_packet_builder.v1",
@@ -2692,7 +2747,7 @@
     "policy": "local_manual_source_packet_export_import_roundtrip_no_fetch_no_verification"
   },
   "source_packet_template_report": {
-    "template_report_version": "1.1.0-alpha.9",
+    "template_report_version": "1.1.0-alpha.10",
     "template_model": "source_packet_template_presets.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "template_count": 6,
@@ -2721,9 +2776,9 @@
     "policy": "local_manual_source_packet_templates_no_fetch_no_verification"
   },
   "public_demo_release_lock": {
-    "public_demo_release_lock_version": "1.1.0-alpha.9",
+    "public_demo_release_lock_version": "1.1.0-alpha.10",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.9 — Public Demo Release Lock",
+    "release_title": "v1.1.0-alpha.10 — Public Demo Release Lock",
     "lock_stage": "public_demo_release_locked",
     "release_type": "patch",
     "release_approval_state": "locked_for_public_demo",
@@ -2836,15 +2891,15 @@
     "release_gate": "public_demo_release_locked"
   },
   "release_apply_integrity": {
-    "release_apply_integrity_version": "1.1.0-alpha.9",
+    "release_apply_integrity_version": "1.1.0-alpha.10",
     "generated_at": "2026-04-28T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning",
+    "release_title": "v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard",
     "integrity_stage": "release_apply_integrity_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
-    "target_version": "1.1.0-alpha.9",
-    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning-patch.zip",
+    "target_version": "1.1.0-alpha.10",
+    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip",
     "artifact_sha256": "computed_after_packaging",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
@@ -2865,7 +2920,7 @@
     "checklist": [
       {
         "check_id": "base_version_known",
-        "label": "Patch is declared as changed-files-only over v1.1.0-alpha.9",
+        "label": "Patch is declared as changed-files-only over v1.1.0-alpha.10",
         "order": 1,
         "required": true,
         "passed": true,
@@ -2937,7 +2992,7 @@
       }
     ],
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning-patch.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:v110a1:no-browser",
       "npm run test:ci:no-browser",
@@ -2951,15 +3006,15 @@
     ]
   },
   "release_provenance_ledger": {
-    "release_provenance_ledger_version": "1.1.0-alpha.9",
+    "release_provenance_ledger_version": "1.1.0-alpha.10",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning",
+    "release_title": "v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard",
     "provenance_stage": "release_provenance_ledger_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
-    "target_version": "1.1.0-alpha.9",
-    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning-patch.zip",
+    "target_version": "1.1.0-alpha.10",
+    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip",
     "artifact_sha256": "computed_after_packaging",
     "changed_files_manifest_required": true,
     "release_apply_integrity_required": true,
@@ -2979,7 +3034,7 @@
     "fail_count": 0,
     "release_gate": "release_provenance_ledger_pass",
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning-patch.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:v110a1:no-browser",
       "npm run test:ci:no-browser",
@@ -2987,14 +3042,14 @@
     ],
     "blocked_claims": [
       "Do not treat a named artifact as provenance unless the changed-files manifest and SHA256 are reviewed.",
-      "Do not publish from a patch that was not applied to v1.1.0-alpha.9 and revalidated.",
+      "Do not publish from a patch that was not applied to v1.1.0-alpha.10 and revalidated.",
       "Do not claim live scraping, production OAuth, provider behavior changes, backend endpoint expansion, source connector expansion, or storage expansion.",
       "Do not approve public demo release from screenshots or ZIP existence alone."
     ],
     "ledger_evidence": [
       {
         "evidence_id": "version_lock",
-        "label": "package/schema/fixtures identify v1.1.0-alpha.9",
+        "label": "package/schema/fixtures identify v1.1.0-alpha.10",
         "order": 1,
         "required": true,
         "passed": true,
@@ -3002,7 +3057,7 @@
       },
       {
         "evidence_id": "base_version_recorded",
-        "label": "base version v1.1.0-alpha.9 is recorded",
+        "label": "base version v1.1.0-alpha.10 is recorded",
         "order": 2,
         "required": true,
         "passed": true,

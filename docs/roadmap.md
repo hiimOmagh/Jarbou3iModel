@@ -1,6 +1,6 @@
 # Roadmap
 
-## v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
+## v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard
 
 Current cleanup-only alpha gate. The product remains frozen at the public-demo capability boundary while CI/runtime hygiene improves: the long no-browser syntax tail is moved into a bounded parallel syntax matrix, release-history is indexed as a pruned timeline, and existing package-script/fixture-registry consolidation remains intact.
 
@@ -8,7 +8,7 @@ Current cleanup-only alpha gate. The product remains frozen at the public-demo c
 
 | Stage | Version | Title | Status |
 |---|---:|---|---|
-| Current alpha | `v1.1.0-alpha.9` | **Test Matrix Runtime Optimization + Release Doc Timeline Pruning** | Current |
+| Current alpha | `v1.1.0-alpha.10` | **Hosted Evidence Capture Polish + Visual Artifact Guard** | Current |
 | Previous alpha | `v1.1.0-alpha.8` | **Fixture Registry Payload Compression + Test Organization Audit** | Completed |
 | Prior cleanup | `v1.1.0-alpha.7` | **Package Script Compression + CI Gate Registry** | Completed |
 | Freeze baseline | `v1.0.30` | **Mobile Header Geometry Lock / Final Public Demo Visual Freeze** | Locked |
@@ -37,7 +37,7 @@ Node 24 remains the GitHub Actions runtime baseline. Package Script Compression,
 - `tests/test-matrix-runtime-optimization-check.mjs` locks the optimization as CI-only and behavior-neutral.
 - `tests/release-doc-timeline-pruning-check.mjs` keeps release-history anchors readable while enforcing a pruned timeline index.
 
-Evidence manifest continuity: v1.1.0-alpha.9 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.10 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Release approval reminder: screenshots alone and ZIP existence alone are insufficient for public-demo approval.
 

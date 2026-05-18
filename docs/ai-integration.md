@@ -1,6 +1,6 @@
 # AI Integration Policy
 
-## v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
+## v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -9,7 +9,7 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 This guide applies to v1.0.25 — Public Demo Release Lock.
 
-## Current state: v1.1.0-alpha.9
+## Current state: v1.1.0-alpha.10
 
 The research engine supports four provider modes:
 
@@ -53,4 +53,4 @@ Before adding a real portable account provider:
 - Provider terms, privacy, and reliability must be reviewed.
 
 
-Evidence manifest continuity: v1.1.0-alpha.9 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.10 preserves the single final metadata hosted-demo evidence manifest gate.

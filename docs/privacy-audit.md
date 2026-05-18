@@ -1,11 +1,11 @@
 # Privacy Audit Release Gate
 
-## v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
+## v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
 
-`v1.1.0-alpha.9` treats every exported JSON payload as a security boundary and preserves the privacy gate while public-demo release approval is locked.
+`v1.1.0-alpha.10` treats every exported JSON payload as a security boundary and preserves the privacy gate while public-demo release approval is locked.
 
 The privacy system has two layers:
 
@@ -63,4 +63,4 @@ npm run test:public-demo-release-lock
 ```
 
 
-Evidence manifest continuity: v1.1.0-alpha.9 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.10 preserves the single final metadata hosted-demo evidence manifest gate.

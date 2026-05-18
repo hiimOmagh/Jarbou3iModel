@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.1.0-alpha.9';
+const VERSION = '1.1.0-alpha.10';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const EXPECTED_CAPTURE_NAMES = Object.freeze([
@@ -10,6 +10,16 @@ const EXPECTED_CAPTURE_NAMES = Object.freeze([
   'mobile-first-screen',
   'provider-mode',
   'quality-export'
+]);
+const EVIDENCE_SETTLE_FRAME_COUNT = 3;
+const TRANSIENT_ARTIFACT_SELECTORS = Object.freeze([
+  '.toast.show',
+  '.modalBackdrop.show',
+  '[aria-busy="true"]',
+  '[data-loading="true"]',
+  '[data-testid*="loading"]',
+  '[class*="spinner"]',
+  '[class*="skeleton"]'
 ]);
 
 function ensureEvidenceRoot() {
@@ -29,6 +39,73 @@ async function freezeMotion(page) {
   await page.evaluate(async () => { if (document.fonts?.ready) await document.fonts.ready; });
 }
 
+
+async function waitForEvidenceStable(page, label) {
+  await page.waitForLoadState('domcontentloaded');
+  await page.evaluate(async (frameCount) => {
+    for (let index = 0; index < frameCount; index += 1) {
+      await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+    }
+    if (document.fonts?.ready) await document.fonts.ready;
+  }, EVIDENCE_SETTLE_FRAME_COUNT);
+  await page.waitForTimeout(120);
+  const fingerprintA = await page.evaluate(() => JSON.stringify({
+    width: document.documentElement.scrollWidth,
+    height: document.documentElement.scrollHeight,
+    active: document.activeElement?.id || document.activeElement?.tagName || null,
+    bodyClass: document.body?.className || '',
+    textLength: document.body?.innerText?.length || 0
+  }));
+  await page.waitForTimeout(120);
+  const fingerprintB = await page.evaluate(() => JSON.stringify({
+    width: document.documentElement.scrollWidth,
+    height: document.documentElement.scrollHeight,
+    active: document.activeElement?.id || document.activeElement?.tagName || null,
+    bodyClass: document.body?.className || '',
+    textLength: document.body?.innerText?.length || 0
+  }));
+  expect(fingerprintB, `${label} DOM fingerprint must be stable before evidence capture`).toBe(fingerprintA);
+  return { label, settled: true, frame_count: EVIDENCE_SETTLE_FRAME_COUNT, fingerprint: fingerprintB };
+}
+
+async function assertNoTransientArtifacts(page, label) {
+  const state = await page.evaluate((selectors) => {
+    const visible = (node) => {
+      if (!node) return false;
+      const style = window.getComputedStyle(node);
+      const rect = node.getBoundingClientRect();
+      return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity || 1) > 0.01 && rect.width > 1 && rect.height > 1;
+    };
+    const matches = [];
+    for (const selector of selectors) {
+      for (const node of document.querySelectorAll(selector)) {
+        if (visible(node)) matches.push({ selector, id: node.id || null, className: String(node.className || '') });
+      }
+    }
+    const fixedOverlays = [...document.querySelectorAll('body *')]
+      .filter((node) => {
+        const style = window.getComputedStyle(node);
+        if (style.position !== 'fixed') return false;
+        if (!visible(node)) return false;
+        const rect = node.getBoundingClientRect();
+        const viewportArea = Math.max(1, window.innerWidth * window.innerHeight);
+        const nodeArea = rect.width * rect.height;
+        if (node.id === 'toast' || node.id === 'modalBackdrop') return true;
+        return nodeArea / viewportArea > 0.16 && Number(style.zIndex || 0) >= 50;
+      })
+      .map((node) => ({ id: node.id || null, className: String(node.className || ''), tagName: node.tagName }));
+    return {
+      label,
+      transient_selectors_checked: selectors,
+      transient_matches: matches,
+      fixed_overlay_matches: fixedOverlays,
+      visual_artifact_guard_passed: matches.length === 0 && fixedOverlays.length === 0
+    };
+  }, TRANSIENT_ARTIFACT_SELECTORS);
+  expect(state.visual_artifact_guard_passed, `${label} must not capture transient overlays/loading artifacts`).toBe(true);
+  return state;
+}
+
 async function horizontalOverflowPixels(page) {
   return page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth));
 }
@@ -42,6 +119,8 @@ async function assertNoHorizontalOverflow(page) {
 async function capture(page, name) {
   ensureEvidenceRoot();
   await freezeMotion(page);
+  const settle = await waitForEvidenceStable(page, name);
+  const artifact_guard = await assertNoTransientArtifacts(page, name);
   const overflow_px = await assertNoHorizontalOverflow(page);
   const viewport = page.viewportSize() || { width: 0, height: 0 };
   const buffer = await page.screenshot({ fullPage: true, animations: 'disabled' });
@@ -59,6 +138,8 @@ async function capture(page, name) {
     viewport,
     image,
     full_page: true,
+    settle,
+    artifact_guard,
     no_horizontal_overflow: overflow_px <= 2,
     horizontal_overflow_px: overflow_px,
     captured_at: new Date().toISOString()
@@ -87,6 +168,9 @@ async function hostedMetadata(page, captures) {
     base_url: test.info().project.use.baseURL || null,
     hosted_demo_url_mode: process.env.HOSTED_DEMO_URL ? 'hosted_url' : 'local_static_server',
     manifest_policy: 'single_final_metadata_with_all_required_captures',
+    capture_polish_version: VERSION,
+    visual_artifact_guard_required: true,
+    capture_settle_required: true,
     expected_capture_names: EXPECTED_CAPTURE_NAMES,
     capture_count: captures.length,
     capture_names: captureNames,
@@ -102,7 +186,9 @@ async function hostedMetadata(page, captures) {
       full_page: captureResult.full_page,
       no_horizontal_overflow: captureResult.no_horizontal_overflow,
       horizontal_overflow_px: captureResult.horizontal_overflow_px,
-      pass: captureResult.bytes > 20_000 && captureResult.image.width >= captureResult.viewport.width - 2 && captureResult.image.height >= captureResult.viewport.height - 2 && captureResult.no_horizontal_overflow
+      capture_settled: captureResult.settle?.settled === true,
+      visual_artifact_guard_passed: captureResult.artifact_guard?.visual_artifact_guard_passed === true,
+      pass: captureResult.bytes > 20_000 && captureResult.image.width >= captureResult.viewport.width - 2 && captureResult.image.height >= captureResult.viewport.height - 2 && captureResult.no_horizontal_overflow && captureResult.settle?.settled === true && captureResult.artifact_guard?.visual_artifact_guard_passed === true
     })),
     page: pageMeta,
     release_gate: 'evidence_review_metadata_written'
@@ -118,7 +204,13 @@ async function writeMetadata(page, captures = []) {
   expect(metadata.page.panels.evidence_review).toBe(true);
   expect(metadata.all_required_captures_present).toBe(true);
   expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length);
-  for (const sanity of metadata.screenshot_sanity) expect(sanity.pass).toBe(true);
+  expect(metadata.visual_artifact_guard_required).toBe(true);
+  expect(metadata.capture_settle_required).toBe(true);
+  for (const sanity of metadata.screenshot_sanity) {
+    expect(sanity.capture_settled).toBe(true);
+    expect(sanity.visual_artifact_guard_passed).toBe(true);
+    expect(sanity.pass).toBe(true);
+  }
   return metadata;
 }
 
@@ -130,13 +222,16 @@ async function openProviderHarness(page) {
     await providerCard.locator('h3').click();
   }
   await expect(page.locator('#providerName')).toBeVisible();
+  await waitForEvidenceStable(page, 'provider-mode-open');
 }
 
 async function openQualityExport(page) {
   await page.locator('#researchModeNav .uxTab[data-ux-tab="quality"]').click();
   await expect(page.locator('#researchQualityOutput')).toBeVisible();
   await expect(page.locator('#exportSourcePacketBuilderBtn')).toBeVisible();
+  await waitForEvidenceStable(page, 'quality-export-open');
 }
+
 
 async function assertHostedDemoReady(page) {
   await page.waitForLoadState('domcontentloaded');
@@ -147,7 +242,7 @@ async function assertHostedDemoReady(page) {
   await expect(page.locator('#hostedDemoEvidenceReviewPanel')).toBeVisible();
 }
 
-test.describe('v1.1.0-alpha.9 hosted demo smoke/evidence manifest capture', () => {
+test.describe('v1.1.0-alpha.10 hosted demo smoke/evidence manifest capture', () => {
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }) => {
     const captures = [];
 

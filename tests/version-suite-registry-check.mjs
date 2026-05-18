@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.9';
-const RELEASE = 'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning';
+const VERSION = '1.1.0-alpha.10';
+const RELEASE = 'v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard';
 const registry = JSON.parse(fs.readFileSync('tests/version-suite-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 

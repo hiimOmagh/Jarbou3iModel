@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine hosted demo smoke fixes + evidence review helpers v1.1.0-alpha.9. */
+/* Jarbou3i Research Engine hosted demo smoke fixes + evidence review helpers v1.1.0-alpha.10. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.9';
+  const VERSION = '1.1.0-alpha.10';
   const DEPLOYMENT_CHECKS = Object.freeze([
     {check_id:'static_host_ready', label:'Static host serves index, assets, manifest, and modules', required:true},
     {check_id:'app_version_matches_package', label:'Hosted app version matches package metadata', required:true},
@@ -20,6 +20,9 @@
     {check_id:'desktop_mobile_viewports_checked', label:'Desktop and mobile viewport smoke checks are covered', required:true},
     {check_id:'no_horizontal_overflow_checked', label:'Horizontal overflow is checked during evidence capture', required:true},
     {check_id:'metadata_artifact_written', label:'Browser evidence metadata is written to a stable JSON artifact', required:true},
+    {check_id:'capture_settle_guard_checked', label:'Evidence capture waits for stable DOM, fonts, and animation-free frames', required:true},
+    {check_id:'visual_artifact_guard_checked', label:'Evidence capture blocks transient overlays, loading states, and fixed visual artifacts', required:true},
+    {check_id:'quality_export_capture_settled', label:'Quality/export evidence is captured after the quality tab has settled', required:true},
     {check_id:'ci_browser_not_duplicating_full_suite', label:'Browser CI avoids duplicate full-suite evidence reruns', required:true},
     {check_id:'runtime_boundary_unchanged', label:'No provider, OAuth, backend, source, or storage behavior changed', required:true}
   ]);
@@ -38,7 +41,9 @@
     {artifact_id:'quality_export', label:'Quality/export screenshot reviewed', required:true},
     {artifact_id:'metadata_snapshot', label:'Hosted-demo metadata snapshot reviewed', required:true},
     {artifact_id:'complete_capture_manifest', label:'Single final metadata manifest contains all required captures', required:true},
-    {artifact_id:'screenshot_sanity', label:'Viewport, screenshot dimensions, bytes, and overflow metadata reviewed', required:true},
+    {artifact_id:'screenshot_sanity', label:'Viewport, screenshot dimensions, bytes, overflow, and settle metadata reviewed', required:true},
+    {artifact_id:'visual_artifact_guard', label:'Visual artifact guard confirms no transient overlays or loading bands were captured', required:true},
+    {artifact_id:'capture_settle_manifest', label:'Capture settle manifest confirms screenshots were taken after UI stability checks', required:true},
     {artifact_id:'version_consistency', label:'Version consistency reviewed across package, DOM, schema, and packet', required:true},
     {artifact_id:'privacy_boundary', label:'Evidence artifacts reviewed for secret/export boundary regressions', required:true}
   ]);
@@ -64,6 +69,9 @@
       desktop_mobile_viewports_checked:true,
       no_horizontal_overflow_checked:true,
       metadata_artifact_written:true,
+      capture_settle_guard_checked:true,
+      visual_artifact_guard_checked:true,
+      quality_export_capture_settled:true,
       ci_browser_not_duplicating_full_suite:true,
       runtime_boundary_unchanged:true
     };
@@ -99,6 +107,10 @@
       viewport_dimensions_required:true,
       screenshot_dimensions_required:true,
       horizontal_overflow_metadata_required:true,
+      capture_settle_required:true,
+      visual_artifact_guard_required:true,
+      quality_export_capture_after_settle_required:true,
+      transient_artifact_selectors:['.toast.show','.modalBackdrop.show','[aria-busy="true"]','[data-loading="true"]','[class*="spinner"]','[class*="skeleton"]'],
       artifacts,
       required_artifact_count:artifacts.length,
       missing_artifact_count:missing.length,
@@ -176,11 +188,13 @@
       metadata_snapshot_required:true,
       metadata_manifest_required:true,
       screenshot_sanity_required:true,
+      capture_settle_manifest_required:true,
+      visual_artifact_guard_required:true,
       raw_artifacts_allowed:false,
       reviewer_notes:[
         'Review attached screenshots before publishing the hosted demo.',
         'Confirm hosted-demo metadata contains desktop, mobile, provider-mode, and quality/export captures in one final manifest.',
-        'Confirm viewport/image dimensions and horizontal overflow metrics are recorded for each screenshot.',
+        'Confirm viewport/image dimensions, horizontal overflow metrics, settle status, and visual artifact guard status are recorded for each screenshot.',
         'Confirm the hosted URL is the same build as package metadata.',
         'Treat evidence review as a release gate, not as cosmetic QA.'
       ],

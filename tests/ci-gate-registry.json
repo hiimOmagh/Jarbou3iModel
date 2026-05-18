@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.9",
-  "release_title": "v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning",
+  "ci_gate_registry_version": "1.1.0-alpha.10",
+  "release_title": "v1.1.0-alpha.10 \u2014 Hosted Evidence Capture Polish + Visual Artifact Guard",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -71,6 +71,7 @@
         "tests/hosted-demo-deployment-check.mjs",
         "tests/hosted-demo-evidence-review-check.mjs",
         "tests/hosted-demo-evidence-manifest-check.mjs",
+        "tests/hosted-evidence-capture-polish-check.mjs",
         "tests/final-public-demo-freeze-audit-check.mjs",
         "tests/mobile-header-logo-geometry-check.mjs",
         "tests/post-freeze-planning-gate-check.mjs",
@@ -125,7 +126,8 @@
         "tests/repo-file-hygiene-check.mjs",
         "tests/test-matrix-runtime-optimization-check.mjs",
         "tests/release-doc-timeline-pruning-check.mjs",
-        "tests/syntax-matrix-check.mjs"
+        "tests/syntax-matrix-check.mjs",
+        "tests/hosted-evidence-capture-polish-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -238,6 +240,7 @@
         "tests/hosted-demo-deployment-check.mjs",
         "tests/hosted-demo-evidence-review-check.mjs",
         "tests/hosted-demo-evidence-manifest-check.mjs",
+        "tests/hosted-evidence-capture-polish-check.mjs",
         "tests/final-public-demo-freeze-audit-check.mjs",
         "tests/mobile-header-logo-geometry-check.mjs",
         "tests/post-freeze-planning-gate-check.mjs",
@@ -268,7 +271,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-alpha.9",
+    "version": "1.1.0-alpha.10",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -283,7 +286,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-alpha.9",
+    "version": "1.1.0-alpha.10",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/research-engine.js",
@@ -349,9 +352,30 @@
       "tests/source-packet-template-browser-qa-check.mjs",
       "tests/browser-visual-project-scope-check.mjs",
       "tests/ci-gate-runner.mjs",
-      "tests/ci-gate-registry-check.mjs"
+      "tests/ci-gate-registry-check.mjs",
+      "tests/hosted-evidence-capture-polish-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
+  },
+  "hosted_evidence_capture_polish": {
+    "version": "1.1.0-alpha.10",
+    "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
+    "screenshot_settle_required": true,
+    "visual_artifact_guard_required": true,
+    "quality_export_capture_after_settle_required": true,
+    "metadata_sanity_fields": [
+      "capture_settled",
+      "visual_artifact_guard_passed",
+      "horizontal_overflow_px",
+      "image_width",
+      "viewport_width"
+    ],
+    "runtime_capability_change": false,
+    "provider_behavior_changed": false,
+    "oauth_behavior_changed": false,
+    "backend_behavior_changed": false,
+    "source_behavior_changed": false,
+    "storage_behavior_changed": false
   }
 }

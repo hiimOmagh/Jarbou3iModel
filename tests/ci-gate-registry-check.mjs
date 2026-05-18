@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.9';
-const RELEASE = 'v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning';
+const VERSION = '1.1.0-alpha.10';
+const RELEASE = 'v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
@@ -77,7 +77,7 @@ assert.ok(ciBrowser.includes('node tests/ci-gate-runner.mjs browser'), 'browser 
 assert.ok(ciBrowser.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser shell wrapper must preserve hosted evidence directory setup');
 assert.equal(ciBrowser.includes('npm run test:browser:evidence'), false, 'browser shell wrapper must no longer depend on removed package aliases');
 
-for (const file of ['tests/ci-gate-runner.mjs', 'tests/ci-gate-registry-check.mjs', 'tests/syntax-matrix-check.mjs', 'tests/test-matrix-runtime-optimization-check.mjs', 'tests/release-doc-timeline-pruning-check.mjs']) {
+for (const file of ['tests/ci-gate-runner.mjs', 'tests/ci-gate-registry-check.mjs', 'tests/syntax-matrix-check.mjs', 'tests/test-matrix-runtime-optimization-check.mjs', 'tests/release-doc-timeline-pruning-check.mjs', 'tests/hosted-evidence-capture-polish-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax check failed`);
 }
