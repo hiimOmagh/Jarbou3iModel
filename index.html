@@ -266,17 +266,17 @@
               <button class="btn" id="refreshPortableAccountBtn" type="button" data-r-i18n="refreshPortable">Refresh mock token</button>
               <button class="btn ghost" id="disconnectPortableAccountBtn" type="button" data-r-i18n="disconnectPortable">Disconnect portable account</button>
               <button class="btn" id="exportPortableStatusBtn" type="button" data-r-i18n="exportPortableStatus">Export portable status</button>
-              <button class="btn" id="buildPortableOAuthUrlBtn" type="button">Build OAuth PKCE URL</button>
-              <button class="btn" id="completePortableOAuthCallbackBtn" type="button">Complete OAuth callback</button>
-              <button class="btn" id="disconnectPortableOAuthSpikeBtn" type="button">Disconnect OAuth spike</button>
+              <button class="btn" id="buildPortableOAuthUrlBtn" type="button" data-r-i18n="buildPortableOAuthUrl">بناء رابط OAuth/PKCE</button>
+              <button class="btn" id="completePortableOAuthCallbackBtn" type="button" data-r-i18n="completePortableOAuthCallback">إكمال عودة OAuth</button>
+              <button class="btn" id="disconnectPortableOAuthSpikeBtn" type="button" data-r-i18n="disconnectPortableOAuthSpike">فصل تجربة OAuth</button>
             </div>
             <div class="researchFormGrid portableOAuthSpikeGrid">
-              <div class="field"><label class="label" for="oauthAuthorizationEndpoint">OAuth authorization endpoint</label><input id="oauthAuthorizationEndpoint" type="url" autocomplete="off" value="https://portable-provider.example/oauth/authorize" /></div>
-              <div class="field"><label class="label" for="oauthTokenEndpoint">OAuth token endpoint</label><input id="oauthTokenEndpoint" type="url" autocomplete="off" value="https://portable-provider.example/oauth/token" /></div>
-              <div class="field"><label class="label" for="oauthClientId">OAuth client ID</label><input id="oauthClientId" type="text" autocomplete="off" value="jarbou3i-dev-client" /></div>
-              <div class="field"><label class="label" for="oauthRedirectUri">OAuth redirect URI</label><input id="oauthRedirectUri" type="url" autocomplete="off" value="http://localhost:4173/oauth/callback" /></div>
-              <div class="field"><label class="label" for="oauthScopes">OAuth scopes</label><input id="oauthScopes" type="text" autocomplete="off" value="openid profile email inference:chat billing:read" /></div>
-              <div class="field"><label class="label" for="oauthCallbackUrl">OAuth callback URL</label><input id="oauthCallbackUrl" type="url" autocomplete="off" placeholder="Paste redirect URL with ?code=...&state=..." /></div>
+              <div class="field"><label class="label" for="oauthAuthorizationEndpoint" data-r-i18n="oauthAuthorizationEndpoint">نقطة تفويض OAuth</label><input id="oauthAuthorizationEndpoint" type="url" autocomplete="off" value="https://portable-provider.example/oauth/authorize" /></div>
+              <div class="field"><label class="label" for="oauthTokenEndpoint" data-r-i18n="oauthTokenEndpoint">نقطة رمز OAuth</label><input id="oauthTokenEndpoint" type="url" autocomplete="off" value="https://portable-provider.example/oauth/token" /></div>
+              <div class="field"><label class="label" for="oauthClientId" data-r-i18n="oauthClientId">معرّف عميل OAuth</label><input id="oauthClientId" type="text" autocomplete="off" value="jarbou3i-dev-client" /></div>
+              <div class="field"><label class="label" for="oauthRedirectUri" data-r-i18n="oauthRedirectUri">رابط إعادة توجيه OAuth</label><input id="oauthRedirectUri" type="url" autocomplete="off" value="http://localhost:4173/oauth/callback" /></div>
+              <div class="field"><label class="label" for="oauthScopes" data-r-i18n="oauthScopes">صلاحيات OAuth</label><input id="oauthScopes" type="text" autocomplete="off" value="openid profile email inference:chat billing:read" /></div>
+              <div class="field"><label class="label" for="oauthCallbackUrl" data-r-i18n="oauthCallbackUrl">رابط عودة OAuth</label><input id="oauthCallbackUrl" type="url" autocomplete="off" data-r-placeholder="oauthCallbackPlaceholder" placeholder="الصق رابط العودة الذي يحتوي على ?code=...&state=..." /></div>
             </div>
           </div>
           <p class="muted providerSafetyNote" data-r-i18n="providerSafety">Safety: manual/private mode remains default. Keys are never exported into packets, reports, or run ledgers.</p>
@@ -547,6 +547,6 @@
 <script src="src/research/release-apply-integrity.js" defer></script>
   <script src="src/research/release-provenance-ledger.js" defer></script>
 <script src="src/research-engine.js" defer></script>
-<span class="sr-only">v1.1.0-alpha.11 adds fixture/test debt ledger, source-file refactor readiness, and hosted evidence capture polish and visual artifact guard gates without changing runtime behavior.</span>
+<span class="sr-only" data-r-i18n="analysisReleaseNote">تضيف v1.1.0-alpha.11 سجل دين الاختبارات والفيكستشرات، وتدقيق جاهزية تفكيك ملفات المصدر، وحارس الشوائب البصرية لأدلة الاستضافة دون تغيير سلوك التشغيل.</span>
 </body>
 </html>

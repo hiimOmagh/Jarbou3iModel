@@ -45,8 +45,8 @@ assert.ok(pkg.description.includes('test organization audit'));
 assert.ok(pkg.description.includes('runtime/provider/OAuth/backend/source/storage boundaries remain unchanged'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.4 fixture registry consolidation identity');
-assert.ok(index.includes('hosted evidence capture polish') && index.includes('visual artifact guard'), 'index must communicate alpha.10 hosted evidence polish scope');
-assert.ok(index.includes('without changing runtime behavior'), 'index must preserve runtime boundary');
+assert.ok((index.includes('hosted evidence capture polish') || index.includes('حارس الشوائب البصرية')) && (index.includes('visual artifact guard') || index.includes('أدلة الاستضافة')), 'index must communicate alpha.10 hosted evidence polish scope in the active shell language');
+assert.ok(index.includes('without changing runtime behavior') || index.includes('دون تغيير سلوك التشغيل'), 'index must preserve runtime boundary in the active shell language');
 assert.ok(auditSource.includes("const VERSION = '1.1.0-alpha.11'"));
 assert.ok(auditSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.3'"));
 
