@@ -12,6 +12,8 @@ const EXPECTED_CAPTURE_NAMES = Object.freeze([
   'quality-export'
 ]);
 const EVIDENCE_SETTLE_FRAME_COUNT = 3;
+const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 90_000;
+const HOSTED_EVIDENCE_CANONICAL_PROJECT = 'chromium';
 const TRANSIENT_ARTIFACT_SELECTORS = Object.freeze([
   '.toast.show',
   '.modalBackdrop.show',
@@ -178,11 +180,15 @@ async function hostedMetadata(page, captures) {
     evidence_review_version: VERSION,
     generated_at: new Date().toISOString(),
     base_url: test.info().project.use.baseURL || null,
+    canonical_project: HOSTED_EVIDENCE_CANONICAL_PROJECT,
+    test_timeout_ms: HOSTED_EVIDENCE_TEST_TIMEOUT_MS,
     hosted_demo_url_mode: process.env.HOSTED_DEMO_URL ? 'hosted_url' : 'local_static_server',
     manifest_policy: 'single_final_metadata_with_all_required_captures',
+    project_scope_policy: 'single_canonical_project_with_explicit_mobile_viewport_capture',
     capture_polish_version: VERSION,
     visual_artifact_guard_required: true,
     capture_settle_required: true,
+    duplicate_project_metadata_overwrite_guard: true,
     expected_capture_names: EXPECTED_CAPTURE_NAMES,
     capture_count: captures.length,
     capture_names: captureNames,
@@ -218,6 +224,10 @@ async function writeMetadata(page, captures = []) {
   expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length);
   expect(metadata.visual_artifact_guard_required).toBe(true);
   expect(metadata.capture_settle_required).toBe(true);
+  expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture');
+  expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true);
+  expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT);
+  expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS);
   for (const sanity of metadata.screenshot_sanity) {
     expect(sanity.capture_settled).toBe(true);
     expect(sanity.visual_artifact_guard_passed).toBe(true);
@@ -255,7 +265,14 @@ async function assertHostedDemoReady(page) {
 }
 
 test.describe('v1.1.0-alpha.10 hosted demo smoke/evidence manifest capture', () => {
-  test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }) => {
+  test.describe.configure({ mode: 'serial' });
+
+  test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }, testInfo) => {
+    test.setTimeout(HOSTED_EVIDENCE_TEST_TIMEOUT_MS);
+    test.skip(
+      testInfo.project.name !== HOSTED_EVIDENCE_CANONICAL_PROJECT,
+      'Hosted evidence capture writes one canonical manifest; mobile viewport is captured inside the chromium project.'
+    );
     const captures = [];
 
     await page.setViewportSize({ width: 1440, height: 950 });
