@@ -39,7 +39,7 @@ async function seedEvidence(page) {
   await expect(page.locator('#evidenceMatrixOutput')).toContainText('Traceable official source');
 }
 
-test.describe('v1.1.0-alpha.10 source packet builder browser QA', () => {
+test.describe('v1.1.0-alpha.11 source packet builder browser QA', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });

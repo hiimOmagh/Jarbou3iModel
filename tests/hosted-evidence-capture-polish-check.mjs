@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.10';
-const TITLE = 'Hosted Evidence Capture Polish + Visual Artifact Guard';
+const VERSION = '1.1.0-alpha.11';
+const TITLE = 'Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md';
+const DOC = 'docs/v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));

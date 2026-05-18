@@ -1,9 +1,9 @@
 {
   "name": "jarbou3i-research-engine",
-  "version": "1.1.0-alpha.10",
+  "version": "1.1.0-alpha.11",
   "private": true,
   "type": "module",
-  "description": "Jarbou3i Research Engine v1.1.0-alpha.10 hosted evidence capture polish and visual artifact guard patch. Preserves fixture registry payload compression, test organization audit, package script compression and CI gate registry continuity, Root Manifest and Release Artifact Consolidation continuity, release evidence, repository hygiene, PLAYWRIGHT_SKIP_INSTALL preservation, source strategy preservation, source capability registry preservation, manual source packet preservation, evidence scoring preservation, browser evidence preservation, public demo preservation, and runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.",
+  "description": "Jarbou3i Research Engine v1.1.0-alpha.11 fixture/test debt ledger and source-file refactor readiness audit patch. Adds professional trilingual language-description review while preserving hosted evidence capture polish, visual artifact guard, fixture registry payload compression, test organization audit, package script compression and CI gate registry continuity, Root Manifest and Release Artifact Consolidation continuity, release evidence, repository hygiene, PLAYWRIGHT_SKIP_INSTALL preservation, source strategy preservation, source capability registry preservation, manual source packet preservation, evidence scoring preservation, browser evidence preservation, public demo preservation, and runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.",
   "scripts": {
     "dev": "http-server . -p 4173 -c-1",
     "test": "npm run test:qa && npm run test:browser",

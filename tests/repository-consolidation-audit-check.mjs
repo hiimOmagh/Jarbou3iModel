@@ -21,12 +21,12 @@ const walk = (dir) => {
   return out;
 };
 
-const VERSION = '1.1.0-alpha.10';
+const VERSION = '1.1.0-alpha.11';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'Hosted Evidence Capture Polish + Visual Artifact Guard';
-const DOC = 'docs/v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip';
+const TITLE = 'Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
+const DOC = 'docs/v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -34,8 +34,8 @@ const schema = json('schema/research-workflow.schema.json');
 const index = read('index.html');
 const auditSource = read('src/research/repository-consolidation-audit.js');
 const releaseDoc = readReleaseDoc(DOC);
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.10-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.11-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.11.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
@@ -47,7 +47,7 @@ assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.4 fixture registry consolidation identity');
 assert.ok(index.includes('hosted evidence capture polish') && index.includes('visual artifact guard'), 'index must communicate alpha.10 hosted evidence polish scope');
 assert.ok(index.includes('without changing runtime behavior'), 'index must preserve runtime boundary');
-assert.ok(auditSource.includes("const VERSION = '1.1.0-alpha.10'"));
+assert.ok(auditSource.includes("const VERSION = '1.1.0-alpha.11'"));
 assert.ok(auditSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.3'"));
 
 await import(`file://${path.join(repoRoot, 'src/research/repository-consolidation-audit.js')}`);
@@ -109,16 +109,17 @@ for (const packet of [migrationFixture, privacyFixture]) {
 }
 
 assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-alpha.3-packet.json'), 'alpha.3 migration fixture must remain in registry');
-assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-alpha.10-packet.json'), 'alpha.9 migration fixture must exist in registry');
+assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-alpha.11-packet.json'), 'alpha.11 migration fixture must exist in registry');
 assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json'), 'alpha.3 privacy fixture must remain in registry');
-assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json'), 'alpha.10 privacy fixture must exist in registry');
-assert.ok(releaseDocExists(DOC), 'alpha.10 release doc must exist');
-assert.ok(releaseDoc.includes('waitForEvidenceStable'));
-assert.ok(releaseDoc.includes('assertNoTransientArtifacts'));
-assert.ok(releaseDoc.includes('tests/hosted-evidence-capture-polish-check.mjs'));
+assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.11.json'), 'alpha.11 privacy fixture must exist in registry');
+assert.ok(releaseDocExists(DOC), 'alpha.11 release doc must exist');
+assert.ok(releaseDoc.includes('docs/technical-debt-ledger.md'));
+assert.ok(releaseDoc.includes('docs/source-refactor-readiness-audit.md'));
+assert.ok(releaseDoc.includes('tests/language-description-audit-check.mjs'));
+assert.ok(releaseDoc.includes('No source-file refactor yet'));
 assert.ok(releaseDoc.includes('No runtime behavior change'));
 assert.ok(releaseDoc.includes('No fixture semantic thinning'));
-assert.ok(releaseDoc.includes('v1.1.0-alpha.10'));
+assert.ok(releaseDoc.includes('v1.1.0-alpha.11'));
 
 for (const file of ['src/research/repository-consolidation-audit.js','tests/fixture-registry-loader.mjs','tests/fixture-registry-consolidation-check.mjs','tests/fixture-payload-budget-check.mjs','tests/test-organization-audit-check.mjs','tests/repository-consolidation-audit-check.mjs','tests/version-suite-registry-check.mjs']) {
   const syntax = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });

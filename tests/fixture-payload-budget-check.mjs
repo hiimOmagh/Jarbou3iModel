@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-alpha.10';
-const TITLE = 'Hosted Evidence Capture Polish + Visual Artifact Guard';
+const VERSION = '1.1.0-alpha.11';
+const TITLE = 'Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
 const REGISTRY_BUDGET_BYTES = 900 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
@@ -13,14 +13,14 @@ const registries = [
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
     expectedEntries: 58,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.1.0-alpha.10-packet.json')
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.1.0-alpha.11-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
     expectedEntries: 48,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json')
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.11.json')
   }
 ];
 

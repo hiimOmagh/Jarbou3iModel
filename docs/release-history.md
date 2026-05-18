@@ -63,6 +63,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
+| `v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md` | v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3265,3 +3266,46 @@ Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waitin
 
 This release is invalid if screenshots can be captured while transient overlays, modal backdrops, loading indicators, or unstable DOM states are present; if quality/export evidence is taken before the quality tab settles; or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
+
+<!-- release-file:v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md -->
+# v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit
+
+Audit-only cleanup gate. Adds a fixture/test debt ledger, source-file refactor readiness audit, and professional trilingual language-description review before any large source-file refactor is attempted.
+
+## What changed
+
+- Added `docs/technical-debt-ledger.md` to track fixture, test, release-doc, browser evidence, and language/copy debt.
+- Added `docs/source-refactor-readiness-audit.md` to map safe future seams for `src/app.js`, `src/research-engine.js`, and `src/styles.css`.
+- Added `docs/language-description-audit.md` and `tests/language-description-audit-check.mjs` to keep Arabic, English, and French descriptions professional and structurally aligned.
+- Added `tests/fixture-test-debt-ledger-check.mjs` and `tests/source-refactor-readiness-audit-check.mjs` as non-invasive readiness gates.
+- No files are deleted by alpha.11; this is a ledger, readiness, and language-description audit release only.
+- Preserved alpha.10 hosted evidence capture guards: `waitForEvidenceStable`, `assertNoTransientArtifacts`, `capture_settled`, and `visual_artifact_guard_passed`.
+- Preserved alpha.10 hosted evidence capture polish, alpha.9 runtime optimization, alpha.8 fixture payload compression, and alpha.7 package script compression.
+- Preserved fixture registry consolidation and MERGE_TO_REGISTRY retention-class continuity.
+- Preserved unused oversized asset cleanup boundaries without deleting runtime files.
+- Preserved Mobile Header Geometry Lock / Final Public Demo Visual Freeze scope from v1.0.30.
+
+## What did not change
+
+- No source-file refactor yet.
+- No runtime behavior change.
+- No UI redesign.
+- No provider behavior change.
+- No OAuth behavior change. No real OAuth or production OAuth flow is enabled.
+- No backend/source/storage behavior change.
+- No live scraping.
+- No fixture semantic thinning or test coverage weakening.
+- Screenshots alone, hosted evidence alone, ZIP existence alone, or ZIP archive alone are not sufficient release approval.
+
+## Validation
+
+- `node tests/fixture-test-debt-ledger-check.mjs`
+- `node tests/source-refactor-readiness-audit-check.mjs`
+- `node tests/language-description-audit-check.mjs`
+- `npm run test:current:no-browser`
+- `npm run test:ci:no-browser`
+
+## Disproven if
+
+This release is invalid if it refactors `src/app.js`, `src/research-engine.js`, or `src/styles.css`; weakens fixture/test coverage; changes runtime/provider/OAuth/backend/source/storage behavior; or permits inaccurate, informal, or mismatched trilingual product descriptions.
+<!-- /release-file:v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md -->

@@ -56,7 +56,7 @@
   ],
   "properties": {
     "workflow_version": {
-      "const": "1.1.0-alpha.10"
+      "const": "1.1.0-alpha.11"
     },
     "generated_at": {
       "type": "string"
@@ -316,7 +316,7 @@
       "additionalProperties": true,
       "properties": {
         "quality_gate_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -425,7 +425,7 @@
       ],
       "properties": {
         "export_pack_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "format": {
           "const": "export_pack_v2"
@@ -462,10 +462,10 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "proxy_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "status": {
           "type": "string"
@@ -536,7 +536,7 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "release_type": {
           "const": "patch_only_browser_qa_visual_regression"
@@ -599,7 +599,7 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "demo_stage": {
           "const": "public_demo_ready"
@@ -683,10 +683,10 @@
       "additionalProperties": true,
       "properties": {
         "release_notes_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard"
+          "const": "v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit"
         },
         "release_type": {
           "const": "patch"
@@ -734,7 +734,7 @@
       ],
       "properties": {
         "onboarding_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -825,7 +825,7 @@
       "additionalProperties": true,
       "properties": {
         "hosted_demo_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "deployment_stage": {
           "const": "hosted_demo_verification"
@@ -903,7 +903,7 @@
       "additionalProperties": true,
       "properties": {
         "browser_evidence_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "evidence_mode": {
           "const": "playwright_capture_attach_and_write_artifacts"
@@ -1009,7 +1009,7 @@
       "additionalProperties": true,
       "properties": {
         "smoke_fixes_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "deployment_stage": {
           "const": "hosted_demo_smoke_fixes"
@@ -1080,7 +1080,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_review_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "review_stage": {
           "const": "hosted_demo_evidence_review"
@@ -1206,10 +1206,10 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_release_lock_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.10 — Public Demo Release Lock"
+          "const": "v1.1.0-alpha.11 — Public Demo Release Lock"
         },
         "lock_stage": {
           "const": "public_demo_release_locked"
@@ -1332,10 +1332,10 @@
       "additionalProperties": true,
       "properties": {
         "release_apply_integrity_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard"
+          "const": "v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit"
         },
         "integrity_stage": {
           "const": "release_apply_integrity_checked"
@@ -1350,10 +1350,10 @@
           "const": "1.0.30"
         },
         "target_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip"
+          "const": "jarbou3i-research-engine-v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit-patch.zip"
         },
         "runtime_capability_change": {
           "const": false
@@ -1434,10 +1434,10 @@
       "additionalProperties": true,
       "properties": {
         "release_provenance_ledger_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard"
+          "const": "v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit"
         },
         "provenance_stage": {
           "const": "release_provenance_ledger_checked"
@@ -1452,10 +1452,10 @@
           "const": "1.0.30"
         },
         "target_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip"
+          "const": "jarbou3i-research-engine-v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit-patch.zip"
         },
         "changed_files_manifest_required": {
           "const": true
@@ -1525,7 +1525,7 @@
       ],
       "properties": {
         "plan_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "topic": {
           "type": "string",
@@ -1814,7 +1814,7 @@
       ],
       "properties": {
         "brief_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -1885,7 +1885,7 @@
           ],
           "properties": {
             "fit_version": {
-              "const": "1.1.0-alpha.10"
+              "const": "1.1.0-alpha.11"
             },
             "template_id": {
               "type": "string"
@@ -1936,7 +1936,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "provider": {
           "type": "string"
@@ -2023,7 +2023,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -2096,7 +2096,7 @@
       ],
       "properties": {
         "validation_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "validated_at": {
           "type": "string"
@@ -2177,7 +2177,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "checked_at": {
           "type": "string"
@@ -2260,7 +2260,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "fixture_count": {
           "type": "number"
@@ -2292,7 +2292,7 @@
       ],
       "properties": {
         "policy_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -2352,7 +2352,7 @@
       ],
       "properties": {
         "request_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "created_at": {
           "type": "string"
@@ -2425,7 +2425,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "checked_at": {
           "type": "string"
@@ -2493,7 +2493,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "fixture_count": {
           "type": "number"
@@ -2532,7 +2532,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "connector": {
           "type": "string"
@@ -2604,7 +2604,7 @@
       ],
       "properties": {
         "import_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "imported_at": {
           "type": "string"
@@ -2749,7 +2749,7 @@
       ],
       "properties": {
         "review_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -2952,7 +2952,7 @@
       ],
       "properties": {
         "portable_account_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3061,7 +3061,7 @@
           ]
         },
         "oauth_spike_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         }
       },
       "additionalProperties": true
@@ -3088,7 +3088,7 @@
       ],
       "properties": {
         "guard_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "safe": {
           "type": "boolean"
@@ -3124,7 +3124,7 @@
           }
         },
         "audit_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "release_gate": {
           "enum": [
@@ -3180,13 +3180,13 @@
       ],
       "properties": {
         "migration_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "source_version": {
           "type": "string"
         },
         "target_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "started_at": {
           "type": "string"
@@ -3247,7 +3247,7 @@
       ],
       "properties": {
         "workspace_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "storage_mode": {
           "const": "local_only"
@@ -3290,7 +3290,7 @@
           ],
           "properties": {
             "diagnostics_version": {
-              "const": "1.1.0-alpha.10"
+              "const": "1.1.0-alpha.11"
             },
             "available": {
               "type": "boolean"
@@ -3336,7 +3336,7 @@
           "type": "string"
         },
         "template_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "display_name": {
           "type": "string"
@@ -3402,7 +3402,7 @@
           "type": "string"
         },
         "result_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "connector": {
           "type": "string"
@@ -3453,7 +3453,7 @@
       ],
       "properties": {
         "identity_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "provider_id": {
           "type": "string"
@@ -3525,7 +3525,7 @@
       ],
       "properties": {
         "budget_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "max_queries": {
           "type": "integer",
@@ -3585,7 +3585,7 @@
       ],
       "properties": {
         "search_policy_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "provider_identity": {
           "$ref": "#/$defs/search_provider_identity"
@@ -3643,7 +3643,7 @@
       ],
       "properties": {
         "oauth_spike_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3781,7 +3781,7 @@
       ],
       "properties": {
         "release_candidate_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -3799,7 +3799,7 @@
           ],
           "properties": {
             "release_version": {
-              "const": "1.1.0-alpha.10"
+              "const": "1.1.0-alpha.11"
             },
             "release_stage": {
               "const": "public_beta_stable"
@@ -3884,7 +3884,7 @@
           ]
         },
         "stable_release_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "stable_ready": {
           "type": "boolean"
@@ -3904,7 +3904,7 @@
       ],
       "properties": {
         "source_strategy_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "release_gate": {
           "const": "source_strategy_blueprint_checked"
@@ -3955,7 +3955,7 @@
           ],
           "properties": {
             "registry_version": {
-              "const": "1.1.0-alpha.10"
+              "const": "1.1.0-alpha.11"
             },
             "new_live_connector_enabled": {
               "const": false
@@ -4010,7 +4010,7 @@
           "const": "evidence_scoring.v1"
         },
         "scorer_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "generated_at": {
           "type": "string"
@@ -4153,7 +4153,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_scoring_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "scoring_model": {
           "const": "evidence_scoring.v1"
@@ -4291,7 +4291,7 @@
       "additionalProperties": true,
       "properties": {
         "builder_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "packet_schema": {
           "const": "manual_source_packet.v1"
@@ -4343,7 +4343,7 @@
           "const": "source_packet_builder.v1"
         },
         "workflow_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "built_at": {
           "type": "string"
@@ -4378,7 +4378,7 @@
       "additionalProperties": true,
       "properties": {
         "roundtrip_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "roundtrip_model": {
           "const": "source_packet_roundtrip.v1"
@@ -4464,7 +4464,7 @@
       "additionalProperties": true,
       "properties": {
         "template_report_version": {
-          "const": "1.1.0-alpha.10"
+          "const": "1.1.0-alpha.11"
         },
         "template_model": {
           "const": "source_packet_template_presets.v1"

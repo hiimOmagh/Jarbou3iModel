@@ -10,20 +10,20 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0-alpha.10';
+const VERSION = '1.1.0-alpha.11';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'Hosted Evidence Capture Polish + Visual Artifact Guard';
-const DOC = 'docs/v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip';
+const TITLE = 'Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
+const DOC = 'docs/v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
 const releaseDoc = readReleaseDoc(DOC);
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.10-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.11-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.11.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
@@ -32,7 +32,7 @@ assert.ok(pkg.description.includes('package script compression and CI gate regis
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
 assert.ok(index.includes('audit repo retention'), 'index must keep repository audit workflow visible');
 assert.ok(index.includes('prove safe consolidation'), 'index must mention proof before reduction');
-assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.10'"));
+assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.11'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('acceptance_criteria'));

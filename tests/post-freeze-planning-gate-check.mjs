@@ -10,20 +10,20 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0-alpha.10';
+const VERSION = '1.1.0-alpha.11';
 const BASELINE = '1.1.0-alpha.1';
-const TITLE = 'Hosted Evidence Capture Polish + Visual Artifact Guard';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard-patch.zip';
+const TITLE = 'Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
-const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md');
+const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md');
 const migrations = read('src/research/migrations.js');
 const schema = json('schema/research-workflow.schema.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.10-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.10.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.11-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.11.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
@@ -34,7 +34,7 @@ assert.ok(index.includes('Planning gate only'), 'index must state planning gate 
 assert.ok(index.includes('acceptance criteria'), 'index must state lane criteria before implementation');
 assert.ok(index.includes('implementation'), 'index must mention implementation boundary');
 
-assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.10'"));
+assert.ok(moduleSource.includes("const VERSION = '1.1.0-alpha.11'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('implementation_allowed:false'));
 assert.ok(moduleSource.includes('runtime_capability_change:false'));
@@ -73,8 +73,8 @@ for (const packet of [migrationFixture, privacyFixture]) {
 }
 
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.10'"));
-assert.ok(migrations.includes("'1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0-alpha.10');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.11'"));
+assert.ok(migrations.includes("'1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.11'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0-alpha.11');
 assert.ok(releaseDocExists('docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md'), 'v1.0.30 freeze doc must remain present');
 assert.ok(releaseDoc.includes('fixture registry consolidation'));
 assert.ok(releaseDoc.includes('fixture registry'));

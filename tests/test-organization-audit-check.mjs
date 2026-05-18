@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const VERSION = '1.1.0-alpha.10';
+const VERSION = '1.1.0-alpha.11';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
@@ -44,7 +44,10 @@ for (const requiredCheck of [
   'tests/test-matrix-runtime-optimization-check.mjs',
   'tests/release-doc-timeline-pruning-check.mjs',
   'tests/syntax-matrix-check.mjs',
-  'tests/hosted-evidence-capture-polish-check.mjs'
+  'tests/hosted-evidence-capture-polish-check.mjs',
+  'tests/fixture-test-debt-ledger-check.mjs',
+  'tests/source-refactor-readiness-audit-check.mjs',
+  'tests/language-description-audit-check.mjs'
 ]) {
   assert.ok(allChecks.has(requiredCheck), `required alpha.10 check is not registered in CI gate registry: ${requiredCheck}`);
 }
