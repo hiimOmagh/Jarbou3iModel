@@ -21,7 +21,6 @@ async function buildTemplatePacket(page, templateId) {
   const outputText = await page.locator('#sourcePacketBuilderOutput').innerText();
   expect(outputText).toContain('\"live_fetching_performed\": false');
   expect(outputText).toContain('\"verification_claimed\": false');
-  expect(outputText).toMatch(/no[_ -]fetch[_ -]no[_ -]verification/);
 }
 
 test.describe('v1.1.0-alpha.11 source packet template browser QA + copy safety', () => {

@@ -140,6 +140,8 @@ for (const englishOnlyAssertion of ["toContainText('live:false')", "toContainTex
 }
 assert.ok(sourcePacketTemplateBrowserSpec.includes('live_fetching_performed'), 'source packet template browser QA must assert stable JSON live-fetch proof');
 assert.ok(sourcePacketTemplateBrowserSpec.includes('verification_claimed'), 'source packet template browser QA must assert stable JSON verification proof');
+assert.equal(sourcePacketTemplateBrowserSpec.includes('outputText).toMatch(/no[_ -]fetch'), false, 'source packet template browser QA must not require raw English policy tokens in localized visible output');
+assert.ok(sourcePacketTemplateBrowserSpec.includes("expect(packet.builder_report.policy).toContain('no_fetch_no_verification')"), 'source packet template browser QA must assert no-fetch/no-verification policy through copied JSON');
 assert.equal(sourcePacketTemplateBrowserSpec.includes('toContainText(templateId)'), false, 'source packet template browser QA must not require raw English template IDs in localized visible output');
 assert.ok(sourcePacketTemplateBrowserSpec.includes('packet.source_packets[0].template_id'), 'source packet template browser QA must assert template identity through copied JSON, not visible localized text');
 assert.ok(sourcePacketTemplateBrowserSpec.includes('template presets ready'), 'source packet template browser QA must forbid raw English template status residues');
