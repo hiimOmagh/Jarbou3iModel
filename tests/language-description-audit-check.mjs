@@ -140,6 +140,10 @@ for (const englishOnlyAssertion of ["toContainText('live:false')", "toContainTex
 }
 assert.ok(sourcePacketTemplateBrowserSpec.includes('live_fetching_performed'), 'source packet template browser QA must assert stable JSON live-fetch proof');
 assert.ok(sourcePacketTemplateBrowserSpec.includes('verification_claimed'), 'source packet template browser QA must assert stable JSON verification proof');
+assert.equal(sourcePacketTemplateBrowserSpec.includes('toContainText(templateId)'), false, 'source packet template browser QA must not require raw English template IDs in localized visible output');
+assert.ok(sourcePacketTemplateBrowserSpec.includes('packet.source_packets[0].template_id'), 'source packet template browser QA must assert template identity through copied JSON, not visible localized text');
+assert.ok(sourcePacketTemplateBrowserSpec.includes('template presets ready'), 'source packet template browser QA must forbid raw English template status residues');
+assert.ok(sourcePacketTemplateBrowserSpec.includes('local manual source packet template'), 'source packet template browser QA must forbid raw English source-template policy residues');
 
 const providerBrowserSpec = fs.readFileSync('tests/provider-mode-browser.spec.mjs', 'utf8');
 assert.ok(providerBrowserSpec.includes('expectProviderKeyNotExported'), 'provider browser QA must use localization-aware exported-key assertions');
@@ -179,7 +183,7 @@ for (const lang of ['ar', 'fr']) {
 }
 
 
-const residualLanguageKeys = ['runLedgerEmpty','sourceTypesEmpty','convertedLabel','rejectedLabel','policyPrioritizationGuard'];
+const residualLanguageKeys = ['runLedgerEmpty','sourceTypesEmpty','convertedLabel','rejectedLabel','policyPrioritizationGuard','sourcePacketTemplateReportTitle','localizedSourceTemplatePolicy'];
 for (const lang of ['ar', 'fr']) {
   for (const key of residualLanguageKeys) {
     assert.ok(researchCopy[lang][key], `${lang}.${key} missing residual evidence-surface localization`);
@@ -187,16 +191,18 @@ for (const lang of ['ar', 'fr']) {
   }
 }
 for (const lang of ['ar', 'fr']) {
+  assert.ok(researchCopy[lang].statusLabels.template_presets_ready, `${lang}.statusLabels.template_presets_ready missing localized template preset label`);
+  assert.notEqual(researchCopy[lang].statusLabels.template_presets_ready, researchCopy.en.statusLabels.template_presets_ready, `${lang}.statusLabels.template_presets_ready must not inherit English`);
   for (const key of ['high','medium','low']) {
     assert.ok(researchCopy[lang].statusLabels[key], `${lang}.statusLabels.${key} missing localized severity/status label`);
     assert.notEqual(researchCopy[lang].statusLabels[key], researchCopy.en.statusLabels[key], `${lang}.statusLabels.${key} must not inherit English`);
   }
 }
 const engineLocalizationSource = fs.readFileSync('src/research-engine.js', 'utf8');
-for (const requiredHelper of ['function lST', 'function lCf', 'function lSTs', 'policyPrioritizationGuard']) {
+for (const requiredHelper of ['function lST', 'function lCf', 'function lSTs', 'policyPrioritizationGuard', 'local_manual_source_packet_template_no_fetch_no_verification']) {
   assert.ok(engineLocalizationSource.includes(requiredHelper), `research engine must localize residual evidence/provider text via ${requiredHelper}`);
 }
-for (const residual of ['No provider runs yet.', ' converted</span>', ' rejected</span>', 'no source types']) {
+for (const residual of ['No provider runs yet.', ' converted</span>', ' rejected</span>', 'no source types', 'template presets ready', 'local manual source packet template no fetch no verification']) {
   assert.equal(engineLocalizationSource.includes(residual), false, `research engine must not render residual English evidence/provider copy: ${residual}`);
 }
 

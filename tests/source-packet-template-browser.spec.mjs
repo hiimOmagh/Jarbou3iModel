@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const TEMPLATE_IDS = ['official_report', 'reddit_thread', 'youtube_transcript', 'market_signal', 'github_release', 'generic_article'];
-const FORBIDDEN_COPY = [/live scraping performed/i, /live fetching performed/i, /verified source truth/i, /OAuth connected/i, /provider expanded/i];
+const FORBIDDEN_COPY = [/live scraping performed/i, /live fetching performed/i, /verified source truth/i, /OAuth connected/i, /provider expanded/i, /template presets ready/i, /local manual source packet template/i];
 
 async function assertNoHorizontalOverflow(page) {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
@@ -46,12 +46,18 @@ test.describe('v1.1.0-alpha.11 source packet template browser QA + copy safety',
     });
   }
 
-  test('all template presets build local/manual packets without fetch or verification claims', async ({ page }) => {
+  test('all template presets build local/manual packets without fetch or verification claims', async ({ page, context }) => {
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
     for (const templateId of TEMPLATE_IDS) {
       await buildTemplatePacket(page, templateId);
       const bodyText = await page.locator('#sourcePacketBuilderOutput').innerText();
       for (const pattern of FORBIDDEN_COPY) expect(bodyText).not.toMatch(pattern);
-      await expect(page.locator('#sourcePacketBuilderOutput')).toContainText(templateId);
+      await page.locator('#copySourcePacketBuilderBtn').click();
+      const copied = await page.evaluate(() => navigator.clipboard.readText());
+      const packet = JSON.parse(copied);
+      expect(packet.source_packets[0].template_id).toBe(templateId);
+      expect(packet.builder_report.live_fetching_performed).toBe(false);
+      expect(packet.builder_report.verification_claimed).toBe(false);
       await assertNoHorizontalOverflow(page);
     }
   });
