@@ -18,8 +18,24 @@ const VISIBLE_TEXT_FORBIDDEN_ENGLISH_RESIDUALS = [
   'scores explain prioritization not truth',
   'Scores explain prioritization, not truth',
   'Attention = public visibility',
-  'Attention = visibilité'
+  'Attention = visibilité',
+  'fixture/test debt ledger',
+  'source-file refactor readiness',
+  'hosted evidence capture polish',
+  'visual artifact guard gates',
+  'audit repo retention',
+  'prove safe consolidation',
+  'then reduce files',
+  'registre de dette tests/fixtures',
+  'audit de préparation au refactor',
+  'تدقيق جاهزية تفكيك ملفات المصدر',
+  'سجل دين الاختبارات/الفيكستشرات'
 ];
+const VISIBLE_TEXT_FORBIDDEN_NON_LOCALE_RESIDUALS = {
+  ar: [],
+  fr: ['إظهار مركز القيادة', 'إظهار خريطة المحرك', 'مختبر التحليل الاستراتيجي'],
+  en: ['إظهار مركز القيادة', 'إظهار خريطة المحرك', 'مختبر التحليل الاستراتيجي', 'العرض العام جاهز', 'Atelier d’analyse stratégique', 'Démo publique prête']
+};
 async function collectVisibleTextSnapshot(page, locale, screenLabel) {
   const snapshotState = await page.evaluate(() => ({
     html_lang: document.documentElement.lang,
@@ -45,8 +61,9 @@ async function collectVisibleTextSnapshot(page, locale, screenLabel) {
     en: ['Strategic Analysis Workbench', 'Public demo ready']
   };
   const unexpected_english_residuals = locale === 'en' ? [] : VISIBLE_TEXT_FORBIDDEN_ENGLISH_RESIDUALS.filter((phrase) => corpus.includes(phrase));
+  const unexpected_non_locale_residuals = (VISIBLE_TEXT_FORBIDDEN_NON_LOCALE_RESIDUALS[locale] || []).filter((phrase) => corpus.includes(phrase));
   const expected_markers_present = (expected_locale_markers[locale] || []).filter((phrase) => corpus.includes(phrase));
-  const locale_snapshot_passed = snapshotState.html_lang === locale && expected_markers_present.length >= 1 && unexpected_english_residuals.length === 0;
+  const locale_snapshot_passed = snapshotState.html_lang === locale && expected_markers_present.length >= 1 && unexpected_english_residuals.length === 0 && unexpected_non_locale_residuals.length === 0;
   return {
     locale,
     screen: screenLabel,
@@ -58,6 +75,7 @@ async function collectVisibleTextSnapshot(page, locale, screenLabel) {
     expected_locale_markers: expected_locale_markers[locale] || [],
     expected_markers_present,
     unexpected_english_residuals,
+    unexpected_non_locale_residuals,
     locale_snapshot_passed
   };
 }
@@ -379,6 +397,9 @@ const visibleTextSnapshots = {};
     }
     expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]);
     expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]);
+    expect(visibleTextSnapshots.ar.unexpected_non_locale_residuals).toEqual([]);
+    expect(visibleTextSnapshots.fr.unexpected_non_locale_residuals).toEqual([]);
+    expect(visibleTextSnapshots.en.unexpected_non_locale_residuals).toEqual([]);
     expect(visibleTextSnapshots.ar).toMatchObject({ html_lang: 'ar', html_dir: 'rtl', locale_snapshot_passed: true });
     expect(visibleTextSnapshots.fr).toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true });
     expect(visibleTextSnapshots.en).toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true });
