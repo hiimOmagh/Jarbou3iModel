@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.11",
-  "release_title": "v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit",
+  "ci_gate_registry_version": "1.1.0-alpha.12",
+  "release_title": "v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -24,7 +24,11 @@
     "test:provider",
     "test:backend",
     "test:fixtures",
-    "test:release"
+    "test:release",
+    "dev:doctor",
+    "dev:baseline",
+    "dev:impact",
+    "dev:handoff"
   ],
   "gates": {
     "no-browser": {
@@ -111,7 +115,10 @@
         "tests/evidence-review-queue-check.mjs",
         "tests/github-source-connector-check.mjs",
         "tests/web-search-provider-check.mjs",
-        "tests/source-capability-registry-check.mjs"
+        "tests/source-capability-registry-check.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -133,7 +140,10 @@
         "tests/hosted-evidence-capture-polish-check.mjs",
         "tests/language-description-audit-check.mjs",
         "tests/source-refactor-readiness-audit-check.mjs",
-        "tests/fixture-test-debt-ledger-check.mjs"
+        "tests/fixture-test-debt-ledger-check.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -152,7 +162,10 @@
         "tests/privacy-export-guard-check.mjs",
         "tests/privacy-export-check.mjs",
         "tests/privacy-audit-check.mjs",
-        "tests/privacy-release-gate-check.mjs"
+        "tests/privacy-release-gate-check.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -173,7 +186,10 @@
         "tests/evidence-review-queue-check.mjs",
         "tests/github-source-connector-check.mjs",
         "tests/web-search-provider-check.mjs",
-        "tests/source-capability-registry-check.mjs"
+        "tests/source-capability-registry-check.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -185,7 +201,10 @@
         "tests/portable-account-check.mjs",
         "tests/portable-oauth-spike-check.mjs",
         "tests/provider-response-check.mjs",
-        "tests/provider-fixtures-check.mjs"
+        "tests/provider-fixtures-check.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -195,7 +214,10 @@
       "node_checks": [
         "tests/backend-proxy-check.mjs",
         "tests/backend-hardening-check.mjs",
-        "tests/backend-worker-smoke.mjs"
+        "tests/backend-worker-smoke.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -208,7 +230,10 @@
         "tests/fixture-payload-budget-check.mjs",
         "tests/test-organization-audit-check.mjs",
         "tests/language-description-audit-check.mjs",
-        "tests/fixture-test-debt-ledger-check.mjs"
+        "tests/fixture-test-debt-ledger-check.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -259,14 +284,21 @@
         "tests/release-doc-timeline-pruning-check.mjs",
         "tests/language-description-audit-check.mjs",
         "tests/source-refactor-readiness-audit-check.mjs",
-        "tests/fixture-test-debt-ledger-check.mjs"
+        "tests/fixture-test-debt-ledger-check.mjs",
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
     },
     "browser": {
       "description": "Complete browser CI gate after Playwright installation.",
-      "node_checks": [],
+      "node_checks": [
+        "tests/dev-productivity-command-center-check.mjs",
+        "tests/golden-baseline-automation-check.mjs",
+        "tests/localization-regression-matrix-check.mjs"
+      ],
       "syntax_checks": [],
       "playwright_specs": [
         "tests/provider-mode-browser.spec.mjs",
@@ -282,7 +314,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-alpha.11",
+    "version": "1.1.0-alpha.12",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -297,7 +329,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-alpha.11",
+    "version": "1.1.0-alpha.12",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -368,13 +400,21 @@
       "tests/hosted-evidence-capture-polish-check.mjs",
       "tests/language-description-audit-check.mjs",
       "tests/source-refactor-readiness-audit-check.mjs",
-      "tests/fixture-test-debt-ledger-check.mjs"
+      "tests/fixture-test-debt-ledger-check.mjs",
+      "scripts/dev-utils.mjs",
+      "scripts/dev-doctor.mjs",
+      "scripts/dev-baseline.mjs",
+      "scripts/dev-impact.mjs",
+      "scripts/dev-handoff.mjs",
+      "tests/dev-productivity-command-center-check.mjs",
+      "tests/golden-baseline-automation-check.mjs",
+      "tests/localization-regression-matrix-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0-alpha.11",
+    "version": "1.1.0-alpha.12",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -394,7 +434,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0-alpha.11",
+    "version": "1.1.0-alpha.12",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
@@ -402,5 +442,24 @@
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false
+  },
+  "dev_productivity_command_center": {
+    "commands": [
+      "npm run dev:doctor",
+      "npm run dev:baseline",
+      "npm run dev:impact -- <changed-file>",
+      "npm run dev:handoff -- <changed-file>"
+    ],
+    "artifacts": [
+      "dist/dev-doctor-summary.json",
+      "dist/golden-baseline-summary.json",
+      "dist/dev-impact-summary.json",
+      "dist/dev-handoff-summary.json"
+    ],
+    "visible_text_snapshots": [
+      "visible-text-ar.json",
+      "visible-text-fr.json",
+      "visible-text-en.json"
+    ]
   }
 }

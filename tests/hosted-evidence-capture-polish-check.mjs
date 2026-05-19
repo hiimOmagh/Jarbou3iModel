@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.11';
-const TITLE = 'Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
+const VERSION = '1.1.0-alpha.12';
+const TITLE = 'Dev Productivity Command Center + Golden Baseline Automation';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md';
+const DOC = 'docs/v1.1.0-alpha.12-dev-productivity-command-center-golden-baseline-automation.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -79,7 +79,7 @@ assert.ok(spec.includes('expect(metadata.duplicate_project_metadata_overwrite_gu
 assert.ok(spec.includes("await waitForEvidenceStable(page, 'quality-export-open')"), 'quality/export open path must settle before capture');
 assert.ok(spec.includes('expect(metadata.visual_artifact_guard_required).toBe(true);'));
 assert.ok(spec.includes('expect(metadata.capture_settle_required).toBe(true);'));
-assert.equal((spec.match(/writeMetadata\(page, captures\)/g) || []).length, 1, 'metadata must remain a single final manifest write');
+assert.equal((spec.match(/const metadata = await writeMetadata\(page, captures/g) || []).length, 1, 'metadata must remain a single final manifest write');
 
 const sandbox = { window: {}, console };
 sandbox.window.Jarbou3iResearchModules = {};

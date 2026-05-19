@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.11",
-  "release_title": "v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit",
+  "version": "1.1.0-alpha.12",
+  "release_title": "v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,

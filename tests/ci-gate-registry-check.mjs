@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.11';
-const RELEASE = 'v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
+const VERSION = '1.1.0-alpha.12';
+const RELEASE = 'v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
@@ -21,8 +21,7 @@ assert.equal(registry.source_behavior_changed, false);
 assert.equal(registry.storage_behavior_changed, false);
 
 const expectedScripts = [
-  'dev',
-  'test',
+    'test',
   'test:qa',
   'test:ci',
   'test:ci:no-browser',
@@ -37,7 +36,11 @@ const expectedScripts = [
   'test:provider',
   'test:backend',
   'test:fixtures',
-  'test:release'
+  'test:release',
+  'dev:doctor',
+  'dev:baseline',
+  'dev:impact',
+  'dev:handoff'
 ];
 
 assert.deepEqual(Object.keys(pkg.scripts).sort(), expectedScripts.slice().sort(), 'package script surface must stay compressed and operational');

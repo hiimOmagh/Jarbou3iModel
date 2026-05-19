@@ -63,7 +63,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
-| `v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md` | v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit |
+| `v1.1.0-alpha.12-dev-productivity-command-center-golden-baseline-automation.md` | v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3267,45 +3267,40 @@ Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waitin
 This release is invalid if screenshots can be captured while transient overlays, modal backdrops, loading indicators, or unstable DOM states are present; if quality/export evidence is taken before the quality tab settles; or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
 
-<!-- release-file:v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md -->
-# v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit
+<!-- release-file:v1.1.0-alpha.12-dev-productivity-command-center-golden-baseline-automation.md -->
+# v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation
 
-Audit-only cleanup gate. Adds a fixture/test debt ledger, source-file refactor readiness audit, and professional trilingual language-description review before any large source-file refactor is attempted.
+Cleanup-only productivity gate. Adds a developer command center and golden baseline automation before product expansion or large source refactor work.
 
 ## What changed
 
-- Added `docs/technical-debt-ledger.md` to track fixture, test, release-doc, browser evidence, and language/copy debt.
-- Added `docs/source-refactor-readiness-audit.md` to map safe future seams for `src/app.js`, `src/research-engine.js`, and `src/styles.css`.
-- Added `docs/language-description-audit.md` and `tests/language-description-audit-check.mjs` to keep Arabic, English, and French descriptions professional and structurally aligned.
-- Added `tests/fixture-test-debt-ledger-check.mjs` and `tests/source-refactor-readiness-audit-check.mjs` as non-invasive readiness gates.
-- No files are deleted by alpha.11; this is a ledger, readiness, and language-description audit release only.
-- Preserved alpha.10 hosted evidence capture guards: `waitForEvidenceStable`, `assertNoTransientArtifacts`, `capture_settled`, and `visual_artifact_guard_passed`.
-- Preserved alpha.10 hosted evidence capture polish, alpha.9 runtime optimization, alpha.8 fixture payload compression, and alpha.7 package script compression.
-- Preserved fixture registry consolidation and MERGE_TO_REGISTRY retention-class continuity.
-- Preserved unused oversized asset cleanup boundaries without deleting runtime files.
-- Preserved Mobile Header Geometry Lock / Final Public Demo Visual Freeze scope from v1.0.30.
+- Preserved fixture registry MERGE_TO_REGISTRY workflow and No files are deleted expansion-lane discipline.
+- Preserved fixture registry consolidation, fixture registry payload compression, and unused oversized fixture cleanup boundaries.
+- Preserved Mobile Header Geometry Lock for the public demo header/logo visual-freeze scope.
+- Added `npm run dev:doctor` for ranked local diagnosis.
+- Added `npm run dev:baseline` to write golden baseline JSON/MD artifacts.
+- Added `npm run dev:impact` to map changed files to required gates and risks.
+- Added `npm run dev:handoff` to write structured handoff JSON/MD artifacts.
+- Added `docs/golden-baseline-inventory.md`, `docs/source-refactor-partition-plan.md`, and `docs/localization-regression-matrix.md`.
+- Preserved `docs/technical-debt-ledger.md`, `docs/source-refactor-readiness-audit.md`, and `tests/language-description-audit-check.mjs` from alpha.11 as active readiness/language gates.
+- Added no-browser checks for the productivity command center, golden baseline automation, and localization regression matrix.
+- Extended hosted-demo browser evidence to emit visible-text snapshots for Arabic, French, and English.
+- Preserved hosted evidence capture internals: `waitForEvidenceStable`, `assertNoTransientArtifacts`, `capture_settled`, `visual_artifact_guard_passed`, and No runtime behavior change.
+- Preserved alpha.11 professional language/copy completion, alpha.10 hosted evidence artifact guards, alpha.9 runtime optimization, alpha.8 Fixture Registry payload compression and test organization audit, and alpha.7 Package Script Compression.
+- Preserved Root Manifest and Release Artifact Consolidation, Version Suite Registry, planning gate, apply integrity, and changed-files-only release discipline.
 
 ## What did not change
 
 - No source-file refactor yet.
-- No runtime behavior change.
 - No UI redesign.
-- No provider behavior change.
-- No OAuth behavior change. No real OAuth or production OAuth flow is enabled.
-- No backend/source/storage behavior change.
-- No live scraping.
-- No fixture semantic thinning or test coverage weakening.
-- Screenshots alone, hosted evidence alone, ZIP existence alone, or ZIP archive alone are not sufficient release approval.
-
-## Validation
-
-- `node tests/fixture-test-debt-ledger-check.mjs`
-- `node tests/source-refactor-readiness-audit-check.mjs`
-- `node tests/language-description-audit-check.mjs`
-- `npm run test:current:no-browser`
-- `npm run test:ci:no-browser`
+- No runtime behavior change.
+- No provider/OAuth/backend/source/storage behavior change.
+- No live scraping, production OAuth, No real OAuth, real provider execution, or automated source verification.
+- No test coverage weakening.
+- No fixture semantic thinning.
+- Screenshots alone, hosted evidence alone, ZIP existence alone, or ZIP archive alone are insufficient for release approval.
 
 ## Disproven if
 
-This release is invalid if it refactors `src/app.js`, `src/research-engine.js`, or `src/styles.css`; weakens fixture/test coverage; changes runtime/provider/OAuth/backend/source/storage behavior; or permits inaccurate, informal, or mismatched trilingual product descriptions.
-<!-- /release-file:v1.1.0-alpha.11-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md -->
+This release is invalid if dev productivity commands are missing, visible-text snapshots are not produced by hosted evidence, Arabic/French fallback leaks are ignored, screenshots alone or ZIPs are accepted as approval, or runtime/provider/OAuth/backend/source/storage behavior changes.
+<!-- /release-file:v1.1.0-alpha.12-dev-productivity-command-center-golden-baseline-automation.md -->

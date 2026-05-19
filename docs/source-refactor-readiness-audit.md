@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-alpha.11`
-Release: `v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit`
+Version: `1.1.0-alpha.12`
+Release: `v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

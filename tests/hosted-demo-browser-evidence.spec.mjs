@@ -1,8 +1,41 @@
+
+const TECHNICAL_TOKEN_ALLOWLIST = ['JSON', 'API', 'OAuth', 'PKCE', 'BYOK', 'OpenAI', 'URL', 'CSV', 'GitHub'];
+const LOCALIZATION_SNAPSHOT_LOCALES = ['ar', 'fr', 'en'];
+const VISIBLE_TEXT_SNAPSHOT_FILES = {
+  ar: 'visible-text-ar.json',
+  fr: 'visible-text-fr.json',
+  en: 'visible-text-en.json'
+};
+const VISIBLE_TEXT_FORBIDDEN_ENGLISH_RESIDUALS = [
+  'First-run guide',
+  'No provider runs yet',
+  'Source planning',
+  'PROMPT PREVIEW',
+  'RESPONSE CONTRACT',
+  'template presets ready',
+  'local manual source packet template',
+  'Complete a brief after the plan and evidence matrix are ready'
+];
+async function collectVisibleTextSnapshot(page, locale, screenLabel) {
+  const visible_text = await page.evaluate(() => Array.from(document.body.querySelectorAll('body *'))
+    .filter((node) => {
+      const style = window.getComputedStyle(node);
+      return style && style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity || '1') > 0;
+    })
+    .map((node) => (node.innerText || node.textContent || '').trim())
+    .filter(Boolean)
+    .flatMap((text) => text.split('\n').map((line) => line.trim()).filter(Boolean))
+    .slice(0, 500));
+  const corpus = visible_text.join(' ');
+  const unexpected_english_residuals = locale === 'en' ? [] : VISIBLE_TEXT_FORBIDDEN_ENGLISH_RESIDUALS.filter((phrase) => corpus.includes(phrase));
+  return { locale, screen: screenLabel, visible_text, allowed_latin_tokens: TECHNICAL_TOKEN_ALLOWLIST, unexpected_english_residuals };
+}
+
 import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.1.0-alpha.11';
+const VERSION = '1.1.0-alpha.12';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const EXPECTED_CAPTURE_NAMES = Object.freeze([
@@ -160,7 +193,7 @@ async function capture(page, name) {
   };
 }
 
-async function hostedMetadata(page, captures) {
+async function hostedMetadata(page, captures, visibleTextSnapshots = {}) {
   const pageMeta = await page.evaluate(() => ({
     title: document.title,
     app_version: document.querySelector('meta[name="app-version"]')?.getAttribute('content') || null,
@@ -194,6 +227,9 @@ async function hostedMetadata(page, captures) {
     capture_names: captureNames,
     captures,
     all_required_captures_present: JSON.stringify(captureNames) === JSON.stringify(expectedNames),
+    visible_text_snapshot_files: VISIBLE_TEXT_SNAPSHOT_FILES,
+    visible_text_snapshots: visibleTextSnapshots,
+    localization_snapshot_contract: 'ar_fr_en_visible_text_snapshots_with_technical_token_allowlist',
     screenshot_sanity: captures.map((captureResult) => ({
       name: captureResult.name,
       viewport_width: captureResult.viewport.width,
@@ -213,9 +249,9 @@ async function hostedMetadata(page, captures) {
   };
 }
 
-async function writeMetadata(page, captures = []) {
+async function writeMetadata(page, captures = [], visibleTextSnapshots = {}) {
   ensureEvidenceRoot();
-  const metadata = await hostedMetadata(page, captures);
+  const metadata = await hostedMetadata(page, captures, visibleTextSnapshots);
   fs.writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
   await test.info().attach('hosted-demo-metadata.json', { body: Buffer.from(JSON.stringify(metadata, null, 2)), contentType: 'application/json' });
   expect(metadata.page.app_version).toBe(VERSION);
@@ -264,7 +300,7 @@ async function assertHostedDemoReady(page) {
   await expect(page.locator('#hostedDemoEvidenceReviewPanel')).toBeVisible();
 }
 
-test.describe('v1.1.0-alpha.11 hosted demo smoke/evidence manifest capture', () => {
+test.describe('v1.1.0-alpha.12 hosted demo smoke/evidence manifest capture', () => {
   test.describe.configure({ mode: 'serial' });
 
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }, testInfo) => {
@@ -274,6 +310,7 @@ test.describe('v1.1.0-alpha.11 hosted demo smoke/evidence manifest capture', () 
       'Hosted evidence capture writes one canonical manifest; mobile viewport is captured inside the chromium project.'
     );
     const captures = [];
+const visibleTextSnapshots = {};
 
     await page.setViewportSize({ width: 1440, height: 950 });
     await page.goto('/');
@@ -294,7 +331,18 @@ test.describe('v1.1.0-alpha.11 hosted demo smoke/evidence manifest capture', () 
     await openQualityExport(page);
     captures.push(await capture(page, 'quality-export'));
 
-    const metadata = await writeMetadata(page, captures);
+    for (const locale of LOCALIZATION_SNAPSHOT_LOCALES) {
+    await page.evaluate((nextLocale) => {
+      localStorage.setItem('jarbou3i-language', nextLocale);
+      document.documentElement.lang = nextLocale;
+      document.documentElement.dir = nextLocale === 'ar' ? 'rtl' : 'ltr';
+    }, locale);
+    visibleTextSnapshots[locale] = await collectVisibleTextSnapshot(page, locale, 'hosted-demo-visible-text');
+    await fs.promises.writeFile(path.join(EVIDENCE_DIR, VISIBLE_TEXT_SNAPSHOT_FILES[locale]), JSON.stringify(visibleTextSnapshots[locale], null, 2));
+  }
+  expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]);
+  expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]);
+  const metadata = await writeMetadata(page, captures, visibleTextSnapshots);
     expect(metadata.page.storage_keys_visible).toEqual(expect.arrayContaining([]));
   });
 });

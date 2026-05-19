@@ -59,7 +59,7 @@ async function openProviderHarness(page) {
   await expect(page.locator('#providerName')).toBeVisible();
 }
 
-test.describe('v1.1.0-alpha.11 — Provider Mode Browser QA', () => {
+test.describe('v1.1.0-alpha.12 — Provider Mode Browser QA', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     await openProviderHarness(page);

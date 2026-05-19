@@ -2,16 +2,16 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.11';
-const TITLE = 'Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit';
+const VERSION = '1.1.0-alpha.12';
+const TITLE = 'Dev Productivity Command Center + Golden Baseline Automation';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');
 const roadmap = fs.readFileSync('docs/roadmap.md', 'utf8');
 const qaMatrix = fs.readFileSync('docs/qa-matrix.md', 'utf8');
 
-assert.ok(releaseDocExists(`docs/v${VERSION}-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md`), 'alpha.11 release doc must exist in release history');
-const doc = readReleaseDoc(`docs/v${VERSION}-fixture-test-debt-ledger-source-file-refactor-readiness-audit.md`);
+assert.ok(releaseDocExists(`docs/v${VERSION}-dev-productivity-command-center-golden-baseline-automation.md`), 'alpha.11 release doc must exist in release history');
+const doc = readReleaseDoc(`docs/v${VERSION}-dev-productivity-command-center-golden-baseline-automation.md`);
 assert.ok(doc.includes(`# v${VERSION} — ${TITLE}`));
 assert.ok(doc.includes('docs/technical-debt-ledger.md'));
 assert.ok(doc.includes('docs/source-refactor-readiness-audit.md'));

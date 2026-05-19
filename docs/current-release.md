@@ -1,8 +1,15 @@
 # Current Release
 
-## v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit
+## v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation
 
-This cleanup release consolidates root-level release and evidence documents into the maintained documentation layer while preserving release-provenance, public-demo, hosted-evidence, and changed-files-only discipline.
+Package: `jarbou3i-research-engine`
+Version: `1.1.0-alpha.12`
+Runtime capability change: no
+Required browser gates before publishing
+Release archive exclusions
+Required cleanup commands
+
+This cleanup-only alpha adds developer productivity automation before product expansion or large source refactors. It preserves the locked public-demo behavior while adding one-command diagnosis, golden baseline generation, impact mapping, handoff summaries, and browser visible-text snapshot contracts.
 
 Current status:
 
@@ -11,54 +18,29 @@ Current status:
 - OAuth behavior change: false
 - Backend/source/storage behavior change: false
 - Public-demo honesty boundary: preserved
-- Migration/privacy fixture registries: preserved from v1.1.0-alpha.4
-- Version-suite and release-doc registries: preserved from v1.1.0-alpha.5
-- Root release/evidence files: consolidated into `docs/release-and-evidence.md`, `docs/current-release.md`, and `MANIFEST.json`
+- Package script compression: preserved at 20 commands
+- CI gate registry: remains the source of truth
+- Node 24 CI compatibility: preserved with actions/setup-node@v6, deterministic npm ci, and PLAYWRIGHT_SKIP_INSTALL=1 browser gate discipline
+- Hosted evidence capture: preserved with visual artifact guard and canonical-project metadata
+- Trilingual language quality: preserved and reinforced through visible-text snapshot contracts
 
-Retained source-root documents:
+Required validation before lock:
 
-- `README.md`
-- `CHANGELOG.md`
-- `PUBLIC_DEMO.md`
-- `MANIFEST.json`
-
-Consolidated legacy root artifacts:
-
-- `BROWSER_EVIDENCE.md`
-- `HOSTED_DEMO_VERIFICATION.md`
-- `RELEASE_MANIFEST.md`
-- `RELEASE_NOTES.md`
-- `MANIFEST.md`
-- `CHANGED_FILES_MANIFEST.json`
-- `DELETE_FILES_MANIFEST.json`
-
-Required validation:
-
+- `npm run dev:doctor`
+- `npm run dev:baseline`
+- `npm run dev:impact -- <changed-file>`
+- `npm run dev:handoff -- <changed-file>`
 - `npm run test:current:no-browser`
-- `npm run test:root-release-artifacts`
 - `npm run test:ci:no-browser`
-- `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`
+- `npm run test:ci:browser`
+- Reviewed hosted-demo evidence including visible-text snapshots for AR/FR/EN
 
-No live scraping, no real OAuth, no live provider execution, no backend endpoint expansion, no source connector expansion, no automated source verification, and no storage expansion are introduced.
+No live scraping, no real OAuth, no live provider execution, no backend endpoint expansion, no source connector expansion, no automated source verification, no storage expansion, no UI redesign, and no large source refactor are introduced.
+
+Release lock requirements:
+
+- Screenshots alone are insufficient.
+- A ZIP archive alone is insufficient.
+- Approval requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 
 Release approval still requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, aligned public claims, privacy/export safety, artifact SHA256, and a clean archive boundary for the intended release commit.
-
-## Consolidated release manifest compatibility
-
-- Package: `jarbou3i-research-engine`
-- Version: `1.1.0-alpha.11`
-- Runtime capability change: no
-- Required browser gates before publishing
-- Release archive exclusions
-- Required cleanup commands
-
-Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v6, npm ci --no-audit --no-fund --ignore-scripts, and PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser.
-
-## Release-lock requirement tokens
-
-Screenshots alone are insufficient.
-A ZIP archive alone is insufficient.
-This release requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence before approval.
-
-
-Evidence manifest continuity: v1.1.0-alpha.11 preserves hosted-demo evidence manifest discipline, including the single final metadata capture manifest boundary.

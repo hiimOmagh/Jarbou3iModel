@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-alpha.11`
-Release: `v1.1.0-alpha.11 — Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit`
+Version: `1.1.0-alpha.12`
+Release: `v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy
