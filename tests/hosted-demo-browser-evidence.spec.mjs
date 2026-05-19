@@ -338,7 +338,7 @@ const visibleTextSnapshots = {};
       document.documentElement.dir = nextLocale === 'ar' ? 'rtl' : 'ltr';
     }, locale);
     visibleTextSnapshots[locale] = await collectVisibleTextSnapshot(page, locale, 'hosted-demo-visible-text');
-    await fs.promises.writeFile(path.join(EVIDENCE_DIR, VISIBLE_TEXT_SNAPSHOT_FILES[locale]), JSON.stringify(visibleTextSnapshots[locale], null, 2));
+    await fs.promises.writeFile(path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale]), JSON.stringify(visibleTextSnapshots[locale], null, 2));
   }
   expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]);
   expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]);
