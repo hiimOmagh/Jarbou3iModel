@@ -119,7 +119,8 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/evidence-workspace-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -145,7 +146,8 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/evidence-workspace-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -193,7 +195,8 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/evidence-workspace-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -295,7 +298,8 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/evidence-workspace-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -359,6 +363,7 @@
       "src/research/source-packet-roundtrip.js",
       "src/research/source-packet-templates.js",
       "src/research/evidence-scorer.js",
+      "src/research/evidence-workspace.js",
       "src/research/source-connectors.js",
       "backend/cloudflare-worker.js",
       "tests/provider-mode-browser.spec.mjs",
@@ -389,6 +394,7 @@
       "tests/repository-hygiene-cleanup-check.mjs",
       "tests/source-packet-import-check.mjs",
       "tests/evidence-scoring-check.mjs",
+      "tests/evidence-workspace-check.mjs",
       "tests/evidence-scoring-calibration-check.mjs",
       "tests/source-packet-builder-check.mjs",
       "tests/source-packet-builder-browser-qa-check.mjs",

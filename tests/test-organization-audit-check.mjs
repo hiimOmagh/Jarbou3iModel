@@ -6,6 +6,10 @@ const VERSION = '1.1.0-alpha.13';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
+function normalizeRegistryPath(value){
+  return String(value || '').replace(/\\/g, '/');
+}
+
 assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(pkg.version, VERSION);
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must stay compressed after alpha.10');
@@ -21,7 +25,7 @@ for (const target of operationalScriptTargets) {
 }
 
 const allChecks = new Set();
-const syntaxMatrixFiles = new Set(registry.syntax_matrix?.files || []);
+const syntaxMatrixFiles = new Set((registry.syntax_matrix?.files || []).map(normalizeRegistryPath));
 assert.ok(syntaxMatrixFiles.has('tests/ci-gate-runner.mjs'), 'syntax matrix must cover CI gate runner');
 assert.ok(syntaxMatrixFiles.has('tests/provider-mode-browser.spec.mjs'), 'syntax matrix must cover browser specs');
 for (const [gateName, gate] of Object.entries(registry.gates)) {
@@ -31,7 +35,7 @@ for (const [gateName, gate] of Object.entries(registry.gates)) {
     assert.equal(new Set(collection).size, collection.length, `${gateName}.${collectionName} must not contain duplicates`);
     for (const file of collection) {
       assert.ok(fs.existsSync(file), `${gateName}.${collectionName} references missing file: ${file}`);
-      allChecks.add(file);
+      allChecks.add(normalizeRegistryPath(file));
     }
   }
 }
@@ -49,10 +53,10 @@ for (const requiredCheck of [
   'tests/source-refactor-readiness-audit-check.mjs',
   'tests/language-description-audit-check.mjs'
 ]) {
-  assert.ok(allChecks.has(requiredCheck), `required alpha.10 check is not registered in CI gate registry: ${requiredCheck}`);
+  assert.ok(allChecks.has(normalizeRegistryPath(requiredCheck)), `required alpha.10 check is not registered in CI gate registry: ${requiredCheck}`);
 }
 
-const testFiles = fs.readdirSync('tests').filter((name) => /\.(mjs|js)$/.test(name)).map((name) => path.join('tests', name));
+const testFiles = fs.readdirSync('tests').filter((name) => /\.(mjs|js)$/.test(name)).map((name) => normalizeRegistryPath(path.join('tests', name)));
 const unregisteredCheckFiles = testFiles
   .filter((file) => !file.endsWith('.spec.mjs') && !file.endsWith('.spec.js'))
   .filter((file) => file.endsWith('-check.mjs'))

@@ -1,0 +1,65 @@
+diff --git a/tests/ci-gate-registry.json b/tests/ci-gate-registry.json
+index cc00707..0000000 100644
+--- a/tests/ci-gate-registry.json
++++ b/tests/ci-gate-registry.json
+@@ -72,6 +72,7 @@
+         "tests/source-capability-registry-check.mjs",
+         "tests/dev-productivity-command-center-check.mjs",
+         "tests/golden-baseline-automation-check.mjs",
+         "tests/localization-regression-matrix-check.mjs",
+-        "tests/prompt-compiler-check.mjs"
++        "tests/prompt-compiler-check.mjs",
++        "tests/evidence-workspace-check.mjs"
+       ],
+@@ -134,7 +135,8 @@
+         "tests/source-refactor-readiness-audit-check.mjs",
+         "tests/fixture-test-debt-ledger-check.mjs",
+         "tests/dev-productivity-command-center-check.mjs",
+         "tests/golden-baseline-automation-check.mjs",
+         "tests/localization-regression-matrix-check.mjs",
+-        "tests/prompt-compiler-check.mjs"
++        "tests/prompt-compiler-check.mjs",
++        "tests/evidence-workspace-check.mjs"
+       ],
+@@ -172,7 +174,8 @@
+         "tests/web-search-provider-check.mjs",
+         "tests/source-capability-registry-check.mjs",
+         "tests/dev-productivity-command-center-check.mjs",
+         "tests/golden-baseline-automation-check.mjs",
+         "tests/localization-regression-matrix-check.mjs",
+-        "tests/prompt-compiler-check.mjs"
++        "tests/prompt-compiler-check.mjs",
++        "tests/evidence-workspace-check.mjs"
+       ],
+@@ -269,7 +272,8 @@
+         "tests/source-refactor-readiness-audit-check.mjs",
+         "tests/fixture-test-debt-ledger-check.mjs",
+         "tests/dev-productivity-command-center-check.mjs",
+         "tests/golden-baseline-automation-check.mjs",
+         "tests/localization-regression-matrix-check.mjs",
+-        "tests/prompt-compiler-check.mjs"
++        "tests/prompt-compiler-check.mjs",
++        "tests/evidence-workspace-check.mjs"
+       ],
+@@ -371,6 +375,7 @@
+       "src/research/source-packet-templates.js",
+       "src/research/evidence-scorer.js",
++      "src/research/evidence-workspace.js",
+       "src/research/source-connectors.js",
+@@ -407,6 +412,7 @@
+       "tests/source-packet-import-check.mjs",
+       "tests/evidence-scoring-check.mjs",
++      "tests/evidence-workspace-check.mjs",
+       "tests/evidence-scoring-calibration-check.mjs",
+diff --git a/tests/no-browser-qa-suite.mjs b/tests/no-browser-qa-suite.mjs
+index eab87ff..0000000 100644
+--- a/tests/no-browser-qa-suite.mjs
++++ b/tests/no-browser-qa-suite.mjs
+@@ -15,6 +15,7 @@ const tests = [
+   'tests/analysis-template-check.mjs',
+   'tests/quality-gate-v3-check.mjs',
+   'tests/evidence-scoring-check.mjs',
++  'tests/evidence-workspace-check.mjs',
+   'tests/export-pack-v2-check.mjs',
+   'tests/browser-qa-hardening-check.mjs',
+   'tests/onboarding-first-run-check.mjs',
