@@ -7,3 +7,14 @@ for (const token of ['collectVisibleTextSnapshot','visible-text-ar.json','visibl
 assert.ok(!/\bEVIDENCE_DIR\b/.test(spec), 'hosted evidence spec must use EVIDENCE_ROOT for visible-text snapshot writes');
 assert.ok(spec.includes('path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale])'), 'visible-text snapshots must be written into the hosted evidence artifact root');
 console.log('Localization regression matrix checks passed.');
+
+for (const token of [
+  'switchLocaleForVisibleTextSnapshot',
+  'expected_locale_markers',
+  'locale_snapshot_passed',
+  "toMatchObject({ html_lang: 'ar', html_dir: 'rtl', locale_snapshot_passed: true })",
+  "toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true })",
+  "toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true })"
+]) assert.ok(spec.includes(token), token);
+assert.ok(!spec.includes("localStorage.setItem('jarbou3i-language'"), 'visible-text snapshots must switch through the real UI language controls, not mutate storage/html directly');
+assert.ok(spec.includes("if (node.closest('noscript')) return false;"), 'visible-text snapshots must ignore noscript fallback copy');
