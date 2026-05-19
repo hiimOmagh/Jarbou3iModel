@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.12 — module split. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.13 — prompt compiler and research plan upgrade. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.12';
+  const VERSION = '1.1.0-alpha.13';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -25,6 +25,7 @@
   const sourceCapabilityRegistry = modules.sourceCapabilityRegistry;
   const sourcePacketTemplates = modules.sourcePacketTemplates;
   const sourcePacketRoundtrip = modules.sourcePacketRoundtrip;
+  const promptCompiler = modules.promptCompiler;
   const evidenceReviewController = modules.evidenceReviewController;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
@@ -82,45 +83,48 @@
     return stateStore.renumberEvidence(targetState);
   }
 
+  function compilePromptPlan(){
+    persistTemplateSelection();
+    const template = activeTemplate();
+    const compiled = promptCompiler?.compile ? promptCompiler.compile({
+      version: VERSION,
+      topic: topic(),
+      context: context(),
+      mode: researchMode(),
+      template,
+      now: nowIso()
+    }) : null;
+    state.prompt_compiler = compiled;
+    return compiled;
+  }
+
   function buildResearchPlan(){
     const mode = researchMode();
     const t = topic();
     const c = context();
-    const recent = mode === 'recent';
-    const sourceHeavy = mode === 'source-heavy';
     const template = activeTemplate();
-    const adversarial = mode === 'adversarial';
+    const compiled = state.prompt_compiler?.topic_raw === t && state.prompt_compiler?.context_raw === c ? state.prompt_compiler : compilePromptPlan();
+    const seed = promptCompiler?.toPlanSeed ? promptCompiler.toPlanSeed(compiled) : {};
     const base = {
       plan_version: VERSION,
       topic: t,
       context: c,
-      mode,
+      mode: compiled?.mode || mode,
       generated_at: nowIso(),
-      questions: [
-        `What are the dominant interests behind ${t}?`,
-        `Which actors have decision power, disruption capacity, or narrative influence in ${c}?`,
-        `Which tools are being used, and what constraints do those tools reveal?`,
-        `Which declared narratives diverge from observable actions or outcomes?`,
-        `What feedback loops could reshape the system after the first-order outcomes?`
-      ].concat(recent ? [`Which signals changed in the last 30/90 days and which are noise?`] : [])
-       .concat(adversarial ? [`Which comfortable explanation would be disproven by contrary evidence?`] : []),
-      target_actors: ['State institutions','Political factions','Corporate or financial actors','Media/narrative brokers','External actors'],
-      target_sources: sourceHeavy
-        ? ['official documents','primary datasets','academic literature','credible news chronology','expert interviews or testimony','counter-position sources']
-        : ['official statements','news chronology','public discourse signals','expert commentary'],
-      keywords: t.split(/[\s,;:،]+/).filter(Boolean).slice(0,8),
-      counter_evidence_targets: [
-        'Evidence that the dominant narrative is wrong or incomplete',
-        'Actors benefiting from the opposite outcome',
-        'Outcomes that contradict stated goals',
-        'Missing incentives or hidden constraints'
-      ],
-      early_warning_indicators: [
-        'Tool escalation or rapid legal changes',
-        'Narrative synchronization across institutions/media',
-        'Unusual alliance or actor realignment',
-        'Economic or public-signal anomalies'
-      ]
+      prompt_compiler: compiled,
+      refined_thesis: seed.refined_thesis || compiled?.refined_thesis,
+      research_objective: seed.research_objective || compiled?.research_objective,
+      plan_quality_score: seed.plan_quality_score ?? compiled?.plan_quality_score ?? 0,
+      questions: seed.questions || [],
+      target_actors: seed.target_actors || [],
+      target_sources: seed.target_sources || [],
+      keywords: seed.keywords || [],
+      counter_evidence_targets: seed.counter_evidence_targets || [],
+      early_warning_indicators: seed.early_warning_indicators || [],
+      missing_context: seed.missing_context || [],
+      disconfirming_conditions: seed.disconfirming_conditions || [],
+      live_ai_used: false,
+      live_fetching_performed: false
     };
     return analysisTemplates?.applyToPlan ? analysisTemplates.applyToPlan(base, template?.template_id || activeTemplateId()) : base;
   }
@@ -1727,11 +1731,20 @@
   function renderLabels(){
     renderHelpers.applyLabels(document, updateEvidenceButtonLabel);
   }
+  function renderPromptCompiler(){
+    const el = $('promptCompilerOutput');
+    if(!el) return;
+    const compiled = state.prompt_compiler;
+    if(!compiled){ el.innerHTML = emptyState(tr('noCompiledPrompt'), tr('noCompiledPromptBody'), tr('compilePrompt')); return; }
+    el.innerHTML = `<div class="researchJsonCard"><div><b>${esc(tr('compiledThesisTitle'))}</b><span>${esc(tr('qualityLabel'))}: ${esc(compiled.plan_quality_score ?? 0)}/100 · ${esc(compiled.release_gate || '')}</span></div><p>${esc(compiled.refined_thesis || '')}</p><h4>${esc(tr('missingContextTitle'))}</h4><div class="miniChips">${(compiled.missing_context || []).length ? compiled.missing_context.map(x=>`<span>${esc(lStatus(x))}</span>`).join('') : `<span>${esc(tr('none'))}</span>`}</div><h4>${esc(tr('outputPlanTitle'))}</h4><div class="miniChips">${(compiled.output_plan || []).map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>`;
+  }
+
   function renderPlan(){
+    renderPromptCompiler();
     const el = $('researchPlanOutput');
     if(!el) return;
     if(!state.plan){el.innerHTML = emptyState(tr('noPlan'), tr('noPlanBody'), tr('generatePlan')); return;}
-    el.innerHTML = `<div class="researchJsonCard"><div><b>${esc(state.plan.topic)}</b><span>${esc(state.plan.context)} · ${esc(state.plan.mode)}</span></div><h4>${esc(tr('questionsTitle'))}</h4><ul>${state.plan.questions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>${esc(tr('targetSourcesTitle'))}</h4><div class="miniChips">${state.plan.target_sources.map(x=>`<span>${esc(x)}</span>`).join('')}</div><h4>${esc(tr('earlyWarningTitle'))}</h4><ul>${state.plan.early_warning_indicators.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
+    el.innerHTML = `<div class="researchJsonCard"><div><b>${esc(state.plan.topic)}</b><span>${esc(state.plan.context)} · ${esc(state.plan.mode)} · ${esc(tr('qualityLabel'))}: ${esc(state.plan.plan_quality_score ?? '—')}/100</span></div>${state.plan.refined_thesis ? `<p>${esc(state.plan.refined_thesis)}</p>` : ''}<h4>${esc(tr('questionsTitle'))}</h4><ul>${(state.plan.questions || []).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>${esc(tr('targetSourcesTitle'))}</h4><div class="miniChips">${(state.plan.target_sources || []).map(x=>`<span>${esc(x)}</span>`).join('')}</div><h4>${esc(tr('counterargumentsTitle'))}</h4><ul>${(state.plan.counter_evidence_targets || []).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>${esc(tr('disconfirmingConditionsTitle'))}</h4><ul>${(state.plan.disconfirming_conditions || []).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>${esc(tr('earlyWarningTitle'))}</h4><ul>${(state.plan.early_warning_indicators || []).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`;
   }
   function renderEvidence(){
     const el = $('evidenceMatrixOutput');
@@ -2149,9 +2162,11 @@
     $('analysisTemplateSelect')?.addEventListener('change', () => { persistTemplateSelection(); state.analysis_brief = null; state.diagnostics = null; save(); render(); });
     $('applyTemplateBtn')?.addEventListener('click', () => { persistTemplateSelection(); if(state.plan) state.plan = analysisTemplates.applyToPlan(state.plan, activeTemplateId()); save(); render(); setStatus(tr('statusTemplateApplied'), 'good'); });
     $('exportTemplateProfileBtn')?.addEventListener('click', () => { downloadJson('jarbou3i-analysis-template-v0.24-beta.json', {workflow_version: VERSION, analysis_template: activeTemplateProfile(), template_fit_report: analysisTemplates.templateFitReport(state, activeTemplateId())}); setStatus(tr('statusTemplateExported'), 'good'); });
+    $('compilePromptBtn')?.addEventListener('click', () => { compilePromptPlan(); save(); render(); setStatus(tr('statusPromptCompiled'), 'good'); });
     $('generatePlanBtn')?.addEventListener('click', () => { persistTemplateSelection(); state.plan = buildResearchPlan(); save(); render(); setStatus(tr('statusReady'), 'good'); });
+    $('copyCompiledPromptBtn')?.addEventListener('click', () => { const compiled = state.prompt_compiler || compilePromptPlan(); copyText(JSON.stringify(compiled, null, 2)); });
     $('copyPlanPromptBtn')?.addEventListener('click', () => copyText(buildPlanPrompt()));
-    $('clearPlanBtn')?.addEventListener('click', () => { if(!confirmDestructive('Clear research plan?')) return; state.plan = null; save(); render(); setStatus(tr('statusNeedPlan'), 'warn'); });
+    $('clearPlanBtn')?.addEventListener('click', () => { if(!confirmDestructive('Clear research plan?')) return; state.plan = null; state.prompt_compiler = null; save(); render(); setStatus(tr('statusNeedPlan'), 'warn'); });
     $('addEvidenceBtn')?.addEventListener('click', () => {
       try {
         const entry = makeEvidenceEntry();

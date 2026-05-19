@@ -19,7 +19,7 @@ for (const [cmd,args,out] of [
   assert.ok(fs.existsSync(out), `${cmd} must write ${out}`);
 }
 const doctor=JSON.parse(fs.readFileSync('dist/dev-doctor-summary.json','utf8'));
-assert.equal(doctor.doctor_version,'1.1.0-alpha.12');
+assert.equal(doctor.doctor_version,'1.1.0-alpha.13');
 assert.equal(doctor.status,'pass');
 const impact=JSON.parse(fs.readFileSync('dist/dev-impact-summary.json','utf8'));
 assert.ok(impact.required_gates.includes('language-description-audit-check'));

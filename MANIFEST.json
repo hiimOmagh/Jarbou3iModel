@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.12",
-  "release_title": "v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation",
+  "version": "1.1.0-alpha.13",
+  "release_title": "v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,

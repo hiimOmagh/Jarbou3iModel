@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.1.0-alpha.12",
-  "release_title": "v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation",
+  "version_suite_registry_version": "1.1.0-alpha.13",
+  "release_title": "v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

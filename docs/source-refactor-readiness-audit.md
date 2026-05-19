@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-alpha.12`
-Release: `v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation`
+Version: `1.1.0-alpha.13`
+Release: `v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

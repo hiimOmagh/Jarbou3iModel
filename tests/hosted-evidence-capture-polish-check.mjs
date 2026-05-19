@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.12';
-const TITLE = 'Dev Productivity Command Center + Golden Baseline Automation';
+const VERSION = '1.1.0-alpha.13';
+const TITLE = 'Prompt Compiler + Research Plan Upgrade';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-alpha.12-dev-productivity-command-center-golden-baseline-automation.md';
+const DOC = 'docs/v1.1.0-alpha.13-prompt-compiler-research-plan-upgrade.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));

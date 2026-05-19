@@ -6,7 +6,7 @@ const fail = (message) => {
   process.exit(1);
 };
 const read = (file) => fs.readFileSync(file, 'utf8');
-const modules = ["src/research/render-helpers.js", "src/research/onboarding.js", "src/research/ux-reliability.js", "src/research/project-workspace.js", "src/research/analysis-templates.js", "src/research/state-store.js", "src/research/evidence-controller.js", "src/research/evidence-review-controller.js", "src/research/provider-controller.js", "src/research/source-controller.js", "src/research/search-provider-abstraction.js", "src/research/export-controller.js", "src/research/quality-gate.js", "src/research/prompt-builders.js", "src/research/provider-core.js", "src/research/provider-identity.js", "src/research/portable-account-mock.js", "src/research/portable-oauth-spike.js", "src/research/privacy-export-guard.js", "src/research/privacy-audit.js", "src/research/export-pack.js", "src/research/migrations.js", "src/research/provider-fixtures.js", "src/research/mock-provider.js", "src/research/openai-compatible-provider.js", "src/research/backend-proxy-provider.js", "src/research/source-connectors.js", "src/research/source-import-adapter.js"];
+const modules = ["src/research/render-helpers.js", "src/research/onboarding.js", "src/research/ux-reliability.js", "src/research/project-workspace.js", "src/research/analysis-templates.js", "src/research/state-store.js", "src/research/evidence-controller.js", "src/research/evidence-review-controller.js", "src/research/provider-controller.js", "src/research/source-controller.js", "src/research/search-provider-abstraction.js", "src/research/export-controller.js", "src/research/quality-gate.js", "src/research/prompt-builders.js", "src/research/prompt-compiler.js", "src/research/provider-core.js", "src/research/provider-identity.js", "src/research/portable-account-mock.js", "src/research/portable-oauth-spike.js", "src/research/privacy-export-guard.js", "src/research/privacy-audit.js", "src/research/export-pack.js", "src/research/migrations.js", "src/research/provider-fixtures.js", "src/research/mock-provider.js", "src/research/openai-compatible-provider.js", "src/research/backend-proxy-provider.js", "src/research/source-connectors.js", "src/research/source-import-adapter.js"];
 for (const file of modules) {
   if (!fs.existsSync(file)) fail(`missing module: ${file}`);
   try { new vm.Script(read(file), { filename: file }); }
@@ -40,6 +40,7 @@ for (const token of [
   'searchPolicyReport',
   'modules.evidenceReviewController',
   'Jarbou3iResearchModules.prompts.buildPlanPrompt',
+  'modules.promptCompiler',
   'activeTemplateProfile',
   'Jarbou3iResearchModules.providerCore.validateProviderResponse',
   'Jarbou3iResearchModules.providerIdentity.providerIdentity',
@@ -54,6 +55,6 @@ for (const token of [
 ]) {
   if (!engine.includes(token)) fail(`research engine does not delegate to module token: ${token}`);
 }
-if (engine.length > 156000) fail(`research-engine.js exceeded v1.1.0-alpha.12 orchestration ceiling after alpha.11 trilingual shell hardening: ${engine.length} bytes`);
+if (engine.length > 160000) fail(`research-engine.js exceeded v1.1.0-alpha.13 orchestration ceiling after alpha.13 prompt compiler integration: ${engine.length} bytes`);
 console.log('Research module checks passed.');
 process.exit(0);

@@ -1,6 +1,6 @@
 # AI Integration Policy
 
-## v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation
+## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -9,7 +9,7 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 This guide applies to v1.0.25 — Public Demo Release Lock.
 
-## Current state: v1.1.0-alpha.12
+## Current state: v1.1.0-alpha.13
 
 The research engine supports four provider modes:
 
@@ -53,6 +53,6 @@ Before adding a real portable account provider:
 - Provider terms, privacy, and reliability must be reviewed.
 
 
-Evidence manifest continuity: v1.1.0-alpha.12 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.13 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Continuity note: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, changed-files-only discipline, no live scraping, No real OAuth, screenshots alone, hosted evidence, and ZIPs are not sufficient for release approval.

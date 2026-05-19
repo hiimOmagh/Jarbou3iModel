@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine OpenAI-compatible provider adapter v1.1.0-alpha.12. */
+/* Jarbou3i Research Engine OpenAI-compatible provider adapter v1.1.0-alpha.13. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};

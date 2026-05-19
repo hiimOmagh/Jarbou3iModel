@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-alpha.12`
-Release: `v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation`
+Version: `1.1.0-alpha.13`
+Release: `v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

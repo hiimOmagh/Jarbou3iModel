@@ -1,31 +1,35 @@
 # Current Release
 
-## v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation
+## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-alpha.12`
-Runtime capability change: no
+Version: `1.1.0-alpha.13`
+Runtime capability change: no live/runtime expansion
 Required browser gates before publishing
 Release archive exclusions
 Required cleanup commands
 
-This cleanup-only alpha adds developer productivity automation before product expansion or large source refactors. It preserves the locked public-demo behavior while adding one-command diagnosis, golden baseline generation, impact mapping, handoff summaries, and browser visible-text snapshot contracts.
+This alpha adds a local/template-driven prompt compiler before any live AI/provider/source expansion. It upgrades the research-plan stage by converting messy topic/context input into a structured plan seed while preserving the public-demo capability boundary and alpha.12 developer-productivity automation.
 
 Current status:
 
 - Runtime capability change: false
+- Live AI/provider execution: false
+- Live fetching/scraping: false
 - Provider behavior change: false
 - OAuth behavior change: false
 - Backend/source/storage behavior change: false
 - Public-demo honesty boundary: preserved
-- Package script compression: preserved at 20 commands
+- Prompt compiler: local deterministic/template-driven only
+- Dev productivity commands: preserved (`dev:doctor`, `dev:baseline`, `dev:impact`, `dev:handoff`)
 - CI gate registry: remains the source of truth
 - Node 24 CI compatibility: preserved with actions/setup-node@v6, deterministic npm ci, and PLAYWRIGHT_SKIP_INSTALL=1 browser gate discipline
 - Hosted evidence capture: preserved with visual artifact guard and canonical-project metadata
-- Trilingual language quality: preserved and reinforced through visible-text snapshot contracts
+- Trilingual language quality: preserved through visible-text snapshot contracts
 
 Required validation before lock:
 
+- `node tests/prompt-compiler-check.mjs`
 - `npm run dev:doctor`
 - `npm run dev:baseline`
 - `npm run dev:impact -- <changed-file>`
@@ -44,3 +48,5 @@ Release lock requirements:
 - Approval requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 
 Release approval still requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, aligned public claims, privacy/export safety, artifact SHA256, and a clean archive boundary for the intended release commit.
+
+Continuity note: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, changed-files-only discipline, no live scraping, No real OAuth, screenshots alone, hosted evidence, and ZIPs are not sufficient for release approval.

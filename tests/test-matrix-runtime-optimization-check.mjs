@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.1.0-alpha.12';
-const TITLE = 'Dev Productivity Command Center + Golden Baseline Automation';
+const VERSION = '1.1.0-alpha.13';
+const TITLE = 'Prompt Compiler + Research Plan Upgrade';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');

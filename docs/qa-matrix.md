@@ -1,6 +1,6 @@
 # QA Matrix
 
-## v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation
+## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
 
 Cleanup-only CI/runtime documentation gate. The release optimizes the no-browser test matrix without changing runtime behavior, UI behavior, provider behavior, OAuth behavior, backend/source/storage behavior, fixture semantics, or public-demo claims.
 
@@ -40,11 +40,11 @@ The public demo remains local/manual/private by default. No live scraping, provi
 
 ## Current release
 
-- v1.1.0-alpha.12 — Dev Productivity Command Center + Golden Baseline Automation: test-matrix runtime optimization, release doc timeline pruning, no runtime behavior change.
+- v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade: test-matrix runtime optimization, release doc timeline pruning, no runtime behavior change.
 - v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit: compressed fixture registries and test organization audit.
 - v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry: package script surface compression and CI gate registry.
 
-Evidence manifest continuity: v1.1.0-alpha.12 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.13 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v6, npm ci --no-audit --no-fund --ignore-scripts, and PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser.
 
