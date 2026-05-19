@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source packet importer v1.1.0-alpha.13. No live fetching. */
+/* Jarbou3i Research Engine source packet importer v1.1.0-alpha.14. No live fetching. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.13';
+  const VERSION = '1.1.0-alpha.14';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
 
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }
@@ -10,6 +10,9 @@
   function stableHash(value){ const s = typeof value === 'string' ? value : JSON.stringify(value || {}); let h = 0; for(let i = 0; i < s.length; i += 1) h = Math.imul(31, h) + s.charCodeAt(i) | 0; return Math.abs(h).toString(36).padStart(6, '0'); }
   function clampScore(value, fallback = 3){ const n = Number(value); return Math.max(1, Math.min(5, Number.isFinite(n) ? n : fallback)); }
   function confidence(value){ const v = text(value || 'medium').toLowerCase(); return ['low','medium','high'].includes(v) ? v : 'medium'; }
+  function workspace(){return root.evidenceWorkspace || null;}
+  function normalizeWorkspaceCandidate(candidate, context){return workspace()?.normalizeWorkspaceCandidate ? workspace().normalizeWorkspaceCandidate(candidate, context) : candidate;}
+  function enhanceReport(report, evidence){return workspace()?.importReportEnhancement ? workspace().importReportEnhancement(report, evidence) : report;}
   function normalizeDate(value){
     const raw = text(value);
     if(!raw) return 'unknown';
@@ -64,10 +67,11 @@
       confidence: confidence(item.confidence),
       notes: [
         quote ? `Quote/excerpt: ${quote.slice(0, 220)}${quote.length > 220 ? '…' : ''}` : '',
-        'Imported from manual source packet; review source metadata and claim before synthesis.'
+        'Imported from manual source packet; review source metadata, contradiction markers, and claim links before synthesis.'
       ].filter(Boolean).join(' '),
       import_meta: {
         format: 'source_packet',
+        import_adapter_model: 'source_import_v2',
         source_packet_schema: PACKET_SCHEMA,
         packet_id: text(packet.packet_id || packet.id, `packet-${packetIndex + 1}`),
         raw_fingerprint: stableHash({packet_id:packet.packet_id || packet.id, claim, quote, url}),
@@ -79,7 +83,8 @@
         engagement: Object.assign({}, packet.engagement || item.engagement || {})
       }
     };
-    return root.evidenceScorer?.attachEvidenceScoring ? root.evidenceScorer.attachEvidenceScoring(candidate) : candidate;
+    const normalized = normalizeWorkspaceCandidate(candidate, {origin:'source_packet'});
+    return root.evidenceScorer?.attachEvidenceScoring ? root.evidenceScorer.attachEvidenceScoring(normalized) : normalized;
   }
   function packetsFrom(value){
     if(Array.isArray(value)) return value;
@@ -111,7 +116,7 @@
       });
     });
     const sourceTypes = [...new Set(evidence.map((item) => item.source_type).filter(Boolean))];
-    const report = {
+    const baseReport = {
       import_version: VERSION,
       imported_at: new Date().toISOString(),
       input_format: 'source_packet',
@@ -130,14 +135,15 @@
       queue_only: true,
       warnings,
       rejected,
-      policy: 'manual_import_only_no_fetch_no_verification'
+      policy: 'manual_source_import_v2_no_fetch_no_verification'
     };
+    const report = enhanceReport(baseReport, evidence);
     return {ok:evidence.length > 0, evidence, report, warnings};
   }
   function parseSourcePacketImportText(textValue, options = {}){
     const parsed = parseJson(textValue);
     if(!parsed.ok){
-      const report = {
+      const report = enhanceReport({
         import_version: VERSION,
         imported_at: new Date().toISOString(),
         input_format: 'source_packet',
@@ -156,8 +162,8 @@
         queue_only: true,
         warnings: [parsed.error],
         rejected: [{reason: parsed.error}],
-        policy: 'manual_import_only_no_fetch_no_verification'
-      };
+        policy: 'manual_source_import_v2_no_fetch_no_verification'
+      }, []);
       return {ok:false, evidence:[], report, warnings:report.warnings};
     }
     return parseSourcePacketImportValue(parsed.data, options);
@@ -174,7 +180,8 @@
         freshness_window_days: 30,
         engagement: {upvotes: 1200, comments: 340},
         evidence: [
-          {claim: 'Public discourse concentrated on implementation risk rather than headline capacity targets.', quote: 'Most top comments focused on procurement opacity and grid readiness.', confidence: 'medium', supports: ['N1'], contradicts: []}
+          {claim: 'Public discourse concentrated on implementation risk rather than headline capacity targets.', quote: 'Most top comments focused on procurement opacity and grid readiness.', confidence: 'medium', supports: ['N1'], contradicts: []},
+          {claim: 'A counter-thread disputes the public-interest framing and says procurement opacity is the dominant risk.', quote: 'The problem is not capacity. It is procurement opacity.', confidence: 'medium', supports: [], contradicts: ['N1']}
         ]
       }]
     };

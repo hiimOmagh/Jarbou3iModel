@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source import adapter v1.1.0-alpha.13. */
+/* Jarbou3i Research Engine source import adapter v1.1.0-alpha.14. Manual Source Import V2. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.13';
+  const VERSION = '1.1.0-alpha.14';
   const URL_RE = /https?:\/\/[^\s)\]>"']+/gi;
   const DATE_RE = /\b(20\d{2}[-/.](0?[1-9]|1[0-2])[-/.](0?[1-9]|[12]\d|3[01])|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+20\d{2}|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+20\d{2})\b/i;
   const BULLET_RE = /^\s*(?:[-*•]|\d+[.)]|\[[x ]\])\s+/;
@@ -10,6 +10,9 @@
   function normalizeText(text){return String(text || '').replace(/\r\n/g,'\n').replace(/\t/g,'  ').trim();}
   function unique(values){return [...new Set((values || []).filter(Boolean))];}
   function stableHash(text){const s=String(text||''); let h=0; for(let i=0;i<s.length;i++) h=Math.imul(31,h)+s.charCodeAt(i)|0; return Math.abs(h).toString(36).padStart(6,'0');}
+  function workspace(){return root.evidenceWorkspace || null;}
+  function normalizeCandidate(candidate, context){return workspace()?.normalizeWorkspaceCandidate ? workspace().normalizeWorkspaceCandidate(candidate, context) : candidate;}
+  function enhanceReport(report, evidence){return workspace()?.importReportEnhancement ? workspace().importReportEnhancement(report, evidence) : report;}
   function inferFormat(text, requested='auto'){
     if(requested && requested !== 'auto') return requested;
     const lower=String(text||'').toLowerCase();
@@ -51,7 +54,7 @@
     for(const line of lines){
       const hasUrl=(line.match(URL_RE)||[]).length>0;
       const looksBullet=BULLET_RE.test(line);
-      const hasClaimMarker=/\b(claim|finding|evidence|source|signal|observation|result|because|shows|indicates|reported|according)\b/i.test(line);
+      const hasClaimMarker=/\b(claim|finding|evidence|source|signal|observation|result|because|shows|indicates|reported|according|contradicts|counter)\b/i.test(line);
       if(hasUrl || looksBullet || hasClaimMarker){const cleaned=stripMarkup(line); if(cleaned.length>18) candidates.push(cleaned);}
     }
     if(!candidates.length && text.trim()) return text.split(/(?<=[.!?])\s+/).map(x=>x.trim()).filter(x=>x.length>35).slice(0,8);
@@ -68,13 +71,22 @@
       time_relevance_score:format==='last30days'?5:(hasDate?4:3)
     };
   }
+  function linkHints(line){
+    const supports = [];
+    const contradicts = [];
+    const ids = String(line || '').match(/\b[IANRTFSC]\d+\b/g) || [];
+    const isCounter = /\b(contradicts|counter[- ]?evidence|weakens|disputes|inconsistent|opposes)\b/i.test(line);
+    ids.forEach((id) => (isCounter ? contradicts : supports).push(id));
+    return {supports:unique(supports), contradicts:unique(contradicts)};
+  }
   function parseSourceImportText(text, options={}){
     const raw=normalizeText(text);
     const format=inferFormat(raw, options.format || 'auto');
     if(format === 'source_packet'){
       const importer = root.sourcePacketImporter;
       if(!importer || typeof importer.parseSourcePacketImportText !== 'function'){
-        return {ok:false, evidence:[], report:{import_version:VERSION, imported_at:new Date().toISOString(), input_format:'source_packet', source_packet_schema:'manual_source_packet.v1', live_fetching_performed:false, verification_claimed:false, raw_fingerprint:stableHash(raw), detected_line_count:0, converted_count:0, rejected_count:1, source_type_count:0, url_count:0, date_count:0, source_types:[], queue_only:true, warnings:['source_packet_importer_missing'], rejected:[{reason:'source_packet_importer_missing'}]}, warnings:['source_packet_importer_missing']};
+        const report = enhanceReport({import_version:VERSION, imported_at:new Date().toISOString(), input_format:'source_packet', source_packet_schema:'manual_source_packet.v1', live_fetching_performed:false, verification_claimed:false, raw_fingerprint:stableHash(raw), detected_line_count:0, converted_count:0, rejected_count:1, source_type_count:0, url_count:0, date_count:0, source_types:[], queue_only:true, warnings:['source_packet_importer_missing'], rejected:[{reason:'source_packet_importer_missing'}]}, []);
+        return {ok:false, evidence:[], report, warnings:['source_packet_importer_missing']};
       }
       return importer.parseSourcePacketImportText(raw, options);
     }
@@ -91,6 +103,7 @@
       const dateMatch=line.match(DATE_RE);
       const scores=scoreLine(line, format);
       const sourceType=inferSourceType(line, primaryUrl);
+      const links = linkHints(line);
       const candidate = {
         evidence_id:`IMP${evidence.length+1}`,
         claim,
@@ -101,16 +114,17 @@
         time_relevance_score:scores.time_relevance_score,
         evidence_strength:scores.evidence_strength,
         public_signal_score:scores.public_signal_score,
-        supports:[],
-        contradicts:[],
+        supports:links.supports,
+        contradicts:links.contradicts,
         confidence:primaryUrl?'medium':'low',
-        notes:`Imported from ${format}; review claim, source metadata, and link IDs before synthesis.`,
-        import_meta:{format, source_urls:urls, raw_hash:stableHash(line), verification_status:'unverified_manual_import'}
+        notes:`Imported from ${format}; raw candidate must be reviewed, classified, linked, and accepted/rejected before synthesis.`,
+        import_meta:{format, import_adapter_model:'source_import_v2', source_urls:urls, raw_hash:stableHash(line), verification_status:'unverified_manual_import', live_fetching_performed:false, verification_claimed:false}
       };
-      evidence.push(root.evidenceScorer?.attachEvidenceScoring ? root.evidenceScorer.attachEvidenceScoring(candidate) : candidate);
+      const normalized = normalizeCandidate(candidate, {origin:format});
+      evidence.push(root.evidenceScorer?.attachEvidenceScoring ? root.evidenceScorer.attachEvidenceScoring(normalized) : normalized);
     });
     const sourceTypes=unique(evidence.map(e=>e.source_type));
-    const report={
+    const baseReport={
       import_version:VERSION,
       imported_at:new Date().toISOString(),
       input_format:format,
@@ -125,8 +139,11 @@
       date_count:evidence.filter(e=>e.source_date && e.source_date!=='unknown').length,
       source_types:sourceTypes,
       warnings,
-      rejected
+      rejected,
+      queue_only:true,
+      policy:'manual_source_import_v2_no_fetch_no_verification'
     };
+    const report = enhanceReport(baseReport, evidence);
     return {ok:evidence.length>0, evidence, report, warnings};
   }
   function previewSourceImport(text, options={}){
@@ -134,4 +151,4 @@
     return {preview_version:VERSION, ok:parsed.ok, report:parsed.report, sample_evidence:parsed.evidence.slice(0,5), warnings:parsed.warnings};
   }
   root.sourceImportAdapter={VERSION,inferFormat,inferSourceType,parseSourceImportText,previewSourceImport};
-})(window);
+})(typeof window !== 'undefined' ? window : globalThis);
