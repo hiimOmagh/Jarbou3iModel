@@ -208,5 +208,13 @@ for (const residual of ['No provider runs yet.', ' converted</span>', ' rejected
   assert.equal(engineLocalizationSource.includes(residual), false, `research engine must not render residual English evidence/provider copy: ${residual}`);
 }
 
+for (const lang of ['ar', 'fr']) {
+  assert.ok(researchCopy[lang].statusLabels.scores_explain_prioritization_not_truth, `${lang}.statusLabels.scores_explain_prioritization_not_truth missing localized score-policy guard`);
+  assert.notEqual(researchCopy[lang].statusLabels.scores_explain_prioritization_not_truth, researchCopy.en.statusLabels.scores_explain_prioritization_not_truth, `${lang} scoring policy guard must not fall back to English`);
+}
+assert.ok(!researchCopy.ar.statusLabels.scores_explain_prioritization_not_truth.includes('scores explain'), 'Arabic scoring policy guard must not expose English fallback copy');
+assert.ok(!researchCopy.fr.evidenceScoringPolicyNote.includes('Attention ='), 'French evidence-scoring note must not expose English equality-style fallback copy');
+assert.ok(!researchCopy.fr.evidenceScoringCalibrationShort.includes('Attention ='), 'French short scoring note must not expose English equality-style fallback copy');
+
 console.log('Language description audit checks passed.');
 process.exit(0);

@@ -14,7 +14,11 @@ const VISIBLE_TEXT_FORBIDDEN_ENGLISH_RESIDUALS = [
   'RESPONSE CONTRACT',
   'template presets ready',
   'local manual source packet template',
-  'Complete a brief after the plan and evidence matrix are ready'
+  'Complete a brief after the plan and evidence matrix are ready',
+  'scores explain prioritization not truth',
+  'Scores explain prioritization, not truth',
+  'Attention = public visibility',
+  'Attention = visibilité'
 ];
 async function collectVisibleTextSnapshot(page, locale, screenLabel) {
   const snapshotState = await page.evaluate(() => ({

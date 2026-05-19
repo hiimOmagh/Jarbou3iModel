@@ -6,6 +6,14 @@ const spec=fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs','utf8')
 for (const token of ['collectVisibleTextSnapshot','visible-text-ar.json','visible-text-fr.json','visible-text-en.json','unexpected_english_residuals']) assert.ok(spec.includes(token), token);
 assert.ok(!/\bEVIDENCE_DIR\b/.test(spec), 'hosted evidence spec must use EVIDENCE_ROOT for visible-text snapshot writes');
 assert.ok(spec.includes('path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale])'), 'visible-text snapshots must be written into the hosted evidence artifact root');
+for (const residual of [
+  'scores explain prioritization not truth',
+  'Scores explain prioritization, not truth',
+  'Attention = public visibility',
+  'Attention = visibilité'
+]) assert.ok(spec.includes(residual), `visible-text residual guard must catch ${residual}`);
+assert.ok(fs.readFileSync('src/research/render-helpers.js','utf8').includes('scores_explain_prioritization_not_truth'), 'localized status guard must cover scoring policy fallback tokens');
+
 console.log('Localization regression matrix checks passed.');
 
 for (const token of [
