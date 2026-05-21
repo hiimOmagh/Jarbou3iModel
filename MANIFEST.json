@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.16",
-  "release_title": "v1.1.0-alpha.16 — Entity Intelligence Layer",
+  "version": "1.1.0-alpha.17",
+  "release_title": "v1.1.0-alpha.17 — Research Planner V2",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,
@@ -44,6 +44,6 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Fixture registry runtime optimization and release timeline audit; no runtime behavior change.",
+  "release_scope": "Research Planner V2: local depth presets, source-type budgets, entity-aware query plans, counter-evidence planning, dry-run connector readiness, and planner export continuity; no runtime network behavior change.",
   "node_runtime": "Node 24 CI compatibility preserved"
 }

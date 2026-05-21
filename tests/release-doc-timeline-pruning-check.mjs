@@ -2,16 +2,16 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.16';
-const TITLE = 'Entity Intelligence Layer';
+const VERSION = '1.1.0-alpha.17';
+const TITLE = 'Research Planner V2';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');
 const roadmap = fs.readFileSync('docs/roadmap.md', 'utf8');
 const qaMatrix = fs.readFileSync('docs/qa-matrix.md', 'utf8');
 
-assert.ok(releaseDocExists(`docs/v${VERSION}-entity-intelligence-layer.md`), 'alpha.11 release doc must exist in release history');
-const doc = readReleaseDoc(`docs/v${VERSION}-entity-intelligence-layer.md`);
+assert.ok(releaseDocExists(`docs/v${VERSION}-research-planner-v2.md`), 'alpha.11 release doc must exist in release history');
+const doc = readReleaseDoc(`docs/v${VERSION}-research-planner-v2.md`);
 assert.ok(doc.includes(`# v${VERSION} — ${TITLE}`));
 assert.ok(doc.includes('docs/technical-debt-ledger.md'));
 assert.ok(doc.includes('docs/source-refactor-readiness-audit.md'));

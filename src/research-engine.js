@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.16 — entity intelligence layer. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.17 — research planner v2. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.16';
+  const VERSION = '1.1.0-alpha.17';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -29,6 +29,7 @@
   const evidenceReviewController = modules.evidenceReviewController;
   const sourceClusterEngine = modules.sourceClusterEngine;
   const entityIntelligence = modules.entityIntelligence;
+  const researchPlannerV2 = modules.researchPlannerV2;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
   const hostedDemoVerification = modules.hostedDemoVerification;
@@ -128,7 +129,11 @@
       live_ai_used: false,
       live_fetching_performed: false
     };
-    return analysisTemplates?.applyToPlan ? analysisTemplates.applyToPlan(base, template?.template_id || activeTemplateId()) : base;
+    const planned = analysisTemplates?.applyToPlan ? analysisTemplates.applyToPlan(base, template?.template_id || activeTemplateId()) : base;
+    const plannerReport = buildResearchPlannerReport(planned);
+    planned.research_planner_report = plannerReport;
+    state.research_planner_report = plannerReport;
+    return planned;
   }
 
   function buildPlanPrompt(){
@@ -273,6 +278,7 @@
       project_workspace: projectWorkspace?.metadata ? projectWorkspace.metadata(state, workspace) : null,
       export_pack: {export_pack_version: VERSION, format: 'export_pack_v2', files: ['research-packet.json','analysis-brief.md','evidence-matrix.csv','review-queue.csv','provider-run-ledger.json','quality-report.json','privacy-audit.json'], release_gate: 'privacy_audit_required'},
       research_plan: state.plan,
+      research_planner_report: state.research_planner_report || (state.plan ? buildResearchPlannerReport(state.plan) : null),
       evidence_matrix: (state.evidence || []).map(item => scoreEvidence(item)),
       evidence_scoring_report: evidenceScoringReport(),
       causal_links: state.causal_links,
@@ -480,6 +486,22 @@
     return buildEntityIntelligence().entity_alias_report || {entity_alias_report_version: VERSION};
   }
 
+  function buildResearchPlannerReport(planInput = state.plan){
+    const plan = planInput || state.plan || null;
+    if(researchPlannerV2?.buildResearchPlannerV2){
+      const clusterIntelligence = buildSourceClusterIntelligence();
+      const entityIntel = buildEntityIntelligence();
+      return researchPlannerV2.buildResearchPlannerV2({
+        plan: plan || {},
+        evidence: (state.evidence || []).map(item => scoreEvidence(item)),
+        clusters: clusterIntelligence.clusters || [],
+        entities: entityIntel.entity_profiles || []
+      }, {version: VERSION, now: nowIso()});
+    }
+    return {research_planner_version: VERSION, planner_model:'research_planner_v2.v1', depth_preset:'standard', entity_aware_queries:[], counter_evidence_targets:[], platform_source_recommendations:[], connector_readiness:[], source_type_budget:{budget:{}, budget_total:0}, planner_quality_score:0, planner_gap_flags:['research_planner_module_missing'], release_gate:'planner_review_required', live_fetching_performed:false, verification_claimed:false};
+  }
+
+
   function diagnosticReport(){
     const linkedIds = collectLinkedIds();
     const evidenceIds = new Set(state.evidence.map(item => item.evidence_id));
@@ -531,6 +553,7 @@
     const sourceGapReport = clusterIntelligence.gap_report || sourceClusterGapReport();
     const entityIntel = buildEntityIntelligence();
     const entityMap = entityIntel.entity_map_report || entityMapReport();
+    const plannerReport = buildResearchPlannerReport(state.plan);
     const scores = qualityScores();
     const template = activeTemplateProfile();
     const fitReport = analysisTemplates?.templateFitReport ? analysisTemplates.templateFitReport(state, template?.template_id) : null;
@@ -544,6 +567,9 @@
       template_fit_report: fitReport,
       readiness_score: scores.readiness,
       research_questions: state.plan?.questions || [],
+      research_planner_report: plannerReport,
+      planner_quality_score: plannerReport.planner_quality_score || 0,
+      depth_preset: plannerReport.depth_preset || 'standard',
       source_clusters: clusters,
       source_cluster_report: sourceGapReport,
       source_gap_report: sourceGapReport,
@@ -551,7 +577,7 @@
       entity_map_report: entityMap,
       entity_alias_report: entityIntel.entity_alias_report || entityAliasReport(),
       coverage: diagnostics.coverage,
-      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || []), ...(entityMap.entity_gap_flags || [])])],
+      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || []), ...(entityMap.entity_gap_flags || []), ...(plannerReport.planner_gap_flags || [])])],
       evidence_priorities: (sourceGapReport.recommendations || []).length
         ? sourceGapReport.recommendations
         : (diagnostics.gaps.includes('counter_evidence_missing')
@@ -568,6 +594,7 @@
     state.entity_profiles = entityIntel.entity_profiles || [];
     state.entity_map_report = entityMap;
     state.entity_alias_report = entityIntel.entity_alias_report || entityAliasReport();
+    state.research_planner_report = plannerReport;
     const qualityReport = qualityGate.calculateQualityGateV3Report(Object.assign({}, state, {analysis_brief: brief}), {evidenceReviewReport, providerSafetyReport});
     brief.quality_gate_report = qualityReport;
     brief.publication_readiness = qualityReport.publication_readiness;
@@ -614,6 +641,7 @@
       model_mode: 'research-alpha-mock',
       subject: {title: t, context: c, question: `How should ${t} be interpreted through the Jarbou3i strategic model?`, executive_thesis: `Mock synthesis: ${t} should be treated as an adaptive system where interests, actors, tools, narrative, outcomes, and feedback loops must be tested against evidence rather than accepted as discourse.`},
       research_plan: state.plan,
+      research_planner_report: state.research_planner_report || (state.plan ? buildResearchPlannerReport(state.plan) : null),
       evidence_matrix: state.evidence,
       analysis_template: activeTemplateProfile(),
       analysis_brief: state.analysis_brief || compileAnalysisBrief(false),
@@ -1634,6 +1662,7 @@
     const nextPacket = migrated.packet;
     if(!validateWorkflowPacket(nextPacket)) throw new Error('invalid_packet');
     state.plan = Object.assign({}, nextPacket.research_plan, {plan_version: VERSION});
+    state.research_planner_report = nextPacket.research_planner_report || state.plan.research_planner_report || null;
     state.evidence = nextPacket.evidence_matrix.map((item, idx) => scoreEvidence(Object.assign({}, item, {evidence_id:`E${idx+1}`})));
     state.causal_links = Array.isArray(nextPacket.causal_links) ? nextPacket.causal_links.filter(link => link && validId(link.from) && validId(link.to) && Array.isArray(link.evidence_ids)) : [];
     state.analysis_brief = nextPacket.analysis_brief || null;
@@ -1778,8 +1807,21 @@
     el.innerHTML = `<div class="researchJsonCard"><div><b>${esc(tr('compiledThesisTitle'))}</b><span>${esc(tr('qualityLabel'))}: ${esc(compiled.plan_quality_score ?? 0)}/100 · ${esc(compiled.release_gate || '')}</span></div><p>${esc(compiled.refined_thesis || '')}</p><h4>${esc(tr('missingContextTitle'))}</h4><div class="miniChips">${(compiled.missing_context || []).length ? compiled.missing_context.map(x=>`<span>${esc(lStatus(x))}</span>`).join('') : `<span>${esc(tr('none'))}</span>`}</div><h4>${esc(tr('outputPlanTitle'))}</h4><div class="miniChips">${(compiled.output_plan || []).map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>`;
   }
 
+
+  function renderResearchPlanner(){
+    const el = $('researchPlannerOutput');
+    if(!el) return;
+    const report = state.research_planner_report || (state.plan ? buildResearchPlannerReport(state.plan) : null);
+    if(!report){ el.innerHTML = emptyState(tr('researchPlannerEmpty'), tr('researchPlannerEmptyBody'), tr('generatePlan')); return; }
+    const budget = report.source_type_budget?.budget || {};
+    const budgetChips = Object.entries(budget).filter(([,v])=>Number(v)>0).map(([k,v])=>`<span>${esc(k)}:${esc(v)}</span>`).join('');
+    const queryRows = (report.entity_aware_queries || []).slice(0,6).map(q=>`<li><strong>${esc(q.query_id)} · ${esc(q.purpose)}</strong>: ${esc(q.query_text)}</li>`).join('');
+    el.innerHTML = `<div class="researchJsonCard researchPlannerCard"><div><b>${esc(tr('researchPlannerTitle'))}</b><span>${esc(report.depth_preset)} · ${esc(report.planner_quality_score || 0)}/100 · ${esc(report.release_gate || '')}</span></div><div class="miniChips">${budgetChips || '<span>—</span>'}</div><h4>${esc(tr('researchPlannerQueries'))}</h4><ul>${queryRows || '<li>—</li>'}</ul><h4>${esc(tr('researchPlannerCounterEvidence'))}</h4><div class="miniChips">${(report.counter_evidence_targets || []).slice(0,6).map(t=>`<span>${esc(t.target_id || '')}: ${esc(String(t.target || '').slice(0,80))}</span>`).join('') || '<span>—</span>'}</div></div>`;
+  }
+
   function renderPlan(){
     renderPromptCompiler();
+    renderResearchPlanner();
     const el = $('researchPlanOutput');
     if(!el) return;
     if(!state.plan){el.innerHTML = emptyState(tr('noPlan'), tr('noPlanBody'), tr('generatePlan')); return;}
@@ -1816,9 +1858,10 @@
     const gapReport = brief.source_gap_report || brief.source_cluster_report || sourceClusterGapReport();
     const gaps = [...new Set([...(brief.gaps || []), ...(gapReport.global_gap_flags || []), ...(gapReport.cluster_gap_flags || []), ...(brief.entity_map_report?.entity_gap_flags || [])])];
     const entities = brief.entity_profiles || [];
+    const planner = brief.research_planner_report || state.research_planner_report || null;
     const entityCards = entities.slice(0, 8).map(e => `<div class="entityProfileCard"><div><b>${esc(e.entity_id)} · ${esc(e.canonical_name || '')}</b><span>${esc(e.category || 'other')}</span></div><p>${esc((e.claim_mentions || [])[0] || '')}</p><div class="miniChips"><span>${esc((e.evidence_ids || []).length)}E</span><span>${esc((e.cluster_ids || []).length)}CL</span><span>${esc(e.strategic_relevance_score ?? '—')}/100</span><span>${esc(e.review_gate || 'entity_review_required')}</span></div>${(e.aliases || []).length ? `<small>aliases: ${esc((e.aliases || []).slice(0,4).join(' · '))}</small>` : ''}</div>`).join('');
     const clusterCards = clusters.slice(0, 8).map(c => `<div class="sourceClusterCard"><div><b>${esc(c.cluster_id)} · ${esc(c.cluster_label || c.target_id)}</b><span>${esc(c.review_gate || 'review_required')}</span></div><p>${esc(c.primary_claim || (c.claims || [])[0] || '')}</p><div class="miniChips"><span>${esc(c.evidence_ids.length)}E</span><span>R:${esc(c.reliability_score ?? '—')}</span><span>A:${esc(c.attention_signal_score ?? '—')}</span><span>T:${esc(c.traceability_score ?? '—')}</span><span>${esc((c.source_types || []).join('/'))}</span>${c.duplicate_count ? `<span>${esc(c.duplicate_count)} duplicate</span>` : ''}</div>${(c.gap_flags || []).length ? `<small>${esc((c.gap_flags || []).join(' · '))}</small>` : ''}</div>`).join('');
-    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('entityTitle') || 'Entity profiles')}</h4><div class="entityProfileGrid">${entityCards || '<span>—</span>'}</div><h4>${esc(tr('clusterTitle'))}</h4><div class="sourceClusterGrid">${clusterCards || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${gapReport.recommendations?.length ? `<h4>Source gap actions</h4><ul>${gapReport.recommendations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : ''}<h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
+    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('researchPlannerTitle'))}</h4>${planner ? `<div class="researchPlannerSummary"><div class="miniChips"><span>${esc(planner.depth_preset || 'standard')}</span><span>${esc(planner.planner_quality_score || 0)}/100</span><span>${esc((planner.entity_aware_queries || []).length)} queries</span><span>${esc((planner.counter_evidence_targets || []).length)} counter-targets</span></div></div>` : '<p class="muted">—</p>'}<h4>${esc(tr('entityTitle') || 'Entity profiles')}</h4><div class="entityProfileGrid">${entityCards || '<span>—</span>'}</div><h4>${esc(tr('clusterTitle'))}</h4><div class="sourceClusterGrid">${clusterCards || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${gapReport.recommendations?.length ? `<h4>Source gap actions</h4><ul>${gapReport.recommendations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : ''}<h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
     renderDiagnostics();
   }
 
@@ -2141,6 +2184,7 @@
   }
 
   function renderQuality(){
+    const plannerReport = buildResearchPlannerReport(state.plan);
     const scores = qualityScores();
     const report = qualityGateReport();
     const el = $('researchQualityOutput');

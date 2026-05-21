@@ -1,9 +1,9 @@
 {
   "name": "jarbou3i-research-engine",
-  "version": "1.1.0-alpha.16",
+  "version": "1.1.0-alpha.17",
   "private": true,
   "type": "module",
-  "description": "Jarbou3i Research Engine v1.1.0-alpha.16 Entity Intelligence Layer. Adds local-only entity extraction from reviewed evidence and source clusters, manual-review entity profiles, alias and fuzzy merge logic, ignore-list continuity, entity-to-evidence and entity-to-cluster linking, and entity map export continuity while preserving Source Cluster + Gap Intelligence, evidence scoring continuity, Evidence Workspace + Source Import V2, manual/private defaults, hosted evidence guards, privacy/export boundaries, release evidence, repository hygiene, PLAYWRIGHT_SKIP_INSTALL continuity, and no live provider/source/OAuth/backend expansion. Continuity includes package script compression and CI gate registry, fixture/test debt ledger, professional trilingual language-description review, fixture registry payload compression, test organization audit, source strategy, and runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.",
+  "description": "Jarbou3i Research Engine v1.1.0-alpha.17 Research Planner V2. Adds a local-only Research Planner V2 with quick/standard/deep depth presets, source-type budget planning, entity-aware query planning, counter-evidence target generation, platform/source recommendation planning, connector-readiness dry-run diagnostics, planner quality scoring, and research planner report export continuity while preserving Entity Intelligence Layer, Source Cluster + Gap Intelligence, Evidence Workspace + Source Import V2, manual/private defaults, hosted evidence guards, privacy/export boundaries, release evidence, repository hygiene, PLAYWRIGHT_SKIP_INSTALL continuity, and no live provider/source/OAuth/backend expansion. Continuity includes package script compression and CI gate registry, fixture/test debt ledger, professional trilingual language-description review, fixture registry payload compression, test organization audit, source strategy, and runtime/provider/OAuth/backend/source/storage boundaries remain unchanged. evidence scoring continuity preserved.",
   "scripts": {
     "test": "npm run test:qa && npm run test:browser",
     "test:qa": "node tests/no-browser-qa-suite.mjs",

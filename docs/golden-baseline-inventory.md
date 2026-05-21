@@ -1,4 +1,4 @@
-# Golden Baseline Inventory — v1.1.0-alpha.16
+# Golden Baseline Inventory — v1.1.0-alpha.17
 
 ## Purpose
 

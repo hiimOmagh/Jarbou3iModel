@@ -63,7 +63,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
-| `v1.1.0-alpha.16-entity-intelligence-layer.md` | v1.1.0-alpha.16 — Entity Intelligence Layer |
+| `v1.1.0-alpha.17-research-planner-v2.md` | v1.1.0-alpha.17 — Research Planner V2 |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3267,8 +3267,8 @@ Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waitin
 This release is invalid if screenshots can be captured while transient overlays, modal backdrops, loading indicators, or unstable DOM states are present; if quality/export evidence is taken before the quality tab settles; or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
 
-<!-- release-file:v1.1.0-alpha.16-entity-intelligence-layer.md -->
-# v1.1.0-alpha.16 — Entity Intelligence Layer
+<!-- release-file:v1.1.0-alpha.17-research-planner-v2.md -->
+# v1.1.0-alpha.17 — Research Planner V2
 
 Adds a local-only entity intelligence layer over reviewed evidence and source clusters. The release extracts entity profiles, categories, aliases, evidence links, cluster links, review flags, and entity-map reports without external NER model download, live scraping, provider calls, OAuth/backend expansion, source connector expansion, storage expansion, broad UI redesign, or source refactor.
 
@@ -3307,4 +3307,8 @@ Post-freeze planning continuity: fixture registry consolidation, fixture registr
 Expansion lane continuity: fixture registry, MERGE_TO_REGISTRY, No live scraping, and No files are deleted discipline remain preserved.
 
 Repository consolidation continuity: docs/technical-debt-ledger.md, docs/source-refactor-readiness-audit.md, tests/language-description-audit-check.mjs, No source-file refactor yet, No runtime behavior change, and No fixture semantic thinning remain preserved.
-<!-- /release-file:v1.1.0-alpha.16-entity-intelligence-layer.md -->
+<!-- /release-file:v1.1.0-alpha.17-research-planner-v2.md -->
+
+Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
+
+No live scraping and No real OAuth remain enforced.

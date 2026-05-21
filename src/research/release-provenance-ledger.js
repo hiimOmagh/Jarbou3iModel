@@ -1,13 +1,13 @@
-/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.16. */
+/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.17. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.16';
+  const VERSION = '1.1.0-alpha.17';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.1.0-alpha.16 — Entity Intelligence Layer';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
+  const RELEASE_TITLE = 'v1.1.0-alpha.17 — Research Planner V2';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.17-research-planner-v2-patch.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
-    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.16', required:true},
+    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.17', required:true},
     {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},
     {evidence_id:'artifact_name_recorded', label:'artifact name is versioned and fixed', required:true},
     {evidence_id:'changed_files_manifest_present', label:'changed-files manifest is required for handoff review', required:true},
@@ -33,7 +33,7 @@
     return {
       release_provenance_ledger_version: version,
       generated_at: now,
-      release_title: `v${version} — Entity Intelligence Layer`,
+      release_title: `v${version} — Research Planner V2`,
       provenance_stage: 'release_provenance_ledger_checked',
       release_type: 'patch',
       patch_type: 'changed_files_only',

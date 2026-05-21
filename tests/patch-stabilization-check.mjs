@@ -14,24 +14,24 @@ const ciGateRegistry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json',
 const v103Entry = versionRegistry.entries.find((entry) => entry.id === 'v103');
 const release = fs.readFileSync('src/research/release-candidate.js', 'utf8');
 
-assert.equal(pkg.version, '1.1.0-alpha.16');
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.16');
-assert.equal(fixture.workflow_version, '1.1.0-alpha.16');
-assert.equal(fixture.release_candidate.stable_release_version, '1.1.0-alpha.16');
+assert.equal(pkg.version, '1.1.0-alpha.17');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.17');
+assert.equal(fixture.workflow_version, '1.1.0-alpha.17');
+assert.equal(fixture.release_candidate.stable_release_version, '1.1.0-alpha.17');
 assert.equal(migrationFixture.workflow_version, '1.0.1', 'v1.0.1 migration fixture must preserve the previous patch source version');
-assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8','1.0.9','1.0.10','1.0.11','1.0.12','1.0.13','1.0.14','1.0.15','1.0.16','1.0.17','1.0.18','1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.16'"), 'migrations must support v1.0.5 → v1.1.0-alpha.16');
+assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8','1.0.9','1.0.10','1.0.11','1.0.12','1.0.13','1.0.14','1.0.15','1.0.16','1.0.17','1.0.18','1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.17'"), 'migrations must support v1.0.5 → v1.1.0-alpha.17');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'CI no-browser shell must delegate to registry runner');
 assert.ok(ciGateRegistry.gates['no-browser'].node_checks.includes('tests/version-suite-registry-check.mjs'), 'CI no-browser registry must run version suite registry');
 assert.ok(v103Entry?.checks.includes('tests/patch-stabilization-check.mjs'), 'v103 registry entry must include patch gate');
 assert.ok(v103Entry?.checks.includes('tests/ux-stabilization-patch-check.mjs'), 'v103 registry entry must include UX stabilization gate');
 assert.ok(ciGateRegistry.gates.release.node_checks.includes('tests/ux-stabilization-patch-check.mjs'), 'release registry must include UX stabilization gate');
-assert.ok(renderHelpers.includes("alphaBadge:'v1.1.0-alpha.16 · Entity Intelligence Layer'"), 'English stable badge must be fixed');
-assert.ok(renderHelpers.includes('طبقة ذكاء الكيانات'), 'Arabic release badge must be professional and current');
-assert.ok(renderHelpers.includes('Couche d’intelligence des entités'), 'French release badge must be professional and current');
-assert.ok(renderHelpers.includes('local entity intelligence over reviewed evidence and source clusters'), 'English hosted evidence body must describe alpha.16 entity intelligence');
-assert.ok(renderHelpers.includes('ذكاء كيانات محلي'), 'Arabic hosted evidence body must describe alpha.16 entity intelligence');
-assert.ok(renderHelpers.includes('intelligence locale des entités'), 'French hosted evidence body must describe alpha.16 entity intelligence');
-assert.ok(renderHelpers.includes('external NER download'), 'English release note must preserve no external NER boundary');
+assert.ok(renderHelpers.includes("alphaBadge:'v1.1.0-alpha.17 · Research Planner V2'"), 'English stable badge must be fixed');
+assert.ok(renderHelpers.includes('مخطط البحث V2'), 'Arabic release badge must be professional and current');
+assert.ok(renderHelpers.includes('Planificateur de recherche V2'), 'French release badge must be professional and current');
+assert.ok(renderHelpers.includes('Research Planner V2 with depth presets'), 'English hosted evidence body must describe alpha.17 research planner');
+assert.ok(renderHelpers.includes('مخطط بحث محلي'), 'Arabic hosted evidence body must describe alpha.17 research planner');
+assert.ok(renderHelpers.includes('planificateur de recherche V2'), 'French hosted evidence body must describe alpha.17 research planner');
+assert.ok(renderHelpers.includes('no live search') || renderHelpers.includes('aucune recherche live'), 'release note must preserve no live search boundary');
 
 assert.ok(release.includes("'patch_release'"), 'stable policy must allow patch_release work only after stable');
 for (const forbidden of ['new_major_feature','new_live_provider','new_source_connector','oauth_production_enablement','secret_export_weakening']) {

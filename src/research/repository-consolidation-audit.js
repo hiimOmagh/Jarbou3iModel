@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine package script compression and CI gate registry v1.1.0-alpha.16. */
+/* Jarbou3i Research Engine package script compression and CI gate registry v1.1.0-alpha.17. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.16';
+  const VERSION = '1.1.0-alpha.17';
   const PREVIOUS_VERSION = '1.1.0-alpha.3';
   const FREEZE_BASELINE = '1.0.30';
 

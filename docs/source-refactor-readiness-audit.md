@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-alpha.16`
-Release: `v1.1.0-alpha.16 — Entity Intelligence Layer`
+Version: `1.1.0-alpha.17`
+Release: `v1.1.0-alpha.17 — Research Planner V2`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

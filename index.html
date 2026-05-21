@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jarbou3i Research Engine — v1.1.0-alpha.16</title>
+<title>Jarbou3i Research Engine — v1.1.0-alpha.17</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,14 +11,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#255ee8" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020817" />
 <meta name="color-scheme" content="light dark" />
-<meta property="og:title" content="Jarbou3i Research Engine — v1.1.0-alpha.16" />
+<meta property="og:title" content="Jarbou3i Research Engine — v1.1.0-alpha.17" />
 <meta property="og:description" content="Trilingual, client-side strategic research workbench with schema-governed six-layer analysis, evidence discipline, and safe export." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/jarbou3i-mascot-512.png" />
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
 <meta name="twitter:card" content="summary" />
-<meta name="app-version" content="1.1.0-alpha.16" />
+<meta name="app-version" content="1.1.0-alpha.17" />
 <link rel="stylesheet" href="src/styles.css" />
 <!-- Release approval guard: screenshots alone and ZIP existence alone are insufficient. -->
 </head>
@@ -46,7 +46,7 @@
 <section class="panel researchLabPanel" id="researchLabPanel">
 <div class="panelHeader researchHeader">
 <div>
-<div class="researchEyebrow" data-r-i18n="alphaBadge">v1.1.0-alpha.16 · Entity Intelligence Layer</div>
+<div class="researchEyebrow" data-r-i18n="alphaBadge">v1.1.0-alpha.17 · Research Planner V2</div>
 <h2 data-r-i18n="researchTitle">Research Workflow Lab</h2>
 <p data-r-i18n="researchSubtitle">Experimental research-to-strategy pipeline. Manual mode remains untouched.</p>
 </div>
@@ -82,7 +82,7 @@
 <div>
 <div class="researchEyebrow" data-r-i18n="hostedDemoVerificationEyebrow">التحقق من العرض المستضاف</div>
 <h3 data-r-i18n="hostedDemoVerificationTitle">لا تنشر إلا بعد توفر أدلة المتصفح</h3>
-<p class="muted" data-r-i18n="hostedDemoVerificationBody">بوابة تخطيط فقط: لا يوجد استخراج حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.16 طبقة ذكاء كيانات محلية تستخرج الكيانات من الأدلة والعناقيد، وتربط الأسماء المستعارة والأدلة والتجميعات دون نموذج خارجي أو جلب حي أو تغيير في حدود الخصوصية، مع الحفاظ على حارس الشوائب البصرية وأدلة الاستضافة ودون تغيير سلوك التشغيل.</p>
+<p class="muted" data-r-i18n="hostedDemoVerificationBody">بوابة تخطيط فقط: لا يوجد استخراج حي ولا بحث حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.17 مخطط بحث محليًا بمستويات عمق وميزانيات مصادر وخطط استعلام مرتبطة بالكيانات وأهداف أدلة مضادة دون جلب حي أو تغيير في حدود الخصوصية.</p>
 </div>
 <div class="hostedDemoChecklist">
 <span data-r-i18n="hostedUrlChecked">تم فحص رابط الاستضافة</span>
@@ -95,7 +95,7 @@
 <div>
 <div class="researchEyebrow" data-r-i18n="evidenceReviewGateEyebrow">بوابة مراجعة الأدلة</div>
 <h3 data-r-i18n="evidenceReviewGateTitle">راجع اللقطات والبيانات الوصفية قبل النشر</h3>
-<p class="muted" data-r-i18n="evidenceReviewGateBody">تحافظ v1.1.0-alpha.16 على بوابات العرض المستضاف واللقطات النصية متعددة اللغات، وتضيف ملفات كيانات محلية وروابط كيانات-أدلة-عناقيد قابلة للمراجعة. تبقى حزم المصادر وقوالبها محلية/يدوية؛ ولا تكفي اللقطات أو ملفات ZIP أو الكيانات وحدها لاعتماد الإصدار.</p>
+<p class="muted" data-r-i18n="evidenceReviewGateBody">تحافظ v1.1.0-alpha.17 على بوابات العرض المستضاف واللقطات النصية متعددة اللغات، وتضيف تقرير مخطط بحث محليًا يربط الكيانات والعناقيد بخطط مصادر وأهداف أدلة مضادة. تبقى حزم المصادر وقوالبها محلية/يدوية؛ ولا تكفي اللقطات أو ملفات ZIP وحدها لاعتماد الإصدار؛ كما لا تكفي الخطط وحدها.</p>
 </div>
 <div class="evidenceReviewChecklist">
 <span data-r-i18n="hostedUrlSmoke">اختبار دخان لرابط الاستضافة</span>
@@ -167,6 +167,11 @@
 <div class="researchEyebrow" data-r-i18n="promptCompilerEyebrow">Prompt compiler</div>
 <p class="muted" data-r-i18n="promptCompilerBody">Local-only upgrade: refine raw topic input into thesis, questions, evidence needs, counterarguments, and falsifiers before plan generation.</p>
 <div id="promptCompilerOutput" class="researchOutput compactOutput"></div>
+</div>
+<div class="researchPlannerPanel" id="researchPlannerPanel">
+<div class="researchEyebrow" data-r-i18n="researchPlannerEyebrow">Research Planner V2</div>
+<p class="muted" data-r-i18n="researchPlannerBody">Local-only planner: depth presets, source budgets, entity-aware query plans, counter-evidence targets, and connector-readiness dry-run diagnostics.</p>
+<div id="researchPlannerOutput" class="researchOutput compactOutput"></div>
 </div>
 <div class="actions">
 <button class="btn" id="compilePromptBtn" type="button" data-r-i18n="compilePrompt">Compile prompt</button>
@@ -507,6 +512,7 @@
 <script src="src/research/quality-gate.js" defer></script>
 <script src="src/research/prompt-builders.js" defer></script>
 <script src="src/research/prompt-compiler.js" defer></script>
+<script src="src/research/research-planner-v2.js" defer></script>
 <script src="src/research/provider-core.js" defer></script>
 <script src="src/research/provider-identity.js" defer></script>
 <script src="src/research/portable-account-mock.js" defer></script>
@@ -531,6 +537,6 @@
 <script src="src/research/release-apply-integrity.js" defer></script>
 <script src="src/research/release-provenance-ledger.js" defer></script>
 <script src="src/research-engine.js" defer></script>
-<span class="sr-only" data-r-i18n="analysisReleaseNote">تضيف v1.1.0-alpha.16 طبقة ذكاء كيانات محلية تستخرج الكيانات من الأدلة والعناقيد، وتربط الأسماء المستعارة والأدلة والتجميعات دون نموذج خارجي أو جلب حي أو تغيير في حدود الخصوصية، مع الحفاظ على حارس الشوائب البصرية وأدلة الاستضافة ودون تغيير سلوك التشغيل.</span>
+<span class="sr-only" data-r-i18n="analysisReleaseNote">تضيف v1.1.0-alpha.17 مخطط بحث محليًا بمستويات عمق وميزانيات مصادر وخطط استعلام مرتبطة بالكيانات وأهداف أدلة مضادة دون بحث حي أو جلب خارجي أو تغيير في حدود الخصوصية، مع الحفاظ على حارس الشوائب البصرية وأدلة الاستضافة ودون تغيير سلوك التشغيل.</span>
 </body>
 </html>

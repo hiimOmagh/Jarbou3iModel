@@ -1,45 +1,11 @@
-# Public Demo Operator Guide
+# Public Demo
 
-## v1.1.0-alpha.16 — Entity Intelligence Layer
+Current public-demo milestone: v1.1.0-alpha.17 — Research Planner V2
 
-This guide preserves the public-demo operating boundary after root release/evidence artifacts were consolidated into the docs layer.
+The demo presents a local/manual research workflow with evidence review, source clusters, entity profiles, and Research Planner V2. Planner output is source-planning guidance only; it performs no live search, scraping, provider execution, OAuth flow, backend expansion, or automated source verification.
 
-## Demo goal
+Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
 
-Show that the research engine turns a topic into a structured, evidence-aware strategic workflow with reviewed evidence, source clusters, and local entity profiles without requiring a live provider, OAuth account, backend key, source connector, external NER model, or live scraping.
+Provenance continuity: Root Manifest, Release Artifact Consolidation, CI Gate Registry, Fixture Registry payload compression, test organization, provenance ledger, and changed-files-only discipline are preserved.
 
-## Recommended demo path
-
-1. Define a concrete topic and context.
-2. Generate a research plan.
-3. Add or import evidence.
-4. Review the evidence queue before promotion.
-5. Compile/check the quality gate.
-6. Export only after verifying privacy/export gates.
-7. Treat hosted-demo screenshots and metadata as review evidence, not automatic approval.
-
-## Boundaries to state during the demo
-
-- Manual/private mode is the default.
-- Live provider behavior is not part of this patch.
-- Production OAuth is not enabled.
-- Source automation remains planning/review-gated.
-- Source packet templates are local/manual scaffolds, not verification claims.
-- Exported files must not contain provider keys or raw tokens.
-- Screenshots alone do not approve the release.
-- ZIP existence alone does not approve the release.
-- Root release/evidence artifacts are consolidated in `docs/release-and-evidence.md` and `docs/current-release.md`.
-
-## Stop conditions
-
-Do not publish the public demo package if no-browser CI, browser QA, privacy export, hosted-demo evidence review, public-claim alignment, or repo hygiene checks fail.
-
-Evidence manifest continuity: v1.1.0-alpha.16 preserves the single final metadata hosted-demo evidence manifest gate.
-
-
-Release provenance ledger, changed-files-only discipline, Package Script Compression, CI Gate Registry, Fixture Registry payload compression, and mobile header visual freeze continuity remain preserved.
-
-Continuity note: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, changed-files-only discipline, no live scraping, No real OAuth, screenshots alone, hosted evidence, and ZIPs are not sufficient for release approval.
-
-
-Release-lock guard: v1.1.0-alpha.16 Entity Intelligence Layer requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+No live scraping and No real OAuth remain enforced.
