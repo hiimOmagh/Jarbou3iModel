@@ -8,7 +8,7 @@ const VERSION = '1.1.0-alpha.16';
 const TITLE = 'Entity Intelligence Layer';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md';
+const DOC = 'docs/v1.1.0-alpha.16-entity-intelligence-layer.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));

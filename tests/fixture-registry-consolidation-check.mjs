@@ -6,7 +6,7 @@ import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const VERSION = '1.1.0-alpha.16';
 const TITLE = 'Entity Intelligence Layer';
-const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
 
 assert.equal(migrationRegistry.registry_version, VERSION);
 assert.equal(migrationRegistry.registry_type, 'migration_fixture_registry');
@@ -54,7 +54,7 @@ assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must re
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${VERSION} · ${TITLE}`));
-assert.ok(releaseDocExists(`docs/v${VERSION}-source-cluster-gap-intelligence.md`));
+assert.ok(releaseDocExists(`docs/v${VERSION}-entity-intelligence-layer.md`));
 
 console.log('Fixture registry consolidation checks passed.');
 process.exit(0);

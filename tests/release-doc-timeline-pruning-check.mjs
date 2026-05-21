@@ -10,8 +10,8 @@ const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');
 const roadmap = fs.readFileSync('docs/roadmap.md', 'utf8');
 const qaMatrix = fs.readFileSync('docs/qa-matrix.md', 'utf8');
 
-assert.ok(releaseDocExists(`docs/v${VERSION}-source-cluster-gap-intelligence.md`), 'alpha.11 release doc must exist in release history');
-const doc = readReleaseDoc(`docs/v${VERSION}-source-cluster-gap-intelligence.md`);
+assert.ok(releaseDocExists(`docs/v${VERSION}-entity-intelligence-layer.md`), 'alpha.11 release doc must exist in release history');
+const doc = readReleaseDoc(`docs/v${VERSION}-entity-intelligence-layer.md`);
 assert.ok(doc.includes(`# v${VERSION} — ${TITLE}`));
 assert.ok(doc.includes('docs/technical-debt-ledger.md'));
 assert.ok(doc.includes('docs/source-refactor-readiness-audit.md'));

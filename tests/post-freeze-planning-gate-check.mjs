@@ -13,13 +13,13 @@ const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repo
 const VERSION = '1.1.0-alpha.16';
 const BASELINE = '1.1.0-alpha.1';
 const TITLE = 'Entity Intelligence Layer';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
-const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md');
+const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.16-entity-intelligence-layer.md');
 const migrations = read('src/research/migrations.js');
 const schema = json('schema/research-workflow.schema.json');
 const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.16-packet.json');

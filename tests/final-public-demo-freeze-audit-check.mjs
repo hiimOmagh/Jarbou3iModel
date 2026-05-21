@@ -11,7 +11,7 @@ const BASE_VERSION = '1.0.30';
 const TITLE = 'Entity Intelligence Layer';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const LOCK_RELEASE = `v${VERSION} — Public Demo Release Lock`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -31,7 +31,7 @@ const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const ciBrowser = read('scripts/ci-browser.sh');
 const browserA11y = read('tests/a11y.spec.js');
 const smoke = read('tests/smoke.spec.js');
-const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md');
+const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.16-entity-intelligence-layer.md');
 
 for (const [actual, label] of [[pkg.version,'package.json'],[lock.version,'package-lock root'],[lock.packages[''].version,'package-lock package root'],[schema.properties.workflow_version.const,'schema workflow_version'],[sample.workflow_version,'sample workflow'],[migrationFixture.workflow_version,'migration fixture'],[privacyFixture.workflow_version,'privacy fixture']]) assert.equal(actual, VERSION, `${label} must identify v${VERSION}`);
 
@@ -85,7 +85,7 @@ assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI 
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
 assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'browser CI must preserve hosted evidence through registry runner');
-for (const file of ['fixtures/migrations/v1.0.28-packet.json','fixtures/privacy/browser-generated-export-v1.0.28.json','fixtures/migrations/v1.1.0-alpha.16-packet.json','fixtures/privacy/browser-generated-export-v1.1.0-alpha.16.json','docs/v1.0.28-hosted-demo-evidence-manifest-gate.md','docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md','tests/version-suite-registry-check.mjs']) assert.ok(exists(file), `missing required baseline/current artifact: ${file}`);
+for (const file of ['fixtures/migrations/v1.0.28-packet.json','fixtures/privacy/browser-generated-export-v1.0.28.json','fixtures/migrations/v1.1.0-alpha.16-packet.json','fixtures/privacy/browser-generated-export-v1.1.0-alpha.16.json','docs/v1.0.28-hosted-demo-evidence-manifest-gate.md','docs/v1.1.0-alpha.16-entity-intelligence-layer.md','tests/version-suite-registry-check.mjs']) assert.ok(exists(file), `missing required baseline/current artifact: ${file}`);
 for (const file of ['tests/final-public-demo-freeze-audit-check.mjs','tests/version-suite-registry-check.mjs']) { const syntax = spawnSync(process.execPath, ['--check', file], {encoding:'utf8'}); assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax failed`); }
 console.log('Final public demo freeze audit checks passed.');
 process.exit(0);

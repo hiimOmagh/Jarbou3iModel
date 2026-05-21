@@ -39,7 +39,7 @@ const qaMatrix = read('docs/qa-matrix.md');
 const architecture = read('docs/architecture.md');
 const aiIntegration = read('docs/ai-integration.md');
 const privacyAudit = read('docs/privacy-audit.md');
-const releaseDoc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md')}`;
+const releaseDoc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-alpha.16-entity-intelligence-layer.md')}`;
 
 assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0-alpha.16');
 assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0-alpha.16');

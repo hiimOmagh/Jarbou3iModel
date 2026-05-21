@@ -14,7 +14,7 @@ const VERSION = '1.1.0-alpha.16';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Entity Intelligence Layer';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -25,7 +25,7 @@ const schema = json('schema/research-workflow.schema.json');
 const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.16-packet.json');
 const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.16.json');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
-const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md');
+const releaseDoc = readReleaseDoc('docs/v1.1.0-alpha.16-entity-intelligence-layer.md');
 
 assert.equal(pkg.version, VERSION, 'package version must be v1.1.0-alpha.16');
 assert.equal(lock.version, VERSION, 'package-lock root version must be v1.1.0-alpha.16');
@@ -61,7 +61,7 @@ assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow
 assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.16'"), 'migration target must be v1.1.0-alpha.16');
 assert.ok(migrations.includes("'1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.16'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0-alpha.16');
 assert.ok(releaseDocExists('docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md'), 'v1.0.30 freeze baseline release doc must remain present');
-assert.ok(releaseDocExists('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md'), 'v1.1.0-alpha.16 release doc must exist');
+assert.ok(releaseDocExists('docs/v1.1.0-alpha.16-entity-intelligence-layer.md'), 'v1.1.0-alpha.16 release doc must exist');
 assert.ok(releaseDoc.includes('Mobile Header Geometry Lock'), 'v1.1.0-alpha.16 release doc must state the visual-freeze scope');
 assert.ok(releaseDoc.includes('No live scraping') || releaseDoc.includes('live scraping'), 'v1.1.0-alpha.16 release doc must preserve public-demo honesty boundaries');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must run mobile header geometry guard through registry runner');

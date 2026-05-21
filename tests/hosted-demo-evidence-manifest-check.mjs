@@ -9,7 +9,7 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const VERSION = '1.1.0-alpha.16';
 const TITLE = 'Entity Intelligence Layer';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || releaseDocExists(file);
@@ -102,7 +102,7 @@ assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration def
 for (const file of [
   'docs/v1.0.27-release-provenance-ledger-gate.md',
   'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
-  'docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md',
+  'docs/v1.1.0-alpha.16-entity-intelligence-layer.md',
   'fixtures/migrations/v1.0.28-packet.json',
   'fixtures/migrations/v1.1.0-alpha.16-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.28.json',
@@ -123,7 +123,7 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  readReleaseDoc('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md')
+  readReleaseDoc('docs/v1.1.0-alpha.16-entity-intelligence-layer.md')
 ]) {
   assert.ok(corpus.includes('v1.1.0-alpha.16') || corpus.includes('1.1.0-alpha.16'), 'release corpus must mention v1.1.0-alpha.16');
   assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|Fixture Registry|payload compression|test organization|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');

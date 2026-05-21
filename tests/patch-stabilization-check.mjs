@@ -28,6 +28,11 @@ assert.ok(ciGateRegistry.gates.release.node_checks.includes('tests/ux-stabilizat
 assert.ok(renderHelpers.includes("alphaBadge:'v1.1.0-alpha.16 · Entity Intelligence Layer'"), 'English stable badge must be fixed');
 assert.ok(renderHelpers.includes('طبقة ذكاء الكيانات'), 'Arabic release badge must be professional and current');
 assert.ok(renderHelpers.includes('Couche d’intelligence des entités'), 'French release badge must be professional and current');
+assert.ok(renderHelpers.includes('local entity intelligence over reviewed evidence and source clusters'), 'English hosted evidence body must describe alpha.16 entity intelligence');
+assert.ok(renderHelpers.includes('ذكاء كيانات محلي'), 'Arabic hosted evidence body must describe alpha.16 entity intelligence');
+assert.ok(renderHelpers.includes('intelligence locale des entités'), 'French hosted evidence body must describe alpha.16 entity intelligence');
+assert.ok(renderHelpers.includes('external NER download'), 'English release note must preserve no external NER boundary');
+
 assert.ok(release.includes("'patch_release'"), 'stable policy must allow patch_release work only after stable');
 for (const forbidden of ['new_major_feature','new_live_provider','new_source_connector','oauth_production_enablement','secret_export_weakening']) {
   assert.ok(release.includes(forbidden), `release policy must keep blocked-work guard: ${forbidden}`);

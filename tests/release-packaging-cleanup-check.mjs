@@ -87,7 +87,7 @@ const expectedDocHeadings = new Map([
   ['docs/v1.0.26-release-apply-integrity-gate.md', '# v1.0.26 — Release Apply Integrity Gate'],
   ['docs/v1.0.27-release-provenance-ledger-gate.md', '# v1.0.27 — Release Provenance Ledger Gate'],
   ['docs/v1.0.28-hosted-demo-evidence-manifest-gate.md', '# v1.0.28 — Hosted Demo Evidence Manifest Gate'],
-  ['docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md', '# v1.1.0-alpha.16 — Entity Intelligence Layer']
+  ['docs/v1.1.0-alpha.16-entity-intelligence-layer.md', '# v1.1.0-alpha.16 — Entity Intelligence Layer']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
   assert.equal(readReleaseDoc(file).split('\n')[0], heading, `${file} heading drifted`);

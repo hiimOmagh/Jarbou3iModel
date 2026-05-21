@@ -5,7 +5,7 @@
   const VERSION = '1.1.0-alpha.16';
   const BASE_VERSION = '1.0.30';
   const RELEASE_TITLE = 'v1.1.0-alpha.16 — Entity Intelligence Layer';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
   const APPLY_CHECKS = Object.freeze([
     {check_id:'base_version_known', label:'Patch is declared as changed-files-only over v1.1.0-alpha.1', required:true},
     {check_id:'artifact_name_fixed', label:'Release artifact name is fixed and versioned', required:true},

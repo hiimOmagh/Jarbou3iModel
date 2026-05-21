@@ -25,8 +25,8 @@ const VERSION = '1.1.0-alpha.16';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';
 const TITLE = 'Entity Intelligence Layer';
-const DOC = 'docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+const DOC = 'docs/v1.1.0-alpha.16-entity-intelligence-layer.md';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');

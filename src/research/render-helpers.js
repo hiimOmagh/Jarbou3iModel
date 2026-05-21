@@ -5,7 +5,7 @@
   const COPY = {
     en: {
       researchTitle:'Research Workflow Lab',
-      researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, causal links, mock AI, critique, and Quality Gate v3.',
+      researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, source clusters, entity profiles, causal links, mock AI, critique, and Quality Gate v3.',
       alphaBadge:'v1.1.0-alpha.16 · Entity Intelligence Layer',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
@@ -25,7 +25,7 @@
     },
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
-      researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، روابط سببية، تجميعات مصادر، نقد، وبوابة جودة v3.',
+      researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، تجميعات مصادر، ملفات كيانات، روابط سببية، نقد، وبوابة جودة v3.',
       alphaBadge:'v1.1.0-alpha.16 · طبقة ذكاء الكيانات' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
@@ -45,7 +45,7 @@
     },
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
-      researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, liens causaux, clusters de sources, critique et barrière qualité v3.',
+      researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, clusters de sources, profils d’entités, liens causaux, critique et barrière qualité v3.',
       alphaBadge:'v1.1.0-alpha.16 · Couche d’intelligence des entités',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
@@ -312,9 +312,9 @@
     hostedDemoVerificationBody:'Planning gate only: no live scraping, no real OAuth, no provider execution, and no automated source verification are enabled. v1.1.0-alpha.16 adds a local entity intelligence layer with evidence-linked entity profiles, aliases, ignore-list continuity, and cluster links while preserving the visual artifact guard, hosted evidence, visible-text snapshots, and privacy boundaries.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
-    evidenceReviewGateBody:'v1.1.0-alpha.16 preserves the public-demo freeze while adding local source clusters, overlap diagnostics, and gap reports that remain review-gated. Source packets remain local/manual drafting scaffolds; screenshots, hosted evidence, ZIPs, clusters, and generated plans are not release approval by themselves.',
+    evidenceReviewGateBody:'v1.1.0-alpha.16 preserves the public-demo freeze while adding local entity intelligence over reviewed evidence and source clusters: entity profiles, aliases, ignore-list continuity, and entity-to-evidence/cluster links remain review-gated. Source packets remain local/manual drafting scaffolds; screenshots, hosted evidence, ZIPs, clusters, entities, and generated plans are not release approval by themselves.',
     hostedUrlSmoke:'Hosted URL smoke', noOverflowProof:'No overflow proof', metadataArtifact:'Metadata artifact', reviewedBeforePublish:'Reviewed before publish',
-    stableWorkflowEyebrow:'Stable workflow', stableWorkflowTitle:'Next action: add evidence → review source clusters → close source gaps',
+    stableWorkflowEyebrow:'Stable workflow', stableWorkflowTitle:'Next action: add evidence → review clusters → link entities and gaps',
     stableWorkflowBody:'Advanced provider, OAuth, backend, source, and release diagnostics are collapsed until a selected post-freeze lane has criteria, falsifiers, and review gates; implementation remains blocked.',
     analysisTab:'Analysis', evidenceTab:'Evidence', sourcesTab:'Sources', qualityExportTab:'Quality & Export', settingsAdvancedTab:'Settings / Advanced'
   });
@@ -331,9 +331,9 @@
     hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد استخراج حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.16 طبقة ذكاء كيانات محلية مع ملفات كيانات مرتبطة بالأدلة، وأسماء مستعارة، وقائمة تجاهل، وروابط عناقيد، مع الحفاظ على حارس الشوائب البصرية وأدلة الاستضافة ولقطات النص المرئي وحدود الخصوصية.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
-    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.16 على تجميد العرض العام مع إضافة تجميعات مصادر محلية، وتشخيص التداخل، وتقارير فجوات الأدلة ضمن بوابة مراجعة. تبقى حزم المصادر قوالب صياغة محلية/يدوية؛ ولا تكفي اللقطات أو أدلة الاستضافة أو ملفات ZIP أو التجميعات أو الخطط المولّدة وحدها لاعتماد الإصدار.',
+    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.16 على تجميد العرض العام مع إضافة ذكاء كيانات محلي فوق الأدلة المراجعة وتجميعات المصادر: ملفات كيانات، وأسماء مستعارة، واستمرارية قائمة التجاهل، وروابط كيان-دليل-عنقود تبقى ضمن بوابة مراجعة. تبقى حزم المصادر قوالب صياغة محلية/يدوية؛ ولا تكفي اللقطات أو أدلة الاستضافة أو ملفات ZIP أو التجميعات أو الكيانات أو الخطط المولّدة وحدها لاعتماد الإصدار.',
     hostedUrlSmoke:'اختبار دخان لرابط الاستضافة', noOverflowProof:'إثبات عدم وجود تجاوز أفقي', metadataArtifact:'أثر بيانات وصفية', reviewedBeforePublish:'تمت المراجعة قبل النشر',
-    stableWorkflowEyebrow:'سير عمل مستقر', stableWorkflowTitle:'الإجراء التالي: أضف الأدلة → راجع تجميعات المصادر → أغلق فجوات الأدلة',
+    stableWorkflowEyebrow:'سير عمل مستقر', stableWorkflowTitle:'الإجراء التالي: أضف الأدلة → راجع العناقيد → اربط الكيانات والفجوات',
     stableWorkflowBody:'تبقى تشخيصات المزوّد المتقدم وOAuth والخلفية والمصادر والإصدار مطوية حتى يحصل مسار ما بعد التجميد على معايير قبول وشروط إبطال وبوابات مراجعة واضحة؛ ويظل التنفيذ محظورًا.',
     analysisTab:'التحليل', evidenceTab:'الأدلة', sourcesTab:'المصادر', qualityExportTab:'الجودة والتصدير', settingsAdvancedTab:'الإعدادات / المتقدم',
     providerEndpoint:'نقطة النهاية', providerModel:'النموذج', providerApiKey:'مفتاح API', rememberProviderKey:'حفظ المفتاح محليًا على هذا الجهاز', enableLiveByok:'تفعيل استدعاءات المزوّد الحية', providerSafety:'الأمان: يبقى النمط اليدوي/الخاص هو الافتراضي. لا تُصدَّر المفاتيح في الحزم أو التقارير أو سجل التشغيل.', validateProviderSettings:'التحقق من إعدادات المزوّد', dryRunProviderRequest:'بناء طلب تجريبي دون تنفيذ', byokScore:'أمان مفتاحك الخاص', backendProxyScore:'وسيط الخلفية', providerIdentityScore:'هوية المزوّد', statusProviderDryRun:'تم بناء حمولة المزوّد دون استدعاء شبكي حي.', statusProviderSettingsSaved:'تم التحقق من إعدادات المزوّد وحفظها.', statusProviderLiveDisabled:'استدعاءات المزوّد الحية معطّلة؛ تم تسجيل استجابة تجريبية/وهمية.', statusProviderLiveError:'فشل استدعاء المزوّد الحي؛ لم يُخزَّن أي مفتاح في سجل التشغيل.', statusBackendProxyReady:'تم اختيار وسيط الخلفية المستضاف. لا يرسل المتصفح مفتاح المزوّد.'
@@ -351,9 +351,9 @@
     hostedDemoVerificationBody:'Barrière de planification uniquement : aucun scraping live, aucun OAuth réel, aucune exécution fournisseur et aucune vérification automatique des sources ne sont activés. v1.1.0-alpha.16 ajoute une couche locale d’intelligence des entités avec profils liés aux preuves, alias, liste d’ignorés et liens de clusters, tout en préservant la garde visuelle, les preuves hébergées, les snapshots de texte visible et les frontières de confidentialité.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
-    evidenceReviewGateBody:'v1.1.0-alpha.16 préserve le gel de démo publique tout en ajoutant des clusters de sources locaux, des diagnostics de chevauchement et des rapports de lacunes sous revue humaine. Les paquets source restent des échafaudages locaux/manuels ; captures, preuves hébergées, ZIPs, clusters et plans générés ne valent pas approbation de release à eux seuls.',
+    evidenceReviewGateBody:'v1.1.0-alpha.16 préserve le gel de démo publique tout en ajoutant une intelligence locale des entités sur les preuves revues et les clusters de sources : profils d’entités, alias, liste d’ignorés et liens entité-preuve-cluster restent sous revue humaine. Les paquets source restent des échafaudages locaux/manuels ; captures, preuves hébergées, ZIPs, clusters, entités et plans générés ne valent pas approbation de release à eux seuls.',
     hostedUrlSmoke:'Smoke test URL hébergée', noOverflowProof:'Preuve sans débordement', metadataArtifact:'Artefact de métadonnées', reviewedBeforePublish:'Revu avant publication',
-    stableWorkflowEyebrow:'Workflow stable', stableWorkflowTitle:'Action suivante : ajouter des preuves → revoir les clusters de sources → fermer les lacunes',
+    stableWorkflowEyebrow:'Workflow stable', stableWorkflowTitle:'Action suivante : ajouter des preuves → revoir les clusters → lier entités et lacunes',
     stableWorkflowBody:'Les diagnostics fournisseur avancé, OAuth, backend, source et release restent repliés jusqu’à ce qu’un axe post-gel ait critères, falsificateurs et barrières de revue; l’implémentation reste bloquée.',
     analysisTab:'Analyse', evidenceTab:'Preuves', sourcesTab:'Sources', qualityExportTab:'Qualité & Export', settingsAdvancedTab:'Paramètres / Avancé',
     providerEndpoint:'Point de terminaison', providerModel:'Modèle', providerApiKey:'Clé API', rememberProviderKey:'Mémoriser localement sur cet appareil', enableLiveByok:'Activer les appels fournisseur live', providerSafety:'Sécurité : le mode manuel/privé reste par défaut. Les clés ne sont jamais exportées dans les paquets, rapports ou journaux.', validateProviderSettings:'Valider les paramètres fournisseur', dryRunProviderRequest:'Construire une requête à blanc', byokScore:'Sécurité BYOK', backendProxyScore:'Proxy backend', providerIdentityScore:'Identité fournisseur', statusProviderDryRun:'Charge fournisseur construite sans appel réseau live.', statusProviderSettingsSaved:'Paramètres fournisseur validés et enregistrés.', statusProviderLiveDisabled:'Appels fournisseur live désactivés; réponse simulée enregistrée.', statusProviderLiveError:'Échec de l’appel fournisseur live; aucune clé n’a été stockée dans le journal.', statusBackendProxyReady:'Proxy backend hébergé sélectionné. Le navigateur n’envoie aucune clé fournisseur.'
@@ -441,7 +441,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'v1.1.0-alpha.16 adds local source clustering, overlap diagnostics, source-gap warnings, and cluster export without live AI calls, scraping, OAuth, backend expansion, connector expansion, or source verification changes.',
+    analysisReleaseNote:'v1.1.0-alpha.16 adds local entity intelligence over reviewed evidence and source clusters: entity profiles, aliases, ignore-list continuity, entity-to-evidence links, entity-to-cluster links, and entity map export without live AI calls, scraping, OAuth, backend expansion, connector expansion, external NER download, or source verification changes.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -456,7 +456,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'تضيف v1.1.0-alpha.16 تجميعًا محليًا للمصادر، وتشخيصًا للتداخل، وتحذيرات فجوات الأدلة، وتصديرًا للتجميعات دون استدعاءات AI حية أو جلب ويب أو OAuth أو توسيع للخلفية أو الموصلات أو تغيير في تحقق المصادر.',
+    analysisReleaseNote:'تضيف v1.1.0-alpha.16 ذكاء كيانات محليًا فوق الأدلة المراجعة وتجميعات المصادر: ملفات كيانات، وأسماء مستعارة، واستمرارية قائمة التجاهل، وروابط كيان-دليل وكيان-عنقود، وتصدير خريطة الكيانات دون استدعاءات AI حية أو جلب ويب أو OAuth أو توسيع للخلفية أو الموصلات أو تنزيل نموذج NER خارجي أو تغيير في تحقق المصادر.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -472,7 +472,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'v1.1.0-alpha.16 ajoute des clusters de sources locaux, des diagnostics de chevauchement, des avertissements de lacunes et l’export des clusters sans appels IA live, scraping, OAuth, extension backend/connexions ni changement de vérification des sources.',
+    analysisReleaseNote:'v1.1.0-alpha.16 ajoute une intelligence locale des entités sur les preuves revues et les clusters de sources : profils d’entités, alias, liste d’ignorés, liens entité-preuve, liens entité-cluster et export de carte d’entités sans appels IA live, scraping, OAuth, extension backend/connecteurs, téléchargement de modèle NER externe ni changement de vérification des sources.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',

@@ -11,7 +11,7 @@ const VERSION = '1.1.0-alpha.16';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Entity Intelligence Layer';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip';
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -103,7 +103,7 @@ for (const required of [
   'src/research/release-provenance-ledger.js',
   'tests/release-provenance-ledger-check.mjs',
   'tests/version-suite-registry-check.mjs',
-  'docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md',
+  'docs/v1.1.0-alpha.16-entity-intelligence-layer.md',
   'fixtures/migrations/v1.1.0-alpha.16-packet.json',
   'fixtures/privacy/browser-generated-export-v1.1.0-alpha.16.json',
   'fixtures/migrations/v1.0.26-packet.json',
@@ -123,7 +123,7 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  readReleaseDoc('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md')
+  readReleaseDoc('docs/v1.1.0-alpha.16-entity-intelligence-layer.md')
 ]) {
   assert.ok(corpus.includes('v1.1.0-alpha.16') || corpus.includes('1.1.0-alpha.16'), 'release corpus must mention v1.1.0-alpha.16');
   assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|Fixture Registry|payload compression|test organization|fixture registry consolidation|provenance ledger|changed-files-only|visual freeze|mobile header/i.test(corpus), 'release corpus must describe provenance gate');

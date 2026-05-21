@@ -26,7 +26,7 @@ const notes = read('RELEASE_NOTES.md');
 const changelog = read('CHANGELOG.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const doc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-alpha.16-source-cluster-gap-intelligence.md')}`;
+const doc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-alpha.16-entity-intelligence-layer.md')}`;
 const migrations = read('src/research/migrations.js');
 const evidenceSpec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 

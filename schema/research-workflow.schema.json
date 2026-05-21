@@ -1353,7 +1353,7 @@
           "const": "1.1.0-alpha.16"
         },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip"
+          "const": "jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip"
         },
         "runtime_capability_change": {
           "const": false
@@ -1455,7 +1455,7 @@
           "const": "1.1.0-alpha.16"
         },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.1.0-alpha.16-source-cluster-gap-intelligence-patch.zip"
+          "const": "jarbou3i-research-engine-v1.1.0-alpha.16-entity-intelligence-layer-patch.zip"
         },
         "changed_files_manifest_required": {
           "const": true
