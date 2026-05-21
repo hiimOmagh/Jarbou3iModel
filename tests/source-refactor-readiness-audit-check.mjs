@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.1.0-alpha.13';
-const TITLE = 'Prompt Compiler + Research Plan Upgrade';
+const VERSION = '1.1.0-alpha.14';
+const TITLE = 'Evidence Workspace + Source Import V2';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));

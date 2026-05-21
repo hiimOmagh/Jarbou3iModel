@@ -1,9 +1,9 @@
 # Current Release
 
-## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
+## v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-alpha.13`
+Version: `1.1.0-alpha.14`
 Runtime capability change: no live/runtime expansion
 Required browser gates before publishing
 Release archive exclusions

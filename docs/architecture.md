@@ -1,11 +1,11 @@
 # Architecture
 
-## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
+## v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
 
-## Current v1.1.0-alpha.13 pipeline
+## Current v1.1.0-alpha.14 pipeline
 
 ```text
 Topic/context
@@ -57,6 +57,6 @@ The Cloudflare Worker scaffold remains optional. The static app must remain func
 v1.0.25 adds no runtime capability. It locks public-demo release approval behind green CI, reviewed hosted-demo evidence, current public claims, privacy/export safety, and clean archive boundaries.
 
 
-Evidence manifest continuity: v1.1.0-alpha.13 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.14 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Continuity note: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, changed-files-only discipline, no live scraping, No real OAuth, screenshots alone, hosted evidence, and ZIPs are not sufficient for release approval.

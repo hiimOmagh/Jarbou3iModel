@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-alpha.13`
-Release: `v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade`
+Version: `1.1.0-alpha.14`
+Release: `v1.1.0-alpha.14 — Evidence Workspace + Source Import V2`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

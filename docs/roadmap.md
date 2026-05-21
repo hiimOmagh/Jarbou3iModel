@@ -1,6 +1,6 @@
 # Roadmap
 
-## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
+## v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
 
 Current alpha. The product remains inside the public-demo safety boundary while the core research workflow becomes more useful. Alpha.13 adds a local/template-driven prompt compiler that turns topic/context input into a structured research-plan seed without live AI calls, live scraping, OAuth/backend expansion, source connector expansion, storage expansion, UI redesign, or large source refactor.
 
@@ -14,12 +14,12 @@ Current alpha. The product remains inside the public-demo safety boundary while 
 | Completed | `v1.1.0-alpha.10` | **Hosted Evidence Capture Polish + Visual Artifact Guard** | Locked |
 | Completed | `v1.1.0-alpha.11` | **Fixture/Test Debt Ledger + Source-File Refactor Readiness Audit** | Locked |
 | Completed | `v1.1.0-alpha.12` | **Dev Productivity Command Center + Golden Baseline Automation** | Locked |
-| Current alpha | `v1.1.0-alpha.13` | **Prompt Compiler + Research Plan Upgrade** | Current |
+| Current alpha | `v1.1.0-alpha.14` | **Evidence Workspace + Source Import V2** | Current |
 | Next candidate | `v1.1.0-alpha.14` | **Evidence Workspace + Source Import V2** | Planned |
 
 ## Near-term product-value sequence
 
-1. `v1.1.0-alpha.13` — Prompt Compiler + Research Plan Upgrade.
+1. `v1.1.0-alpha.14` — Evidence Workspace + Source Import V2.
 2. `v1.1.0-alpha.14` — Evidence Workspace + Source Import V2.
 3. `v1.1.0-alpha.15` — Report Builder + Export Pack V1.
 4. `v1.1.0-alpha.16` — Project Library + Run Ledger.
@@ -42,7 +42,7 @@ Current alpha. The product remains inside the public-demo safety boundary while 
 
 Node 24 remains the GitHub Actions runtime baseline. Package Script Compression, CI Gate Registry, Version Suite Registry, Root Manifest, Release Artifact Consolidation, Fixture Registry payload compression, test organization audit, hosted evidence capture, visible-text localization snapshots, and dev-productivity automation continuity are preserved.
 
-Evidence manifest continuity: v1.1.0-alpha.13 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.14 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Release approval reminder: screenshots alone and ZIP existence alone are insufficient for public-demo approval.
 

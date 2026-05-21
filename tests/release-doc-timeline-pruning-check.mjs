@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.13';
-const TITLE = 'Prompt Compiler + Research Plan Upgrade';
+const VERSION = '1.1.0-alpha.14';
+const TITLE = 'Evidence Workspace + Source Import V2';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');

@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.13",
-  "release_title": "v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade",
+  "ci_gate_registry_version": "1.1.0-alpha.14",
+  "release_title": "v1.1.0-alpha.14 \u2014 Evidence Workspace + Source Import V2",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -36,6 +36,7 @@
       "node_checks": [
         "tests/qa-check.mjs",
         "tests/static-check.mjs",
+        "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
         "tests/fixtures-check.mjs",
         "tests/research-workflow-check.mjs",
@@ -89,7 +90,6 @@
         "tests/fixture-payload-budget-check.mjs",
         "tests/test-matrix-runtime-optimization-check.mjs",
         "tests/release-doc-timeline-pruning-check.mjs",
-        "tests/syntax-matrix-check.mjs",
         "tests/version-suite-registry-check.mjs",
         "tests/ci-gate-registry-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
@@ -327,7 +327,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-alpha.13",
+    "version": "1.1.0-alpha.14",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -342,7 +342,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-alpha.13",
+    "version": "1.1.0-alpha.14",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -431,7 +431,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0-alpha.13",
+    "version": "1.1.0-alpha.14",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -451,7 +451,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0-alpha.13",
+    "version": "1.1.0-alpha.14",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

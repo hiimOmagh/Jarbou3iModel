@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine render helpers v1.1.0-alpha.13. */
+/* Jarbou3i Research Engine render helpers v1.1.0-alpha.14. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -6,7 +6,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.1.0-alpha.13 · Prompt Compiler + Research Plan Upgrade',
+      alphaBadge:'v1.1.0-alpha.14 · Evidence Workspace + Source Import V2',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، روابط سببية، محاكاة AI، نقد، وبوابة جودة v2.',
-      alphaBadge:'v1.1.0-alpha.13 · مُصرّف البرومبت وترقية خطة البحث' ,
+      alphaBadge:'v1.1.0-alpha.14 · مُصرّف البرومبت وترقية خطة البحث' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, liens causaux, IA simulée, critique et barrière qualité v2.',
-      alphaBadge:'v1.1.0-alpha.13 · Compilateur de prompt et plan de recherche renforcé',
+      alphaBadge:'v1.1.0-alpha.14 · Compilateur de prompt et plan de recherche renforcé',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -309,10 +309,10 @@
     publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
     localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
     hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
-    hostedDemoVerificationBody:'Planning gate only: no live scraping, no real OAuth, no provider execution, and no automated source verification are enabled. v1.1.0-alpha.13 adds a local prompt compiler and research-plan upgrade while preserving hosted evidence, visible-text snapshots, and privacy boundaries.',
+    hostedDemoVerificationBody:'Planning gate only: no live scraping, no real OAuth, no provider execution, and no automated source verification are enabled. v1.1.0-alpha.14 adds a local prompt compiler and research-plan upgrade while preserving hosted evidence, visible-text snapshots, and privacy boundaries.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
-    evidenceReviewGateBody:'v1.1.0-alpha.13 preserves the public-demo freeze while adding a local prompt compiler that converts messy topics into inspectable research-plan inputs. Source packets remain local/manual drafting scaffolds; screenshots, hosted evidence, ZIPs, and generated plans are not release approval by themselves.',
+    evidenceReviewGateBody:'v1.1.0-alpha.14 preserves the public-demo freeze while adding a local prompt compiler that converts messy topics into inspectable research-plan inputs. Source packets remain local/manual drafting scaffolds; screenshots, hosted evidence, ZIPs, and generated plans are not release approval by themselves.',
     hostedUrlSmoke:'Hosted URL smoke', noOverflowProof:'No overflow proof', metadataArtifact:'Metadata artifact', reviewedBeforePublish:'Reviewed before publish',
     stableWorkflowEyebrow:'Stable workflow', stableWorkflowTitle:'Next action: compile the prompt → review plan gaps → add evidence',
     stableWorkflowBody:'Advanced provider, OAuth, backend, source, and release diagnostics are collapsed until a selected post-freeze lane has criteria, falsifiers, and review gates; implementation remains blocked.',
@@ -328,10 +328,10 @@
     publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
     localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
     hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
-    hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد استخراج حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.13 مُصرّف برومبت محليًا وترقية لخطة البحث مع الحفاظ على أدلة الاستضافة ولقطات النص المرئي وحدود الخصوصية.',
+    hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد استخراج حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.14 مُصرّف برومبت محليًا وترقية لخطة البحث مع الحفاظ على أدلة الاستضافة ولقطات النص المرئي وحدود الخصوصية.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
-    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.13 على تجميد العرض العام مع إضافة مُصرّف برومبت محلي يحوّل الموضوعات غير المنظمة إلى مدخلات خطة بحث قابلة للفحص. تبقى حزم المصادر قوالب صياغة محلية/يدوية؛ ولا تكفي اللقطات أو أدلة الاستضافة أو ملفات ZIP أو الخطط المولّدة وحدها لاعتماد الإصدار.',
+    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.14 على تجميد العرض العام مع إضافة مُصرّف برومبت محلي يحوّل الموضوعات غير المنظمة إلى مدخلات خطة بحث قابلة للفحص. تبقى حزم المصادر قوالب صياغة محلية/يدوية؛ ولا تكفي اللقطات أو أدلة الاستضافة أو ملفات ZIP أو الخطط المولّدة وحدها لاعتماد الإصدار.',
     hostedUrlSmoke:'اختبار دخان لرابط الاستضافة', noOverflowProof:'إثبات عدم وجود تجاوز أفقي', metadataArtifact:'أثر بيانات وصفية', reviewedBeforePublish:'تمت المراجعة قبل النشر',
     stableWorkflowEyebrow:'سير عمل مستقر', stableWorkflowTitle:'الإجراء التالي: صرّف البرومبت → راجع فجوات الخطة → أضف الأدلة',
     stableWorkflowBody:'تبقى تشخيصات المزوّد المتقدم وOAuth والخلفية والمصادر والإصدار مطوية حتى يحصل مسار ما بعد التجميد على معايير قبول وشروط إبطال وبوابات مراجعة واضحة؛ ويظل التنفيذ محظورًا.',
@@ -348,10 +348,10 @@
     publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
     localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
     hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
-    hostedDemoVerificationBody:'Barrière de planification uniquement : aucun scraping live, aucun OAuth réel, aucune exécution fournisseur et aucune vérification automatique des sources ne sont activés. v1.1.0-alpha.13 ajoute un compilateur de prompt local et une amélioration du plan de recherche tout en préservant les preuves hébergées, les snapshots de texte visible et les frontières de confidentialité.',
+    hostedDemoVerificationBody:'Barrière de planification uniquement : aucun scraping live, aucun OAuth réel, aucune exécution fournisseur et aucune vérification automatique des sources ne sont activés. v1.1.0-alpha.14 ajoute un compilateur de prompt local et une amélioration du plan de recherche tout en préservant les preuves hébergées, les snapshots de texte visible et les frontières de confidentialité.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
-    evidenceReviewGateBody:'v1.1.0-alpha.13 préserve le gel de démo publique tout en ajoutant un compilateur de prompt local qui transforme des sujets bruts en entrées de plan de recherche vérifiables. Les paquets source restent des échafaudages locaux/manuels ; captures, preuves hébergées, ZIPs et plans générés ne valent pas approbation de release à eux seuls.',
+    evidenceReviewGateBody:'v1.1.0-alpha.14 préserve le gel de démo publique tout en ajoutant un compilateur de prompt local qui transforme des sujets bruts en entrées de plan de recherche vérifiables. Les paquets source restent des échafaudages locaux/manuels ; captures, preuves hébergées, ZIPs et plans générés ne valent pas approbation de release à eux seuls.',
     hostedUrlSmoke:'Smoke test URL hébergée', noOverflowProof:'Preuve sans débordement', metadataArtifact:'Artefact de métadonnées', reviewedBeforePublish:'Revu avant publication',
     stableWorkflowEyebrow:'Workflow stable', stableWorkflowTitle:'Action suivante : compiler le prompt → revoir les lacunes du plan → ajouter les preuves',
     stableWorkflowBody:'Les diagnostics fournisseur avancé, OAuth, backend, source et release restent repliés jusqu’à ce qu’un axe post-gel ait critères, falsificateurs et barrières de revue; l’implémentation reste bloquée.',
@@ -441,7 +441,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'v1.1.0-alpha.13 adds a local prompt compiler and research-plan upgrade without live AI calls, scraping, OAuth, backend expansion, or source verification changes.',
+    analysisReleaseNote:'v1.1.0-alpha.14 adds a local prompt compiler and research-plan upgrade without live AI calls, scraping, OAuth, backend expansion, or source verification changes.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -456,7 +456,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'تضيف v1.1.0-alpha.13 مُصرّف برومبت محليًا وترقية لخطة البحث دون استدعاءات AI حية أو جلب ويب أو OAuth أو توسيع للخلفية أو تغيير في تحقق المصادر.',
+    analysisReleaseNote:'تضيف v1.1.0-alpha.14 مُصرّف برومبت محليًا وترقية لخطة البحث دون استدعاءات AI حية أو جلب ويب أو OAuth أو توسيع للخلفية أو تغيير في تحقق المصادر.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -472,7 +472,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'v1.1.0-alpha.13 ajoute un compilateur de prompt local et une amélioration du plan de recherche sans appels IA live, scraping, OAuth, extension backend ni changement de vérification des sources.',
+    analysisReleaseNote:'v1.1.0-alpha.14 ajoute un compilateur de prompt local et une amélioration du plan de recherche sans appels IA live, scraping, OAuth, extension backend ni changement de vérification des sources.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',

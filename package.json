@@ -1,9 +1,9 @@
 {
   "name": "jarbou3i-research-engine",
-  "version": "1.1.0-alpha.13",
+  "version": "1.1.0-alpha.14",
   "private": true,
   "type": "module",
-  "description": "Jarbou3i Research Engine v1.1.0-alpha.13 prompt compiler and research plan upgrade. Adds a local/template-driven prompt compiler that turns messy topic input into a refined thesis, key questions, actor/tool hypotheses, evidence needs, counterarguments, disconfirming conditions, and plan-quality metadata while preserving dev productivity commands, visible-text snapshot contracts, hosted evidence guards, privacy/export boundaries, and no live provider/source/OAuth/backend expansion. Continuity includes fixture registry payload compression, test organization audit, package script compression, CI gate registry, and golden baseline automation. Runtime/provider/OAuth/backend/source/storage boundaries remain unchanged. runtime/provider/OAuth/backend/source/storage boundaries remain unchanged. fixture/test debt ledger continuity is preserved. professional trilingual language-description review. hosted evidence capture polish. visual artifact guard. dev:doctor. dev:baseline. dev:impact. dev:handoff. source strategy. source capability registry preservation. manual source packet preservation. evidence scoring preservation. browser evidence preservation. public demo preservation. release evidence. repository hygiene. PLAYWRIGHT_SKIP_INSTALL. package script compression and CI gate registry. Root Manifest and Release Artifact Consolidation continuity. Node 24 CI compatibility.",
+  "description": "Jarbou3i Research Engine v1.1.0-alpha.14 Evidence Workspace + Source Import V2. Formalizes the reviewed-source pipeline with evidence workspace support, source import V2, manual source-packet import V2, evidence review queue hardening, source/evidence scoring continuity, and release identity propagation while preserving manual/private defaults, hosted evidence guards, privacy/export boundaries, and no live provider/source/OAuth/backend expansion.",
   "scripts": {
     "test": "npm run test:qa && npm run test:browser",
     "test:qa": "node tests/no-browser-qa-suite.mjs",

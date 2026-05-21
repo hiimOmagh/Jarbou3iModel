@@ -1,4 +1,4 @@
-## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
+## v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
 
 Adds a local/template-driven prompt compiler to improve the research-plan stage without introducing live provider calls or new source acquisition. The compiler turns messy topic/context input into a deterministic structured plan seed: refined thesis, objective, key questions, actor/tool hypotheses, evidence needs, counterarguments, disconfirming conditions, missing-context prompts, keywords, and output-plan guidance.
 
@@ -10,7 +10,7 @@ No live scraping, No real OAuth, no live provider execution, no backend endpoint
 
 Detailed historical release notes are consolidated in `docs/release-history.md`.
 
-Evidence manifest continuity: v1.1.0-alpha.13 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.14 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v6, npm ci --no-audit --no-fund --ignore-scripts, and PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser.
 Public Demo boundaries remain preserved.

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.1.0-alpha.13';
-export const RELEASE_TITLE = 'v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade';
+export const VERSION = '1.1.0-alpha.14';
+export const RELEASE_TITLE = 'v1.1.0-alpha.14 — Evidence Workspace + Source Import V2';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

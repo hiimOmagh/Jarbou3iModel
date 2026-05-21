@@ -1,4 +1,4 @@
-## v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade
+## v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
 
 Local/template-driven research-plan upgrade for the public-demo workspace. This alpha adds a prompt compiler that turns messy topic/context input into a structured research plan seed: refined thesis, research objective, key questions, actor/tool hypotheses, evidence needs, counterarguments, disconfirming conditions, missing-context prompts, keywords, and an output plan. No live provider call, live scraping, OAuth/backend expansion, source connector expansion, storage expansion, UI redesign, or large source refactor is introduced.
 
@@ -8,7 +8,7 @@ A dark editorial intelligence workspace that turns messy AI/user research output
 
 ## Current version
 
-`v1.1.0-alpha.13 — Prompt Compiler + Research Plan Upgrade`
+`v1.1.0-alpha.14 — Evidence Workspace + Source Import V2`
 
 ## What this alpha changes
 

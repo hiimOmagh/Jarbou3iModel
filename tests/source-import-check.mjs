@@ -48,10 +48,10 @@ if (!schema.$defs.source_import) fail('schema missing source_import definition')
 if (!schema.$defs.source_import_report) fail('schema missing source_import_report definition');
 if (schema.$defs.source_import_report.properties.live_fetching_performed.const !== false) fail('import report must force live_fetching_performed=false');
 if (schema.$defs.source_import_report.properties.verification_claimed.const !== false) fail('import report must force verification_claimed=false');
-if (fixture.workflow_version !== '1.1.0-alpha.13') fail('research fixture version mismatch');
+if (fixture.workflow_version !== '1.1.0-alpha.14') fail('research fixture version mismatch');
 if (!fixture.source_import_report || fixture.source_import_report.live_fetching_performed !== false) fail('fixture import report missing or unsafe');
 if (!Array.isArray(fixture.source_imports) || !fixture.source_imports.length) fail('fixture source_imports missing');
-if (!fixture.source_imports.some((item) => item.queue_only === true)) fail('source imports should be queue_only in v1.1.0-alpha.13');
+if (!fixture.source_imports.some((item) => item.queue_only === true)) fail('source imports should be queue_only in v1.1.0-alpha.14');
 if (!fixture.evidence_scoring_report || fixture.evidence_scoring_report.scoring_model !== 'evidence_scoring.v1') fail('fixture needs evidence scoring report');
 console.log('Source import checks passed.');
 process.exit(0);
