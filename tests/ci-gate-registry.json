@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.17",
-  "release_title": "v1.1.0-alpha.17 — Research Planner V2",
+  "ci_gate_registry_version": "1.1.0-alpha.18",
+  "release_title": "v1.1.0-alpha.18 \u2014 Controlled Connector Architecture MVP",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -123,7 +123,8 @@
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
         "tests/prompt-compiler-check.mjs",
-        "tests/evidence-workspace-check.mjs"
+        "tests/evidence-workspace-check.mjs",
+        "tests/controlled-connector-architecture-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -153,7 +154,8 @@
         "tests/evidence-workspace-check.mjs",
         "tests/source-cluster-gap-intelligence-check.mjs",
         "tests/entity-intelligence-layer-check.mjs",
-        "tests/research-planner-v2-check.mjs"
+        "tests/research-planner-v2-check.mjs",
+        "tests/controlled-connector-architecture-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -205,7 +207,8 @@
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
         "tests/prompt-compiler-check.mjs",
-        "tests/evidence-workspace-check.mjs"
+        "tests/evidence-workspace-check.mjs",
+        "tests/controlled-connector-architecture-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -311,7 +314,8 @@
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
         "tests/prompt-compiler-check.mjs",
-        "tests/evidence-workspace-check.mjs"
+        "tests/evidence-workspace-check.mjs",
+        "tests/controlled-connector-architecture-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -339,7 +343,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-alpha.17",
+    "version": "1.1.0-alpha.18",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -354,7 +358,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-alpha.17",
+    "version": "1.1.0-alpha.18",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -443,13 +447,15 @@
       "tests/prompt-compiler-check.mjs",
       "tests/source-cluster-gap-intelligence-check.mjs",
       "src/research/research-planner-v2.js",
-      "tests/research-planner-v2-check.mjs"
+      "tests/research-planner-v2-check.mjs",
+      "src/research/controlled-connector-engine.js",
+      "tests/controlled-connector-architecture-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0-alpha.17",
+    "version": "1.1.0-alpha.18",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -469,7 +475,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0-alpha.17",
+    "version": "1.1.0-alpha.18",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

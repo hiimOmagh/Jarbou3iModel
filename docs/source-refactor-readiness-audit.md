@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-alpha.17`
-Release: `v1.1.0-alpha.17 — Research Planner V2`
+Version: `1.1.0-alpha.18`
+Release: `v1.1.0-alpha.18 — Controlled Connector Architecture MVP`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

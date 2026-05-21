@@ -52,11 +52,13 @@
     "hosted_demo_smoke_fixes",
     "hosted_demo_evidence_review",
     "source_packet_template_report",
-    "source_packet_roundtrip_report"
+    "source_packet_roundtrip_report",
+    "controlled_connector_report",
+    "connector_safety_report"
   ],
   "properties": {
     "workflow_version": {
-      "const": "1.1.0-alpha.17"
+      "const": "1.1.0-alpha.18"
     },
     "generated_at": {
       "type": "string"
@@ -316,7 +318,7 @@
       "additionalProperties": true,
       "properties": {
         "quality_gate_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -425,7 +427,7 @@
       ],
       "properties": {
         "export_pack_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "format": {
           "const": "export_pack_v2"
@@ -462,10 +464,10 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "proxy_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "status": {
           "type": "string"
@@ -536,7 +538,7 @@
       "additionalProperties": true,
       "properties": {
         "hardening_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "release_type": {
           "const": "patch_only_browser_qa_visual_regression"
@@ -599,7 +601,7 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "demo_stage": {
           "const": "public_demo_ready"
@@ -683,10 +685,10 @@
       "additionalProperties": true,
       "properties": {
         "release_notes_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.17 — Research Planner V2"
+          "const": "v1.1.0-alpha.18 — Controlled Connector Architecture MVP"
         },
         "release_type": {
           "const": "patch"
@@ -734,7 +736,7 @@
       ],
       "properties": {
         "onboarding_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -825,7 +827,7 @@
       "additionalProperties": true,
       "properties": {
         "hosted_demo_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "deployment_stage": {
           "const": "hosted_demo_verification"
@@ -903,7 +905,7 @@
       "additionalProperties": true,
       "properties": {
         "browser_evidence_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "evidence_mode": {
           "const": "playwright_capture_attach_and_write_artifacts"
@@ -1009,7 +1011,7 @@
       "additionalProperties": true,
       "properties": {
         "smoke_fixes_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "deployment_stage": {
           "const": "hosted_demo_smoke_fixes"
@@ -1080,7 +1082,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_review_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "review_stage": {
           "const": "hosted_demo_evidence_review"
@@ -1206,10 +1208,10 @@
       "additionalProperties": true,
       "properties": {
         "public_demo_release_lock_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.17 — Public Demo Release Lock"
+          "const": "v1.1.0-alpha.18 — Public Demo Release Lock"
         },
         "lock_stage": {
           "const": "public_demo_release_locked"
@@ -1332,10 +1334,10 @@
       "additionalProperties": true,
       "properties": {
         "release_apply_integrity_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.17 — Research Planner V2"
+          "const": "v1.1.0-alpha.18 — Controlled Connector Architecture MVP"
         },
         "integrity_stage": {
           "const": "release_apply_integrity_checked"
@@ -1350,10 +1352,10 @@
           "const": "1.0.30"
         },
         "target_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.1.0-alpha.17-research-planner-v2-patch.zip"
+          "const": "jarbou3i-research-engine-v1.1.0-alpha.18-controlled-connector-architecture-mvp-patch.zip"
         },
         "runtime_capability_change": {
           "const": false
@@ -1434,10 +1436,10 @@
       "additionalProperties": true,
       "properties": {
         "release_provenance_ledger_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "release_title": {
-          "const": "v1.1.0-alpha.17 — Research Planner V2"
+          "const": "v1.1.0-alpha.18 — Controlled Connector Architecture MVP"
         },
         "provenance_stage": {
           "const": "release_provenance_ledger_checked"
@@ -1452,10 +1454,10 @@
           "const": "1.0.30"
         },
         "target_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "artifact_name": {
-          "const": "jarbou3i-research-engine-v1.1.0-alpha.17-research-planner-v2-patch.zip"
+          "const": "jarbou3i-research-engine-v1.1.0-alpha.18-controlled-connector-architecture-mvp-patch.zip"
         },
         "changed_files_manifest_required": {
           "const": true
@@ -1534,6 +1536,12 @@
     },
     "research_planner_report": {
       "$ref": "#/$defs/research_planner_report"
+    },
+    "controlled_connector_report": {
+      "$ref": "#/$defs/controlled_connector_report"
+    },
+    "connector_safety_report": {
+      "$ref": "#/$defs/connector_safety_report"
     }
   },
   "$defs": {
@@ -1553,7 +1561,7 @@
       ],
       "properties": {
         "plan_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "topic": {
           "type": "string",
@@ -1860,7 +1868,7 @@
           }
         },
         "cluster_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "cluster_model": {
           "const": "source_cluster_gap_intelligence.v1"
@@ -1958,7 +1966,7 @@
       ],
       "properties": {
         "brief_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -2029,7 +2037,7 @@
           ],
           "properties": {
             "fit_version": {
-              "const": "1.1.0-alpha.17"
+              "const": "1.1.0-alpha.18"
             },
             "template_id": {
               "type": "string"
@@ -2095,7 +2103,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "provider": {
           "type": "string"
@@ -2182,7 +2190,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -2255,7 +2263,7 @@
       ],
       "properties": {
         "validation_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "validated_at": {
           "type": "string"
@@ -2336,7 +2344,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "checked_at": {
           "type": "string"
@@ -2419,7 +2427,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "fixture_count": {
           "type": "number"
@@ -2451,7 +2459,7 @@
       ],
       "properties": {
         "policy_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -2463,7 +2471,8 @@
           "type": "string",
           "enum": [
             "planning_only",
-            "controlled_backend_public_metadata_fetch"
+            "controlled_backend_public_metadata_fetch",
+            "controlled_connector_manual_dry_run"
           ]
         },
         "allowed_actions": {
@@ -2511,7 +2520,7 @@
       ],
       "properties": {
         "request_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "created_at": {
           "type": "string"
@@ -2584,7 +2593,7 @@
       ],
       "properties": {
         "diagnostics_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "checked_at": {
           "type": "string"
@@ -2628,7 +2637,8 @@
         "readiness": {
           "enum": [
             "review_required",
-            "source_plan_ready"
+            "source_plan_ready",
+            "review_queue_candidates_ready"
           ]
         },
         "warnings": {
@@ -2652,7 +2662,7 @@
       ],
       "properties": {
         "suite_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "fixture_count": {
           "type": "number"
@@ -2691,7 +2701,7 @@
           "type": "string"
         },
         "run_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "connector": {
           "type": "string"
@@ -2763,7 +2773,7 @@
       ],
       "properties": {
         "import_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "imported_at": {
           "type": "string"
@@ -2908,7 +2918,7 @@
       ],
       "properties": {
         "review_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -3111,7 +3121,7 @@
       ],
       "properties": {
         "portable_account_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3220,7 +3230,7 @@
           ]
         },
         "oauth_spike_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         }
       },
       "additionalProperties": true
@@ -3247,7 +3257,7 @@
       ],
       "properties": {
         "guard_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "safe": {
           "type": "boolean"
@@ -3283,7 +3293,7 @@
           }
         },
         "audit_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "release_gate": {
           "enum": [
@@ -3339,13 +3349,13 @@
       ],
       "properties": {
         "migration_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "source_version": {
           "type": "string"
         },
         "target_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "started_at": {
           "type": "string"
@@ -3406,7 +3416,7 @@
       ],
       "properties": {
         "workspace_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "storage_mode": {
           "const": "local_only"
@@ -3449,7 +3459,7 @@
           ],
           "properties": {
             "diagnostics_version": {
-              "const": "1.1.0-alpha.17"
+              "const": "1.1.0-alpha.18"
             },
             "available": {
               "type": "boolean"
@@ -3495,7 +3505,7 @@
           "type": "string"
         },
         "template_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "display_name": {
           "type": "string"
@@ -3561,7 +3571,7 @@
           "type": "string"
         },
         "result_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "connector": {
           "type": "string"
@@ -3612,7 +3622,7 @@
       ],
       "properties": {
         "identity_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "provider_id": {
           "type": "string"
@@ -3684,7 +3694,7 @@
       ],
       "properties": {
         "budget_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "max_queries": {
           "type": "integer",
@@ -3744,7 +3754,7 @@
       ],
       "properties": {
         "search_policy_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "provider_identity": {
           "$ref": "#/$defs/search_provider_identity"
@@ -3802,7 +3812,7 @@
       ],
       "properties": {
         "oauth_spike_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "provider_id": {
           "const": "portable_oauth"
@@ -3940,7 +3950,7 @@
       ],
       "properties": {
         "release_candidate_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -3958,7 +3968,7 @@
           ],
           "properties": {
             "release_version": {
-              "const": "1.1.0-alpha.17"
+              "const": "1.1.0-alpha.18"
             },
             "release_stage": {
               "const": "public_beta_stable"
@@ -4043,7 +4053,7 @@
           ]
         },
         "stable_release_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "stable_ready": {
           "type": "boolean"
@@ -4063,7 +4073,7 @@
       ],
       "properties": {
         "source_strategy_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "release_gate": {
           "const": "source_strategy_blueprint_checked"
@@ -4114,7 +4124,7 @@
           ],
           "properties": {
             "registry_version": {
-              "const": "1.1.0-alpha.17"
+              "const": "1.1.0-alpha.18"
             },
             "new_live_connector_enabled": {
               "const": false
@@ -4169,7 +4179,7 @@
           "const": "evidence_scoring.v1"
         },
         "scorer_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -4312,7 +4322,7 @@
       "additionalProperties": true,
       "properties": {
         "evidence_scoring_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "scoring_model": {
           "const": "evidence_scoring.v1"
@@ -4450,7 +4460,7 @@
       "additionalProperties": true,
       "properties": {
         "builder_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "packet_schema": {
           "const": "manual_source_packet.v1"
@@ -4502,7 +4512,7 @@
           "const": "source_packet_builder.v1"
         },
         "workflow_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "built_at": {
           "type": "string"
@@ -4537,7 +4547,7 @@
       "additionalProperties": true,
       "properties": {
         "roundtrip_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "roundtrip_model": {
           "const": "source_packet_roundtrip.v1"
@@ -4623,7 +4633,7 @@
       "additionalProperties": true,
       "properties": {
         "template_report_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "template_model": {
           "const": "source_packet_template_presets.v1"
@@ -4690,7 +4700,7 @@
       ],
       "properties": {
         "prompt_compiler_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "generated_at": {
           "type": "string"
@@ -4812,10 +4822,10 @@
       ],
       "properties": {
         "source_gap_report_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "source_cluster_report_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "cluster_model": {
           "const": "source_cluster_gap_intelligence.v1"
@@ -4892,7 +4902,7 @@
           "type": "string"
         },
         "entity_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "entity_model": {
           "const": "entity_intelligence_layer.v1"
@@ -4993,7 +5003,7 @@
       ],
       "properties": {
         "entity_map_report_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "entity_model": {
           "const": "entity_intelligence_layer.v1"
@@ -5058,7 +5068,7 @@
       ],
       "properties": {
         "entity_alias_report_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "entity_model": {
           "const": "entity_intelligence_layer.v1"
@@ -5103,7 +5113,7 @@
       ],
       "properties": {
         "research_planner_version": {
-          "const": "1.1.0-alpha.17"
+          "const": "1.1.0-alpha.18"
         },
         "planner_model": {
           "const": "research_planner_v2.v1"
@@ -5177,6 +5187,122 @@
         },
         "verification_claimed": {
           "const": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "controlled_connector_report": {
+      "type": "object",
+      "required": [
+        "controlled_connector_report_version",
+        "connector_model",
+        "registry",
+        "live_fetching_performed",
+        "uncontrolled_scraping_performed",
+        "verification_claimed",
+        "release_gate"
+      ],
+      "properties": {
+        "controlled_connector_report_version": {
+          "const": "1.1.0-alpha.18"
+        },
+        "connector_model": {
+          "const": "controlled_connector_architecture.v1"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "registry": {
+          "type": "object"
+        },
+        "run_count": {
+          "type": "number"
+        },
+        "result_count": {
+          "type": "number"
+        },
+        "queued_review_count": {
+          "type": "number"
+        },
+        "connectors_seen": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "live_fetching_performed": {
+          "const": false
+        },
+        "uncontrolled_scraping_performed": {
+          "const": false
+        },
+        "verification_claimed": {
+          "const": false
+        },
+        "release_gate": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "connector_safety_report": {
+      "type": "object",
+      "required": [
+        "connector_safety_report_version",
+        "connector_model",
+        "connector_id",
+        "uncontrolled_scraping_performed",
+        "live_web_search_performed",
+        "live_fetching_performed",
+        "automatic_source_verification_claimed",
+        "review_queue_required",
+        "verdict"
+      ],
+      "properties": {
+        "connector_safety_report_version": {
+          "const": "1.1.0-alpha.18"
+        },
+        "connector_model": {
+          "const": "controlled_connector_architecture.v1"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "connector_id": {
+          "type": "string"
+        },
+        "candidate_count": {
+          "type": "number"
+        },
+        "uncontrolled_scraping_performed": {
+          "const": false
+        },
+        "live_web_search_performed": {
+          "const": false
+        },
+        "live_fetching_performed": {
+          "const": false
+        },
+        "provider_execution_performed": {
+          "const": false
+        },
+        "oauth_required": {
+          "const": false
+        },
+        "backend_expansion": {
+          "const": false
+        },
+        "automatic_source_verification_claimed": {
+          "const": false
+        },
+        "review_queue_required": {
+          "const": true
+        },
+        "raw_credentials_exported": {
+          "const": false
+        },
+        "verdict": {
+          "type": "string"
         }
       },
       "additionalProperties": true

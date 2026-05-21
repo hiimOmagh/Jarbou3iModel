@@ -23,7 +23,7 @@ assert.ok(
 assert.equal(
   workflow.includes('node-version: 20'),
   false,
-  'CI workflow must not pin Node 20 after v1.1.0-alpha.17 Node 24 action-runtime migration'
+  'CI workflow must not pin Node 20 after v1.1.0-alpha.18 Node 24 action-runtime migration'
 );
 
 assert.equal(
@@ -34,7 +34,7 @@ assert.equal(
 
 assert.ok(
   workflow.includes('node-version: 24'),
-  'CI workflow must pin project test runtime to Node 24 for v1.1.0-alpha.17 compatibility validation'
+  'CI workflow must pin project test runtime to Node 24 for v1.1.0-alpha.18 compatibility validation'
 );
 
 assert.ok(

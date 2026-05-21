@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine entity intelligence layer v1.1.0-alpha.17. No live fetching. */
+/* Jarbou3i Research Engine entity intelligence layer v1.1.0-alpha.18. No live fetching. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.17';
+  const VERSION = '1.1.0-alpha.18';
   const STOPWORDS = new Set('the a an and or but of for to in on at by with from into over under after before between about against through during without within is are was were be been being this that these those as it its their his her our your not no yes do does did has have had will would should could may might can than then if when where what why how'.split(' '));
   const STRATEGIC_SOURCE_TYPES = ['official','academic','primary','news','expert','market','social','other'];
 

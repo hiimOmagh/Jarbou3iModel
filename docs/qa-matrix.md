@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release: v1.1.0-alpha.17 — Research Planner V2
+Current release: v1.1.0-alpha.18 — Controlled Connector Architecture MVP
 
 Required gates:
 
@@ -22,3 +22,8 @@ Provenance continuity: Root Manifest, Release Artifact Consolidation, CI Gate Re
 Public demo continuity preserved.
 
 Public Demo continuity preserved.
+
+
+## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+
+Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.

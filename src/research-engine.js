@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.17 — research planner v2. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.18 — research planner v2. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.17';
+  const VERSION = '1.1.0-alpha.18';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -30,6 +30,7 @@
   const sourceClusterEngine = modules.sourceClusterEngine;
   const entityIntelligence = modules.entityIntelligence;
   const researchPlannerV2 = modules.researchPlannerV2;
+  const controlledConnectorEngine = modules.controlledConnectorEngine;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
   const hostedDemoVerification = modules.hostedDemoVerification;
@@ -149,7 +150,6 @@
     return releaseCandidate?.buildReleaseCandidateReport ? releaseCandidate.buildReleaseCandidateReport({workflow_version:VERSION, privacy_export:{release_gate:'pass', raw_token_exported:false, access_token_exported:false, refresh_token_exported:false}, portable_oauth_spike:portableOAuthSpikeStatus(), search_policy:searchPolicyReport(), provider_config:sanitizedProviderConfig(state.provider_config || {})}, {version:VERSION}) : null;
   }
 
-
   function onboardingWorkflowSignals(){
     return {
       topic_defined: !!(($('topicInput')?.value || '').trim()),
@@ -215,7 +215,6 @@
     }, {version:VERSION, now:nowIso()}) : null;
   }
 
-
   function releaseApplyIntegrityReport(){
     return releaseApplyIntegrity?.buildReleaseApplyIntegrity ? releaseApplyIntegrity.buildReleaseApplyIntegrity({}, {version:VERSION, baseVersion:'1.0.30', now:nowIso()}) : null;
   }
@@ -223,7 +222,6 @@
   function releaseProvenanceLedgerReport(){
     return releaseProvenanceLedger?.buildReleaseProvenanceLedger ? releaseProvenanceLedger.buildReleaseProvenanceLedger({}, {version:VERSION, baseVersion:'1.0.30', now:nowIso()}) : null;
   }
-
 
   function hostedDemoReport(){
     return hostedDemoVerification?.buildHostedDemoVerification ? hostedDemoVerification.buildHostedDemoVerification({
@@ -246,10 +244,12 @@
     return hostedDemoVerification?.buildHostedDemoSmokeFixes ? hostedDemoVerification.buildHostedDemoSmokeFixes({}, {version:VERSION, now:nowIso()}) : null;
   }
 
-
   function sourceCapabilityRegistryReport(){
     return sourceCapabilityRegistry?.strategyBlueprint ? sourceCapabilityRegistry.strategyBlueprint({version:VERSION, now:nowIso()}) : null;
   }
+
+  function controlledConnectorReport(){return controlledConnectorEngine?.buildConnectorReport?controlledConnectorEngine.buildConnectorReport({source_runs:state.source_runs||[],source_results:state.source_results||[],evidence_review_queue:state.evidence_review_queue||[]},{version:VERSION,now:nowIso()}):{controlled_connector_report_version:VERSION,release_gate:'review_required'};}
+  function connectorSafetyReport(){const r=(state.source_results||[]).slice(-1)[0]||{};return controlledConnectorEngine?.buildConnectorSafetyReport?controlledConnectorEngine.buildConnectorSafetyReport({connector_id:r.connector||state.source_connector||'manual_source_packet',candidate_count:r.evidence_candidate_count||0},{version:VERSION,now:nowIso()}):{connector_safety_report_version:VERSION,live_fetching_performed:false,verification_claimed:false};}
 
   function hostedDemoEvidenceReviewReport(){
     return hostedDemoVerification?.buildHostedDemoEvidenceReview ? hostedDemoVerification.buildHostedDemoEvidenceReview({}, {version:VERSION, now:nowIso()}) : null;
@@ -296,6 +296,8 @@
       provider_fixture_report: state.provider_fixture_report || null,
       source_policy: state.source_policy || sourcePolicy(),
       source_capability_registry: state.source_capability_registry || sourceCapabilityRegistryReport(),
+      controlled_connector_report: state.controlled_connector_report || controlledConnectorReport(),
+      connector_safety_report: state.connector_safety_report || connectorSafetyReport(),
       source_diagnostics: state.source_diagnostics || null,
       source_fixture_report: state.source_fixture_report || null,
       source_requests: state.last_source_request ? [state.last_source_request] : [],
@@ -500,7 +502,6 @@
     }
     return {research_planner_version: VERSION, planner_model:'research_planner_v2.v1', depth_preset:'standard', entity_aware_queries:[], counter_evidence_targets:[], platform_source_recommendations:[], connector_readiness:[], source_type_budget:{budget:{}, budget_total:0}, planner_quality_score:0, planner_gap_flags:['research_planner_module_missing'], release_gate:'planner_review_required', live_fetching_performed:false, verification_claimed:false};
   }
-
 
   function diagnosticReport(){
     const linkedIds = collectLinkedIds();
@@ -873,7 +874,6 @@
     }
   }
 
-
   function sourcePolicy(){
     return window.Jarbou3iResearchModules.sourceConnectors.sourcePolicy(VERSION, state.source_connector || 'manual_mock');
   }
@@ -988,6 +988,7 @@
         queued = queueSourceConnectorCandidates(response, request);
       } else {
         response = window.Jarbou3iResearchModules.sourceConnectors.mockSourceTaskResponse(request);
+        if(['url_list_import','manual_transcript_import','manual_source_list_import'].includes(request.connector)) queued = queueSourceConnectorCandidates(response, request);
       }
     } catch(error){
       response = {ok:false, type:'source_task_error', data:{verdict:String(error && error.message || error)}, warnings:[String(error && error.message || error)]};
@@ -1034,7 +1035,21 @@
       release_count: Array.isArray(response.data?.releases) ? response.data.releases.length : 0,
       evidence_candidate_count: Array.isArray(response.data?.evidence_candidates) ? response.data.evidence_candidates.length : 0,
       verdict: response.data?.verdict || 'github_public_metadata_fetched_review_required'
+    } : response.ok && ['url_list_import','manual_transcript_import','manual_source_list_import'].includes(request.connector) ? {
+      result_id: 'SR-' + Date.now(),
+      result_version: VERSION,
+      connector: request.connector,
+      task: request.task,
+      created_at: nowIso(),
+      source_fetching_performed: false,
+      uncontrolled_scraping_performed: false,
+      review_gate: 'evidence_review_queue_required',
+      queued_review_count: queued.length,
+      evidence_candidate_count: Array.isArray(response.data?.evidence_candidates) ? response.data.evidence_candidates.length : 0,
+      verdict: response.data?.verdict || 'controlled_connector_candidates_review_required'
     } : null;
+    state.controlled_connector_report = controlledConnectorReport();
+    state.connector_safety_report = connectorSafetyReport();
     state.source_policy = request.safety_policy || sourcePolicy();
     if(request.connector === 'web_search_api'){
       state.search_provider_identity = response.provider_identity || request.web_search?.provider_identity || searchProviderIdentity();
@@ -1063,7 +1078,7 @@
   }
 
   function exportSourcePolicy(){
-    const payload = {source_policy: state.source_policy || sourcePolicy(), search_provider_identity: searchProviderIdentity(), search_query_budget: searchQueryBudget(), search_policy: searchPolicyReport(), source_diagnostics: state.source_diagnostics || null, source_fixture_report: state.source_fixture_report || null};
+    const payload = {source_policy: state.source_policy || sourcePolicy(), controlled_connector_report: controlledConnectorReport(), connector_safety_report: connectorSafetyReport(), search_provider_identity: searchProviderIdentity(), search_query_budget: searchQueryBudget(), search_policy: searchPolicyReport(), source_diagnostics: state.source_diagnostics || null, source_fixture_report: state.source_fixture_report || null};
     downloadJson(`jarbou3i-source-policy-${Date.now()}.json`, payload);
     setStatus(tr('statusSourcePolicyExported'), 'good');
   }
@@ -1197,7 +1212,6 @@
     item.scoring_review_controls = controls;
     state.evidence_review_report = evidenceReviewReport();
   }
-
 
   function pendingReviewItems(){
     return (state.evidence_review_queue || []).filter(item => item && (item.status === 'pending' || item.status === 'needs_edit'));
@@ -1397,7 +1411,6 @@
     };
   }
 
-
   function responseContract(task){
     return window.Jarbou3iResearchModules.providerCore.responseContract(task);
   }
@@ -1434,7 +1447,6 @@
       packet
     };
   }
-
 
   function providerContractPreview(task = $('providerTask')?.value || state.activeProviderTask || 'synthesis'){
     const contract = responseContract(task);
@@ -1807,7 +1819,6 @@
     el.innerHTML = `<div class="researchJsonCard"><div><b>${esc(tr('compiledThesisTitle'))}</b><span>${esc(tr('qualityLabel'))}: ${esc(compiled.plan_quality_score ?? 0)}/100 · ${esc(compiled.release_gate || '')}</span></div><p>${esc(compiled.refined_thesis || '')}</p><h4>${esc(tr('missingContextTitle'))}</h4><div class="miniChips">${(compiled.missing_context || []).length ? compiled.missing_context.map(x=>`<span>${esc(lStatus(x))}</span>`).join('') : `<span>${esc(tr('none'))}</span>`}</div><h4>${esc(tr('outputPlanTitle'))}</h4><div class="miniChips">${(compiled.output_plan || []).map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>`;
   }
 
-
   function renderResearchPlanner(){
     const el = $('researchPlannerOutput');
     if(!el) return;
@@ -1876,8 +1887,6 @@
     el.innerHTML = `<div class="researchJsonCard diagnosticsCard"><h4>${esc(tr('diagnosticsTitle'))}</h4><div class="miniChips">${coverageRows || '<span>—</span>'}${migrationHtml}</div><small>${esc(lStatus(diagnostics.status || 'review_required'))} · ${esc((diagnostics.gaps || []).length)} ${esc(tr('gaps'))}${migrationReport ? ' · ' + esc(tr('migrationReportExported')) : ''}</small></div>`;
   }
 
-
-
   function renderSourceLayer(){
     const el = $('sourcePlanningOutput');
     if(!el) return;
@@ -1893,8 +1902,10 @@
     const diagnosticsHtml = diagnostics ? `<div class="researchJsonCard sourceDiagnosticsCard"><h4>${esc(tr('sourceDiagnosticsTitle'))}</h4><div class="miniChips"><span>${esc(lStatus(diagnostics.readiness))}</span><span>${esc(diagnostics.evidence_count)} ${esc(tr('evidenceWord'))}</span><span>${esc(diagnostics.source_type_count)} ${esc(tr('sourceTypes'))}</span></div><ul>${(diagnostics.warnings || [tr('noSourceWarnings')]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
     const fixtureHtml = fixture ? `<div class="researchJsonCard sourceFixtureCard"><h4>${esc(tr('sourceFixtureSuiteTitle'))}</h4><div class="miniChips"><span>${esc(fixture.pass_count)}/${esc(fixture.fixture_count)} ${esc(tr('passed'))}</span><span>${esc(tr('fails'))}:${esc(fixture.fail_count)}</span><span>${esc(tr('live'))}:${esc(localizedBoolean(fixture.live_fetching_performed))}</span></div></div>` : '';
     const resultHtml = latestResult ? `<div class="researchJsonCard sourceResultCard"><h4>${esc(tr('latestSourceResultTitle'))}</h4><div class="miniChips"><span>${esc(latestResult.connector)}</span><span>${esc(tr('candidates'))}:${esc(latestResult.evidence_candidate_count || 0)}</span><span>${esc(tr('queued'))}:${esc(latestResult.queued_review_count || 0)}</span><span>${esc(tr('live'))}:${esc(localizedBoolean(latestResult.source_fetching_performed))}</span></div><small>${esc(latestResult.repo?.full_name || latestResult.provider_id || lStatus(latestResult.verdict || ''))}</small></div>` : '';
+    const cr=state.controlled_connector_report||controlledConnectorReport(),cs=state.connector_safety_report||connectorSafetyReport();
+    const connectorHtml=`<div class="researchJsonCard controlledConnectorCard"><h4>${esc(tr('controlledConnectorTitle')||'Controlled connectors')}</h4><div class="miniChips"><span>${esc((cr.connectors_seen||[]).length)} ${esc(tr('connectors')||'connectors')}</span><span>${esc(tr('queued'))}:${esc(cr.queued_review_count||0)}</span><span>${esc(tr('live'))}:${esc(localizedBoolean(cs.live_fetching_performed))}</span></div><small>${esc(cs.verdict||'controlled_connector_safe_dry_run_or_manual_import')}</small></div>`;
     const searchHtml = state.search_provider_identity ? `<div class="researchJsonCard sourceSearchCard"><h4>${esc(tr('webSearchAbstractionTitle'))}</h4><div class="miniChips"><span>${esc(state.search_provider_identity.provider_id)}</span><span>${esc(tr('live'))}:${esc(localizedBoolean(state.search_provider_identity.live_enabled))}</span><span>${esc(tr('queries'))}:${esc(state.search_query_budget?.max_queries || 0)}</span></div><small>${esc(lStatus(state.search_policy?.verdict || 'web_search_abstraction_ready_no_live_fetch'))}</small></div>` : '';
-    el.innerHTML = requestHtml + policyHtml + diagnosticsHtml + searchHtml + resultHtml + fixtureHtml;
+    el.innerHTML = requestHtml + policyHtml + connectorHtml + diagnosticsHtml + searchHtml + resultHtml + fixtureHtml;
   }
 
   function renderSourceImportAdapter(){
@@ -1941,7 +1952,6 @@
     const templateHtml = templateReport ? `<div class="researchJsonCard sourcePacketTemplateReportCard"><h4>${esc(tr('sourcePacketTemplateReportTitle'))}</h4><div class="miniChips sourcePacketBuilderChips"><span>${esc(templateReport.template_count)} ${esc(tr('presets'))}</span><span>${esc(tr('sourceTemplate'+kc(templateReport.active_template_id)))}</span><span>${esc(tr('live'))}:${esc(localizedBoolean(templateReport.live_fetching_performed))}</span><span>${esc(tr('verified'))}:${esc(localizedBoolean(templateReport.verification_claimed))}</span><span>${esc(lStatus(templateReport.release_gate))}</span></div><small>${esc(localizedPolicy(templateReport.policy))}</small></div>` : '';
     el.innerHTML = templateHtml + `<div class="researchJsonCard sourcePacketBuilderReportCard sourcePacketBuilderQaCard"><h4>${esc(tr('sourcePacketBuilderTitle'))}</h4><div class="miniChips sourcePacketBuilderChips"><span>${esc(packetCount)} ${esc(tr('sourcePacketPackets'))}</span><span>${esc(report?.evidence_item_count || 0)} ${esc(tr('sourcePacketEvidence'))}</span><span>${esc(tr('live'))}:${esc(localizedBoolean(report?.live_fetching_performed))}</span><span>${esc(tr('verified'))}:${esc(localizedBoolean(report?.verification_claimed))}</span><span>${esc(lStatus(releaseGate))}</span></div><div class="sourcePacketBuilderRiskGrid"><span>${esc(tr('sourcePacketWarnings'))}: ${esc(warningCount)}</span><span>${esc(tr('sourcePacketWeakTraceability'))}: ${esc(weakTraceability)}</span><span>${esc(tr('sourcePacketAttentionReliabilityRisks'))}: ${esc(attentionRisk)}</span></div><small>${esc(localizedPolicy(report?.policy || 'local_manual_source_packet_builder_no_fetch_no_verification'))}</small><small>${esc(tr('sourcePacketBuilderBrowserQaNote'))}</small>${packetPreview ? `<pre class="sourcePacketBuilderPreview" aria-label="Source packet builder preview">${esc(packetPreview)}</pre>` : ''}</div>`;
   }
-
 
   function renderEvidenceReviewQueue(){
     const el = $('evidenceReviewOutput');

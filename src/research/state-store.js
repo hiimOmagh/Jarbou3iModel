@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.17. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.18. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.17';
+    const version = options.version || '1.1.0-alpha.18';
     return {
       plan: null,
       evidence: [],
@@ -66,7 +66,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.17';
+    const version = options.version || '1.1.0-alpha.18';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);
@@ -102,6 +102,8 @@
     next.analysis_template = next.analysis_template && typeof next.analysis_template === 'object' ? next.analysis_template : null;
     next.quality_gate = next.quality_gate && typeof next.quality_gate === 'object' ? next.quality_gate : null;
     next.onboarding = root.onboarding?.migrateOnboardingState ? root.onboarding.migrateOnboardingState(next.onboarding, {version}) : (next.onboarding && typeof next.onboarding === 'object' ? next.onboarding : null);
+    next.controlled_connector_report = next.controlled_connector_report && typeof next.controlled_connector_report === 'object' ? next.controlled_connector_report : null;
+    next.connector_safety_report = next.connector_safety_report && typeof next.connector_safety_report === 'object' ? next.connector_safety_report : null;
     next.source_connector = next.source_connector || 'manual_mock';
     next.source_task = next.source_task || 'source_plan';
     next.source_policy = next.source_policy && typeof next.source_policy === 'object' ? next.source_policy : null;

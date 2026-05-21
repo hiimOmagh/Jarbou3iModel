@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine render helpers v1.1.0-alpha.17. */
+/* Jarbou3i Research Engine render helpers v1.1.0-alpha.18. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -6,7 +6,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, source clusters, entity profiles, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.1.0-alpha.17 · Research Planner V2',
+      alphaBadge:'v1.1.0-alpha.18 · Controlled Connector Architecture MVP',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، تجميعات مصادر، ملفات كيانات، روابط سببية، نقد، وبوابة جودة v3.',
-      alphaBadge:'v1.1.0-alpha.17 · مخطط البحث V2' ,
+      alphaBadge:'v1.1.0-alpha.18 · معمارية الموصلات المضبوطة' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, clusters de sources, profils d’entités, liens causaux, critique et barrière qualité v3.',
-      alphaBadge:'v1.1.0-alpha.17 · Planificateur de recherche V2',
+      alphaBadge:'v1.1.0-alpha.18 · Architecture de connecteurs contrôlés',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -338,10 +338,10 @@
     publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
     localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
     hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
-    hostedDemoVerificationBody:'Planning gate only: no live search, no real OAuth, no provider execution, and no automated source verification are enabled. v1.1.0-alpha.17 adds Research Planner V2 with depth presets, source-type budgets, entity-aware query plans, counter-evidence targets, connector-readiness dry-run diagnostics, and planner export continuity while preserving hosted evidence, visible-text snapshots, and privacy boundaries.',
+    hostedDemoVerificationBody:'Planning gate only: no live search, no scraping, no real OAuth, no provider execution, and no automated source verification are enabled. v1.1.0-alpha.18 adds Controlled Connector Architecture MVP with connector contracts, URL-list import, manual transcript/source-list import, review-queue normalization, safety reports, and connector report export continuity.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
-    evidenceReviewGateBody:'v1.1.0-alpha.17 preserves the public-demo freeze while adding local Research Planner V2 over plans, entities, source clusters, and evidence context: query plans, source budgets, counter-evidence targets, and dry-run connector readiness remain review-gated. Source packets remain local/manual drafting scaffolds; screenshots, hosted evidence, ZIPs, entities, clusters, and generated plans are not release approval by themselves.',
+    evidenceReviewGateBody:'v1.1.0-alpha.18 preserves the public-demo freeze while adding Controlled Connector Architecture MVP over URL lists, transcripts, manual source lists, and connector candidates. All connector outputs remain review-gated and no connector output bypasses the Evidence Review Queue.',
     hostedUrlSmoke:'Hosted URL smoke', noOverflowProof:'No overflow proof', metadataArtifact:'Metadata artifact', reviewedBeforePublish:'Reviewed before publish',
     stableWorkflowEyebrow:'Stable workflow', stableWorkflowTitle:'Next action: add evidence → review clusters → link entities and gaps',
     stableWorkflowBody:'Advanced provider, OAuth, backend, source, and release diagnostics are collapsed until a selected post-freeze lane has criteria, falsifiers, and review gates; implementation remains blocked.',
@@ -357,10 +357,10 @@
     publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
     localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
     hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
-    hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد بحث حي، ولا OAuth حقيقي، ولا تنفيذ لمزوّد خارجي، ولا تحقق آلي من المصادر. تضيف v1.1.0-alpha.17 مخطط بحث محليًا بمستويات عمق وميزانيات مصادر وخطط استعلام مرتبطة بالكيانات وأهداف أدلة مضادة وتشخيص جاهزية موصلات تجريبي دون جلب حي أو تغيير في حدود الخصوصية.',
+    hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد بحث حي أو scraping أو OAuth حقيقي أو تنفيذ مزوّد أو تحقق آلي من المصادر. تضيف v1.1.0-alpha.18 معمارية موصلات مضبوطة مع عقود موصلات، URL-list import، وmanual transcript/source-list import وتطبيع النتائج إلى قائمة مراجعة الأدلة.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
-    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.17 على بوابات العرض المستضاف واللقطات النصية متعددة اللغات، وتضيف تقرير مخطط بحث محليًا فوق الخطة والكيانات والعناقيد وسياق الأدلة. تبقى خطط الاستعلام وميزانيات المصادر وأهداف الأدلة المضادة وجاهزية الموصلات في وضع مراجعة دون جلب حي.',
+    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.18 على تجميد العرض العام وتضيف معمارية موصلات مضبوطة فوق قوائم URL والنصوص اليدوية وقوائم المصادر ومرشحي الموصلات. كل مخرجات الموصلات تبقى في قائمة مراجعة الأدلة ولا تتجاوز المراجعة البشرية.',
     hostedUrlSmoke:'اختبار دخان لرابط الاستضافة', noOverflowProof:'إثبات عدم وجود تجاوز أفقي', metadataArtifact:'أثر بيانات وصفية', reviewedBeforePublish:'تمت المراجعة قبل النشر',
     stableWorkflowEyebrow:'سير عمل مستقر', stableWorkflowTitle:'الإجراء التالي: أضف الأدلة → راجع العناقيد → اربط الكيانات والفجوات',
     stableWorkflowBody:'تبقى تشخيصات المزوّد المتقدم وOAuth والخلفية والمصادر والإصدار مطوية حتى يحصل مسار ما بعد التجميد على معايير قبول وشروط إبطال وبوابات مراجعة واضحة؛ ويظل التنفيذ محظورًا.',
@@ -377,10 +377,10 @@
     publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
     localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
     hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
-    hostedDemoVerificationBody:'Porte de planification uniquement: aucune recherche live, aucun OAuth réel, aucune exécution fournisseur et aucune vérification automatique des sources. v1.1.0-alpha.17 ajoute un planificateur de recherche V2 avec profondeurs, budgets de sources, requêtes liées aux entités, contre-preuves et diagnostic de connecteurs en dry-run.',
+    hostedDemoVerificationBody:'Porte de planification uniquement: aucune recherche live, aucun scraping, aucun OAuth réel, aucune exécution fournisseur et aucune vérification automatique des sources. v1.1.0-alpha.18 ajoute une architecture de connecteurs contrôlés avec contrats, import URL-list, import transcript/source-list manuel, normalisation vers la file de revue et rapports de sécurité.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
-    evidenceReviewGateBody:'v1.1.0-alpha.17 préserve le gel de la démo publique tout en ajoutant un rapport local du Planificateur de recherche V2 au-dessus des plans, entités, clusters de sources et du contexte de preuves. Les plans de requêtes, budgets de sources, cibles de contre-preuves et diagnostics de préparation des connecteurs restent soumis à revue; les paquets de sources demeurent des supports locaux/manuels, et les captures, preuves hébergées, ZIP, entités, clusters et plans générés ne suffisent jamais à approuver une version.',
+    evidenceReviewGateBody:'v1.1.0-alpha.18 préserve le gel de la démo publique tout en ajoutant une architecture de connecteurs contrôlés sur les URL lists, transcripts, listes de sources manuelles et candidats de connecteurs. Toutes les sorties de connecteurs restent dans la file de revue des preuves et ne contournent pas la revue humaine.',
     hostedUrlSmoke:'Smoke test URL hébergée', noOverflowProof:'Preuve sans débordement', metadataArtifact:'Artefact de métadonnées', reviewedBeforePublish:'Revu avant publication',
     stableWorkflowEyebrow:'Workflow stable', stableWorkflowTitle:'Action suivante : ajouter des preuves → revoir les clusters → lier entités et lacunes',
     stableWorkflowBody:'Les diagnostics fournisseur avancé, OAuth, backend, source et release restent repliés jusqu’à ce qu’un axe post-gel ait critères, falsificateurs et barrières de revue; l’implémentation reste bloquée.',
@@ -470,7 +470,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'v1.1.0-alpha.17 adds Research Planner V2: quick/standard/deep depth presets, source-type budgets, entity-aware query plans, counter-evidence targets, connector-readiness dry-run diagnostics, and planner export without live search, scraping, OAuth, backend expansion, connector expansion, provider execution, or source verification changes.',
+    analysisReleaseNote:'v1.1.0-alpha.18 ajoute une architecture de connecteurs contrôlés: contrats d’interface, exécution dry-run, import URL-list/transcript/source-list manuel, normalisation vers la file de revue, rapports de sécurité et export sans recherche live, scraping, OAuth, extension backend, exécution fournisseur ni vérification automatique.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -485,7 +485,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'تضيف v1.1.0-alpha.17 مخطط البحث V2: مستويات عمق quick/standard/deep، ميزانيات مصادر، خطط استعلام مرتبطة بالكيانات، أهداف أدلة مضادة، وتشخيص جاهزية موصلات دون بحث حي أو استخراج أو OAuth أو توسيع خلفية أو موصلات أو تنفيذ مزود أو تغيير في تحقق المصادر.',
+    analysisReleaseNote:'تضيف v1.1.0-alpha.18 مخطط البحث V2: مستويات عمق quick/standard/deep، ميزانيات مصادر، خطط استعلام مرتبطة بالكيانات، أهداف أدلة مضادة، وتشخيص جاهزية موصلات دون بحث حي أو استخراج أو OAuth أو توسيع خلفية أو موصلات أو تنفيذ مزود أو تغيير في تحقق المصادر.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -501,7 +501,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'v1.1.0-alpha.17 ajoute le planificateur de recherche V2: profondeurs quick/standard/deep, budgets de sources, requêtes liées aux entités, contre-preuves, diagnostics de connecteurs en dry-run et export planner sans recherche live, scraping, OAuth, extension backend/connecteurs, exécution fournisseur ni changement de vérification.',
+    analysisReleaseNote:'v1.1.0-alpha.18 ajoute le planificateur de recherche V2: profondeurs quick/standard/deep, budgets de sources, requêtes liées aux entités, contre-preuves, diagnostics de connecteurs en dry-run et export planner sans recherche live, scraping, OAuth, extension backend/connecteurs, exécution fournisseur ni changement de vérification.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',
@@ -763,6 +763,29 @@
 
   const SUPPORTED_LANGS = ['ar','en','fr'];
   function esc(value){ return String(value ?? '').replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
+
+  Object.assign(COPY.en, {
+    controlledConnectorTitle:'Controlled connectors',
+    connectors:'connectors',
+    urlListImport:'URL list import',
+    manualTranscriptImport:'Manual transcript import',
+    manualSourceListImport:'Manual source-list import'
+  });
+  Object.assign(COPY.ar, {
+    controlledConnectorTitle:'الموصلات المضبوطة',
+    connectors:'موصلات',
+    urlListImport:'استيراد قائمة روابط',
+    manualTranscriptImport:'استيراد نص يدوي',
+    manualSourceListImport:'استيراد قائمة مصادر يدوية'
+  });
+  Object.assign(COPY.fr, {
+    controlledConnectorTitle:'Connecteurs contrôlés',
+    connectors:'connecteurs',
+    urlListImport:'Import liste URL',
+    manualTranscriptImport:'Import transcript manuel',
+    manualSourceListImport:'Import liste de sources'
+  });
+
   function getLang(){
     const lang = (global.document?.documentElement?.lang || global.localStorage?.getItem('jarbou3i.lang') || 'ar').slice(0,2).toLowerCase();
     return SUPPORTED_LANGS.includes(lang) ? lang : 'en';

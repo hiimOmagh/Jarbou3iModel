@@ -1,10 +1,10 @@
 # Current Release
 
-## v1.1.0-alpha.17 — Research Planner V2
+## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
 
 Status: alpha implementation package pending CI/browser lock.
 
-Version: `1.1.0-alpha.17`
+Version: `1.1.0-alpha.18`
 Package: `jarbou3i-research-engine`
 
 ### Scope
@@ -26,10 +26,10 @@ Release archive exclusions: generated artifacts, reports, ZIPs, dependency folde
 
 Required cleanup commands: run CI gates and hosted evidence capture before lock.
 
-Release-lock guard: v1.1.0-alpha.17 Research Planner V2 requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: v1.1.0-alpha.18 Controlled Connector Architecture MVP requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-alpha.17`
+Version: `1.1.0-alpha.18`
 Runtime capability change: no
 Root Manifest and Release Artifact Consolidation preserved. Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
@@ -44,3 +44,8 @@ Public demo continuity preserved.
 Public Demo continuity preserved.
 
 No live scraping and No real OAuth remain enforced.
+
+
+## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+
+Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.

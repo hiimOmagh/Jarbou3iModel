@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-alpha.17`
-Release: `v1.1.0-alpha.17 — Research Planner V2`
+Version: `1.1.0-alpha.18`
+Release: `v1.1.0-alpha.18 — Controlled Connector Architecture MVP`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

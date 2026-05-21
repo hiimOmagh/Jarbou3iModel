@@ -63,7 +63,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
-| `v1.1.0-alpha.17-research-planner-v2.md` | v1.1.0-alpha.17 — Research Planner V2 |
+| `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3267,8 +3267,8 @@ Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waitin
 This release is invalid if screenshots can be captured while transient overlays, modal backdrops, loading indicators, or unstable DOM states are present; if quality/export evidence is taken before the quality tab settles; or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
 
-<!-- release-file:v1.1.0-alpha.17-research-planner-v2.md -->
-# v1.1.0-alpha.17 — Research Planner V2
+<!-- release-file:v1.1.0-alpha.18-research-planner-v2.md -->
+# v1.1.0-alpha.18 — Controlled Connector Architecture MVP
 
 Adds a local-only entity intelligence layer over reviewed evidence and source clusters. The release extracts entity profiles, categories, aliases, evidence links, cluster links, review flags, and entity-map reports without external NER model download, live scraping, provider calls, OAuth/backend expansion, source connector expansion, storage expansion, broad UI redesign, or source refactor.
 
@@ -3307,8 +3307,48 @@ Post-freeze planning continuity: fixture registry consolidation, fixture registr
 Expansion lane continuity: fixture registry, MERGE_TO_REGISTRY, No live scraping, and No files are deleted discipline remain preserved.
 
 Repository consolidation continuity: docs/technical-debt-ledger.md, docs/source-refactor-readiness-audit.md, tests/language-description-audit-check.mjs, No source-file refactor yet, No runtime behavior change, and No fixture semantic thinning remain preserved.
-<!-- /release-file:v1.1.0-alpha.17-research-planner-v2.md -->
+<!-- /release-file:v1.1.0-alpha.18-research-planner-v2.md -->
 
 Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
 
 No live scraping and No real OAuth remain enforced.
+
+
+## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+
+Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
+
+
+<!-- release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
+# v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+
+Controlled Connector Architecture MVP adds connector interface contracts, dry-run execution, URL-list/manual transcript/source-list import, controlled result normalization into the Evidence Review Queue, connector safety reports, and connector report export continuity.
+
+Compatibility / governance continuity:
+- docs/technical-debt-ledger.md remains the source of technical-debt truth.
+- docs/source-refactor-readiness-audit.md remains audit-only until a refactor lane is explicitly opened.
+- tests/language-description-audit-check.mjs protects trilingual release-copy quality.
+- No source-file refactor yet.
+- No runtime behavior change.
+- No fixture semantic thinning.
+- No uncontrolled scraping, live web search, provider execution, production OAuth, backend expansion, or automatic verification claims.
+
+Validation target: v1.1.0-alpha.18.
+
+Hosted evidence capture continuity:
+- waitForEvidenceStable remains required before evidence screenshots.
+- assertNoTransientArtifacts remains required before accepting hosted evidence.
+- capture_settled and visual_artifact_guard_passed metadata remain required.
+
+Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+
+Public boundary: No live scraping, no real OAuth / production OAuth, and screenshots alone or ZIP existence alone never approve a release.
+
+Visual-freeze continuity: Mobile Header Geometry Lock remains in force; alpha.18 does not redesign the public-demo shell.
+
+Post-freeze continuity: fixture registry consolidation and fixture registry payload compression remain preserved; the unused oversized asset cleanup remains historical context.
+
+Boundary phrase: No real OAuth is enabled.
+
+Registry policy: MERGE_TO_REGISTRY remains the fixture handling mode. No files are deleted.
+<!-- /release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->

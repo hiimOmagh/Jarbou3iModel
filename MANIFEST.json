@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.17",
-  "release_title": "v1.1.0-alpha.17 — Research Planner V2",
+  "version": "1.1.0-alpha.18",
+  "release_title": "v1.1.0-alpha.18 — Controlled Connector Architecture MVP",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,

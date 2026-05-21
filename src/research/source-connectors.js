@@ -1,15 +1,37 @@
-/* Jarbou3i Research Engine source-assisted planning + GitHub public connector contracts v1.1.0-alpha.17. */
+/* Jarbou3i Research Engine source-assisted planning + GitHub public connector contracts v1.1.0-alpha.18. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.17';
+  const VERSION = '1.1.0-alpha.18';
 
   const SOURCE_CONNECTORS = {
     manual_mock: {
       label:'Manual / Mock',
       status:'available',
       live_fetching:false,
+      controlled_connector:true,
       description:'Manual source planning and mock fixtures only. No network fetch is performed.'
+    },
+    url_list_import: {
+      label:'URL list import',
+      status:'available_manual_import',
+      live_fetching:false,
+      controlled_connector:true,
+      description:'Manual URL list import connector. Normalizes provided URLs into Evidence Review Queue candidates without fetching.'
+    },
+    manual_transcript_import: {
+      label:'Manual transcript import',
+      status:'available_manual_import',
+      live_fetching:false,
+      controlled_connector:true,
+      description:'Manual transcript connector. Converts pasted transcript/source notes into reviewable candidates without model download or fetching.'
+    },
+    manual_source_list_import: {
+      label:'Manual source-list import',
+      status:'available_manual_import',
+      live_fetching:false,
+      controlled_connector:true,
+      description:'Manual bibliography/source-list connector. Produces review queue candidates only.'
     },
     web_search_api: {
       label:'Web Search API abstraction',
@@ -186,7 +208,7 @@
       connector_contract: contract,
       task,
       task_contract: SOURCE_TASKS[task] || SOURCE_TASKS.source_plan,
-      privacy_mode: connector === 'web_search_api' ? 'web_search_abstraction_dry_run' : (contract.live_fetching ? 'backend_public_metadata_review_gated' : 'manual_or_backend_source_planning_only'),
+      privacy_mode: connector === 'web_search_api' ? 'web_search_abstraction_dry_run' : (contract.live_fetching ? 'backend_public_metadata_review_gated' : (contract.controlled_connector ? 'controlled_connector_manual_dry_run' : 'manual_or_backend_source_planning_only')),
       live_fetching_enabled: !!contract.live_fetching,
       topic: input.topic || plan.topic || 'Unspecified topic',
       context: input.context || plan.context || 'Context not specified',
@@ -210,6 +232,9 @@
   }
 
   function mockSourceTaskResponse(request){
+    if(root.controlledConnectorEngine && ['url_list_import','manual_transcript_import','manual_source_list_import'].includes(request.connector)){
+      return root.controlledConnectorEngine.dryRunConnectorExecution(request, {version: VERSION});
+    }
     if(request.connector === 'web_search_api' && root.searchProviderAbstraction){
       return root.searchProviderAbstraction.mockWebSearchResponse(request);
     }
@@ -323,6 +348,11 @@
     const githubRequest = buildSourceTaskRequest({version, topic:'octocat/Hello-World', connector:'github_public_repo', github_repo:'octocat/Hello-World', task:'source_plan'});
     const githubResponse = mockSourceTaskResponse(githubRequest);
     results.push({fixture_id:'source-github-public-repo-contract', task:'github_public_repo', pass:githubResponse.ok === true && githubResponse.data.backend_required === true && githubResponse.data.live_fetching_performed === false, missing:[], response_type:githubResponse.type});
+    if(root.controlledConnectorEngine){
+      const urlRequest = buildSourceTaskRequest({version, topic:'Controlled connector fixture', connector:'url_list_import', task:'claim_extraction', connector_options:{url_list:'https://example.com/report Manual connector fixture source'}});
+      const urlResponse = mockSourceTaskResponse(urlRequest);
+      results.push({fixture_id:'source-controlled-url-list-import-contract', task:'url_list_import', pass:urlResponse.ok === true && urlResponse.data.live_fetching_performed === false && urlResponse.data.review_gate === 'evidence_review_queue_required', missing:[], response_type:urlResponse.type});
+    }
     return { suite_version:version, fixture_count:results.length, pass_count:results.filter(r => r.pass).length, fail_count:results.filter(r => !r.pass).length, live_fetching_performed:false, results };
   }
 
