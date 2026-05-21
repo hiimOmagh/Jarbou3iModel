@@ -81,6 +81,13 @@ for (const lang of ['ar', 'en', 'fr']) {
     assert.ok(researchCopy[lang][key], `${lang} missing localized static-shell key: ${key}`);
   }
 }
+
+assert.ok(researchCopy.en.evidenceReviewGateBody.includes('Research Planner V2'), 'English evidence review gate body must describe alpha.17 planner scope');
+assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('مخطط بحث'), 'Arabic evidence review gate body must describe alpha.17 planner scope');
+assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('Planificateur de recherche V2'), 'French evidence review gate body must describe alpha.17 planner scope');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French alpha.17 evidence review gate body must not inherit English release copy');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('Source packets remain local/manual'), false, 'French alpha.17 evidence review gate body must not expose English source-packet release copy');
+
 for (const phrase of ['First-run guide', 'Start clean:', 'Public demo ready', 'Show the workflow', 'Publish only after browser evidence exists', 'Review screenshots', 'Stable workflow', 'Quality & Export']) {
   assert.equal(index.includes(`>${phrase}`), false, `default Arabic shell must not expose English fallback copy: ${phrase}`);
 }

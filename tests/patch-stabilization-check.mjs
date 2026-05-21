@@ -43,3 +43,8 @@ assert.ok(ciGateRegistry.gates['no-browser'].node_checks.includes('tests/version
 
 console.log('Patch-only stabilization checks passed.');
 process.exit(0);
+
+
+assert.ok(renderHelpers.includes("v1.1.0-alpha.17 · Planificateur de recherche V2"), 'French alpha badge must reflect Research Planner V2');
+assert.ok(renderHelpers.includes('Planificateur de recherche V2 au-dessus des plans'), 'French alpha.17 hosted evidence body must describe planner scope');
+assert.equal(renderHelpers.includes("evidenceReviewGateBody:'v1.1.0-alpha.17 preserves the public-demo freeze"), false, 'French evidence review copy must not inherit English alpha.17 prose');
