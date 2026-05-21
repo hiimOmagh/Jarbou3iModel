@@ -26,8 +26,8 @@ assert.ok(v103Entry?.checks.includes('tests/patch-stabilization-check.mjs'), 'v1
 assert.ok(v103Entry?.checks.includes('tests/ux-stabilization-patch-check.mjs'), 'v103 registry entry must include UX stabilization gate');
 assert.ok(ciGateRegistry.gates.release.node_checks.includes('tests/ux-stabilization-patch-check.mjs'), 'release registry must include UX stabilization gate');
 assert.ok(renderHelpers.includes("alphaBadge:'v1.1.0-alpha.15 · Source Cluster + Gap Intelligence'"), 'English stable badge must be fixed');
-assert.ok(renderHelpers.includes('مُصرّف البرومبت وترقية خطة البحث'), 'Arabic release badge must be professional and current');
-assert.ok(renderHelpers.includes('Compilateur de prompt et plan de recherche renforcé'), 'French release badge must be professional and current');
+assert.ok(renderHelpers.includes('تجميع المصادر وذكاء فجوات الأدلة'), 'Arabic release badge must be professional and current');
+assert.ok(renderHelpers.includes('Clusters de sources + intelligence des lacunes'), 'French release badge must be professional and current');
 assert.ok(release.includes("'patch_release'"), 'stable policy must allow patch_release work only after stable');
 for (const forbidden of ['new_major_feature','new_live_provider','new_source_connector','oauth_production_enablement','secret_export_weakening']) {
   assert.ok(release.includes(forbidden), `release policy must keep blocked-work guard: ${forbidden}`);
