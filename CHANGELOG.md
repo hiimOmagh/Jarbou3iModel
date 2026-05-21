@@ -1,20 +1,39 @@
-## v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
+# Changelog
 
-Adds a local/template-driven prompt compiler to improve the research-plan stage without introducing live provider calls or new source acquisition. The compiler turns messy topic/context input into a deterministic structured plan seed: refined thesis, objective, key questions, actor/tool hypotheses, evidence needs, counterarguments, disconfirming conditions, missing-context prompts, keywords, and output-plan guidance.
+## v1.1.0-alpha.15 — Source Cluster + Gap Intelligence
 
-Validation and release discipline are extended with `tests/prompt-compiler-check.mjs`, schema/fixture updates, and CI registry coverage. Existing developer-productivity commands (`dev:doctor`, `dev:baseline`, `dev:impact`, `dev:handoff`), visible-text localization snapshots, hosted evidence capture, fixture compression, privacy/export guards, and package script compression remain preserved.
+Adds local-only source clustering and source-gap diagnostics to the reviewed evidence workflow without introducing live provider calls, live fetching, scraping, OAuth/backend expansion, source connector expansion, storage expansion, broad UI redesign, or large source refactor.
 
-No live scraping, No real OAuth, no live provider execution, no backend endpoint expansion, no source connector expansion, no storage expansion, no UI redesign, and no large source refactor are introduced.
+### Added
 
-## Historical release history
+- `src/research/source-cluster-engine.js` for deterministic local source clustering.
+- Duplicate and overlap detection across reviewed evidence claims.
+- Source-gap warnings for weak traceability, missing dates, missing URLs, source-type concentration, social-only clusters, and missing counter-evidence.
+- Cluster scoring for reliability, attention, synthesis weight, and traceability.
+- Cluster cards in the analysis brief output.
+- `source_clusters`, `source_cluster_report`, and `source_gap_report` in research packet/schema/fixture continuity.
+- `tests/source-cluster-gap-intelligence-check.mjs` registered in source/no-browser/release gates.
 
-Detailed historical release notes are consolidated in `docs/release-history.md`.
+### Preserved
 
-Evidence manifest continuity: v1.1.0-alpha.14 preserves the single final metadata hosted-demo evidence manifest gate.
+- Evidence Workspace + Source Import V2.
+- Manual/private default mode.
+- Privacy/export boundary.
+- Hosted evidence and visible-text guards.
+- No live provider/source/OAuth/backend/storage expansion.
 
-Node 24 CI compatibility is preserved with actions/checkout@v6, actions/setup-node@v6, actions/upload-artifact@v6, npm ci --no-audit --no-fund --ignore-scripts, and PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser.
-Public Demo boundaries remain preserved.
+### CI continuity
 
-Public-demo boundary continuity: No live scraping, No real OAuth, and screenshots alone or ZIP archive alone are not sufficient for approval.
+- Node 24 CI compatibility remains preserved.
 
-Continuity note: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, changed-files-only discipline, no live scraping, No real OAuth, screenshots alone, hosted evidence, and ZIPs are not sufficient for release approval.
+Release approval guard:
+
+- screenshots alone are insufficient.
+- ZIP existence alone is insufficient.
+
+
+Continuity discipline: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
+
+Public demo boundary: public demo readiness, hosted evidence review, and release-lock safeguards remain preserved.
+
+Boundary: No real OAuth or production OAuth flow is enabled.

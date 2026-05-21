@@ -63,7 +63,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
-| `v1.1.0-alpha.14-prompt-compiler-research-plan-upgrade.md` | v1.1.0-alpha.14 — Evidence Workspace + Source Import V2 |
+| `v1.1.0-alpha.15-source-cluster-gap-intelligence.md` | v1.1.0-alpha.15 — Source Cluster + Gap Intelligence |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3267,8 +3267,8 @@ Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waitin
 This release is invalid if screenshots can be captured while transient overlays, modal backdrops, loading indicators, or unstable DOM states are present; if quality/export evidence is taken before the quality tab settles; or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
 
-<!-- release-file:v1.1.0-alpha.14-prompt-compiler-research-plan-upgrade.md -->
-# v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
+<!-- release-file:v1.1.0-alpha.15-source-cluster-gap-intelligence.md -->
+# v1.1.0-alpha.15 — Source Cluster + Gap Intelligence
 
 Cleanup-only productivity gate. Adds a developer command center and golden baseline automation before product expansion or large source refactor work.
 
@@ -3303,4 +3303,4 @@ Cleanup-only productivity gate. Adds a developer command center and golden basel
 ## Disproven if
 
 This release is invalid if dev productivity commands are missing, visible-text snapshots are not produced by hosted evidence, Arabic/French fallback leaks are ignored, screenshots alone or ZIPs are accepted as approval, or runtime/provider/OAuth/backend/source/storage behavior changes.
-<!-- /release-file:v1.1.0-alpha.14-prompt-compiler-research-plan-upgrade.md -->
+<!-- /release-file:v1.1.0-alpha.15-source-cluster-gap-intelligence.md -->

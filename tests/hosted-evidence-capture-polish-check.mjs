@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.14';
-const TITLE = 'Evidence Workspace + Source Import V2';
+const VERSION = '1.1.0-alpha.15';
+const TITLE = 'Source Cluster + Gap Intelligence';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-alpha.14-prompt-compiler-research-plan-upgrade.md';
+const DOC = 'docs/v1.1.0-alpha.15-source-cluster-gap-intelligence.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));

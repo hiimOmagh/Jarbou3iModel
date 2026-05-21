@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.14. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.15. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.14';
+    const version = options.version || '1.1.0-alpha.15';
     return {
       plan: null,
       evidence: [],
@@ -43,6 +43,8 @@
       editingReviewIndex: -1,
       last_source_import_preview: null,
       source_import_report: null,
+      source_cluster_report: null,
+      source_gap_report: null,
       packet_migration_report: null,
       active_project_id: null,
       active_project_name: null,
@@ -59,7 +61,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.14';
+    const version = options.version || '1.1.0-alpha.15';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);
@@ -76,6 +78,8 @@
     next.editingReviewIndex = Number.isInteger(next.editingReviewIndex) ? next.editingReviewIndex : -1;
     next.last_source_import_preview = next.last_source_import_preview && typeof next.last_source_import_preview === 'object' ? next.last_source_import_preview : null;
     next.source_import_report = next.source_import_report && typeof next.source_import_report === 'object' ? next.source_import_report : null;
+    next.source_cluster_report = next.source_cluster_report && typeof next.source_cluster_report === 'object' ? next.source_cluster_report : null;
+    next.source_gap_report = next.source_gap_report && typeof next.source_gap_report === 'object' ? next.source_gap_report : null;
     next.packet_migration_report = next.packet_migration_report && typeof next.packet_migration_report === 'object' ? next.packet_migration_report : null;
     next.active_project_id = typeof next.active_project_id === 'string' ? next.active_project_id : null;
     next.active_project_name = typeof next.active_project_name === 'string' ? next.active_project_name : null;

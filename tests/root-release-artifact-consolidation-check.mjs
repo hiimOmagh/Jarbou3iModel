@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.14';
-const TITLE = 'Evidence Workspace + Source Import V2';
+const VERSION = '1.1.0-alpha.15';
+const TITLE = 'Source Cluster + Gap Intelligence';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

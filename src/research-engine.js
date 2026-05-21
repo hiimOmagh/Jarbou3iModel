@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.14 — prompt compiler and research plan upgrade. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.15 — source cluster + gap intelligence. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.14';
+  const VERSION = '1.1.0-alpha.15';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -27,6 +27,7 @@
   const sourcePacketRoundtrip = modules.sourcePacketRoundtrip;
   const promptCompiler = modules.promptCompiler;
   const evidenceReviewController = modules.evidenceReviewController;
+  const sourceClusterEngine = modules.sourceClusterEngine;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
   const hostedDemoVerification = modules.hostedDemoVerification;
@@ -299,6 +300,9 @@
       source_imports: state.source_imports || [],
       evidence_review_queue: state.evidence_review_queue || [],
       evidence_review_report: evidenceReviewReport(),
+      source_clusters: buildSourceClusters(),
+      source_cluster_report: sourceClusterGapReport(),
+      source_gap_report: sourceClusterGapReport(),
       source_import_report: state.source_import_report || null,
       source_packet_builder_report: state.source_packet_builder_report || null,
       last_built_source_packet: state.last_built_source_packet || null,
@@ -429,32 +433,23 @@
     return [...ids].sort();
   }
 
-  function buildSourceClusters(){
-    const clusters = new Map();
-    for(const evidence of state.evidence){
-      const ids = [...(evidence.supports || []), ...(evidence.contradicts || [])].filter(validId);
-      const targets = ids.length ? ids : ['UNLINKED'];
-      for(const target of targets){
-        if(!clusters.has(target)) clusters.set(target, []);
-        clusters.get(target).push(evidence);
-      }
+  function buildSourceClusterIntelligence(){
+    if(sourceClusterEngine?.buildSourceClusterIntelligence){
+      return sourceClusterEngine.buildSourceClusterIntelligence((state.evidence || []).map(item => scoreEvidence(item)), {
+        version: VERSION,
+        now: nowIso(),
+        layerFromId
+      });
     }
-    return [...clusters.entries()].map(([target_id, items], index) => {
-      const sourceTypes = [...new Set(items.map(item => item.source_type || 'other'))];
-      const avgStrength = items.reduce((sum,item)=>sum + clampScore(item.evidence_strength), 0) / Math.max(1, items.length);
-      const contradictions = items.filter(item => (item.contradicts || []).includes(target_id)).length;
-      return {
-        cluster_id: `CL${index + 1}`,
-        target_id,
-        layer: layerFromId(target_id),
-        evidence_ids: items.map(item => item.evidence_id),
-        claims: items.map(item => item.claim),
-        source_types: sourceTypes,
-        average_strength: Number(avgStrength.toFixed(2)),
-        contradiction_count: contradictions,
-        confidence_mix: [...new Set(items.map(item => item.confidence || 'medium'))]
-      };
-    });
+    return {source_cluster_version: VERSION, clusters: [], gap_report: {source_gap_report_version: VERSION, release_gate:'review_required', global_gap_flags:['source_cluster_engine_missing'], live_fetching_performed:false, verification_claimed:false}};
+  }
+
+  function buildSourceClusters(){
+    return buildSourceClusterIntelligence().clusters || [];
+  }
+
+  function sourceClusterGapReport(){
+    return buildSourceClusterIntelligence().gap_report;
   }
 
   function diagnosticReport(){
@@ -503,7 +498,9 @@
     if(!state.plan) state.plan = buildResearchPlan();
     if(!state.causal_links.length && state.evidence.length) inferCausalLinks();
     const diagnostics = diagnosticReport();
-    const clusters = buildSourceClusters();
+    const clusterIntelligence = buildSourceClusterIntelligence();
+    const clusters = clusterIntelligence.clusters || [];
+    const sourceGapReport = clusterIntelligence.gap_report || sourceClusterGapReport();
     const scores = qualityScores();
     const template = activeTemplateProfile();
     const fitReport = analysisTemplates?.templateFitReport ? analysisTemplates.templateFitReport(state, template?.template_id) : null;
@@ -518,11 +515,15 @@
       readiness_score: scores.readiness,
       research_questions: state.plan?.questions || [],
       source_clusters: clusters,
+      source_cluster_report: sourceGapReport,
+      source_gap_report: sourceGapReport,
       coverage: diagnostics.coverage,
-      gaps: diagnostics.gaps,
-      evidence_priorities: diagnostics.gaps.includes('counter_evidence_missing')
-        ? ['Add evidence that directly contradicts a dominant narrative or expected result.', 'Add at least three traceable URLs and dates.', 'Add coverage for all six Jarbou3i layers.']
-        : ['Verify source dates and URLs before publication.', 'Manually inspect causal-link direction before synthesis.'],
+      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || [])])],
+      evidence_priorities: (sourceGapReport.recommendations || []).length
+        ? sourceGapReport.recommendations
+        : (diagnostics.gaps.includes('counter_evidence_missing')
+          ? ['Add evidence that directly contradicts a dominant narrative or expected result.', 'Add at least three traceable URLs and dates.', 'Add coverage for all six Jarbou3i layers.']
+          : ['Verify source dates and URLs before publication.', 'Manually inspect causal-link direction before synthesis.']),
       synthesis_constraints: [
         'Do not claim source verification unless a source URL and source date are present.',
         'Separate observation, inference, and estimate in the final strategic JSON.',
@@ -1625,6 +1626,8 @@
     state.evidence_review_queue = Array.isArray(nextPacket.evidence_review_queue) ? nextPacket.evidence_review_queue.slice(-200) : [];
     state.evidence_review_report = nextPacket.evidence_review_report || null;
     state.source_import_report = nextPacket.source_import_report || null;
+    state.source_cluster_report = nextPacket.source_cluster_report || nextPacket.source_gap_report || null;
+    state.source_gap_report = nextPacket.source_gap_report || nextPacket.source_cluster_report || null;
     state.source_packet_roundtrip_report = nextPacket.source_packet_roundtrip_report || null;
     state.source_packet_template_report = nextPacket.source_packet_template_report || null;
     state.packet_migration_report = nextPacket.packet_migration_report || migrated.report || null;
@@ -1774,8 +1777,10 @@
     if(!state.analysis_brief){el.innerHTML = emptyState(tr('noAnalysisBrief'), tr('analysisBriefEmptyBody'), tr('compileBrief')); renderDiagnostics(); return;}
     const brief = state.analysis_brief;
     const clusters = brief.source_clusters || [];
-    const gaps = brief.gaps || [];
-    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('clusterTitle'))}</h4><div class="miniChips">${clusters.slice(0,12).map(c=>`<span>${esc(c.cluster_id)} · ${esc(c.target_id)} · ${esc(c.evidence_ids.length)}E</span>`).join('') || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
+    const gapReport = brief.source_gap_report || brief.source_cluster_report || sourceClusterGapReport();
+    const gaps = [...new Set([...(brief.gaps || []), ...(gapReport.global_gap_flags || []), ...(gapReport.cluster_gap_flags || [])])];
+    const clusterCards = clusters.slice(0, 8).map(c => `<div class="sourceClusterCard"><div><b>${esc(c.cluster_id)} · ${esc(c.cluster_label || c.target_id)}</b><span>${esc(c.review_gate || 'review_required')}</span></div><p>${esc(c.primary_claim || (c.claims || [])[0] || '')}</p><div class="miniChips"><span>${esc(c.evidence_ids.length)}E</span><span>R:${esc(c.reliability_score ?? '—')}</span><span>A:${esc(c.attention_signal_score ?? '—')}</span><span>T:${esc(c.traceability_score ?? '—')}</span><span>${esc((c.source_types || []).join('/'))}</span>${c.duplicate_count ? `<span>${esc(c.duplicate_count)} duplicate</span>` : ''}</div>${(c.gap_flags || []).length ? `<small>${esc((c.gap_flags || []).join(' · '))}</small>` : ''}</div>`).join('');
+    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('clusterTitle'))}</h4><div class="sourceClusterGrid">${clusterCards || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${gapReport.recommendations?.length ? `<h4>Source gap actions</h4><ul>${gapReport.recommendations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : ''}<h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
     renderDiagnostics();
   }
 
