@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.1.0-alpha.15';
-const TITLE = 'Source Cluster + Gap Intelligence';
+const VERSION = '1.1.0-alpha.16';
+const TITLE = 'Entity Intelligence Layer';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));

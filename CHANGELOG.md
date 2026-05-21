@@ -1,39 +1,38 @@
 # Changelog
 
+## v1.1.0-alpha.16 — Entity Intelligence Layer
+
+- Added local-only entity intelligence over accepted evidence and source clusters.
+- Added entity profiles with categories, aliases, evidence IDs, cluster IDs, review flags, and strategic relevance scores.
+- Added alias/fuzzy merge logic and ignore-list continuity without external NER model download.
+- Added entity map and alias reports for research packet/export continuity.
+- Preserved Source Cluster + Gap Intelligence and Evidence Workspace + Source Import V2.
+- Preserved manual/private default mode, hosted evidence guards, privacy/export boundary, and no-live-provider/source/OAuth/backend/storage boundary.
+
 ## v1.1.0-alpha.15 — Source Cluster + Gap Intelligence
 
-Adds local-only source clustering and source-gap diagnostics to the reviewed evidence workflow without introducing live provider calls, live fetching, scraping, OAuth/backend expansion, source connector expansion, storage expansion, broad UI redesign, or large source refactor.
+- Added local-only source clustering and source-gap diagnostics to the reviewed evidence workflow.
+- Added duplicate and overlap detection, source-gap warnings, cluster quality scoring, cluster cards, and cluster exports.
+- Preserved Evidence Workspace + Source Import V2 and no-live-provider/source/OAuth/backend/storage boundary.
 
-### Added
+## v1.1.0-alpha.14 — Evidence Workspace + Source Import V2
 
-- `src/research/source-cluster-engine.js` for deterministic local source clustering.
-- Duplicate and overlap detection across reviewed evidence claims.
-- Source-gap warnings for weak traceability, missing dates, missing URLs, source-type concentration, social-only clusters, and missing counter-evidence.
-- Cluster scoring for reliability, attention, synthesis weight, and traceability.
-- Cluster cards in the analysis brief output.
-- `source_clusters`, `source_cluster_report`, and `source_gap_report` in research packet/schema/fixture continuity.
-- `tests/source-cluster-gap-intelligence-check.mjs` registered in source/no-browser/release gates.
-
-### Preserved
-
-- Evidence Workspace + Source Import V2.
-- Manual/private default mode.
-- Privacy/export boundary.
-- Hosted evidence and visible-text guards.
-- No live provider/source/OAuth/backend/storage expansion.
-
-### CI continuity
-
-- Node 24 CI compatibility remains preserved.
+- Added reviewed evidence/source candidate workflow and Source Import V2.
+- Preserved manual/private mode and hosted evidence guards.
 
 Release approval guard:
 
 - screenshots alone are insufficient.
 - ZIP existence alone is insufficient.
 
-
 Continuity discipline: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
 Public demo boundary: public demo readiness, hosted evidence review, and release-lock safeguards remain preserved.
 
 Boundary: No real OAuth or production OAuth flow is enabled.
+
+
+Node 24 CI compatibility remains preserved for this release.
+
+
+Release-lock guard: v1.1.0-alpha.16 Entity Intelligence Layer requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.

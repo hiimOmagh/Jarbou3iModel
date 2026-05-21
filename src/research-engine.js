@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.15 — source cluster + gap intelligence. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.16 — entity intelligence layer. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.15';
+  const VERSION = '1.1.0-alpha.16';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -28,6 +28,7 @@
   const promptCompiler = modules.promptCompiler;
   const evidenceReviewController = modules.evidenceReviewController;
   const sourceClusterEngine = modules.sourceClusterEngine;
+  const entityIntelligence = modules.entityIntelligence;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
   const hostedDemoVerification = modules.hostedDemoVerification;
@@ -303,6 +304,9 @@
       source_clusters: buildSourceClusters(),
       source_cluster_report: sourceClusterGapReport(),
       source_gap_report: sourceClusterGapReport(),
+      entity_profiles: entityProfiles(),
+      entity_map_report: entityMapReport(),
+      entity_alias_report: entityAliasReport(),
       source_import_report: state.source_import_report || null,
       source_packet_builder_report: state.source_packet_builder_report || null,
       last_built_source_packet: state.last_built_source_packet || null,
@@ -452,6 +456,30 @@
     return buildSourceClusterIntelligence().gap_report;
   }
 
+  function buildEntityIntelligence(){
+    const clusterIntelligence = buildSourceClusterIntelligence();
+    if(entityIntelligence?.buildEntityIntelligence){
+      return entityIntelligence.buildEntityIntelligence((state.evidence || []).map(item => scoreEvidence(item)), clusterIntelligence.clusters || [], {
+        version: VERSION,
+        now: nowIso(),
+        ignore_list: state.entity_ignore_list || []
+      });
+    }
+    return {entity_intelligence_version: VERSION, entity_profiles: [], entity_map_report: {entity_map_report_version: VERSION, release_gate:'entity_review_required', entity_gap_flags:['entity_intelligence_module_missing'], live_fetching_performed:false, verification_claimed:false}, entity_alias_report: {entity_alias_report_version: VERSION, live_fetching_performed:false, verification_claimed:false}};
+  }
+
+  function entityProfiles(){
+    return buildEntityIntelligence().entity_profiles || [];
+  }
+
+  function entityMapReport(){
+    return buildEntityIntelligence().entity_map_report || {entity_map_report_version: VERSION, release_gate:'entity_review_required'};
+  }
+
+  function entityAliasReport(){
+    return buildEntityIntelligence().entity_alias_report || {entity_alias_report_version: VERSION};
+  }
+
   function diagnosticReport(){
     const linkedIds = collectLinkedIds();
     const evidenceIds = new Set(state.evidence.map(item => item.evidence_id));
@@ -501,6 +529,8 @@
     const clusterIntelligence = buildSourceClusterIntelligence();
     const clusters = clusterIntelligence.clusters || [];
     const sourceGapReport = clusterIntelligence.gap_report || sourceClusterGapReport();
+    const entityIntel = buildEntityIntelligence();
+    const entityMap = entityIntel.entity_map_report || entityMapReport();
     const scores = qualityScores();
     const template = activeTemplateProfile();
     const fitReport = analysisTemplates?.templateFitReport ? analysisTemplates.templateFitReport(state, template?.template_id) : null;
@@ -517,8 +547,11 @@
       source_clusters: clusters,
       source_cluster_report: sourceGapReport,
       source_gap_report: sourceGapReport,
+      entity_profiles: entityIntel.entity_profiles || [],
+      entity_map_report: entityMap,
+      entity_alias_report: entityIntel.entity_alias_report || entityAliasReport(),
       coverage: diagnostics.coverage,
-      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || [])])],
+      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || []), ...(entityMap.entity_gap_flags || [])])],
       evidence_priorities: (sourceGapReport.recommendations || []).length
         ? sourceGapReport.recommendations
         : (diagnostics.gaps.includes('counter_evidence_missing')
@@ -532,6 +565,9 @@
       ].concat(template?.prompt_directives || []),
       handoff_summary: `Compile ${state.evidence.length} evidence items and ${state.causal_links.length} causal links into a Jarbou3i strategic analysis for ${topic()}.`
     };
+    state.entity_profiles = entityIntel.entity_profiles || [];
+    state.entity_map_report = entityMap;
+    state.entity_alias_report = entityIntel.entity_alias_report || entityAliasReport();
     const qualityReport = qualityGate.calculateQualityGateV3Report(Object.assign({}, state, {analysis_brief: brief}), {evidenceReviewReport, providerSafetyReport});
     brief.quality_gate_report = qualityReport;
     brief.publication_readiness = qualityReport.publication_readiness;
@@ -1778,9 +1814,11 @@
     const brief = state.analysis_brief;
     const clusters = brief.source_clusters || [];
     const gapReport = brief.source_gap_report || brief.source_cluster_report || sourceClusterGapReport();
-    const gaps = [...new Set([...(brief.gaps || []), ...(gapReport.global_gap_flags || []), ...(gapReport.cluster_gap_flags || [])])];
+    const gaps = [...new Set([...(brief.gaps || []), ...(gapReport.global_gap_flags || []), ...(gapReport.cluster_gap_flags || []), ...(brief.entity_map_report?.entity_gap_flags || [])])];
+    const entities = brief.entity_profiles || [];
+    const entityCards = entities.slice(0, 8).map(e => `<div class="entityProfileCard"><div><b>${esc(e.entity_id)} · ${esc(e.canonical_name || '')}</b><span>${esc(e.category || 'other')}</span></div><p>${esc((e.claim_mentions || [])[0] || '')}</p><div class="miniChips"><span>${esc((e.evidence_ids || []).length)}E</span><span>${esc((e.cluster_ids || []).length)}CL</span><span>${esc(e.strategic_relevance_score ?? '—')}/100</span><span>${esc(e.review_gate || 'entity_review_required')}</span></div>${(e.aliases || []).length ? `<small>aliases: ${esc((e.aliases || []).slice(0,4).join(' · '))}</small>` : ''}</div>`).join('');
     const clusterCards = clusters.slice(0, 8).map(c => `<div class="sourceClusterCard"><div><b>${esc(c.cluster_id)} · ${esc(c.cluster_label || c.target_id)}</b><span>${esc(c.review_gate || 'review_required')}</span></div><p>${esc(c.primary_claim || (c.claims || [])[0] || '')}</p><div class="miniChips"><span>${esc(c.evidence_ids.length)}E</span><span>R:${esc(c.reliability_score ?? '—')}</span><span>A:${esc(c.attention_signal_score ?? '—')}</span><span>T:${esc(c.traceability_score ?? '—')}</span><span>${esc((c.source_types || []).join('/'))}</span>${c.duplicate_count ? `<span>${esc(c.duplicate_count)} duplicate</span>` : ''}</div>${(c.gap_flags || []).length ? `<small>${esc((c.gap_flags || []).join(' · '))}</small>` : ''}</div>`).join('');
-    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('clusterTitle'))}</h4><div class="sourceClusterGrid">${clusterCards || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${gapReport.recommendations?.length ? `<h4>Source gap actions</h4><ul>${gapReport.recommendations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : ''}<h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
+    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('entityTitle') || 'Entity profiles')}</h4><div class="entityProfileGrid">${entityCards || '<span>—</span>'}</div><h4>${esc(tr('clusterTitle'))}</h4><div class="sourceClusterGrid">${clusterCards || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${gapReport.recommendations?.length ? `<h4>Source gap actions</h4><ul>${gapReport.recommendations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : ''}<h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
     renderDiagnostics();
   }
 

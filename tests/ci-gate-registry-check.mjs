@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.15';
-const RELEASE = 'v1.1.0-alpha.15 — Source Cluster + Gap Intelligence';
+const VERSION = '1.1.0-alpha.16';
+const RELEASE = 'v1.1.0-alpha.16 — Entity Intelligence Layer';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');

@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.15. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.16. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.15';
+    const version = options.version || '1.1.0-alpha.16';
     return {
       plan: null,
       evidence: [],
@@ -45,6 +45,10 @@
       source_import_report: null,
       source_cluster_report: null,
       source_gap_report: null,
+      entity_profiles: [],
+      entity_map_report: null,
+      entity_alias_report: null,
+      entity_ignore_list: [],
       packet_migration_report: null,
       active_project_id: null,
       active_project_name: null,
@@ -61,7 +65,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.15';
+    const version = options.version || '1.1.0-alpha.16';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);
@@ -80,6 +84,10 @@
     next.source_import_report = next.source_import_report && typeof next.source_import_report === 'object' ? next.source_import_report : null;
     next.source_cluster_report = next.source_cluster_report && typeof next.source_cluster_report === 'object' ? next.source_cluster_report : null;
     next.source_gap_report = next.source_gap_report && typeof next.source_gap_report === 'object' ? next.source_gap_report : null;
+    next.entity_profiles = Array.isArray(next.entity_profiles) ? next.entity_profiles.slice(0, 500) : [];
+    next.entity_map_report = next.entity_map_report && typeof next.entity_map_report === 'object' ? next.entity_map_report : null;
+    next.entity_alias_report = next.entity_alias_report && typeof next.entity_alias_report === 'object' ? next.entity_alias_report : null;
+    next.entity_ignore_list = Array.isArray(next.entity_ignore_list) ? next.entity_ignore_list.slice(0, 500) : [];
     next.packet_migration_report = next.packet_migration_report && typeof next.packet_migration_report === 'object' ? next.packet_migration_report : null;
     next.active_project_id = typeof next.active_project_id === 'string' ? next.active_project_id : null;
     next.active_project_name = typeof next.active_project_name === 'string' ? next.active_project_name : null;

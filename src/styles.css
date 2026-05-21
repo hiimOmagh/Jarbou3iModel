@@ -1047,3 +1047,5 @@ html[dir="rtl"] .welcomeEyebrow{
     height:auto;
   }
 }
+
+.entityProfileGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:10px 0}.entityProfileCard{border:1px solid rgba(148,163,184,.22);border-radius:16px;padding:12px;background:rgba(15,23,42,.22)}.entityProfileCard>div:first-child{display:flex;justify-content:space-between;gap:8px;align-items:center}.entityProfileCard p{margin:8px 0;color:var(--muted)}

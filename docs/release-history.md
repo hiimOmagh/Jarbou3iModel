@@ -63,7 +63,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
-| `v1.1.0-alpha.15-source-cluster-gap-intelligence.md` | v1.1.0-alpha.15 — Source Cluster + Gap Intelligence |
+| `v1.1.0-alpha.16-source-cluster-gap-intelligence.md` | v1.1.0-alpha.16 — Entity Intelligence Layer |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3267,40 +3267,44 @@ Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waitin
 This release is invalid if screenshots can be captured while transient overlays, modal backdrops, loading indicators, or unstable DOM states are present; if quality/export evidence is taken before the quality tab settles; or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
 
-<!-- release-file:v1.1.0-alpha.15-source-cluster-gap-intelligence.md -->
-# v1.1.0-alpha.15 — Source Cluster + Gap Intelligence
+<!-- release-file:v1.1.0-alpha.16-source-cluster-gap-intelligence.md -->
+# v1.1.0-alpha.16 — Entity Intelligence Layer
 
-Cleanup-only productivity gate. Adds a developer command center and golden baseline automation before product expansion or large source refactor work.
+Adds a local-only entity intelligence layer over reviewed evidence and source clusters. The release extracts entity profiles, categories, aliases, evidence links, cluster links, review flags, and entity-map reports without external NER model download, live scraping, provider calls, OAuth/backend expansion, source connector expansion, storage expansion, broad UI redesign, or source refactor.
 
 ## What changed
 
-- Preserved fixture registry MERGE_TO_REGISTRY workflow and No files are deleted expansion-lane discipline.
-- Preserved fixture registry consolidation, fixture registry payload compression, and unused oversized fixture cleanup boundaries.
-- Preserved Mobile Header Geometry Lock for the public demo header/logo visual-freeze scope.
-- Added `npm run dev:doctor` for ranked local diagnosis.
-- Added `npm run dev:baseline` to write golden baseline JSON/MD artifacts.
-- Added `npm run dev:impact` to map changed files to required gates and risks.
-- Added `npm run dev:handoff` to write structured handoff JSON/MD artifacts.
-- Added `docs/golden-baseline-inventory.md`, `docs/source-refactor-partition-plan.md`, and `docs/localization-regression-matrix.md`.
-- Preserved `docs/technical-debt-ledger.md`, `docs/source-refactor-readiness-audit.md`, and `tests/language-description-audit-check.mjs` from alpha.11 as active readiness/language gates.
-- Added no-browser checks for the productivity command center, golden baseline automation, and localization regression matrix.
-- Extended hosted-demo browser evidence to emit visible-text snapshots for Arabic, French, and English.
-- Preserved hosted evidence capture internals: `waitForEvidenceStable`, `assertNoTransientArtifacts`, `capture_settled`, `visual_artifact_guard_passed`, and No runtime behavior change.
-- Preserved alpha.11 professional language/copy completion, alpha.10 hosted evidence artifact guards, alpha.9 runtime optimization, alpha.8 Fixture Registry payload compression and test organization audit, and alpha.7 Package Script Compression.
-- Preserved Root Manifest and Release Artifact Consolidation, Version Suite Registry, planning gate, apply integrity, and changed-files-only release discipline.
+- Added `src/research/entity-intelligence.js`.
+- Added `tests/entity-intelligence-layer-check.mjs`.
+- Added `entity_profiles`, `entity_map_report`, and `entity_alias_report` to research packet/schema/fixture continuity.
+- Added entity cards to the analysis brief while preserving source clusters and gap intelligence.
+- Preserved Evidence Workspace + Source Import V2 and Source Cluster + Gap Intelligence.
 
 ## What did not change
 
-- No source-file refactor yet.
-- No UI redesign.
+- No live scraping.
+- No real OAuth or production OAuth.
+- No live provider execution.
+- No backend expansion.
+- No source connector expansion.
+- No external NER model download.
+- No storage expansion.
 - No runtime behavior change.
-- No provider/OAuth/backend/source/storage behavior change.
-- No live scraping, production OAuth, No real OAuth, real provider execution, or automated source verification.
-- No test coverage weakening.
-- No fixture semantic thinning.
-- Screenshots alone, hosted evidence alone, ZIP existence alone, or ZIP archive alone are insufficient for release approval.
 
-## Disproven if
 
-This release is invalid if dev productivity commands are missing, visible-text snapshots are not produced by hosted evidence, Arabic/French fallback leaks are ignored, screenshots alone or ZIPs are accepted as approval, or runtime/provider/OAuth/backend/source/storage behavior changes.
-<!-- /release-file:v1.1.0-alpha.15-source-cluster-gap-intelligence.md -->
+Continuity discipline: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only release discipline remain preserved.
+
+## Release-lock guard
+
+This release requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+
+Hosted evidence capture continuity: waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, visual_artifact_guard_passed, and No runtime behavior change remain preserved.
+
+Mobile Header Geometry Lock remains preserved for the public-demo header/logo visual-freeze scope.
+
+Post-freeze planning continuity: fixture registry consolidation, fixture registry payload compression, unused oversized fixture cleanup, No live scraping, and No real OAuth remain preserved.
+
+Expansion lane continuity: fixture registry, MERGE_TO_REGISTRY, No live scraping, and No files are deleted discipline remain preserved.
+
+Repository consolidation continuity: docs/technical-debt-ledger.md, docs/source-refactor-readiness-audit.md, tests/language-description-audit-check.mjs, No source-file refactor yet, No runtime behavior change, and No fixture semantic thinning remain preserved.
+<!-- /release-file:v1.1.0-alpha.16-source-cluster-gap-intelligence.md -->

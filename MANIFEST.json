@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.15",
-  "release_title": "v1.1.0-alpha.15 — Source Cluster + Gap Intelligence",
+  "version": "1.1.0-alpha.16",
+  "release_title": "v1.1.0-alpha.16 — Entity Intelligence Layer",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,

@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.15",
-  "release_title": "v1.1.0-alpha.15 — Source Cluster + Gap Intelligence",
+  "ci_gate_registry_version": "1.1.0-alpha.16",
+  "release_title": "v1.1.0-alpha.16 \u2014 Entity Intelligence Layer",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -105,6 +105,7 @@
         "tests/source-planning-check.mjs",
         "tests/source-import-check.mjs",
         "tests/source-cluster-gap-intelligence-check.mjs",
+        "tests/entity-intelligence-layer-check.mjs",
         "tests/source-packet-import-check.mjs",
         "tests/evidence-scoring-check.mjs",
         "tests/evidence-scoring-calibration-check.mjs",
@@ -149,7 +150,8 @@
         "tests/localization-regression-matrix-check.mjs",
         "tests/prompt-compiler-check.mjs",
         "tests/evidence-workspace-check.mjs",
-        "tests/source-cluster-gap-intelligence-check.mjs"
+        "tests/source-cluster-gap-intelligence-check.mjs",
+        "tests/entity-intelligence-layer-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -183,6 +185,7 @@
         "tests/source-planning-check.mjs",
         "tests/source-import-check.mjs",
         "tests/source-cluster-gap-intelligence-check.mjs",
+        "tests/entity-intelligence-layer-check.mjs",
         "tests/source-packet-import-check.mjs",
         "tests/evidence-scoring-check.mjs",
         "tests/evidence-scoring-calibration-check.mjs",
@@ -266,6 +269,7 @@
         "tests/evidence-scoring-check.mjs",
         "tests/source-packet-import-check.mjs",
         "tests/source-cluster-gap-intelligence-check.mjs",
+        "tests/entity-intelligence-layer-check.mjs",
         "tests/source-capability-registry-check.mjs",
         "tests/module-type-warning-fix-check.mjs",
         "tests/onboarding-first-run-check.mjs",
@@ -331,7 +335,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-alpha.15",
+    "version": "1.1.0-alpha.16",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -346,7 +350,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-alpha.15",
+    "version": "1.1.0-alpha.16",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -363,6 +367,8 @@
       "src/research/search-provider-abstraction.js",
       "src/research/source-capability-registry.js",
       "src/research/source-cluster-engine.js",
+      "tests/entity-intelligence-layer-check.mjs",
+      "src/research/entity-intelligence.js",
       "src/research/source-packet-importer.js",
       "src/research/source-packet-builder.js",
       "src/research/source-packet-roundtrip.js",
@@ -437,7 +443,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0-alpha.15",
+    "version": "1.1.0-alpha.16",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -457,7 +463,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0-alpha.15",
+    "version": "1.1.0-alpha.16",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-alpha.15`
-Release: `v1.1.0-alpha.15 — Source Cluster + Gap Intelligence`
+Version: `1.1.0-alpha.16`
+Release: `v1.1.0-alpha.16 — Entity Intelligence Layer`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy
