@@ -38,7 +38,7 @@ const roundtrip = modules.sourcePacketRoundtrip;
 
 assert.equal(pkg.version, '1.1.0-alpha.13');
 assert.equal(builder.VERSION, '1.1.0-alpha.13');
-assert.equal(importer.VERSION, '1.1.0-alpha.13');
+assert.equal(importer.VERSION, '1.1.0-alpha.14');
 assert.equal(roundtrip.VERSION, '1.1.0-alpha.13');
 assert.equal(roundtrip.ROUNDTRIP_MODEL, 'source_packet_roundtrip.v1');
 assert.equal(typeof roundtrip.runSourcePacketRoundtrip, 'function');

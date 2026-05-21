@@ -27,7 +27,7 @@ vm.runInContext(adapterSource, context, {filename:'src/research/source-import-ad
 
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const adapter = context.window.Jarbou3iResearchModules.sourceImportAdapter;
-assert.equal(importer.VERSION, '1.1.0-alpha.13');
+assert.equal(importer.VERSION, '1.1.0-alpha.14');
 assert.equal(importer.PACKET_SCHEMA, 'manual_source_packet.v1');
 assert.equal(typeof importer.parseSourcePacketImportText, 'function');
 assert.equal(adapter.inferFormat(sample), 'source_packet');
