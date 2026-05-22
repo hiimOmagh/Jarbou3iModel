@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-alpha.25';
+const VERSION = '1.1.0-rc.0';
 const source = fs.readFileSync('src/research/publication-review-gate.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const exportPack = fs.readFileSync('src/research/export-pack.js', 'utf8');

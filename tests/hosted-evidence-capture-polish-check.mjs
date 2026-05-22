@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.25';
-const TITLE = 'Release Candidate Hardening + Final Repo Hygiene';
+const VERSION = '1.1.0-rc.0';
+const TITLE = 'Public Demo Release Candidate';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-alpha.25-evidence-pack-export-v3-brief-traceability.md';
+const DOC = 'docs/v1.1.0-rc.0-evidence-pack-export-v3-brief-traceability.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));

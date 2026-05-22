@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-alpha.25`
-Release: `v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene`
+Version: `1.1.0-rc.0`
+Release: `v1.1.0-rc.0 — Public Demo Release Candidate`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

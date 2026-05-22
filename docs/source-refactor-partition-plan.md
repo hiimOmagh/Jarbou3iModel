@@ -1,4 +1,4 @@
-# Source Refactor Partition Plan — v1.1.0-alpha.25
+# Source Refactor Partition Plan — v1.1.0-rc.0
 
 ## Purpose
 

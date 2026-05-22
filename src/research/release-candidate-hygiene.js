@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine release candidate hardening and final repo hygiene v1.1.0-alpha.25. */
+/* Jarbou3i Research Engine release candidate hardening and final repo hygiene v1.1.0-rc.0. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.25';
+  const VERSION = '1.1.0-rc.0';
   const MODEL = 'release_candidate_hygiene.v1';
   const REQUIRED_EXPORT_PATHS = Object.freeze([
     'export-manifest.json',

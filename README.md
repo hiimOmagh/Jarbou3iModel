@@ -1,15 +1,13 @@
 # Jarbou3i Research Engine
 
-Adds Release Candidate Hardening + Final Repo Hygiene: evidence-to-conclusion traceability blocks, brief paragraph to evidence-ID mapping, Export Pack v3 manifest, source/evidence/entity/cluster/graph bundle consistency checks, contradiction and falsifier appendix, publication-readiness export report, and privacy/export guard continuity without live scraping, live provider execution, OAuth/backend expansion, source connector expansion, automatic source verification claims, storage expansion, or broad UI redesign.
+`v1.1.0-rc.0 — Public Demo Release Candidate`
 
-`v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene`
+A dark editorial intelligence workspace that turns messy AI/source material into structured, source-aware, traceable, publication-ready strategic briefs.
 
-Release-lock guard: 1.1.0-alpha.25 Release Candidate Hardening + Final Repo Hygiene requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+RC0 freezes the public-demo feature surface and validates release docs, golden workflow regression, Export Pack v3 consistency, hosted-demo evidence runbook, repo/package hygiene, and no-browser/browser CI parity.
 
-Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
+Release-lock guard: 1.1.0-rc.0 Public Demo Release Candidate requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
-Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
+No live scraping. No real OAuth or production OAuth. No live provider execution expansion. No automatic source verification claims.
 
-Public Demo release-lock evidence remains required.
-
-No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and a ZIP archive alone are insufficient for release approval.
+Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.

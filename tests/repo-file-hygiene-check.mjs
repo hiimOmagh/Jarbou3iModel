@@ -159,7 +159,7 @@ const expectedReleaseDocs = [
   'docs/v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md',
   'docs/v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md',
   'docs/v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md',
-  'docs/v1.1.0-alpha.25-evidence-pack-export-v3-brief-traceability.md'
+  'docs/v1.1.0-rc.0-evidence-pack-export-v3-brief-traceability.md'
 ];
 
 const actualReleaseDocs = [...allPaths]

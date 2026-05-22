@@ -1,6 +1,6 @@
 {
-  "workflow_version": "1.1.0-alpha.25",
-  "corpus_version": "1.1.0-alpha.25",
+  "workflow_version": "1.1.0-rc.0",
+  "corpus_version": "1.1.0-rc.0",
   "corpus_model": "golden_workflow_corpus.v1",
   "corpus_id": "golden-workflow-alpha24",
   "topic": "Golden workflow demo: source-grounded strategic brief reliability",
@@ -93,7 +93,7 @@
     }
   ],
   "strategic_evidence_graph": {
-    "graph_version": "1.1.0-alpha.25",
+    "graph_version": "1.1.0-rc.0",
     "graph_nodes": [
       {
         "id": "EV-E1",
@@ -117,7 +117,7 @@
     ]
   },
   "analysis_brief": {
-    "brief_version": "1.1.0-alpha.25",
+    "brief_version": "1.1.0-rc.0",
     "handoff_summary": "Golden conclusion is traceable to E1, E2, and E3; contradiction N1 remains visible.",
     "evidence_priorities": [
       "Review E2 against E3."
