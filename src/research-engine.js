@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.23 — Publication Review Gate and claim boundary audit. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.24 — Publication Review Gate and claim boundary audit. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.23';
+  const VERSION = '1.1.0-alpha.24';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -22,6 +22,7 @@
   const exportPack = modules.exportPack;
   const evidencePackV3 = modules.evidencePackV3;
   const publicationReviewGate = modules.publicationReviewGate;
+  const goldenWorkflowCorpus = modules.goldenWorkflowCorpus;
   const qualityGate = modules.qualityGate;
   const providerController = modules.providerController;
   const providerRouterEngine = modules.providerRouterEngine;
@@ -408,6 +409,26 @@
   }
 
 
+  function goldenWorkflowBundle(packet, exportPackResult = null){
+    if(!goldenWorkflowCorpus?.buildGoldenWorkflowBundle){
+      return {
+        golden_workflow_corpus:{corpus_version:VERSION, corpus_model:'golden_workflow_corpus.v1', corpus_id:'golden-workflow-alpha24', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
+        golden_end_to_end_demo_report:{golden_end_to_end_demo_report_version:VERSION, demo_model:'golden_workflow_corpus.v1', release_gate:'golden_demo_review_required', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
+        golden_export_pack_validation_report:{golden_export_pack_validation_report_version:VERSION, validation_model:'golden_workflow_corpus.v1', release_gate:'golden_export_pack_review_required', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
+        hosted_demo_scenario_evidence:{hosted_demo_scenario_evidence_version:VERSION, scenario_model:'golden_workflow_corpus.v1', release_gate:'hosted_demo_scenario_evidence_required', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
+        release_readiness_runbook:{release_readiness_runbook_version:VERSION, runbook_model:'golden_workflow_corpus.v1', release_gate:'release_readiness_review_required', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false}
+      };
+    }
+    const bundle = goldenWorkflowCorpus.buildGoldenWorkflowBundle(packet, exportPackResult, {version:VERSION, now:nowIso()});
+    state.golden_workflow_corpus = bundle.golden_workflow_corpus;
+    state.golden_end_to_end_demo_report = bundle.golden_end_to_end_demo_report;
+    state.golden_export_pack_validation_report = bundle.golden_export_pack_validation_report;
+    state.hosted_demo_scenario_evidence = bundle.hosted_demo_scenario_evidence;
+    state.release_readiness_runbook = bundle.release_readiness_runbook;
+    return bundle;
+  }
+
+
   function researchPacket(){
     const packet = {
       workflow_version: VERSION,
@@ -487,12 +508,18 @@
       contradiction_falsifier_completeness_report: state.contradiction_falsifier_completeness_report || null,
       publication_review_gate_report: state.publication_review_gate_report || null,
       export_safe_final_review_report: state.export_safe_final_review_report || null,
+      golden_workflow_corpus: state.golden_workflow_corpus || null,
+      golden_end_to_end_demo_report: state.golden_end_to_end_demo_report || null,
+      golden_export_pack_validation_report: state.golden_export_pack_validation_report || null,
+      hosted_demo_scenario_evidence: state.hosted_demo_scenario_evidence || null,
+      release_readiness_runbook: state.release_readiness_runbook || null,
       ai_runs: providerRouterEngine?.enrichRunLedger ? providerRouterEngine.enrichRunLedger(state.ai_runs || [], providerRoutePlan(), {version:VERSION}) : (state.ai_runs || []),
       critique: state.critique
     };
     const evidencePack = evidencePackV3Bundle(packet);
     const publicationReview = publicationReviewBundle(Object.assign({}, packet, evidencePack));
-    return Object.assign(packet, evidencePack, publicationReview, {
+    const goldenWorkflow = goldenWorkflowBundle(Object.assign({}, packet, evidencePack, publicationReview));
+    return Object.assign(packet, evidencePack, publicationReview, goldenWorkflow, {
       export_pack: Object.assign({}, packet.export_pack || {}, {export_pack_version: VERSION, format: 'export_pack_v3', release_gate: 'privacy_audit_required'})
     });
   }
@@ -1890,6 +1917,11 @@
     state.contradiction_falsifier_completeness_report = nextPacket.contradiction_falsifier_completeness_report || null;
     state.publication_review_gate_report = nextPacket.publication_review_gate_report || null;
     state.export_safe_final_review_report = nextPacket.export_safe_final_review_report || null;
+    state.golden_workflow_corpus = nextPacket.golden_workflow_corpus || null;
+    state.golden_end_to_end_demo_report = nextPacket.golden_end_to_end_demo_report || null;
+    state.golden_export_pack_validation_report = nextPacket.golden_export_pack_validation_report || null;
+    state.hosted_demo_scenario_evidence = nextPacket.hosted_demo_scenario_evidence || null;
+    state.release_readiness_runbook = nextPacket.release_readiness_runbook || null;
     state.portable_account = nextPacket.portable_account || state.portable_account || null;
     state.ai_runs = Array.isArray(nextPacket.ai_runs) ? nextPacket.ai_runs.slice(-25) : [];
     state.lastMockAnalysis = null;

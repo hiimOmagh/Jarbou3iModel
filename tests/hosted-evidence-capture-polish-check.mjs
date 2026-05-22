@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.23';
-const TITLE = 'Publication Review Gate + Claim Boundary Audit';
+const VERSION = '1.1.0-alpha.24';
+const TITLE = 'Golden Workflow Corpus + End-to-End Demo Run';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability.md';
+const DOC = 'docs/v1.1.0-alpha.24-evidence-pack-export-v3-brief-traceability.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));

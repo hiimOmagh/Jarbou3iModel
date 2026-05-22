@@ -1,10 +1,10 @@
 # Jarbou3i Research Engine
 
-Adds Publication Review Gate + Claim Boundary Audit: evidence-to-conclusion traceability blocks, brief paragraph to evidence-ID mapping, Export Pack v3 manifest, source/evidence/entity/cluster/graph bundle consistency checks, contradiction and falsifier appendix, publication-readiness export report, and privacy/export guard continuity without live scraping, live provider execution, OAuth/backend expansion, source connector expansion, automatic source verification claims, storage expansion, or broad UI redesign.
+Adds Golden Workflow Corpus + End-to-End Demo Run: evidence-to-conclusion traceability blocks, brief paragraph to evidence-ID mapping, Export Pack v3 manifest, source/evidence/entity/cluster/graph bundle consistency checks, contradiction and falsifier appendix, publication-readiness export report, and privacy/export guard continuity without live scraping, live provider execution, OAuth/backend expansion, source connector expansion, automatic source verification claims, storage expansion, or broad UI redesign.
 
-`v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit`
+`v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run`
 
-Release-lock guard: 1.1.0-alpha.23 Publication Review Gate + Claim Boundary Audit requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.24 Golden Workflow Corpus + End-to-End Demo Run requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
 Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
 

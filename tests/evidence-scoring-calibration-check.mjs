@@ -10,8 +10,8 @@ const index = read('index.html');
 const renderHelpers = read('src/research/render-helpers.js');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.23-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.23.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.24-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.24.json');
 const pkg = JSON.parse(read('package.json'));
 
 new vm.Script(scorerSource, {filename:'src/research/evidence-scorer.js'});
@@ -23,8 +23,8 @@ vm.createContext(context);
 vm.runInContext(scorerSource, context, {filename:'src/research/evidence-scorer.js'});
 const scorer = context.window.Jarbou3iResearchModules.evidenceScorer;
 
-assert.equal(pkg.version, '1.1.0-alpha.23');
-assert.equal(scorer.VERSION, '1.1.0-alpha.23');
+assert.equal(pkg.version, '1.1.0-alpha.24');
+assert.equal(scorer.VERSION, '1.1.0-alpha.24');
 assert.equal(scorer.SCORING_VERSION, 'evidence_scoring.v1');
 assert.equal(scorer.CALIBRATION_VERSION, 'evidence_scoring_calibration.v1');
 assert.equal(typeof scorer.calibrateScores, 'function');
@@ -61,36 +61,36 @@ assert.equal(setReport.score_theater_guard, 'scores_explain_prioritization_not_t
 assert.ok(setReport.calibration_warning_count >= 1);
 assert.ok(setReport.risk_flags.includes('calibration_warning_present'));
 
-assert.ok(index.includes('v1.1.0-alpha.23 · Publication Review Gate + Claim Boundary Audit'), 'v1.1.0-alpha.23 badge missing');
+assert.ok(index.includes('v1.1.0-alpha.24 · Golden Workflow Corpus + End-to-End Demo Run'), 'v1.1.0-alpha.24 badge missing');
 assert.ok(index.includes('data-r-i18n="evidenceScoringCalibrationShort"'), 'UI must expose localized evidence-scoring calibration copy');
 assert.ok(renderHelpers.includes('evidenceScoringCalibrationShort'), 'render helpers must provide localized evidence-scoring calibration copy');
 assert.ok(engine.includes('calibration_warning_count'), 'engine UI must surface calibration warning count');
 assert.ok(engine.includes('score_theater_guard'), 'engine UI must expose score-theater guard');
 
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.23');
-assert.equal(schema.$defs.evidence_scoring.properties.scorer_version.const, '1.1.0-alpha.23');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.24');
+assert.equal(schema.$defs.evidence_scoring.properties.scorer_version.const, '1.1.0-alpha.24');
 assert.equal(schema.$defs.evidence_scoring.properties.calibration_version.const, 'evidence_scoring_calibration.v1');
 assert.ok(schema.$defs.evidence_scoring.required.includes('score_theater_guard'));
-assert.equal(schema.$defs.evidence_scoring_report.properties.evidence_scoring_version.const, '1.1.0-alpha.23');
+assert.equal(schema.$defs.evidence_scoring_report.properties.evidence_scoring_version.const, '1.1.0-alpha.24');
 assert.equal(schema.$defs.evidence_scoring_report.properties.calibration_version.const, 'evidence_scoring_calibration.v1');
 assert.ok(schema.$defs.evidence_scoring_report.required.includes('calibration_warning_count'));
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.1.0-alpha.23');
-  assert.equal(packet.evidence_scoring_report.evidence_scoring_version, '1.1.0-alpha.23');
+  assert.equal(packet.workflow_version, '1.1.0-alpha.24');
+  assert.equal(packet.evidence_scoring_report.evidence_scoring_version, '1.1.0-alpha.24');
   assert.equal(packet.evidence_scoring_report.scoring_model, 'evidence_scoring.v1');
   assert.equal(packet.evidence_scoring_report.calibration_version, 'evidence_scoring_calibration.v1');
   assert.equal(packet.evidence_scoring_report.score_theater_guard, 'scores_explain_prioritization_not_truth');
   assert.ok(Number.isFinite(packet.evidence_scoring_report.calibration_warning_count));
   for (const item of packet.evidence_matrix) {
     assert.equal(item.evidence_scoring.scoring_version, 'evidence_scoring.v1');
-    assert.equal(item.evidence_scoring.scorer_version, '1.1.0-alpha.23');
+    assert.equal(item.evidence_scoring.scorer_version, '1.1.0-alpha.24');
     assert.equal(item.evidence_scoring.calibration_version, 'evidence_scoring_calibration.v1');
     assert.equal(item.evidence_scoring.attention_is_truth_score, false);
     assert.equal(item.evidence_scoring.score_theater_guard, 'scores_explain_prioritization_not_truth');
     assert.ok(['low','moderate','strong','very_strong'].includes(item.evidence_scoring.reliability_band));
   }
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run');
 }
 
 console.log('Evidence scoring calibration checks passed.');

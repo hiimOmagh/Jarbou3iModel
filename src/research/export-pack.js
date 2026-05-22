@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Export Pack v3 — v1.1.0-alpha.23. */
+/* Jarbou3i Research Engine Export Pack v3 — v1.1.0-alpha.24. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.1.0-alpha.23';
+  const EXPORT_PACK_VERSION = '1.1.0-alpha.24';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -105,6 +105,11 @@
       `- Unsupported conclusions: ${safeString(packet.claim_boundary_audit_report?.unsupported_conclusion_count ?? 0)}`,
       `- Claim classification warnings: ${safeString(packet.claim_classification_report?.boundary_warning_count ?? 0)}`,
       '',
+      '## Golden Workflow Demo',
+      `- End-to-end stages: ${safeString(packet.golden_end_to_end_demo_report?.passed_stage_count ?? 0)}/${safeString(packet.golden_end_to_end_demo_report?.stage_count ?? 0)}`,
+      `- Golden export gate: ${safeString(packet.golden_export_pack_validation_report?.release_gate || 'golden_export_pack_review_required')}`,
+      `- Hosted scenario gate: ${safeString(packet.hosted_demo_scenario_evidence?.release_gate || 'hosted_demo_scenario_evidence_required')}`,
+      '',
       '## Source Clusters',
       clusters,
       '',
@@ -176,6 +181,17 @@
   }
 
 
+  function goldenWorkflowFiles(packet){
+    const files = [];
+    if(packet.golden_workflow_corpus) files.push(fileEntry('golden/golden-workflow-corpus.json', 'application/json', jsonContent(packet.golden_workflow_corpus), 'golden-workflow-corpus'));
+    if(packet.golden_end_to_end_demo_report) files.push(fileEntry('golden/golden-end-to-end-demo-report.json', 'application/json', jsonContent(packet.golden_end_to_end_demo_report), 'golden-end-to-end-demo'));
+    if(packet.golden_export_pack_validation_report) files.push(fileEntry('golden/golden-export-pack-validation-report.json', 'application/json', jsonContent(packet.golden_export_pack_validation_report), 'golden-export-pack-validation'));
+    if(packet.hosted_demo_scenario_evidence) files.push(fileEntry('golden/hosted-demo-scenario-evidence.json', 'application/json', jsonContent(packet.hosted_demo_scenario_evidence), 'hosted-demo-scenario'));
+    if(packet.release_readiness_runbook) files.push(fileEntry('golden/release-readiness-runbook.json', 'application/json', jsonContent(packet.release_readiness_runbook), 'release-readiness-runbook'));
+    return files;
+  }
+
+
   function publicationReviewFiles(packet){
     const files = [];
     if(packet.claim_classification_report) files.push(fileEntry('publication-review/claim-classification-report.json', 'application/json', jsonContent(packet.claim_classification_report), 'claim-classification'));
@@ -222,6 +238,7 @@
     providerRouteFiles(safePacket).forEach((file)=>files.push(file));
     reviewThroughputFiles(safePacket).forEach((file)=>files.push(file));
     publicationReviewFiles(safePacket).forEach((file)=>files.push(file));
+    goldenWorkflowFiles(safePacket).forEach((file)=>files.push(file));
     const v3 = evidencePackV3Files(safePacket, files);
     v3.files.forEach((file)=>files.push(file));
     const manifest = Object.assign(baseManifest(safePacket, files), v3.bundle.evidence_pack_v3_manifest || {}, {export_pack_version:EXPORT_PACK_VERSION, name:EXPORT_PACK_NAME, export_pack_format:'export_pack_v3', file_count:files.length, files:files.map((file)=>({path:file.path, kind:file.kind, mime_type:file.mime_type, bytes:file.bytes, checksum:file.checksum}))});
@@ -250,6 +267,6 @@
     const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
     return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v3</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
-  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, evidencePackV3Files, exportPackSummaryHtml});
+  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, goldenWorkflowFiles, evidencePackV3Files, exportPackSummaryHtml});
   if(typeof module !== 'undefined' && module.exports) module.exports = root.exportPack;
 })(typeof window !== 'undefined' ? window : globalThis);

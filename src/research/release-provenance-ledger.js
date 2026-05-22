@@ -1,13 +1,13 @@
-/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.23. */
+/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.24. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.23';
+  const VERSION = '1.1.0-alpha.24';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability-patch.zip';
+  const RELEASE_TITLE = 'v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.24-evidence-pack-export-v3-brief-traceability-patch.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
-    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.23', required:true},
+    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.24', required:true},
     {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},
     {evidence_id:'artifact_name_recorded', label:'artifact name is versioned and fixed', required:true},
     {evidence_id:'changed_files_manifest_present', label:'changed-files manifest is required for handoff review', required:true},
