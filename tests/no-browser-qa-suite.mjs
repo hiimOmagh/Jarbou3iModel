@@ -25,6 +25,7 @@ const tests = [
   'tests/backend-proxy-check.mjs',
   'tests/backend-hardening-check.mjs',
   'tests/public-demo-readiness-check.mjs',
+  'tests/provider-router-cost-ledger-check.mjs',
   'tests/strategic-evidence-graph-check.mjs'
 ];
 

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.1.0-alpha.19';
-export const RELEASE_TITLE = 'v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map';
+export const VERSION = '1.1.0-alpha.20';
+export const RELEASE_TITLE = 'v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

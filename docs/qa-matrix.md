@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release: v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
+Current release: v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
 
 Required gates:
 
@@ -8,22 +8,18 @@ Required gates:
 - Browser CI
 - Hosted-demo evidence capture
 - Visible-text snapshots
-- Strategic Evidence Graph no-browser check
-- Source/entity/evidence regression checks
-- Export Pack v2 graph artifact checks
+- Provider Router + Cost-Aware Run Ledger no-browser check
+- Provider identity/response/fixture regression checks
+- Export Pack v2 provider route artifact checks
 
-Graph coverage: evidence nodes, entity nodes, source-cluster nodes, analysis-target nodes, causal-link nodes, supports/contradicts/cluster/entity/causal edges, graph quality diagnostics, and Gephi/Kumu/Neo4J export artifacts.
+Provider routing coverage: task-capability routing, provider matrix, cost/latency/risk preview, suitability scoring, run-ledger enrichment, dry-run safety report, and no automatic paid calls.
 
 Node 24 CI compatibility preserved.
 
-Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
+Release-lock evidence reminder: screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Provenance continuity: Root Manifest, Release Artifact Consolidation, CI Gate Registry, Fixture Registry payload compression, test organization, provenance ledger, and changed-files-only discipline are preserved.
+Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
-Public demo continuity preserved.
+Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
 
-## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
-
-Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.
-
-Public Demo continuity: the alpha.19 release keeps the public demo path review-gated with hosted evidence, visible-text snapshots, and browser evidence before lock.
+Public Demo continuity: public demo evidence, hosted-demo review, and public-demo release-lock copy remain preserved.

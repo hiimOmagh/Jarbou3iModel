@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Export Pack v2 — v1.1.0-alpha.19. */
+/* Jarbou3i Research Engine Export Pack v2 — v1.1.0-alpha.20. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.1.0-alpha.19';
+  const EXPORT_PACK_VERSION = '1.1.0-alpha.20';
   const EXPORT_PACK_NAME = 'Export Pack v2';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -104,6 +104,12 @@
       `- Edges: ${safeString(packet.graph_quality_report?.edge_count ?? packet.strategic_evidence_graph?.graph_edges?.length ?? 0)}`,
       `- Export formats: ${asArray(packet.graph_export_report?.formats).join(', ') || 'none recorded'}`,
       `- Release gate: ${safeString(packet.graph_quality_report?.release_gate || 'graph_review_required')}`,
+      '',
+      '## Provider Routing',
+      `- Selected provider: ${safeString(packet.provider_route_report?.selected_provider || 'mock')}`,
+      `- Cost preview: $${safeString(packet.provider_cost_report?.selected_estimated_cost_usd ?? 0)}`,
+      `- Dry-run only: ${safeString(packet.provider_route_report?.dry_run_only !== false)}`,
+      `- Paid calls performed: ${safeString(packet.provider_cost_report?.automatic_paid_call_performed === true)}`, 
 
       '',
       '## Coverage Gaps',
@@ -139,6 +145,16 @@
     return files;
   }
 
+
+  function providerRouteFiles(packet){
+    const files = [];
+    if(packet.provider_route_plan) files.push(fileEntry('provider/provider-route-plan.json', 'application/json', jsonContent(packet.provider_route_plan), 'provider-route'));
+    if(packet.provider_route_report) files.push(fileEntry('provider/provider-route-report.json', 'application/json', jsonContent(packet.provider_route_report), 'provider-route-report'));
+    if(packet.provider_cost_report) files.push(fileEntry('provider/provider-cost-report.json', 'application/json', jsonContent(packet.provider_cost_report), 'provider-cost'));
+    if(packet.provider_router_safety_report) files.push(fileEntry('provider/provider-router-safety-report.json', 'application/json', jsonContent(packet.provider_router_safety_report), 'provider-safety'));
+    return files;
+  }
+
   function createExportPack(packet, options = {}){
     const version = options.version || EXPORT_PACK_VERSION;
     const safePacket = privacySafeObject(Object.assign({}, packet || {}, {workflow_version:(packet && packet.workflow_version) || version}), {version});
@@ -151,6 +167,7 @@
     files.push(fileEntry('quality-report.json', 'application/json', jsonContent(qualityReport(safePacket)), 'quality'));
     files.push(fileEntry('privacy-audit.json', 'application/json', jsonContent(privacyAuditReport(safePacket, files)), 'privacy'));
     graphExportFiles(safePacket).forEach((file)=>files.push(file));
+    providerRouteFiles(safePacket).forEach((file)=>files.push(file));
     const manifest = baseManifest(safePacket, files);
     files.unshift(fileEntry('export-manifest.json', 'application/json', jsonContent(manifest), 'manifest'));
     return {export_pack_version:EXPORT_PACK_VERSION, generated_at:nowIso(), manifest, files, privacy_release_gate:manifest.privacy_release_gate, file_count:files.length};
@@ -177,6 +194,6 @@
     const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
     return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v2</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
-  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, exportPackSummaryHtml});
+  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, exportPackSummaryHtml});
   if(typeof module !== 'undefined' && module.exports) module.exports = root.exportPack;
 })(typeof window !== 'undefined' ? window : globalThis);

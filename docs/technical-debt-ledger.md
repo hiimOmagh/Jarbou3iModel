@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.1.0-alpha.19`
-Release: `v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
+Version: `1.1.0-alpha.20`
+Release: `v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.19';
-const TITLE = 'Graph Export + Strategic Evidence Map';
+const VERSION = '1.1.0-alpha.20';
+const TITLE = 'Provider Router + Cost-Aware Run Ledger';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

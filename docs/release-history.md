@@ -64,7 +64,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
 | `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
-| `v1.1.0-alpha.19-graph-export-strategic-evidence-map.md` | v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map |
+| `v1.1.0-alpha.20-provider-router-cost-aware-run-ledger.md` | v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3355,18 +3355,18 @@ Registry policy: MERGE_TO_REGISTRY remains the fixture handling mode. No files a
 <!-- /release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
 
 
-## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
+## v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
 
 Adds a local Strategic Evidence Graph model, graph quality diagnostics, and Gephi/Kumu/Neo4J export continuity without live scraping, live search execution, provider execution, OAuth/backend expansion, external graph service dependency, or automatic source verification claims.
 
-<!-- release-file:v1.1.0-alpha.19-graph-export-strategic-evidence-map.md -->
-# v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
+<!-- release-file:v1.1.0-alpha.20-provider-router-cost-aware-run-ledger.md -->
+# v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
 
-Alpha.19 adds Graph Export + Strategic Evidence Map. It connects reviewed evidence, source clusters, entity profiles, analysis targets, and causal links into a local graph bundle and exports Gephi-compatible CSV, Kumu-compatible JSON, and Neo4J import CSV artifacts.
+Alpha.19 adds Provider Router + Cost-Aware Run Ledger. It connects reviewed evidence, source clusters, entity profiles, analysis targets, and causal links into a local graph bundle and exports Gephi-compatible CSV, Kumu-compatible JSON, and Neo4J import CSV artifacts.
 
 Boundary: no live scraping, no live web search by default, no provider execution expansion, no OAuth/backend expansion, no external graph service dependency, and no automatic source verification claims.
 
-Validation target: v1.1.0-alpha.19.
+Validation target: v1.1.0-alpha.20.
 
 
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
@@ -3399,4 +3399,10 @@ Audit continuity:
 - No source-file refactor yet.
 - No runtime behavior change.
 - No fixture semantic thinning.
-<!-- /release-file:v1.1.0-alpha.19-graph-export-strategic-evidence-map.md -->
+
+Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
+
+Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
+<!-- /release-file:v1.1.0-alpha.20-provider-router-cost-aware-run-ledger.md -->
+
+Public boundary: no live scraping, No real OAuth/production OAuth, and screenshots alone or ZIP existence alone are insufficient for approval.

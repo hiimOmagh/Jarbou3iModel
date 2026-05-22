@@ -1,16 +1,13 @@
-# Public Demo — v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
+# Public Demo — v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
 
-The demo presents a local/manual research workflow with evidence review, source clusters, entity profiles, controlled connectors, research planning, and a Strategic Evidence Map. Graph output is an export/inspection artifact only; it performs no live search, scraping, provider execution, OAuth flow, backend expansion, external graph service call, or automated source verification.
+Adds Provider Router + Cost-Aware Run Ledger: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
-Demo safety posture:
+The public demo remains manual/private by default. Provider routing is a dry-run planning and audit layer only; it does not execute paid API calls or export secrets.
 
-- Manual/private mode remains default.
-- Imported source candidates require Evidence Review Queue promotion.
-- Graph exports do not prove source truth.
-- Hosted evidence and visible-text snapshots are required before release lock.
+Release-lock evidence reminder: screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Release-lock reminder: Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
 
-Provenance gate continuity: Package Script compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization, provenance ledger, changed-files-only, visual freeze, and mobile header guards are preserved.
+Public Demo continuity: public demo evidence, hosted-demo review, and public-demo release-lock copy remain preserved.
 
-Boundary continuity: No live scraping and No real OAuth are enabled for this Public Demo; graph export remains local/manual and review-gated.
+Public boundary: no live scraping, No real OAuth/production OAuth, and screenshots alone or ZIP existence alone are insufficient for approval.

@@ -1,30 +1,19 @@
-# Jarbou3i Research Engine — 1.1.0-alpha.19
+# Jarbou3i Research Engine
 
-Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.
+Adds Provider Router + Cost-Aware Run Ledger: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
-`v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map`
+`v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger`
 
-## What remains preserved
+Core continuity preserved: Evidence Workspace + Source Import V2, Source Cluster + Gap Intelligence, Entity Intelligence Layer, Research Planner V2, Controlled Connector Architecture MVP, Graph Export + Strategic Evidence Map, provider safety, privacy/export guards, hosted evidence, visible-text snapshots, and no automatic paid API calls.
 
-- Evidence Workspace + Source Import V2
-- Source Cluster + Gap Intelligence
-- Entity Intelligence Layer
-- Research Planner V2
-- Controlled Connector Architecture MVP
-- Manual/private defaults
-- Hosted evidence and visible-text guards
-- Privacy/export boundaries
-- Package script compression and CI gate registry
+Release-lock guard: 1.1.0-alpha.20 Provider Router + Cost-Aware Run Ledger requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
+Release-lock evidence reminder: screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Public Demo continuity: the alpha.19 release keeps the public demo path review-gated with hosted evidence, visible-text snapshots, and browser evidence before lock.
+Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
-Release-lock guard: 1.1.0-alpha.19 Graph Export + Strategic Evidence Map requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
 
-Boundary note: No real OAuth or production OAuth flow is enabled in 1.1.0-alpha.19.
+Public Demo continuity: public demo evidence, hosted-demo review, and public-demo release-lock copy remain preserved.
 
-No live scraping and No real OAuth remain enforced.
-
-## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
-
-Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.
+Public boundary: no live scraping, No real OAuth/production OAuth, and screenshots alone or ZIP existence alone are insufficient for approval.

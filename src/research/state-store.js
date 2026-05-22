@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.19. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.20. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.19';
+    const version = options.version || '1.1.0-alpha.20';
     return {
       plan: null,
       evidence: [],
@@ -24,6 +24,10 @@
       last_provider_prompt_preview: null,
       provider_fixture_report: null,
       provider_diagnostics: null,
+      provider_route_plan: null,
+      provider_route_report: null,
+      provider_cost_report: null,
+      provider_router_safety_report: null,
       portable_account: null,
       portable_oauth_spike: null,
       source_connector: 'manual_mock',
@@ -69,7 +73,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.19';
+    const version = options.version || '1.1.0-alpha.20';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);

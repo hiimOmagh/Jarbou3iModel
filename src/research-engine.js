@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.19 — graph export and strategic evidence map. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.20 — graph export and strategic evidence map. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.19';
+  const VERSION = '1.1.0-alpha.20';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -21,6 +21,7 @@
   const exportPack = modules.exportPack;
   const qualityGate = modules.qualityGate;
   const providerController = modules.providerController;
+  const providerRouterEngine = modules.providerRouterEngine;
   const sourceController = modules.sourceController;
   const sourceCapabilityRegistry = modules.sourceCapabilityRegistry;
   const sourcePacketTemplates = modules.sourcePacketTemplates;
@@ -281,6 +282,29 @@
   function graphQualityReport(){ return buildStrategicEvidenceGraph().graph_quality_report; }
   function graphExportReport(){ return buildStrategicEvidenceGraph().graph_export_report; }
 
+  function buildProviderRouterBundle(task = state.activeProviderTask || $('providerTask')?.value || 'synthesis'){
+    if(!providerRouterEngine?.buildProviderRouterBundle) return {provider_route_plan:null, provider_route_report:null, provider_cost_report:null, provider_router_safety_report:null, enriched_run_ledger:state.ai_runs || []};
+    const payload = {
+      task,
+      topic: topic(),
+      provider_config: sanitizedProviderConfig(state.provider_config || {}),
+      key_present: !!readProviderKey(),
+      ai_runs: state.ai_runs || [],
+      packet: {evidence_count:(state.evidence || []).length, causal_link_count:(state.causal_links || []).length, graph_node_count:(state.strategic_evidence_graph?.graph_nodes || []).length},
+      expected_output_tokens: task === 'synthesis' ? 1800 : 900
+    };
+    const bundle = providerRouterEngine.buildProviderRouterBundle(payload, {version: VERSION, now: nowIso()});
+    state.provider_route_plan = bundle.provider_route_plan;
+    state.provider_route_report = bundle.provider_route_report;
+    state.provider_cost_report = bundle.provider_cost_report;
+    state.provider_router_safety_report = bundle.provider_router_safety_report;
+    return bundle;
+  }
+  function providerRoutePlan(){return state.provider_route_plan || buildProviderRouterBundle().provider_route_plan;}
+  function providerRouteReport(){return state.provider_route_report || buildProviderRouterBundle().provider_route_report;}
+  function providerCostReport(){return state.provider_cost_report || buildProviderRouterBundle().provider_cost_report;}
+  function providerRouterSafetyReport(){return state.provider_router_safety_report || buildProviderRouterBundle().provider_router_safety_report;}
+
   function hostedDemoEvidenceReviewReport(){
     return hostedDemoVerification?.buildHostedDemoEvidenceReview ? hostedDemoVerification.buildHostedDemoEvidenceReview({}, {version:VERSION, now:nowIso()}) : null;
   }
@@ -318,6 +342,10 @@
       provider_config: sanitizedProviderConfig(state.provider_config || {}),
       provider_identity: providerIdentityReport(),
       provider_billing_policy: providerBillingPolicy(),
+      provider_route_plan: providerRoutePlan(),
+      provider_route_report: providerRouteReport(),
+      provider_cost_report: providerCostReport(),
+      provider_router_safety_report: providerRouterSafetyReport(),
       portable_account: portableAccountStatus(),
       portable_oauth_spike: portableOAuthSpikeStatus(),
       provider_validation: state.last_provider_validation || null,
@@ -353,7 +381,7 @@
       last_built_source_packet: state.last_built_source_packet || null,
       source_packet_template_report: state.source_packet_template_report || (sourcePacketTemplates?.templateReport ? sourcePacketTemplates.templateReport(state.active_source_packet_template || 'generic_article') : null),
       source_packet_roundtrip_report: state.source_packet_roundtrip_report || null,
-      ai_runs: state.ai_runs || [],
+      ai_runs: providerRouterEngine?.enrichRunLedger ? providerRouterEngine.enrichRunLedger(state.ai_runs || [], providerRoutePlan(), {version:VERSION}) : (state.ai_runs || []),
       critique: state.critique
     };
   }
@@ -589,6 +617,7 @@
     const entityMap = entityIntel.entity_map_report || entityMapReport();
     const plannerReport = buildResearchPlannerReport(state.plan);
     const graphIntel = buildStrategicEvidenceGraph();
+    const providerRouting = buildProviderRouterBundle();
     const scores = qualityScores();
     const template = activeTemplateProfile();
     const fitReport = analysisTemplates?.templateFitReport ? analysisTemplates.templateFitReport(state, template?.template_id) : null;
@@ -614,8 +643,11 @@
       strategic_evidence_graph: graphIntel,
       graph_quality_report: graphIntel.graph_quality_report,
       graph_export_report: graphIntel.graph_export_report,
+      provider_route_report: providerRouting.provider_route_report,
+      provider_cost_report: providerRouting.provider_cost_report,
+      provider_router_safety_report: providerRouting.provider_router_safety_report,
       coverage: diagnostics.coverage,
-      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || []), ...(entityMap.entity_gap_flags || []), ...(plannerReport.planner_gap_flags || []), ...(graphIntel.graph_quality_report?.graph_gap_flags || [])])],
+      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || []), ...(entityMap.entity_gap_flags || []), ...(plannerReport.planner_gap_flags || []), ...(graphIntel.graph_quality_report?.graph_gap_flags || []), ...(providerRouting.provider_route_report?.blocked_route_count ? ['provider_route_blockers_present'] : [])])],
       evidence_priorities: (sourceGapReport.recommendations || []).length
         ? sourceGapReport.recommendations
         : (diagnostics.gaps.includes('counter_evidence_missing')
@@ -1724,6 +1756,10 @@
     state.provider_config = sanitizedProviderConfig(nextPacket.provider_config || state.provider_config || {});
     state.provider_identity = nextPacket.provider_identity || providerIdentityReport(state.provider, state.provider_config);
     state.provider_billing_policy = nextPacket.provider_billing_policy || providerBillingPolicy(state.provider, state.provider_config);
+    state.provider_route_plan = nextPacket.provider_route_plan || null;
+    state.provider_route_report = nextPacket.provider_route_report || null;
+    state.provider_cost_report = nextPacket.provider_cost_report || null;
+    state.provider_router_safety_report = nextPacket.provider_router_safety_report || null;
     state.portable_account = nextPacket.portable_account || state.portable_account || null;
     state.ai_runs = Array.isArray(nextPacket.ai_runs) ? nextPacket.ai_runs.slice(-25) : [];
     state.lastMockAnalysis = null;
@@ -2060,9 +2096,12 @@
     if(diagEl){
       const diagHtml = diagnostics ? `<div class="researchJsonCard providerDiagnosticsCard"><h4>${esc(tr('providerDiagnosticsTitle'))}</h4><div class="miniChips"><span>${esc(diagnostics.readiness)}</span><span>${esc(diagnostics.contract_type)}</span><span>${esc(diagnostics.prompt_chars)} ${esc(tr('chars'))}</span><span>${esc(tr('keyExported'))}:${esc(localizedBoolean(diagnostics.key_exported))}</span><span>${esc(tr('auth'))}:${esc(diagnostics.auth_type || tr('unknown'))}</span><span>${esc(tr('billing'))}:${esc(diagnostics.billing_owner || tr('unknown'))}</span></div><ul>${(diagnostics.warnings || [tr('noSourceWarnings')]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
       const fixtureHtml = fixtureReport ? `<div class="researchJsonCard fixtureSuiteCard"><h4>${esc(tr('fixtureSuiteTitle'))}</h4><div class="miniChips"><span>${esc(fixtureReport.pass_count)}/${esc(fixtureReport.fixture_count)} ${esc(tr('passed'))}</span><span>${esc(tr('fails'))}:${esc(fixtureReport.fail_count)}</span></div><ul>${(fixtureReport.results || []).map(item=>`<li><strong>${esc(item.fixture_id)}</strong>: ${esc(item.pass ? lStatus('pass') : 'fail')} · ${esc(tr('accepted'))}:${esc(localizedBoolean(item.accepted))} · ${esc(tr('issues'))}:${esc(item.issue_count)}</li>`).join('')}</ul></div>` : '';
+      const routeReport = providerRouteReport();
+      const costReport = providerCostReport();
+      const routeHtml = routeReport ? `<div class="researchJsonCard providerRouteCard"><h4>${esc(tr('providerRouterTitle'))}</h4><div class="miniChips"><span>${esc(routeReport.selected_provider || 'mock')}</span><span>${esc(tr('suitability'))}:${esc(routeReport.average_suitability_score || 0)}/100</span><span>${esc(tr('cost'))}:$${esc(costReport?.selected_estimated_cost_usd ?? 0)}</span><span>${esc(tr('dryRun'))}:${esc(localizedBoolean(routeReport.dry_run_only))}</span></div><small>${esc(lStatus(routeReport.release_gate || 'provider_route_review_required'))}</small></div>` : '';
       const portableSpike = portableOAuthSpikeStatus();
       const portableHtml = `<div class="researchJsonCard portableAccountCard"><h4>${esc(tr('portableTitle'))}</h4><div class="miniChips"><span>${esc(portable.status)}</span><span>${esc(tr('token'))}:${esc(localizedBoolean(portable.token_present))}</span><span>${esc(tr('mock'))}:${esc(localizedBoolean(portable.mock_only))}</span><span>${esc(tr('oauth'))}:${esc(lStatus(portableSpike?.status || 'none'))}</span><span>${esc(tr('keyExported'))}:${esc(localizedBoolean(portable.key_exported))}</span></div><small>${esc(portable.safety_verdict)}${portable.account_id ? ' · ' + esc(portable.account_id) : ''}</small></div>`;
-      diagEl.innerHTML = diagHtml + portableHtml + fixtureHtml;
+      diagEl.innerHTML = diagHtml + routeHtml + portableHtml + fixtureHtml;
     }
 
     if(!runEl) return;
@@ -2242,6 +2281,7 @@
   function renderQuality(){
     const plannerReport = buildResearchPlannerReport(state.plan);
     const graphIntel = buildStrategicEvidenceGraph();
+    const providerRouting = buildProviderRouterBundle();
     const scores = qualityScores();
     const report = qualityGateReport();
     const el = $('researchQualityOutput');
@@ -2374,6 +2414,9 @@
         contract: providerContractPreview(payload.task),
         prompt_preview: providerPromptPreview(payload),
         provider_diagnostics: providerDiagnostics(payload),
+        provider_route_plan: providerRoutePlan(),
+        provider_route_report: providerRouteReport(),
+        provider_cost_report: providerCostReport(),
         fixture_report: state.provider_fixture_report || null,
         last_validation: state.last_provider_validation || null,
         repair_trace: state.last_repair_trace || null
