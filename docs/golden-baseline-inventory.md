@@ -1,4 +1,4 @@
-# Golden Baseline Inventory — v1.1.0-rc.1
+# Golden Baseline Inventory — v1.1.0-rc.1-copyfix.1
 
 ## Purpose
 

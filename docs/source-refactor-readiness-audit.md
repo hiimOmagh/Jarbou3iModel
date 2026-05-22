@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-rc.1`
-Release: `v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze`
+Version: `1.1.0-rc.1-copyfix.1`
+Release: `v1.1.0-rc.1-copyfix.1 — Stable Consolidation + Public Surface Freeze`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

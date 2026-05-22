@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.1.0-rc.1';
-const RELEASE = 'v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze';
+const VERSION = '1.1.0-rc.1-copyfix.1';
+const RELEASE = 'v1.1.0-rc.1-copyfix.1 — Stable Consolidation + Public Surface Freeze';
 const STABLE_PUBLIC = 'v1.1.0 Stable Candidate';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -15,7 +15,7 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 assert.equal(pkg.version, VERSION);
 assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(registry.release_title, RELEASE);
-assert.ok(index.includes('content="1.1.0-rc.1"'), 'hosted metadata must remain rc.1 for evidence validation');
+assert.ok(index.includes('content="1.1.0-rc.1-copyfix.1"'), 'hosted metadata must remain rc.1 for evidence validation');
 assert.ok(index.includes(STABLE_PUBLIC), 'public surface should expose stable candidate language');
 assert.ok(helpers.includes(STABLE_PUBLIC), 'localized copy must expose stable candidate language');
 assert.ok(current.includes(STABLE_PUBLIC));

@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze
+Current release candidate: v1.1.0-rc.1-copyfix.1 — Stable Consolidation + Public Surface Freeze
 
 Required gates:
 - No-browser CI
@@ -12,7 +12,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for 1.1.0-rc.1.
+Node 24 CI compatibility is preserved for 1.1.0-rc.1-copyfix.1.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 
