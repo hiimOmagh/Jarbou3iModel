@@ -1,17 +1,15 @@
-# Public Demo — v1.1.0-rc.0 — Public Demo Release Candidate
+# Public Demo — v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze
 
-The public demo is a static, controlled, manual/private-first research workspace. RC0 demonstrates the stable public-demo flow without adding new feature surface.
+`v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze`
 
-Public-demo lock requirements:
-- GitHub no-browser CI green
-- GitHub browser CI green
-- hosted-demo evidence uploaded
-- hosted metadata reports `1.1.0-rc.0`
-- visible-text snapshots accepted in AR/EN/FR
-- no stale alpha.25 copy residue
+Stable consolidation and public surface freeze: resets the public-facing surface toward v1.1.0 stable candidate language, consolidates public-demo docs, preserves internal evidence lineage, verifies stale-copy cleanup, golden workflow regression, Export Pack v3 consistency, repository hygiene, and no-browser/browser CI parity without adding product feature surface.
 
-Safety boundaries: No live scraping, No real OAuth, no live provider execution, no automatic source verification claims, and no OAuth/backend expansion are enabled. Screenshots alone and ZIP archive alone are insufficient for approval.
+Public surface: `v1.1.0 Stable Candidate`. Internal RC validation metadata remains `1.1.0-rc.1` until stable lock.
 
-Provenance ledger continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Fixture Registry payload compression, test organization audit, changed-files-only discipline, visual freeze, and mobile header guards remain preserved.
+Release-lock guard: 1.1.0-rc.1 Stable Consolidation + Public Surface Freeze requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
-Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Boundaries: no new feature surface, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, no broad UI redesign, and no automatic source verification claims.
+
+Continuity notes: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only safeguards remain preserved.
+
+No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.

@@ -1,13 +1,15 @@
 # Jarbou3i Research Engine
 
-`v1.1.0-rc.0 — Public Demo Release Candidate`
+`v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze`
 
-A dark editorial intelligence workspace that turns messy AI/source material into structured, source-aware, traceable, publication-ready strategic briefs.
+Stable consolidation and public surface freeze: resets the public-facing surface toward v1.1.0 stable candidate language, consolidates public-demo docs, preserves internal evidence lineage, verifies stale-copy cleanup, golden workflow regression, Export Pack v3 consistency, repository hygiene, and no-browser/browser CI parity without adding product feature surface.
 
-RC0 freezes the public-demo feature surface and validates release docs, golden workflow regression, Export Pack v3 consistency, hosted-demo evidence runbook, repo/package hygiene, and no-browser/browser CI parity.
+Public surface: `v1.1.0 Stable Candidate`. Internal RC validation metadata remains `1.1.0-rc.1` until stable lock.
 
-Release-lock guard: 1.1.0-rc.0 Public Demo Release Candidate requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-rc.1 Stable Consolidation + Public Surface Freeze requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
-No live scraping. No real OAuth or production OAuth. No live provider execution expansion. No automatic source verification claims.
+Boundaries: no new feature surface, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, no broad UI redesign, and no automatic source verification claims.
 
-Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+Continuity notes: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only safeguards remain preserved.
+
+No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.

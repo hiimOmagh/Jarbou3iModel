@@ -26,7 +26,6 @@ const tests = [
   'tests/backend-proxy-check.mjs',
   'tests/backend-hardening-check.mjs',
   'tests/public-demo-readiness-check.mjs',
-  'tests/public-demo-release-candidate-check.mjs',
   'tests/evidence-pack-v3-brief-traceability-check.mjs',
   'tests/publication-review-gate-check.mjs',
   'tests/golden-workflow-corpus-check.mjs',

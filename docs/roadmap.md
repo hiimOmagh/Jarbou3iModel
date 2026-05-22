@@ -2,9 +2,9 @@
 
 Current milestone:
 
-`v1.1.0-rc.0 — Public Demo Release Candidate`
+`v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze`
 
-RC0 is the public-demo release candidate. Feature surface is frozen.
+RC0 is the stable consolidation and public surface freeze. Feature surface is frozen.
 
 Next valid milestones:
 - `v1.1.0-rc.1 — Release Candidate Corrections` only if RC0 exposes a real defect.
@@ -16,8 +16,10 @@ Allowed changes before stable: cleanup, docs, tests, fixtures, release packaging
 
 Forbidden changes before stable: new major feature surface, new live connectors, live provider expansion, OAuth/backend expansion, broad UI redesign, automatic source verification claims.
 
-Node 24 CI compatibility is preserved for 1.1.0-rc.0.
+Node 24 CI compatibility is preserved for 1.1.0-rc.1.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+
+No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.

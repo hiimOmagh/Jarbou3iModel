@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-rc.0';
+const VERSION = '1.1.0-rc.1';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
@@ -82,11 +82,11 @@ for (const lang of ['ar', 'en', 'fr']) {
   }
 }
 
-assert.ok(researchCopy.en.evidenceReviewGateBody.includes('public-demo freeze') && researchCopy.en.evidenceReviewGateBody.includes('RC0 readiness'), 'English evidence review gate body must describe rc.0 public-demo release-candidate scope');
-assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('تجميد العرض العام') && researchCopy.ar.evidenceReviewGateBody.includes('تقرير جاهزية مرشح الإصدار'), 'Arabic evidence review gate body must describe rc.0 public-demo release-candidate scope');
-assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('gel de la démo publique') && researchCopy.fr.evidenceReviewGateBody.includes('rapport de préparation RC'), 'French evidence review gate body must describe rc.0 public-demo release-candidate scope');
-assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French rc.0 evidence review gate body must not inherit English release copy');
-assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('provider routing'), false, 'French rc.0 evidence review gate body must not expose alpha.20 provider-router release copy');
+assert.ok(researchCopy.en.evidenceReviewGateBody.includes('Stable consolidation') && researchCopy.en.evidenceReviewGateBody.includes('v1.1.0'), 'English evidence review gate body must describe rc.1 stable consolidation scope');
+assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('الدمج المستقر') && researchCopy.ar.evidenceReviewGateBody.includes('v1.1.0'), 'Arabic evidence review gate body must describe rc.1 stable consolidation scope');
+assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('consolidation stable') && researchCopy.fr.evidenceReviewGateBody.includes('v1.1.0'), 'French evidence review gate body must describe rc.1 stable consolidation scope');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French rc.1 evidence review gate body must not inherit English release copy');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('provider routing'), false, 'French rc.1 evidence review gate body must not expose alpha.20 provider-router release copy');
 
 for (const phrase of ['First-run guide', 'Start clean:', 'Public demo ready', 'Show the workflow', 'Publish only after browser evidence exists', 'Review screenshots', 'Stable workflow', 'Quality & Export']) {
   assert.equal(index.includes(`>${phrase}`), false, `default Arabic shell must not expose English fallback copy: ${phrase}`);

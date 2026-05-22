@@ -1,6 +1,6 @@
 # AI Integration Policy
 
-## v1.1.0-rc.0 — Public Demo Release Candidate
+## v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -9,7 +9,7 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 This guide applies to v1.0.25 — Public Demo Release Lock.
 
-## Current state: v1.1.0-rc.0
+## Current state: v1.1.0-rc.1
 
 The research engine supports four provider modes:
 
@@ -53,7 +53,7 @@ Before adding a real portable account provider:
 - Provider terms, privacy, and reliability must be reviewed.
 
 
-Evidence manifest continuity: v1.1.0-rc.0 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-rc.1 preserves the single final metadata hosted-demo evidence manifest gate.
 
 Continuity note: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, changed-files-only discipline, no live scraping, No real OAuth, screenshots alone, hosted evidence, and ZIPs are not sufficient for release approval.
 
@@ -61,9 +61,9 @@ Continuity note: Root Manifest and Release Artifact Consolidation, Version Suite
 Continuity discipline: Root Manifest and Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
 
-Release-lock guard: v1.1.0-rc.0 Public Demo Release Candidate requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: v1.1.0-rc.1 Stable Consolidation + Public Surface Freeze requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Current release reference: v1.1.0-rc.0 — Public Demo Release Candidate. release-lock evidence remains required.
+Current release reference: v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze. release-lock evidence remains required.
 
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
@@ -72,3 +72,5 @@ Provenance continuity: Package Script Compression, CI Gate Registry, Root Manife
 Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
 
 Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
+
+No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.

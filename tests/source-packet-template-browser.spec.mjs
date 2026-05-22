@@ -23,7 +23,7 @@ async function buildTemplatePacket(page, templateId) {
   expect(outputText).toContain('\"verification_claimed\": false');
 }
 
-test.describe('v1.1.0-rc.0 source packet template browser QA + copy safety', () => {
+test.describe('v1.1.0-rc.1 source packet template browser QA + copy safety', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     await selectWorkflowTab(page, 'sources');
@@ -67,7 +67,7 @@ test.describe('v1.1.0-rc.0 source packet template browser QA + copy safety', () 
     await page.locator('#copySourcePacketBuilderBtn').click();
     const copied = await page.evaluate(() => navigator.clipboard.readText());
     const packet = JSON.parse(copied);
-    expect(packet.workflow_version).toBe('1.1.0-rc.0');
+    expect(packet.workflow_version).toBe('1.1.0-rc.1');
     expect(packet.source_packets[0].template_id).toBe('reddit_thread');
     expect(packet.builder_report.live_fetching_performed).toBe(false);
     expect(packet.builder_report.verification_claimed).toBe(false);

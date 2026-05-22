@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-rc.0`
-Release: `v1.1.0-rc.0 — Public Demo Release Candidate`
+Version: `1.1.0-rc.1`
+Release: `v1.1.0-rc.1 — Stable Consolidation + Public Surface Freeze`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

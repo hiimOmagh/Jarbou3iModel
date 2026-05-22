@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-rc.0 — Release Candidate Hardening and final repo hygiene. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-rc.1 — Release Candidate Hardening and final repo hygiene. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-rc.0';
+  const VERSION = '1.1.0-rc.1';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
