@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine evidence review controller boundary v1.1.0-rc.2-fix.2. */
+/* Jarbou3i Research Engine evidence review controller boundary v1.1.0-rc.2-fix.3. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-rc.2-fix.2';
+  const VERSION = '1.1.0-rc.2-fix.3';
   function pendingItems(queue){ return (queue || []).filter(item => item.status === 'pending' || item.status === 'needs_edit'); }
   function report(queue, options = {}){
     if(root.evidenceWorkspace?.reviewReport){

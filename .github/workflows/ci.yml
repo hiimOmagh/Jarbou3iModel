@@ -29,8 +29,14 @@ jobs:
       - name: Run no-browser gate with lock-evidence log
         shell: bash
         run: |
+          rm -rf "$RUNNER_TEMP/lock-evidence-input" "$RUNNER_TEMP/lock-evidence-bundle"
+          rm -rf "$GITHUB_WORKSPACE/ci-artifacts"
           mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
-          npm run test:ci:no-browser 2>&1 | tee "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log"
+          set +e
+          npm run test:ci:no-browser > "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log" 2>&1
+          status=$?
+          cat "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log"
+          exit $status
       - name: Upload no-browser lock evidence log
         uses: actions/upload-artifact@v6
         if: always()
@@ -54,9 +60,26 @@ jobs:
       - name: Run browser gate with lock-evidence log
         shell: bash
         run: |
-          mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
-          mkdir -p "$RUNNER_TEMP/hosted-demo-evidence"
-          HOSTED_DEMO_EVIDENCE_DIR="$RUNNER_TEMP/hosted-demo-evidence" PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser 2>&1 | tee "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
+          rm -rf "$RUNNER_TEMP/lock-evidence-input" "$RUNNER_TEMP/hosted-demo-evidence" "$RUNNER_TEMP/lock-evidence-bundle"
+          rm -rf "$GITHUB_WORKSPACE/ci-artifacts"
+          rm -rf "$GITHUB_WORKSPACE/test-results/hosted-demo-evidence"
+          mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs" "$RUNNER_TEMP/hosted-demo-evidence"
+          set +e
+          HOSTED_DEMO_EVIDENCE_DIR="$RUNNER_TEMP/hosted-demo-evidence" PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser > "$RUNNER_TEMP/lock-evidence-input/logs/browser.log" 2>&1
+          status=$?
+          cat "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
+          if [ $status -ne 0 ]; then
+            exit $status
+          fi
+          test -f "$RUNNER_TEMP/hosted-demo-evidence/matrix-summary.json"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const path = process.env.RUNNER_TEMP + '/hosted-demo-evidence/matrix-summary.json';
+          const summary = JSON.parse(fs.readFileSync(path, 'utf8'));
+          if (summary.internal_build_version !== '1.1.0-rc.2-fix.3') throw new Error(`matrix version mismatch: ${summary.internal_build_version}`);
+          if (summary.expected_rows !== 39 || summary.actual_rows !== 39 || summary.passed_rows !== 39 || summary.failed_rows !== 0) throw new Error(`matrix rows invalid: ${JSON.stringify({expected:summary.expected_rows, actual:summary.actual_rows, passed:summary.passed_rows, failed:summary.failed_rows})}`);
+          if (summary.language_purity_passed !== true || summary.visual_guard_passed !== true || summary.stale_version_residue_detected !== false) throw new Error('matrix summary release guards failed');
+          NODE
       - name: Upload hosted demo evidence
         uses: actions/upload-artifact@v6
         if: always()
@@ -106,5 +129,5 @@ jobs:
       - name: Upload canonical lock evidence bundle
         uses: actions/upload-artifact@v6
         with:
-          name: lock-evidence-bundle_1.1.0-rc.2-fix.2_${{ github.run_id }}
-          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.1.0-rc.2-fix.2_${{ github.run_id }}
+          name: lock-evidence-bundle_1.1.0-rc.2-fix.3_${{ github.run_id }}
+          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.1.0-rc.2-fix.3_${{ github.run_id }}

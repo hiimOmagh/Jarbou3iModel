@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-rc.2-fix.2';
-const TITLE = 'Evidence Matrix + Canonical Bundle Validation';
+const VERSION = '1.1.0-rc.2-fix.3';
+const TITLE = 'Evidence Workflow Exit-Code + Matrix Activation Fix';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-rc.2-fix.2-evidence-pack-export-v3-brief-traceability.md';
+const DOC = 'docs/v1.1.0-rc.2-fix.3-evidence-pack-export-v3-brief-traceability.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));

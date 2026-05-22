@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-rc.2-fix.2';
-const RELEASE = 'v1.1.0-rc.2-fix.2 — Evidence Matrix + Canonical Bundle Validation';
+const VERSION = '1.1.0-rc.2-fix.3';
+const RELEASE = 'v1.1.0-rc.2-fix.3 — Evidence Workflow Exit-Code + Matrix Activation Fix';
 const registry = JSON.parse(fs.readFileSync('tests/version-suite-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 

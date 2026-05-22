@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-rc.2-fix.2",
-  "release_title": "v1.1.0-rc.2-fix.2 — Evidence Matrix + Canonical Bundle Validation",
+  "version": "1.1.0-rc.2-fix.3",
+  "release_title": "v1.1.0-rc.2-fix.3 — Evidence Workflow Exit-Code + Matrix Activation Fix",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,
@@ -46,5 +46,5 @@
   ],
   "release_scope": "Corrective lock evidence workspace hygiene fix: evidence logs and final bundle staging use runner temporary workspace paths instead of repo-tree ci-artifacts paths; no product feature changes.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.1.0-rc.2-fix.2`\nRuntime capability change: no\nPublic surface: `v1.1.0 Stable Candidate`\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands"
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.1.0-rc.2-fix.3`\nRuntime capability change: no\nPublic surface: `v1.1.0 Stable Candidate`\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands"
 }

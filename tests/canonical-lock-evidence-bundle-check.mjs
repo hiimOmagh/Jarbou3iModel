@@ -4,8 +4,8 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-rc.2-fix.2';
-const TITLE = 'Evidence Matrix + Canonical Bundle Validation';
+const VERSION = '1.1.0-rc.2-fix.3';
+const TITLE = 'Evidence Workflow Exit-Code + Matrix Activation Fix';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const workflow = fs.readFileSync('.github/workflows/ci.yml', 'utf8');
@@ -27,7 +27,7 @@ for (const token of [
   'download-artifact@v6',
   'upload-artifact@v6',
   'Build canonical lock evidence bundle',
-  'lock-evidence-bundle_1.1.0-rc.2-fix.2_${{ github.run_id }}',
+  'lock-evidence-bundle_1.1.0-rc.2-fix.3_${{ github.run_id }}',
   'needs: [no-browser, browser]'
 ]) assert.ok(workflow.includes(token), `workflow missing ${token}`);
 
@@ -63,6 +63,16 @@ for (const token of [
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false, 'bundle script must not default lock input to repo tree');
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false, 'bundle script must not default bundle output to repo tree');
 assert.ok(script.includes('process.env.RUNNER_TEMP || os.tmpdir()'), 'bundle script must default to runner temp/os temp');
+
+assert.ok(workflow.includes('set +e'), 'workflow must explicitly preserve command exit status during log capture');
+assert.ok(workflow.includes('status=$?'), 'workflow must capture command exit status after log capture');
+assert.ok(workflow.includes('exit $status'), 'workflow must return the captured command status');
+assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log"'), false, 'no-browser gate must not mask failures through tee pipeline');
+assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"'), false, 'browser gate must not mask failures through tee pipeline');
+assert.ok(workflow.includes('test -f "$RUNNER_TEMP/hosted-demo-evidence/matrix-summary.json"'), 'browser job must require matrix-summary.json before artifact upload');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.1.0-rc.2-fix.3'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
+
 
 assert.ok(registry.gates['no-browser'].node_checks.includes('tests/canonical-lock-evidence-bundle-check.mjs'));
 assert.ok(registry.gates.release.node_checks.includes('tests/canonical-lock-evidence-bundle-check.mjs'));

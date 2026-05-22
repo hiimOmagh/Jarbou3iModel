@@ -19,7 +19,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.1.0-rc.2-fix.2';
+const VERSION = '1.1.0-rc.2-fix.3';
 const PUBLIC_VERSION_LABEL = 'v1.1.0 Stable Candidate';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
@@ -81,7 +81,18 @@ async function capture(page, name){
 async function openProviderHarness(page){ await page.locator('#researchModeNav .uxTab[data-ux-tab="advanced"]').click(); await expect(page.locator('.providerHarnessCard')).toBeVisible(); const providerCard=page.locator('.providerHarnessCard'); if(await providerCard.evaluate((node)=>node.classList.contains('uxAccordionClosed'))) await providerCard.locator('h3').click(); await expect(page.locator('#providerName')).toBeVisible(); await waitForEvidenceStable(page, 'provider-mode-open'); }
 async function openQualityExport(page){ await page.locator('#researchModeNav .uxTab[data-ux-tab="quality"]').click(); await expect(page.locator('#researchQualityOutput')).toBeVisible(); await expect(page.locator('#exportSourcePacketBuilderBtn')).toBeVisible(); await waitForEvidenceStable(page, 'quality-export-open'); }
 async function openSurface(page, surface){ if(!surface.tab) return; const tabSelector = `#researchModeNav .uxTab[data-ux-tab="${surface.tab}"]`; await page.locator(tabSelector).click(); if(surface.slug === 'provider-routing') await openProviderHarness(page); else if(['quality-export','publication-review','golden-workflow-demo','strategic-evidence-graph'].includes(surface.slug)) await openQualityExport(page); await waitForEvidenceStable(page, `surface-${surface.slug}`); }
-function languagePurity(locale, corpus){ const rules = MATRIX_CONFIG.language_rules[locale] || {required:[], forbidden:[]}; const required_present = rules.required.filter((token)=>corpus.includes(token)); const forbidden_present = rules.forbidden.filter((token)=>corpus.includes(token)); return { required_present, required_missing:rules.required.filter((token)=>!corpus.includes(token)), forbidden_present, language_purity_passed:forbidden_present.length === 0 && required_present.length >= 1 }; }
+function normalizeForEvidenceText(value){ return String(value || '').normalize('NFKC').toLocaleLowerCase(); }
+function corpusHasToken(corpus, token){ return normalizeForEvidenceText(corpus).includes(normalizeForEvidenceText(token)); }
+function localizedVersionVisible(locale, corpus){
+  const labels = [PUBLIC_VERSION_LABEL, ...(MATRIX_CONFIG.public_version_labels?.[locale] || [])];
+  return labels.some((label)=>corpusHasToken(corpus, label));
+}
+function languagePurity(locale, corpus){
+  const rules = MATRIX_CONFIG.language_rules[locale] || {required:[], forbidden:[]};
+  const required_present = rules.required.filter((token)=>corpusHasToken(corpus, token));
+  const forbidden_present = rules.forbidden.filter((token)=>corpusHasToken(corpus, token));
+  return { required_present, required_missing:rules.required.filter((token)=>!corpusHasToken(corpus, token)), forbidden_present, language_purity_passed:forbidden_present.length === 0 && required_present.length >= 1 };
+}
 async function collectDomFacts(page, locale, surface){
   return page.evaluate(({ locale, surface, version, publicVersionLabel }) => {
     const activeTab = document.querySelector('#researchModeNav .uxTab.active')?.dataset?.uxTab || null;
@@ -113,8 +124,8 @@ async function captureMatrixRow(page, locale, surface){
   const corpus = visibleTextCorpus(snapshot);
   const purity = languagePurity(locale, corpus);
   const staleTokens = ['1.1.0-alpha','1.1.0-rc.0','1.1.0-rc.1','1.1.0-rc.2-fix.1','alpha.25','RC0','RC1'];
-  const staleMatches = staleTokens.filter((token)=>corpus.includes(token));
-  const validation = { matrix_id:rowId, locale, surface:surface.slug, surface_id:surface.id, internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, screenshot:path.relative(EVIDENCE_ROOT, screenshot).replaceAll(path.sep,'/'), visible_text_file:path.relative(EVIDENCE_ROOT, visibleTextFile).replaceAll(path.sep,'/'), dom_facts_file:path.relative(EVIDENCE_ROOT, domFactsFile).replaceAll(path.sep,'/'), required_copy_present:purity.required_present.length >= 1, version_visible:corpus.includes('v1.1.0 Stable Candidate') || corpus.includes('v1.1.0 مرشح مستقر') || corpus.includes('v1.1.0 Candidat stable'), language_purity_passed:purity.language_purity_passed, language_required_present:purity.required_present, language_required_missing:purity.required_missing, forbidden_language_tokens_present:purity.forbidden_present, stale_version_residue_detected:staleMatches.length > 0, stale_version_residue_tokens:staleMatches, horizontal_overflow_px, capture_settled:settle.settled === true, visual_artifact_guard_passed:artifact_guard.visual_artifact_guard_passed === true, required_state_present:domFacts.required_selector_present === true, required_text_present:domFacts.required_text_present === true, image_width:image.width, image_height:image.height, bytes:buffer.byteLength, pass:false };
+  const staleMatches = staleTokens.filter((token)=>corpusHasToken(corpus, token));
+  const validation = { matrix_id:rowId, locale, surface:surface.slug, surface_id:surface.id, internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, screenshot:path.relative(EVIDENCE_ROOT, screenshot).replaceAll(path.sep,'/'), visible_text_file:path.relative(EVIDENCE_ROOT, visibleTextFile).replaceAll(path.sep,'/'), dom_facts_file:path.relative(EVIDENCE_ROOT, domFactsFile).replaceAll(path.sep,'/'), required_copy_present:purity.required_present.length >= 1, version_visible:localizedVersionVisible(locale, corpus), language_purity_passed:purity.language_purity_passed, language_required_present:purity.required_present, language_required_missing:purity.required_missing, forbidden_language_tokens_present:purity.forbidden_present, stale_version_residue_detected:staleMatches.length > 0, stale_version_residue_tokens:staleMatches, horizontal_overflow_px, capture_settled:settle.settled === true, visual_artifact_guard_passed:artifact_guard.visual_artifact_guard_passed === true, required_state_present:domFacts.required_selector_present === true, required_text_present:domFacts.required_text_present === true, image_width:image.width, image_height:image.height, bytes:buffer.byteLength, pass:false };
   validation.pass = validation.required_copy_present && validation.version_visible && validation.language_purity_passed && !validation.stale_version_residue_detected && validation.horizontal_overflow_px <= 2 && validation.capture_settled && validation.visual_artifact_guard_passed && validation.required_state_present && buffer.byteLength > 20_000;
   const validationFile = slugPath(locale, surface.slug, 'validation.json');
   writeJson(validationFile, validation);
@@ -154,7 +165,7 @@ async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, mat
   ensureEvidenceRoot(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
 }
 
-test.describe('v1.1.0-rc.2-fix.2 hosted demo evidence matrix and manifest capture', () => {
+test.describe('v1.1.0-rc.2-fix.3 hosted demo evidence matrix and manifest capture', () => {
   test.describe.configure({ mode: 'serial' });
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }, testInfo) => {
     test.setTimeout(HOSTED_EVIDENCE_TEST_TIMEOUT_MS);

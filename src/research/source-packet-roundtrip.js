@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source packet export/import roundtrip QA v1.1.0-rc.2-fix.2. Local/manual only. */
+/* Jarbou3i Research Engine source packet export/import roundtrip QA v1.1.0-rc.2-fix.3. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-rc.2-fix.2';
+  const VERSION = '1.1.0-rc.2-fix.3';
   const ROUNDTRIP_MODEL = 'source_packet_roundtrip.v1';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
   function arr(value){ return Array.isArray(value) ? value : (value === undefined || value === null || value === '' ? [] : [value]); }

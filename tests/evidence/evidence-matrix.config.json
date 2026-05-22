@@ -1,6 +1,6 @@
 {
-  "evidence_matrix_config_version": "1.1.0-rc.2-fix.2",
-  "internal_build_version": "1.1.0-rc.2-fix.2",
+  "evidence_matrix_config_version": "1.1.0-rc.2-fix.3",
+  "internal_build_version": "1.1.0-rc.2-fix.3",
   "public_version_label": "v1.1.0 Stable Candidate",
   "locales": [
     "en",
@@ -223,5 +223,19 @@
         "doré"
       ]
     }
-  ]
+  ],
+  "public_version_labels": {
+    "en": [
+      "v1.1.0 Stable Candidate",
+      "v1.1.0 stable candidate"
+    ],
+    "ar": [
+      "v1.1.0 مرشح مستقر",
+      "v1.1.0 المرشح المستقر"
+    ],
+    "fr": [
+      "v1.1.0 candidat stable",
+      "v1.1.0 Candidat stable"
+    ]
+  }
 }
