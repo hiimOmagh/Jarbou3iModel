@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release: v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+Current release: v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
 Required gates:
 
@@ -8,10 +8,11 @@ Required gates:
 - Browser CI
 - Hosted-demo evidence capture
 - Visible-text snapshots
-- Research Planner V2 no-browser check
+- Strategic Evidence Graph no-browser check
 - Source/entity/evidence regression checks
+- Export Pack v2 graph artifact checks
 
-Planning gate coverage: quick/standard/deep depth presets, source-type budgets, entity-aware queries, counter-evidence targets, connector-readiness dry-run diagnostics, planner quality score, and no live fetching.
+Graph coverage: evidence nodes, entity nodes, source-cluster nodes, analysis-target nodes, causal-link nodes, supports/contradicts/cluster/entity/causal edges, graph quality diagnostics, and Gephi/Kumu/Neo4J export artifacts.
 
 Node 24 CI compatibility preserved.
 
@@ -21,9 +22,8 @@ Provenance continuity: Root Manifest, Release Artifact Consolidation, CI Gate Re
 
 Public demo continuity preserved.
 
-Public Demo continuity preserved.
+## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
+Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
-
-Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
+Public Demo continuity: the alpha.19 release keeps the public demo path review-gated with hosted evidence, visible-text snapshots, and browser evidence before lock.

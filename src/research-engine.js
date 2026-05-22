@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.18 — research planner v2. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.19 — graph export and strategic evidence map. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.18';
+  const VERSION = '1.1.0-alpha.19';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -31,6 +31,7 @@
   const entityIntelligence = modules.entityIntelligence;
   const researchPlannerV2 = modules.researchPlannerV2;
   const controlledConnectorEngine = modules.controlledConnectorEngine;
+  const strategicEvidenceGraph = modules.strategicEvidenceGraph;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
   const hostedDemoVerification = modules.hostedDemoVerification;
@@ -251,6 +252,35 @@
   function controlledConnectorReport(){return controlledConnectorEngine?.buildConnectorReport?controlledConnectorEngine.buildConnectorReport({source_runs:state.source_runs||[],source_results:state.source_results||[],evidence_review_queue:state.evidence_review_queue||[]},{version:VERSION,now:nowIso()}):{controlled_connector_report_version:VERSION,release_gate:'review_required'};}
   function connectorSafetyReport(){const r=(state.source_results||[]).slice(-1)[0]||{};return controlledConnectorEngine?.buildConnectorSafetyReport?controlledConnectorEngine.buildConnectorSafetyReport({connector_id:r.connector||state.source_connector||'manual_source_packet',candidate_count:r.evidence_candidate_count||0},{version:VERSION,now:nowIso()}):{connector_safety_report_version:VERSION,live_fetching_performed:false,verification_claimed:false};}
 
+
+  function buildStrategicEvidenceGraph(){
+    const clusterIntelligence = buildSourceClusterIntelligence();
+    const entityIntel = buildEntityIntelligence();
+    if(strategicEvidenceGraph?.buildGraph){
+      return strategicEvidenceGraph.buildGraph({
+        evidence: (state.evidence || []).map(item => scoreEvidence(item)),
+        source_clusters: clusterIntelligence.clusters || [],
+        entity_profiles: entityIntel.entity_profiles || [],
+        causal_links: state.causal_links || []
+      }, {version: VERSION, now: nowIso()});
+    }
+    return {
+      strategic_evidence_graph_version: VERSION,
+      graph_model: 'strategic_evidence_graph.v1',
+      graph_nodes: [],
+      graph_edges: [],
+      graph_quality_report: {graph_quality_report_version: VERSION, graph_model:'strategic_evidence_graph.v1', node_count:0, edge_count:0, graph_gap_flags:['strategic_evidence_graph_module_missing'], release_gate:'graph_review_required', live_fetching_performed:false, verification_claimed:false},
+      graph_export_report: {graph_export_report_version: VERSION, graph_model:'strategic_evidence_graph.v1', formats:[], node_count:0, edge_count:0, release_gate:'graph_review_required', live_fetching_performed:false, verification_claimed:false},
+      graph_exports: {},
+      live_fetching_performed:false,
+      verification_claimed:false,
+      release_gate:'graph_review_required'
+    };
+  }
+  function strategicEvidenceGraphReport(){ return buildStrategicEvidenceGraph(); }
+  function graphQualityReport(){ return buildStrategicEvidenceGraph().graph_quality_report; }
+  function graphExportReport(){ return buildStrategicEvidenceGraph().graph_export_report; }
+
   function hostedDemoEvidenceReviewReport(){
     return hostedDemoVerification?.buildHostedDemoEvidenceReview ? hostedDemoVerification.buildHostedDemoEvidenceReview({}, {version:VERSION, now:nowIso()}) : null;
   }
@@ -315,6 +345,9 @@
       entity_profiles: entityProfiles(),
       entity_map_report: entityMapReport(),
       entity_alias_report: entityAliasReport(),
+      strategic_evidence_graph: strategicEvidenceGraphReport(),
+      graph_quality_report: graphQualityReport(),
+      graph_export_report: graphExportReport(),
       source_import_report: state.source_import_report || null,
       source_packet_builder_report: state.source_packet_builder_report || null,
       last_built_source_packet: state.last_built_source_packet || null,
@@ -555,6 +588,7 @@
     const entityIntel = buildEntityIntelligence();
     const entityMap = entityIntel.entity_map_report || entityMapReport();
     const plannerReport = buildResearchPlannerReport(state.plan);
+    const graphIntel = buildStrategicEvidenceGraph();
     const scores = qualityScores();
     const template = activeTemplateProfile();
     const fitReport = analysisTemplates?.templateFitReport ? analysisTemplates.templateFitReport(state, template?.template_id) : null;
@@ -577,8 +611,11 @@
       entity_profiles: entityIntel.entity_profiles || [],
       entity_map_report: entityMap,
       entity_alias_report: entityIntel.entity_alias_report || entityAliasReport(),
+      strategic_evidence_graph: graphIntel,
+      graph_quality_report: graphIntel.graph_quality_report,
+      graph_export_report: graphIntel.graph_export_report,
       coverage: diagnostics.coverage,
-      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || []), ...(entityMap.entity_gap_flags || []), ...(plannerReport.planner_gap_flags || [])])],
+      gaps: [...new Set([...(diagnostics.gaps || []), ...(sourceGapReport.global_gap_flags || []), ...(entityMap.entity_gap_flags || []), ...(plannerReport.planner_gap_flags || []), ...(graphIntel.graph_quality_report?.graph_gap_flags || [])])],
       evidence_priorities: (sourceGapReport.recommendations || []).length
         ? sourceGapReport.recommendations
         : (diagnostics.gaps.includes('counter_evidence_missing')
@@ -596,6 +633,9 @@
     state.entity_map_report = entityMap;
     state.entity_alias_report = entityIntel.entity_alias_report || entityAliasReport();
     state.research_planner_report = plannerReport;
+    state.strategic_evidence_graph = graphIntel;
+    state.graph_quality_report = graphIntel.graph_quality_report;
+    state.graph_export_report = graphIntel.graph_export_report;
     const qualityReport = qualityGate.calculateQualityGateV3Report(Object.assign({}, state, {analysis_brief: brief}), {evidenceReviewReport, providerSafetyReport});
     brief.quality_gate_report = qualityReport;
     brief.publication_readiness = qualityReport.publication_readiness;
@@ -1702,6 +1742,9 @@
     state.source_imports = Array.isArray(nextPacket.source_imports) ? nextPacket.source_imports.slice(-25) : [];
     state.evidence_review_queue = Array.isArray(nextPacket.evidence_review_queue) ? nextPacket.evidence_review_queue.slice(-200) : [];
     state.evidence_review_report = nextPacket.evidence_review_report || null;
+    state.strategic_evidence_graph = nextPacket.strategic_evidence_graph || null;
+    state.graph_quality_report = nextPacket.graph_quality_report || null;
+    state.graph_export_report = nextPacket.graph_export_report || null;
     state.source_import_report = nextPacket.source_import_report || null;
     state.source_cluster_report = nextPacket.source_cluster_report || nextPacket.source_gap_report || null;
     state.source_gap_report = nextPacket.source_gap_report || nextPacket.source_cluster_report || null;
@@ -1870,9 +1913,12 @@
     const gaps = [...new Set([...(brief.gaps || []), ...(gapReport.global_gap_flags || []), ...(gapReport.cluster_gap_flags || []), ...(brief.entity_map_report?.entity_gap_flags || [])])];
     const entities = brief.entity_profiles || [];
     const planner = brief.research_planner_report || state.research_planner_report || null;
+    const graph = brief.strategic_evidence_graph || state.strategic_evidence_graph || buildStrategicEvidenceGraph();
+    const graphQuality = graph.graph_quality_report || {};
+    const graphCard = `<div class="researchJsonCard strategicEvidenceGraphCard"><h4>${esc(tr('strategicEvidenceGraphTitle') || 'Strategic Evidence Map')}</h4><div class="miniChips"><span>${esc(graphQuality.node_count || 0)} nodes</span><span>${esc(graphQuality.edge_count || 0)} edges</span><span>${esc((graph.graph_export_report?.formats || []).join('/'))}</span><span>${esc(graphQuality.release_gate || 'graph_review_required')}</span></div>${(graphQuality.graph_gap_flags || []).length ? `<small>${esc((graphQuality.graph_gap_flags || []).join(' · '))}</small>` : ''}</div>`;
     const entityCards = entities.slice(0, 8).map(e => `<div class="entityProfileCard"><div><b>${esc(e.entity_id)} · ${esc(e.canonical_name || '')}</b><span>${esc(e.category || 'other')}</span></div><p>${esc((e.claim_mentions || [])[0] || '')}</p><div class="miniChips"><span>${esc((e.evidence_ids || []).length)}E</span><span>${esc((e.cluster_ids || []).length)}CL</span><span>${esc(e.strategic_relevance_score ?? '—')}/100</span><span>${esc(e.review_gate || 'entity_review_required')}</span></div>${(e.aliases || []).length ? `<small>aliases: ${esc((e.aliases || []).slice(0,4).join(' · '))}</small>` : ''}</div>`).join('');
     const clusterCards = clusters.slice(0, 8).map(c => `<div class="sourceClusterCard"><div><b>${esc(c.cluster_id)} · ${esc(c.cluster_label || c.target_id)}</b><span>${esc(c.review_gate || 'review_required')}</span></div><p>${esc(c.primary_claim || (c.claims || [])[0] || '')}</p><div class="miniChips"><span>${esc(c.evidence_ids.length)}E</span><span>R:${esc(c.reliability_score ?? '—')}</span><span>A:${esc(c.attention_signal_score ?? '—')}</span><span>T:${esc(c.traceability_score ?? '—')}</span><span>${esc((c.source_types || []).join('/'))}</span>${c.duplicate_count ? `<span>${esc(c.duplicate_count)} duplicate</span>` : ''}</div>${(c.gap_flags || []).length ? `<small>${esc((c.gap_flags || []).join(' · '))}</small>` : ''}</div>`).join('');
-    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('researchPlannerTitle'))}</h4>${planner ? `<div class="researchPlannerSummary"><div class="miniChips"><span>${esc(planner.depth_preset || 'standard')}</span><span>${esc(planner.planner_quality_score || 0)}/100</span><span>${esc((planner.entity_aware_queries || []).length)} queries</span><span>${esc((planner.counter_evidence_targets || []).length)} counter-targets</span></div></div>` : '<p class="muted">—</p>'}<h4>${esc(tr('entityTitle') || 'Entity profiles')}</h4><div class="entityProfileGrid">${entityCards || '<span>—</span>'}</div><h4>${esc(tr('clusterTitle'))}</h4><div class="sourceClusterGrid">${clusterCards || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${gapReport.recommendations?.length ? `<h4>Source gap actions</h4><ul>${gapReport.recommendations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : ''}<h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
+    el.innerHTML = `<div class="researchJsonCard analysisBriefCard"><div><b>${esc(brief.topic)}</b><span>${esc(brief.context)} · readiness ${esc(brief.readiness_score)}/100</span></div><h4>${esc(tr('researchPlannerTitle'))}</h4>${planner ? `<div class="researchPlannerSummary"><div class="miniChips"><span>${esc(planner.depth_preset || 'standard')}</span><span>${esc(planner.planner_quality_score || 0)}/100</span><span>${esc((planner.entity_aware_queries || []).length)} queries</span><span>${esc((planner.counter_evidence_targets || []).length)} counter-targets</span></div></div>` : '<p class="muted">—</p>'}<h4>${esc(tr('entityTitle') || 'Entity profiles')}</h4><div class="entityProfileGrid">${entityCards || '<span>—</span>'}</div><h4>${esc(tr('clusterTitle'))}</h4><div class="sourceClusterGrid">${clusterCards || '<span>—</span>'}</div><h4>${esc(tr('gapsTitle'))}</h4><ul>${(gaps.length ? gaps : ['No critical compiler gaps detected.']).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${gapReport.recommendations?.length ? `<h4>Source gap actions</h4><ul>${gapReport.recommendations.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : ''}${graphCard}<h4>Handoff</h4><p class="muted">${esc(brief.handoff_summary || '')}</p></div>`;
     renderDiagnostics();
   }
 
@@ -2195,6 +2241,7 @@
 
   function renderQuality(){
     const plannerReport = buildResearchPlannerReport(state.plan);
+    const graphIntel = buildStrategicEvidenceGraph();
     const scores = qualityScores();
     const report = qualityGateReport();
     const el = $('researchQualityOutput');

@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.18. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.19. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.18';
+    const version = options.version || '1.1.0-alpha.19';
     return {
       plan: null,
       evidence: [],
@@ -49,6 +49,9 @@
       entity_map_report: null,
       entity_alias_report: null,
       research_planner_report: null,
+      strategic_evidence_graph: null,
+      graph_quality_report: null,
+      graph_export_report: null,
       entity_ignore_list: [],
       packet_migration_report: null,
       active_project_id: null,
@@ -66,7 +69,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.18';
+    const version = options.version || '1.1.0-alpha.19';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);
@@ -89,6 +92,9 @@
     next.entity_map_report = next.entity_map_report && typeof next.entity_map_report === 'object' ? next.entity_map_report : null;
     next.entity_alias_report = next.entity_alias_report && typeof next.entity_alias_report === 'object' ? next.entity_alias_report : null;
     next.research_planner_report = next.research_planner_report && typeof next.research_planner_report === 'object' ? next.research_planner_report : null;
+    next.strategic_evidence_graph = next.strategic_evidence_graph && typeof next.strategic_evidence_graph === 'object' ? next.strategic_evidence_graph : null;
+    next.graph_quality_report = next.graph_quality_report && typeof next.graph_quality_report === 'object' ? next.graph_quality_report : null;
+    next.graph_export_report = next.graph_export_report && typeof next.graph_export_report === 'object' ? next.graph_export_report : null;
     next.entity_ignore_list = Array.isArray(next.entity_ignore_list) ? next.entity_ignore_list.slice(0, 500) : [];
     next.packet_migration_report = next.packet_migration_report && typeof next.packet_migration_report === 'object' ? next.packet_migration_report : null;
     next.active_project_id = typeof next.active_project_id === 'string' ? next.active_project_id : null;

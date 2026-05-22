@@ -1,15 +1,15 @@
 # Current Release
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
 Status: alpha implementation package pending CI/browser lock.
 
-Version: `1.1.0-alpha.18`
+Version: `1.1.0-alpha.19`
 Package: `jarbou3i-research-engine`
 
 ### Scope
 
-Research Planner V2 adds local-only planning intelligence over the existing plan, evidence, source clusters, and entity profiles. It creates quick/standard/deep depth presets, source-type budgets, entity-aware query plans, counter-evidence targets, platform/source recommendations, connector-readiness dry-run diagnostics, and planner quality/export reports.
+Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.
 
 ### Boundaries
 
@@ -19,6 +19,7 @@ Research Planner V2 adds local-only planning intelligence over the existing plan
 - Backend behavior changed: no
 - Source behavior changed: no live search execution, no live scraping, no automated verification
 - Storage behavior changed: no
+- External graph service dependency: no
 
 Required browser gates before publishing: green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 
@@ -26,10 +27,13 @@ Release archive exclusions: generated artifacts, reports, ZIPs, dependency folde
 
 Required cleanup commands: run CI gates and hosted evidence capture before lock.
 
-Release-lock guard: v1.1.0-alpha.18 Controlled Connector Architecture MVP requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+
+Public Demo continuity: the alpha.19 release keeps the public demo path review-gated with hosted evidence, visible-text snapshots, and browser evidence before lock.
+
+Release-lock guard: 1.1.0-alpha.19 Graph Export + Strategic Evidence Map requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-alpha.18`
+Version: `1.1.0-alpha.19`
 Runtime capability change: no
 Root Manifest and Release Artifact Consolidation preserved. Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
@@ -37,15 +41,10 @@ Node 24 CI compatibility preserved.
 
 A ZIP archive alone is insufficient.
 
-Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
-
 Public demo continuity preserved.
-
-Public Demo continuity preserved.
 
 No live scraping and No real OAuth remain enforced.
 
+## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
-
-Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
+Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.

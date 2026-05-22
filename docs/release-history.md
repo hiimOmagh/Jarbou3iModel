@@ -64,6 +64,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
 | `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
+| `v1.1.0-alpha.19-graph-export-strategic-evidence-map.md` | v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3352,3 +3353,50 @@ Boundary phrase: No real OAuth is enabled.
 
 Registry policy: MERGE_TO_REGISTRY remains the fixture handling mode. No files are deleted.
 <!-- /release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
+
+
+## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
+
+Adds a local Strategic Evidence Graph model, graph quality diagnostics, and Gephi/Kumu/Neo4J export continuity without live scraping, live search execution, provider execution, OAuth/backend expansion, external graph service dependency, or automatic source verification claims.
+
+<!-- release-file:v1.1.0-alpha.19-graph-export-strategic-evidence-map.md -->
+# v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
+
+Alpha.19 adds Graph Export + Strategic Evidence Map. It connects reviewed evidence, source clusters, entity profiles, analysis targets, and causal links into a local graph bundle and exports Gephi-compatible CSV, Kumu-compatible JSON, and Neo4J import CSV artifacts.
+
+Boundary: no live scraping, no live web search by default, no provider execution expansion, no OAuth/backend expansion, no external graph service dependency, and no automatic source verification claims.
+
+Validation target: v1.1.0-alpha.19.
+
+
+Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
+
+
+Boundary continuity: No live scraping and No real OAuth are enabled; graph export remains local/manual and review-gated.
+
+Release approval boundary: Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+
+Hosted evidence capture continuity:
+- waitForEvidenceStable
+- assertNoTransientArtifacts
+- capture_settled
+- visual_artifact_guard_passed
+- No runtime behavior change
+
+
+Mobile Header Geometry Lock continuity: the existing mobile header/logo geometry guard remains in scope and unchanged for alpha.19.
+
+
+
+Registry policy continuity: MERGE_TO_REGISTRY remains the fixture handling mode. No files are deleted.
+
+Planning-gate continuity: fixture registry consolidation, fixture registry, unused oversized payload controls, No live scraping, and No real OAuth remain preserved.
+
+Audit continuity:
+- docs/technical-debt-ledger.md remains the fixture/test debt ledger authority.
+- docs/source-refactor-readiness-audit.md remains the source-file refactor readiness authority.
+- tests/language-description-audit-check.mjs remains the trilingual release-copy guard.
+- No source-file refactor yet.
+- No runtime behavior change.
+- No fixture semantic thinning.
+<!-- /release-file:v1.1.0-alpha.19-graph-export-strategic-evidence-map.md -->

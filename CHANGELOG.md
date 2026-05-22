@@ -1,28 +1,21 @@
 # Changelog
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
-- Added local-only Research Planner V2.
-- Added quick / standard / deep research depth presets.
-- Added source-type budget planning.
-- Added entity-aware query planning over entity profiles and source clusters.
-- Added counter-evidence target generation.
-- Added platform/source recommendation planning.
-- Added connector-readiness dry-run diagnostics.
-- Added planner quality scoring and research planner report export continuity.
-- Preserved no live scraping, no live provider calls, no OAuth/backend expansion, no source connector expansion, no storage expansion, and no broad UI redesign.
-
-Release-lock guard: v1.1.0-alpha.18 Controlled Connector Architecture MVP requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
-
-Node 24 CI compatibility preserved.
-
-Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
-
-Public demo continuity preserved.
-
-Public Demo continuity preserved.
+- Added local Strategic Evidence Graph model.
+- Added evidence, source-cluster, entity, analysis-target, and causal-link graph nodes.
+- Added supports, contradicts, cluster, entity, and causal graph edges.
+- Added Gephi-compatible CSV graph exports.
+- Added Kumu-compatible JSON graph export.
+- Added Neo4J import CSV graph exports.
+- Added graph quality diagnostics and graph export reports.
+- Node 24 CI compatibility preserved.
+- Preserved no live scraping, no live provider call, no OAuth/backend expansion, no external graph service dependency, and no automatic source verification claims.
 
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
-Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
+
+Public Demo continuity: the alpha.19 release keeps the public demo path review-gated with hosted evidence, visible-text snapshots, and browser evidence before lock.
+
+Release-lock guard: 1.1.0-alpha.19 Graph Export + Strategic Evidence Map requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.

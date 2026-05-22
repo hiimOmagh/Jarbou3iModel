@@ -1,28 +1,30 @@
-# Jarbou3i Research Engine — v1.1.0-alpha.18
+# Jarbou3i Research Engine — 1.1.0-alpha.19
 
-Research Planner V2 for the public-demo workspace. This alpha adds local-only quick/standard/deep research depth presets, source-type budget planning, entity-aware query planning, counter-evidence target generation, platform/source recommendation planning, connector-readiness dry-run diagnostics, planner quality scoring, and planner report export continuity. No live provider call, live scraping, live search execution, OAuth/backend expansion, source connector expansion, storage expansion, broad UI redesign, or external model download is introduced.
+Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.
 
-`v1.1.0-alpha.18 — Controlled Connector Architecture MVP`
+`v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map`
 
 ## What remains preserved
 
 - Evidence Workspace + Source Import V2
 - Source Cluster + Gap Intelligence
 - Entity Intelligence Layer
+- Research Planner V2
+- Controlled Connector Architecture MVP
 - Manual/private defaults
 - Hosted evidence and visible-text guards
 - Privacy/export boundaries
 - Package script compression and CI gate registry
 
-Release-lock guard: v1.1.0-alpha.18 Controlled Connector Architecture MVP requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Boundary note: No real OAuth or production OAuth flow is enabled in v1.1.0-alpha.18.
+Public Demo continuity: the alpha.19 release keeps the public demo path review-gated with hosted evidence, visible-text snapshots, and browser evidence before lock.
 
-Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.19 Graph Export + Strategic Evidence Map requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+
+Boundary note: No real OAuth or production OAuth flow is enabled in 1.1.0-alpha.19.
 
 No live scraping and No real OAuth remain enforced.
 
+## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
-
-Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
+Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.

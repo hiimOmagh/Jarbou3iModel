@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source packet template presets v1.1.0-alpha.18. Local/manual only. */
+/* Jarbou3i Research Engine source packet template presets v1.1.0-alpha.19. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.18';
+  const VERSION = '1.1.0-alpha.19';
   const TEMPLATE_MODEL = 'source_packet_template_presets.v1';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
   const BUILDER_VERSION = 'source_packet_builder.v1';

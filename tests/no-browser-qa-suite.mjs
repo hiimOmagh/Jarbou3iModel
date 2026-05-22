@@ -24,7 +24,8 @@ const tests = [
   'tests/onboarding-first-run-check.mjs',
   'tests/backend-proxy-check.mjs',
   'tests/backend-hardening-check.mjs',
-  'tests/public-demo-readiness-check.mjs'
+  'tests/public-demo-readiness-check.mjs',
+  'tests/strategic-evidence-graph-check.mjs'
 ];
 
 for (const file of tests) {

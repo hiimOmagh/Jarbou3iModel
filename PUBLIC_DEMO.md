@@ -1,19 +1,16 @@
-# Public Demo
+# Public Demo — v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
-Current public-demo milestone: v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+The demo presents a local/manual research workflow with evidence review, source clusters, entity profiles, controlled connectors, research planning, and a Strategic Evidence Map. Graph output is an export/inspection artifact only; it performs no live search, scraping, provider execution, OAuth flow, backend expansion, external graph service call, or automated source verification.
 
-The demo presents a local/manual research workflow with evidence review, source clusters, entity profiles, and Research Planner V2. Planner output is source-planning guidance only; it performs no live search, scraping, provider execution, OAuth flow, backend expansion, or automated source verification.
+Demo safety posture:
 
-Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
+- Manual/private mode remains default.
+- Imported source candidates require Evidence Review Queue promotion.
+- Graph exports do not prove source truth.
+- Hosted evidence and visible-text snapshots are required before release lock.
 
-Provenance continuity: Root Manifest, Release Artifact Consolidation, CI Gate Registry, Fixture Registry payload compression, test organization, provenance ledger, and changed-files-only discipline are preserved.
+Release-lock reminder: Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-No live scraping and No real OAuth remain enforced.
+Provenance gate continuity: Package Script compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization, provenance ledger, changed-files-only, visual freeze, and mobile header guards are preserved.
 
-
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
-
-Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
-
-
-Public boundary: No live scraping, no real OAuth / production OAuth, and screenshots alone or ZIP existence alone never approve a release.
+Boundary continuity: No live scraping and No real OAuth are enabled for this Public Demo; graph export remains local/manual and review-gated.

@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.1.0-alpha.18`
-Release: `v1.1.0-alpha.18 — Controlled Connector Architecture MVP`
+Version: `1.1.0-alpha.19`
+Release: `v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

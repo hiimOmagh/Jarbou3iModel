@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Export Pack v2 — v1.1.0-alpha.18. */
+/* Jarbou3i Research Engine Export Pack v2 — v1.1.0-alpha.19. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.1.0-alpha.18';
+  const EXPORT_PACK_VERSION = '1.1.0-alpha.19';
   const EXPORT_PACK_NAME = 'Export Pack v2';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -99,6 +99,13 @@
       '## Causal Links',
       links,
       '',
+      '## Strategic Evidence Graph',
+      `- Nodes: ${safeString(packet.graph_quality_report?.node_count ?? packet.strategic_evidence_graph?.graph_nodes?.length ?? 0)}`,
+      `- Edges: ${safeString(packet.graph_quality_report?.edge_count ?? packet.strategic_evidence_graph?.graph_edges?.length ?? 0)}`,
+      `- Export formats: ${asArray(packet.graph_export_report?.formats).join(', ') || 'none recorded'}`,
+      `- Release gate: ${safeString(packet.graph_quality_report?.release_gate || 'graph_review_required')}`,
+
+      '',
       '## Coverage Gaps',
       markdownList(brief.gaps || packet.diagnostics?.gaps),
       '',
@@ -117,6 +124,21 @@
   function baseManifest(packet, files){
     return {export_pack_version:EXPORT_PACK_VERSION, name:EXPORT_PACK_NAME, generated_at:nowIso(), workflow_version:packet.workflow_version || EXPORT_PACK_VERSION, topic:packet.research_plan?.topic || packet.analysis_brief?.topic || 'Untitled research packet', file_count:files.length, files:files.map((file) => ({path:file.path, kind:file.kind, mime_type:file.mime_type, bytes:file.bytes, checksum:file.checksum})), privacy_release_gate:packet.privacy_export?.release_gate || 'unknown', quality_publication_readiness:packet.quality_gate?.publication_readiness || 'review_required'};
   }
+
+  function graphExportFiles(packet){
+    const graph = packet.strategic_evidence_graph || {};
+    const exports = graph.graph_exports || {};
+    const files = [];
+    if(exports.gephi_nodes_csv) files.push(fileEntry('graph/gephi-nodes.csv', 'text/csv', exports.gephi_nodes_csv, 'graph-gephi'));
+    if(exports.gephi_edges_csv) files.push(fileEntry('graph/gephi-edges.csv', 'text/csv', exports.gephi_edges_csv, 'graph-gephi'));
+    if(exports.kumu_json) files.push(fileEntry('graph/kumu-map.json', 'application/json', exports.kumu_json, 'graph-kumu'));
+    if(exports.neo4j_nodes_csv) files.push(fileEntry('graph/neo4j-nodes.csv', 'text/csv', exports.neo4j_nodes_csv, 'graph-neo4j'));
+    if(exports.neo4j_edges_csv) files.push(fileEntry('graph/neo4j-edges.csv', 'text/csv', exports.neo4j_edges_csv, 'graph-neo4j'));
+    if(packet.graph_quality_report) files.push(fileEntry('graph/graph-quality-report.json', 'application/json', jsonContent(packet.graph_quality_report), 'graph-quality'));
+    if(packet.graph_export_report) files.push(fileEntry('graph/graph-export-report.json', 'application/json', jsonContent(packet.graph_export_report), 'graph-export-report'));
+    return files;
+  }
+
   function createExportPack(packet, options = {}){
     const version = options.version || EXPORT_PACK_VERSION;
     const safePacket = privacySafeObject(Object.assign({}, packet || {}, {workflow_version:(packet && packet.workflow_version) || version}), {version});
@@ -128,6 +150,7 @@
     files.push(fileEntry('provider-run-ledger.json', 'application/json', jsonContent(providerRunLedger(safePacket)), 'provider-ledger'));
     files.push(fileEntry('quality-report.json', 'application/json', jsonContent(qualityReport(safePacket)), 'quality'));
     files.push(fileEntry('privacy-audit.json', 'application/json', jsonContent(privacyAuditReport(safePacket, files)), 'privacy'));
+    graphExportFiles(safePacket).forEach((file)=>files.push(file));
     const manifest = baseManifest(safePacket, files);
     files.unshift(fileEntry('export-manifest.json', 'application/json', jsonContent(manifest), 'manifest'));
     return {export_pack_version:EXPORT_PACK_VERSION, generated_at:nowIso(), manifest, files, privacy_release_gate:manifest.privacy_release_gate, file_count:files.length};
@@ -154,6 +177,6 @@
     const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
     return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v2</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
-  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, exportPackSummaryHtml});
+  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, exportPackSummaryHtml});
   if(typeof module !== 'undefined' && module.exports) module.exports = root.exportPack;
 })(typeof window !== 'undefined' ? window : globalThis);

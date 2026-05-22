@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-alpha.18';
-const RELEASE = 'v1.1.0-alpha.18 — Controlled Connector Architecture MVP';
+const VERSION = '1.1.0-alpha.19';
+const RELEASE = 'v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map';
 const registry = JSON.parse(fs.readFileSync('tests/version-suite-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 

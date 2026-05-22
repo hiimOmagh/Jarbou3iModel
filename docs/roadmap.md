@@ -2,19 +2,18 @@
 
 Current milestone:
 
-`v1.1.0-alpha.18 — Controlled Connector Architecture MVP`
+`v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map`
 
-Research Planner V2 is the planning layer above prompt compilation, evidence review, source clustering, and entity intelligence. It should recommend what to search and how deeply to search without executing live search by default.
+Graph Export + Strategic Evidence Map is the map/export layer above evidence review, source clustering, entity intelligence, controlled connectors, and research planning. It should make the relationship between claims, evidence, entities, clusters, and causal links portable to graph tools without using external graph services or claiming automated verification.
 
-Next likely milestone: controlled connector-readiness hardening or graph/export strengthening after alpha.17 lock.
+Next likely milestone: graph map UI tightening, export-pack hardening, or provider/cost-aware execution planning after alpha.19 lock.
 
-Release-lock guard: v1.1.0-alpha.18 Controlled Connector Architecture MVP requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.19 Graph Export + Strategic Evidence Map requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Node 24 CI compatibility preserved.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
+## v1.1.0-alpha.19 — Graph Export + Strategic Evidence Map
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
-
-Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
+Adds Graph Export + Strategic Evidence Map: a local graph data model connecting evidence, source clusters, entity profiles, analysis targets, and causal links; Gephi/Kumu/Neo4J export artifacts; graph quality diagnostics; and graph export report continuity without live scraping, live search execution, external graph services, provider execution, OAuth/backend expansion, or automatic source verification claims.

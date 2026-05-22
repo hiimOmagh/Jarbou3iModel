@@ -21,15 +21,15 @@ const exportPack = modules.exportPack;
 const migrations = modules.migrations;
 const audit = modules.privacyAudit;
 
-assert.equal(exportPack.EXPORT_PACK_VERSION, '1.1.0-alpha.18');
+assert.equal(exportPack.EXPORT_PACK_VERSION, '1.1.0-alpha.19');
 assert.equal(typeof exportPack.createExportPack, 'function');
 assert.equal(typeof exportPack.analysisBriefMarkdown, 'function');
 assert.equal(typeof exportPack.evidenceMatrixCsv, 'function');
 assert.equal(typeof exportPack.reviewQueueCsv, 'function');
 
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
-assert.equal(fixture.workflow_version, '1.1.0-alpha.18');
-assert.equal(fixture.export_pack.export_pack_version, '1.1.0-alpha.18');
+assert.equal(fixture.workflow_version, '1.1.0-alpha.19');
+assert.equal(fixture.export_pack.export_pack_version, '1.1.0-alpha.19');
 assert.equal(fixture.export_pack.format, 'export_pack_v2');
 
 const hostile = JSON.parse(JSON.stringify(fixture));
@@ -37,12 +37,12 @@ hostile.provider_config = { endpoint: 'https://api.example.test', model: 'x', ap
 hostile.ai_runs = [{ run_id: 'R1', output_summary: 'Bearer SHOULDNOTEXPORT1234567890abcdef', response_validation: { accepted: true } }];
 hostile.evidence_matrix[0].notes = 'access_token="SHOULDNOTEXPORT1234567890abcdef"';
 
-const pack = exportPack.createExportPack(hostile, { version: '1.1.0-alpha.18' });
-assert.equal(pack.export_pack_version, '1.1.0-alpha.18');
-assert.equal(pack.manifest.file_count, 7, 'manifest should describe the seven core export artifacts before manifest insertion');
-assert.equal(pack.files.length, 8, 'pack should include manifest plus seven core artifacts');
+const pack = exportPack.createExportPack(hostile, { version: '1.1.0-alpha.19' });
+assert.equal(pack.export_pack_version, '1.1.0-alpha.19');
+assert.equal(pack.manifest.file_count, 14, 'manifest should describe core export artifacts plus seven graph artifacts before manifest insertion');
+assert.equal(pack.files.length, 15, 'pack should include manifest plus core and graph artifacts');
 const paths = pack.files.map((file) => file.path);
-for (const required of ['export-manifest.json','research-packet.json','analysis-brief.md','evidence-matrix.csv','review-queue.csv','provider-run-ledger.json','quality-report.json','privacy-audit.json']) {
+for (const required of ['export-manifest.json','research-packet.json','analysis-brief.md','evidence-matrix.csv','review-queue.csv','provider-run-ledger.json','quality-report.json','privacy-audit.json','graph/gephi-nodes.csv','graph/gephi-edges.csv','graph/kumu-map.json','graph/neo4j-nodes.csv','graph/neo4j-edges.csv','graph/graph-quality-report.json','graph/graph-export-report.json']) {
   assert.ok(paths.includes(required), `missing export pack file ${required}`);
 }
 
@@ -53,6 +53,7 @@ assert.ok(reviewCsv.startsWith('review_id,import_id,status'), 'review queue CSV 
 const briefMd = pack.files.find((file) => file.path === 'analysis-brief.md').content;
 assert.ok(briefMd.includes('# Sample: US-China chip war'), 'markdown brief title missing');
 assert.ok(briefMd.includes('## Quality Gate Fix Actions'), 'markdown quality section missing');
+assert.ok(briefMd.includes('## Strategic Evidence Graph'), 'markdown graph section missing');
 
 const joined = pack.files.map((file) => file.content).join('\n---FILE---\n');
 for (const forbidden of ['SHOULDNOTEXPORT', 'sk-testsecret', 'Bearer SHOULDNOTEXPORT', 'access_token="']) {
@@ -64,20 +65,20 @@ for (const file of pack.files) {
 }
 
 const privacyFile = JSON.parse(pack.files.find((file) => file.path === 'privacy-audit.json').content);
-assert.equal(privacyFile.export_pack_version, '1.1.0-alpha.18');
+assert.equal(privacyFile.export_pack_version, '1.1.0-alpha.19');
 assert.equal(privacyFile.release_gate, 'pass');
 assert.ok(Array.isArray(privacyFile.file_reports));
 
 const migrated = migrations.migrateResearchPacket(getMigrationFixture('fixtures/migrations/v0.23.0-packet.json'));
 assert.equal(migrated.ok, true);
-assert.equal(migrated.packet.workflow_version, '1.1.0-alpha.18');
-assert.equal(migrated.packet.export_pack.export_pack_version, '1.1.0-alpha.18');
+assert.equal(migrated.packet.workflow_version, '1.1.0-alpha.19');
+assert.equal(migrated.packet.export_pack.export_pack_version, '1.1.0-alpha.19');
 assert.equal(migrated.packet.export_pack.format, 'export_pack_v2');
 assert.ok(migrated.packet.export_pack.files.includes('privacy-audit.json'));
 
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.ok(schema.required.includes('export_pack'), 'workflow schema must require export_pack metadata');
-assert.equal(schema.properties.export_pack.properties.export_pack_version.const, '1.1.0-alpha.18');
+assert.equal(schema.properties.export_pack.properties.export_pack_version.const, '1.1.0-alpha.19');
 
 console.log('Export Pack v2 checks passed.');
 process.exit(0);
