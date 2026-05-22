@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.1.0-alpha.21';
-export const RELEASE_TITLE = 'v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput';
+export const VERSION = '1.1.0-alpha.22';
+export const RELEASE_TITLE = 'v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

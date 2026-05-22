@@ -2,16 +2,16 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.21';
-const TITLE = 'Evidence Workspace UX Hardening + Review Throughput';
+const VERSION = '1.1.0-alpha.22';
+const TITLE = 'Evidence Pack Export v3 + Brief Traceability';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');
 const roadmap = fs.readFileSync('docs/roadmap.md', 'utf8');
 const qaMatrix = fs.readFileSync('docs/qa-matrix.md', 'utf8');
 
-assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-workspace-ux-hardening-review-throughput.md`), 'alpha.19 release doc must exist in release history');
-const doc = readReleaseDoc(`docs/v${VERSION}-evidence-workspace-ux-hardening-review-throughput.md`);
+assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`), 'alpha.19 release doc must exist in release history');
+const doc = readReleaseDoc(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`);
 assert.ok(doc.includes(`# v${VERSION} — ${TITLE}`));
 assert.ok(doc.includes('docs/technical-debt-ledger.md'));
 assert.ok(doc.includes('docs/source-refactor-readiness-audit.md'));

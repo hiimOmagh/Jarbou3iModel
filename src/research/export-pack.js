@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine Export Pack v2 — v1.1.0-alpha.21. */
+/* Jarbou3i Research Engine Export Pack v3 — v1.1.0-alpha.22. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.1.0-alpha.21';
-  const EXPORT_PACK_NAME = 'Export Pack v2';
+  const EXPORT_PACK_VERSION = '1.1.0-alpha.22';
+  const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
   function isPlainObject(value){ return Object.prototype.toString.call(value) === '[object Object]'; }
@@ -93,6 +93,11 @@
       '## Evidence Matrix',
       evidence,
       '',
+      '## Brief Traceability',
+      `- Traceability coverage: ${safeString(packet.brief_traceability_report?.traceability_coverage_pct ?? 0)}%`,
+      `- Traceable paragraphs: ${safeString(packet.brief_traceability_report?.traceable_paragraph_count ?? 0)}/${safeString(packet.brief_traceability_report?.paragraph_count ?? 0)}`,
+      `- Publication readiness export score: ${safeString(packet.publication_readiness_export_report?.publication_readiness_score ?? 0)}/100`,
+      '',
       '## Source Clusters',
       clusters,
       '',
@@ -159,8 +164,29 @@
   function reviewThroughputFiles(packet){
     const files = [];
     if(packet.evidence_workspace_ux_report) files.push(fileEntry('review/evidence-workspace-ux-report.json', 'application/json', jsonContent(packet.evidence_workspace_ux_report), 'review-ux'));
-    if(packet.review_throughput_report) files.push(fileEntry('review/review-throughput-report.json', 'application/json', jsonContent(packet.review_throughput_report), 'review-throughput'));
+    if(packet.review_throughput_report) files.push(fileEntry('review/brief-traceability-report.json', 'application/json', jsonContent(packet.review_throughput_report), 'brief-traceability'));
     return files;
+  }
+
+
+  function evidencePackV3Files(packet, files = []){
+    const pack = root.evidencePackV3;
+    const existing = {
+      evidence_pack_v3_manifest: packet.evidence_pack_v3_manifest || null,
+      brief_traceability_report: packet.brief_traceability_report || null,
+      contradiction_falsifier_appendix: packet.contradiction_falsifier_appendix || null,
+      bundle_consistency_report: packet.bundle_consistency_report || null,
+      publication_readiness_export_report: packet.publication_readiness_export_report || null
+    };
+    let bundle = existing;
+    if(pack && typeof pack.buildEvidencePackV3Bundle === 'function') bundle = pack.buildEvidencePackV3Bundle(packet, files, {version:EXPORT_PACK_VERSION});
+    const out = [];
+    if(bundle.brief_traceability_report) out.push(fileEntry('traceability/brief-traceability-report.json', 'application/json', jsonContent(bundle.brief_traceability_report), 'brief-traceability'));
+    if(bundle.contradiction_falsifier_appendix) out.push(fileEntry('traceability/contradiction-falsifier-appendix.json', 'application/json', jsonContent(bundle.contradiction_falsifier_appendix), 'contradiction-falsifier-appendix'));
+    if(bundle.bundle_consistency_report) out.push(fileEntry('traceability/bundle-consistency-report.json', 'application/json', jsonContent(bundle.bundle_consistency_report), 'bundle-consistency'));
+    if(bundle.publication_readiness_export_report) out.push(fileEntry('traceability/publication-readiness-export-report.json', 'application/json', jsonContent(bundle.publication_readiness_export_report), 'publication-readiness'));
+    if(bundle.evidence_pack_v3_manifest) out.push(fileEntry('traceability/evidence-pack-v3-manifest.json', 'application/json', jsonContent(bundle.evidence_pack_v3_manifest), 'evidence-pack-v3-manifest'));
+    return {bundle, files:out};
   }
 
   function createExportPack(packet, options = {}){
@@ -177,9 +203,11 @@
     graphExportFiles(safePacket).forEach((file)=>files.push(file));
     providerRouteFiles(safePacket).forEach((file)=>files.push(file));
     reviewThroughputFiles(safePacket).forEach((file)=>files.push(file));
-    const manifest = baseManifest(safePacket, files);
+    const v3 = evidencePackV3Files(safePacket, files);
+    v3.files.forEach((file)=>files.push(file));
+    const manifest = Object.assign(baseManifest(safePacket, files), v3.bundle.evidence_pack_v3_manifest || {}, {export_pack_version:EXPORT_PACK_VERSION, name:EXPORT_PACK_NAME, export_pack_format:'export_pack_v3', file_count:files.length, files:files.map((file)=>({path:file.path, kind:file.kind, mime_type:file.mime_type, bytes:file.bytes, checksum:file.checksum}))});
     files.unshift(fileEntry('export-manifest.json', 'application/json', jsonContent(manifest), 'manifest'));
-    return {export_pack_version:EXPORT_PACK_VERSION, generated_at:nowIso(), manifest, files, privacy_release_gate:manifest.privacy_release_gate, file_count:files.length};
+    return {export_pack_version:EXPORT_PACK_VERSION, export_pack_format:'export_pack_v3', generated_at:nowIso(), manifest, evidence_pack_v3:v3.bundle, files, privacy_release_gate:manifest.privacy_release_gate, file_count:files.length};
   }
   function downloadFile(file){
     if(!global.document || typeof Blob === 'undefined') return false;
@@ -201,8 +229,8 @@
   function exportPackSummaryHtml(pack, esc){
     const safeEsc = typeof esc === 'function' ? esc : (value) => safeString(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
     const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
-    return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v2</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
+    return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v3</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
-  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, exportPackSummaryHtml});
+  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, evidencePackV3Files, exportPackSummaryHtml});
   if(typeof module !== 'undefined' && module.exports) module.exports = root.exportPack;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -5,8 +5,8 @@ This document consolidates release and evidence policy previously scattered acro
 ## Current release
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.1.0-alpha.21`
-- Release: `v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput`
+- Version: `1.1.0-alpha.22`
+- Release: `v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability`
 - Release type: cleanup-only alpha patch
 - Runtime capability change: no
 - Provider behavior change: no
@@ -45,7 +45,7 @@ Hosted URL mode:
 HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
 ```
 
-The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.1.0-alpha.21` and the evidence-review panel present.
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.1.0-alpha.22` and the evidence-review panel present.
 
 The hosted-demo evidence artifact must contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, full-page status, and horizontal-overflow sanity. Partial per-test metadata overwrites remain blocked by no-browser gates.
 
@@ -151,9 +151,9 @@ The following legacy root artifacts are intentionally consolidated and should no
 - Public-demo visual freeze baseline: `v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze`
 - Fixture registry consolidation baseline: `v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation`
 - Version/documentation registry baseline: `v1.1.0-alpha.5 — Repository-Wide Structural Cleanup + Version/Documentation Registry Consolidation`
-- Current root artifact consolidation: `v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput`
+- Current root artifact consolidation: `v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability`
 
-Evidence manifest continuity: v1.1.0-alpha.21 preserves the single final metadata hosted-demo evidence manifest gate.
+Evidence manifest continuity: v1.1.0-alpha.22 preserves the single final metadata hosted-demo evidence manifest gate.
 Release apply integrity gate for changed-files-only patch handoff remains active.
 Artifact download success, screenshots alone, or ZIP existence alone are insufficient.
 Required validation: `npm run test:current:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`.
@@ -163,7 +163,7 @@ Required validation: `npm run test:current:no-browser`, `npm run test:ci:no-brow
 Hosted Demo evidence must preserve browser evidence and evidence review language for existing guards.
 
 
-Release-lock guard: v1.1.0-alpha.21 Evidence Workspace UX Hardening + Review Throughput requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: v1.1.0-alpha.22 Evidence Pack Export v3 + Brief Traceability requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
 
@@ -174,3 +174,9 @@ Release-lock evidence reminder: screenshots alone are insufficient. ZIP existenc
 Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
 
 Public boundary: no live scraping, No real OAuth/production OAuth, and screenshots alone or ZIP existence alone are insufficient for approval.
+
+Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
+
+Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
+
+No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and a ZIP archive alone are insufficient for release approval.

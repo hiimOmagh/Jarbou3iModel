@@ -1,13 +1,13 @@
-/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.21. */
+/* Jarbou3i Research Engine release provenance ledger helpers v1.1.0-alpha.22. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.21';
+  const VERSION = '1.1.0-alpha.22';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.21-evidence-workspace-ux-hardening-review-throughput-patch.zip';
+  const RELEASE_TITLE = 'v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability-patch.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
-    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.21', required:true},
+    {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0-alpha.22', required:true},
     {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},
     {evidence_id:'artifact_name_recorded', label:'artifact name is versioned and fixed', required:true},
     {evidence_id:'changed_files_manifest_present', label:'changed-files manifest is required for handoff review', required:true},

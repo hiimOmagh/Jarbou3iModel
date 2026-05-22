@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.21",
-  "release_title": "v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput",
+  "ci_gate_registry_version": "1.1.0-alpha.22",
+  "release_title": "v1.1.0-alpha.22 \u2014 Evidence Pack Export v3 + Brief Traceability",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -120,6 +120,7 @@
         "tests/github-source-connector-check.mjs",
         "tests/web-search-provider-check.mjs",
         "tests/source-capability-registry-check.mjs",
+        "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -151,6 +152,7 @@
         "tests/source-refactor-readiness-audit-check.mjs",
         "tests/fixture-test-debt-ledger-check.mjs",
         "tests/provider-router-cost-ledger-check.mjs",
+        "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -184,7 +186,8 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/evidence-pack-v3-brief-traceability-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -209,6 +212,7 @@
         "tests/github-source-connector-check.mjs",
         "tests/web-search-provider-check.mjs",
         "tests/source-capability-registry-check.mjs",
+        "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -264,7 +268,8 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/evidence-pack-v3-brief-traceability-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -320,6 +325,7 @@
         "tests/source-refactor-readiness-audit-check.mjs",
         "tests/fixture-test-debt-ledger-check.mjs",
         "tests/provider-router-cost-ledger-check.mjs",
+        "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -355,7 +361,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-alpha.21",
+    "version": "1.1.0-alpha.22",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -370,7 +376,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-alpha.21",
+    "version": "1.1.0-alpha.22",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -467,13 +473,15 @@
       "tests/strategic-evidence-graph-check.mjs",
       "src/research/provider-router-engine.js",
       "tests/provider-router-cost-ledger-check.mjs",
-      "tests/evidence-workspace-ux-throughput-check.mjs"
+      "tests/evidence-workspace-ux-throughput-check.mjs",
+      "src/research/evidence-pack-v3.js",
+      "tests/evidence-pack-v3-brief-traceability-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0-alpha.21",
+    "version": "1.1.0-alpha.22",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -493,7 +501,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0-alpha.21",
+    "version": "1.1.0-alpha.22",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

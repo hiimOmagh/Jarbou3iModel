@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-alpha.21';
+const VERSION = '1.1.0-alpha.22';
 const source = fs.readFileSync('src/research/evidence-workspace-ux.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
@@ -63,9 +63,9 @@ assert.ok(index.includes('rejectVisibleReviewEvidenceBtn'), 'visible reject batc
 assert.ok(engine.includes('evidenceWorkspaceUxReport'), 'research engine must export evidence workspace UX report');
 assert.ok(engine.includes('reviewThroughputReport'), 'research engine must export review throughput report');
 assert.ok(helpers.includes('reviewThroughputTitle'), 'localized throughput labels missing');
-assert.ok(helpers.includes('Evidence Workspace UX Hardening + Review Throughput'));
-assert.ok(helpers.includes('تحسين مساحة الأدلة وتسريع المراجعة'));
-assert.ok(helpers.includes('UX des preuves'));
+assert.ok(helpers.includes('Evidence Pack Export v3 + Brief Traceability'));
+assert.ok(helpers.includes('حزمة تصدير الأدلة v3 وتتبع الموجز'));
+assert.ok(helpers.includes('Pack de preuves v3 + traçabilité du brief'));
 
 assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.ok(schema.properties.evidence_workspace_ux_report, 'schema must expose evidence workspace UX report');
@@ -78,5 +78,5 @@ assert.ok(registry.gates['no-browser'].node_checks.includes('tests/evidence-work
 assert.ok(registry.gates.source.node_checks.includes('tests/evidence-workspace-ux-throughput-check.mjs'));
 assert.ok(registry.syntax_matrix.files.includes('src/research/evidence-workspace-ux.js'));
 
-console.log('Evidence Workspace UX throughput checks passed.');
+console.log('Evidence Pack v3 throughput checks passed.');
 process.exit(0);

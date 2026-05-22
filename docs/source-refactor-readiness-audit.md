@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-alpha.21`
-Release: `v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput`
+Version: `1.1.0-alpha.22`
+Release: `v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

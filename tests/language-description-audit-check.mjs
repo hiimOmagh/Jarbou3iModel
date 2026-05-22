@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-alpha.21';
+const VERSION = '1.1.0-alpha.22';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
@@ -82,11 +82,11 @@ for (const lang of ['ar', 'en', 'fr']) {
   }
 }
 
-assert.ok(researchCopy.en.evidenceReviewGateBody.includes('review queue') && researchCopy.en.evidenceReviewGateBody.includes('batch'), 'English evidence review gate body must describe alpha.21 review-throughput scope');
-assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('فلاتر') && researchCopy.ar.evidenceReviewGateBody.includes('التناقضات'), 'Arabic evidence review gate body must describe alpha.21 review-throughput scope');
-assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('recherche') && researchCopy.fr.evidenceReviewGateBody.includes('actions groupées'), 'French evidence review gate body must describe alpha.21 review-throughput scope');
-assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French alpha.21 evidence review gate body must not inherit English release copy');
-assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('provider routing'), false, 'French alpha.21 evidence review gate body must not expose alpha.20 provider-router release copy');
+assert.ok(researchCopy.en.evidenceReviewGateBody.includes('evidence-to-conclusion') && researchCopy.en.evidenceReviewGateBody.includes('Export Pack v3'), 'English evidence review gate body must describe alpha.22 brief-traceability scope');
+assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('تتبع') && researchCopy.ar.evidenceReviewGateBody.includes('حزمة تصدير v3'), 'Arabic evidence review gate body must describe alpha.22 brief-traceability scope');
+assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('traçabilité') && researchCopy.fr.evidenceReviewGateBody.includes('Export Pack v3'), 'French evidence review gate body must describe alpha.22 brief-traceability scope');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French alpha.22 evidence review gate body must not inherit English release copy');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('provider routing'), false, 'French alpha.22 evidence review gate body must not expose alpha.20 provider-router release copy');
 
 for (const phrase of ['First-run guide', 'Start clean:', 'Public demo ready', 'Show the workflow', 'Publish only after browser evidence exists', 'Review screenshots', 'Stable workflow', 'Quality & Export']) {
   assert.equal(index.includes(`>${phrase}`), false, `default Arabic shell must not expose English fallback copy: ${phrase}`);

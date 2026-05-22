@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release: v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput
+Current release: v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability
 
 Required gates:
 
@@ -8,7 +8,7 @@ Required gates:
 - Browser CI
 - Hosted-demo evidence capture
 - Visible-text snapshots
-- Evidence Workspace UX Hardening + Review Throughput no-browser check
+- Evidence Pack Export v3 + Brief Traceability no-browser check
 - Provider identity/response/fixture regression checks
 - Export Pack v2 provider route artifact checks
 
@@ -23,3 +23,7 @@ Governance continuity: Root Manifest, Release Artifact Consolidation, Version Su
 Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
 
 Public Demo continuity: public demo evidence, hosted-demo review, and public-demo release-lock copy remain preserved.
+
+Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
+
+Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.

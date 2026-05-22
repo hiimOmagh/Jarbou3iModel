@@ -4,9 +4,9 @@ import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-alpha.21';
-const TITLE = 'Evidence Workspace UX Hardening + Review Throughput';
-const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.21-evidence-workspace-ux-hardening-review-throughput-patch.zip';
+const VERSION = '1.1.0-alpha.22';
+const TITLE = 'Evidence Pack Export v3 + Brief Traceability';
+const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability-patch.zip';
 
 assert.equal(migrationRegistry.registry_version, VERSION);
 assert.equal(migrationRegistry.registry_type, 'migration_fixture_registry');
@@ -24,15 +24,15 @@ for (const activeAsset of ['assets/jarbou3i-mascot-192.png','assets/jarbou3i-mas
   assert.equal(fs.existsSync(activeAsset), true, `${activeAsset} must remain`);
 }
 
-for (const version of ['v0.11.0','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.21']) {
+for (const version of ['v0.11.0','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.22']) {
   assert.ok(getMigrationFixture(`fixtures/migrations/${version}-packet.json`), `${version} migration fixture must load from registry`);
 }
-for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.21']) {
+for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0-alpha.22']) {
   assert.ok(getPrivacyFixture(`fixtures/privacy/browser-generated-export-${version}.json`), `${version} privacy fixture must load from registry`);
 }
 
-const currentMigration = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.21-packet.json');
-const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.21.json');
+const currentMigration = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.22-packet.json');
+const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.22.json');
 for (const packet of [currentMigration, currentPrivacy]) {
   assert.equal(packet.workflow_version, VERSION);
   assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
@@ -54,7 +54,7 @@ assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must re
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${VERSION} · ${TITLE}`));
-assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-workspace-ux-hardening-review-throughput.md`));
+assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`));
 
 console.log('Fixture registry consolidation checks passed.');
 process.exit(0);

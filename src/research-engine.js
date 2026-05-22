@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.21 — graph export and strategic evidence map. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.22 — Evidence Pack Export v3 and brief traceability. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.21';
+  const VERSION = '1.1.0-alpha.22';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -20,6 +20,7 @@
   const exportController = modules.exportController;
   const releaseCandidate = modules.releaseCandidate;
   const exportPack = modules.exportPack;
+  const evidencePackV3 = modules.evidencePackV3;
   const qualityGate = modules.qualityGate;
   const providerController = modules.providerController;
   const providerRouterEngine = modules.providerRouterEngine;
@@ -366,8 +367,28 @@
     return plan;
   }
 
+
+  function evidencePackV3Bundle(packet, files = []){
+    if(!evidencePackV3?.buildEvidencePackV3Bundle){
+      return {
+        evidence_pack_v3_manifest:{evidence_pack_v3_manifest_version:VERSION, export_pack_format:'export_pack_v3', release_gate:'evidence_pack_v3_review_required', live_fetching_performed:false, verification_claimed:false},
+        brief_traceability_report:{brief_traceability_version:VERSION, traceability_model:'evidence_pack_v3.v1', paragraph_count:0, traceability_coverage_pct:0, release_gate:'traceability_review_required', live_fetching_performed:false, verification_claimed:false},
+        contradiction_falsifier_appendix:{contradiction_falsifier_appendix_version:VERSION, appendix_model:'evidence_pack_v3.v1', release_gate:'appendix_review_required', live_fetching_performed:false, verification_claimed:false},
+        bundle_consistency_report:{bundle_consistency_report_version:VERSION, bundle_model:'evidence_pack_v3.v1', consistency_score:0, release_gate:'bundle_consistency_review_required', live_fetching_performed:false, verification_claimed:false},
+        publication_readiness_export_report:{publication_readiness_export_report_version:VERSION, report_model:'evidence_pack_v3.v1', publication_readiness_score:0, release_gate:'publication_review_required', live_fetching_performed:false, verification_claimed:false}
+      };
+    }
+    const bundle = evidencePackV3.buildEvidencePackV3Bundle(packet, files, {version:VERSION, now:nowIso()});
+    state.evidence_pack_v3_manifest = bundle.evidence_pack_v3_manifest;
+    state.brief_traceability_report = bundle.brief_traceability_report;
+    state.contradiction_falsifier_appendix = bundle.contradiction_falsifier_appendix;
+    state.bundle_consistency_report = bundle.bundle_consistency_report;
+    state.publication_readiness_export_report = bundle.publication_readiness_export_report;
+    return bundle;
+  }
+
   function researchPacket(){
-    return {
+    const packet = {
       workflow_version: VERSION,
       generated_at: nowIso(),
       packet_migration_report: state.packet_migration_report || null,
@@ -443,6 +464,10 @@
       ai_runs: providerRouterEngine?.enrichRunLedger ? providerRouterEngine.enrichRunLedger(state.ai_runs || [], providerRoutePlan(), {version:VERSION}) : (state.ai_runs || []),
       critique: state.critique
     };
+    const evidencePack = evidencePackV3Bundle(packet);
+    return Object.assign(packet, evidencePack, {
+      export_pack: Object.assign({}, packet.export_pack || {}, {export_pack_version: VERSION, format: 'export_pack_v3', release_gate: 'privacy_audit_required'})
+    });
   }
 
   function buildDeepResearchPrompt(){
@@ -1828,6 +1853,11 @@
     state.provider_route_report = nextPacket.provider_route_report || null;
     state.provider_cost_report = nextPacket.provider_cost_report || null;
     state.provider_router_safety_report = nextPacket.provider_router_safety_report || null;
+    state.evidence_pack_v3_manifest = nextPacket.evidence_pack_v3_manifest || null;
+    state.brief_traceability_report = nextPacket.brief_traceability_report || null;
+    state.contradiction_falsifier_appendix = nextPacket.contradiction_falsifier_appendix || null;
+    state.bundle_consistency_report = nextPacket.bundle_consistency_report || null;
+    state.publication_readiness_export_report = nextPacket.publication_readiness_export_report || null;
     state.portable_account = nextPacket.portable_account || state.portable_account || null;
     state.ai_runs = Array.isArray(nextPacket.ai_runs) ? nextPacket.ai_runs.slice(-25) : [];
     state.lastMockAnalysis = null;

@@ -14,23 +14,23 @@ const ciGateRegistry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json',
 const v103Entry = versionRegistry.entries.find((entry) => entry.id === 'v103');
 const release = fs.readFileSync('src/research/release-candidate.js', 'utf8');
 
-assert.equal(pkg.version, '1.1.0-alpha.21');
-assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.21');
-assert.equal(fixture.workflow_version, '1.1.0-alpha.21');
-assert.equal(fixture.release_candidate.stable_release_version, '1.1.0-alpha.21');
+assert.equal(pkg.version, '1.1.0-alpha.22');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-alpha.22');
+assert.equal(fixture.workflow_version, '1.1.0-alpha.22');
+assert.equal(fixture.release_candidate.stable_release_version, '1.1.0-alpha.22');
 assert.equal(migrationFixture.workflow_version, '1.0.1', 'v1.0.1 migration fixture must preserve the previous patch source version');
-assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8','1.0.9','1.0.10','1.0.11','1.0.12','1.0.13','1.0.14','1.0.15','1.0.16','1.0.17','1.0.18','1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.21'"), 'migrations must support v1.0.5 → v1.1.0-alpha.21');
+assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8','1.0.9','1.0.10','1.0.11','1.0.12','1.0.13','1.0.14','1.0.15','1.0.16','1.0.17','1.0.18','1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.22'"), 'migrations must support v1.0.5 → v1.1.0-alpha.22');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'CI no-browser shell must delegate to registry runner');
 assert.ok(ciGateRegistry.gates['no-browser'].node_checks.includes('tests/version-suite-registry-check.mjs'), 'CI no-browser registry must run version suite registry');
 assert.ok(v103Entry?.checks.includes('tests/patch-stabilization-check.mjs'), 'v103 registry entry must include patch gate');
 assert.ok(v103Entry?.checks.includes('tests/ux-stabilization-patch-check.mjs'), 'v103 registry entry must include UX stabilization gate');
 assert.ok(ciGateRegistry.gates.release.node_checks.includes('tests/ux-stabilization-patch-check.mjs'), 'release registry must include UX stabilization gate');
-assert.ok(renderHelpers.includes("alphaBadge:'v1.1.0-alpha.21 · Evidence Workspace UX Hardening + Review Throughput'"), 'English stable badge must be fixed');
-assert.ok(renderHelpers.includes('تحسين مساحة الأدلة وتسريع المراجعة'), 'Arabic release badge must be professional and current');
-assert.ok(renderHelpers.includes('UX des preuves + débit de revue'), 'French release badge must be professional and current');
-assert.ok(renderHelpers.includes('review queue search') && renderHelpers.includes('batch visible actions'), 'English hosted evidence body must describe alpha.21 review-throughput scope');
-assert.ok(renderHelpers.includes('بحث وفرز وفلاتر') && renderHelpers.includes('التناقضات والفجوات'), 'Arabic hosted evidence body must describe alpha.21 review-throughput scope');
-assert.ok(renderHelpers.includes('actions groupées visibles') && renderHelpers.includes('contradictions/lacunes'), 'French hosted evidence body must describe alpha.21 review-throughput scope');
+assert.ok(renderHelpers.includes("alphaBadge:'v1.1.0-alpha.22 · Evidence Pack Export v3 + Brief Traceability'"), 'English stable badge must be fixed');
+assert.ok(renderHelpers.includes('حزمة تصدير الأدلة v3 وتتبع الموجز'), 'Arabic release badge must be professional and current');
+assert.ok(renderHelpers.includes('Pack de preuves v3 + traçabilité du brief'), 'French release badge must be professional and current');
+assert.ok(renderHelpers.includes('evidence-to-conclusion') && renderHelpers.includes('Export Pack v3'), 'English hosted evidence body must describe alpha.22 brief-traceability scope');
+assert.ok(renderHelpers.includes('تتبعًا من الخلاصة إلى الأدلة') && renderHelpers.includes('حزمة تصدير v3'), 'Arabic hosted evidence body must describe alpha.22 brief-traceability scope');
+assert.ok(renderHelpers.includes('traçabilité preuve') && renderHelpers.includes('Export Pack v3'), 'French hosted evidence body must describe alpha.22 brief-traceability scope');
 assert.ok(renderHelpers.includes('no live search') || renderHelpers.includes('aucune recherche live'), 'release note must preserve no live search boundary');
 
 assert.ok(release.includes("'patch_release'"), 'stable policy must allow patch_release work only after stable');
@@ -45,6 +45,6 @@ console.log('Patch-only stabilization checks passed.');
 process.exit(0);
 
 
-assert.ok(renderHelpers.includes("v1.1.0-alpha.21 · UX des preuves + débit de revue"), 'French alpha badge must reflect Evidence Workspace UX Hardening + Review Throughput');
-assert.ok(renderHelpers.includes('flux clavier sans contourner la revue humaine'), 'French alpha.21 hosted evidence body must describe review throughput scope');
-assert.equal(renderHelpers.includes("evidenceReviewGateBody:'v1.1.0-alpha.21 preserves the public-demo freeze"), false, 'French evidence review copy must not inherit English alpha.20 prose');
+assert.ok(renderHelpers.includes("v1.1.0-alpha.22 · Pack de preuves v3 + traçabilité du brief"), 'French alpha badge must reflect Evidence Pack Export v3 + Brief Traceability');
+assert.ok(renderHelpers.includes('rapport de préparation à la publication'), 'French alpha.22 hosted evidence body must describe brief traceability scope');
+assert.equal(renderHelpers.includes("evidenceReviewGateBody:'v1.1.0-alpha.22 preserves the public-demo freeze"), false, 'French evidence review copy must not inherit English alpha.20 prose');
