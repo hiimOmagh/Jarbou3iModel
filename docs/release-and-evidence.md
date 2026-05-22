@@ -6,7 +6,7 @@ This document consolidates release and evidence policy previously scattered acro
 
 - Package: `jarbou3i-research-engine`
 - Version: `1.1.0`
-- Release: `v1.1.0-fix.2 — Public Demo Stable`
+- Release: `v1.1.0 — Public Demo Stable`
 - Release type: cleanup-only alpha patch
 - Runtime capability change: no
 - Provider behavior change: no
@@ -151,7 +151,7 @@ The following legacy root artifacts are intentionally consolidated and should no
 - Public-demo visual freeze baseline: `v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze`
 - Fixture registry consolidation baseline: `v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation`
 - Version/documentation registry baseline: `v1.1.0-alpha.5 — Repository-Wide Structural Cleanup + Version/Documentation Registry Consolidation`
-- Current root artifact consolidation: `v1.1.0-fix.2 — Public Demo Stable`
+- Current root artifact consolidation: `v1.1.0 — Public Demo Stable`
 
 Evidence manifest continuity: v1.1.0 preserves the single final metadata hosted-demo evidence manifest gate.
 Release apply integrity gate for changed-files-only patch handoff remains active.

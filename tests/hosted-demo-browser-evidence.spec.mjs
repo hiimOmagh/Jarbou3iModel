@@ -19,7 +19,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const PUBLIC_VERSION_LABEL = 'v1.1.0 Public Demo Stable';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');

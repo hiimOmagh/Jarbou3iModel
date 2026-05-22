@@ -2,13 +2,13 @@
 
 Current milestone:
 
-`v1.1.0-fix.2 — Public Demo Stable`
+`v1.1.0 — Public Demo Stable`
 
 RC0 is the canonical evidence bundling and public surface freeze. Feature surface is frozen.
 
 Next valid milestones:
 - `v1.1.0 — Release Candidate Corrections` only if RC0 exposes a real defect.
-- `v1.1.0-fix.2 — Public Demo Stable` if RC0 locks cleanly.
+- `v1.1.0 — Public Demo Stable` if RC0 locks cleanly.
 
 No alpha.26 unless a structural blocker appears.
 

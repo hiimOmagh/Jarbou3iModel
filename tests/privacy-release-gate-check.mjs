@@ -37,7 +37,7 @@ for (const candidate of exportCandidates) {
 }
 
 const sample = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0.json');
-assert.equal(sample.privacy_export.audit_version, '1.1.0-fix.2');
+assert.equal(sample.privacy_export.audit_version, '1.1.0');
 assert.equal(sample.privacy_export.release_gate, 'pass');
 assert.equal(sample.privacy_export.post_redaction_issue_count, 0);
 assert.equal(sample.privacy_export.key_exported, false);

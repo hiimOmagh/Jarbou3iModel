@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const TITLE = 'Public Demo Stable';
 const REGISTRY_BUDGET_BYTES = 900 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;

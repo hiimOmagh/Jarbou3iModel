@@ -3,7 +3,7 @@
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function privacySafeExportPayload(payload, options = {}){
-    const version = options.version || '1.1.0-fix.2';
+    const version = options.version || '1.1.0';
     const audit = root.privacyAudit;
     const guard = root.privacyExportGuard;
     if(audit && typeof audit.createPrivacySafeExportPayload === 'function') return audit.createPrivacySafeExportPayload(payload, {version});

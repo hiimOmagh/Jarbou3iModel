@@ -2,7 +2,7 @@
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-fix.2';
+  const VERSION = '1.1.0';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -888,7 +888,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.1.0-fix.2',
+      schema_version: '1.1.0',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),

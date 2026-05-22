@@ -4,7 +4,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const TITLE = 'Public Demo Stable';
 const PUBLIC_LABEL = 'v1.1.0 Public Demo Stable';
 const config = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
@@ -63,7 +63,7 @@ assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false);
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false);
 
 for (const token of [
-  'lock-evidence-bundle_1.1.0-fix.2_${{ github.run_id }}',
+  'lock-evidence-bundle_1.1.0_${{ github.run_id }}',
   '${{ runner.temp }}/lock-evidence-input/logs',
   '${{ runner.temp }}/hosted-demo-evidence',
   '${{ runner.temp }}/lock-evidence-bundle'
@@ -77,7 +77,7 @@ assert.ok(workflow.includes('exit $status'), 'workflow must return the captured 
 assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log"'), false, 'no-browser gate must not mask failures through tee pipeline');
 assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"'), false, 'browser gate must not mask failures through tee pipeline');
 assert.ok(workflow.includes('test -f "$RUNNER_TEMP/hosted-demo-evidence/matrix-summary.json"'), 'browser job must require matrix-summary.json before artifact upload');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.1.0-fix.2'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.1.0'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
 

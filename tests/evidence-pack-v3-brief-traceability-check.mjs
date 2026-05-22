@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const moduleSource = fs.readFileSync('src/research/evidence-pack-v3.js', 'utf8');
 const exportPackSource = fs.readFileSync('src/research/export-pack.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');

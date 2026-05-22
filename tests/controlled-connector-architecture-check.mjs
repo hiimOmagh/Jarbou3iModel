@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, registryHasMigrationFixture, registryHasPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const moduleSource = read('src/research/controlled-connector-engine.js');
 const sourceConnectors = read('src/research/source-connectors.js');
@@ -68,7 +68,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.controlled_connector_report.uncontrolled_scraping_performed, false);
   assert.equal(packet.connector_safety_report.live_web_search_performed, false);
   assert.equal(packet.connector_safety_report.automatic_source_verification_claimed, false);
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-fix.2 — Public Demo Stable');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0 — Public Demo Stable');
 }
 assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-packet.json'));
 assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0.json'));

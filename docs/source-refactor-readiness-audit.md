@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
 Version: `1.1.0`
-Release: `v1.1.0-fix.2 — Public Demo Stable`
+Release: `v1.1.0 — Public Demo Stable`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

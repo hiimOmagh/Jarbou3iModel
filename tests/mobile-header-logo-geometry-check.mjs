@@ -10,7 +10,7 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Public Demo Stable';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -58,8 +58,8 @@ for (const packet of [migrationFixture, privacyFixture]) {
 }
 
 assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must be v1.1.0');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.2'"), 'migration target must be v1.1.0');
-assert.ok(migrations.includes("'1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.2'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0'"), 'migration target must be v1.1.0');
+assert.ok(migrations.includes("'1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
 assert.ok(releaseDocExists('docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md'), 'v1.0.30 freeze baseline release doc must remain present');
 assert.ok(releaseDocExists('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md'), 'v1.1.0 release doc must exist');
 assert.ok(releaseDoc.includes('Mobile Header Geometry Lock'), 'v1.1.0 release doc must state the visual-freeze scope');

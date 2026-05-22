@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, registryHasMigrationFixture, registryHasPrivacyFixture } from './fixture-registry-loader.mjs';
-const VERSION='1.1.0-fix.2';
+const VERSION='1.1.0';
 const read=(file)=>fs.readFileSync(file,'utf8');
 const routerSource=read('src/research/provider-router-engine.js');
 const engineSource=read('src/research-engine.js');
@@ -67,7 +67,7 @@ for(const packet of [fixture,migrationFixture,privacyFixture]){
   assert.equal(packet.provider_cost_report.provider_cost_report_version,VERSION);
   assert.equal(packet.provider_cost_report.automatic_paid_call_performed,false);
   assert.equal(packet.provider_router_safety_report.secrets_exported,false);
-  assert.equal(packet.release_notes.release_title,'v1.1.0-fix.2 — Public Demo Stable');
+  assert.equal(packet.release_notes.release_title,'v1.1.0 — Public Demo Stable');
 }
 assert.ok(registry.gates.provider.node_checks.includes('tests/provider-router-cost-ledger-check.mjs'),'provider gate must register provider router check');
 assert.ok(registry.gates.release.node_checks.includes('tests/provider-router-cost-ledger-check.mjs'),'release gate must register provider router check');

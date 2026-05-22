@@ -1,46 +1,38 @@
 # Current Release
 
-## v1.1.0-fix.2 — Lockfile Dependency Version Integrity Fix
+## v1.1.0 — Public Demo Stable
 
-Stable corrective build for `v1.1.0-fix.2 — Public Demo Stable`. It fixes the public EN/AR/FR stable labels and release copy so the evidence matrix can validate the public demo surface while preserving internal evidence metadata as `1.1.0-fix.2`.
+Public and internal release versions are aligned to `1.1.0`. The public label is `v1.1.0 Public Demo Stable`.
 
-Public label: `v1.1.0 Public Demo Stable`
-Internal build version: `1.1.0-fix.2`
+This is a clean stable repack of the locked corrective build. It preserves the canonical lock evidence bundle, the 39-row EN/AR/FR evidence matrix, golden workflow regression lock, Export Pack v3 consistency, publication review gate, privacy/export guards, hosted evidence runbook, CI parity, and lockfile dependency integrity.
 
-Scope:
-- fix stable public Arabic label/copy
-- fix stable public French label/copy
-- keep English stable public copy aligned
-- align evidence matrix expected localized public labels
-- preserve canonical lock evidence bundle and 39-row evidence matrix
+Boundaries preserved: no product feature changes, no UI redesign, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, no product schema expansion, and no automatic source verification claims.
 
-Boundaries preserved: no product feature changes, no UI redesign, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, and no product schema expansion.
+Stable lock requires a canonical bundle named `lock-evidence-bundle_1.1.0_<run_id>.zip` with no-browser and browser status passed, 39/39 matrix rows passed, language purity passed, visual guard passed, max horizontal overflow 0 px, stale version residue false, Export Pack v3 valid, golden workflow valid, and publication review valid.
 
+Feature surface is frozen for v1.1.0 Public Demo Stable.
 
-Feature surface is frozen for this corrective stable localization patch.
-A ZIP archive alone is insufficient for release approval.
+A ZIP archive alone is insufficient. Canonical lock evidence is required.
 
-Internal RC validation metadata remains represented by the internal build version `1.1.0-fix.2`; the public surface stays `v1.1.0 Public Demo Stable`.
-Screenshots alone are insufficient for release approval. A ZIP archive alone is insufficient.
-This patch introduces no new feature surface.
+Internal stable validation metadata reports `1.1.0`; public and internal release versions are aligned.
+
+No new feature surface is introduced by this clean stable repack.
+
+Screenshots alone are insufficient.
 
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
 Version: `1.1.0`
-Version: `1.1.0-fix.2`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions
 Required cleanup commands
 
+Node 24 CI compatibility preserved for v1.1.0 Public Demo Stable.
 
-Node 24 CI compatibility preserved for v1.1.0-fix.2.
+Release-lock requirement: Screenshots alone are insufficient. A ZIP archive alone is insufficient. Stable lock requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence through the canonical lock evidence bundle.
 
-Release-lock requirements: green no-browser CI, green browser CI, and reviewed hosted-demo evidence are mandatory before locking.
+Continuity notes: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only release discipline remain preserved.
 
-
-Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
-
-
-No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone and ZIP archive alone are insufficient for release approval.
+Safety boundaries: No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.

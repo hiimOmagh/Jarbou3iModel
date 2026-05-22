@@ -2,9 +2,9 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-fix.2';
+  const VERSION = '1.1.0';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.1.0-fix.2 — Public Demo Stable';
+  const RELEASE_TITLE = 'v1.1.0 — Public Demo Stable';
   const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-evidence-pack-export-v3-brief-traceability-patch.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
     {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0', required:true},

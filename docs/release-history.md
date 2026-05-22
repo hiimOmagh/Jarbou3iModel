@@ -64,7 +64,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
 | `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
-| `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0-fix.2 — Public Demo Stable |
+| `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0 — Public Demo Stable |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3355,12 +3355,12 @@ Registry policy: MERGE_TO_REGISTRY remains the fixture handling mode. No files a
 <!-- /release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
 
 
-## v1.1.0-fix.2 — Public Demo Stable
+## v1.1.0 — Public Demo Stable
 
 Adds a local Strategic Evidence Graph model, graph quality diagnostics, and Gephi/Kumu/Neo4J export continuity without live scraping, live search execution, provider execution, OAuth/backend expansion, external graph service dependency, or automatic source verification claims.
 
 <!-- release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
-# v1.1.0-fix.2 — Public Demo Stable
+# v1.1.0 — Public Demo Stable
 
 Alpha.19 adds Public Demo Stable. It connects reviewed evidence, source clusters, entity profiles, analysis targets, and causal links into a local graph bundle and exports Gephi-compatible CSV, Kumu-compatible JSON, and Neo4J import CSV artifacts.
 
@@ -3412,10 +3412,10 @@ Release continuity note: Root Manifest, Release Artifact Consolidation, Version 
 Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
 
 
-| `v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md` | v1.1.0-fix.2 — Public Demo Stable |
+| `v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md` | v1.1.0 — Public Demo Stable |
 
 <!-- release-file:v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md -->
-# v1.1.0-fix.2 — Public Demo Stable
+# v1.1.0 — Public Demo Stable
 
 Public Demo Stable. Feature surface frozen; final public-demo docs, golden workflow regression lock, Export Pack v3 consistency lock, hosted-demo evidence runbook, stale-copy sweep, repo/package hygiene, and CI parity verification.
 
@@ -3423,12 +3423,12 @@ No new major feature surface. No live connector expansion. No provider execution
 <!-- /release-file:v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md -->
 
 
-<!-- release-file:v1.1.0-fix.2-evidence-pack-export-v3-brief-traceability.md -->
-# v1.1.0-fix.2 — Public Demo Stable
+<!-- release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
+# v1.1.0 — Public Demo Stable
 
-Lockfile Dependency Version Integrity Fix for `v1.1.0 — Public Demo Stable`.
+Public Demo Stable for `v1.1.0 — Public Demo Stable`.
 
-This corrective build fixes public EN/AR/FR stable labels and public demo release copy while preserving internal evidence metadata as `1.1.0-fix.2` and the public label as `v1.1.0 Public Demo Stable`.
+This corrective build fixes public EN/AR/FR stable labels and public demo release copy while preserving internal evidence metadata as `1.1.0` and the public label as `v1.1.0 Public Demo Stable`.
 
 ## Scope
 
@@ -3450,4 +3450,4 @@ This corrective build fixes public EN/AR/FR stable labels and public demo releas
 - evidence matrix has 39/39 passing rows
 - language purity passed
 - no stale candidate/freeze public wording remains in hosted visible text
-<!-- /release-file:v1.1.0-fix.2-evidence-pack-export-v3-brief-traceability.md -->
+<!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->

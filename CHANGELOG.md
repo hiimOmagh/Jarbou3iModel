@@ -1,10 +1,10 @@
 # Changelog
 
-`v1.1.0-fix.2 — Lockfile Dependency Version Integrity Fix`
+`v1.1.0 — Public Demo Stable`
 
-Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0-fix.2`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
+Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
 
-## v1.1.0-fix.2 — Public Demo Stable
+## v1.1.0 — Public Demo Stable
 
 - Promotes the locked alpha.25 system into the first canonical evidence bundling and public surface freeze.
 - Freezes feature surface.

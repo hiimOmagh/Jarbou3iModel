@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION='1.1.0-fix.2';
-const RELEASE='v1.1.0-fix.2 — Public Demo Stable';
+const VERSION='1.1.0';
+const RELEASE='v1.1.0 — Public Demo Stable';
 const read=(file)=>fs.readFileSync(file,'utf8');
 const source=read('src/research/research-planner-v2.js');
 const engine=read('src/research-engine.js');

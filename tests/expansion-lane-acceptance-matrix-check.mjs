@@ -10,7 +10,7 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';
 const TITLE = 'Public Demo Stable';
@@ -32,7 +32,7 @@ assert.ok(pkg.description.includes('package script compression and CI gate regis
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
 assert.ok(index.includes('data-r-i18n="stableWorkflowTitle"') && index.includes('تدقيق الاحتفاظ بالملفات'), 'localized index must keep repository audit workflow visible');
 assert.ok(index.includes('إثبات الدمج الآمن'), 'localized index must mention proof before reduction');
-assert.ok(moduleSource.includes("const VERSION = '1.1.0-fix.2'"));
+assert.ok(moduleSource.includes("const VERSION = '1.1.0'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('acceptance_criteria'));

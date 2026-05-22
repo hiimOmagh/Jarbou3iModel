@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, registryHasMigrationFixture, registryHasPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-fix.2';
+const VERSION = '1.1.0';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const graphSource = read('src/research/strategic-evidence-graph.js');
 const engineSource = read('src/research-engine.js');
@@ -92,7 +92,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.ok(packet.graph_export_report.formats.includes('gephi_csv'));
   assert.ok(packet.graph_export_report.formats.includes('kumu_json'));
   assert.ok(packet.graph_export_report.formats.includes('neo4j_csv'));
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-fix.2 — Public Demo Stable');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0 — Public Demo Stable');
 }
 assert.ok(registry.gates.source.node_checks.includes('tests/strategic-evidence-graph-check.mjs'), 'source gate must register graph check');
 assert.ok(registry.gates.release.node_checks.includes('tests/strategic-evidence-graph-check.mjs'), 'release gate must register graph check');

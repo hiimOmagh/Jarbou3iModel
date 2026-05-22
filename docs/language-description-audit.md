@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-fix.2`
-Release: `v1.1.0-fix.2 — Lockfile Dependency Version Integrity Fix`
+Version: `1.1.0`
+Release: `v1.1.0 — Public Demo Stable`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy
