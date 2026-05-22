@@ -106,5 +106,5 @@ jobs:
       - name: Upload canonical lock evidence bundle
         uses: actions/upload-artifact@v6
         with:
-          name: lock-evidence-bundle_1.1.0-rc.2-fix.1_${{ github.run_id }}
-          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.1.0-rc.2-fix.1_${{ github.run_id }}
+          name: lock-evidence-bundle_1.1.0-rc.2-fix.2_${{ github.run_id }}
+          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.1.0-rc.2-fix.2_${{ github.run_id }}

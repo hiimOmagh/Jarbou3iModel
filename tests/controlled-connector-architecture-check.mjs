@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, registryHasMigrationFixture, registryHasPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-rc.2-fix.1';
+const VERSION = '1.1.0-rc.2-fix.2';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const moduleSource = read('src/research/controlled-connector-engine.js');
 const sourceConnectors = read('src/research/source-connectors.js');
@@ -11,8 +11,8 @@ const engine = read('src/research-engine.js');
 const index = read('index.html');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-rc.2-fix.1-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.1.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-rc.2-fix.2-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.2.json');
 
 new vm.Script(moduleSource, {filename:'src/research/controlled-connector-engine.js'});
 const context = {console, window:{Jarbou3iResearchModules:{}}};
@@ -68,9 +68,9 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.controlled_connector_report.uncontrolled_scraping_performed, false);
   assert.equal(packet.connector_safety_report.live_web_search_performed, false);
   assert.equal(packet.connector_safety_report.automatic_source_verification_claimed, false);
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0-rc.2-fix.2 — Evidence Matrix + Canonical Bundle Validation');
 }
-assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-rc.2-fix.1-packet.json'));
-assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.1.json'));
+assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-rc.2-fix.2-packet.json'));
+assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.2.json'));
 console.log('Controlled connector architecture checks passed.');
 process.exit(0);

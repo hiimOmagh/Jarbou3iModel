@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-rc.2-fix.1';
+const VERSION = '1.1.0-rc.2-fix.2';
 const source = fs.readFileSync('src/research/evidence-workspace-ux.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
@@ -63,7 +63,7 @@ assert.ok(index.includes('rejectVisibleReviewEvidenceBtn'), 'visible reject batc
 assert.ok(engine.includes('evidenceWorkspaceUxReport'), 'research engine must export evidence workspace UX report');
 assert.ok(engine.includes('reviewThroughputReport'), 'research engine must export review throughput report');
 assert.ok(helpers.includes('reviewThroughputTitle'), 'localized throughput labels missing');
-assert.ok(helpers.includes('Lock Evidence Workspace Hygiene Fix'));
+assert.ok(helpers.includes('Evidence Matrix + Canonical Bundle Validation'));
 assert.ok(helpers.includes('مرشح مستقر'));
 assert.ok(helpers.includes('candidat stable'));
 

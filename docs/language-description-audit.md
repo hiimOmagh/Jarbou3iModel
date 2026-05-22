@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-rc.2-fix.1`
-Release: `v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix`
+Version: `1.1.0-rc.2-fix.2`
+Release: `v1.1.0-rc.2-fix.2 — Evidence Matrix + Canonical Bundle Validation`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

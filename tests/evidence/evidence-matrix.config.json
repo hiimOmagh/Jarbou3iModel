@@ -1,0 +1,227 @@
+{
+  "evidence_matrix_config_version": "1.1.0-rc.2-fix.2",
+  "internal_build_version": "1.1.0-rc.2-fix.2",
+  "public_version_label": "v1.1.0 Stable Candidate",
+  "locales": [
+    "en",
+    "ar",
+    "fr"
+  ],
+  "required_rows": 39,
+  "language_rules": {
+    "en": {
+      "required": [
+        "Stable Candidate",
+        "Public demo",
+        "Export Pack v3"
+      ],
+      "forbidden": [
+        "Gel de la surface publique",
+        "Revue publication",
+        "preuve",
+        "مراجعة النشر",
+        "الأدلة",
+        "تصدير"
+      ]
+    },
+    "ar": {
+      "required": [
+        "مرشح مستقر",
+        "العرض العام",
+        "مراجعة الأدلة"
+      ],
+      "forbidden": [
+        "Stable consolidation",
+        "Public surface freeze",
+        "Gel de la surface",
+        "Revue publication"
+      ]
+    },
+    "fr": {
+      "required": [
+        "Candidat stable",
+        "démo publique",
+        "revue des preuves"
+      ],
+      "forbidden": [
+        "Stable Candidate",
+        "Public surface freeze",
+        "مراجعة النشر",
+        "تدقيق حدود الادعاءات"
+      ]
+    }
+  },
+  "allowed_technical_terms": [
+    "JSON",
+    "API",
+    "OAuth",
+    "PKCE",
+    "BYOK",
+    "OpenAI",
+    "URL",
+    "CSV",
+    "GitHub",
+    "Export Pack v3",
+    "Neo4j",
+    "Gephi",
+    "Kumu"
+  ],
+  "surfaces": [
+    {
+      "id": "S01",
+      "slug": "landing",
+      "label": "Landing / public overview",
+      "tab": null,
+      "required_selector": "#publicDemoReadinessPanel",
+      "required_text_any": [
+        "Public demo ready",
+        "العرض العام جاهز",
+        "Démo publique prête"
+      ]
+    },
+    {
+      "id": "S02",
+      "slug": "research-planner",
+      "label": "Research planner",
+      "tab": "analysis",
+      "required_selector": "[data-r-i18n=\"planTitle\"]",
+      "required_text_any": [
+        "Research Plan",
+        "خطة البحث",
+        "Plan de recherche"
+      ]
+    },
+    {
+      "id": "S03",
+      "slug": "prompt-analysis-template",
+      "label": "Prompt / analysis template area",
+      "tab": "analysis",
+      "required_selector": "[data-r-i18n=\"templateTitle\"]",
+      "required_text_any": [
+        "Analysis Template",
+        "قالب التحليل",
+        "Modèle"
+      ]
+    },
+    {
+      "id": "S04",
+      "slug": "source-import",
+      "label": "Source import / source packet",
+      "tab": "sources",
+      "required_selector": "[data-r-i18n=\"sourceImportTitle\"]",
+      "required_text_any": [
+        "Source Import",
+        "استيراد المصادر",
+        "Import"
+      ]
+    },
+    {
+      "id": "S05",
+      "slug": "evidence-review",
+      "label": "Evidence review queue",
+      "tab": "evidence",
+      "required_selector": "[data-r-i18n=\"evidenceReviewTitle\"]",
+      "required_text_any": [
+        "Evidence Review Queue",
+        "صف مراجعة الأدلة",
+        "file de revue"
+      ]
+    },
+    {
+      "id": "S06",
+      "slug": "evidence-scoring-claim-links",
+      "label": "Evidence scoring / claim links",
+      "tab": "evidence",
+      "required_selector": "[data-r-i18n=\"evidenceTitle\"]",
+      "required_text_any": [
+        "Evidence Matrix",
+        "مصفوفة الأدلة",
+        "Matrice"
+      ]
+    },
+    {
+      "id": "S07",
+      "slug": "source-clusters-gaps",
+      "label": "Source clusters / gaps",
+      "tab": "sources",
+      "required_selector": "[data-r-i18n=\"sourcePlanningTitle\"]",
+      "required_text_any": [
+        "Source Planning",
+        "تخطيط المصادر",
+        "sources"
+      ]
+    },
+    {
+      "id": "S08",
+      "slug": "entity-intelligence",
+      "label": "Entity intelligence",
+      "tab": "sources",
+      "required_selector": "#sourcePlanningOutput",
+      "required_text_any": [
+        "entity",
+        "كيان",
+        "entité"
+      ]
+    },
+    {
+      "id": "S09",
+      "slug": "strategic-evidence-graph",
+      "label": "Strategic evidence graph",
+      "tab": "quality",
+      "required_selector": "#researchQualityOutput",
+      "required_text_any": [
+        "graph",
+        "رسم",
+        "graphe"
+      ]
+    },
+    {
+      "id": "S10",
+      "slug": "provider-routing",
+      "label": "Provider routing",
+      "tab": "advanced",
+      "required_selector": ".providerHarnessCard",
+      "required_text_any": [
+        "Provider",
+        "المزوّد",
+        "fournisseur"
+      ]
+    },
+    {
+      "id": "S11",
+      "slug": "quality-export",
+      "label": "Quality / export",
+      "tab": "quality",
+      "required_selector": "#researchQualityOutput",
+      "required_text_any": [
+        "Quality",
+        "الجودة",
+        "Qualité"
+      ]
+    },
+    {
+      "id": "S12",
+      "slug": "publication-review",
+      "label": "Publication review gate",
+      "tab": "quality",
+      "required_selector": "#researchQualityOutput",
+      "required_text_any": [
+        "publication",
+        "النشر",
+        "publication"
+      ]
+    },
+    {
+      "id": "S13",
+      "slug": "golden-workflow-demo",
+      "label": "Golden workflow demo",
+      "tab": "quality",
+      "required_selector": "#researchQualityOutput",
+      "required_text_any": [
+        "golden",
+        "الذهبية",
+        "doré"
+      ]
+    }
+  ]
+}

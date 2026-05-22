@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-rc.2-fix.1`
-Release: `v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix`
+Version: `1.1.0-rc.2-fix.2`
+Release: `v1.1.0-rc.2-fix.2 — Evidence Matrix + Canonical Bundle Validation`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

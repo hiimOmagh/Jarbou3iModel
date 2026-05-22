@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-rc.2-fix.1';
-const TITLE = 'Lock Evidence Workspace Hygiene Fix';
+const VERSION = '1.1.0-rc.2-fix.2';
+const TITLE = 'Evidence Matrix + Canonical Bundle Validation';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-rc.2-fix.1-evidence-pack-export-v3-brief-traceability.md';
+const DOC = 'docs/v1.1.0-rc.2-fix.2-evidence-pack-export-v3-brief-traceability.md';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -68,7 +68,7 @@ assert.ok(spec.includes('isExpectedHiddenShell'), 'artifact guard must ignore ex
 assert.ok(spec.includes('coversViewportCenter'), 'fixed-overlay guard must be scoped to center-blocking overlays');
 assert.ok(spec.includes("visual_artifact_guard_scope: 'visible_transient_selectors_and_center_blocking_fixed_overlays'"), 'artifact guard metadata must record the scoped guard mode');
 assert.ok(spec.includes('toMatchObject({ visual_artifact_guard_passed: true })'), 'artifact guard assertion must preserve diagnostic state on failure');
-assert.ok(spec.includes('const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 90_000;'), 'hosted evidence test must have a bounded extended timeout for full-page capture');
+assert.ok(spec.includes('const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 180_000;'), 'hosted evidence matrix test must have a bounded extended timeout for multi-surface capture');
 assert.ok(spec.includes("const HOSTED_EVIDENCE_CANONICAL_PROJECT = 'chromium';"), 'hosted evidence capture must be scoped to one canonical project');
 assert.ok(spec.includes("test.describe.configure({ mode: 'serial' });"), 'hosted evidence capture must run serially to prevent artifact races');
 assert.ok(spec.includes("test.skip("), 'hosted evidence capture must skip duplicate project executions');

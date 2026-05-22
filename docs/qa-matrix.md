@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix
+Current release candidate: v1.1.0-rc.2-fix.2 — Evidence Matrix + Canonical Bundle Validation
 
 Required gates:
 - No-browser CI
@@ -12,7 +12,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for 1.1.0-rc.2-fix.1.
+Node 24 CI compatibility is preserved for 1.1.0-rc.2-fix.2.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

@@ -55,6 +55,6 @@ for (const token of [
 ]) {
   if (!engine.includes(token)) fail(`research engine does not delegate to module token: ${token}`);
 }
-if (engine.length > 202000) fail(`research-engine.js exceeded v1.1.0-rc.2-fix.1 orchestration ceiling after release candidate hygiene integration: ${engine.length} bytes`);
+if (engine.length > 202000) fail(`research-engine.js exceeded v1.1.0-rc.2-fix.2 orchestration ceiling after release candidate hygiene integration: ${engine.length} bytes`);
 console.log('Research module checks passed.');
 process.exit(0);

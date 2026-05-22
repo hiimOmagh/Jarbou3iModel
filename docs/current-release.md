@@ -1,13 +1,13 @@
 # Current Release
 
-## v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix
+## v1.1.0-rc.2-fix.2 — Evidence Matrix + Canonical Bundle Validation
 
 Canonical lock evidence bundle and final stable handoff: resets the public-facing surface toward v1.1.0 stable candidate language, consolidates public-demo docs, preserves internal evidence lineage, verifies stale-copy cleanup, golden workflow regression, Export Pack v3 consistency, repository hygiene, and no-browser/browser CI parity without adding product feature surface.
 
 Public surface: `v1.1.0 Stable Candidate`.
-Internal RC validation metadata: `1.1.0-rc.2-fix.1`.
+Internal RC validation metadata: `1.1.0-rc.2-fix.2`.
 
-Release-lock guard: 1.1.0-rc.2-fix.1 Lock Evidence Workspace Hygiene Fix requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-rc.2-fix.2 Evidence Matrix + Canonical Bundle Validation requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
 Allowed changes: public-copy freeze, release docs consolidation, stale-copy sweep, repo/package hygiene, golden workflow regression lock, Export Pack v3 artifact consistency lock, hosted evidence runbook tightening, and no-browser/browser CI parity.
 
@@ -18,7 +18,7 @@ Node 24 CI compatibility is preserved. Public Demo release evidence and hosted-d
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-rc.2-fix.1`
+Version: `1.1.0-rc.2-fix.2`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions
