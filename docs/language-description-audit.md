@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-alpha.20`
-Release: `v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger`
+Version: `1.1.0-alpha.21`
+Release: `v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

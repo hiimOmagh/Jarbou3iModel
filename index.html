@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jarbou3i Research Engine — v1.1.0-alpha.20</title>
+<title>Jarbou3i Research Engine — v1.1.0-alpha.21</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,14 +11,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#255ee8" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020817" />
 <meta name="color-scheme" content="light dark" />
-<meta property="og:title" content="Jarbou3i Research Engine — v1.1.0-alpha.20" />
+<meta property="og:title" content="Jarbou3i Research Engine — v1.1.0-alpha.21" />
 <meta property="og:description" content="Trilingual, client-side strategic research workbench with schema-governed six-layer analysis, evidence discipline, and safe export." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/jarbou3i-mascot-512.png" />
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
 <meta name="twitter:card" content="summary" />
-<meta name="app-version" content="1.1.0-alpha.20" />
+<meta name="app-version" content="1.1.0-alpha.21" />
 <link rel="stylesheet" href="src/styles.css" />
 <!-- Release approval guard: screenshots alone and ZIP existence alone are insufficient. -->
 </head>
@@ -46,7 +46,7 @@
 <section class="panel researchLabPanel" id="researchLabPanel">
 <div class="panelHeader researchHeader">
 <div>
-<div class="researchEyebrow" data-r-i18n="alphaBadge">v1.1.0-alpha.20 · Provider Router + Cost-Aware Run Ledger</div>
+<div class="researchEyebrow" data-r-i18n="alphaBadge">v1.1.0-alpha.21 · Evidence Workspace UX Hardening + Review Throughput</div>
 <h2 data-r-i18n="researchTitle">Research Workflow Lab</h2>
 <p data-r-i18n="researchSubtitle">Experimental research-to-strategy pipeline. Manual mode remains untouched.</p>
 </div>
@@ -82,7 +82,7 @@
 <div>
 <div class="researchEyebrow" data-r-i18n="hostedDemoVerificationEyebrow">التحقق من العرض المستضاف</div>
 <h3 data-r-i18n="hostedDemoVerificationTitle">لا تنشر إلا بعد توفر أدلة المتصفح</h3>
-<p class="muted" data-r-i18n="hostedDemoVerificationBody">بوابة تخطيط فقط: لا يوجد استخراج حي أو بحث حي أو scraping أو OAuth حقيقي أو تنفيذ مزوّد تلقائي أو تحقق آلي من المصادر. تضيف v1.1.0-alpha.20 موجّه مزودات محليًا مع مطابقة المهمة للقدرات، معاينة التكلفة/الزمن/المخاطر، وإثراء دفتر التشغيل دون أي استدعاء مدفوع تلقائي.</p>
+<p class="muted" data-r-i18n="hostedDemoVerificationBody">بوابة تخطيط فقط: لا يوجد استخراج حي أو بحث حي أو scraping أو OAuth حقيقي أو تنفيذ مزوّد تلقائي أو تحقق آلي من المصادر. تضيف v1.1.0-alpha.21 تحسينات محلية لمساحة مراجعة الأدلة: بحث وفرز وفلاتر، إجراءات دفعية للعناصر المرئية، وإظهار التناقضات والفجوات دون تجاوز المراجعة البشرية.</p>
 </div>
 <div class="hostedDemoChecklist">
 <span data-r-i18n="hostedUrlChecked">تم فحص رابط الاستضافة</span>
@@ -95,7 +95,7 @@
 <div>
 <div class="researchEyebrow" data-r-i18n="evidenceReviewGateEyebrow">بوابة مراجعة الأدلة</div>
 <h3 data-r-i18n="evidenceReviewGateTitle">راجع اللقطات والبيانات الوصفية قبل النشر</h3>
-<p class="muted" data-r-i18n="evidenceReviewGateBody">تحافظ v1.1.0-alpha.20 على بوابات العرض المستضاف وتضيف موجّه مزودات محليًا للتخطيط فقط: يراجع ملاءمة النموذج والتكلفة والمخاطر ويثري دفتر التشغيل، ولا ينفذ مزودات حية أو يصدّر أسرارًا أو يتجاوز مراجعة الأدلة.</p>
+<p class="muted" data-r-i18n="evidenceReviewGateBody">تحافظ v1.1.0-alpha.21 على بوابات العرض المستضاف وتضيف تحسينات إنتاجية لمساحة الأدلة: فلاتر صف المراجعة، قبول/رفض/احتياج تعديل للعناصر المرئية، وإبراز التناقضات والفجوات دون تجاوز مراجعة الأدلة.</p>
 </div>
 <div class="evidenceReviewChecklist">
 <span data-r-i18n="hostedUrlSmoke">اختبار دخان لرابط الاستضافة</span>
@@ -363,6 +363,9 @@
 <p class="muted" data-r-i18n="evidenceReviewSubtitle">Imported source candidates must be accepted, edited, or rejected before entering the Evidence Matrix.</p>
 <div class="actions verticalActions">
 <button class="btn primary" id="acceptAllReviewEvidenceBtn" type="button" data-r-i18n="acceptAllReviewEvidence">Accept all pending</button>
+<button class="btn" id="acceptVisibleReviewEvidenceBtn" type="button" data-r-i18n="acceptVisibleReviewEvidence">Accept visible</button>
+<button class="btn" id="needsEditVisibleReviewEvidenceBtn" type="button" data-r-i18n="needsEditVisibleReviewEvidence">Needs edit visible</button>
+<button class="btn" id="rejectVisibleReviewEvidenceBtn" type="button" data-r-i18n="rejectVisibleReviewEvidence">Reject visible</button>
 <button class="btn" id="acceptEditedReviewEvidenceBtn" type="button" data-r-i18n="acceptEditedReviewEvidence">Accept edited candidate</button>
 <button class="btn" id="exportEvidenceReviewQueueBtn" type="button" data-r-i18n="exportEvidenceReviewQueue">Export review queue</button>
 <button class="btn ghost" id="clearResolvedReviewEvidenceBtn" type="button" data-r-i18n="clearResolvedReviewEvidence">Clear resolved</button>
@@ -504,6 +507,7 @@
 <script src="src/research/evidence-controller.js" defer></script>
 <script src="src/research/evidence-scorer.js" defer></script>
 <script src="src/research/evidence-review-controller.js" defer></script>
+<script src="src/research/evidence-workspace-ux.js" defer></script>
 <script src="src/research/provider-controller.js" defer></script>
 <script src="src/research/source-controller.js" defer></script>
 <script src="src/research/search-provider-abstraction.js" defer></script>
@@ -540,7 +544,7 @@
 <script src="src/research/release-apply-integrity.js" defer></script>
 <script src="src/research/release-provenance-ledger.js" defer></script>
 <script src="src/research-engine.js" defer></script>
-<span class="sr-only" data-r-i18n="analysisReleaseNote">تضيف v1.1.0-alpha.20 موجّه مزودات ودفتر تشغيل واعيًا بالتكلفة: مطابقة المهمة بالقدرات، مصفوفة قدرات المزودات، معاينة التكلفة/الزمن/المخاطر، وإثراء دفتر التشغيل دون استدعاءات مدفوعة تلقائية أو OAuth أو توسيع خلفية.</span>
+<span class="sr-only" data-r-i18n="analysisReleaseNote">تضيف v1.1.0-alpha.21 موجّه مزودات ودفتر تشغيل واعيًا بالتكلفة: مطابقة المهمة بالقدرات، مصفوفة قدرات المزودات، معاينة التكلفة/الزمن/المخاطر، وإثراء دفتر التشغيل دون استدعاءات مدفوعة تلقائية أو OAuth أو توسيع خلفية.</span>
 <span class="sr-only">hosted evidence capture polish visual artifact guard without changing runtime behavior</span>
 <span class="sr-only">لا تكفي اللقطات ولا ملفات ZIP وحدها لاعتماد الإصدار.</span>
 </body>

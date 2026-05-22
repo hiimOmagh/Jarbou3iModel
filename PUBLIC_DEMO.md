@@ -1,6 +1,6 @@
-# Public Demo — v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
+# Public Demo — v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput
 
-Adds Provider Router + Cost-Aware Run Ledger: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
+Adds Evidence Workspace UX Hardening + Review Throughput: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
 The public demo remains manual/private by default. Provider routing is a dry-run planning and audit layer only; it does not execute paid API calls or export secrets.
 

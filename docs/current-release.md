@@ -1,17 +1,17 @@
 # Current Release
 
-## v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
+## v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput
 
-Adds Provider Router + Cost-Aware Run Ledger: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
+Adds Evidence Workspace UX Hardening + Review Throughput: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
-Release-lock guard: 1.1.0-alpha.20 Provider Router + Cost-Aware Run Ledger requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.21 Evidence Workspace UX Hardening + Review Throughput requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Boundaries preserved: no automatic paid API calls, no live provider execution by default, no OAuth/backend expansion, no secret export, no source connector expansion, no broad UI redesign, no storage expansion.
 
 ## Release Manifest Compatibility
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-alpha.20`
+Version: `1.1.0-alpha.21`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions

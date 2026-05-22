@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, registryHasMigrationFixture, registryHasPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-alpha.20';
+const VERSION = '1.1.0-alpha.21';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const graphSource = read('src/research/strategic-evidence-graph.js');
 const engineSource = read('src/research-engine.js');
@@ -12,8 +12,8 @@ const exportPackSource = read('src/research/export-pack.js');
 const index = read('index.html');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.20-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.20.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.21-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.21.json');
 const registry = JSON.parse(read('tests/ci-gate-registry.json'));
 
 new vm.Script(graphSource, {filename:'src/research/strategic-evidence-graph.js'});
@@ -92,14 +92,14 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.ok(packet.graph_export_report.formats.includes('gephi_csv'));
   assert.ok(packet.graph_export_report.formats.includes('kumu_json'));
   assert.ok(packet.graph_export_report.formats.includes('neo4j_csv'));
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput');
 }
 assert.ok(registry.gates.source.node_checks.includes('tests/strategic-evidence-graph-check.mjs'), 'source gate must register graph check');
 assert.ok(registry.gates.release.node_checks.includes('tests/strategic-evidence-graph-check.mjs'), 'release gate must register graph check');
 assert.ok(registry.syntax_matrix.files.includes('src/research/strategic-evidence-graph.js'), 'syntax matrix must cover graph module');
 assert.ok(registry.syntax_matrix.files.includes('tests/strategic-evidence-graph-check.mjs'), 'syntax matrix must cover graph check');
-assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-alpha.20-packet.json'));
-assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.20.json'));
+assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-alpha.21-packet.json'));
+assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.21.json'));
 assert.equal(registry.runtime_capability_change, false);
 assert.equal(registry.source_behavior_changed, false);
 console.log('Strategic evidence graph checks passed.');

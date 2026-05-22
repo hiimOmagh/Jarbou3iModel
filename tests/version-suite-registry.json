@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.1.0-alpha.20",
-  "release_title": "v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger",
+  "version_suite_registry_version": "1.1.0-alpha.21",
+  "release_title": "v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1519,7 +1519,7 @@
     },
     {
       "id": "v120",
-      "former_file": "tests/v120-no-browser-suite.mjs",
+      "former_file": "tests/v121-no-browser-suite.mjs",
       "check_count": 55,
       "checks": [
         "tests/qa-check.mjs",

@@ -1,12 +1,12 @@
 # Jarbou3i Research Engine
 
-Adds Provider Router + Cost-Aware Run Ledger: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
+Adds Evidence Workspace UX Hardening + Review Throughput: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
-`v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger`
+`v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput`
 
 Core continuity preserved: Evidence Workspace + Source Import V2, Source Cluster + Gap Intelligence, Entity Intelligence Layer, Research Planner V2, Controlled Connector Architecture MVP, Graph Export + Strategic Evidence Map, provider safety, privacy/export guards, hosted evidence, visible-text snapshots, and no automatic paid API calls.
 
-Release-lock guard: 1.1.0-alpha.20 Provider Router + Cost-Aware Run Ledger requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.21 Evidence Workspace UX Hardening + Review Throughput requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Release-lock evidence reminder: screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 

@@ -14,5 +14,5 @@ for (const file of tests) {
   if (result.status !== 0) process.exit(result.status || 1);
 }
 
-console.log('v1.1.0-alpha.20 current no-browser suite passed.');
+console.log('v1.1.0-alpha.21 current no-browser suite passed.');
 process.exit(0);

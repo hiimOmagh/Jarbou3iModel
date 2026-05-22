@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-alpha.20';
+const VERSION = '1.1.0-alpha.21';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
@@ -82,11 +82,11 @@ for (const lang of ['ar', 'en', 'fr']) {
   }
 }
 
-assert.ok(researchCopy.en.evidenceReviewGateBody.includes('provider routing'), 'English evidence review gate body must describe alpha.20 provider router scope');
-assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('توجيه مزودات'), 'Arabic evidence review gate body must describe alpha.20 provider router scope');
-assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('routage fournisseur'), 'French evidence review gate body must describe alpha.20 provider router scope');
-assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French alpha.20 evidence review gate body must not inherit English release copy');
-assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('Source packets remain local/manual'), false, 'French alpha.20 evidence review gate body must not expose English source-packet release copy');
+assert.ok(researchCopy.en.evidenceReviewGateBody.includes('review queue') && researchCopy.en.evidenceReviewGateBody.includes('batch'), 'English evidence review gate body must describe alpha.21 review-throughput scope');
+assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('فلاتر') && researchCopy.ar.evidenceReviewGateBody.includes('التناقضات'), 'Arabic evidence review gate body must describe alpha.21 review-throughput scope');
+assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('recherche') && researchCopy.fr.evidenceReviewGateBody.includes('actions groupées'), 'French evidence review gate body must describe alpha.21 review-throughput scope');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French alpha.21 evidence review gate body must not inherit English release copy');
+assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('provider routing'), false, 'French alpha.21 evidence review gate body must not expose alpha.20 provider-router release copy');
 
 for (const phrase of ['First-run guide', 'Start clean:', 'Public demo ready', 'Show the workflow', 'Publish only after browser evidence exists', 'Review screenshots', 'Stable workflow', 'Quality & Export']) {
   assert.equal(index.includes(`>${phrase}`), false, `default Arabic shell must not expose English fallback copy: ${phrase}`);

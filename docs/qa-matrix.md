@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release: v1.1.0-alpha.20 — Provider Router + Cost-Aware Run Ledger
+Current release: v1.1.0-alpha.21 — Evidence Workspace UX Hardening + Review Throughput
 
 Required gates:
 
@@ -8,7 +8,7 @@ Required gates:
 - Browser CI
 - Hosted-demo evidence capture
 - Visible-text snapshots
-- Provider Router + Cost-Aware Run Ledger no-browser check
+- Evidence Workspace UX Hardening + Review Throughput no-browser check
 - Provider identity/response/fixture regression checks
 - Export Pack v2 provider route artifact checks
 

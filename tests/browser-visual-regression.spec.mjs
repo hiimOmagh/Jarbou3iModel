@@ -23,7 +23,7 @@ async function selectTab(page, tab) {
   await expect(page.locator(`#researchModeNav .uxTab[data-ux-tab="${tab}"]`)).toHaveAttribute('aria-selected', 'true');
 }
 
-test.describe('v1.1.0-alpha.20 visual regression capture', () => {
+test.describe('v1.1.0-alpha.21 visual regression capture', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
@@ -33,7 +33,7 @@ test.describe('v1.1.0-alpha.20 visual regression capture', () => {
     await page.setViewportSize({ width: 1440, height: 950 });
     for (const tab of ['analysis', 'evidence', 'sources', 'quality', 'advanced']) {
       await selectTab(page, tab);
-      await captureOrCompare(page, `v120-desktop-${tab}`);
+      await captureOrCompare(page, `v121-desktop-${tab}`);
     }
   });
 
@@ -41,8 +41,8 @@ test.describe('v1.1.0-alpha.20 visual regression capture', () => {
     test.skip(testInfo.project.name !== 'mobile-chrome', 'Mobile visual screenshots are scoped to the mobile-chrome project.');
     await page.setViewportSize({ width: 390, height: 844 });
     await selectTab(page, 'analysis');
-    await captureOrCompare(page, 'v120-mobile-analysis');
+    await captureOrCompare(page, 'v121-mobile-analysis');
     await selectTab(page, 'evidence');
-    await captureOrCompare(page, 'v120-mobile-evidence');
+    await captureOrCompare(page, 'v121-mobile-evidence');
   });
 });

@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-alpha.20';
-const TITLE = 'Provider Router + Cost-Aware Run Ledger';
+const VERSION = '1.1.0-alpha.21';
+const TITLE = 'Evidence Workspace UX Hardening + Review Throughput';
 const REGISTRY_BUDGET_BYTES = 900 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
@@ -13,14 +13,14 @@ const registries = [
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
     expectedEntries: 58,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.1.0-alpha.20-packet.json')
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.1.0-alpha.21-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
     expectedEntries: 48,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.20.json')
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.21.json')
   }
 ];
 

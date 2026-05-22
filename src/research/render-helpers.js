@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine render helpers v1.1.0-alpha.20. */
+/* Jarbou3i Research Engine render helpers v1.1.0-alpha.21. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -6,7 +6,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, source clusters, entity profiles, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.1.0-alpha.20 · Provider Router + Cost-Aware Run Ledger',
+      alphaBadge:'v1.1.0-alpha.21 · Evidence Workspace UX Hardening + Review Throughput',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، تجميعات مصادر، ملفات كيانات، روابط سببية، نقد، وبوابة جودة v3.',
-      alphaBadge:'v1.1.0-alpha.20 · موجّه المزودات ودفتر التشغيل الواعي بالتكلفة' ,
+      alphaBadge:'v1.1.0-alpha.21 · تحسين مساحة الأدلة وتسريع المراجعة' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, clusters de sources, profils d’entités, liens causaux, critique et barrière qualité v3.',
-      alphaBadge:'v1.1.0-alpha.20 · Routeur fournisseur + journal d’exécution coût',
+      alphaBadge:'v1.1.0-alpha.21 · UX des preuves + débit de revue',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -338,10 +338,10 @@
     publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
     localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
     hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
-    hostedDemoVerificationBody:'Planning gate only: no live search, no scraping, no real OAuth, no automatic provider execution, and no automated source verification are enabled. v1.1.0-alpha.20 adds a local Provider Router with task/capability matching, cost/latency/risk preview, model suitability scoring, and run-ledger enrichment without automatic paid API calls.',
+    hostedDemoVerificationBody:'Planning gate only: no live search, no scraping, no real OAuth, no automatic provider execution, and no automated source verification are enabled. v1.1.0-alpha.21 hardens the Evidence Workspace UX with review queue search, filters, sort, batch visible actions, contradiction/gap surfacing, and keyboard-friendly review flow without bypassing human review.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
-    evidenceReviewGateBody:'v1.1.0-alpha.20 preserves the public-demo freeze while adding dry-run provider routing, provider capability matrix, cost-aware route previews, and enriched run-ledger metadata. Provider execution remains review-gated and no secrets or paid calls are exported.',
+    evidenceReviewGateBody:'v1.1.0-alpha.21 preserves the public-demo freeze while adding review queue filters, visible batch accept/reject/needs-edit actions, unresolved contradiction and source-gap surfacing, and keyboard-friendly review flow. Human review remains required and the Evidence Review Queue cannot be bypassed.',
     hostedUrlSmoke:'Hosted URL smoke', noOverflowProof:'No overflow proof', metadataArtifact:'Metadata artifact', reviewedBeforePublish:'Reviewed before publish',
     stableWorkflowEyebrow:'Stable workflow', stableWorkflowTitle:'Next action: add evidence → review clusters → link entities and gaps',
     stableWorkflowBody:'Advanced provider, OAuth, backend, source, and release diagnostics are collapsed until a selected post-freeze lane has criteria, falsifiers, and review gates; implementation remains blocked.',
@@ -357,10 +357,10 @@
     publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
     localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
     hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
-    hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد بحث حي أو scraping أو OAuth حقيقي أو تنفيذ مزود تلقائي أو تحقق آلي من المصادر. تضيف v1.1.0-alpha.20 موجّه مزودات محليًا يطابق المهمة مع القدرات، ويعرض التكلفة والزمن والمخاطر، ويثري دفتر التشغيل دون استدعاءات مدفوعة تلقائية.',
+    hostedDemoVerificationBody:'بوابة تخطيط فقط: لا يوجد بحث حي أو scraping أو OAuth حقيقي أو تنفيذ مزود تلقائي أو تحقق آلي من المصادر. تضيف v1.1.0-alpha.21 تحسينات محلية لمساحة الأدلة: بحث وفرز وفلاتر، إجراءات دفعية للعناصر المرئية، وإظهار التناقضات والفجوات دون تجاوز المراجعة البشرية.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
-    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.20 على تجميد العرض العام وتضيف توجيه مزودات بنمط dry-run، ومصفوفة قدرات، ومعاينة تكلفة ومخاطر، وإثراء دفتر التشغيل. يبقى تنفيذ المزودات بوابة مراجعة ولا يتم تصدير أسرار أو استدعاءات مدفوعة.',
+    evidenceReviewGateBody:'تحافظ v1.1.0-alpha.21 على تجميد العرض العام وتضيف فلاتر صف المراجعة، قبول/رفض/احتياج تعديل للعناصر المرئية، وإبراز التناقضات وفجوات المصادر. تبقى المراجعة البشرية مطلوبة ولا يمكن تجاوز صف مراجعة الأدلة.',
     hostedUrlSmoke:'اختبار دخان لرابط الاستضافة', noOverflowProof:'إثبات عدم وجود تجاوز أفقي', metadataArtifact:'أثر بيانات وصفية', reviewedBeforePublish:'تمت المراجعة قبل النشر',
     stableWorkflowEyebrow:'سير عمل مستقر', stableWorkflowTitle:'الإجراء التالي: أضف الأدلة → راجع العناقيد → اربط الكيانات والفجوات',
     stableWorkflowBody:'تبقى تشخيصات المزوّد المتقدم وOAuth والخلفية والمصادر والإصدار مطوية حتى يحصل مسار ما بعد التجميد على معايير قبول وشروط إبطال وبوابات مراجعة واضحة؛ ويظل التنفيذ محظورًا.',
@@ -377,10 +377,10 @@
     publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
     localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
     hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
-    hostedDemoVerificationBody:'Porte de planification uniquement: aucune recherche live, aucun scraping, aucun OAuth réel, aucune exécution fournisseur automatique et aucune vérification automatique des sources. v1.1.0-alpha.20 ajoute un routeur fournisseur local avec correspondance tâche-capacités, aperçu coût/latence/risque, score d’adéquation et journal enrichi sans appels API payants automatiques.',
+    hostedDemoVerificationBody:'Porte de planification uniquement: aucune recherche live, aucun scraping, aucun OAuth réel, aucune exécution fournisseur automatique et aucune vérification automatique des sources. v1.1.0-alpha.21 durcit l’UX de l’espace preuves avec recherche, filtres, tri, actions groupées visibles, contradictions/lacunes et flux clavier sans contourner la revue humaine.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
-    evidenceReviewGateBody:'v1.1.0-alpha.20 préserve le gel de la démo publique tout en ajoutant un routage fournisseur dry-run, une matrice de capacités, des aperçus coût/risque et un journal d’exécution enrichi. L’exécution fournisseur reste soumise à revue, sans export de secrets ni appels payants.',
+    evidenceReviewGateBody:'v1.1.0-alpha.21 préserve le gel de la démo publique tout en ajoutant recherche, filtres de file de revue, actions groupées visibles acceptation/rejet/à-modifier, contradictions et lacunes de sources, et flux clavier. La revue humaine reste requise et la file de revue des preuves ne peut pas être contournée.',
     hostedUrlSmoke:'Smoke test URL hébergée', noOverflowProof:'Preuve sans débordement', metadataArtifact:'Artefact de métadonnées', reviewedBeforePublish:'Revu avant publication',
     stableWorkflowEyebrow:'Workflow stable', stableWorkflowTitle:'Action suivante : ajouter des preuves → revoir les clusters → lier entités et lacunes',
     stableWorkflowBody:'Les diagnostics fournisseur avancé, OAuth, backend, source et release restent repliés jusqu’à ce qu’un axe post-gel ait critères, falsificateurs et barrières de revue; l’implémentation reste bloquée.',
@@ -470,7 +470,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'v1.1.0-alpha.20 adds Provider Router + Cost-Aware Run Ledger: task-capability routing, provider matrix, cost/latency/risk preview, route suitability scoring and run-ledger enrichment without automatic paid calls, OAuth/backend expansion, secret export, source connector expansion or live execution.',
+    analysisReleaseNote:'v1.1.0-alpha.21 ajoute le durcissement UX de l’espace preuves et le débit de revue: recherche/filtres/tri, actions groupées visibles, filtres croisés entités/sources/clusters, contradictions/lacunes et flux clavier sans scraping, exécution fournisseur, OAuth/backend ni contournement de la file.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -485,7 +485,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'تضيف v1.1.0-alpha.20 موجّه مزودات ودفتر تشغيل واعيًا بالتكلفة: توجيه المهمة حسب القدرات، مصفوفة مزودات، معاينة تكلفة/زمن/مخاطر، وإثراء دفتر التشغيل دون استدعاءات مدفوعة تلقائية أو تصدير أسرار أو OAuth/Backend.',
+    analysisReleaseNote:'تضيف v1.1.0-alpha.21 موجّه مزودات ودفتر تشغيل واعيًا بالتكلفة: توجيه المهمة حسب القدرات، مصفوفة مزودات، معاينة تكلفة/زمن/مخاطر، وإثراء دفتر التشغيل دون استدعاءات مدفوعة تلقائية أو تصدير أسرار أو OAuth/Backend.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -501,7 +501,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'v1.1.0-alpha.20 ajoute Routeur fournisseur + journal d’exécution coût: routage tâche-capacité, matrice fournisseurs, aperçu coût/latence/risque, score d’adéquation et journal enrichi sans appels payants automatiques, export de secrets, OAuth/backend ni exécution live.',
+    analysisReleaseNote:'v1.1.0-alpha.21 ajoute Routeur fournisseur + journal d’exécution coût: routage tâche-capacité, matrice fournisseurs, aperçu coût/latence/risque, score d’adéquation et journal enrichi sans appels payants automatiques, export de secrets, OAuth/backend ni exécution live.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',
@@ -760,6 +760,17 @@
     temporal_boundary:'limite temporelle claire'
   });
 
+
+
+  Object.assign(COPY.en, {
+    reviewThroughputTitle:'Review throughput', visible:'visible', all:'all', allSources:'All sources', allRelationships:'All relationships', resolved:'resolved', unresolved:'unresolved', unlinked:'unlinked', newest:'newest', oldest:'oldest', needsReviewFirst:'needs review first', reliability:'reliability', attention:'attention', contradictions:'contradictions', queueBypass:'queue bypass', reviewKeyboardHint:'Keyboard: / search · Enter accept · N needs edit · R reject · E edit.', reviewSearchPlaceholder:'Search review queue...', noVisibleReviewItems:'No review items match the current filters.', acceptVisibleReviewEvidence:'Accept visible', needsEditVisibleReviewEvidence:'Needs edit visible', rejectVisibleReviewEvidence:'Reject visible', statusEvidenceNeedsEdit:'Evidence marked as needs edit.'
+  });
+  Object.assign(COPY.ar, {
+    reviewThroughputTitle:'إنتاجية المراجعة', visible:'ظاهر', all:'الكل', allSources:'كل المصادر', allRelationships:'كل العلاقات', resolved:'محسوم', unresolved:'غير محسوم', unlinked:'غير مربوط', newest:'الأحدث', oldest:'الأقدم', needsReviewFirst:'الأولوية للاحتياج للمراجعة', reliability:'الموثوقية', attention:'الانتباه', contradictions:'التناقضات', queueBypass:'تجاوز الصف', reviewKeyboardHint:'لوحة المفاتيح: / للبحث · Enter للقبول · N يحتاج تعديل · R رفض · E تعديل.', reviewSearchPlaceholder:'ابحث في صف المراجعة...', noVisibleReviewItems:'لا توجد عناصر مراجعة تطابق الفلاتر الحالية.', acceptVisibleReviewEvidence:'قبول الظاهر', needsEditVisibleReviewEvidence:'الظاهر يحتاج تعديل', rejectVisibleReviewEvidence:'رفض الظاهر', statusEvidenceNeedsEdit:'تم وسم الدليل بأنه يحتاج تعديل.'
+  });
+  Object.assign(COPY.fr, {
+    reviewThroughputTitle:'Débit de revue', visible:'visible', all:'tout', allSources:'Toutes sources', allRelationships:'Toutes relations', resolved:'résolu', unresolved:'non résolu', unlinked:'non lié', newest:'plus récent', oldest:'plus ancien', needsReviewFirst:'revue prioritaire', reliability:'fiabilité', attention:'attention', contradictions:'contradictions', queueBypass:'contournement file', reviewKeyboardHint:'Clavier: / recherche · Entrée accepter · N à modifier · R rejeter · E éditer.', reviewSearchPlaceholder:'Rechercher dans la file...', noVisibleReviewItems:'Aucun élément ne correspond aux filtres.', acceptVisibleReviewEvidence:'Accepter visible', needsEditVisibleReviewEvidence:'Visible à modifier', rejectVisibleReviewEvidence:'Rejeter visible', statusEvidenceNeedsEdit:'Preuve marquée à modifier.'
+  });
 
   const SUPPORTED_LANGS = ['ar','en','fr'];
   function esc(value){ return String(value ?? '').replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }

@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-alpha.20",
-  "release_title": "v1.1.0-alpha.20 \u2014 Provider Router + Cost-Aware Run Ledger",
+  "version": "1.1.0-alpha.21",
+  "release_title": "v1.1.0-alpha.21 \u2014 Evidence Workspace UX Hardening + Review Throughput",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,
@@ -44,7 +44,7 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Provider Router + Cost-Aware Run Ledger: local dry-run provider routing, task/capability matching, cost/latency/risk preview, run-ledger enrichment, and provider route/cost/safety report continuity; no automatic paid API calls or runtime network behavior change.",
+  "release_scope": "Evidence Workspace UX Hardening + Review Throughput: local dry-run provider routing, task/capability matching, cost/latency/risk preview, run-ledger enrichment, and provider route/cost/safety report continuity; no automatic paid API calls or runtime network behavior change.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.1.0-alpha.20`\nRuntime capability change: no\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands"
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.1.0-alpha.21`\nRuntime capability change: no\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands"
 }

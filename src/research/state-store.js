@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.20. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.21. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.20';
+    const version = options.version || '1.1.0-alpha.21';
     return {
       plan: null,
       evidence: [],
@@ -44,6 +44,9 @@
       source_imports: [],
       evidence_review_queue: [],
       evidence_review_report: null,
+      evidence_review_filters: {keyword:'', status:'unresolved', source_type:'all', relationship:'all', sort:'needs_review_first', entity:'all', cluster:'all'},
+      evidence_workspace_ux_report: null,
+      review_throughput_report: null,
       editingReviewIndex: -1,
       last_source_import_preview: null,
       source_import_report: null,
@@ -73,7 +76,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.20';
+    const version = options.version || '1.1.0-alpha.21';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);
@@ -87,6 +90,9 @@
     next.source_imports = Array.isArray(next.source_imports) ? next.source_imports.slice(-25) : [];
     next.evidence_review_queue = Array.isArray(next.evidence_review_queue) ? next.evidence_review_queue.slice(-200) : [];
     next.evidence_review_report = next.evidence_review_report && typeof next.evidence_review_report === 'object' ? next.evidence_review_report : null;
+    next.evidence_review_filters = next.evidence_review_filters && typeof next.evidence_review_filters === 'object' ? Object.assign({keyword:'', status:'unresolved', source_type:'all', relationship:'all', sort:'needs_review_first', entity:'all', cluster:'all'}, next.evidence_review_filters) : {keyword:'', status:'unresolved', source_type:'all', relationship:'all', sort:'needs_review_first', entity:'all', cluster:'all'};
+    next.evidence_workspace_ux_report = next.evidence_workspace_ux_report && typeof next.evidence_workspace_ux_report === 'object' ? next.evidence_workspace_ux_report : null;
+    next.review_throughput_report = next.review_throughput_report && typeof next.review_throughput_report === 'object' ? next.review_throughput_report : null;
     next.editingReviewIndex = Number.isInteger(next.editingReviewIndex) ? next.editingReviewIndex : -1;
     next.last_source_import_preview = next.last_source_import_preview && typeof next.last_source_import_preview === 'object' ? next.last_source_import_preview : null;
     next.source_import_report = next.source_import_report && typeof next.source_import_report === 'object' ? next.source_import_report : null;

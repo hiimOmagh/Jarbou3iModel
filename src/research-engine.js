@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.20 — graph export and strategic evidence map. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.21 — graph export and strategic evidence map. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.20';
+  const VERSION = '1.1.0-alpha.21';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -15,6 +15,7 @@
   const analysisTemplates = modules.analysisTemplates;
   const stateStore = modules.stateStore;
   const evidenceController = modules.evidenceController;
+  const evidenceWorkspaceUx = modules.evidenceWorkspaceUx;
   const evidenceScorer = modules.evidenceScorer;
   const exportController = modules.exportController;
   const releaseCandidate = modules.releaseCandidate;
@@ -309,6 +310,62 @@
     return hostedDemoVerification?.buildHostedDemoEvidenceReview ? hostedDemoVerification.buildHostedDemoEvidenceReview({}, {version:VERSION, now:nowIso()}) : null;
   }
 
+  function evidenceReviewContext(){
+    return {
+      evidence: state.evidence || [],
+      source_clusters: buildSourceClusters(),
+      source_cluster_report: sourceClusterGapReport(),
+      source_gap_report: sourceClusterGapReport(),
+      entity_profiles: entityProfiles()
+    };
+  }
+
+  function reviewFilters(){
+    const domFilters = {
+      keyword: $('reviewSearchInput')?.value ?? state.evidence_review_filters?.keyword ?? '',
+      status: $('reviewStatusFilter')?.value ?? state.evidence_review_filters?.status ?? 'unresolved',
+      source_type: $('reviewSourceTypeFilter')?.value ?? state.evidence_review_filters?.source_type ?? 'all',
+      relationship: $('reviewRelationshipFilter')?.value ?? state.evidence_review_filters?.relationship ?? 'all',
+      sort: $('reviewSortSelect')?.value ?? state.evidence_review_filters?.sort ?? 'needs_review_first'
+    };
+    return evidenceWorkspaceUx?.normalizeFilters ? evidenceWorkspaceUx.normalizeFilters(domFilters) : Object.assign({keyword:'',status:'unresolved',source_type:'all',relationship:'all',sort:'needs_review_first'}, domFilters);
+  }
+
+  function persistReviewFilters(){
+    state.evidence_review_filters = reviewFilters();
+    return state.evidence_review_filters;
+  }
+
+  function filteredReviewQueue(){
+    const filters = evidenceWorkspaceUx?.normalizeFilters ? evidenceWorkspaceUx.normalizeFilters(state.evidence_review_filters || reviewFilters()) : (state.evidence_review_filters || {});
+    return evidenceWorkspaceUx?.filterAndSortReviewQueue ? evidenceWorkspaceUx.filterAndSortReviewQueue(state.evidence_review_queue || [], filters, evidenceReviewContext()) : {filters, total_count:(state.evidence_review_queue || []).length, visible_count:(state.evidence_review_queue || []).length, items:(state.evidence_review_queue || []).map((item,index)=>Object.assign({__review_index:index},item))};
+  }
+
+  function evidenceWorkspaceUxReport(){
+    return evidenceWorkspaceUx?.workspaceUxReport ? evidenceWorkspaceUx.workspaceUxReport(state.evidence_review_queue || [], state.evidence_review_filters || reviewFilters(), evidenceReviewContext()) : null;
+  }
+
+  function reviewThroughputReport(){
+    return evidenceWorkspaceUx?.throughputReport ? evidenceWorkspaceUx.throughputReport(state.evidence_review_queue || [], state.evidence_review_filters || reviewFilters(), evidenceReviewContext()) : null;
+  }
+
+  function visibleReviewIndexes(){
+    return filteredReviewQueue().items.map((item)=>Number(item.__review_index)).filter(Number.isInteger);
+  }
+
+  function applyReviewBatchDecision(decision){
+    const indexes = visibleReviewIndexes();
+    const plan = evidenceWorkspaceUx?.batchDecisionPlan ? evidenceWorkspaceUx.batchDecisionPlan(state.evidence_review_queue || [], indexes, decision) : {target_indexes:indexes};
+    if(decision === 'accept') plan.target_indexes.forEach((index)=>promoteReviewItem(index));
+    else if(decision === 'reject') plan.target_indexes.forEach((index)=>rejectReviewItem(index));
+    else plan.target_indexes.forEach((index)=>markReviewItemNeedsEdit(index));
+    state.evidence_workspace_ux_report = evidenceWorkspaceUxReport();
+    state.review_throughput_report = reviewThroughputReport();
+    save(); render();
+    setStatus((decision === 'accept' ? tr('statusEvidenceAccepted') : decision === 'reject' ? tr('statusEvidenceRejected') : tr('statusEvidenceNeedsEdit')) + ' · ' + String(plan.eligible_count || 0), decision === 'reject' ? 'warn' : 'good');
+    return plan;
+  }
+
   function researchPacket(){
     return {
       workflow_version: VERSION,
@@ -367,6 +424,8 @@
       source_imports: state.source_imports || [],
       evidence_review_queue: state.evidence_review_queue || [],
       evidence_review_report: evidenceReviewReport(),
+      evidence_workspace_ux_report: evidenceWorkspaceUxReport(),
+      review_throughput_report: reviewThroughputReport(),
       source_clusters: buildSourceClusters(),
       source_cluster_report: sourceClusterGapReport(),
       source_gap_report: sourceClusterGapReport(),
@@ -1294,6 +1353,7 @@
     const pending = queue.filter(item => item.status === 'pending' || item.status === 'needs_edit').length;
     const accepted = queue.filter(item => item.status === 'accepted').length;
     const rejected = queue.filter(item => item.status === 'rejected').length;
+    const uxReport = evidenceWorkspaceUx?.workspaceUxReport ? evidenceWorkspaceUx.workspaceUxReport(queue, state.evidence_review_filters || {}, evidenceReviewContext()) : null;
     const report = {
       review_version: VERSION,
       generated_at: nowIso(),
@@ -1304,9 +1364,13 @@
       resolved_count: accepted + rejected,
       live_fetching_performed: false,
       verification_claimed: false,
+      evidence_workspace_ux: uxReport ? {workspace_ux_version: uxReport.workspace_ux_version, visible_count: uxReport.visible_review_ids.length, queue_bypass_enabled:false, batch_controls_enabled:true} : null,
+      throughput_readiness: uxReport?.throughput_report?.readiness || null,
       readiness: pending ? 'review_required' : (queue.length ? 'review_resolved' : 'empty')
     };
     state.evidence_review_report = report;
+    state.evidence_workspace_ux_report = uxReport;
+    state.review_throughput_report = uxReport?.throughput_report || null;
     return report;
   }
 
@@ -1328,6 +1392,8 @@
     }));
     state.evidence_review_queue = existing.concat(queued);
     state.evidence_review_report = evidenceReviewReport();
+    state.evidence_workspace_ux_report = evidenceWorkspaceUxReport();
+    state.review_throughput_report = reviewThroughputReport();
     state.source_imports = [...(state.source_imports || []), {
       import_id: importId,
       imported_at: nowIso(),
@@ -1409,6 +1475,8 @@
     downloadJson(`jarbou3i-evidence-review-queue-${Date.now()}.json`, {
       workflow_version: VERSION,
       evidence_review_report: evidenceReviewReport(),
+      evidence_workspace_ux_report: evidenceWorkspaceUxReport(),
+      review_throughput_report: reviewThroughputReport(),
       evidence_review_queue: state.evidence_review_queue || []
     });
     setStatus(tr('statusReviewQueueExported'), 'good');
@@ -2039,13 +2107,18 @@
     const el = $('evidenceReviewOutput');
     if(!el) return;
     const queue = state.evidence_review_queue || [];
+    const filters = state.evidence_review_filters || reviewFilters();
+    const filtered = evidenceWorkspaceUx?.filterAndSortReviewQueue ? evidenceWorkspaceUx.filterAndSortReviewQueue(queue, filters, evidenceReviewContext()) : {filters, total_count:queue.length, visible_count:queue.length, items:queue.map((item,index)=>Object.assign({__review_index:index}, item))};
     const report = evidenceReviewReport();
+    const uxReport = evidenceWorkspaceUxReport();
     if(!queue.length){
       el.innerHTML = emptyState(tr('evidenceReviewEmpty'), tr('sourceImportReviewEmptyBody'), tr('previewSourceImport'));
       return;
     }
-    const rows = queue.slice().reverse().map((item, revIdx) => {
-      const i = queue.length - 1 - revIdx;
+    const facets = uxReport?.facets || {source_types:[]};
+    const sourceTypeOptions = ['all'].concat(facets.source_types || []).map((value)=>`<option value="${esc(value)}" ${filtered.filters.source_type===value?'selected':''}>${esc(value==='all'?tr('allSources'):lST(value))}</option>`).join('');
+    const rows = filtered.items.map((item) => {
+      const i = Number(item.__review_index);
       const e = item.evidence || {};
       const resolved = item.status === 'accepted' || item.status === 'rejected';
       const controls = window.Jarbou3iResearchModules.sourcePacketBuilder?.reviewControlsForEvidence ? window.Jarbou3iResearchModules.sourcePacketBuilder.reviewControlsForEvidence(e) : (item.scoring_review_controls || {});
@@ -2059,7 +2132,11 @@
         <td><div class="rowActions">${resolved ? '' : `<button class="btn ghost reviewAccept" type="button" data-index="${i}">${esc(tr('accept'))}</button><button class="btn ghost reviewNeedsEdit" type="button" data-index="${i}">${esc(tr('needsEdit'))}</button><button class="btn ghost reviewEdit" type="button" data-index="${i}">${esc(tr('editCandidate'))}</button><button class="btn ghost reviewReject" type="button" data-index="${i}">${esc(tr('reject'))}</button>`}</div></td>
       </tr>`;
     }).join('');
-    el.innerHTML = `<div class="researchJsonCard evidenceReviewReportCard"><h4>${esc(tr('evidenceReviewTitle'))}</h4><div class="miniChips"><span>${esc(report.pending_count)} ${esc(tr('pending'))}</span><span>${esc(report.accepted_count)} ${esc(tr('accepted'))}</span><span>${esc(report.rejected_count)} ${esc(tr('rejected'))}</span><span>${esc(tr('verifiedLabel'))}:${esc(localizedBoolean(report.verification_claimed))}</span></div></div><div class="researchTableWrap"><table class="researchTable evidenceReviewTable"><thead><tr><th>ID</th><th>${esc(tr('reviewStatus'))}</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('supports'))}/${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    const throughput = uxReport?.throughput_report || {};
+    const signals = uxReport?.unresolved_signals || {};
+    const filterHtml = `<div class="researchJsonCard evidenceReviewThroughputCard"><h4>${esc(tr('reviewThroughputTitle'))}</h4><div class="miniChips"><span>${esc(filtered.visible_count)}/${esc(filtered.total_count)} ${esc(tr('visible'))}</span><span>${esc(tr('pending'))}:${esc(report.pending_count)}</span><span>${esc(tr('needsEdit'))}:${esc(throughput.counts?.needs_edit || 0)}</span><span>${esc(tr('contradictions'))}:${esc(throughput.contradiction_open_count || 0)}</span><span>${esc(tr('gaps'))}:${esc((signals.source_gap_warnings || []).length)}</span></div><small>${esc(tr('reviewKeyboardHint'))}</small><div class="reviewFilterGrid"><input id="reviewSearchInput" type="search" value="${esc(filtered.filters.keyword || '')}" placeholder="${esc(tr('reviewSearchPlaceholder'))}" /><select id="reviewStatusFilter"><option value="unresolved" ${filtered.filters.status==='unresolved'?'selected':''}>${esc(tr('unresolved'))}</option><option value="all" ${filtered.filters.status==='all'?'selected':''}>${esc(tr('all'))}</option><option value="pending" ${filtered.filters.status==='pending'?'selected':''}>${esc(tr('pending'))}</option><option value="needs_edit" ${filtered.filters.status==='needs_edit'?'selected':''}>${esc(tr('needsEdit'))}</option><option value="accepted" ${filtered.filters.status==='accepted'?'selected':''}>${esc(tr('accepted'))}</option><option value="rejected" ${filtered.filters.status==='rejected'?'selected':''}>${esc(tr('rejected'))}</option><option value="resolved" ${filtered.filters.status==='resolved'?'selected':''}>${esc(tr('resolved'))}</option></select><select id="reviewSourceTypeFilter">${sourceTypeOptions}</select><select id="reviewRelationshipFilter"><option value="all" ${filtered.filters.relationship==='all'?'selected':''}>${esc(tr('allRelationships'))}</option><option value="supports" ${filtered.filters.relationship==='supports'?'selected':''}>${esc(tr('supports'))}</option><option value="contradicts" ${filtered.filters.relationship==='contradicts'?'selected':''}>${esc(tr('contradicts'))}</option><option value="unlinked" ${filtered.filters.relationship==='unlinked'?'selected':''}>${esc(tr('unlinked'))}</option></select><select id="reviewSortSelect"><option value="needs_review_first" ${filtered.filters.sort==='needs_review_first'?'selected':''}>${esc(tr('needsReviewFirst'))}</option><option value="newest" ${filtered.filters.sort==='newest'?'selected':''}>${esc(tr('newest'))}</option><option value="oldest" ${filtered.filters.sort==='oldest'?'selected':''}>${esc(tr('oldest'))}</option><option value="reliability_desc" ${filtered.filters.sort==='reliability_desc'?'selected':''}>${esc(tr('reliability'))}</option><option value="attention_desc" ${filtered.filters.sort==='attention_desc'?'selected':''}>${esc(tr('attention'))}</option></select></div></div>`;
+    el.innerHTML = filterHtml + `<div class="researchJsonCard evidenceReviewReportCard"><h4>${esc(tr('evidenceReviewTitle'))}</h4><div class="miniChips"><span>${esc(report.pending_count)} ${esc(tr('pending'))}</span><span>${esc(report.accepted_count)} ${esc(tr('accepted'))}</span><span>${esc(report.rejected_count)} ${esc(tr('rejected'))}</span><span>${esc(tr('verifiedLabel'))}:${esc(localizedBoolean(report.verification_claimed))}</span><span>${esc(tr('queueBypass'))}:${esc(localizedBoolean(false))}</span></div></div><div class="researchTableWrap"><table class="researchTable evidenceReviewTable"><thead><tr><th>ID</th><th>${esc(tr('reviewStatus'))}</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('supports'))}/${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${rows || `<tr><td colspan="6">${esc(tr('noVisibleReviewItems'))}</td></tr>`}</tbody></table></div>`;
+    ['reviewSearchInput','reviewStatusFilter','reviewSourceTypeFilter','reviewRelationshipFilter','reviewSortSelect'].forEach(id => $(id)?.addEventListener('input', () => { persistReviewFilters(); save(); render(); }));
     document.querySelectorAll('.reviewAccept').forEach(btn => btn.addEventListener('click', () => { promoteReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceAccepted'), 'good'); }));
     document.querySelectorAll('.reviewReject').forEach(btn => btn.addEventListener('click', () => { rejectReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceRejected'), 'warn'); }));
     document.querySelectorAll('.reviewEdit').forEach(btn => btn.addEventListener('click', () => { editReviewItem(Number(btn.dataset.index)); save(); render(); }));
@@ -2440,6 +2517,9 @@
     $("copySourcePacketBuilderBtn")?.addEventListener("click", copyBuiltSourcePacket);
     $("exportSourcePacketBuilderBtn")?.addEventListener("click", exportBuiltSourcePacket);
     $("acceptAllReviewEvidenceBtn")?.addEventListener("click", acceptAllReviewEvidence);
+    $("acceptVisibleReviewEvidenceBtn")?.addEventListener("click", () => applyReviewBatchDecision('accept'));
+    $("needsEditVisibleReviewEvidenceBtn")?.addEventListener("click", () => applyReviewBatchDecision('needs_edit'));
+    $("rejectVisibleReviewEvidenceBtn")?.addEventListener("click", () => applyReviewBatchDecision('reject'));
     $("acceptEditedReviewEvidenceBtn")?.addEventListener("click", acceptEditedReviewEvidence);
     $("exportEvidenceReviewQueueBtn")?.addEventListener("click", exportEvidenceReviewQueue);
     $("clearResolvedReviewEvidenceBtn")?.addEventListener("click", clearResolvedReviewEvidence);
@@ -2472,6 +2552,17 @@
     $('runCritiqueBtn')?.addEventListener('click', () => { state.critique = buildCritique(); save(); render(); setStatus(tr('statusCritiqued'), 'good'); });
     $('copyDeepPromptBtn')?.addEventListener('click', () => copyText(buildDeepResearchPrompt()));
     ['langAr','langEn','langFr'].forEach(id => $(id)?.addEventListener('click', () => setTimeout(render, 40)));
+    document.addEventListener('keydown', (event) => {
+      const tag = String(event.target?.tagName || '').toLowerCase();
+      if(tag === 'input' || tag === 'textarea' || tag === 'select') return;
+      const first = visibleReviewIndexes()[0];
+      if(!Number.isInteger(first)) return;
+      if(event.key === '/') { event.preventDefault(); $('reviewSearchInput')?.focus(); return; }
+      if(event.key === 'Enter') { event.preventDefault(); promoteReviewItem(first); save(); render(); setStatus(tr('statusEvidenceAccepted'), 'good'); }
+      if(event.key?.toLowerCase?.() === 'n') { event.preventDefault(); markReviewItemNeedsEdit(first); save(); render(); setStatus(tr('statusEvidenceNeedsEdit'), 'warn'); }
+      if(event.key?.toLowerCase?.() === 'r') { event.preventDefault(); rejectReviewItem(first); save(); render(); setStatus(tr('statusEvidenceRejected'), 'warn'); }
+      if(event.key?.toLowerCase?.() === 'e') { event.preventDefault(); editReviewItem(first); save(); render(); }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', () => { wire(); applyProviderSettingsToUi(); render(); });

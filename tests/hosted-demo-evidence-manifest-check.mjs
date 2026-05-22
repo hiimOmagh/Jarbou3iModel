@@ -6,10 +6,10 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.20';
-const TITLE = 'Provider Router + Cost-Aware Run Ledger';
+const VERSION = '1.1.0-alpha.21';
+const TITLE = 'Evidence Workspace UX Hardening + Review Throughput';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.20-provider-router-cost-aware-run-ledger-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.21-evidence-workspace-ux-hardening-review-throughput-patch.zip';
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || releaseDocExists(file);
@@ -18,8 +18,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.20-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.20.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.21-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.21.json');
 const spec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -54,7 +54,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.1.0-alpha.20'",
+  "const VERSION = '1.1.0-alpha.21'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',
@@ -95,18 +95,18 @@ const review = hosted.buildHostedDemoEvidenceReview({}, { version:VERSION, now:'
 assert.equal(review.metadata_manifest_required, true);
 assert.ok(review.review_items.some((item) => item.artifact_id === 'complete_capture_manifest'));
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.20'"));
-assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.20'"), 'migration order must preserve v1.0.28 and append v1.1.0-alpha.20');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.21'"));
+assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.21'"), 'migration order must preserve v1.0.28 and append v1.1.0-alpha.21');
 assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration defaults must include evidence manifest metadata requirement');
 
 for (const file of [
   'docs/v1.0.27-release-provenance-ledger-gate.md',
   'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
-  'docs/v1.1.0-alpha.20-provider-router-cost-aware-run-ledger.md',
+  'docs/v1.1.0-alpha.21-evidence-workspace-ux-hardening-review-throughput.md',
   'fixtures/migrations/v1.0.28-packet.json',
-  'fixtures/migrations/v1.1.0-alpha.20-packet.json',
+  'fixtures/migrations/v1.1.0-alpha.21-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.28.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.20.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.21.json',
   'tests/hosted-demo-evidence-manifest-check.mjs',
   'tests/version-suite-registry-check.mjs'
 ]) assert.ok(exists(file), `missing ${file}`);
@@ -123,9 +123,9 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  readReleaseDoc('docs/v1.1.0-alpha.20-provider-router-cost-aware-run-ledger.md')
+  readReleaseDoc('docs/v1.1.0-alpha.21-evidence-workspace-ux-hardening-review-throughput.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.20') || corpus.includes('1.1.0-alpha.20'), 'release corpus must mention v1.1.0-alpha.20');
+  assert.ok(corpus.includes('v1.1.0-alpha.21') || corpus.includes('1.1.0-alpha.21'), 'release corpus must mention v1.1.0-alpha.21');
   assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|Fixture Registry|payload compression|test organization|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
 }
 
