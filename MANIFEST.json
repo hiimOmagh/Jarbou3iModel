@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0-rc.1-copyfix.1",
-  "release_title": "v1.1.0-rc.1-copyfix.1 — Stable Consolidation + Public Surface Freeze",
+  "version": "1.1.0-rc.2",
+  "release_title": "v1.1.0-rc.2 — Canonical Lock Evidence Bundle + Final Stable Handoff",
   "package": "jarbou3i-research-engine",
   "release_type": "cleanup-only-alpha-patch",
   "runtime_capability_change": false,
@@ -44,7 +44,7 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Stable consolidation and public surface freeze; public-demo copy moves toward v1.1.0 stable candidate while internal validation metadata remains rc.1. No feature expansion.",
+  "release_scope": "Canonical lock evidence bundle and final stable handoff; public-demo copy moves toward v1.1.0 stable candidate while internal validation metadata remains rc.1. No feature expansion.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.1.0-rc.1-copyfix.1`\nRuntime capability change: no\nPublic surface: `v1.1.0 Stable Candidate`\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands"
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.1.0-rc.2`\nRuntime capability change: no\nPublic surface: `v1.1.0 Stable Candidate`\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands"
 }

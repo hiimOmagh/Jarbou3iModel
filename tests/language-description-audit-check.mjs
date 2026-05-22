@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-rc.1-copyfix.1';
+const VERSION = '1.1.0-rc.2';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
@@ -82,9 +82,9 @@ for (const lang of ['ar', 'en', 'fr']) {
   }
 }
 
-assert.ok(researchCopy.en.evidenceReviewGateBody.includes('Stable consolidation') && researchCopy.en.evidenceReviewGateBody.includes('v1.1.0'), 'English evidence review gate body must describe rc.1 stable consolidation scope');
-assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('الدمج المستقر') && researchCopy.ar.evidenceReviewGateBody.includes('v1.1.0'), 'Arabic evidence review gate body must describe rc.1 stable consolidation scope');
-assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('consolidation stable') && researchCopy.fr.evidenceReviewGateBody.includes('v1.1.0'), 'French evidence review gate body must describe rc.1 stable consolidation scope');
+assert.ok(researchCopy.en.evidenceReviewGateBody.includes('Stable consolidation') && researchCopy.en.evidenceReviewGateBody.includes('v1.1.0'), 'English evidence review gate body must describe rc.1 canonical evidence bundling scope');
+assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('الدمج المستقر') && researchCopy.ar.evidenceReviewGateBody.includes('v1.1.0'), 'Arabic evidence review gate body must describe rc.1 canonical evidence bundling scope');
+assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('consolidation stable') && researchCopy.fr.evidenceReviewGateBody.includes('v1.1.0'), 'French evidence review gate body must describe rc.1 canonical evidence bundling scope');
 assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French rc.1 evidence review gate body must not inherit English release copy');
 assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('provider routing'), false, 'French rc.1 evidence review gate body must not expose alpha.20 provider-router release copy');
 

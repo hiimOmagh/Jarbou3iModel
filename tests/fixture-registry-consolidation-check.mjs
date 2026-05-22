@@ -4,9 +4,9 @@ import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-rc.1-copyfix.1';
-const TITLE = 'Stable Consolidation + Public Surface Freeze';
-const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-rc.1-copyfix.1-evidence-pack-export-v3-brief-traceability-patch.zip';
+const VERSION = '1.1.0-rc.2';
+const TITLE = 'Canonical Lock Evidence Bundle + Final Stable Handoff';
+const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.1.0-rc.2-evidence-pack-export-v3-brief-traceability-patch.zip';
 
 assert.equal(migrationRegistry.registry_version, VERSION);
 assert.equal(migrationRegistry.registry_type, 'migration_fixture_registry');
@@ -24,15 +24,15 @@ for (const activeAsset of ['assets/jarbou3i-mascot-192.png','assets/jarbou3i-mas
   assert.equal(fs.existsSync(activeAsset), true, `${activeAsset} must remain`);
 }
 
-for (const version of ['v0.11.0','v1.0.30','v1.1.0-alpha.3','v1.1.0-rc.1-copyfix.1']) {
+for (const version of ['v0.11.0','v1.0.30','v1.1.0-alpha.3','v1.1.0-rc.2']) {
   assert.ok(getMigrationFixture(`fixtures/migrations/${version}-packet.json`), `${version} migration fixture must load from registry`);
 }
-for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0-rc.1-copyfix.1']) {
+for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0-rc.2']) {
   assert.ok(getPrivacyFixture(`fixtures/privacy/browser-generated-export-${version}.json`), `${version} privacy fixture must load from registry`);
 }
 
-const currentMigration = getMigrationFixture('fixtures/migrations/v1.1.0-rc.1-copyfix.1-packet.json');
-const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.1-copyfix.1.json');
+const currentMigration = getMigrationFixture('fixtures/migrations/v1.1.0-rc.2-packet.json');
+const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2.json');
 for (const packet of [currentMigration, currentPrivacy]) {
   assert.equal(packet.workflow_version, VERSION);
   assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);

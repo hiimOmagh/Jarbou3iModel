@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.1.0-rc.1-copyfix.1",
-  "release_title": "v1.1.0-rc.1-copyfix.1 — Stable Consolidation + Public Surface Freeze",
+  "version_suite_registry_version": "1.1.0-rc.2",
+  "release_title": "v1.1.0-rc.2 — Canonical Lock Evidence Bundle + Final Stable Handoff",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

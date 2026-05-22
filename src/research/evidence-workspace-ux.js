@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Stable Consolidation + Public Surface Freeze v1.1.0-rc.1-copyfix.1. Local-only review ergonomics; no queue bypass. */
+/* Jarbou3i Research Engine Canonical Lock Evidence Bundle + Final Stable Handoff v1.1.0-rc.2. Local-only review ergonomics; no queue bypass. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-rc.1-copyfix.1';
+  const VERSION = '1.1.0-rc.2';
   const VALID_STATUS = new Set(['all','pending','needs_edit','accepted','rejected','resolved','unresolved']);
   const VALID_REL = new Set(['all','supports','contradicts','unlinked']);
   const VALID_SORT = new Set(['newest','oldest','reliability_desc','attention_desc','needs_review_first']);

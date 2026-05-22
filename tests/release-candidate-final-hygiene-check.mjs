@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-rc.1-copyfix.1';
+const VERSION = '1.1.0-rc.2';
 const source = fs.readFileSync('src/research/release-candidate-hygiene.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const exportPack = fs.readFileSync('src/research/export-pack.js', 'utf8');
@@ -26,11 +26,11 @@ assert.equal(typeof hygiene.buildFinalRepoHygieneReport, 'function');
 assert.equal(typeof hygiene.buildReleaseCandidateHygieneBundle, 'function');
 
 const corpus = {files:{
-  'README.md':'v1.1.0-rc.1-copyfix.1 current release',
-  'CHANGELOG.md':'v1.1.0-rc.1-copyfix.1 current release',
-  'PUBLIC_DEMO.md':'v1.1.0-rc.1-copyfix.1 current release',
-  'docs/current-release.md':'v1.1.0-rc.1-copyfix.1 current release',
-  'docs/qa-matrix.md':'v1.1.0-rc.1-copyfix.1 current release',
+  'README.md':'v1.1.0-rc.2 current release',
+  'CHANGELOG.md':'v1.1.0-rc.2 current release',
+  'PUBLIC_DEMO.md':'v1.1.0-rc.2 current release',
+  'docs/current-release.md':'v1.1.0-rc.2 current release',
+  'docs/qa-matrix.md':'v1.1.0-rc.2 current release',
   'src/research/golden-workflow-corpus.js':'module',
   'src/research/publication-review-gate.js':'module',
   'src/research/evidence-pack-v3.js':'module',
