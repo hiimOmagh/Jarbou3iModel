@@ -1,11 +1,11 @@
 # Current Release
 
-## v1.1.0-fix.1 — Stable Public Localization Matrix Fix
+## v1.1.0-fix.2 — Lockfile Dependency Version Integrity Fix
 
-Stable corrective build for `v1.1.0-fix.1 — Public Demo Stable`. It fixes the public EN/AR/FR stable labels and release copy so the evidence matrix can validate the public demo surface while preserving internal evidence metadata as `1.1.0-fix.1`.
+Stable corrective build for `v1.1.0-fix.2 — Public Demo Stable`. It fixes the public EN/AR/FR stable labels and release copy so the evidence matrix can validate the public demo surface while preserving internal evidence metadata as `1.1.0-fix.2`.
 
 Public label: `v1.1.0 Public Demo Stable`
-Internal build version: `1.1.0-fix.1`
+Internal build version: `1.1.0-fix.2`
 
 Scope:
 - fix stable public Arabic label/copy
@@ -20,7 +20,7 @@ Boundaries preserved: no product feature changes, no UI redesign, no live connec
 Feature surface is frozen for this corrective stable localization patch.
 A ZIP archive alone is insufficient for release approval.
 
-Internal RC validation metadata remains represented by the internal build version `1.1.0-fix.1`; the public surface stays `v1.1.0 Public Demo Stable`.
+Internal RC validation metadata remains represented by the internal build version `1.1.0-fix.2`; the public surface stays `v1.1.0 Public Demo Stable`.
 Screenshots alone are insufficient for release approval. A ZIP archive alone is insufficient.
 This patch introduces no new feature surface.
 
@@ -28,14 +28,14 @@ This patch introduces no new feature surface.
 
 Package: `jarbou3i-research-engine`
 Version: `1.1.0`
-Version: `1.1.0-fix.1`
+Version: `1.1.0-fix.2`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions
 Required cleanup commands
 
 
-Node 24 CI compatibility preserved for v1.1.0-fix.1.
+Node 24 CI compatibility preserved for v1.1.0-fix.2.
 
 Release-lock requirements: green no-browser CI, green browser CI, and reviewed hosted-demo evidence are mandatory before locking.
 

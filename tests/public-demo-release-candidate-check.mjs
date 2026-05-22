@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.1.0-fix.1';
-const RELEASE = 'v1.1.0-fix.1 — Public Demo Stable';
+const VERSION = '1.1.0-fix.2';
+const RELEASE = 'v1.1.0-fix.2 — Public Demo Stable';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const index = fs.readFileSync('index.html', 'utf8');
@@ -23,7 +23,7 @@ for (const doc of [current, publicDemo, roadmap, qa]) {
 }
 assert.ok(current.includes('Feature surface') || current.includes('feature surface'), 'current release must state feature freeze');
 assert.ok(current.includes('A ZIP archive alone is insufficient'), 'current release must preserve ZIP insufficiency warning');
-assert.ok(publicDemo.includes('1.1.0-fix.1') && /hosted.*evidence|hosted.*metadata/i.test(publicDemo), 'public demo must state hosted evidence lock requirement');
+assert.ok(publicDemo.includes('1.1.0-fix.2') && /hosted.*evidence|hosted.*metadata/i.test(publicDemo), 'public demo must state hosted evidence lock requirement');
 assert.ok(roadmap.includes('v1.1.0') && /stable/i.test(roadmap), 'roadmap must point to stable after RC1');
 assert.ok(!roadmap.includes('alpha.26 unless') || roadmap.includes('No alpha.26 unless'), 'roadmap must reject default alpha continuation');
 assert.equal(registry.runtime_capability_change, false);

@@ -1,12 +1,12 @@
 # Public Demo — v1.1.0 Public Demo Stable
 
-`v1.1.0-fix.1 — Stable Public Localization Matrix Fix`
+`v1.1.0-fix.2 — Lockfile Dependency Version Integrity Fix`
 
-Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0-fix.1`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
+Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0-fix.2`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
 
 
 No live scraping, no live provider execution, no OAuth/backend expansion, and no automatic source verification claims.
-Hosted evidence and hosted metadata must confirm 1.1.0-fix.1 before lock.
+Hosted evidence and hosted metadata must confirm 1.1.0-fix.2 before lock.
 
 
 Screenshots alone are insufficient for release approval.

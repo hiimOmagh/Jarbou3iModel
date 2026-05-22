@@ -6,7 +6,7 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-fix.1';
+const VERSION = '1.1.0-fix.2';
 const TITLE = 'Public Demo Stable';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const repoRoot = process.cwd();
@@ -125,9 +125,9 @@ for (const file of releaseTreeFiles) {
   assert.equal(/(^|\/)XX[A-Za-z0-9_-]*$/.test(file), false, `temporary XX artifact must stay outside committed release tree: ${file}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.1'"), 'migration target must be v1.1.0');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.1'"), 'migration order must preserve v1.0.24 and append v1.1.0');
-assert.ok(migrations.includes("release_title:'v1.1.0-fix.1 — Public Demo Stable'"), 'migration default release title must identify v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.2'"), 'migration target must be v1.1.0');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.2'"), 'migration order must preserve v1.0.24 and append v1.1.0');
+assert.ok(migrations.includes("release_title:'v1.1.0-fix.2 — Public Demo Stable'"), 'migration default release title must identify v1.1.0');
 
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must run release hygiene through registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');

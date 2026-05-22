@@ -1,6 +1,6 @@
 {
-  "evidence_matrix_config_version": "1.1.0-fix.1",
-  "internal_build_version": "1.1.0-fix.1",
+  "evidence_matrix_config_version": "1.1.0-fix.2",
+  "internal_build_version": "1.1.0-fix.2",
   "public_version_label": "v1.1.0 Public Demo Stable",
   "locales": [
     "en",

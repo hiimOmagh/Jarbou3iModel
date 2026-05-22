@@ -33,15 +33,15 @@ const trackedPaths = (() => {
   }
 })();
 
-assert.equal(pkg.version, '1.1.0-fix.1');
+assert.equal(pkg.version, '1.1.0-fix.2');
 assert.ok(pkg.description.includes('evidence scoring'));
-assert.equal(schema.properties.workflow_version.const, '1.1.0-fix.1');
-assert.equal(sample.workflow_version, '1.1.0-fix.1');
-assert.equal(migrationFixture.workflow_version, '1.1.0-fix.1');
-assert.equal(privacyFixture.workflow_version, '1.1.0-fix.1');
-assert.equal(sample.release_notes.release_title, 'v1.1.0-fix.1 — Public Demo Stable');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-fix.1 — Public Demo Stable');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-fix.1 — Public Demo Stable');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-fix.2');
+assert.equal(sample.workflow_version, '1.1.0-fix.2');
+assert.equal(migrationFixture.workflow_version, '1.1.0-fix.2');
+assert.equal(privacyFixture.workflow_version, '1.1.0-fix.2');
+assert.equal(sample.release_notes.release_title, 'v1.1.0-fix.2 — Public Demo Stable');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.1.0-fix.2 — Public Demo Stable');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.1.0-fix.2 — Public Demo Stable');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',
@@ -78,10 +78,10 @@ for (const file of [
 
 assert.equal(getMigrationFixture('fixtures/migrations/v1.0.4-packet.json').workflow_version, '1.0.4');
 assert.ok(migrationSource.includes("'1.0.4'"), 'v1.0.4 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.1.0-fix.1'"), 'v1.1.0 must remain a supported migration source');
-assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.1'"), 'v1.0.19 must migrate into v1.1.0');
-assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-fix.1'"));
-assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-fix.1'"));
+assert.ok(migrationSource.includes("'1.1.0-fix.2'"), 'v1.1.0 must remain a supported migration source');
+assert.ok(migrationSource.includes("'1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.2'"), 'v1.0.19 must migrate into v1.1.0');
+assert.ok(migrationSource.includes("const TARGET_VERSION = '1.1.0-fix.2'"));
+assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.1.0-fix.2'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
   assert.ok(corpus.includes('v1.1.0'), 'release corpus missing v1.1.0');

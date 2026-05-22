@@ -7,7 +7,7 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-fix.1';
+const VERSION = '1.1.0-fix.2';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Public Demo Stable';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -95,8 +95,8 @@ assert.equal(provenance.buildReleaseProvenanceLedger({ artifact_sha256_recorded:
 assert.ok(index.includes('src/research/release-provenance-ledger.js'), 'index must load provenance module');
 assert.ok(engine.includes('releaseProvenanceLedgerReport()'), 'engine must build provenance report');
 assert.ok(engine.includes('release_provenance_ledger'), 'research packet must export provenance ledger');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.1'"), 'migration target mismatch');
-assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.1'"), 'migration order must preserve v1.0.26 and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.2'"), 'migration target mismatch');
+assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.2'"), 'migration order must preserve v1.0.26 and append v1.1.0');
 assert.ok(migrations.includes('defaultReleaseProvenanceLedger'), 'migration defaults must include provenance ledger');
 
 for (const required of [
@@ -125,7 +125,7 @@ for (const corpus of [
   read('docs/privacy-audit.md'),
   readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.1.0-fix.1'), 'release corpus must mention v1.1.0');
+  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.1.0-fix.2'), 'release corpus must mention v1.1.0');
   assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|Fixture Registry|payload compression|test organization|fixture registry consolidation|provenance ledger|changed-files-only|visual freeze|mobile header/i.test(corpus), 'release corpus must describe provenance gate');
 }
 

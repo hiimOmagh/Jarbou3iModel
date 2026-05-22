@@ -42,10 +42,10 @@ const templates = context.window.Jarbou3iResearchModules.sourcePacketTemplates;
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const roundtrip = context.window.Jarbou3iResearchModules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.1.0-fix.1');
-assert.equal(templates.VERSION, '1.1.0-fix.1');
-assert.equal(schema.properties.workflow_version.const, '1.1.0-fix.1');
-assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.1.0-fix.1');
+assert.equal(pkg.version, '1.1.0-fix.2');
+assert.equal(templates.VERSION, '1.1.0-fix.2');
+assert.equal(schema.properties.workflow_version.const, '1.1.0-fix.2');
+assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.1.0-fix.2');
 
 const expectedIds = ['official_report', 'reddit_thread', 'youtube_transcript', 'market_signal', 'github_release', 'generic_article'];
 assert.equal(JSON.stringify(templates.listTemplates().map((item) => item.template_id)), JSON.stringify(expectedIds));
@@ -57,7 +57,7 @@ for (const id of expectedIds) {
     claim: `Template ${id} claim remains a manual drafting scaffold.`,
     quote: `Template ${id} traceable excerpt placeholder.`
   }, { now: '2026-05-03T00:00:00.000Z' });
-  assert.equal(packet.workflow_version, '1.1.0-fix.1');
+  assert.equal(packet.workflow_version, '1.1.0-fix.2');
   assert.equal(packet.builder_report.live_fetching_performed, false);
   assert.equal(packet.builder_report.verification_claimed, false);
   assert.match(packet.builder_report.policy, /no_fetch_no_verification/);
@@ -73,9 +73,9 @@ for (const id of expectedIds) {
 }
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.1.0-fix.1');
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-fix.1 — Public Demo Stable');
-  assert.equal(packet.source_packet_template_report.template_report_version, '1.1.0-fix.1');
+  assert.equal(packet.workflow_version, '1.1.0-fix.2');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0-fix.2 — Public Demo Stable');
+  assert.equal(packet.source_packet_template_report.template_report_version, '1.1.0-fix.2');
   assert.equal(packet.source_packet_template_report.live_fetching_performed, false);
   assert.equal(packet.source_packet_template_report.verification_claimed, false);
   assert.equal(packet.source_packet_template_report.source_behavior_changed, false);

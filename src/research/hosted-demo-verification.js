@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-fix.1';
+  const VERSION = '1.1.0-fix.2';
   const DEPLOYMENT_CHECKS = Object.freeze([
     {check_id:'static_host_ready', label:'Static host serves index, assets, manifest, and modules', required:true},
     {check_id:'app_version_matches_package', label:'Hosted app version matches package metadata', required:true},

@@ -1,8 +1,8 @@
 # Jarbou3i Research Engine
 
-`v1.1.0-fix.1 — Stable Public Localization Matrix Fix`
+`v1.1.0-fix.2 — Lockfile Dependency Version Integrity Fix`
 
-Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0-fix.1`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
+Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0-fix.2`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
 
 
 Screenshots alone are insufficient for release approval.
