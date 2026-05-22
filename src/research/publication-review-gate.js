@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine publication review gate and claim boundary audit v1.1.0-rc.2. */
+/* Jarbou3i Research Engine publication review gate and claim boundary audit v1.1.0-rc.2-fix.1. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-rc.2';
+  const VERSION = '1.1.0-rc.2-fix.1';
   const MODEL = 'publication_review_gate.v1';
 
   function nowIso(){ return new Date().toISOString(); }

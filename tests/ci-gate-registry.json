@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-rc.2",
-  "release_title": "v1.1.0-rc.2 — Canonical Lock Evidence Bundle + Final Stable Handoff",
+  "ci_gate_registry_version": "1.1.0-rc.2-fix.1",
+  "release_title": "v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -386,7 +386,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-rc.2",
+    "version": "1.1.0-rc.2-fix.1",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -401,7 +401,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-rc.2",
+    "version": "1.1.0-rc.2-fix.1",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -516,7 +516,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0-rc.2",
+    "version": "1.1.0-rc.2-fix.1",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -536,7 +536,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0-rc.2",
+    "version": "1.1.0-rc.2-fix.1",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

@@ -29,14 +29,14 @@ jobs:
       - name: Run no-browser gate with lock-evidence log
         shell: bash
         run: |
-          mkdir -p ci-artifacts/lock-evidence-input/logs
-          npm run test:ci:no-browser 2>&1 | tee ci-artifacts/lock-evidence-input/logs/no-browser.log
+          mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
+          npm run test:ci:no-browser 2>&1 | tee "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log"
       - name: Upload no-browser lock evidence log
         uses: actions/upload-artifact@v6
         if: always()
         with:
           name: no-browser-lock-evidence-log
-          path: ci-artifacts/lock-evidence-input/logs/no-browser.log
+          path: ${{ runner.temp }}/lock-evidence-input/logs/no-browser.log
 
   browser:
     runs-on: ubuntu-latest
@@ -54,20 +54,21 @@ jobs:
       - name: Run browser gate with lock-evidence log
         shell: bash
         run: |
-          mkdir -p ci-artifacts/lock-evidence-input/logs
-          PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser 2>&1 | tee ci-artifacts/lock-evidence-input/logs/browser.log
+          mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
+          mkdir -p "$RUNNER_TEMP/hosted-demo-evidence"
+          HOSTED_DEMO_EVIDENCE_DIR="$RUNNER_TEMP/hosted-demo-evidence" PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser 2>&1 | tee "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
       - name: Upload hosted demo evidence
         uses: actions/upload-artifact@v6
         if: always()
         with:
           name: hosted-demo-evidence
-          path: ci-artifacts/hosted-demo-evidence
+          path: ${{ runner.temp }}/hosted-demo-evidence
       - name: Upload browser lock evidence log
         uses: actions/upload-artifact@v6
         if: always()
         with:
           name: browser-lock-evidence-log
-          path: ci-artifacts/lock-evidence-input/logs/browser.log
+          path: ${{ runner.temp }}/lock-evidence-input/logs/browser.log
 
   lock-evidence-bundle:
     runs-on: ubuntu-latest
@@ -85,21 +86,25 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: no-browser-lock-evidence-log
-          path: ci-artifacts/lock-evidence-input/logs
+          path: ${{ runner.temp }}/lock-evidence-input/logs
       - name: Download browser lock evidence log
         uses: actions/download-artifact@v6
         with:
           name: browser-lock-evidence-log
-          path: ci-artifacts/lock-evidence-input/logs
+          path: ${{ runner.temp }}/lock-evidence-input/logs
       - name: Download hosted demo evidence
         uses: actions/download-artifact@v6
         with:
           name: hosted-demo-evidence
-          path: ci-artifacts/hosted-demo-evidence
+          path: ${{ runner.temp }}/hosted-demo-evidence
       - name: Build canonical lock evidence bundle
+        env:
+          LOCK_EVIDENCE_INPUT_DIR: ${{ runner.temp }}/lock-evidence-input
+          HOSTED_DEMO_EVIDENCE_DIR: ${{ runner.temp }}/hosted-demo-evidence
+          LOCK_EVIDENCE_BUNDLE_DIR: ${{ runner.temp }}/lock-evidence-bundle
         run: node scripts/build-lock-evidence-bundle.mjs
       - name: Upload canonical lock evidence bundle
         uses: actions/upload-artifact@v6
         with:
-          name: lock-evidence-bundle_1.1.0-rc.2_${{ github.run_id }}
-          path: ci-artifacts/lock-evidence-bundle/lock-evidence-bundle_1.1.0-rc.2_${{ github.run_id }}
+          name: lock-evidence-bundle_1.1.0-rc.2-fix.1_${{ github.run_id }}
+          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.1.0-rc.2-fix.1_${{ github.run_id }}

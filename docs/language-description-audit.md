@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-rc.2`
-Release: `v1.1.0-rc.2 — Canonical Lock Evidence Bundle + Final Stable Handoff`
+Version: `1.1.0-rc.2-fix.1`
+Release: `v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

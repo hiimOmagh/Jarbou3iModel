@@ -8,16 +8,16 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.1.0-rc.2';
-const TITLE = 'Canonical Lock Evidence Bundle + Final Stable Handoff';
+const VERSION = '1.1.0-rc.2-fix.1';
+const TITLE = 'Lock Evidence Workspace Hygiene Fix';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-rc.2-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-rc.2-fix.1-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.1.json');
 const workflow = read('.github/workflows/ci.yml');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -26,23 +26,23 @@ const notes = read('RELEASE_NOTES.md');
 const changelog = read('CHANGELOG.md');
 const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
-const doc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-rc.2-evidence-pack-export-v3-brief-traceability.md')}`;
+const doc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-rc.2-fix.1-evidence-pack-export-v3-brief-traceability.md')}`;
 const migrations = read('src/research/migrations.js');
 const evidenceSpec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0-rc.2');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0-rc.2');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0-rc.2');
-assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0-rc.2');
-assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0-rc.2');
-assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0-rc.2');
-assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.1.0-rc.2');
-assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.1.0-rc.2');
-assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.1.0-rc.2');
-assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.1.0-rc.2');
+assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0-rc.2-fix.1');
+assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0-rc.2-fix.1');
+assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0-rc.2-fix.1');
+assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0-rc.2-fix.1');
+assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0-rc.2-fix.1');
+assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0-rc.2-fix.1');
+assert.equal(privacyFixture.workflow_version, VERSION, 'privacy fixture must identify v1.1.0-rc.2-fix.1');
+assert.equal(sample.release_notes.release_title, RELEASE, 'sample release title must identify v1.1.0-rc.2-fix.1');
+assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration fixture release title must identify v1.1.0-rc.2-fix.1');
+assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.1.0-rc.2-fix.1');
 
 for (const text of [manifest, notes, changelog, roadmap, qaMatrix, doc]) {
-  assert.ok(text.includes('v1.1.0-rc.2'), 'release corpus must mention v1.1.0-rc.2');
+  assert.ok(text.includes('v1.1.0-rc.2-fix.1'), 'release corpus must mention v1.1.0-rc.2-fix.1');
   assert.ok(text.includes(TITLE) || /release[- ]lock/i.test(text), 'release corpus must mention public demo release lock');
 }
 
@@ -56,7 +56,7 @@ for (const required of [
   'npx playwright install --with-deps',
   'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser',
   'name: hosted-demo-evidence',
-  'path: ci-artifacts/hosted-demo-evidence',
+  'path: ${{ runner.temp }}/hosted-demo-evidence',
   'if: always()'
 ]) {
   assert.ok(workflow.includes(required), `workflow missing release evidence/runtime token: ${required}`);
@@ -69,7 +69,9 @@ for (const forbidden of [
   'node-version: 20',
   'node-version: 22',
   'npm install\n',
-  'ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION'
+  'ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION',
+  'ci-artifacts/lock-evidence-input',
+  'ci-artifacts/lock-evidence-bundle'
 ]) {
   assert.equal(workflow.includes(forbidden), false, `workflow must not contain stale/unsafe token: ${forbidden}`);
 }
@@ -99,9 +101,9 @@ assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must re
 
 for (const required of [
   'fixtures/migrations/v1.0.21-packet.json',
-  'fixtures/migrations/v1.1.0-rc.2-packet.json',
+  'fixtures/migrations/v1.1.0-rc.2-fix.1-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.21.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-rc.2.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.1.json',
   'docs/v1.0.21-node-24-ci-compatibility.md',
   'docs/v1.0.25-public-demo-release-lock.md',
   'tests/node24-ci-compat-check.mjs',
@@ -142,8 +144,8 @@ for (const token of [
   assert.ok(manifest.includes(token), `manifest must document release-lock requirement: ${token}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-rc.2'"), 'migration target must be v1.1.0-rc.2');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-rc.2'"), 'migration order must preserve v1.0.24 and append v1.1.0-rc.2');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-rc.2-fix.1'"), 'migration target must be v1.1.0-rc.2-fix.1');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-rc.2-fix.1'"), 'migration order must preserve v1.0.24 and append v1.1.0-rc.2-fix.1');
 assert.ok(evidenceSpec.includes('async function openProviderHarness'), 'hosted demo evidence spec must keep provider accordion helper');
 assert.ok(evidenceSpec.includes("providerCard.locator('h3').click()"), 'hosted demo evidence spec must expand provider harness accordion when closed');
 assert.equal(evidenceSpec.includes("expect(page.locator('#exportWorkflowBtn')).toBeVisible()"), false, 'hosted demo evidence must not assert hidden Evidence-tab exportWorkflowBtn from Quality tab');

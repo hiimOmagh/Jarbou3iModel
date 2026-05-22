@@ -4,8 +4,8 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.1.0-rc.2';
-const TITLE = 'Canonical Lock Evidence Bundle + Final Stable Handoff';
+const VERSION = '1.1.0-rc.2-fix.1';
+const TITLE = 'Lock Evidence Workspace Hygiene Fix';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const workflow = fs.readFileSync('.github/workflows/ci.yml', 'utf8');
@@ -25,9 +25,25 @@ for (const token of [
   'download-artifact@v6',
   'upload-artifact@v6',
   'Build canonical lock evidence bundle',
-  'lock-evidence-bundle_1.1.0-rc.2_${{ github.run_id }}',
+  'lock-evidence-bundle_1.1.0-rc.2-fix.1_${{ github.run_id }}',
   'needs: [no-browser, browser]'
 ]) assert.ok(workflow.includes(token), `workflow missing ${token}`);
+
+for (const forbidden of [
+  'ci-artifacts/lock-evidence-input',
+  'ci-artifacts/lock-evidence-bundle',
+  'path: ci-artifacts/hosted-demo-evidence'
+]) assert.equal(workflow.includes(forbidden), false, `workflow must not write lock evidence through repo tree path: ${forbidden}`);
+
+for (const token of [
+  '$RUNNER_TEMP/lock-evidence-input/logs',
+  '${{ runner.temp }}/lock-evidence-input/logs',
+  '${{ runner.temp }}/hosted-demo-evidence',
+  '${{ runner.temp }}/lock-evidence-bundle',
+  'LOCK_EVIDENCE_INPUT_DIR: ${{ runner.temp }}/lock-evidence-input',
+  'HOSTED_DEMO_EVIDENCE_DIR: ${{ runner.temp }}/hosted-demo-evidence',
+  'LOCK_EVIDENCE_BUNDLE_DIR: ${{ runner.temp }}/lock-evidence-bundle'
+]) assert.ok(workflow.includes(token), `workflow missing temp workspace token: ${token}`);
 
 for (const token of [
   'evidence-manifest.json',
@@ -42,6 +58,9 @@ for (const token of [
   'stale_version_residue_detected',
   'lock_artifact_ready'
 ]) assert.ok(script.includes(token), `bundle script missing ${token}`);
+assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false, 'bundle script must not default lock input to repo tree');
+assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false, 'bundle script must not default bundle output to repo tree');
+assert.ok(script.includes('process.env.RUNNER_TEMP || os.tmpdir()'), 'bundle script must default to runner temp/os temp');
 
 assert.ok(registry.gates['no-browser'].node_checks.includes('tests/canonical-lock-evidence-bundle-check.mjs'));
 assert.ok(registry.gates.release.node_checks.includes('tests/canonical-lock-evidence-bundle-check.mjs'));

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.1.0-rc.2';
-export const RELEASE_TITLE = 'v1.1.0-rc.2 — Canonical Lock Evidence Bundle + Final Stable Handoff';
+export const VERSION = '1.1.0-rc.2-fix.1';
+export const RELEASE_TITLE = 'v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

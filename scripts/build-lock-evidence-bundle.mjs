@@ -2,18 +2,20 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import os from 'node:os';
 
 const root = process.cwd();
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const version = pkg.version;
-const release = `v${version} — Canonical Lock Evidence Bundle + Final Stable Handoff`;
+const release = `v${version} — Lock Evidence Workspace Hygiene Fix`;
 const runId = process.env.GITHUB_RUN_ID || process.env.RUN_ID || 'local-run';
 const runAttempt = process.env.GITHUB_RUN_ATTEMPT || 'local-attempt';
 const commitSha = process.env.GITHUB_SHA || 'local-sha';
 const branch = process.env.GITHUB_REF_NAME || 'local-branch';
-const evidenceDir = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'ci-artifacts/hosted-demo-evidence';
-const inputDir = process.env.LOCK_EVIDENCE_INPUT_DIR || 'ci-artifacts/lock-evidence-input';
-const outputRoot = process.env.LOCK_EVIDENCE_BUNDLE_DIR || 'ci-artifacts/lock-evidence-bundle';
+const runnerTemp = process.env.RUNNER_TEMP || os.tmpdir();
+const evidenceDir = process.env.HOSTED_DEMO_EVIDENCE_DIR || path.join(runnerTemp, 'hosted-demo-evidence');
+const inputDir = process.env.LOCK_EVIDENCE_INPUT_DIR || path.join(runnerTemp, 'lock-evidence-input');
+const outputRoot = process.env.LOCK_EVIDENCE_BUNDLE_DIR || path.join(runnerTemp, 'lock-evidence-bundle');
 const bundleName = `lock-evidence-bundle_${version}_${runId}`;
 const bundleDir = path.join(outputRoot, bundleName);
 

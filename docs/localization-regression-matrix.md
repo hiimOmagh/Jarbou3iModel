@@ -1,4 +1,4 @@
-# Localization Regression Matrix — v1.1.0-rc.2
+# Localization Regression Matrix — v1.1.0-rc.2-fix.1
 
 ## Scope
 

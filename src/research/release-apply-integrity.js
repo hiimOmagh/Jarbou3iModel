@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine release apply integrity helpers v1.1.0-rc.2. */
+/* Jarbou3i Research Engine release apply integrity helpers v1.1.0-rc.2-fix.1. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-rc.2';
+  const VERSION = '1.1.0-rc.2-fix.1';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.1.0-rc.2 — Canonical Lock Evidence Bundle + Final Stable Handoff';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-rc.2-evidence-pack-export-v3-brief-traceability-patch.zip';
+  const RELEASE_TITLE = 'v1.1.0-rc.2-fix.1 — Lock Evidence Workspace Hygiene Fix';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-rc.2-fix.1-evidence-pack-export-v3-brief-traceability-patch.zip';
   const APPLY_CHECKS = Object.freeze([
     {check_id:'base_version_known', label:'Patch is declared as changed-files-only over v1.1.0-alpha.1', required:true},
     {check_id:'artifact_name_fixed', label:'Release artifact name is fixed and versioned', required:true},
