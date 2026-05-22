@@ -19,8 +19,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.1.0-rc.2-fix.3';
-const PUBLIC_VERSION_LABEL = 'v1.1.0 Stable Candidate';
+const VERSION = '1.1.0';
+const PUBLIC_VERSION_LABEL = 'v1.1.0 Public Demo Stable';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const MATRIX_CONFIG = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
@@ -98,7 +98,7 @@ async function collectDomFacts(page, locale, surface){
     const activeTab = document.querySelector('#researchModeNav .uxTab.active')?.dataset?.uxTab || null;
     const visibleText = document.body?.innerText || '';
     const countRows = (selector) => document.querySelectorAll(selector).length;
-    return { locale, surface:surface.slug, surface_id:surface.id, app_version:document.querySelector('meta[name="app-version"]')?.getAttribute('content') || null, public_version_label:publicVersionLabel, html_lang:document.documentElement.lang, html_dir:document.documentElement.dir, active_tab:activeTab, required_selector:surface.required_selector, required_selector_present:surface.required_selector ? !!document.querySelector(surface.required_selector) : true, required_text_present:(surface.required_text_any || []).some((token)=>visibleText.includes(token)), golden_workflow_loaded:visibleText.includes('golden') || visibleText.includes('الذهبية') || visibleText.includes('doré') || visibleText.includes('Stable Candidate'), evidence_count:countRows('#evidenceOutput tr, .researchTable tr'), source_cluster_count:countRows('[data-source-cluster], .sourceCluster, .sourceClusterCard'), entity_count:countRows('[data-entity], .entityCard'), graph_node_count:countRows('[data-graph-node], .graphNode'), export_pack_v3_available:visibleText.includes('Export Pack v3') || visibleText.includes('Export Pack'), publication_review_gate_visible:visibleText.toLowerCase().includes('publication') || visibleText.includes('النشر'), claim_boundary_audit_visible:visibleText.toLowerCase().includes('claim') || visibleText.includes('ادعاء'), provider_mode:'mock/manual', automatic_provider_execution_enabled:false, oauth_backend_enabled:false, live_scraping_enabled:false };
+    return { locale, surface:surface.slug, surface_id:surface.id, app_version:document.querySelector('meta[name="app-version"]')?.getAttribute('content') || null, public_version_label:publicVersionLabel, html_lang:document.documentElement.lang, html_dir:document.documentElement.dir, active_tab:activeTab, required_selector:surface.required_selector, required_selector_present:surface.required_selector ? !!document.querySelector(surface.required_selector) : true, required_text_present:(surface.required_text_any || []).some((token)=>visibleText.includes(token)), golden_workflow_loaded:visibleText.includes('golden') || visibleText.includes('الذهبية') || visibleText.includes('doré') || visibleText.includes('Public Demo Stable'), evidence_count:countRows('#evidenceOutput tr, .researchTable tr'), source_cluster_count:countRows('[data-source-cluster], .sourceCluster, .sourceClusterCard'), entity_count:countRows('[data-entity], .entityCard'), graph_node_count:countRows('[data-graph-node], .graphNode'), export_pack_v3_available:visibleText.includes('Export Pack v3') || visibleText.includes('Export Pack'), publication_review_gate_visible:visibleText.toLowerCase().includes('publication') || visibleText.includes('النشر'), claim_boundary_audit_visible:visibleText.toLowerCase().includes('claim') || visibleText.includes('ادعاء'), provider_mode:'mock/manual', automatic_provider_execution_enabled:false, oauth_backend_enabled:false, live_scraping_enabled:false };
   }, { locale, surface, version:VERSION, publicVersionLabel:PUBLIC_VERSION_LABEL });
 }
 async function captureMatrixRow(page, locale, surface){
@@ -165,7 +165,7 @@ async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, mat
   ensureEvidenceRoot(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
 }
 
-test.describe('v1.1.0-rc.2-fix.3 hosted demo evidence matrix and manifest capture', () => {
+test.describe('v1.1.0 hosted demo evidence matrix and manifest capture', () => {
   test.describe.configure({ mode: 'serial' });
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }, testInfo) => {
     test.setTimeout(HOSTED_EVIDENCE_TEST_TIMEOUT_MS);

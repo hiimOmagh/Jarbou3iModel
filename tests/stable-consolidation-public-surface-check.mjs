@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.1.0-rc.2-fix.3';
-const RELEASE = 'v1.1.0-rc.2-fix.3 — Evidence Workflow Exit-Code + Matrix Activation Fix';
-const STABLE_PUBLIC = 'v1.1.0 Stable Candidate';
+const VERSION = '1.1.0';
+const RELEASE = 'v1.1.0 — Public Demo Stable';
+const STABLE_PUBLIC = 'v1.1.0 Public Demo Stable';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
@@ -15,9 +15,9 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 assert.equal(pkg.version, VERSION);
 assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(registry.release_title, RELEASE);
-assert.ok(index.includes('content="1.1.0-rc.2-fix.3"'), 'hosted metadata must remain rc.1 for evidence validation');
-assert.ok(index.includes(STABLE_PUBLIC), 'public surface should expose stable candidate language');
-assert.ok(helpers.includes(STABLE_PUBLIC), 'localized copy must expose stable candidate language');
+assert.ok(index.includes('content="1.1.0"'), 'hosted metadata must remain rc.1 for evidence validation');
+assert.ok(index.includes(STABLE_PUBLIC), 'public surface should expose public-demo stable language');
+assert.ok(helpers.includes(STABLE_PUBLIC), 'localized copy must expose public-demo stable language');
 assert.ok(current.includes(STABLE_PUBLIC));
 assert.ok(readme.includes(STABLE_PUBLIC));
 assert.ok(publicDemo.includes(STABLE_PUBLIC));

@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.1.0-rc.2-fix.3`
-Release: `v1.1.0-rc.2-fix.3 — Evidence Workflow Exit-Code + Matrix Activation Fix`
+Version: `1.1.0`
+Release: `v1.1.0 — Public Demo Stable`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-rc.2-fix.3';
-const TITLE = 'Evidence Workflow Exit-Code + Matrix Activation Fix';
+const VERSION = '1.1.0';
+const TITLE = 'Public Demo Stable';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

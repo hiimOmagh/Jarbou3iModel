@@ -1,4 +1,4 @@
-# Source Refactor Partition Plan — v1.1.0-rc.2-fix.3
+# Source Refactor Partition Plan — v1.1.0
 
 ## Purpose
 

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { migrationRegistry, privacyRegistry } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.1.0-rc.2-fix.3';
-const TITLE = 'Evidence Workflow Exit-Code + Matrix Activation Fix';
+const VERSION = '1.1.0';
+const TITLE = 'Public Demo Stable';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const ledger = fs.readFileSync('docs/technical-debt-ledger.md', 'utf8');

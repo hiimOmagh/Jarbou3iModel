@@ -11,8 +11,8 @@ const json = (file) => JSON.parse(read(file));
 const pkg = json('package.json');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-rc.2-fix.3-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.3.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const moduleSource = read('src/research/source-capability-registry.js');
@@ -29,9 +29,9 @@ vm.createContext(context);
 vm.runInContext(moduleSource, context, { filename: 'src/research/source-capability-registry.js' });
 const registry = context.Jarbou3iResearchModules.sourceCapabilityRegistry;
 
-assert.equal(pkg.version, '1.1.0-rc.2-fix.3');
+assert.equal(pkg.version, '1.1.0');
 assert.ok(pkg.description.includes('source strategy'));
-assert.equal(registry.VERSION, '1.1.0-rc.2-fix.3');
+assert.equal(registry.VERSION, '1.1.0');
 assert.equal(typeof registry.strategyBlueprint, 'function');
 assert.equal(typeof registry.auditRegistry, 'function');
 assert.ok(index.includes('src/research/source-capability-registry.js'));
@@ -39,11 +39,11 @@ assert.ok(engine.includes('sourceCapabilityRegistryReport'));
 assert.ok(engine.includes('source_capability_registry'));
 assert.ok(releaseDocExists('docs/v1.0.20-source-packet-template-browser-qa-copy-safety.md'));
 assert.ok(fs.existsSync('tests/version-suite-registry-check.mjs'));
-assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-rc.2-fix.3-packet.json'));
-assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-rc.2-fix.3.json'));
+assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-packet.json'));
+assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0.json'));
 
-const blueprint = registry.strategyBlueprint({version:'1.1.0-rc.2-fix.3', now:'2026-05-02T00:00:00.000Z'});
-assert.equal(blueprint.source_strategy_version, '1.1.0-rc.2-fix.3');
+const blueprint = registry.strategyBlueprint({version:'1.1.0', now:'2026-05-02T00:00:00.000Z'});
+assert.equal(blueprint.source_strategy_version, '1.1.0');
 assert.equal(blueprint.runtime_capability_change, false);
 assert.equal(blueprint.provider_behavior_changed, false);
 assert.equal(blueprint.oauth_behavior_changed, false);
@@ -71,19 +71,19 @@ for (const item of blueprint.registry) {
 }
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.1.0-rc.2-fix.3');
-  assert.equal(packet.source_capability_registry.source_strategy_version, '1.1.0-rc.2-fix.3');
+  assert.equal(packet.workflow_version, '1.1.0');
+  assert.equal(packet.source_capability_registry.source_strategy_version, '1.1.0');
   assert.equal(packet.source_capability_registry.runtime_capability_change, false);
   assert.equal(packet.source_capability_registry.audit.new_live_connector_enabled, false);
   assert.equal(packet.source_capability_registry.audit.production_oauth_enabled, false);
   assert.equal(packet.source_capability_registry.audit.auth_material_export_allowed, false);
   assert.equal(packet.source_capability_registry.audit.verdict, 'source_capability_registry_ready_manual_packet_import');
-  assert.equal(packet.release_notes.release_title, 'v1.1.0-rc.2-fix.3 — Evidence Workflow Exit-Code + Matrix Activation Fix');
+  assert.equal(packet.release_notes.release_title, 'v1.1.0 — Public Demo Stable');
 }
 
-assert.equal(schema.properties.workflow_version.const, '1.1.0-rc.2-fix.3');
+assert.equal(schema.properties.workflow_version.const, '1.1.0');
 assert.ok(schema.required.includes('source_capability_registry'));
-assert.equal(schema.$defs.source_capability_registry.properties.source_strategy_version.const, '1.1.0-rc.2-fix.3');
+assert.equal(schema.$defs.source_capability_registry.properties.source_strategy_version.const, '1.1.0');
 assert.equal(schema.$defs.source_capability_registry.properties.runtime_capability_change.const, false);
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
@@ -92,8 +92,8 @@ assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must re
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
 for (const corpus of [manifest, changelog, roadmap, qaMatrix]) {
-  assert.ok(corpus.includes('v1.1.0-rc.2-fix.3'), 'release corpus missing v1.1.0-rc.2-fix.3');
-  assert.ok(corpus.includes('Evidence Workflow Exit-Code + Matrix Activation Fix'), 'release corpus missing v1.1.0-rc.2-fix.3 title');
+  assert.ok(corpus.includes('v1.1.0'), 'release corpus missing v1.1.0');
+  assert.ok(corpus.includes('Public Demo Stable'), 'release corpus missing v1.1.0 title');
 }
 
 console.log('Source capability registry checks passed.');

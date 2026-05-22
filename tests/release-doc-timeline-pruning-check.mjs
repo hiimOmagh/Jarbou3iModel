@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.1.0-rc.2-fix.3';
-const TITLE = 'Evidence Workflow Exit-Code + Matrix Activation Fix';
+const VERSION = '1.1.0';
+const TITLE = 'Public Demo Stable';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');

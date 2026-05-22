@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.1.0-rc.2-fix.3",
-  "internal_build_version": "1.1.0-rc.2-fix.3",
-  "public_version_label": "v1.1.0 Stable Candidate",
+  "evidence_matrix_config_version": "1.1.0",
+  "internal_build_version": "1.1.0",
+  "public_version_label": "v1.1.0 Public Demo Stable",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Stable Candidate",
+        "Public Demo Stable",
         "Public demo",
         "Export Pack v3"
       ],
@@ -26,7 +26,7 @@
     },
     "ar": {
       "required": [
-        "مرشح مستقر",
+        "العرض العام المستقر",
         "العرض العام",
         "مراجعة الأدلة"
       ],
@@ -39,12 +39,12 @@
     },
     "fr": {
       "required": [
-        "Candidat stable",
+        "Démo publique stable",
         "démo publique",
         "revue des preuves"
       ],
       "forbidden": [
-        "Stable Candidate",
+        "Public Demo Stable",
         "Public surface freeze",
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
@@ -226,16 +226,16 @@
   ],
   "public_version_labels": {
     "en": [
-      "v1.1.0 Stable Candidate",
-      "v1.1.0 stable candidate"
+      "v1.1.0 Public Demo Stable",
+      "Public Demo Stable"
     ],
     "ar": [
-      "v1.1.0 مرشح مستقر",
-      "v1.1.0 المرشح المستقر"
+      "v1.1.0 العرض العام المستقر",
+      "العرض العام المستقر"
     ],
     "fr": [
-      "v1.1.0 candidat stable",
-      "v1.1.0 Candidat stable"
+      "v1.1.0 Démo publique stable",
+      "Démo publique stable"
     ]
   }
 }
