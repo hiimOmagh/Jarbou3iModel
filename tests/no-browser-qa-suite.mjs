@@ -29,6 +29,7 @@ const tests = [
   'tests/evidence-pack-v3-brief-traceability-check.mjs',
   'tests/publication-review-gate-check.mjs',
   'tests/golden-workflow-corpus-check.mjs',
+  'tests/release-candidate-final-hygiene-check.mjs',
   'tests/provider-router-cost-ledger-check.mjs',
   'tests/strategic-evidence-graph-check.mjs'
 ];

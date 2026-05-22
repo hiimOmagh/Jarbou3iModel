@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Golden Workflow Corpus + End-to-End Demo Run v1.1.0-alpha.24. Local-only review ergonomics; no queue bypass. */
+/* Jarbou3i Research Engine Release Candidate Hardening + Final Repo Hygiene v1.1.0-alpha.25. Local-only review ergonomics; no queue bypass. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.24';
+  const VERSION = '1.1.0-alpha.25';
   const VALID_STATUS = new Set(['all','pending','needs_edit','accepted','rejected','resolved','unresolved']);
   const VALID_REL = new Set(['all','supports','contradicts','unlinked']);
   const VALID_SORT = new Set(['newest','oldest','reliability_desc','attention_desc','needs_review_first']);

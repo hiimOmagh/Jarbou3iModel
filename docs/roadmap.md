@@ -2,13 +2,13 @@
 
 Current milestone:
 
-`v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run`
+`v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene`
 
-Adds Golden Workflow Corpus + End-to-End Demo Run: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
+Adds Release Candidate Hardening + Final Repo Hygiene: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
 Next likely milestone: brief-traceability browser polish, evidence workspace keyboard-flow validation, or controlled live-execution acceptance criteria planning after alpha.21 lock.
 
-Release-lock guard: 1.1.0-alpha.24 Golden Workflow Corpus + End-to-End Demo Run requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
+Release-lock guard: 1.1.0-alpha.25 Release Candidate Hardening + Final Repo Hygiene requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 
 Node 24 CI compatibility preserved.
 

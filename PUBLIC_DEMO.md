@@ -1,8 +1,8 @@
-# Public Demo — v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run
+# Public Demo — v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene
 
-`v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run`
+`v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene`
 
-Release-lock guard: 1.1.0-alpha.24 Golden Workflow Corpus + End-to-End Demo Run requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.25 Release Candidate Hardening + Final Repo Hygiene requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
 Provenance ledger continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Fixture Registry payload compression, test organization audit, changed-files-only discipline, visual freeze, and mobile header guards remain preserved.
 

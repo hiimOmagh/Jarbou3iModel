@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.1.0-alpha.24",
-  "release_title": "v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run",
+  "version_suite_registry_version": "1.1.0-alpha.25",
+  "release_title": "v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

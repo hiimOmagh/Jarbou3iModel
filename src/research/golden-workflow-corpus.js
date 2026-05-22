@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine golden workflow corpus and end-to-end demo run v1.1.0-alpha.24. */
+/* Jarbou3i Research Engine golden workflow corpus and end-to-end demo run v1.1.0-alpha.25. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.24';
+  const VERSION = '1.1.0-alpha.25';
   const MODEL = 'golden_workflow_corpus.v1';
   function nowIso(){ return new Date().toISOString(); }
   function asArray(value){ return Array.isArray(value) ? value : []; }
@@ -76,11 +76,11 @@
   }
   function buildHostedDemoScenarioEvidence(packet = {}, options = {}){
     const version = options.version || VERSION;
-    return {hosted_demo_scenario_evidence_version:version, scenario_model:MODEL, generated_at:nowIso(), scenario_id:'alpha24-golden-public-demo', required_captures:['desktop-first-screen.png','mobile-first-screen.png','provider-mode.png','quality-export.png'], required_visible_text_snapshots:['visible-text-ar.json','visible-text-fr.json','visible-text-en.json'], expected_visible_tokens:['v1.1.0-alpha.24','Golden Workflow Corpus','End-to-End Demo Run'], expected_demo_actions:['load_golden_corpus','review_golden_evidence','inspect_publication_gate','export_pack_v3'], app_version_expected:version, live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false, release_gate:'hosted_demo_scenario_evidence_required'};
+    return {hosted_demo_scenario_evidence_version:version, scenario_model:MODEL, generated_at:nowIso(), scenario_id:'alpha24-golden-public-demo', required_captures:['desktop-first-screen.png','mobile-first-screen.png','provider-mode.png','quality-export.png'], required_visible_text_snapshots:['visible-text-ar.json','visible-text-fr.json','visible-text-en.json'], expected_visible_tokens:['v1.1.0-alpha.25','Golden Workflow Corpus','End-to-End Demo Run'], expected_demo_actions:['load_golden_corpus','review_golden_evidence','inspect_publication_gate','export_pack_v3'], app_version_expected:version, live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false, release_gate:'hosted_demo_scenario_evidence_required'};
   }
   function buildReleaseReadinessRunbook(packet = {}, options = {}){
     const version = options.version || VERSION;
-    return {release_readiness_runbook_version:version, runbook_model:MODEL, generated_at:nowIso(), release:'v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run', steps:['Run node tests/golden-workflow-corpus-check.mjs.','Run node tests/ci-gate-runner.mjs no-browser.','Run GitHub browser CI.','Capture hosted-demo evidence.','Confirm hosted metadata app_version is 1.1.0-alpha.24.','Reject lock if visible-text snapshots contain stale alpha.23 release copy.'], blocker_policy:['Screenshots alone are insufficient.','ZIP existence alone is insufficient.','No live scraping/provider execution/OAuth expansion is allowed.'], live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false, release_gate:'release_readiness_review_required'};
+    return {release_readiness_runbook_version:version, runbook_model:MODEL, generated_at:nowIso(), release:'v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene', steps:['Run node tests/golden-workflow-corpus-check.mjs.','Run node tests/ci-gate-runner.mjs no-browser.','Run GitHub browser CI.','Capture hosted-demo evidence.','Confirm hosted metadata app_version is 1.1.0-alpha.25.','Reject lock if visible-text snapshots contain stale alpha.23 release copy.'], blocker_policy:['Screenshots alone are insufficient.','ZIP existence alone is insufficient.','No live scraping/provider execution/OAuth expansion is allowed.'], live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false, release_gate:'release_readiness_review_required'};
   }
   function buildGoldenWorkflowBundle(packet = {}, exportPack = null, options = {}){
     const base = packet && Object.keys(packet).length ? packet : buildGoldenWorkflowCorpus(options);

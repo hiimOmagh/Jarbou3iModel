@@ -1,12 +1,12 @@
 # Current Release
 
-## v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run
+## v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene
 
 Status: candidate package pending CI/browser evidence lock.
 
-Release-lock guard: 1.1.0-alpha.24 Golden Workflow Corpus + End-to-End Demo Run requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.25 Release Candidate Hardening + Final Repo Hygiene requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
-Version: `1.1.0-alpha.24`
+Version: `1.1.0-alpha.25`
 
 Scope:
 - observation / inference / estimate claim classification
@@ -22,7 +22,7 @@ Boundaries preserved: no live scraping, no live provider execution expansion, no
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-alpha.24`
+Version: `1.1.0-alpha.25`
 Runtime capability change: no
 
 Required browser gates before publishing:
@@ -41,7 +41,7 @@ Required cleanup commands:
 - Use repository hygiene checks before release handoff.
 - Do not ship generated logs or local evidence archives.
 
-Node 24 CI compatibility is preserved for v1.1.0-alpha.24.
+Node 24 CI compatibility is preserved for v1.1.0-alpha.25.
 
 Continuity notes: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only release discipline remain preserved.
 

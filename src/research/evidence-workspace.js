@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine evidence workspace v1.1.0-alpha.24. Manual-only; no live fetching. */
+/* Jarbou3i Research Engine evidence workspace v1.1.0-alpha.25. Manual-only; no live fetching. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.24';
+  const VERSION = '1.1.0-alpha.25';
   const SOURCE_TYPES = Object.freeze(['official','academic','news','social','market','expert','primary','other']);
   const CONFIDENCE = Object.freeze(['low','medium','high']);
 

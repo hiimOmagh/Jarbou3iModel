@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.24 — Publication Review Gate and claim boundary audit. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.25 — Release Candidate Hardening and final repo hygiene. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.24';
+  const VERSION = '1.1.0-alpha.25';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -23,6 +23,7 @@
   const evidencePackV3 = modules.evidencePackV3;
   const publicationReviewGate = modules.publicationReviewGate;
   const goldenWorkflowCorpus = modules.goldenWorkflowCorpus;
+  const releaseCandidateHygiene = modules.releaseCandidateHygiene;
   const qualityGate = modules.qualityGate;
   const providerController = modules.providerController;
   const providerRouterEngine = modules.providerRouterEngine;
@@ -429,6 +430,40 @@
   }
 
 
+  function releaseCandidateHygieneBundle(packet, exportPackResult = null){
+    if(!releaseCandidateHygiene?.buildReleaseCandidateHygieneBundle){
+      return {
+        final_repo_hygiene_report:{final_repo_hygiene_report_version:VERSION, hygiene_model:'release_candidate_hygiene.v1', blockers:['release_candidate_hygiene_module_missing'], release_gate:'final_repo_hygiene_review_required', live_fetching_performed:false, verification_claimed:false},
+        stale_release_copy_sweep:{stale_release_copy_sweep_version:VERSION, sweep_model:'release_candidate_hygiene.v1', stale_match_count:0, stale_matches:[], release_gate:'stale_release_copy_review_required', live_fetching_performed:false, verification_claimed:false},
+        golden_workflow_regression_lock:{golden_workflow_regression_lock_version:VERSION, lock_model:'release_candidate_hygiene.v1', blockers:['release_candidate_hygiene_module_missing'], release_gate:'golden_workflow_regression_review_required', live_fetching_performed:false, verification_claimed:false},
+        export_pack_artifact_consistency_lock:{export_pack_artifact_consistency_lock_version:VERSION, lock_model:'release_candidate_hygiene.v1', blockers:['release_candidate_hygiene_module_missing'], release_gate:'export_pack_artifact_review_required', live_fetching_performed:false, verification_claimed:false},
+        hosted_demo_evidence_runbook:{hosted_demo_evidence_runbook_version:VERSION, runbook_model:'release_candidate_hygiene.v1', release_gate:'hosted_demo_evidence_review_required', live_fetching_performed:false, verification_claimed:false},
+        no_browser_browser_ci_parity_report:{ci_parity_report_version:VERSION, parity_model:'release_candidate_hygiene.v1', blockers:['ci_results_not_embedded'], release_gate:'ci_parity_review_required', live_fetching_performed:false, verification_claimed:false},
+        release_candidate_readiness_report:{release_candidate_readiness_report_version:VERSION, readiness_model:'release_candidate_hygiene.v1', blocker_reasons:['release_candidate_hygiene_module_missing'], release_gate:'release_candidate_hardening_review_required', live_fetching_performed:false, verification_claimed:false}
+      };
+    }
+    const corpus = {
+      files:{
+        'package.json': JSON.stringify({version:VERSION}),
+        'index.html': document?.documentElement?.outerHTML || '',
+        'README.md': '',
+        'CHANGELOG.md': '',
+        'PUBLIC_DEMO.md': '',
+        'docs/current-release.md': ''
+      }
+    };
+    const bundle = releaseCandidateHygiene.buildReleaseCandidateHygieneBundle(packet, corpus, exportPackResult, {version:VERSION, stale_versions:['1.1.0-alpha.24','v1.1.0-alpha.24']});
+    state.final_repo_hygiene_report = bundle.final_repo_hygiene_report;
+    state.stale_release_copy_sweep = bundle.stale_release_copy_sweep;
+    state.golden_workflow_regression_lock = bundle.golden_workflow_regression_lock;
+    state.export_pack_artifact_consistency_lock = bundle.export_pack_artifact_consistency_lock;
+    state.hosted_demo_evidence_runbook = bundle.hosted_demo_evidence_runbook;
+    state.no_browser_browser_ci_parity_report = bundle.no_browser_browser_ci_parity_report;
+    state.release_candidate_readiness_report = bundle.release_candidate_readiness_report;
+    return bundle;
+  }
+
+
   function researchPacket(){
     const packet = {
       workflow_version: VERSION,
@@ -513,13 +548,21 @@
       golden_export_pack_validation_report: state.golden_export_pack_validation_report || null,
       hosted_demo_scenario_evidence: state.hosted_demo_scenario_evidence || null,
       release_readiness_runbook: state.release_readiness_runbook || null,
+      final_repo_hygiene_report: state.final_repo_hygiene_report || null,
+      stale_release_copy_sweep: state.stale_release_copy_sweep || null,
+      golden_workflow_regression_lock: state.golden_workflow_regression_lock || null,
+      export_pack_artifact_consistency_lock: state.export_pack_artifact_consistency_lock || null,
+      hosted_demo_evidence_runbook: state.hosted_demo_evidence_runbook || null,
+      no_browser_browser_ci_parity_report: state.no_browser_browser_ci_parity_report || null,
+      release_candidate_readiness_report: state.release_candidate_readiness_report || null,
       ai_runs: providerRouterEngine?.enrichRunLedger ? providerRouterEngine.enrichRunLedger(state.ai_runs || [], providerRoutePlan(), {version:VERSION}) : (state.ai_runs || []),
       critique: state.critique
     };
     const evidencePack = evidencePackV3Bundle(packet);
     const publicationReview = publicationReviewBundle(Object.assign({}, packet, evidencePack));
     const goldenWorkflow = goldenWorkflowBundle(Object.assign({}, packet, evidencePack, publicationReview));
-    return Object.assign(packet, evidencePack, publicationReview, goldenWorkflow, {
+    const rcHygiene = releaseCandidateHygieneBundle(Object.assign({}, packet, evidencePack, publicationReview, goldenWorkflow));
+    return Object.assign(packet, evidencePack, publicationReview, goldenWorkflow, rcHygiene, {
       export_pack: Object.assign({}, packet.export_pack || {}, {export_pack_version: VERSION, format: 'export_pack_v3', release_gate: 'privacy_audit_required'})
     });
   }
@@ -1922,6 +1965,13 @@
     state.golden_export_pack_validation_report = nextPacket.golden_export_pack_validation_report || null;
     state.hosted_demo_scenario_evidence = nextPacket.hosted_demo_scenario_evidence || null;
     state.release_readiness_runbook = nextPacket.release_readiness_runbook || null;
+    state.final_repo_hygiene_report = nextPacket.final_repo_hygiene_report || null;
+    state.stale_release_copy_sweep = nextPacket.stale_release_copy_sweep || null;
+    state.golden_workflow_regression_lock = nextPacket.golden_workflow_regression_lock || null;
+    state.export_pack_artifact_consistency_lock = nextPacket.export_pack_artifact_consistency_lock || null;
+    state.hosted_demo_evidence_runbook = nextPacket.hosted_demo_evidence_runbook || null;
+    state.no_browser_browser_ci_parity_report = nextPacket.no_browser_browser_ci_parity_report || null;
+    state.release_candidate_readiness_report = nextPacket.release_candidate_readiness_report || null;
     state.portable_account = nextPacket.portable_account || state.portable_account || null;
     state.ai_runs = Array.isArray(nextPacket.ai_runs) ? nextPacket.ai_runs.slice(-25) : [];
     state.lastMockAnalysis = null;

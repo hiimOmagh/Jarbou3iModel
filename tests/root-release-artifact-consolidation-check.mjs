@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.24';
-const TITLE = 'Golden Workflow Corpus + End-to-End Demo Run';
+const VERSION = '1.1.0-alpha.25';
+const TITLE = 'Release Candidate Hardening + Final Repo Hygiene';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

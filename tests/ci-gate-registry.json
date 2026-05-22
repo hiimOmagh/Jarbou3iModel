@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0-alpha.24",
-  "release_title": "v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run",
+  "ci_gate_registry_version": "1.1.0-alpha.25",
+  "release_title": "v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -123,6 +123,7 @@
         "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/publication-review-gate-check.mjs",
         "tests/golden-workflow-corpus-check.mjs",
+        "tests/release-candidate-final-hygiene-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -157,6 +158,7 @@
         "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/publication-review-gate-check.mjs",
         "tests/golden-workflow-corpus-check.mjs",
+        "tests/release-candidate-final-hygiene-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -219,6 +221,7 @@
         "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/publication-review-gate-check.mjs",
         "tests/golden-workflow-corpus-check.mjs",
+        "tests/release-candidate-final-hygiene-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -335,6 +338,7 @@
         "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/publication-review-gate-check.mjs",
         "tests/golden-workflow-corpus-check.mjs",
+        "tests/release-candidate-final-hygiene-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -370,7 +374,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0-alpha.24",
+    "version": "1.1.0-alpha.25",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -385,7 +389,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0-alpha.24",
+    "version": "1.1.0-alpha.25",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -488,13 +492,15 @@
       "src/research/publication-review-gate.js",
       "tests/publication-review-gate-check.mjs",
       "src/research/golden-workflow-corpus.js",
-      "tests/golden-workflow-corpus-check.mjs"
+      "tests/golden-workflow-corpus-check.mjs",
+      "src/research/release-candidate-hygiene.js",
+      "tests/release-candidate-final-hygiene-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0-alpha.24",
+    "version": "1.1.0-alpha.25",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -514,7 +520,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0-alpha.24",
+    "version": "1.1.0-alpha.25",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

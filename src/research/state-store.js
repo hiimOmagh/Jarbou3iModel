@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.24. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.25. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.24';
+    const version = options.version || '1.1.0-alpha.25';
     return {
       plan: null,
       evidence: [],
@@ -62,6 +62,13 @@
       golden_export_pack_validation_report: null,
       hosted_demo_scenario_evidence: null,
       release_readiness_runbook: null,
+      final_repo_hygiene_report: null,
+      stale_release_copy_sweep: null,
+      golden_workflow_regression_lock: null,
+      export_pack_artifact_consistency_lock: null,
+      hosted_demo_evidence_runbook: null,
+      no_browser_browser_ci_parity_report: null,
+      release_candidate_readiness_report: null,
       editingReviewIndex: -1,
       last_source_import_preview: null,
       source_import_report: null,
@@ -91,7 +98,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.24';
+    const version = options.version || '1.1.0-alpha.25';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);
@@ -123,6 +130,13 @@
     next.golden_export_pack_validation_report = next.golden_export_pack_validation_report && typeof next.golden_export_pack_validation_report === 'object' ? next.golden_export_pack_validation_report : null;
     next.hosted_demo_scenario_evidence = next.hosted_demo_scenario_evidence && typeof next.hosted_demo_scenario_evidence === 'object' ? next.hosted_demo_scenario_evidence : null;
     next.release_readiness_runbook = next.release_readiness_runbook && typeof next.release_readiness_runbook === 'object' ? next.release_readiness_runbook : null;
+    next.final_repo_hygiene_report = next.final_repo_hygiene_report && typeof next.final_repo_hygiene_report === 'object' ? next.final_repo_hygiene_report : null;
+    next.stale_release_copy_sweep = next.stale_release_copy_sweep && typeof next.stale_release_copy_sweep === 'object' ? next.stale_release_copy_sweep : null;
+    next.golden_workflow_regression_lock = next.golden_workflow_regression_lock && typeof next.golden_workflow_regression_lock === 'object' ? next.golden_workflow_regression_lock : null;
+    next.export_pack_artifact_consistency_lock = next.export_pack_artifact_consistency_lock && typeof next.export_pack_artifact_consistency_lock === 'object' ? next.export_pack_artifact_consistency_lock : null;
+    next.hosted_demo_evidence_runbook = next.hosted_demo_evidence_runbook && typeof next.hosted_demo_evidence_runbook === 'object' ? next.hosted_demo_evidence_runbook : null;
+    next.no_browser_browser_ci_parity_report = next.no_browser_browser_ci_parity_report && typeof next.no_browser_browser_ci_parity_report === 'object' ? next.no_browser_browser_ci_parity_report : null;
+    next.release_candidate_readiness_report = next.release_candidate_readiness_report && typeof next.release_candidate_readiness_report === 'object' ? next.release_candidate_readiness_report : null;
     next.editingReviewIndex = Number.isInteger(next.editingReviewIndex) ? next.editingReviewIndex : -1;
     next.last_source_import_preview = next.last_source_import_preview && typeof next.last_source_import_preview === 'object' ? next.last_source_import_preview : null;
     next.source_import_report = next.source_import_report && typeof next.source_import_report === 'object' ? next.source_import_report : null;

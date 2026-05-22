@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release: v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run
+Current release: v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene
 
 Required gates:
 
@@ -8,7 +8,7 @@ Required gates:
 - Browser CI
 - Hosted-demo evidence capture
 - Visible-text snapshots
-- Golden Workflow Corpus + End-to-End Demo Run no-browser check
+- Release Candidate Hardening + Final Repo Hygiene no-browser check
 - Provider identity/response/fixture regression checks
 - Export Pack v2 provider route artifact checks
 

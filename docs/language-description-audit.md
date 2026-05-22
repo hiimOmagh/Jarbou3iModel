@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0-alpha.24`
-Release: `v1.1.0-alpha.24 — Golden Workflow Corpus + End-to-End Demo Run`
+Version: `1.1.0-alpha.25`
+Release: `v1.1.0-alpha.25 — Release Candidate Hardening + Final Repo Hygiene`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy
