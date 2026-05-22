@@ -10,7 +10,7 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.1.0';
+const VERSION = '1.1.0-fix.1';
 const BASELINE = '1.1.0-alpha.1';
 const TITLE = 'Public Demo Stable';
 const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-evidence-pack-export-v3-brief-traceability-patch.zip';
@@ -34,7 +34,7 @@ assert.ok(index.includes('data-r-i18n="hostedDemoVerificationBody"') && index.in
 assert.ok(index.includes('data-r-i18n="stableWorkflowBody"') && index.includes('معايير قبول'), 'localized index must state lane criteria before implementation');
 assert.ok(index.includes('يظل التنفيذ محظورًا'), 'localized index must mention implementation boundary');
 
-assert.ok(moduleSource.includes("const VERSION = '1.1.0'"));
+assert.ok(moduleSource.includes("const VERSION = '1.1.0-fix.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('implementation_allowed:false'));
 assert.ok(moduleSource.includes('runtime_capability_change:false'));
@@ -73,8 +73,8 @@ for (const packet of [migrationFixture, privacyFixture]) {
 }
 
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0'"));
-assert.ok(migrations.includes("'1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.1'"));
+assert.ok(migrations.includes("'1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.1'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
 assert.ok(releaseDocExists('docs/v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md'), 'v1.0.30 freeze doc must remain present');
 assert.ok(releaseDoc.includes('fixture registry consolidation'));
 assert.ok(releaseDoc.includes('fixture registry'));

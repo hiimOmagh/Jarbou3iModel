@@ -6,7 +6,7 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0';
+const VERSION = '1.1.0-fix.1';
 const TITLE = 'Public Demo Stable';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-evidence-pack-export-v3-brief-traceability-patch.zip';
@@ -54,7 +54,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.1.0'",
+  "const VERSION = '1.1.0-fix.1'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',
@@ -95,8 +95,8 @@ const review = hosted.buildHostedDemoEvidenceReview({}, { version:VERSION, now:'
 assert.equal(review.metadata_manifest_required, true);
 assert.ok(review.review_items.some((item) => item.artifact_id === 'complete_capture_manifest'));
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0'"));
-assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0'"), 'migration order must preserve v1.0.28 and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.1'"));
+assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.1'"), 'migration order must preserve v1.0.28 and append v1.1.0');
 assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration defaults must include evidence manifest metadata requirement');
 
 for (const file of [
@@ -125,7 +125,7 @@ for (const corpus of [
   read('docs/privacy-audit.md'),
   readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.1.0'), 'release corpus must mention v1.1.0');
+  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.1.0-fix.1'), 'release corpus must mention v1.1.0');
   assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|Fixture Registry|payload compression|test organization|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
 }
 

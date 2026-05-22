@@ -7,8 +7,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.1.0';
-const RELEASE = 'v1.1.0 — Public Demo Stable';
+const VERSION = '1.1.0-fix.1';
+const RELEASE = 'v1.1.0-fix.1 — Public Demo Stable';
 const pkg = json('package.json');
 const manifest = read('RELEASE_MANIFEST.md');
 const releaseIgnore = read('.releaseignore');
@@ -87,7 +87,7 @@ const expectedDocHeadings = new Map([
   ['docs/v1.0.26-release-apply-integrity-gate.md', '# v1.0.26 — Release Apply Integrity Gate'],
   ['docs/v1.0.27-release-provenance-ledger-gate.md', '# v1.0.27 — Release Provenance Ledger Gate'],
   ['docs/v1.0.28-hosted-demo-evidence-manifest-gate.md', '# v1.0.28 — Hosted Demo Evidence Manifest Gate'],
-  ['docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md', '# v1.1.0 — Public Demo Stable']
+  ['docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md', '# v1.1.0-fix.1 — Public Demo Stable']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
   assert.equal(readReleaseDoc(file).split('\n')[0], heading, `${file} heading drifted`);

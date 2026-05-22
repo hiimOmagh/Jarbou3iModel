@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
 Version: `1.1.0`
-Release: `v1.1.0 — Public Demo Stable
+Release: `v1.1.0-fix.1 — Public Demo Stable
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

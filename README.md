@@ -1,15 +1,15 @@
 # Jarbou3i Research Engine
 
-`v1.1.0 — Public Demo Stable`
+`v1.1.0-fix.1 — Stable Public Localization Matrix Fix`
 
-Canonical lock evidence bundle and final stable handoff: resets the public-facing surface toward v1.1.0 public-demo stable language, consolidates public-demo docs, preserves internal evidence lineage, verifies stale-copy cleanup, golden workflow regression, Export Pack v3 consistency, repository hygiene, and no-browser/browser CI parity without adding product feature surface.
+Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0-fix.1`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
 
-Public surface: `v1.1.0 Public Demo Stable`. Internal RC validation metadata remains `1.1.0` until stable lock.
 
-Release-lock guard: 1.1.0 Public Demo Stable requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Screenshots alone are insufficient for release approval.
+A ZIP archive alone is insufficient for release approval.
 
-Boundaries: no new feature surface, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, no broad UI redesign, and no automatic source verification claims.
 
-Continuity notes: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only safeguards remain preserved.
+Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
 
-No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.
+
+No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone and ZIP archive alone are insufficient for release approval.

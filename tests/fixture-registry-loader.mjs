@@ -69,9 +69,20 @@ function normalizePrivacyKey(input) {
   return key;
 }
 
+function normalizeEntryCandidate(value) {
+  let candidate = String(value || '').trim();
+  candidate = candidate.replace(/^fixtures\/migrations\//, '');
+  candidate = candidate.replace(/^fixtures\/privacy\//, '');
+  candidate = candidate.replace(/^browser-generated-export-/, '');
+  candidate = candidate.replace(/-packet\.json$/, '');
+  candidate = candidate.replace(/\.json$/, '');
+  candidate = candidate.replace(/^v/, '');
+  return candidate;
+}
+
 function findEntry(registry, key) {
   return registry.entries.find((entry) => {
-    const candidates = [entry.version, entry.file, entry.path].map((value) => String(value || '').replace(/^v/, ''));
+    const candidates = [entry.version, entry.file, entry.path].map((value) => normalizeEntryCandidate(value));
     return candidates.includes(key) || candidates.some((candidate) => candidate.endsWith(key));
   });
 }

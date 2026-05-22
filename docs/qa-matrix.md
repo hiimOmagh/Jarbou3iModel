@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.1.0 — Public Demo Stable
+Current release candidate: v1.1.0-fix.1 — Public Demo Stable
 
 Required gates:
 - No-browser CI

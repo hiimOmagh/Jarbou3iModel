@@ -6,7 +6,7 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0';
+const VERSION = '1.1.0-fix.1';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Public Demo Stable';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -78,8 +78,8 @@ for (const text of [publicDemo, releaseDoc, read('README.md'), read('RELEASE_NOT
   assert.ok(/No real OAuth|production OAuth|real OAuth/i.test(text), 'public corpus must keep OAuth boundary');
   assert.ok(/screenshots.*alone|screenshots, hosted evidence, and ZIPs|ZIP existence alone|ZIP archive alone/i.test(text), 'public corpus must reject screenshot/ZIP-only approval');
 }
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0'"), 'migration target must be v1.1.0');
-assert.ok(migrations.includes("'1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-fix.1'"), 'migration target must be v1.1.0');
+assert.ok(migrations.includes("'1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-fix.1'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
 assert.ok(engine.includes("baseVersion:'1.0.30'"), 'engine apply/provenance reports must use v1.0.30 freeze baseline');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must run final freeze audit through registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');

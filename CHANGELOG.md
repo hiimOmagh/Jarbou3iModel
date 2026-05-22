@@ -1,16 +1,10 @@
 # Changelog
 
-`v1.1.0 — Public Demo Stable`
+`v1.1.0-fix.1 — Stable Public Localization Matrix Fix`
 
-Canonical lock evidence bundle and final stable handoff: resets the public-facing surface toward v1.1.0 public-demo stable language, consolidates public-demo docs, preserves internal evidence lineage, verifies stale-copy cleanup, golden workflow regression, Export Pack v3 consistency, repository hygiene, and no-browser/browser CI parity without adding product feature surface.
+Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0-fix.1`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
 
-Public surface: `v1.1.0 Public Demo Stable`. Internal RC validation metadata remains `1.1.0` until stable lock.
-
-Release-lock guard: 1.1.0 Public Demo Stable requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
-
-Boundaries: no new feature surface, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, no broad UI redesign, and no automatic source verification claims.
-
-## v1.1.0 — Public Demo Stable
+## v1.1.0-fix.1 — Public Demo Stable
 
 - Promotes the locked alpha.25 system into the first canonical evidence bundling and public surface freeze.
 - Freezes feature surface.

@@ -17,15 +17,21 @@
           "claim": "Public discourse concentrated on implementation risk rather than headline capacity targets.",
           "quote": "Most high-engagement comments questioned procurement transparency and grid-readiness assumptions.",
           "confidence": "medium",
-          "supports": ["N1"],
+          "supports": [
+            "N1"
+          ],
           "contradicts": []
         },
         {
           "claim": "The strongest counter-signal was that users still framed faster renewable deployment as strategically necessary.",
           "quote": "Several comments argued that execution risk does not eliminate the need to reduce energy dependence.",
           "confidence": "medium",
-          "supports": ["I1"],
-          "contradicts": ["N1"]
+          "supports": [
+            "I1"
+          ],
+          "contradicts": [
+            "N1"
+          ]
         }
       ]
     },
@@ -42,7 +48,9 @@
           "claim": "The official timeline emphasizes procurement acceleration and grid-connection sequencing.",
           "quote": "The implementation schedule links procurement decisions with connection-readiness milestones.",
           "confidence": "high",
-          "supports": ["T1"],
+          "supports": [
+            "T1"
+          ],
           "contradicts": []
         }
       ]

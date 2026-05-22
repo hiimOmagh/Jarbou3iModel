@@ -1,29 +1,46 @@
 # Current Release
 
-## v1.1.0 — Public Demo Stable
+## v1.1.0-fix.1 — Stable Public Localization Matrix Fix
 
-Canonical lock evidence bundle and final stable handoff: resets the public-facing surface toward v1.1.0 public-demo stable language, consolidates public-demo docs, preserves internal evidence lineage, verifies stale-copy cleanup, golden workflow regression, Export Pack v3 consistency, repository hygiene, and no-browser/browser CI parity without adding product feature surface.
+Stable corrective build for `v1.1.0-fix.1 — Public Demo Stable`. It fixes the public EN/AR/FR stable labels and release copy so the evidence matrix can validate the public demo surface while preserving internal evidence metadata as `1.1.0-fix.1`.
 
-Public surface: `v1.1.0 Public Demo Stable`.
-Internal RC validation metadata: `1.1.0`.
+Public label: `v1.1.0 Public Demo Stable`
+Internal build version: `1.1.0-fix.1`
 
-Release-lock guard: 1.1.0 Public Demo Stable requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+Scope:
+- fix stable public Arabic label/copy
+- fix stable public French label/copy
+- keep English stable public copy aligned
+- align evidence matrix expected localized public labels
+- preserve canonical lock evidence bundle and 39-row evidence matrix
 
-Allowed changes: public-copy freeze, release docs consolidation, stale-copy sweep, repo/package hygiene, golden workflow regression lock, Export Pack v3 artifact consistency lock, hosted evidence runbook tightening, and no-browser/browser CI parity.
+Boundaries preserved: no product feature changes, no UI redesign, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, and no product schema expansion.
 
-Forbidden changes: no new feature surface, no live connector expansion, no provider execution expansion, no OAuth/backend expansion, no broad UI redesign, and no schema expansion unless a release gate requires it.
 
-Node 24 CI compatibility is preserved. Public Demo release evidence and hosted-demo review remain required. No real OAuth is enabled; production OAuth remains out of scope.
+Feature surface is frozen for this corrective stable localization patch.
+A ZIP archive alone is insufficient for release approval.
+
+Internal RC validation metadata remains represented by the internal build version `1.1.0-fix.1`; the public surface stays `v1.1.0 Public Demo Stable`.
+Screenshots alone are insufficient for release approval. A ZIP archive alone is insufficient.
+This patch introduces no new feature surface.
 
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
 Version: `1.1.0`
+Version: `1.1.0-fix.1`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions
 Required cleanup commands
 
-Continuity notes: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only safeguards remain preserved.
 
-No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.
+Node 24 CI compatibility preserved for v1.1.0-fix.1.
+
+Release-lock requirements: green no-browser CI, green browser CI, and reviewed hosted-demo evidence are mandatory before locking.
+
+
+Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+
+
+No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone and ZIP archive alone are insufficient for release approval.
