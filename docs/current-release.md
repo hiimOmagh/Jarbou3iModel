@@ -1,36 +1,49 @@
 # Current Release
 
-## v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability
+## v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit
 
-Adds Evidence Pack Export v3 + Brief Traceability: evidence-to-conclusion traceability blocks, brief paragraph to evidence-ID mapping, Export Pack v3 manifest, source/evidence/entity/cluster/graph bundle consistency checks, contradiction and falsifier appendix, publication-readiness export report, and privacy/export guard continuity without live scraping, live provider execution, OAuth/backend expansion, source connector expansion, automatic source verification claims, storage expansion, or broad UI redesign.
+Status: candidate package pending CI/browser evidence lock.
 
-Release-lock guard: 1.1.0-alpha.22 Evidence Pack Export v3 + Brief Traceability requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.23 Publication Review Gate + Claim Boundary Audit requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
-Version: `1.1.0-alpha.22`
-Runtime capability change: no
-Provider behavior changed: no
-OAuth behavior changed: no
-Backend behavior changed: no
-Source connector behavior changed: no
-Storage behavior changed: no
+Version: `1.1.0-alpha.23`
+
+Scope:
+- observation / inference / estimate claim classification
+- claim-boundary audit before export
+- unsupported conclusion detection
+- contradiction/falsifier completeness check
+- publication-readiness blocker reasons
+- export-safe final review report
+- visible traceability warnings in quality/export
+
+Boundaries preserved: no live scraping, no live provider execution expansion, no OAuth/backend expansion, no new connector sprawl, no automatic source verification claims, and no broad UI redesign.
 
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
-Version: `1.1.0-alpha.22`
+Version: `1.1.0-alpha.23`
 Runtime capability change: no
-Required browser gates before publishing
-Release archive exclusions
-Required cleanup commands
 
-Node 24 CI compatibility preserved.
+Required browser gates before publishing:
+- GitHub no-browser CI must pass.
+- GitHub browser CI must pass.
+- Hosted demo evidence must be reviewed.
 
-A ZIP archive alone is insufficient.
+Release archive exclusions:
+- `node_modules/`
+- `playwright-report/`
+- `test-results/`
+- `*.zip`
+- `backend/.dev.vars`
 
-Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
+Required cleanup commands:
+- Use repository hygiene checks before release handoff.
+- Do not ship generated logs or local evidence archives.
 
-Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
+Node 24 CI compatibility is preserved for v1.1.0-alpha.23.
 
-Public Demo release-lock evidence remains required.
+Continuity notes: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only release discipline remain preserved.
 
-No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and a ZIP archive alone are insufficient for release approval.
+Public Demo release evidence and hosted-demo review remain required.
+No real OAuth is enabled; production OAuth remains out of scope.

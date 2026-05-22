@@ -1,8 +1,8 @@
 {
-  "workflow_version": "1.1.0-alpha.22",
+  "workflow_version": "1.1.0-alpha.23",
   "generated_at": "2026-04-28T00:00:00.000Z",
   "research_plan": {
-    "plan_version": "1.1.0-alpha.22",
+    "plan_version": "1.1.0-alpha.23",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
     "mode": "source-heavy",
@@ -58,7 +58,7 @@
       "feedback"
     ],
     "prompt_compiler": {
-      "prompt_compiler_version": "1.1.0-alpha.22",
+      "prompt_compiler_version": "1.1.0-alpha.23",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "mode": "source-heavy",
       "topic_raw": "Sample: US-China chip war",
@@ -137,14 +137,14 @@
     "live_ai_used": false,
     "live_fetching_performed": false,
     "research_planner_report": {
-      "research_planner_version": "1.1.0-alpha.22",
+      "research_planner_version": "1.1.0-alpha.23",
       "planner_model": "research_planner_v2.v1",
       "generated_at": "2026-05-21T00:00:00.000Z",
       "topic": "Sample strategic research topic",
-      "context": "2024\u20132026",
+      "context": "2024–2026",
       "depth_preset": "standard",
       "source_type_budget": {
-        "source_budget_version": "1.1.0-alpha.22",
+        "source_budget_version": "1.1.0-alpha.23",
         "depth_preset": "standard",
         "source_types": [
           "official",
@@ -262,7 +262,7 @@
       "notes": "Fixture source is illustrative; replace before publication.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.1.0-alpha.22",
+        "scorer_version": "1.1.0-alpha.23",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 80,
@@ -322,7 +322,7 @@
       "notes": "Used to test contradiction links.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.1.0-alpha.22",
+        "scorer_version": "1.1.0-alpha.23",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 60,
         "reliability_score": 71,
@@ -378,7 +378,7 @@
       "notes": "Used to test feedback loops.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.1.0-alpha.22",
+        "scorer_version": "1.1.0-alpha.23",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 69,
@@ -446,11 +446,11 @@
     }
   ],
   "critique": {
-    "critique_version": "1.1.0-alpha.22",
+    "critique_version": "1.1.0-alpha.23",
     "summary": "Fixture has enough structure for research-packet validation, not publication."
   },
   "analysis_brief": {
-    "brief_version": "1.1.0-alpha.22",
+    "brief_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
@@ -592,10 +592,10 @@
     "handoff_summary": "Compile the fixture evidence into a strategic analysis of semiconductor export controls as an adaptive system.",
     "analysis_template": {
       "template_id": "strategic_analysis_engine",
-      "template_version": "1.1.0-alpha.22",
+      "template_version": "1.1.0-alpha.23",
       "display_name": "Strategic Analysis Engine",
       "short_name": "Strategic",
-      "description": "Default Interests \u2192 Actors \u2192 Tools \u2192 Narrative \u2192 Outcomes \u2192 Feedback model with evidence review discipline.",
+      "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
       "output_focus": [
         "interests",
         "actors",
@@ -637,7 +637,7 @@
       ]
     },
     "template_fit_report": {
-      "fit_version": "1.1.0-alpha.22",
+      "fit_version": "1.1.0-alpha.23",
       "template_id": "strategic_analysis_engine",
       "required_layers": [
         "interests",
@@ -659,7 +659,7 @@
       "fit_score": 100
     },
     "quality_gate_report": {
-      "quality_gate_version": "1.1.0-alpha.22",
+      "quality_gate_version": "1.1.0-alpha.23",
       "generated_at": "2026-04-28T21:08:50.659Z",
       "gate_name": "Advanced Quality Gate v3",
       "overall_score": 84,
@@ -775,7 +775,7 @@
         "readiness": 85
       },
       "evidence_scoring_report": {
-        "evidence_scoring_version": "1.1.0-alpha.22",
+        "evidence_scoring_version": "1.1.0-alpha.23",
         "scoring_model": "evidence_scoring.v1",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "item_count": 3,
@@ -798,7 +798,7 @@
       "Add counter-evidence and contradiction-linked claims before treating the analysis as robust."
     ],
     "evidence_scoring_report": {
-      "evidence_scoring_version": "1.1.0-alpha.22",
+      "evidence_scoring_version": "1.1.0-alpha.23",
       "scoring_model": "evidence_scoring.v1",
       "calibration_version": "evidence_scoring_calibration.v1",
       "generated_at": "2026-05-02T00:00:00.000Z",
@@ -842,7 +842,7 @@
     "entity_profiles": [
       {
         "entity_id": "ENT1",
-        "entity_version": "1.1.0-alpha.22",
+        "entity_version": "1.1.0-alpha.23",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "OpenAI",
         "normalized_name": "openai",
@@ -873,7 +873,7 @@
       },
       {
         "entity_id": "ENT2",
-        "entity_version": "1.1.0-alpha.22",
+        "entity_version": "1.1.0-alpha.23",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "Microsoft",
         "normalized_name": "microsoft",
@@ -904,7 +904,7 @@
       },
       {
         "entity_id": "ENT3",
-        "entity_version": "1.1.0-alpha.22",
+        "entity_version": "1.1.0-alpha.23",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "NVIDIA",
         "normalized_name": "nvidia",
@@ -935,7 +935,7 @@
       },
       {
         "entity_id": "ENT4",
-        "entity_version": "1.1.0-alpha.22",
+        "entity_version": "1.1.0-alpha.23",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "TSMC",
         "normalized_name": "tsmc",
@@ -966,7 +966,7 @@
       },
       {
         "entity_id": "ENT5",
-        "entity_version": "1.1.0-alpha.22",
+        "entity_version": "1.1.0-alpha.23",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "Taiwan",
         "normalized_name": "taiwan",
@@ -997,7 +997,7 @@
       },
       {
         "entity_id": "ENT6",
-        "entity_version": "1.1.0-alpha.22",
+        "entity_version": "1.1.0-alpha.23",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "European Union",
         "normalized_name": "european union",
@@ -1028,7 +1028,7 @@
       }
     ],
     "entity_map_report": {
-      "entity_map_report_version": "1.1.0-alpha.22",
+      "entity_map_report_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "entity_count": 6,
@@ -1099,7 +1099,7 @@
       "verification_claimed": false
     },
     "entity_alias_report": {
-      "entity_alias_report_version": "1.1.0-alpha.22",
+      "entity_alias_report_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "entity_count": 6,
@@ -1110,14 +1110,14 @@
       "verification_claimed": false
     },
     "research_planner_report": {
-      "research_planner_version": "1.1.0-alpha.22",
+      "research_planner_version": "1.1.0-alpha.23",
       "planner_model": "research_planner_v2.v1",
       "generated_at": "2026-05-21T00:00:00.000Z",
       "topic": "Sample strategic research topic",
-      "context": "2024\u20132026",
+      "context": "2024–2026",
       "depth_preset": "standard",
       "source_type_budget": {
-        "source_budget_version": "1.1.0-alpha.22",
+        "source_budget_version": "1.1.0-alpha.23",
         "depth_preset": "standard",
         "source_types": [
           "official",
@@ -1217,7 +1217,7 @@
     "planner_quality_score": 90,
     "depth_preset": "standard",
     "strategic_evidence_graph": {
-      "strategic_evidence_graph_version": "1.1.0-alpha.22",
+      "strategic_evidence_graph_version": "1.1.0-alpha.23",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "graph_nodes": [
@@ -1637,7 +1637,7 @@
         }
       ],
       "graph_quality_report": {
-        "graph_quality_report_version": "1.1.0-alpha.22",
+        "graph_quality_report_version": "1.1.0-alpha.23",
         "graph_model": "strategic_evidence_graph.v1",
         "generated_at": "2026-05-22T00:00:00.000Z",
         "node_count": 18,
@@ -1654,7 +1654,7 @@
         "verification_claimed": false
       },
       "graph_export_report": {
-        "graph_export_report_version": "1.1.0-alpha.22",
+        "graph_export_report_version": "1.1.0-alpha.23",
         "graph_model": "strategic_evidence_graph.v1",
         "generated_at": "2026-05-22T00:00:00.000Z",
         "formats": [
@@ -1680,7 +1680,7 @@
       "release_gate": "graph_export_ready"
     },
     "graph_quality_report": {
-      "graph_quality_report_version": "1.1.0-alpha.22",
+      "graph_quality_report_version": "1.1.0-alpha.23",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "node_count": 18,
@@ -1697,7 +1697,7 @@
       "verification_claimed": false
     },
     "graph_export_report": {
-      "graph_export_report_version": "1.1.0-alpha.22",
+      "graph_export_report_version": "1.1.0-alpha.23",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "formats": [
@@ -1713,7 +1713,7 @@
     }
   },
   "diagnostics": {
-    "diagnostics_version": "1.1.0-alpha.22",
+    "diagnostics_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "linked_ids": [
       "A1",
@@ -1745,7 +1745,7 @@
   "ai_runs": [
     {
       "run_id": "RUN-FIXTURE-001",
-      "run_version": "1.1.0-alpha.22",
+      "run_version": "1.1.0-alpha.23",
       "provider": "mock",
       "task": "synthesis",
       "status": "ok",
@@ -1778,7 +1778,7 @@
         "verdict": "mock_safe"
       },
       "response_validation": {
-        "validation_version": "1.1.0-alpha.22",
+        "validation_version": "1.1.0-alpha.23",
         "validated_at": "2026-04-28T00:00:00.060Z",
         "task": "synthesis",
         "expected_type": "strategic_analysis",
@@ -1848,7 +1848,7 @@
     "remember_key": false
   },
   "provider_validation": {
-    "validation_version": "1.1.0-alpha.22",
+    "validation_version": "1.1.0-alpha.23",
     "validated_at": "2026-04-28T00:00:00.060Z",
     "task": "synthesis",
     "expected_type": "strategic_analysis",
@@ -1863,7 +1863,7 @@
     "status": "not_required"
   },
   "provider_diagnostics": {
-    "diagnostics_version": "1.1.0-alpha.22",
+    "diagnostics_version": "1.1.0-alpha.23",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "task": "synthesis",
     "provider": "mock",
@@ -1914,7 +1914,7 @@
     }
   },
   "provider_fixture_report": {
-    "suite_version": "1.1.0-alpha.22",
+    "suite_version": "1.1.0-alpha.23",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -1974,7 +1974,7 @@
     ]
   },
   "source_policy": {
-    "policy_version": "1.1.0-alpha.22",
+    "policy_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "live_fetching_enabled": false,
     "current_layer": "planning_only",
@@ -1995,10 +1995,10 @@
       "source URL/date/type preservation"
     ],
     "verdict": "safe_planning_layer_only",
-    "source_policy_version": "1.1.0-alpha.22"
+    "source_policy_version": "1.1.0-alpha.23"
   },
   "source_diagnostics": {
-    "diagnostics_version": "1.1.0-alpha.22",
+    "diagnostics_version": "1.1.0-alpha.23",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "connector": "manual_mock",
     "task": "source_plan",
@@ -2018,7 +2018,7 @@
     ]
   },
   "source_fixture_report": {
-    "suite_version": "1.1.0-alpha.22",
+    "suite_version": "1.1.0-alpha.23",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -2063,7 +2063,7 @@
   },
   "source_requests": [
     {
-      "request_version": "1.1.0-alpha.22",
+      "request_version": "1.1.0-alpha.23",
       "created_at": "2026-04-28T00:00:00.000Z",
       "connector": "manual_mock",
       "task": "source_plan",
@@ -2090,7 +2090,7 @@
         "China"
       ],
       "safety_policy": {
-        "policy_version": "1.1.0-alpha.22",
+        "policy_version": "1.1.0-alpha.23",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "live_fetching_enabled": false,
         "current_layer": "planning_only",
@@ -2117,7 +2117,7 @@
   "source_runs": [
     {
       "run_id": "SRC-FIXTURE-1",
-      "run_version": "1.1.0-alpha.22",
+      "run_version": "1.1.0-alpha.23",
       "connector": "manual_mock",
       "task": "source_plan",
       "status": "planned",
@@ -2130,7 +2130,7 @@
     }
   ],
   "source_import_report": {
-    "import_version": "1.1.0-alpha.22",
+    "import_version": "1.1.0-alpha.23",
     "imported_at": "2026-05-02T00:00:00.000Z",
     "input_format": "source_packet",
     "source_packet_schema": "manual_source_packet.v1",
@@ -2158,7 +2158,7 @@
       "import_id": "IMP-fixture-v113",
       "imported_at": "2026-05-02T00:00:00.000Z",
       "report": {
-        "import_version": "1.1.0-alpha.22",
+        "import_version": "1.1.0-alpha.23",
         "imported_at": "2026-05-02T00:00:00.000Z",
         "input_format": "source_packet",
         "source_packet_schema": "manual_source_packet.v1",
@@ -2301,7 +2301,7 @@
     }
   ],
   "evidence_review_report": {
-    "review_version": "1.1.0-alpha.22",
+    "review_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "queue_count": 3,
     "pending_count": 2,
@@ -2346,7 +2346,7 @@
     ]
   },
   "portable_account": {
-    "portable_account_version": "1.1.0-alpha.22",
+    "portable_account_version": "1.1.0-alpha.23",
     "provider_id": "portable_oauth",
     "status": "connected_mock",
     "account_id": "pa_fixture0001",
@@ -2377,8 +2377,8 @@
     "code_verifier_exported": false
   },
   "privacy_export": {
-    "audit_version": "1.1.0-alpha.22",
-    "guard_version": "1.1.0-alpha.22",
+    "audit_version": "1.1.0-alpha.23",
+    "guard_version": "1.1.0-alpha.23",
     "safe": true,
     "release_gate": "pass",
     "issue_count": 0,
@@ -2400,9 +2400,9 @@
     }
   },
   "packet_migration_report": {
-    "migration_version": "1.1.0-alpha.22",
-    "source_version": "1.1.0-alpha.22",
-    "target_version": "1.1.0-alpha.22",
+    "migration_version": "1.1.0-alpha.23",
+    "source_version": "1.1.0-alpha.23",
+    "target_version": "1.1.0-alpha.23",
     "started_at": "2026-04-28T00:00:00.000Z",
     "completed_at": "2026-04-28T00:00:00.000Z",
     "migrated": false,
@@ -2415,7 +2415,7 @@
     "import_safe": true
   },
   "project_workspace": {
-    "workspace_version": "1.1.0-alpha.22",
+    "workspace_version": "1.1.0-alpha.23",
     "storage_mode": "local_only",
     "active_project_id": null,
     "active_project_name": null,
@@ -2423,7 +2423,7 @@
     "storage_warning": "Projects are stored only in this browser localStorage.",
     "last_saved_at": null,
     "quota": {
-      "diagnostics_version": "1.1.0-alpha.22",
+      "diagnostics_version": "1.1.0-alpha.23",
       "available": true,
       "storage_mode": "local_only",
       "project_count": 0,
@@ -2434,10 +2434,10 @@
   },
   "analysis_template": {
     "template_id": "strategic_analysis_engine",
-    "template_version": "1.1.0-alpha.22",
+    "template_version": "1.1.0-alpha.23",
     "display_name": "Strategic Analysis Engine",
     "short_name": "Strategic",
-    "description": "Default Interests \u2192 Actors \u2192 Tools \u2192 Narrative \u2192 Outcomes \u2192 Feedback model with evidence review discipline.",
+    "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
     "output_focus": [
       "interests",
       "actors",
@@ -2479,7 +2479,7 @@
     ]
   },
   "quality_gate": {
-    "quality_gate_version": "1.1.0-alpha.22",
+    "quality_gate_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-28T21:08:50.659Z",
     "gate_name": "Advanced Quality Gate v3",
     "overall_score": 84,
@@ -2595,7 +2595,7 @@
       "readiness": 85
     },
     "evidence_scoring_report": {
-      "evidence_scoring_version": "1.1.0-alpha.22",
+      "evidence_scoring_version": "1.1.0-alpha.23",
       "scoring_model": "evidence_scoring.v1",
       "calibration_version": "evidence_scoring_calibration.v1",
       "generated_at": "2026-05-02T00:00:00.000Z",
@@ -2638,13 +2638,13 @@
     }
   },
   "export_pack": {
-    "export_pack_version": "1.1.0-alpha.22",
+    "export_pack_version": "1.1.0-alpha.23",
     "format": "export_pack_v3",
     "release_gate": "privacy_audit_required"
   },
   "backend_hardening": {
-    "hardening_version": "1.1.0-alpha.22",
-    "proxy_version": "1.1.0-alpha.22",
+    "hardening_version": "1.1.0-alpha.23",
+    "proxy_version": "1.1.0-alpha.23",
     "status": "optional_backend_hardened",
     "rate_limiting": {
       "supported": true,
@@ -2685,7 +2685,7 @@
   "source_results": [
     {
       "result_id": "SR-FIXTURE-1",
-      "result_version": "1.1.0-alpha.22",
+      "result_version": "1.1.0-alpha.23",
       "connector": "github_public_repo",
       "task": "source_plan",
       "created_at": "2026-04-28T00:00:00.000Z",
@@ -2702,7 +2702,7 @@
     }
   ],
   "search_provider_identity": {
-    "identity_version": "1.1.0-alpha.22",
+    "identity_version": "1.1.0-alpha.23",
     "provider_id": "mock_search",
     "display_name": "Mock Search Provider",
     "status": "available_dry_run",
@@ -2724,7 +2724,7 @@
     ]
   },
   "search_query_budget": {
-    "budget_version": "1.1.0-alpha.22",
+    "budget_version": "1.1.0-alpha.23",
     "max_queries": 6,
     "max_results_per_query": 5,
     "max_total_results": 30,
@@ -2738,9 +2738,9 @@
     "live_search_enabled": false
   },
   "search_policy": {
-    "search_policy_version": "1.1.0-alpha.22",
+    "search_policy_version": "1.1.0-alpha.23",
     "provider_identity": {
-      "identity_version": "1.1.0-alpha.22",
+      "identity_version": "1.1.0-alpha.23",
       "provider_id": "mock_search",
       "display_name": "Mock Search Provider",
       "status": "available_dry_run",
@@ -2762,7 +2762,7 @@
       ]
     },
     "query_budget": {
-      "budget_version": "1.1.0-alpha.22",
+      "budget_version": "1.1.0-alpha.23",
       "max_queries": 6,
       "max_results_per_query": 5,
       "max_total_results": 30,
@@ -2801,7 +2801,7 @@
     "verdict": "web_search_abstraction_ready_no_live_fetch"
   },
   "portable_oauth_spike": {
-    "oauth_spike_version": "1.1.0-alpha.22",
+    "oauth_spike_version": "1.1.0-alpha.23",
     "provider_id": "portable_oauth",
     "status": "disconnected",
     "mode": "real_oauth_pkce_spike",
@@ -2823,11 +2823,11 @@
     "safety_verdict": "oauth_dev_disconnected_token_state_cleared"
   },
   "release_candidate": {
-    "release_candidate_version": "1.1.0-alpha.22",
-    "stable_release_version": "1.1.0-alpha.22",
+    "release_candidate_version": "1.1.0-alpha.23",
+    "stable_release_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-29T18:54:43.435Z",
     "policy": {
-      "release_version": "1.1.0-alpha.22",
+      "release_version": "1.1.0-alpha.23",
       "release_stage": "public_beta_stable",
       "rc_number": null,
       "freeze_status": "stable_feature_baseline",
@@ -2890,7 +2890,7 @@
         "gate": "migration_report_present",
         "required": false,
         "passed": true,
-        "notes": "1.1.0-alpha.22"
+        "notes": "1.1.0-alpha.23"
       },
       {
         "gate": "oauth_tokens_not_exported",
@@ -2917,15 +2917,15 @@
     "verdict": "public_beta_stable_ready"
   },
   "ci_validation": {
-    "ci_validation_version": "1.1.0-alpha.22",
+    "ci_validation_version": "1.1.0-alpha.23",
     "external_ci_passed": true,
     "browser_provider_passed": true,
     "full_browser_passed": true,
     "source": "user_reported_new_ci_succeeded",
-    "notes": "External CI/browser validation reported as successful before v1.1.0-alpha.22 promotion."
+    "notes": "External CI/browser validation reported as successful before v1.1.0-alpha.23 promotion."
   },
   "browser_qa_hardening": {
-    "hardening_version": "1.1.0-alpha.22",
+    "hardening_version": "1.1.0-alpha.23",
     "release_type": "patch_only_browser_qa_visual_regression",
     "feature_surface_added": false,
     "browser_gate": {
@@ -2955,7 +2955,7 @@
     "release_gate": "browser_qa_hardened"
   },
   "onboarding": {
-    "onboarding_version": "1.1.0-alpha.22",
+    "onboarding_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "first_run": false,
     "dismissed": false,
@@ -3043,7 +3043,7 @@
     ]
   },
   "public_demo": {
-    "public_demo_version": "1.1.0-alpha.22",
+    "public_demo_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "demo_stage": "public_demo_ready",
     "release_type": "patch",
@@ -3127,16 +3127,16 @@
     "release_gate": "public_demo_ready_checked"
   },
   "release_notes": {
-    "release_notes_version": "1.1.0-alpha.22",
+    "release_notes_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-02T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.22 \u2014 Evidence Pack Export v3 + Brief Traceability",
+    "release_title": "v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit",
     "release_type": "patch",
     "runtime_capability_change": false,
-    "summary": "Adds Evidence Pack Export v3 + Brief Traceability: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.",
+    "summary": "Adds Publication Review Gate + Claim Boundary Audit: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.",
     "notable_changes": [
       "Converted hosted-demo evidence metadata from per-test overwrite risk to a single complete capture manifest.",
       "Added viewport/image dimension and horizontal-overflow sanity metadata for every required screenshot.",
-      "Added v1.1.0-alpha.22 migration and privacy export fixtures.",
+      "Added v1.1.0-alpha.23 migration and privacy export fixtures.",
       "Preserved provider, OAuth, backend, source, storage, and public-demo behavior boundaries."
     ],
     "unchanged_boundaries": [
@@ -3154,10 +3154,10 @@
       "Confirm release archive excludes generated and secret-bearing files."
     ],
     "release_gate": "release_notes_polished",
-    "release_version": "1.1.0-alpha.22"
+    "release_version": "1.1.0-alpha.23"
   },
   "hosted_demo_verification": {
-    "hosted_demo_version": "1.1.0-alpha.22",
+    "hosted_demo_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_verification",
@@ -3245,7 +3245,7 @@
     "release_gate": "hosted_demo_verified"
   },
   "browser_evidence_capture": {
-    "browser_evidence_version": "1.1.0-alpha.22",
+    "browser_evidence_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "evidence_mode": "playwright_capture_attach_and_write_artifacts",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -3326,7 +3326,7 @@
     ]
   },
   "hosted_demo_smoke_fixes": {
-    "smoke_fixes_version": "1.1.0-alpha.22",
+    "smoke_fixes_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_smoke_fixes",
@@ -3432,7 +3432,7 @@
     "release_gate": "hosted_demo_smoke_fixed"
   },
   "hosted_demo_evidence_review": {
-    "evidence_review_version": "1.1.0-alpha.22",
+    "evidence_review_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "review_stage": "hosted_demo_evidence_review",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -3545,7 +3545,7 @@
     "visual_artifact_guard_required": true
   },
   "source_capability_registry": {
-    "source_strategy_version": "1.1.0-alpha.22",
+    "source_strategy_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "release_gate": "source_strategy_blueprint_checked",
     "runtime_capability_change": false,
@@ -3652,7 +3652,7 @@
       }
     ],
     "audit": {
-      "registry_version": "1.1.0-alpha.22",
+      "registry_version": "1.1.0-alpha.23",
       "generated_at": "2026-05-02T00:00:00.000Z",
       "capability_count": 6,
       "visible_demo_capabilities": [
@@ -3678,7 +3678,7 @@
       "ok": true,
       "verdict": "source_capability_registry_ready_manual_packet_import"
     },
-    "next_safe_increment": "v1.1.0-alpha.22 source packet builder browser QA and UX tightening",
+    "next_safe_increment": "v1.1.0-alpha.23 source packet builder browser QA and UX tightening",
     "blocked_until_threat_modeled": [
       "production OAuth / portable account auth",
       "live Reddit/X/YouTube/TikTok scraping",
@@ -3687,7 +3687,7 @@
     "scoring_warning": "Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength."
   },
   "evidence_scoring_report": {
-    "evidence_scoring_version": "1.1.0-alpha.22",
+    "evidence_scoring_version": "1.1.0-alpha.23",
     "scoring_model": "evidence_scoring.v1",
     "calibration_version": "evidence_scoring_calibration.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
@@ -3729,7 +3729,7 @@
     ]
   },
   "source_packet_builder_report": {
-    "builder_version": "1.1.0-alpha.22",
+    "builder_version": "1.1.0-alpha.23",
     "packet_schema": "manual_source_packet.v1",
     "built_at": "2026-05-02T00:00:00.000Z",
     "packet_count": 1,
@@ -3738,7 +3738,7 @@
     "verification_claimed": false,
     "queue_only_recommended": true,
     "scoring_review": {
-      "review_version": "1.1.0-alpha.22",
+      "review_version": "1.1.0-alpha.23",
       "builder_version": "source_packet_builder.v1",
       "item_count": 3,
       "high_reliability_count": 1,
@@ -3756,11 +3756,11 @@
   "last_built_source_packet": {
     "source_packet_version": "manual_source_packet.v1",
     "builder_version": "source_packet_builder.v1",
-    "workflow_version": "1.1.0-alpha.22",
+    "workflow_version": "1.1.0-alpha.23",
     "built_at": "2026-05-02T00:00:00.000Z",
     "source_packets": [],
     "builder_report": {
-      "builder_version": "1.1.0-alpha.22",
+      "builder_version": "1.1.0-alpha.23",
       "packet_schema": "manual_source_packet.v1",
       "built_at": "2026-05-02T00:00:00.000Z",
       "packet_count": 1,
@@ -3769,7 +3769,7 @@
       "verification_claimed": false,
       "queue_only_recommended": true,
       "scoring_review": {
-        "review_version": "1.1.0-alpha.22",
+        "review_version": "1.1.0-alpha.23",
         "builder_version": "source_packet_builder.v1",
         "item_count": 3,
         "high_reliability_count": 1,
@@ -3786,7 +3786,7 @@
     }
   },
   "source_packet_roundtrip_report": {
-    "roundtrip_version": "1.1.0-alpha.22",
+    "roundtrip_version": "1.1.0-alpha.23",
     "roundtrip_model": "source_packet_roundtrip.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "builder_version": "source_packet_builder.v1",
@@ -3807,7 +3807,7 @@
     "policy": "local_manual_source_packet_export_import_roundtrip_no_fetch_no_verification"
   },
   "source_packet_template_report": {
-    "template_report_version": "1.1.0-alpha.22",
+    "template_report_version": "1.1.0-alpha.23",
     "template_model": "source_packet_template_presets.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "template_count": 6,
@@ -3836,9 +3836,9 @@
     "policy": "local_manual_source_packet_templates_no_fetch_no_verification"
   },
   "public_demo_release_lock": {
-    "public_demo_release_lock_version": "1.1.0-alpha.22",
+    "public_demo_release_lock_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.22 \u2014 Public Demo Release Lock",
+    "release_title": "v1.1.0-alpha.23 — Public Demo Release Lock",
     "lock_stage": "public_demo_release_locked",
     "release_type": "patch",
     "release_approval_state": "locked_for_public_demo",
@@ -3951,15 +3951,15 @@
     "release_gate": "public_demo_release_locked"
   },
   "release_apply_integrity": {
-    "release_apply_integrity_version": "1.1.0-alpha.22",
+    "release_apply_integrity_version": "1.1.0-alpha.23",
     "generated_at": "2026-04-28T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.22 \u2014 Evidence Pack Export v3 + Brief Traceability",
+    "release_title": "v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit",
     "integrity_stage": "release_apply_integrity_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
-    "target_version": "1.1.0-alpha.22",
-    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability-patch.zip",
+    "target_version": "1.1.0-alpha.23",
+    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability-patch.zip",
     "artifact_sha256": "computed_after_packaging",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
@@ -3980,7 +3980,7 @@
     "checklist": [
       {
         "check_id": "base_version_known",
-        "label": "Patch is declared as changed-files-only over v1.1.0-alpha.22",
+        "label": "Patch is declared as changed-files-only over v1.1.0-alpha.23",
         "order": 1,
         "required": true,
         "passed": true,
@@ -4052,7 +4052,7 @@
       }
     ],
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability-patch.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability-patch.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:v110a1:no-browser",
       "npm run test:ci:no-browser",
@@ -4066,15 +4066,15 @@
     ]
   },
   "release_provenance_ledger": {
-    "release_provenance_ledger_version": "1.1.0-alpha.22",
+    "release_provenance_ledger_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.1.0-alpha.22 \u2014 Evidence Pack Export v3 + Brief Traceability",
+    "release_title": "v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit",
     "provenance_stage": "release_provenance_ledger_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
-    "target_version": "1.1.0-alpha.22",
-    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability-patch.zip",
+    "target_version": "1.1.0-alpha.23",
+    "artifact_name": "jarbou3i-research-engine-v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability-patch.zip",
     "artifact_sha256": "computed_after_packaging",
     "changed_files_manifest_required": true,
     "release_apply_integrity_required": true,
@@ -4094,7 +4094,7 @@
     "fail_count": 0,
     "release_gate": "release_provenance_ledger_pass",
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability-patch.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability-patch.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:v110a1:no-browser",
       "npm run test:ci:no-browser",
@@ -4102,14 +4102,14 @@
     ],
     "blocked_claims": [
       "Do not treat a named artifact as provenance unless the changed-files manifest and SHA256 are reviewed.",
-      "Do not publish from a patch that was not applied to v1.1.0-alpha.22 and revalidated.",
+      "Do not publish from a patch that was not applied to v1.1.0-alpha.23 and revalidated.",
       "Do not claim live scraping, production OAuth, provider behavior changes, backend endpoint expansion, source connector expansion, or storage expansion.",
       "Do not approve public demo release from screenshots or ZIP existence alone."
     ],
     "ledger_evidence": [
       {
         "evidence_id": "version_lock",
-        "label": "package/schema/fixtures identify v1.1.0-alpha.22",
+        "label": "package/schema/fixtures identify v1.1.0-alpha.23",
         "order": 1,
         "required": true,
         "passed": true,
@@ -4117,7 +4117,7 @@
       },
       {
         "evidence_id": "base_version_recorded",
-        "label": "base version v1.1.0-alpha.22 is recorded",
+        "label": "base version v1.1.0-alpha.23 is recorded",
         "order": 2,
         "required": true,
         "passed": true,
@@ -4174,7 +4174,7 @@
     ]
   },
   "dev_productivity_command_center": {
-    "version": "1.1.0-alpha.22",
+    "version": "1.1.0-alpha.23",
     "commands": [
       "dev:doctor",
       "dev:baseline",
@@ -4190,7 +4190,7 @@
   "entity_profiles": [
     {
       "entity_id": "ENT1",
-      "entity_version": "1.1.0-alpha.22",
+      "entity_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "OpenAI",
       "normalized_name": "openai",
@@ -4221,7 +4221,7 @@
     },
     {
       "entity_id": "ENT2",
-      "entity_version": "1.1.0-alpha.22",
+      "entity_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "Microsoft",
       "normalized_name": "microsoft",
@@ -4252,7 +4252,7 @@
     },
     {
       "entity_id": "ENT3",
-      "entity_version": "1.1.0-alpha.22",
+      "entity_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "NVIDIA",
       "normalized_name": "nvidia",
@@ -4283,7 +4283,7 @@
     },
     {
       "entity_id": "ENT4",
-      "entity_version": "1.1.0-alpha.22",
+      "entity_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "TSMC",
       "normalized_name": "tsmc",
@@ -4314,7 +4314,7 @@
     },
     {
       "entity_id": "ENT5",
-      "entity_version": "1.1.0-alpha.22",
+      "entity_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "Taiwan",
       "normalized_name": "taiwan",
@@ -4345,7 +4345,7 @@
     },
     {
       "entity_id": "ENT6",
-      "entity_version": "1.1.0-alpha.22",
+      "entity_version": "1.1.0-alpha.23",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "European Union",
       "normalized_name": "european union",
@@ -4376,7 +4376,7 @@
     }
   ],
   "entity_map_report": {
-    "entity_map_report_version": "1.1.0-alpha.22",
+    "entity_map_report_version": "1.1.0-alpha.23",
     "entity_model": "entity_intelligence_layer.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "entity_count": 6,
@@ -4447,7 +4447,7 @@
     "verification_claimed": false
   },
   "entity_alias_report": {
-    "entity_alias_report_version": "1.1.0-alpha.22",
+    "entity_alias_report_version": "1.1.0-alpha.23",
     "entity_model": "entity_intelligence_layer.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "entity_count": 6,
@@ -4458,14 +4458,14 @@
     "verification_claimed": false
   },
   "research_planner_report": {
-    "research_planner_version": "1.1.0-alpha.22",
+    "research_planner_version": "1.1.0-alpha.23",
     "planner_model": "research_planner_v2.v1",
     "generated_at": "2026-05-21T00:00:00.000Z",
     "topic": "Sample strategic research topic",
-    "context": "2024\u20132026",
+    "context": "2024–2026",
     "depth_preset": "standard",
     "source_type_budget": {
-      "source_budget_version": "1.1.0-alpha.22",
+      "source_budget_version": "1.1.0-alpha.23",
       "depth_preset": "standard",
       "source_types": [
         "official",
@@ -4563,11 +4563,11 @@
     ]
   },
   "controlled_connector_report": {
-    "controlled_connector_report_version": "1.1.0-alpha.22",
+    "controlled_connector_report_version": "1.1.0-alpha.23",
     "connector_model": "controlled_connector_architecture.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "registry": {
-      "connector_registry_version": "1.1.0-alpha.22",
+      "connector_registry_version": "1.1.0-alpha.23",
       "registry_model": "controlled_connector_architecture.v1",
       "connectors": [],
       "safety_boundary": {
@@ -4589,7 +4589,7 @@
     "release_gate": "controlled_connector_review_ready"
   },
   "connector_safety_report": {
-    "connector_safety_report_version": "1.1.0-alpha.22",
+    "connector_safety_report_version": "1.1.0-alpha.23",
     "connector_model": "controlled_connector_architecture.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "connector_id": "url_list_import",
@@ -4606,7 +4606,7 @@
     "verdict": "controlled_connector_safe_dry_run_or_manual_import"
   },
   "strategic_evidence_graph": {
-    "strategic_evidence_graph_version": "1.1.0-alpha.22",
+    "strategic_evidence_graph_version": "1.1.0-alpha.23",
     "graph_model": "strategic_evidence_graph.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "graph_nodes": [
@@ -5026,7 +5026,7 @@
       }
     ],
     "graph_quality_report": {
-      "graph_quality_report_version": "1.1.0-alpha.22",
+      "graph_quality_report_version": "1.1.0-alpha.23",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "node_count": 18,
@@ -5043,7 +5043,7 @@
       "verification_claimed": false
     },
     "graph_export_report": {
-      "graph_export_report_version": "1.1.0-alpha.22",
+      "graph_export_report_version": "1.1.0-alpha.23",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "formats": [
@@ -5069,7 +5069,7 @@
     "release_gate": "graph_export_ready"
   },
   "graph_quality_report": {
-    "graph_quality_report_version": "1.1.0-alpha.22",
+    "graph_quality_report_version": "1.1.0-alpha.23",
     "graph_model": "strategic_evidence_graph.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "node_count": 18,
@@ -5086,7 +5086,7 @@
     "verification_claimed": false
   },
   "graph_export_report": {
-    "graph_export_report_version": "1.1.0-alpha.22",
+    "graph_export_report_version": "1.1.0-alpha.23",
     "graph_model": "strategic_evidence_graph.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "formats": [
@@ -5101,7 +5101,7 @@
     "release_gate": "graph_exports_ready"
   },
   "provider_route_plan": {
-    "provider_route_plan_version": "1.1.0-alpha.22",
+    "provider_route_plan_version": "1.1.0-alpha.23",
     "route_model": "provider_router.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "task": "synthesis",
@@ -5163,7 +5163,7 @@
       "credential_exported": false
     },
     "safety_report": {
-      "provider_router_safety_version": "1.1.0-alpha.22",
+      "provider_router_safety_version": "1.1.0-alpha.23",
       "dry_run_only": true,
       "live_execution_performed": false,
       "automatic_paid_call_performed": false,
@@ -5182,7 +5182,7 @@
     "verification_claimed": false
   },
   "provider_route_report": {
-    "provider_route_report_version": "1.1.0-alpha.22",
+    "provider_route_report_version": "1.1.0-alpha.23",
     "route_model": "provider_router.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "selected_provider": "mock",
@@ -5201,7 +5201,7 @@
     ]
   },
   "provider_cost_report": {
-    "provider_cost_report_version": "1.1.0-alpha.22",
+    "provider_cost_report_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "currency": "USD",
     "selected_provider": "mock",
@@ -5222,7 +5222,7 @@
     "release_gate": "cost_preview_review_required"
   },
   "provider_router_safety_report": {
-    "provider_router_safety_version": "1.1.0-alpha.22",
+    "provider_router_safety_version": "1.1.0-alpha.23",
     "dry_run_only": true,
     "live_execution_performed": false,
     "automatic_paid_call_performed": false,
@@ -5232,7 +5232,7 @@
     "release_gate": "provider_route_review_required"
   },
   "evidence_workspace_ux_report": {
-    "workspace_ux_version": "1.1.0-alpha.22",
+    "workspace_ux_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "local_only": true,
     "live_fetching_performed": false,
@@ -5249,7 +5249,7 @@
       "cluster": "all"
     },
     "facets": {
-      "facet_version": "1.1.0-alpha.22",
+      "facet_version": "1.1.0-alpha.23",
       "source_types": [
         "official",
         "social"
@@ -5286,7 +5286,7 @@
       ]
     },
     "throughput_report": {
-      "throughput_version": "1.1.0-alpha.22",
+      "throughput_version": "1.1.0-alpha.23",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "counts": {
         "total": 3,
@@ -5319,7 +5319,7 @@
     "release_gate": "evidence_review_queue_required"
   },
   "review_throughput_report": {
-    "throughput_version": "1.1.0-alpha.22",
+    "throughput_version": "1.1.0-alpha.23",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "counts": {
       "total": 3,
@@ -5350,7 +5350,7 @@
     "release_gate": "review_required"
   },
   "brief_traceability_report": {
-    "brief_traceability_version": "1.1.0-alpha.22",
+    "brief_traceability_version": "1.1.0-alpha.23",
     "traceability_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "paragraph_count": 3,
@@ -5440,7 +5440,7 @@
     "verification_claimed": false
   },
   "contradiction_falsifier_appendix": {
-    "contradiction_falsifier_appendix_version": "1.1.0-alpha.22",
+    "contradiction_falsifier_appendix_version": "1.1.0-alpha.23",
     "appendix_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "contradiction_evidence_count": 1,
@@ -5487,7 +5487,7 @@
     "evidence_index_count": 3
   },
   "bundle_consistency_report": {
-    "bundle_consistency_report_version": "1.1.0-alpha.22",
+    "bundle_consistency_report_version": "1.1.0-alpha.23",
     "bundle_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "coverage": {
@@ -5504,7 +5504,7 @@
     "verification_claimed": false
   },
   "publication_readiness_export_report": {
-    "publication_readiness_export_report_version": "1.1.0-alpha.22",
+    "publication_readiness_export_report_version": "1.1.0-alpha.23",
     "report_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "publication_readiness_score": 78,
@@ -5521,12 +5521,12 @@
     "verification_claimed": false
   },
   "evidence_pack_v3_manifest": {
-    "evidence_pack_v3_manifest_version": "1.1.0-alpha.22",
-    "export_pack_version": "1.1.0-alpha.22",
+    "evidence_pack_v3_manifest_version": "1.1.0-alpha.23",
+    "export_pack_version": "1.1.0-alpha.23",
     "export_pack_format": "export_pack_v3",
     "manifest_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
-    "workflow_version": "1.1.0-alpha.22",
+    "workflow_version": "1.1.0-alpha.23",
     "topic": "Sample: US-China chip war",
     "file_count": 0,
     "files": [],
@@ -5537,5 +5537,63 @@
     "release_gate": "evidence_pack_v3_review_required",
     "live_fetching_performed": false,
     "verification_claimed": false
+  },
+  "claim_classification_report": {
+    "claim_classification_report_version": "1.1.0-alpha.23",
+    "report_model": "publication_review_gate.v1",
+    "claim_count": 3,
+    "observation_count": 1,
+    "inference_count": 1,
+    "estimate_count": 1,
+    "boundary_warning_count": 0,
+    "release_gate": "claim_boundary_reviewable",
+    "live_fetching_performed": false,
+    "verification_claimed": false
+  },
+  "claim_boundary_audit_report": {
+    "claim_boundary_audit_version": "1.1.0-alpha.23",
+    "audit_model": "publication_review_gate.v1",
+    "unsupported_conclusion_count": 0,
+    "boundary_issue_count": 0,
+    "release_gate": "claim_boundary_passed_review_required",
+    "live_fetching_performed": false,
+    "verification_claimed": false
+  },
+  "contradiction_falsifier_completeness_report": {
+    "contradiction_falsifier_completeness_version": "1.1.0-alpha.23",
+    "completeness_model": "publication_review_gate.v1",
+    "completeness_score": 75,
+    "missing_completeness_items": [],
+    "release_gate": "contradiction_falsifier_reviewable",
+    "live_fetching_performed": false,
+    "verification_claimed": false
+  },
+  "publication_review_gate_report": {
+    "publication_review_gate_version": "1.1.0-alpha.23",
+    "gate_model": "publication_review_gate.v1",
+    "publication_review_score": 82,
+    "blocker_count": 0,
+    "blocker_reasons": [],
+    "visible_traceability_warnings": [],
+    "release_gate": "publication_review_passed_manual_review_required",
+    "live_fetching_performed": false,
+    "verification_claimed": false,
+    "evidence_review_queue_required": true
+  },
+  "export_safe_final_review_report": {
+    "export_safe_final_review_report_version": "1.1.0-alpha.23",
+    "report_model": "publication_review_gate.v1",
+    "final_review_status": "export_safe_manual_review_required",
+    "release_gate": "publication_review_passed_manual_review_required",
+    "export_safety": {
+      "raw_token_exported": false,
+      "access_token_exported": false,
+      "refresh_token_exported": false,
+      "secret_exported": false,
+      "automatic_source_verification_claimed": false,
+      "live_fetching_performed": false,
+      "provider_execution_expanded": false,
+      "oauth_backend_expanded": false
+    }
   }
 }

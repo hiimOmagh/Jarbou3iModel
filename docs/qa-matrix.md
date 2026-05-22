@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release: v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability
+Current release: v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit
 
 Required gates:
 
@@ -8,7 +8,7 @@ Required gates:
 - Browser CI
 - Hosted-demo evidence capture
 - Visible-text snapshots
-- Evidence Pack Export v3 + Brief Traceability no-browser check
+- Publication Review Gate + Claim Boundary Audit no-browser check
 - Provider identity/response/fixture regression checks
 - Export Pack v2 provider route artifact checks
 

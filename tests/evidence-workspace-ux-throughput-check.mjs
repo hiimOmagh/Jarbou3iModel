@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.1.0-alpha.22';
+const VERSION = '1.1.0-alpha.23';
 const source = fs.readFileSync('src/research/evidence-workspace-ux.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
@@ -63,9 +63,9 @@ assert.ok(index.includes('rejectVisibleReviewEvidenceBtn'), 'visible reject batc
 assert.ok(engine.includes('evidenceWorkspaceUxReport'), 'research engine must export evidence workspace UX report');
 assert.ok(engine.includes('reviewThroughputReport'), 'research engine must export review throughput report');
 assert.ok(helpers.includes('reviewThroughputTitle'), 'localized throughput labels missing');
-assert.ok(helpers.includes('Evidence Pack Export v3 + Brief Traceability'));
-assert.ok(helpers.includes('حزمة تصدير الأدلة v3 وتتبع الموجز'));
-assert.ok(helpers.includes('Pack de preuves v3 + traçabilité du brief'));
+assert.ok(helpers.includes('Publication Review Gate + Claim Boundary Audit'));
+assert.ok(helpers.includes('بوابة مراجعة النشر وتدقيق حدود الادعاءات'));
+assert.ok(helpers.includes('Revue publication + audit des limites de revendication'));
 
 assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.ok(schema.properties.evidence_workspace_ux_report, 'schema must expose evidence workspace UX report');

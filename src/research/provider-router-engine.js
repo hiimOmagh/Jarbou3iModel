@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine provider router and cost-aware run ledger v1.1.0-alpha.22. Dry-run only. */
+/* Jarbou3i Research Engine provider router and cost-aware run ledger v1.1.0-alpha.23. Dry-run only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.22';
+  const VERSION = '1.1.0-alpha.23';
   const ROUTER_MODEL = 'provider_router.v1';
   const TASK_CAPABILITIES = Object.freeze({
     plan:['structured_output','reasoning','long_context'],

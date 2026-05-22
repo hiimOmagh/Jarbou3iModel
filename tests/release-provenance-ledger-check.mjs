@@ -7,11 +7,11 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.1.0-alpha.22';
+const VERSION = '1.1.0-alpha.23';
 const BASE_VERSION = '1.0.30';
-const TITLE = 'Evidence Pack Export v3 + Brief Traceability';
+const TITLE = 'Publication Review Gate + Claim Boundary Audit';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability-patch.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability-patch.zip';
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -21,8 +21,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.22-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.22.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-alpha.23-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.23.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const migrations = read('src/research/migrations.js');
@@ -37,7 +37,7 @@ for (const [actual, label] of [
   [sample.workflow_version, 'sample'],
   [migrationFixture.workflow_version, 'migration fixture'],
   [privacyFixture.workflow_version, 'privacy fixture']
-]) assert.equal(actual, VERSION, `${label} must be v1.1.0-alpha.22`);
+]) assert.equal(actual, VERSION, `${label} must be v1.1.0-alpha.23`);
 
 assert.ok(schema.required.includes('release_provenance_ledger'), 'schema must require release provenance ledger');
 assert.equal(schema.properties.release_provenance_ledger.properties.release_provenance_ledger_version.const, VERSION);
@@ -52,7 +52,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
   assert.equal(packet.release_notes.release_title, RELEASE, 'release title mismatch');
   assert.equal(packet.release_apply_integrity.base_version, BASE_VERSION, 'apply integrity base mismatch');
   assert.equal(packet.release_apply_integrity.artifact_name, ARTIFACT, 'apply integrity artifact mismatch');
-  assert.ok(packet.release_apply_integrity.required_commands.some((cmd) => cmd.includes('npm run test:v110a1:no-browser')), 'apply integrity must require v1.1.0-alpha.22 gate');
+  assert.ok(packet.release_apply_integrity.required_commands.some((cmd) => cmd.includes('npm run test:v110a1:no-browser')), 'apply integrity must require v1.1.0-alpha.23 gate');
   const ledger = packet.release_provenance_ledger;
   assert.equal(ledger.release_provenance_ledger_version, VERSION, 'ledger version mismatch');
   assert.equal(ledger.release_title, RELEASE, 'ledger title mismatch');
@@ -95,17 +95,17 @@ assert.equal(provenance.buildReleaseProvenanceLedger({ artifact_sha256_recorded:
 assert.ok(index.includes('src/research/release-provenance-ledger.js'), 'index must load provenance module');
 assert.ok(engine.includes('releaseProvenanceLedgerReport()'), 'engine must build provenance report');
 assert.ok(engine.includes('release_provenance_ledger'), 'research packet must export provenance ledger');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.22'"), 'migration target mismatch');
-assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.22'"), 'migration order must preserve v1.0.26 and append v1.1.0-alpha.22');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.1.0-alpha.23'"), 'migration target mismatch');
+assert.ok(migrations.includes("'1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.1.0-alpha.23'"), 'migration order must preserve v1.0.26 and append v1.1.0-alpha.23');
 assert.ok(migrations.includes('defaultReleaseProvenanceLedger'), 'migration defaults must include provenance ledger');
 
 for (const required of [
   'src/research/release-provenance-ledger.js',
   'tests/release-provenance-ledger-check.mjs',
   'tests/version-suite-registry-check.mjs',
-  'docs/v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability.md',
-  'fixtures/migrations/v1.1.0-alpha.22-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.22.json',
+  'docs/v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability.md',
+  'fixtures/migrations/v1.1.0-alpha.23-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.1.0-alpha.23.json',
   'fixtures/migrations/v1.0.26-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.26.json'
 ]) assert.ok(exists(required), `missing ${required}`);
@@ -123,9 +123,9 @@ for (const corpus of [
   read('docs/architecture.md'),
   read('docs/ai-integration.md'),
   read('docs/privacy-audit.md'),
-  readReleaseDoc('docs/v1.1.0-alpha.22-evidence-pack-export-v3-brief-traceability.md')
+  readReleaseDoc('docs/v1.1.0-alpha.23-evidence-pack-export-v3-brief-traceability.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0-alpha.22') || corpus.includes('1.1.0-alpha.22'), 'release corpus must mention v1.1.0-alpha.22');
+  assert.ok(corpus.includes('v1.1.0-alpha.23') || corpus.includes('1.1.0-alpha.23'), 'release corpus must mention v1.1.0-alpha.23');
   assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|Fixture Registry|payload compression|test organization|fixture registry consolidation|provenance ledger|changed-files-only|visual freeze|mobile header/i.test(corpus), 'release corpus must describe provenance gate');
 }
 

@@ -2,13 +2,13 @@
 
 Current milestone:
 
-`v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability`
+`v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit`
 
-Adds Evidence Pack Export v3 + Brief Traceability: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
+Adds Publication Review Gate + Claim Boundary Audit: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
 Next likely milestone: brief-traceability browser polish, evidence workspace keyboard-flow validation, or controlled live-execution acceptance criteria planning after alpha.21 lock.
 
-Release-lock guard: 1.1.0-alpha.22 Evidence Pack Export v3 + Brief Traceability requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
+Release-lock guard: 1.1.0-alpha.23 Publication Review Gate + Claim Boundary Audit requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 
 Node 24 CI compatibility preserved.
 
@@ -19,3 +19,5 @@ Provenance continuity: Package Script Compression, CI Gate Registry, Root Manife
 Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
 
 Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
+
+A ZIP archive alone is insufficient.

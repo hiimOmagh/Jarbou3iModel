@@ -1,9 +1,9 @@
-/* Jarbou3i Research Engine state store v1.1.0-alpha.22. */
+/* Jarbou3i Research Engine state store v1.1.0-alpha.23. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.1.0-alpha.22';
+    const version = options.version || '1.1.0-alpha.23';
     return {
       plan: null,
       evidence: [],
@@ -52,6 +52,11 @@
       contradiction_falsifier_appendix: null,
       bundle_consistency_report: null,
       publication_readiness_export_report: null,
+      claim_classification_report: null,
+      claim_boundary_audit_report: null,
+      contradiction_falsifier_completeness_report: null,
+      publication_review_gate_report: null,
+      export_safe_final_review_report: null,
       editingReviewIndex: -1,
       last_source_import_preview: null,
       source_import_report: null,
@@ -81,7 +86,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.1.0-alpha.22';
+    const version = options.version || '1.1.0-alpha.23';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);
@@ -103,6 +108,11 @@
     next.contradiction_falsifier_appendix = next.contradiction_falsifier_appendix && typeof next.contradiction_falsifier_appendix === 'object' ? next.contradiction_falsifier_appendix : null;
     next.bundle_consistency_report = next.bundle_consistency_report && typeof next.bundle_consistency_report === 'object' ? next.bundle_consistency_report : null;
     next.publication_readiness_export_report = next.publication_readiness_export_report && typeof next.publication_readiness_export_report === 'object' ? next.publication_readiness_export_report : null;
+    next.claim_classification_report = next.claim_classification_report && typeof next.claim_classification_report === 'object' ? next.claim_classification_report : null;
+    next.claim_boundary_audit_report = next.claim_boundary_audit_report && typeof next.claim_boundary_audit_report === 'object' ? next.claim_boundary_audit_report : null;
+    next.contradiction_falsifier_completeness_report = next.contradiction_falsifier_completeness_report && typeof next.contradiction_falsifier_completeness_report === 'object' ? next.contradiction_falsifier_completeness_report : null;
+    next.publication_review_gate_report = next.publication_review_gate_report && typeof next.publication_review_gate_report === 'object' ? next.publication_review_gate_report : null;
+    next.export_safe_final_review_report = next.export_safe_final_review_report && typeof next.export_safe_final_review_report === 'object' ? next.export_safe_final_review_report : null;
     next.editingReviewIndex = Number.isInteger(next.editingReviewIndex) ? next.editingReviewIndex : -1;
     next.last_source_import_preview = next.last_source_import_preview && typeof next.last_source_import_preview === 'object' ? next.last_source_import_preview : null;
     next.source_import_report = next.source_import_report && typeof next.source_import_report === 'object' ? next.source_import_report : null;

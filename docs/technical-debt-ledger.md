@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.1.0-alpha.22`
-Release: `v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability
+Version: `1.1.0-alpha.23`
+Release: `v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

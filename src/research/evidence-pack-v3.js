@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine evidence pack v3 and brief traceability v1.1.0-alpha.22. */
+/* Jarbou3i Research Engine publication review gate and claim boundary audit v1.1.0-alpha.23. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.22';
+  const VERSION = '1.1.0-alpha.23';
   const MODEL = 'evidence_pack_v3.v1';
 
   function nowIso(){ return new Date().toISOString(); }

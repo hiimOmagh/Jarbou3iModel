@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0-alpha.22 — Evidence Pack Export v3 and brief traceability. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.1.0-alpha.23 — Publication Review Gate and claim boundary audit. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.1.0-alpha.22';
+  const VERSION = '1.1.0-alpha.23';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -21,6 +21,7 @@
   const releaseCandidate = modules.releaseCandidate;
   const exportPack = modules.exportPack;
   const evidencePackV3 = modules.evidencePackV3;
+  const publicationReviewGate = modules.publicationReviewGate;
   const qualityGate = modules.qualityGate;
   const providerController = modules.providerController;
   const providerRouterEngine = modules.providerRouterEngine;
@@ -387,6 +388,26 @@
     return bundle;
   }
 
+  function publicationReviewBundle(packet){
+    if(!publicationReviewGate?.buildPublicationReviewBundle){
+      return {
+        claim_classification_report:{claim_classification_report_version:VERSION, report_model:'publication_review_gate.v1', claim_count:0, release_gate:'claim_boundary_review_required', live_fetching_performed:false, verification_claimed:false},
+        claim_boundary_audit_report:{claim_boundary_audit_version:VERSION, audit_model:'publication_review_gate.v1', unsupported_conclusion_count:0, boundary_issue_count:0, release_gate:'claim_boundary_review_required', live_fetching_performed:false, verification_claimed:false},
+        contradiction_falsifier_completeness_report:{contradiction_falsifier_completeness_version:VERSION, completeness_model:'publication_review_gate.v1', completeness_score:0, release_gate:'contradiction_falsifier_review_required', live_fetching_performed:false, verification_claimed:false},
+        publication_review_gate_report:{publication_review_gate_version:VERSION, gate_model:'publication_review_gate.v1', publication_review_score:0, blocker_reasons:['publication_review_module_missing'], release_gate:'publication_review_blocked', live_fetching_performed:false, verification_claimed:false},
+        export_safe_final_review_report:{export_safe_final_review_report_version:VERSION, report_model:'publication_review_gate.v1', final_review_status:'manual_correction_required', release_gate:'publication_review_blocked'}
+      };
+    }
+    const bundle = publicationReviewGate.buildPublicationReviewBundle(packet, {version:VERSION, now:nowIso()});
+    state.claim_classification_report = bundle.claim_classification_report;
+    state.claim_boundary_audit_report = bundle.claim_boundary_audit_report;
+    state.contradiction_falsifier_completeness_report = bundle.contradiction_falsifier_completeness_report;
+    state.publication_review_gate_report = bundle.publication_review_gate_report;
+    state.export_safe_final_review_report = bundle.export_safe_final_review_report;
+    return bundle;
+  }
+
+
   function researchPacket(){
     const packet = {
       workflow_version: VERSION,
@@ -461,11 +482,17 @@
       last_built_source_packet: state.last_built_source_packet || null,
       source_packet_template_report: state.source_packet_template_report || (sourcePacketTemplates?.templateReport ? sourcePacketTemplates.templateReport(state.active_source_packet_template || 'generic_article') : null),
       source_packet_roundtrip_report: state.source_packet_roundtrip_report || null,
+      claim_classification_report: state.claim_classification_report || null,
+      claim_boundary_audit_report: state.claim_boundary_audit_report || null,
+      contradiction_falsifier_completeness_report: state.contradiction_falsifier_completeness_report || null,
+      publication_review_gate_report: state.publication_review_gate_report || null,
+      export_safe_final_review_report: state.export_safe_final_review_report || null,
       ai_runs: providerRouterEngine?.enrichRunLedger ? providerRouterEngine.enrichRunLedger(state.ai_runs || [], providerRoutePlan(), {version:VERSION}) : (state.ai_runs || []),
       critique: state.critique
     };
     const evidencePack = evidencePackV3Bundle(packet);
-    return Object.assign(packet, evidencePack, {
+    const publicationReview = publicationReviewBundle(Object.assign({}, packet, evidencePack));
+    return Object.assign(packet, evidencePack, publicationReview, {
       export_pack: Object.assign({}, packet.export_pack || {}, {export_pack_version: VERSION, format: 'export_pack_v3', release_gate: 'privacy_audit_required'})
     });
   }
@@ -1858,6 +1885,11 @@
     state.contradiction_falsifier_appendix = nextPacket.contradiction_falsifier_appendix || null;
     state.bundle_consistency_report = nextPacket.bundle_consistency_report || null;
     state.publication_readiness_export_report = nextPacket.publication_readiness_export_report || null;
+    state.claim_classification_report = nextPacket.claim_classification_report || null;
+    state.claim_boundary_audit_report = nextPacket.claim_boundary_audit_report || null;
+    state.contradiction_falsifier_completeness_report = nextPacket.contradiction_falsifier_completeness_report || null;
+    state.publication_review_gate_report = nextPacket.publication_review_gate_report || null;
+    state.export_safe_final_review_report = nextPacket.export_safe_final_review_report || null;
     state.portable_account = nextPacket.portable_account || state.portable_account || null;
     state.ai_runs = Array.isArray(nextPacket.ai_runs) ? nextPacket.ai_runs.slice(-25) : [];
     state.lastMockAnalysis = null;

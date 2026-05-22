@@ -1,20 +1,20 @@
 # Changelog
 
-Adds Evidence Pack Export v3 + Brief Traceability: evidence-to-conclusion traceability blocks, brief paragraph to evidence-ID mapping, Export Pack v3 manifest, source/evidence/entity/cluster/graph bundle consistency checks, contradiction and falsifier appendix, publication-readiness export report, and privacy/export guard continuity without live scraping, live provider execution, OAuth/backend expansion, source connector expansion, automatic source verification claims, storage expansion, or broad UI redesign.
+Adds Publication Review Gate + Claim Boundary Audit: evidence-to-conclusion traceability blocks, brief paragraph to evidence-ID mapping, Export Pack v3 manifest, source/evidence/entity/cluster/graph bundle consistency checks, contradiction and falsifier appendix, publication-readiness export report, and privacy/export guard continuity without live scraping, live provider execution, OAuth/backend expansion, source connector expansion, automatic source verification claims, storage expansion, or broad UI redesign.
 
-`v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability`
+`v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit`
 
-Release-lock guard: 1.1.0-alpha.22 Evidence Pack Export v3 + Brief Traceability requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: 1.1.0-alpha.23 Publication Review Gate + Claim Boundary Audit requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
-## v1.1.0-alpha.22 — Evidence Pack Export v3 + Brief Traceability
+## v1.1.0-alpha.23 — Publication Review Gate + Claim Boundary Audit
 
-Adds Evidence Pack Export v3 + Brief Traceability: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
+Adds Publication Review Gate + Claim Boundary Audit: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.
 
 Boundaries preserved: no automatic paid API calls, no live provider execution by default, no OAuth/backend expansion, no secret export, no source connector expansion, no broad UI redesign, and no storage expansion.
 
 Node 24 CI compatibility preserved.
 
-Release-lock evidence reminder: screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock evidence reminder: screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
 
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 

@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine strategic evidence graph v1.1.0-alpha.22. Local graph export only. */
+/* Jarbou3i Research Engine strategic evidence graph v1.1.0-alpha.23. Local graph export only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0-alpha.22';
+  const VERSION = '1.1.0-alpha.23';
   const GRAPH_MODEL = 'strategic_evidence_graph.v1';
 
   function text(value, fallback=''){return String(value ?? fallback).trim();}

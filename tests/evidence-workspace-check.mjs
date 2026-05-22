@@ -22,7 +22,7 @@ for (const file of [
 
 const modules = context.Jarbou3iResearchModules;
 assert.ok(modules.evidenceWorkspace, 'evidenceWorkspace module should register');
-assert.equal(modules.evidenceWorkspace.VERSION, '1.1.0-alpha.22');
+assert.equal(modules.evidenceWorkspace.VERSION, '1.1.0-alpha.23');
 
 const raw = modules.evidenceWorkspace.normalizeWorkspaceCandidate({
   claim: 'Official report supports I1 and contradicts N1 on procurement transparency.',
@@ -70,7 +70,7 @@ assert.equal(parsed.report.verification_claimed, false);
 assert.equal(parsed.report.queue_only, true);
 assert.ok(parsed.report.raw_candidate_count >= 2);
 assert.ok(parsed.report.contradiction_candidate_count >= 1);
-assert.ok(parsed.evidence.every((item) => item.workspace_meta?.workspace_version === '1.1.0-alpha.22'));
+assert.ok(parsed.evidence.every((item) => item.workspace_meta?.workspace_version === '1.1.0-alpha.23'));
 
 const packet = modules.sourcePacketImporter.examplePacket();
 const packetParsed = modules.sourcePacketImporter.parseSourcePacketImportText(JSON.stringify(packet));
@@ -90,7 +90,7 @@ queue[0].review_stage = 'accepted';
 queue[1].status = 'rejected';
 queue[1].review_stage = 'rejected';
 const report = modules.evidenceReviewController.report(queue);
-assert.equal(report.workspace_version, '1.1.0-alpha.22');
+assert.equal(report.workspace_version, '1.1.0-alpha.23');
 assert.equal(report.accepted_count, 1);
 assert.equal(report.rejected_count, 1);
 assert.equal(report.live_fetching_performed, false);

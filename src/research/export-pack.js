@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Export Pack v3 — v1.1.0-alpha.22. */
+/* Jarbou3i Research Engine Export Pack v3 — v1.1.0-alpha.23. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.1.0-alpha.22';
+  const EXPORT_PACK_VERSION = '1.1.0-alpha.23';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -98,6 +98,13 @@
       `- Traceable paragraphs: ${safeString(packet.brief_traceability_report?.traceable_paragraph_count ?? 0)}/${safeString(packet.brief_traceability_report?.paragraph_count ?? 0)}`,
       `- Publication readiness export score: ${safeString(packet.publication_readiness_export_report?.publication_readiness_score ?? 0)}/100`,
       '',
+      '## Publication Review Gate',
+      `- Review score: ${safeString(packet.publication_review_gate_report?.publication_review_score ?? 0)}/100`,
+      `- Release gate: ${safeString(packet.publication_review_gate_report?.release_gate || 'publication_review_required')}`,
+      `- Blockers: ${asArray(packet.publication_review_gate_report?.blocker_reasons).join(', ') || 'none recorded'}`,
+      `- Unsupported conclusions: ${safeString(packet.claim_boundary_audit_report?.unsupported_conclusion_count ?? 0)}`,
+      `- Claim classification warnings: ${safeString(packet.claim_classification_report?.boundary_warning_count ?? 0)}`,
+      '',
       '## Source Clusters',
       clusters,
       '',
@@ -169,6 +176,17 @@
   }
 
 
+  function publicationReviewFiles(packet){
+    const files = [];
+    if(packet.claim_classification_report) files.push(fileEntry('publication-review/claim-classification-report.json', 'application/json', jsonContent(packet.claim_classification_report), 'claim-classification'));
+    if(packet.claim_boundary_audit_report) files.push(fileEntry('publication-review/claim-boundary-audit-report.json', 'application/json', jsonContent(packet.claim_boundary_audit_report), 'claim-boundary-audit'));
+    if(packet.contradiction_falsifier_completeness_report) files.push(fileEntry('publication-review/contradiction-falsifier-completeness-report.json', 'application/json', jsonContent(packet.contradiction_falsifier_completeness_report), 'contradiction-falsifier-completeness'));
+    if(packet.publication_review_gate_report) files.push(fileEntry('publication-review/publication-review-gate-report.json', 'application/json', jsonContent(packet.publication_review_gate_report), 'publication-review-gate'));
+    if(packet.export_safe_final_review_report) files.push(fileEntry('publication-review/export-safe-final-review-report.json', 'application/json', jsonContent(packet.export_safe_final_review_report), 'export-safe-final-review'));
+    return files;
+  }
+
+
   function evidencePackV3Files(packet, files = []){
     const pack = root.evidencePackV3;
     const existing = {
@@ -203,6 +221,7 @@
     graphExportFiles(safePacket).forEach((file)=>files.push(file));
     providerRouteFiles(safePacket).forEach((file)=>files.push(file));
     reviewThroughputFiles(safePacket).forEach((file)=>files.push(file));
+    publicationReviewFiles(safePacket).forEach((file)=>files.push(file));
     const v3 = evidencePackV3Files(safePacket, files);
     v3.files.forEach((file)=>files.push(file));
     const manifest = Object.assign(baseManifest(safePacket, files), v3.bundle.evidence_pack_v3_manifest || {}, {export_pack_version:EXPORT_PACK_VERSION, name:EXPORT_PACK_NAME, export_pack_format:'export_pack_v3', file_count:files.length, files:files.map((file)=>({path:file.path, kind:file.kind, mime_type:file.mime_type, bytes:file.bytes, checksum:file.checksum}))});
@@ -231,6 +250,6 @@
     const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
     return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v3</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
-  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, evidencePackV3Files, exportPackSummaryHtml});
+  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, evidencePackV3Files, exportPackSummaryHtml});
   if(typeof module !== 'undefined' && module.exports) module.exports = root.exportPack;
 })(typeof window !== 'undefined' ? window : globalThis);
