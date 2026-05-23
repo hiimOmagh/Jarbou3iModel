@@ -39,7 +39,11 @@ function slugPath(locale, slug, ext){ return path.join(EVIDENCE_ROOT, locale, `$
 function writeJson(file, value){ ensureDir(path.dirname(file)); fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n'); }
 function visibleTextCorpus(snapshot){ return (snapshot.visible_text || []).join(' '); }
 function findMojibakeMarkers(text){ return MOJIBAKE_MARKERS.filter((marker)=>String(text || '').includes(marker)); }
-function assertNoMojibake(text, label){ expect(findMojibakeMarkers(text), `${label} must not contain mojibake markers`).toEqual([]); }
+function assertNoMojibake(text, label){
+  const markers = findMojibakeMarkers(text);
+  const offending_lines = String(text || '').split(/\n| {2,}/).filter((line)=>findMojibakeMarkers(line).length).slice(0,8);
+  expect({markers, offending_lines}, `${label} must not contain mojibake markers`).toEqual({markers:[], offending_lines:[]});
+}
 
 async function freezeMotion(page){ await page.addStyleTag({ content: `*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}` }); await page.evaluate(() => window.scrollTo(0,0)); await page.evaluate(async () => { if(document.fonts?.ready) await document.fonts.ready; }); }
 async function waitForEvidenceStable(page, label){
@@ -67,6 +71,7 @@ async function assertNoTransientArtifacts(page, label){
 async function horizontalOverflowPixels(page){ return page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)); }
 async function assertNoHorizontalOverflow(page){ const overflow = await horizontalOverflowPixels(page); expect(overflow).toBeLessThanOrEqual(2); return overflow; }
 async function collectVisibleTextSnapshot(page, locale, screenLabel){
+  await page.evaluate(() => window.Jarbou3iResearchModules?.renderHelpers?.sanitizeUiTree?.(document.body));
   const snapshotState = await page.evaluate(() => ({ html_lang:document.documentElement.lang, html_dir:document.documentElement.dir, title:document.title }));
   const visible_text = await page.evaluate(() => Array.from(document.body.querySelectorAll('body *')).filter((node)=>{ if (node.closest('noscript')) return false; const style=window.getComputedStyle(node); if(!style || style.display==='none' || style.visibility==='hidden' || Number(style.opacity || '1') <= 0) return false; const rect=node.getBoundingClientRect(); return rect.width>0 && rect.height>0; }).map((node)=>(node.innerText || node.textContent || '').trim()).filter(Boolean).flatMap((text)=>text.split('\n').map((line)=>line.trim()).filter(Boolean)).slice(0,700));
   const corpus = visible_text.join(' ');

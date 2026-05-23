@@ -843,28 +843,27 @@
     const doc = rootNode?.ownerDocument || rootNode || global.document;
     const rootEl = rootNode?.nodeType ? rootNode : doc?.body;
     if(!doc || !rootEl || typeof doc.createTreeWalker !== 'function') return;
-    const walker = doc.createTreeWalker(rootEl, global.NodeFilter?.SHOW_TEXT || 4);
+    const SHOW_TEXT = global.NodeFilter?.SHOW_TEXT || 4;
+    const walker = doc.createTreeWalker(rootEl, SHOW_TEXT);
     const textNodes = [];
     while(walker.nextNode()) textNodes.push(walker.currentNode);
     textNodes.forEach(node => {
       const repaired = sanitizeUiText(node.nodeValue);
       if(repaired !== node.nodeValue) node.nodeValue = repaired;
     });
-    if(typeof rootEl.querySelectorAll === 'function'){
-      rootEl.querySelectorAll('input, textarea, [placeholder], [title], [aria-label], [data-collapse-note]').forEach(node => {
-        ['placeholder','title','aria-label','data-collapse-note'].forEach(attr => {
-          if(node.hasAttribute?.(attr)){
-            const current = node.getAttribute(attr);
-            const repaired = sanitizeUiText(current);
-            if(repaired !== current) node.setAttribute(attr, repaired);
-          }
-        });
-        if('value' in node && typeof node.value === 'string'){
-          const repaired = sanitizeUiText(node.value);
-          if(repaired !== node.value) node.value = repaired;
-        }
+    const elements = typeof rootEl.querySelectorAll === 'function' ? Array.from(rootEl.querySelectorAll('*')) : [];
+    if(rootEl.nodeType === 1) elements.unshift(rootEl);
+    elements.forEach(node => {
+      Array.from(node.attributes || []).forEach(attr => {
+        const repaired = sanitizeUiText(attr.value);
+        if(repaired !== attr.value) node.setAttribute(attr.name, repaired);
       });
-    }
+      if('value' in node && typeof node.value === 'string'){
+        const repaired = sanitizeUiText(node.value);
+        if(repaired !== node.value) node.value = repaired;
+      }
+      if(node.shadowRoot) sanitizeUiTree(node.shadowRoot);
+    });
   }
   function installMojibakeGuard(documentRef = global.document){
     if(!documentRef || documentRef.__jarbou3iMojibakeGuardInstalled) return;
