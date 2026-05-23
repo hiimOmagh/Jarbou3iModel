@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، تجميعات مصادر، ملفات كيانات، روابط سببية، نقد، وبوابة جودة v3.',
-      alphaBadge:'v1.1.0 العرض العام المستقر · العرض العام المستقر' ,
+      alphaBadge:'v1.2.0-alpha.6 لوحة أوامر المشغّل + اختصارات التنقل في المراجعة · لوحة أوامر المشغّل + اختصارات التنقل في المراجعة' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, clusters de sources, profils d’entités, liens causaux, critique et barrière qualité v3.',
-      alphaBadge:'v1.1.0 Démo publique stable · Démo publique stable',
+      alphaBadge:'v1.2.0-alpha.6 Palette de commandes opérateur + raccourcis de navigation de revue · Palette de commandes opérateur + raccourcis de navigation de revue',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -357,7 +357,7 @@
     publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
     localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
     hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
-    hostedDemoVerificationBody:'العرض العام المستقر جاهز لأدلة الإصدار: النسخة العامة مستقرة، المجموعة الذهبية وExport Pack v3 مقفولان، ويجب أن تعلن أدلة الاستضافة داخليًا 1.2.0-alpha.6 مع عرض v1.1.0 العرض العام المستقر للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو ادعاء تحقق آلي من المصادر.',
+    hostedDemoVerificationBody:'العرض العام المستقر جاهز لأدلة الإصدار: النسخة العامة مستقرة، المجموعة الذهبية وExport Pack v3 مقفولان، ويجب أن تعلن أدلة الاستضافة داخليًا 1.2.0-alpha.6 مع عرض v1.2.0-alpha.6 لوحة أوامر المشغّل + اختصارات التنقل في المراجعة للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو ادعاء تحقق آلي من المصادر.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
     evidenceReviewGateBody:'تحافظ أدلة الإصدار المستقر على صف مراجعة الأدلة، بوابة مراجعة النشر، Export Pack v3، المجموعة الذهبية، وحراس الخصوصية. لا تكفي اللقطات أو ملفات ZIP وحدها لاعتماد الإصدار.',
@@ -377,7 +377,7 @@
     publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
     localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
     hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
-    hostedDemoVerificationBody:'La démo publique stable est prête pour les preuves de release : la copie publique est stable, le golden workflow et Export Pack v3 restent verrouillés, et les preuves hébergées doivent annoncer 1.2.0-alpha.6 en interne tout en affichant v1.1.0 Démo publique stable aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live ni vérification automatique des sources.',
+    hostedDemoVerificationBody:'La démo publique stable est prête pour les preuves de release : la copie publique est stable, le golden workflow et Export Pack v3 restent verrouillés, et les preuves hébergées doivent annoncer 1.2.0-alpha.6 en interne tout en affichant v1.2.0-alpha.6 Palette de commandes opérateur + raccourcis de navigation de revue aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live ni vérification automatique des sources.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
     evidenceReviewGateBody:'Les preuves de release stable conservent la file de revue des preuves, la revue publication, Export Pack v3, le golden workflow et les garde-fous de confidentialité. Captures ou ZIP seuls sont insuffisants pour approuver la release.',
@@ -485,7 +485,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'تصحح 1.2.0-alpha.6 ترجمة السطح العام المستقر: نسخة الإنجليزية والعربية والفرنسية صارت نقية لغويًا، النسخة العامة تعرض v1.1.0 العرض العام المستقر، وبيانات أدلة الاستضافة الداخلية تعلن 1.1.0.',
+    analysisReleaseNote:'تصحح 1.2.0-alpha.6 ترجمة السطح العام المستقر: نسخة الإنجليزية والعربية والفرنسية صارت نقية لغويًا، النسخة العامة تعرض v1.2.0-alpha.6 لوحة أوامر المشغّل + اختصارات التنقل في المراجعة، وبيانات أدلة الاستضافة الداخلية تعلن 1.2.0-alpha.6.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -501,7 +501,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'1.2.0-alpha.6 corrige la localisation publique stable : les copies anglaise, arabe et française restent dans leur langue, la surface publique affiche v1.1.0 Démo publique stable, et les métadonnées internes de preuve annoncent 1.1.0.',
+    analysisReleaseNote:'1.2.0-alpha.6 corrige la localisation publique stable : les copies anglaise, arabe et française restent dans leur langue, la surface publique affiche v1.2.0-alpha.6 Palette de commandes opérateur + raccourcis de navigation de revue, et les métadonnées internes de preuve annoncent 1.2.0-alpha.6.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',

@@ -26,8 +26,8 @@
     },
     "ar": {
       "required": [
-        "العرض العام المستقر",
-        "العرض العام",
+        "لوحة أوامر المشغّل",
+        "اختصارات التنقل",
         "مراجعة الأدلة"
       ],
       "forbidden": [
@@ -39,8 +39,8 @@
     },
     "fr": {
       "required": [
-        "Démo publique stable",
-        "démo publique",
+        "Palette de commandes opérateur",
+        "raccourcis de navigation",
         "revue des preuves"
       ],
       "forbidden": [
@@ -226,7 +226,7 @@
   ],
   "public_version_labels": {
     "en": "v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts",
-    "ar": "v1.1.0 العرض العام المستقر",
-    "fr": "v1.1.0 Démo publique stable"
+    "ar": "v1.2.0-alpha.6 لوحة أوامر المشغّل + اختصارات التنقل في المراجعة",
+    "fr": "v1.2.0-alpha.6 Palette de commandes opérateur + raccourcis de navigation de revue"
   }
 }

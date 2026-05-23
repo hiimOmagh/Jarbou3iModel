@@ -2,6 +2,18 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
+
+const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
+assert.equal(matrixConfig.public_version_labels.en, 'v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts', 'English public version label must identify alpha.6');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.2.0-alpha.6 لوحة أوامر المشغّل + اختصارات التنقل في المراجعة', 'Arabic public version label must identify alpha.6');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.2.0-alpha.6 Palette de commandes opérateur + raccourcis de navigation de revue', 'French public version label must identify alpha.6');
+assert.ok(matrixConfig.language_rules.ar.required.includes('لوحة أوامر المشغّل'), 'Arabic evidence matrix must require alpha.6 operator copy');
+assert.ok(matrixConfig.language_rules.fr.required.includes('Palette de commandes opérateur'), 'French evidence matrix must require alpha.6 operator copy');
+const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
+for (const currentLocaleStale of ['alphaBadge:\'v1.1.0 العرض العام المستقر', 'alphaBadge:\'v1.1.0 Démo publique stable']) {
+  assert.equal(renderPublicLabels.includes(currentLocaleStale), false, `current localized alpha badge must not expose stale stable label: ${currentLocaleStale}`);
+}
+
 const spec=fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs','utf8');
 for (const token of ['collectVisibleTextSnapshot','visible-text-ar.json','visible-text-fr.json','visible-text-en.json','unexpected_english_residuals','unexpected_non_locale_residuals','MOJIBAKE_MARKERS','has_arabic_unicode','mojibake_markers']) assert.ok(spec.includes(token), token);
 assert.ok(!/\bEVIDENCE_DIR\b/.test(spec), 'hosted evidence spec must use EVIDENCE_ROOT for visible-text snapshot writes');
