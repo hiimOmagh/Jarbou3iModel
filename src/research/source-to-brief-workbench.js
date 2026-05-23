@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.7. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.8. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.7';
+  const VERSION = '1.2.0-alpha.8';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -377,6 +377,10 @@
       'source-to-brief/review-quality-diagnostics.json',
       'source-to-brief/weak-claim-repair-suggestions.json',
       'source-to-brief/weak-claim-repair-suggestions.md',
+      'source-to-brief/diagnostic-repair-queue.json',
+      'source-to-brief/diagnostic-repair-queue.md',
+      'source-to-brief/export-risk-resolution.json',
+      'source-to-brief/export-risk-resolution.md',
       'source-to-brief/operator-handoff.md'
     ];
     if(Number(reviewSummary.unresolved_count || 0) > 0) files.push('source-to-brief/review-throughput-summary.json');
@@ -673,6 +677,253 @@
       verification_claimed:false
     };
   }
+
+
+  function queuePriority(severity = 'medium'){
+    const value = text(severity || 'medium').toLowerCase();
+    if(value === 'high' || value === 'blocker') return 'first';
+    if(value === 'medium' || value === 'warning') return 'next';
+    return 'later';
+  }
+  function repairQueueItem(id, source_type, target_type, target_id, issue_type, priority, action, details = {}){
+    return Object.assign({
+      repair_id:id,
+      source_type,
+      target_type,
+      target_id:text(target_id || 'workflow'),
+      issue_type:text(issue_type || 'manual_review_issue'),
+      priority:queuePriority(priority),
+      repair_action:text(action || 'Review manually before export.'),
+      resolution_state:'open_manual_resolution',
+      required_before_export:queuePriority(priority) === 'first',
+      operator_owner:'manual_operator',
+      export_risk_linked:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    }, details);
+  }
+  function buildDiagnosticRepairQueue(workbench = {}, packet = {}){
+    const diagnostics = workbench.review_quality_diagnostics || {};
+    const ledger = workbench.review_decision_ledger || {};
+    const readiness = workbench.export_readiness_checklist || {};
+    const polish = workbench.export_polish_report || {};
+    const items = [];
+    asArray(diagnostics.findings).slice(0, 18).forEach((finding)=>{
+      items.push(repairQueueItem(
+        `DRQ-QD-${items.length + 1}`,
+        'review_quality_diagnostic',
+        finding.claim_id ? 'claim' : 'workflow',
+        finding.claim_id || 'claim_map',
+        asArray(finding.issue_types)[0] || 'quality_diagnostic',
+        finding.severity,
+        finding.repair_suggestion || 'Repair the diagnostic finding or document why it remains open.',
+        {
+          diagnostic_id:finding.diagnostic_id,
+          linked_claim_id:finding.claim_id || null,
+          supporting_evidence_ids:asArray(finding.supporting_evidence_ids),
+          contradicting_evidence_ids:asArray(finding.contradicting_evidence_ids),
+          contradiction_group_ids:asArray(finding.contradiction_group_ids),
+          clearance_condition:'Finding is cleared when the linked diagnostic no longer appears or is explicitly accepted in the decision ledger.'
+        }
+      ));
+    });
+    asArray(ledger.entries).filter((entry)=>!/ready$|reviewable$|supported/.test(text(entry.decision_state))).slice(0, 14).forEach((entry)=>{
+      items.push(repairQueueItem(
+        `DRQ-DL-${items.length + 1}`,
+        'review_decision_ledger',
+        text(entry.decision_type || 'decision'),
+        entry.target_id || entry.entry_id,
+        entry.decision_state || 'decision_required',
+        /contradiction|unsupported|traceability/.test(text(entry.decision_state)) ? 'high' : 'medium',
+        `Resolve or explicitly document ${text(entry.decision_state || 'the open decision')} for ${text(entry.target_id || entry.entry_id)}.`,
+        {
+          ledger_entry_id:entry.entry_id,
+          decision_type:entry.decision_type,
+          evidence_id:entry.evidence_id || null,
+          claim_id:entry.claim_id || null,
+          clearance_condition:'Decision is cleared when the ledger entry is reviewed, accepted, repaired, rejected, or explicitly carried forward as unresolved.'
+        }
+      ));
+    });
+    asArray(readiness.items).filter((item)=>!item.passed).forEach((item)=>{
+      items.push(repairQueueItem(
+        `DRQ-RD-${items.length + 1}`,
+        'export_readiness_checklist',
+        'export_check',
+        item.check_id,
+        item.check_id,
+        item.severity === 'blocker' ? 'high' : 'medium',
+        `Resolve export readiness check: ${text(item.label || item.check_id)}. ${text(item.detail || '')}`,
+        {
+          readiness_check_id:item.check_id,
+          readiness_severity:item.severity || 'warning',
+          clearance_condition:'Checklist item passes or remains documented as a manual export warning.'
+        }
+      ));
+    });
+    asArray(polish.blockers).forEach((blocker)=>{
+      items.push(repairQueueItem(
+        `DRQ-EX-${items.length + 1}`,
+        'export_polish_blocker',
+        'export_blocker',
+        blocker,
+        blocker,
+        'high',
+        `Clear export blocker ${text(blocker)} or keep export blocked.`,
+        {clearance_condition:'Blocker is removed from export polish report or export remains blocked.'}
+      ));
+    });
+    asArray(polish.warnings).slice(0, 10).forEach((warning)=>{
+      items.push(repairQueueItem(
+        `DRQ-EW-${items.length + 1}`,
+        'export_polish_warning',
+        'export_warning',
+        warning,
+        warning,
+        'medium',
+        `Review export warning ${text(warning)} and decide whether to repair, accept, or carry forward with disclosure.`,
+        {clearance_condition:'Warning is repaired, accepted, or carried forward with manual disclosure.'}
+      ));
+    });
+    const priorityCounts = {first:items.filter((item)=>item.priority === 'first').length, next:items.filter((item)=>item.priority === 'next').length, later:items.filter((item)=>item.priority === 'later').length};
+    return {
+      diagnostic_repair_queue_version:VERSION,
+      queue_model:'diagnostic_repair_queue.v1',
+      generated_at:nowIso(),
+      items,
+      item_count:items.length,
+      open_count:items.filter((item)=>item.resolution_state === 'open_manual_resolution').length,
+      priority_counts:priorityCounts,
+      required_before_export_count:items.filter((item)=>item.required_before_export).length,
+      release_gate:items.some((item)=>item.required_before_export) ? 'diagnostic_repair_queue_required_before_export' : (items.length ? 'diagnostic_repair_queue_open' : 'diagnostic_repair_queue_clear'),
+      operator_next_action:priorityCounts.first ? 'resolve_first_priority_repair_items' : (priorityCounts.next ? 'triage_next_priority_repair_items' : 'confirm_export_risk_resolution'),
+      queue_bypass_enabled:false,
+      manual_only:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function buildExportRiskResolution(workbench = {}, packet = {}){
+    const queue = workbench.diagnostic_repair_queue || {};
+    const readiness = workbench.export_readiness_checklist || {};
+    const polish = workbench.export_polish_report || {};
+    const risks = [];
+    asArray(queue.items).filter((item)=>item.required_before_export || item.priority === 'first').forEach((item)=>{
+      risks.push({
+        risk_id:`ERR-${risks.length + 1}`,
+        risk_type:'open_required_repair',
+        severity:'blocker',
+        linked_repair_id:item.repair_id,
+        target_id:item.target_id,
+        risk_summary:`Required repair remains open: ${item.issue_type}`,
+        clearance_condition:item.clearance_condition || 'Repair item is resolved or export remains blocked.',
+        resolution_state:'open_manual_resolution',
+        manual_review_required:true
+      });
+    });
+    asArray(readiness.items).filter((item)=>!item.passed).forEach((item)=>{
+      risks.push({
+        risk_id:`ERR-${risks.length + 1}`,
+        risk_type:'failed_export_readiness_check',
+        severity:item.severity === 'blocker' ? 'blocker' : 'warning',
+        linked_repair_id:null,
+        target_id:item.check_id,
+        risk_summary:`Export readiness check not passed: ${text(item.label || item.check_id)}`,
+        clearance_condition:'Checklist item passes or remains explicitly disclosed as a manual warning.',
+        resolution_state:'open_manual_resolution',
+        manual_review_required:true
+      });
+    });
+    asArray(polish.blockers).forEach((blocker)=>{
+      risks.push({
+        risk_id:`ERR-${risks.length + 1}`,
+        risk_type:'export_polish_blocker',
+        severity:'blocker',
+        linked_repair_id:null,
+        target_id:blocker,
+        risk_summary:`Export polish blocker: ${text(blocker)}`,
+        clearance_condition:'Blocker is cleared or export remains blocked.',
+        resolution_state:'open_manual_resolution',
+        manual_review_required:true
+      });
+    });
+    const blockerCount = risks.filter((risk)=>risk.severity === 'blocker').length;
+    const warningCount = risks.filter((risk)=>risk.severity === 'warning').length;
+    const checklist = [
+      {check_id:'repair_queue_triaged', label:'Diagnostic repair queue triaged', passed:Number(queue.open_count || 0) === 0, severity:Number(queue.required_before_export_count || 0) ? 'blocker' : 'warning'},
+      {check_id:'required_repairs_cleared', label:'Required repairs cleared before export', passed:Number(queue.required_before_export_count || 0) === 0, severity:'blocker'},
+      {check_id:'export_blockers_cleared', label:'Export blockers cleared', passed:!asArray(polish.blockers).length, severity:'blocker'},
+      {check_id:'warnings_disclosed', label:'Warnings disclosed or accepted manually', passed:!warningCount, severity:'warning'},
+      {check_id:'manual_local_disclaimer_present', label:'Manual/local disclaimer present', passed:true, severity:'blocker'},
+      {check_id:'no_automatic_verification_claim', label:'No automatic verification claim present', passed:workbench.automatic_source_verification_claimed !== true, severity:'blocker'}
+    ];
+    return {
+      export_risk_resolution_version:VERSION,
+      risk_model:'export_risk_resolution.v1',
+      generated_at:nowIso(),
+      risk_items:risks,
+      risk_count:risks.length,
+      blocker_count:blockerCount,
+      warning_count:warningCount,
+      clearance_checklist:checklist,
+      resolution_gate:blockerCount ? 'export_risk_resolution_required' : (warningCount ? 'export_risk_ready_with_manual_warnings' : 'export_risk_cleared'),
+      operator_next_action:blockerCount ? 'clear_export_blockers_and_required_repairs' : (warningCount ? 'accept_or_repair_export_warnings' : 'confirm_manual_export_handoff'),
+      export_allowed_without_manual_review:false,
+      manual_only:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function diagnosticRepairQueueMarkdown(workbench = {}){
+    const queue = workbench.diagnostic_repair_queue || {};
+    const items = asArray(queue.items).slice(0, 80).map((item)=>`- ${item.repair_id}: ${item.priority} · ${item.target_id} · ${item.issue_type} — ${item.repair_action}`).join('\n') || '- No diagnostic repair items open.';
+    return [
+      '# Diagnostic Repair Queue',
+      '',
+      `Queue gate: ${text(queue.release_gate || 'diagnostic_repair_queue_open')}`,
+      `Open items: ${Number(queue.open_count || 0)}`,
+      `Required before export: ${Number(queue.required_before_export_count || 0)}`,
+      '',
+      '## Repair Items',
+      items,
+      '',
+      '## Boundary',
+      'Repair queue items are local/manual. They do not verify sources, fetch live data, execute providers, or clear risks automatically.',
+      ''
+    ].join('\n');
+  }
+  function exportRiskResolutionMarkdown(workbench = {}){
+    const risk = workbench.export_risk_resolution || {};
+    const items = asArray(risk.risk_items).slice(0, 80).map((item)=>`- ${item.risk_id}: ${item.severity} · ${item.risk_type} · ${item.target_id} — ${item.clearance_condition}`).join('\n') || '- No export risk items open.';
+    const checks = asArray(risk.clearance_checklist).map((item)=>`- ${item.passed ? '[x]' : '[ ]'} ${item.label} (${item.severity})`).join('\n') || '- No clearance checklist recorded.';
+    return [
+      '# Export Risk Resolution',
+      '',
+      `Resolution gate: ${text(risk.resolution_gate || 'export_risk_resolution_required')}`,
+      `Blockers: ${Number(risk.blocker_count || 0)}`,
+      `Warnings: ${Number(risk.warning_count || 0)}`,
+      '',
+      '## Risk Items',
+      items,
+      '',
+      '## Clearance Checklist',
+      checks,
+      '',
+      '## Boundary',
+      'Export-risk resolution is a manual clearance workflow. It does not automatically verify evidence or permit export without operator review.',
+      ''
+    ].join('\n');
+  }
+
   function weakClaimRepairMarkdown(workbench = {}){
     const diagnostics = workbench.review_quality_diagnostics || {};
     const suggestions = asArray(diagnostics.weak_claim_repair_suggestions?.suggestions).map((item)=>`- ${item.suggestion_id}: ${text(item.claim_id || 'workflow')} — ${text(item.repair_action)} (${text(item.priority)})`).join('\n') || '- No weak-claim repair suggestions open.';
@@ -710,7 +961,9 @@
     const claimTraceabilityConsole = buildClaimTraceabilityConsole(traceabilityBase, packet);
     const reviewDecisionLedger = buildReviewDecisionLedger(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole}), packet);
     const reviewQualityDiagnostics = buildReviewQualityDiagnostics(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview}), packet);
-    const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
+    const diagnosticRepairQueue = buildDiagnosticRepairQueue(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
+    const exportRiskResolution = buildExportRiskResolution(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
+    const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
     const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
     return {
       source_to_brief_version:version,
@@ -735,6 +988,8 @@
       review_decision_ledger:reviewDecisionLedger,
       review_quality_diagnostics:reviewQualityDiagnostics,
       weak_claim_repair_suggestions:reviewQualityDiagnostics.weak_claim_repair_suggestions,
+      diagnostic_repair_queue:diagnosticRepairQueue,
+      export_risk_resolution:exportRiskResolution,
       operator_command_palette:commandPalette,
       review_navigation_shortcuts:navigationShortcuts,
       ux_compression_model:'source_to_brief_operator_flow.v1',
@@ -807,6 +1062,16 @@
       `- Gate: ${text(workbench.review_quality_diagnostics?.release_gate || 'review_quality_repair_required')}`,
       `- Next action: ${text(workbench.review_quality_diagnostics?.operator_next_action || 'manual_quality_review')}`,
       '',
+      '## Diagnostic Repair Queue',
+      `- Open repairs: ${Number(workbench.diagnostic_repair_queue?.open_count || 0)}`,
+      `- Required before export: ${Number(workbench.diagnostic_repair_queue?.required_before_export_count || 0)}`,
+      `- Queue gate: ${text(workbench.diagnostic_repair_queue?.release_gate || 'diagnostic_repair_queue_open')}`,
+      '',
+      '## Export Risk Resolution',
+      `- Risk gate: ${text(workbench.export_risk_resolution?.resolution_gate || 'export_risk_resolution_required')}`,
+      `- Blockers: ${Number(workbench.export_risk_resolution?.blocker_count || 0)}`,
+      `- Warnings: ${Number(workbench.export_risk_resolution?.warning_count || 0)}`,
+      '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')
     ].join('\n') + '\n';
@@ -830,7 +1095,11 @@
     buildClaimTraceabilityConsole,
     buildReviewDecisionLedger,
     buildReviewQualityDiagnostics,
+    buildDiagnosticRepairQueue,
+    buildExportRiskResolution,
     weakClaimRepairMarkdown,
+    diagnosticRepairQueueMarkdown,
+    exportRiskResolutionMarkdown,
     buildEmptyStateGuidance,
     reviewThroughputSummary,
     exportPolishReport,

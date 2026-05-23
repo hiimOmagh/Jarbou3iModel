@@ -26,6 +26,7 @@ const tests = [
   'tests/source-to-brief-traceability-console-check.mjs',
   'tests/source-to-brief-command-palette-check.mjs',
   'tests/source-to-brief-review-quality-diagnostics-check.mjs',
+  'tests/source-to-brief-diagnostic-repair-queue-check.mjs',
   'tests/export-pack-v2-check.mjs',
   'tests/browser-qa-hardening-check.mjs',
   'tests/onboarding-first-run-check.mjs',

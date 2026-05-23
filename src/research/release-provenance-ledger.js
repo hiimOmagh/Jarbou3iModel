@@ -2,10 +2,10 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.7';
+  const VERSION = '1.2.0-alpha.8';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.2.0-alpha.7-post-stable-capability-roadmap-expansion-gate.zip';
+  const RELEASE_TITLE = 'v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.2.0-alpha.8-post-stable-capability-roadmap-expansion-gate.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
     {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0', required:true},
     {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},

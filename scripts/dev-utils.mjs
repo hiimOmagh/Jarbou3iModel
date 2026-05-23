@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.2.0-alpha.7';
-export const RELEASE_TITLE = 'v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions';
+export const VERSION = '1.2.0-alpha.8';
+export const RELEASE_TITLE = 'v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

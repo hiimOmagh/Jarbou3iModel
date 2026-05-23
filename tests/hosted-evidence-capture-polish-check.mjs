@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.2.0-alpha.7';
-const TITLE = 'Review Quality Diagnostics + Weak-Claim Repair Suggestions';
+const VERSION = '1.2.0-alpha.8';
+const TITLE = 'Diagnostic Repair Queue + Export Risk Resolution';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
 const DOC = 'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md';

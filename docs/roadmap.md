@@ -2,7 +2,7 @@
 
 Current milestone:
 
-`v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions`
+`v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution`
 
 Purpose: take one controlled step beyond the stable public-demo lock by packaging the existing local/manual research plan, evidence workspace, claim review, contradiction review, source gaps, confidence metadata, and strategic brief export into one source-to-brief workflow.
 

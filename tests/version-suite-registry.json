@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.2.0-alpha.7",
-  "release_title": "v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions",
+  "version_suite_registry_version": "1.2.0-alpha.8",
+  "release_title": "v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

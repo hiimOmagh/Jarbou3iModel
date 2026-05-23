@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.2.0-alpha.7';
-const TITLE = 'Review Quality Diagnostics + Weak-Claim Repair Suggestions';
+const VERSION = '1.2.0-alpha.8';
+const TITLE = 'Diagnostic Repair Queue + Export Risk Resolution';
 const REGISTRY_BUDGET_BYTES = 900 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
@@ -13,14 +13,14 @@ const registries = [
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
     expectedEntries: 59,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.2.0-alpha.7-packet.json')
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.2.0-alpha.8-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
     expectedEntries: 49,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.7.json')
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.8.json')
   }
 ];
 

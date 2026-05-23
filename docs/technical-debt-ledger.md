@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.2.0-alpha.7`
-Release: `v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions
+Version: `1.2.0-alpha.8`
+Release: `v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

@@ -1,6 +1,6 @@
 # Current Release
 
-## v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions
+## v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution
 
 This is the sixth post-stable alpha after `v1.1.0 — Public Demo Stable`.
 
@@ -17,7 +17,7 @@ No live scraping. No production OAuth. No backend behavior expansion. No provide
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
-Version: `1.2.0-alpha.7`
+Version: `1.2.0-alpha.8`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions
@@ -39,5 +39,5 @@ Evidence manifest continuity: hosted-demo review still requires a single final m
 
 Feature surface guard: the v1.1.0 public-demo boundaries remain frozen while this alpha adds a focused Source-to-Brief navigation surface.
 
-Public and internal release versions are aligned: v1.2.0-alpha.7 Review Quality Diagnostics + Weak-Claim Repair Suggestions.
+Public and internal release versions are aligned: v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution.
 Feature surface is frozen for the v1.1.0 public-demo boundary; only the scoped local/manual operator review quality diagnostics and weak-claim repair suggestions are activated in this alpha. Live sourcing, provider execution, production OAuth, backend behavior, storage expansion, and automatic source verification remain unavailable.

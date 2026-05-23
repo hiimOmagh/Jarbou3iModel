@@ -1,6 +1,6 @@
 # Jarbou3i Research Engine
 
-`v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions`
+`v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
@@ -33,4 +33,4 @@ Screenshots alone are insufficient for release approval. ZIP archive alone is in
 
 Workbench note: this release is a changed-files-only local/manual review-quality diagnostics and weak-claim repair suggestions implementation with release apply integrity controls.
 
-Public release label: v1.2.0-alpha.7 Review Quality Diagnostics + Weak-Claim Repair Suggestions.
+Public release label: v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution.
