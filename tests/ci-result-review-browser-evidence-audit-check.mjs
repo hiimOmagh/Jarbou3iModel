@@ -31,7 +31,7 @@ assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must iden
 assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify current release');
 assert.equal(schema.properties.workflow_version.const, CURRENT_VERSION, 'schema workflow version must identify current release');
 assert.equal(sample.workflow_version, CURRENT_VERSION, 'sample fixture must identify current release');
-assert.equal(sample.release_notes.release_title, `v${CURRENT_VERSION} â€” ${CURRENT_TITLE}`, 'sample release title must identify current release');
+assert.equal(sample.release_notes.release_title, `v${CURRENT_VERSION} — ${CURRENT_TITLE}`, 'sample release title must identify current release');
 
 for (const required of [
   'GitHub Actions',

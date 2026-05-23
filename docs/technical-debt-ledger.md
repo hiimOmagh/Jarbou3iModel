@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
 Version: `1.2.0-alpha.2`
-Release: `v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
+Release: `v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

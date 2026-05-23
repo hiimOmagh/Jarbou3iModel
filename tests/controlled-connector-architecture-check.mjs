@@ -68,7 +68,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.controlled_connector_report.uncontrolled_scraping_performed, false);
   assert.equal(packet.connector_safety_report.live_web_search_performed, false);
   assert.equal(packet.connector_safety_report.automatic_source_verification_claimed, false);
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.2.0-alpha.2-packet.json'));
 assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.2.json'));

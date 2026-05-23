@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 
 const VERSION = '1.2.0-alpha.2';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const workflow = fs.readFileSync('.github/workflows/ci.yml', 'utf8');
 const script = fs.readFileSync('scripts/build-lock-evidence-bundle.mjs', 'utf8');

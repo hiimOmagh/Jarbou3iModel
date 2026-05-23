@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const VERSION = '1.2.0-alpha.2';
-const RELEASE = 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench';
+const RELEASE = 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench';
 const STABLE_PUBLIC = 'v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -27,7 +27,7 @@ assert.ok(current.includes('A ZIP archive alone is insufficient'));
 assert.ok(current.includes('no new feature surface') || current.includes('Feature surface is frozen'));
 assert.ok(!index.includes('v1.1.0-alpha.25'), 'public index must not contain alpha.25 residue');
 assert.ok(!helpers.includes('v1.1.0-alpha.25'), 'localized copy must not contain alpha.25 residue');
-assert.ok(!index.includes('v1.1.0-rc.0 Â· Public Demo Release Candidate'), 'public index must not expose old rc.0 release badge');
+assert.ok(!index.includes('v1.1.0-rc.0 · Public Demo Release Candidate'), 'public index must not expose old rc.0 release badge');
 assert.ok(registry.gates['no-browser'].node_checks.includes('tests/stable-consolidation-public-surface-check.mjs'));
 assert.ok(registry.syntax_matrix.files.includes('tests/stable-consolidation-public-surface-check.mjs'));
 console.log('Canonical lock evidence bundle and final stable handoff checks passed.');

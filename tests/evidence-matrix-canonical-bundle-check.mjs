@@ -91,8 +91,8 @@ const logs = path.join(tmp, 'lock-evidence-input', 'logs');
 const out = path.join(tmp, 'bundle-output');
 fs.mkdirSync(hosted, {recursive:true});
 fs.mkdirSync(logs, {recursive:true});
-fs.writeFileSync(path.join(logs, 'no-browser.log'), `Registry: v${VERSION} â€” ${TITLE}\nCI gate passed: no-browser\nchecks=101\n`);
-fs.writeFileSync(path.join(logs, 'browser.log'), `Registry: v${VERSION} â€” ${TITLE}\nCI gate passed: browser\nchecks=13\n`);
+fs.writeFileSync(path.join(logs, 'no-browser.log'), `Registry: v${VERSION} — ${TITLE}\nCI gate passed: no-browser\nchecks=101\n`);
+fs.writeFileSync(path.join(logs, 'browser.log'), `Registry: v${VERSION} — ${TITLE}\nCI gate passed: browser\nchecks=13\n`);
 const rows = [];
 for (const locale of config.locales) {
   fs.mkdirSync(path.join(hosted, locale), {recursive:true});

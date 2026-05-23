@@ -64,7 +64,7 @@ assert.ok(engine.includes('evidenceWorkspaceUxReport'), 'research engine must ex
 assert.ok(engine.includes('reviewThroughputReport'), 'research engine must export review throughput report');
 assert.ok(helpers.includes('reviewThroughputTitle'), 'localized throughput labels missing');
 assert.ok(helpers.includes('Source-to-Brief Intelligence Workbench'));
-assert.ok(helpers.includes('Ù…Ø±Ø´Ø­ Ù…Ø³ØªÙ‚Ø±'));
+assert.ok(helpers.includes('مرشح مستقر'));
 assert.ok(helpers.includes('candidat stable'));
 
 assert.equal(schema.properties.workflow_version.const, VERSION);

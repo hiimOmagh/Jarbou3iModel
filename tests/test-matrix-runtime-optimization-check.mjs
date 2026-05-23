@@ -10,7 +10,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 assert.equal(pkg.version, VERSION);
 assert.equal(registry.ci_gate_registry_version, VERSION);
-assert.equal(registry.release_title, `v${VERSION} â€” ${TITLE}`);
+assert.equal(registry.release_title, `v${VERSION} — ${TITLE}`);
 assert.equal(registry.runtime_optimization?.version, VERSION);
 assert.equal(registry.runtime_optimization?.syntax_matrix_parallelization_enabled, true);
 assert.equal(registry.runtime_optimization?.node_check_parallelization_enabled, false);

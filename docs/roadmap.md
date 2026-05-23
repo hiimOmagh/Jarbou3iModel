@@ -2,18 +2,18 @@
 
 Current milestone:
 
-`v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench`
+`v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
 
 Purpose: take one controlled step beyond the stable public-demo lock by packaging the existing local/manual research plan, evidence workspace, claim review, contradiction review, source gaps, confidence metadata, and strategic brief export into one source-to-brief workflow.
 
 Priority lanes:
 
-1. `source_strategy_v2` â€” source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
-2. `provider_execution_path` â€” threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
-3. `evidence_workspace_v2` â€” higher-throughput evidence review, contradiction handling, and publication-readiness triage.
-4. `export_publication_v4` â€” stronger traceability, provenance, release notes, and publication review packaging.
-5. `ux_density_polish` â€” first-run clarity and reduced advanced-panel load without redesigning the product surface.
-6. `release_ops_hardening` â€” commit-bound evidence, artifact checksums, gate registry consistency, and stale-artifact rejection.
+1. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
+2. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
+3. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, and publication-readiness triage.
+4. `export_publication_v4` — stronger traceability, provenance, release notes, and publication review packaging.
+5. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
+6. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, and stale-artifact rejection.
 
 Allowed in this alpha: visible source-to-brief workflow UI, local/manual evidence-to-claim linkage, claim support levels, contradiction grouping, source gap warnings, inferred confidence review metadata, structured export package, docs, fixtures, tests, and release metadata.
 

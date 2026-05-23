@@ -12,7 +12,7 @@ assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes('fixture/test debt ledger'));
 assert.ok(pkg.description.includes('professional trilingual language-description review'));
 assert.ok(ledger.includes(`# Fixture/Test Debt Ledger`));
-assert.ok(ledger.includes(`v${VERSION} â€” ${TITLE}`));
+assert.ok(ledger.includes(`v${VERSION} — ${TITLE}`));
 for (const id of ['FTD-001', 'FTD-002', 'FTD-003', 'FTD-004', 'FTD-005']) {
   assert.ok(ledger.includes(id), `debt ledger missing ${id}`);
 }

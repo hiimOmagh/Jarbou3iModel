@@ -1,6 +1,6 @@
 # Privacy Audit Release Gate
 
-## v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
+## v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -73,7 +73,7 @@ Continuity discipline: Root Manifest and Release Artifact Consolidation, Version
 
 Release-lock guard: v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Current release reference: v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench. release-lock evidence remains required.
+Current release reference: v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench. release-lock evidence remains required.
 
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 

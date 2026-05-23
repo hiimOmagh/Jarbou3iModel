@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine quality gate v1.1.0 â€” Advanced Quality Gate v3. */
+/* Jarbou3i Research Engine quality gate v1.1.0 — Advanced Quality Gate v3. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};

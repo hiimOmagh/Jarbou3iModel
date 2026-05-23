@@ -10,7 +10,7 @@ const json = (file) => JSON.parse(read(file));
 
 const VERSION = '1.2.0-alpha.2';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');

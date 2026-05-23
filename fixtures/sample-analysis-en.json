@@ -1,7 +1,7 @@
 {
   "subject": {
     "title": "Sample: World War II outcomes",
-    "context": "1939â€“1947, international order",
+    "context": "1939–1947, international order",
     "question": "How did World War II outcomes reshape the global system?",
     "executive_thesis": "World War II ended the old European balance of power and opened a bipolar order led by the United States and the Soviet Union."
   },
@@ -104,7 +104,7 @@
       {
         "name": "Consolidation of bipolar order",
         "probability": 70,
-        "timeframe": "1947â€“1955",
+        "timeframe": "1947–1955",
         "drivers": [
           "Ideological polarization"
         ],

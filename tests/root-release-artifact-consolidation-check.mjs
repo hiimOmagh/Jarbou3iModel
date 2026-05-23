@@ -4,7 +4,7 @@ import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement 
 
 const VERSION = '1.2.0-alpha.2';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const pkg = json('package.json');

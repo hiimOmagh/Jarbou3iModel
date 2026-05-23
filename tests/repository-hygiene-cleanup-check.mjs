@@ -39,9 +39,9 @@ assert.equal(schema.properties.workflow_version.const, '1.2.0-alpha.2');
 assert.equal(sample.workflow_version, '1.2.0-alpha.2');
 assert.equal(migrationFixture.workflow_version, '1.2.0-alpha.2');
 assert.equal(privacyFixture.workflow_version, '1.2.0-alpha.2');
-assert.equal(sample.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
-assert.equal(migrationFixture.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
-assert.equal(privacyFixture.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+assert.equal(sample.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
+assert.equal(migrationFixture.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
+assert.equal(privacyFixture.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 
 for (const file of [
   'docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md',

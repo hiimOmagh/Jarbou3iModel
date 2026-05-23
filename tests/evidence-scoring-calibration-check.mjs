@@ -61,7 +61,7 @@ assert.equal(setReport.score_theater_guard, 'scores_explain_prioritization_not_t
 assert.ok(setReport.calibration_warning_count >= 1);
 assert.ok(setReport.risk_flags.includes('calibration_warning_present'));
 
-assert.ok(index.includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'), 'v1.1.0 badge missing');
+assert.ok(index.includes('v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench'), 'v1.1.0 badge missing');
 assert.ok(index.includes('data-r-i18n="evidenceScoringCalibrationShort"'), 'UI must expose localized evidence-scoring calibration copy');
 assert.ok(renderHelpers.includes('evidenceScoringCalibrationShort'), 'render helpers must provide localized evidence-scoring calibration copy');
 assert.ok(engine.includes('calibration_warning_count'), 'engine UI must surface calibration warning count');
@@ -90,7 +90,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
     assert.equal(item.evidence_scoring.score_theater_guard, 'scores_explain_prioritization_not_truth');
     assert.ok(['low','moderate','strong','very_strong'].includes(item.evidence_scoring.reliability_band));
   }
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 
 console.log('Evidence scoring calibration checks passed.');

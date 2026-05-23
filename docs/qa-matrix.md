@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
+Current release candidate: v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
 
 Required gates:
 - No-browser CI

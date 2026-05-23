@@ -66,7 +66,7 @@
       contradicts: asArray(item.contradicts).map(String),
       confidence: confidence(item.confidence),
       notes: [
-        quote ? `Quote/excerpt: ${quote.slice(0, 220)}${quote.length > 220 ? 'â€¦' : ''}` : '',
+        quote ? `Quote/excerpt: ${quote.slice(0, 220)}${quote.length > 220 ? '…' : ''}` : '',
         'Imported from manual source packet; review source metadata, contradiction markers, and claim links before synthesis.'
       ].filter(Boolean).join(' '),
       import_meta: {

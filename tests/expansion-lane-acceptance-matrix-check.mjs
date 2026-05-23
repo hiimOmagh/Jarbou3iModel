@@ -29,9 +29,9 @@ assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
 assert.equal(lock.packages[''].version, VERSION);
 assert.ok(pkg.description.includes('package script compression and CI gate registry'));
-assert.ok(index.includes(`v${VERSION} Â· ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
-assert.ok(index.includes('data-r-i18n="stableWorkflowTitle"') && index.includes('ØªØ¯Ù‚ÙŠÙ‚ Ø§Ù„Ø§Ø­ØªÙØ§Ø¸ Ø¨Ø§Ù„Ù…Ù„ÙØ§Øª'), 'localized index must keep repository audit workflow visible');
-assert.ok(index.includes('Ø¥Ø«Ø¨Ø§Øª Ø§Ù„Ø¯Ù…Ø¬ Ø§Ù„Ø¢Ù…Ù†'), 'localized index must mention proof before reduction');
+assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
+assert.ok(index.includes('data-r-i18n="stableWorkflowTitle"') && index.includes('تدقيق الاحتفاظ بالملفات'), 'localized index must keep repository audit workflow visible');
+assert.ok(index.includes('إثبات الدمج الآمن'), 'localized index must mention proof before reduction');
 assert.ok(moduleSource.includes("const VERSION = '1.2.0-alpha.2'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
@@ -77,7 +77,7 @@ assert.equal(subset.release_gate, 'expansion_lane_criteria_ready');
 
 for (const packet of [migrationFixture, privacyFixture]) {
   assert.equal(packet.workflow_version, VERSION);
-  assert.equal(packet.release_notes.release_title, `v${VERSION} â€” ${TITLE}`);
+  assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
   assert.equal(packet.release_apply_integrity.base_version, FREEZE_BASELINE);
   assert.equal(packet.release_apply_integrity.artifact_name, ARTIFACT);
   assert.equal(packet.release_apply_integrity.runtime_capability_change, false);

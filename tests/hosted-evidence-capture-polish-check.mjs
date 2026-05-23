@@ -6,7 +6,7 @@ import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const VERSION = '1.2.0-alpha.2';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
 const DOC = 'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md';
 

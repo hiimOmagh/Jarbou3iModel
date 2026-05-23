@@ -7,7 +7,7 @@
   const TEMPLATE_REGISTRY = Object.freeze({
     strategic_analysis_engine: Object.freeze({
       template_id:'strategic_analysis_engine', template_version:VERSION, display_name:'Strategic Analysis Engine', short_name:'Strategic',
-      description:'Default Interests â†’ Actors â†’ Tools â†’ Narrative â†’ Outcomes â†’ Feedback model with evidence review discipline.',
+      description:'Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.',
       output_focus:['interests','actors','tools','narrative','outcomes','feedback','contradictions','scenarios'],
       required_layers:['interests','actors','tools','narrative','results','feedback'],
       plan_questions:['What interests dominate the system and what stakes do actors attach to them?','Which actors possess decision access, disruption capacity, or narrative influence?','Which tools reveal real constraints rather than public rhetoric?','Which feedback loops can reverse or amplify first-order outcomes?'],
@@ -56,7 +56,7 @@
       required_layers:['interests','actors','tools','results','feedback'],
       plan_questions:['What does each actor gain, lose, protect, or avoid?','Which actor has decision access, money, coercive power, information, or legitimacy?','Where do actor incentives align, conflict, or produce unstable coalitions?','Which moves become rational once constraints and incentives are separated from rhetoric?'],
       source_priorities:['actor statements','funding or ownership data','institutional roles','past behavior chronology','credible opposition signals'],
-      counter_evidence_targets:['Evidence that an actorâ€™s stated preference conflicts with revealed behavior','Evidence that resource constraints prevent the expected move'],
+      counter_evidence_targets:['Evidence that an actor’s stated preference conflicts with revealed behavior','Evidence that resource constraints prevent the expected move'],
       prompt_directives:['Separate actor preference, capability, constraint, and revealed behavior.','Map coalition stability and bargaining leverage.','Avoid treating public rhetoric as preference without behavioral evidence.'],
       quality_focus:['actor_coverage','resource_mapping','constraint_mapping','revealed_preferences']
     }),

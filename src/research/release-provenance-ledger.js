@@ -4,7 +4,7 @@
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   const VERSION = '1.2.0-alpha.2';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench';
+  const RELEASE_TITLE = 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench';
   const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.2.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
     {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0', required:true},

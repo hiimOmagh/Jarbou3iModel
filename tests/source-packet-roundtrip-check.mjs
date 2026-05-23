@@ -121,7 +121,7 @@ assert.equal(schema.$defs.source_packet_roundtrip_report.properties.attention_is
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.workflow_version, '1.2.0-alpha.2');
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
   assert.equal(packet.source_packet_roundtrip_report.roundtrip_version, '1.2.0-alpha.2');
   assert.equal(packet.source_packet_roundtrip_report.roundtrip_model, 'source_packet_roundtrip.v1');
   assert.equal(packet.source_packet_roundtrip_report.live_fetching_performed, false);

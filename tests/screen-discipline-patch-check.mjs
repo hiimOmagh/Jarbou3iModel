@@ -13,7 +13,7 @@ assert.equal(pkg.version, '1.2.0-alpha.2');
 assert.equal(fixture.workflow_version, '1.2.0-alpha.2');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
-assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8','1.0.9','1.0.10','1.0.11','1.0.12','1.0.13','1.0.14','1.0.15','1.0.16','1.0.17','1.0.18','1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.2.0-alpha.2'"), 'migrations must support v1.0.5 â†’ v1.1.0');
+assert.ok(migrations.includes("'1.0.0','1.0.1','1.0.2','1.0.3','1.0.4','1.0.5','1.0.6','1.0.7','1.0.8','1.0.9','1.0.10','1.0.11','1.0.12','1.0.13','1.0.14','1.0.15','1.0.16','1.0.17','1.0.18','1.0.19','1.0.20','1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.2.0-alpha.2'"), 'migrations must support v1.0.5 → v1.1.0');
 
 for (const token of [
   'screenDisciplineNextAction',

@@ -78,7 +78,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.source_capability_registry.audit.production_oauth_enabled, false);
   assert.equal(packet.source_capability_registry.audit.auth_material_export_allowed, false);
   assert.equal(packet.source_capability_registry.audit.verdict, 'source_capability_registry_ready_manual_packet_import');
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 
 assert.equal(schema.properties.workflow_version.const, '1.2.0-alpha.2');

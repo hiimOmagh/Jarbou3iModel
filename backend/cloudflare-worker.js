@@ -95,7 +95,7 @@ function csvEnv(env, key) {
 function redactText(value, max = 500) {
   let text = String(value ?? '');
   for (const pattern of SECRET_TEXT_PATTERNS) text = text.replace(pattern, '[REDACTED]');
-  return text.length > max ? `${text.slice(0, max)}â€¦` : text;
+  return text.length > max ? `${text.slice(0, max)}…` : text;
 }
 
 function safeDetails(details = {}) {

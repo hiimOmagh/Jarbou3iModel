@@ -75,7 +75,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.ok(Array.isArray(packet.source_imports) && packet.source_imports.some((item) => item.queue_only === true));
   assert.equal(packet.source_capability_registry.source_strategy_version, '1.2.0-alpha.2');
   assert.ok(packet.source_capability_registry.registry.some((item) => item.source_id === 'manual_source_packet' && item.status === 'available_manual_import'));
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 
 console.log('Source packet import checks passed.');

@@ -9,8 +9,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const VERSION = '1.2.0-alpha.2';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
-const LOCK_RELEASE = `v${VERSION} â€” Public Demo Release Lock`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
+const LOCK_RELEASE = `v${VERSION} — Public Demo Release Lock`;
 const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
@@ -64,15 +64,15 @@ assert.equal(schema.properties.release_apply_integrity.properties.base_version.c
 assert.equal(schema.properties.release_apply_integrity.properties.artifact_name.const, ARTIFACT);
 assert.equal(schema.properties.release_provenance_ledger.properties.base_version.const, BASE_VERSION);
 assert.equal(schema.properties.release_provenance_ledger.properties.artifact_name.const, ARTIFACT);
-assert.ok(index.includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'), 'index badge must expose final freeze audit identity');
+assert.ok(index.includes('v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench'), 'index badge must expose final freeze audit identity');
 assert.ok(index.includes('id="loadSampleBtn"'), 'load sample primary action must remain in DOM');
 assert.ok(browserA11y.includes("page.locator('#loadSampleBtn')"), 'runtime a11y smoke must target loadSampleBtn visibility');
 assert.ok(browserA11y.includes("await page.locator('#loadSampleBtn').click()"), 'runtime a11y smoke must click loadSampleBtn');
 assert.ok(smoke.includes('toBeVisible'), 'smoke test must guard primary action visibility');
 assert.ok(smoke.includes('loadSampleBtn'), 'smoke test must guard loadSampleBtn');
-assert.ok(index.includes('data-r-i18n="hostedDemoVerificationBody"') && index.includes('Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø§Ø³ØªØ®Ø±Ø§Ø¬ Ø­ÙŠ'), 'localized index must keep no-live-scraping boundary');
-assert.ok(index.includes('OAuth Ø­Ù‚ÙŠÙ‚ÙŠ'), 'localized index must keep OAuth boundary');
-assert.ok(index.includes('Ù„Ø§ ØªÙƒÙÙŠ Ø§Ù„Ù„Ù‚Ø·Ø§Øª') && index.includes('Ù…Ù„ÙØ§Øª ZIP'), 'localized index must reject screenshot/ZIP-only approval');
+assert.ok(index.includes('data-r-i18n="hostedDemoVerificationBody"') && index.includes('لا يوجد استخراج حي'), 'localized index must keep no-live-scraping boundary');
+assert.ok(index.includes('OAuth حقيقي'), 'localized index must keep OAuth boundary');
+assert.ok(index.includes('لا تكفي اللقطات') && index.includes('ملفات ZIP'), 'localized index must reject screenshot/ZIP-only approval');
 for (const text of [publicDemo, releaseDoc, read('README.md'), read('RELEASE_NOTES.md'), read('PUBLIC_DEMO.md'), read('BROWSER_EVIDENCE.md'), read('HOSTED_DEMO_VERIFICATION.md')]) {
   assert.ok(/no live scraping|No live scraping|live scraping/i.test(text), 'public corpus must keep no-live-scraping boundary');
   assert.ok(/No real OAuth|production OAuth|real OAuth/i.test(text), 'public corpus must keep OAuth boundary');

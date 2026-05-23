@@ -77,7 +77,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
     assert.equal(item.evidence_scoring.attention_is_truth_score, false);
     assert.equal(item.evidence_scoring.policy, 'attention_signal_is_not_evidence_reliability');
   }
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 
 console.log('Evidence scoring v1 checks passed.');

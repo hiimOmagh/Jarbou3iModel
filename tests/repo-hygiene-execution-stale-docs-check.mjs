@@ -8,7 +8,7 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 
 const VERSION = '1.2.0-alpha.2';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -69,7 +69,7 @@ assert.ok(architecture.includes('## Current v1.1.0 pipeline'), 'architecture doc
 assert.equal(architecture.includes('## Current v0.20.0-beta pipeline'), false, 'architecture doc must not claim v0.20.0-beta as current');
 assert.ok(privacyAudit.includes('`v1.1.0` treats every exported JSON payload as a security boundary'), 'privacy audit doc must name v1.1.0 boundary');
 assert.equal(privacyAudit.includes('`v0.20.0-beta` treats every exported JSON payload as a security boundary'), false, 'privacy audit doc must not claim v0.20.0-beta as current');
-assert.ok(v019Doc.startsWith('# v0.19.0-beta â€” Privacy Audit Hardening'), 'v0.19 historical privacy doc heading must match its filename');
+assert.ok(v019Doc.startsWith('# v0.19.0-beta — Privacy Audit Hardening'), 'v0.19 historical privacy doc heading must match its filename');
 
 for (const token of [
   'node_modules/',
@@ -127,7 +127,7 @@ for (const file of releaseTreeFiles) {
 
 assert.ok(migrations.includes("const TARGET_VERSION = '1.2.0-alpha.2'"), 'migration target must be v1.1.0');
 assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.2.0-alpha.2'"), 'migration order must preserve v1.0.24 and append v1.1.0');
-assert.ok(migrations.includes("release_title:'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench'"), 'migration default release title must identify v1.1.0');
+assert.ok(migrations.includes("release_title:'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench'"), 'migration default release title must identify v1.1.0');
 
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must run release hygiene through registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');

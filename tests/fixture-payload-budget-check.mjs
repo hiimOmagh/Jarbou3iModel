@@ -31,7 +31,7 @@ for (const item of registries) {
   const previousBytes = rawRegistry.payload_compression?.raw_registry_bytes_before_alpha8;
 
   assert.equal(rawRegistry.registry_version, VERSION, `${item.label} registry version mismatch`);
-  assert.equal(rawRegistry.release_title, `v${VERSION} â€” ${TITLE}`, `${item.label} registry title mismatch`);
+  assert.equal(rawRegistry.release_title, `v${VERSION} — ${TITLE}`, `${item.label} registry title mismatch`);
   assert.equal(rawRegistry.payload_encoding, 'gzip+base64+json', `${item.label} registry must declare compressed payload encoding`);
   assert.equal(rawRegistry.entry_count, item.expectedEntries, `${item.label} registry entry count mismatch`);
   assert.equal(rawRegistry.entries.length, item.expectedEntries, `${item.label} registry entries length mismatch`);
@@ -54,7 +54,7 @@ for (const item of registries) {
 
   const currentFixture = item.currentFixture();
   assert.equal(currentFixture.workflow_version, VERSION, `${item.label} current fixture must load through compressed registry`);
-  assert.equal(currentFixture.release_notes.release_title, `v${VERSION} â€” ${TITLE}`, `${item.label} current fixture release title mismatch`);
+  assert.equal(currentFixture.release_notes.release_title, `v${VERSION} — ${TITLE}`, `${item.label} current fixture release title mismatch`);
 }
 
 console.log('Fixture payload budget checks passed.');

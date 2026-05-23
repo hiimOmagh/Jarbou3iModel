@@ -31,7 +31,7 @@ assert.equal(hosted.VERSION, '1.2.0-alpha.2');
 assert.ok(index.includes('id="hostedDemoVerificationPanel"'), 'hosted demo panel missing');
 assert.ok(index.includes('id="hostedDemoEvidenceReviewPanel"'), 'evidence review panel missing');
 assert.ok(index.includes('src="src/research/hosted-demo-verification.js" defer'), 'hosted demo module missing from index');
-assert.ok(index.includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'), 'v1.1.0 badge missing');
+assert.ok(index.includes('v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench'), 'v1.1.0 badge missing');
 assert.ok(engine.includes('hostedDemoReport()'), 'research packet must include hosted demo report');
 assert.ok(engine.includes('browserEvidenceReport()'), 'research packet must include browser evidence report');
 assert.ok(engine.includes('hostedDemoSmokeFixesReport()'), 'research packet must include hosted demo smoke fixes report');

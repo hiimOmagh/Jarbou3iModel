@@ -1,6 +1,6 @@
 # Jarbou3i Research Engine
 
-`v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench`
+`v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 

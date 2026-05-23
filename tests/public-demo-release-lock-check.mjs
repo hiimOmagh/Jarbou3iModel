@@ -9,8 +9,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 
 const VERSION = '1.2.0-alpha.2';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
-const LOCK_RELEASE = `v${VERSION} â€” Public Demo Release Lock`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
+const LOCK_RELEASE = `v${VERSION} — Public Demo Release Lock`;
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));

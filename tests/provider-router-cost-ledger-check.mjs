@@ -67,7 +67,7 @@ for(const packet of [fixture,migrationFixture,privacyFixture]){
   assert.equal(packet.provider_cost_report.provider_cost_report_version,VERSION);
   assert.equal(packet.provider_cost_report.automatic_paid_call_performed,false);
   assert.equal(packet.provider_router_safety_report.secrets_exported,false);
-  assert.equal(packet.release_notes.release_title,'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title,'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 assert.ok(registry.gates.provider.node_checks.includes('tests/provider-router-cost-ledger-check.mjs'),'provider gate must register provider router check');
 assert.ok(registry.gates.release.node_checks.includes('tests/provider-router-cost-ledger-check.mjs'),'release gate must register provider router check');

@@ -12,7 +12,7 @@ const qaMatrix = fs.readFileSync('docs/qa-matrix.md', 'utf8');
 
 assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`), 'alpha.19 release doc must exist in release history');
 const doc = readReleaseDoc(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`);
-assert.ok(doc.includes(`# v${VERSION} â€” ${TITLE}`));
+assert.ok(doc.includes(`# v${VERSION} — ${TITLE}`));
 assert.ok(doc.includes('docs/technical-debt-ledger.md'));
 assert.ok(doc.includes('docs/source-refactor-readiness-audit.md'));
 assert.ok(doc.includes('tests/language-description-audit-check.mjs'));
@@ -21,8 +21,8 @@ assert.ok(doc.includes('No runtime behavior change'));
 
 assert.ok(history.includes('## Pruned timeline index'), 'release history must expose a pruned timeline index');
 assert.ok(history.includes('timeline_pruning_policy'), 'release history must document the timeline pruning policy');
-assert.ok(history.includes('v1.1.0-alpha.9 â€” Test Matrix Runtime Optimization + Release Doc Timeline Pruning'), 'release history must preserve alpha.9 timeline pruning anchor');
-assert.ok(history.includes(`v${VERSION} â€” ${TITLE}`), 'release history must include current alpha.19 title');
+assert.ok(history.includes('v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning'), 'release history must preserve alpha.9 timeline pruning anchor');
+assert.ok(history.includes(`v${VERSION} — ${TITLE}`), 'release history must include current alpha.19 title');
 assert.equal((history.match(/<!-- release-file:v1\.1\.0-alpha\.7-package-script-compression-ci-gate-registry\.md -->/g) || []).length, 1, 'duplicate alpha.7 release-history section must be pruned');
 assert.ok(Buffer.byteLength(history, 'utf8') <= 130 * 1024, 'release history must remain under the alpha.19 timeline budget');
 

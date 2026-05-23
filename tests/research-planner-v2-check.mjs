@@ -4,7 +4,7 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
 const VERSION='1.2.0-alpha.2';
-const RELEASE='v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench';
+const RELEASE='v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench';
 const read=(file)=>fs.readFileSync(file,'utf8');
 const source=read('src/research/research-planner-v2.js');
 const engine=read('src/research-engine.js');

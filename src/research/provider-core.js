@@ -17,7 +17,7 @@
       synthesis: {
         type:'strategic_analysis',
         title:'Strategic Analysis Contract',
-        purpose:'Return a schema-compatible Jarbou3i strategic analysis object using the Interests â†’ Actors â†’ Tools â†’ Narrative â†’ Results â†’ Feedback model.',
+        purpose:'Return a schema-compatible Jarbou3i strategic analysis object using the Interests → Actors → Tools → Narrative → Results → Feedback model.',
         required:['schema_version','subject','interests','actors','tools','narrative','results','feedback','scenarios'],
         recommended:['analysis_id','evidence','contradictions','causal_links','assumptions'],
         reject_if:['missing any core model layer','markdown-wrapped explanation without JSON','no scenario falsifiers','no evidence/counter-evidence discipline'],
@@ -154,8 +154,8 @@
   function validationSummary(validation, repairTrace){
     if(!validation) return 'not validated';
     const base = validation.accepted ? 'accepted' : 'rejected';
-    const repair = repairTrace?.attempted ? ` Â· repair:${repairTrace.status}` : '';
-    return `${base} Â· issues:${validation.issue_count}${repair}`;
+    const repair = repairTrace?.attempted ? ` · repair:${repairTrace.status}` : '';
+    return `${base} · issues:${validation.issue_count}${repair}`;
   }
   root.providerCore = {responseContract, stableHash, normalizeProviderTextResponse, validateProviderResponse, repairProviderResponse, validationSummary};
 })(window);

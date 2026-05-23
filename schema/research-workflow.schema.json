@@ -713,7 +713,7 @@
           "const": "1.2.0-alpha.2"
         },
         "release_title": {
-          "const": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench"
+          "const": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench"
         },
         "release_type": {
           "const": "patch"
@@ -1236,7 +1236,7 @@
           "const": "1.2.0-alpha.2"
         },
         "release_title": {
-          "const": "v1.2.0-alpha.2 â€” Public Demo Release Lock"
+          "const": "v1.2.0-alpha.2 — Public Demo Release Lock"
         },
         "lock_stage": {
           "const": "public_demo_release_locked"
@@ -1362,7 +1362,7 @@
           "const": "1.2.0-alpha.2"
         },
         "release_title": {
-          "const": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench"
+          "const": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench"
         },
         "integrity_stage": {
           "const": "release_apply_integrity_checked"
@@ -1464,7 +1464,7 @@
           "const": "1.2.0-alpha.2"
         },
         "release_title": {
-          "const": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench"
+          "const": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench"
         },
         "provenance_stage": {
           "const": "release_provenance_ledger_checked"

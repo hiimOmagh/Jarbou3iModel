@@ -1,8 +1,8 @@
 # Current Release
 
-## v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
+## v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
 
-This is the second post-stable alpha after `v1.1.0 â€” Public Demo Stable`.
+This is the second post-stable alpha after `v1.1.0 — Public Demo Stable`.
 
 Scope: controlled source-to-brief implementation inside the existing local/manual workspace. The release connects the research question, research plan, evidence cards, evidence-to-claim links, claim support levels, contradiction groups, source gap warnings, confidence review metadata, and an exportable strategic brief package.
 

@@ -1,22 +1,22 @@
 # AI Integration Policy
 
-## v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
+## v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
 
-## v1.0.25 â€” Public Demo Release Lock
+## v1.0.25 — Public Demo Release Lock
 
-This guide applies to v1.0.25 â€” Public Demo Release Lock.
+This guide applies to v1.0.25 — Public Demo Release Lock.
 
 ## Current state: v1.1.0
 
 The research engine supports four provider modes:
 
-1. `mock` â€” deterministic local provider, no network.
-2. `openai_compatible` â€” BYOK direct provider mode, live only with explicit opt-in.
-3. `backend_proxy` â€” hosted proxy scaffold, live only with explicit opt-in.
-4. `portable_oauth` â€” local portable-account mock flow; no real OAuth or live calls.
+1. `mock` — deterministic local provider, no network.
+2. `openai_compatible` — BYOK direct provider mode, live only with explicit opt-in.
+3. `backend_proxy` — hosted proxy scaffold, live only with explicit opt-in.
+4. `portable_oauth` — local portable-account mock flow; no real OAuth or live calls.
 
 v1.0.25 does not expand provider behavior. It locks public-demo release approval while preserving the manual/private default, privacy/export boundary, and unavailable-feature discipline.
 
@@ -24,10 +24,10 @@ v1.0.25 does not expand provider behavior. It locks public-demo release approval
 
 ```text
 Connect mock portable account
-â†’ receive mock account metadata and token hash
-â†’ optionally refresh mock token hash
-â†’ run provider task through MockProvider while preserving portable-account metadata
-â†’ export safe status without raw token
+→ receive mock account metadata and token hash
+→ optionally refresh mock token hash
+→ run provider task through MockProvider while preserving portable-account metadata
+→ export safe status without raw token
 ```
 
 No real OAuth authorization endpoint is contacted. No access token or refresh token is generated. Only a mock token hash is stored in state and exports.
@@ -63,7 +63,7 @@ Continuity discipline: Root Manifest and Release Artifact Consolidation, Version
 
 Release-lock guard: v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Current release reference: v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench. release-lock evidence remains required.
+Current release reference: v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench. release-lock evidence remains required.
 
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 

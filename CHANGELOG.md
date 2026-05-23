@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
+## v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
 
 - Adds the local/manual Source-to-Brief Intelligence Workbench.
 - Connects research questions, plans, evidence cards, generated claims, claim support levels, contradiction groups, source gap warnings, inferred confidence review metadata, and structured strategic brief export.
@@ -10,7 +10,7 @@
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-`v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench`
+`v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
 
 Public label: `v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench`. Internal evidence metadata: `1.2.0-alpha.2`. This controlled alpha adds only a local/manual source-to-brief workflow and export package; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
 

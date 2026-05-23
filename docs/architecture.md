@@ -1,6 +1,6 @@
 # Architecture
 
-## v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
+## v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
 
 Release apply integrity gate for changed-files-only patch handoff. Artifact download success, screenshots alone, or ZIP existence alone are insufficient. Required validation: `npm run test:v126:no-browser`, `npm run test:ci:no-browser`, and `PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser`. No runtime/provider/OAuth/backend/source/storage/public-demo capability expansion.
 
@@ -9,22 +9,22 @@ Release apply integrity gate for changed-files-only patch handoff. Artifact down
 
 ```text
 Topic/context
-â†’ Research Plan
-â†’ Evidence Matrix
-â†’ Evidence Review Queue
-â†’ Source Packet Builder
-â†’ Source Packet Template Presets
-â†’ Causal Links
-â†’ Analysis Brief Compiler
-â†’ Provider Harness
-â†’ Provider Response Validation
-â†’ Controlled Repair Loop
-â†’ Critique
-â†’ Privacy Export Guard
-â†’ Quality Gate
-â†’ Export Pack
-â†’ Hosted Demo Evidence Review
-â†’ Public Demo Release Lock
+→ Research Plan
+→ Evidence Matrix
+→ Evidence Review Queue
+→ Source Packet Builder
+→ Source Packet Template Presets
+→ Causal Links
+→ Analysis Brief Compiler
+→ Provider Harness
+→ Provider Response Validation
+→ Controlled Repair Loop
+→ Critique
+→ Privacy Export Guard
+→ Quality Gate
+→ Export Pack
+→ Hosted Demo Evidence Review
+→ Public Demo Release Lock
 ```
 
 ## Provider architecture
@@ -67,7 +67,7 @@ Continuity discipline: Root Manifest and Release Artifact Consolidation, Version
 
 Release-lock guard: v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
-Current release reference: v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench. release-lock evidence remains required.
+Current release reference: v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench. release-lock evidence remains required.
 
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 

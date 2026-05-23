@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine Export Pack v3 â€” v1.1.0. */
+/* Jarbou3i Research Engine Export Pack v3 — v1.1.0. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -74,8 +74,8 @@
     const template = packet.analysis_template || {};
     const quality = packet.quality_gate || brief.quality_gate_report || {};
     const clusters = asArray(brief.source_clusters).map((cluster) => `- ${safeString(cluster.cluster_id || cluster.layer || 'cluster')}: ${asArray(cluster.claims).join('; ') || 'No claims recorded'} (${asArray(cluster.evidence_ids).join(', ') || 'no evidence IDs'})`).join('\n') || '- No source clusters recorded';
-    const links = asArray(packet.causal_links).map((link) => `- ${safeString(link.from)} ${safeString(link.relationship)} ${safeString(link.to)} â€” evidence: ${asArray(link.evidence_ids).join(', ') || 'none'}; confidence: ${safeString(link.confidence || 'unknown')}`).join('\n') || '- No causal links recorded';
-    const evidence = asArray(packet.evidence_matrix).map((item) => `- ${safeString(item.evidence_id)}: ${safeString(item.claim)} â€” ${safeString(item.source_title || 'untitled source')}`).join('\n') || '- No evidence recorded';
+    const links = asArray(packet.causal_links).map((link) => `- ${safeString(link.from)} ${safeString(link.relationship)} ${safeString(link.to)} — evidence: ${asArray(link.evidence_ids).join(', ') || 'none'}; confidence: ${safeString(link.confidence || 'unknown')}`).join('\n') || '- No causal links recorded';
+    const evidence = asArray(packet.evidence_matrix).map((item) => `- ${safeString(item.evidence_id)}: ${safeString(item.claim)} — ${safeString(item.source_title || 'untitled source')}`).join('\n') || '- No evidence recorded';
     return [
       `# ${safeString(brief.topic || packet.research_plan?.topic || 'Jarbou3i Analysis Brief')}`,
       '',
@@ -307,7 +307,7 @@
   }
   function exportPackSummaryHtml(pack, esc){
     const safeEsc = typeof esc === 'function' ? esc : (value) => safeString(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
-    const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} Â· ${safeEsc(file.bytes)} B</span>`).join('');
+    const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
     return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v3</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
   root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, sourceToBriefFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, goldenWorkflowFiles, releaseCandidateHygieneFiles, evidencePackV3Files, exportPackSummaryHtml});

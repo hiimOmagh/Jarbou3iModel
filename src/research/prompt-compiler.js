@@ -3,7 +3,7 @@
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   const VERSION = '1.2.0-alpha.2';
-  const STOPWORDS = new Set('the a an and or but with without into from this that these those about for of in on to by is are was were be been being as at it its their his her our your they them he she we you i me my un une des les la le et ou mais avec sans dans sur de du en pour par est sont ÙƒØ§Ù† ÙƒØ§Ù†Øª ØªÙƒÙˆÙ† Ù‡Ø°Ø§ Ù‡Ø°Ù‡ Ø§Ù„ØªÙŠ Ø§Ù„Ø°ÙŠ Ù…Ù† ÙÙŠ Ø¹Ù„Ù‰ Ø¥Ù„Ù‰ Ø¹Ù† Ù…Ø¹ Ø¶Ø¯ Ø¨ÙŠÙ† Ø¹Ø¨Ø± ÙˆÙ‡Ùˆ ÙˆÙ‡ÙŠ Ù‡Ù… Ù†Ø­Ù† Ø§Ù†Ø§'.split(/\s+/));
+  const STOPWORDS = new Set('the a an and or but with without into from this that these those about for of in on to by is are was were be been being as at it its their his her our your they them he she we you i me my un une des les la le et ou mais avec sans dans sur de du en pour par est sont كان كانت تكون هذا هذه التي الذي من في على إلى عن مع ضد بين عبر وهو وهي هم نحن انا'.split(/\s+/));
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }
   function uniq(items, limit = 12){
     const out = [];
@@ -11,14 +11,14 @@
     return out;
   }
   function words(value){
-    return text(value).split(/[\s,;:ØŒ.!?()\[\]{}"'â€œâ€â€˜â€™/\\|]+/).map((w)=>w.trim()).filter((w)=>w.length > 2 && !STOPWORDS.has(w.toLowerCase()));
+    return text(value).split(/[\s,;:،.!?()\[\]{}"'“”‘’/\\|]+/).map((w)=>w.trim()).filter((w)=>w.length > 2 && !STOPWORDS.has(w.toLowerCase()));
   }
   function keywords(topic, context){ return uniq(words(`${topic} ${context}`), 10); }
   function detectMode(raw, fallback){
     const t = text(raw).toLowerCase();
-    if(/recent|today|latest|now|202[4-9]|Ø¢Ø®Ø±|Ø­Ø¯ÙŠØ«|Ø­Ø§Ù„ÙŠ|actuel|rÃ©cent/.test(t)) return 'recent';
-    if(/source|evidence|citation|proof|Ù…ØµØ¯Ø±|Ø¯Ù„ÙŠÙ„|preuve|source/.test(t)) return 'source-heavy';
-    if(/contradict|counter|risk|disprove|Ù†Ù‚Ø¶|Ù…Ø¶Ø§Ø¯|risque|contre/.test(t)) return 'adversarial';
+    if(/recent|today|latest|now|202[4-9]|آخر|حديث|حالي|actuel|récent/.test(t)) return 'recent';
+    if(/source|evidence|citation|proof|مصدر|دليل|preuve|source/.test(t)) return 'source-heavy';
+    if(/contradict|counter|risk|disprove|نقض|مضاد|risque|contre/.test(t)) return 'adversarial';
     return fallback || 'structural';
   }
   function scoreQuality(input){
@@ -26,11 +26,11 @@
     const topic = text(input.topic);
     const context = text(input.context);
     if(topic.length >= 24) score += 15;
-    if(context.length >= 8 && !/not specified|ØºÙŠØ± Ù…Ø­Ø¯Ø¯|non prÃ©cisÃ©/i.test(context)) score += 12;
+    if(context.length >= 8 && !/not specified|غير محدد|non précisé/i.test(context)) score += 12;
     if((input.template?.required_layers || []).length >= 5) score += 10;
     if(words(`${topic} ${context}`).length >= 6) score += 10;
-    if(/\d{4}|\bQ[1-4]\b|ÙŠÙ†Ø§ÙŠØ±|ÙØ¨Ø±Ø§ÙŠØ±|Ù…Ø§Ø±Ø³|avril|mai|juin/i.test(`${topic} ${context}`)) score += 8;
-    if(/where|who|why|how|Ù…Ø§|Ù…Ù†|ÙƒÙŠÙ|Ù„Ù…Ø§Ø°Ø§|quoi|qui|comment|pourquoi/i.test(topic)) score += 5;
+    if(/\d{4}|\bQ[1-4]\b|يناير|فبراير|مارس|avril|mai|juin/i.test(`${topic} ${context}`)) score += 8;
+    if(/where|who|why|how|ما|من|كيف|لماذا|quoi|qui|comment|pourquoi/i.test(topic)) score += 5;
     return Math.max(0, Math.min(100, score));
   }
   function compile(input = {}){
@@ -63,14 +63,14 @@
     const tools = uniq(['legal/regulatory tools', 'financial incentives', 'media/narrative instruments', 'technical or operational constraints', 'institutional veto points'], 8);
     const counterarguments = uniq([
       'The apparent pattern may be explained by capacity limits rather than intent.',
-      'The dominant narrative may overstate one actorâ€™s control.',
+      'The dominant narrative may overstate one actor’s control.',
       'Observed outcomes may come from second-order feedback, not original design.',
       ...(template.counter_evidence_targets || [])
     ], 8);
     const missingContext = [];
-    if(!context || /not specified|ØºÙŠØ± Ù…Ø­Ø¯Ø¯|non prÃ©cisÃ©/i.test(context)) missingContext.push('timeframe_or_geography');
+    if(!context || /not specified|غير محدد|non précisé/i.test(context)) missingContext.push('timeframe_or_geography');
     if(kws.length < 4) missingContext.push('specific_entities_or_keywords');
-    if(!/\d{4}|last|recent|Ø­Ø§Ù„ÙŠ|Ø­Ø¯ÙŠØ«|rÃ©cent/i.test(`${topic} ${context}`)) missingContext.push('temporal_boundary');
+    if(!/\d{4}|last|recent|حالي|حديث|récent/i.test(`${topic} ${context}`)) missingContext.push('temporal_boundary');
     const planUpgrades = uniq([
       'convert broad topic into falsifiable working thesis',
       'add actor/incentive map before source collection',

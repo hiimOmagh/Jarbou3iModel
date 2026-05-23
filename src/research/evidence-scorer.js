@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine source packet builder browser QA and UX tightening â€” v1.1.0. Separates attention from reliability and explains score meaning. */
+/* Jarbou3i Research Engine source packet builder browser QA and UX tightening — v1.1.0. Separates attention from reliability and explains score meaning. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};

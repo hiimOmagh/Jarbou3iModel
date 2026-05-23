@@ -1,6 +1,6 @@
 {
   "version": "1.2.0-alpha.2",
-  "release_title": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench",
+  "release_title": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench",
   "package": "jarbou3i-research-engine",
   "release_type": "post-stable-alpha-controlled-workbench",
   "runtime_capability_change": false,

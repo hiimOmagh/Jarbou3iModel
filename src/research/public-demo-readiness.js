@@ -3,7 +3,7 @@
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   const VERSION = '1.2.0-alpha.2';
-  const RELEASE_TITLE = 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench';
+  const RELEASE_TITLE = 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench';
   const DEMO_CHECKS = Object.freeze([
     {check_id:'manual_private_default', label:'Manual/private mode is the default', required:true},
     {check_id:'first_run_path_visible', label:'First-run path is visible before advanced setup', required:true},
@@ -136,7 +136,7 @@
     return {
       public_demo_release_lock_version:version,
       generated_at:now,
-      release_title:`v${version} â€” Public Demo Release Lock`,
+      release_title:`v${version} — Public Demo Release Lock`,
       lock_stage:'public_demo_release_locked',
       release_type:'patch',
       release_approval_state:failCount === 0 ? 'locked_for_public_demo' : 'blocked_for_public_demo',

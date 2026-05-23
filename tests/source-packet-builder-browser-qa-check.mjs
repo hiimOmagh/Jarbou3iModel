@@ -25,7 +25,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.source_packet_builder_report.builder_version, '1.2.0-alpha.2');
   assert.equal(packet.last_built_source_packet.workflow_version, '1.2.0-alpha.2');
   assert.equal(packet.last_built_source_packet.builder_version, 'source_packet_builder.v1');
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 
 assert.ok(index.includes('data-browser-qa="source-packet-builder"'), 'builder card must expose a browser-QA hook');

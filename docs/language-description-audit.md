@@ -1,7 +1,7 @@
 # Language Description Audit
 
 Version: `1.2.0-alpha.2`
-Release: `v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench`
+Release: `v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 const spec=fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs','utf8');
-for (const token of ['collectVisibleTextSnapshot','visible-text-ar.json','visible-text-fr.json','visible-text-en.json','unexpected_english_residuals','unexpected_non_locale_residuals']) assert.ok(spec.includes(token), token);
+for (const token of ['collectVisibleTextSnapshot','visible-text-ar.json','visible-text-fr.json','visible-text-en.json','unexpected_english_residuals','unexpected_non_locale_residuals','MOJIBAKE_MARKERS','has_arabic_unicode','mojibake_markers']) assert.ok(spec.includes(token), token);
 assert.ok(!/\bEVIDENCE_DIR\b/.test(spec), 'hosted evidence spec must use EVIDENCE_ROOT for visible-text snapshot writes');
 assert.ok(spec.includes('path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale])'), 'visible-text snapshots must be written into the hosted evidence artifact root');
 for (const residual of [
@@ -21,10 +21,12 @@ assert.ok(fs.readFileSync('src/research/render-helpers.js','utf8').includes('sco
 console.log('Localization regression matrix checks passed.');
 
 for (const token of [
+  'assertNoMojibake',
+  'ARABIC_UNICODE_RE',
   'switchLocaleForVisibleTextSnapshot',
   'expected_locale_markers',
   'locale_snapshot_passed',
-  "toMatchObject({ html_lang: 'ar', html_dir: 'rtl', locale_snapshot_passed: true })",
+  "toMatchObject({ html_lang: 'ar', html_dir: 'rtl', has_arabic_unicode: true, mojibake_markers: [], locale_snapshot_passed: true })",
   "toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true })",
   "toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true })"
 ]) assert.ok(spec.includes(token), token);
@@ -35,3 +37,35 @@ for (const token of ['VISIBLE_TEXT_FORBIDDEN_NON_LOCALE_RESIDUALS', 'unexpected_
 const renderSource = fs.readFileSync('src/research/render-helpers.js', 'utf8');
 for (const stale of ['fixture/test debt ledger, source-file refactor readiness', 'audit repo retention', 'سجل دين الاختبارات/الفيكستشرات', 'تدقيق جاهزية تفكيك ملفات المصدر']) assert.equal(renderSource.includes(stale), false, `alpha.13 visible copy must not carry stale alpha.11/alpha.10 wording: ${stale}`);
 assert.ok(renderSource.includes('data-r-toggle-show') && renderSource.includes('data-r-toggle-hide'), 'visible-text snapshots must relocalize collapse toggles after language switching');
+
+for (const marker of ['Ø','Ù','Â','Ã','â€”','â†','â—','â€œ','â€']) assert.ok(spec.includes(marker), `mojibake guard must reject ${marker}`);
+
+const scanRoot = new URL('..', import.meta.url);
+const allowedMojibakeFiles = new Set([
+  'tests/hosted-demo-browser-evidence.spec.mjs',
+  'tests/localization-regression-matrix-check.mjs'
+]);
+const generatedDirs = new Set(['node_modules', 'test-results', 'playwright-report', '.git', 'dist']);
+const textExtensions = new Set(['.js', '.mjs', '.json', '.md', '.html', '.css', '.txt', '.yml', '.yaml', '.toml', '.webmanifest']);
+function walkFiles(dir) {
+  const output = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (generatedDirs.has(entry.name)) continue;
+    const fullPath = `${dir}/${entry.name}`;
+    if (entry.isDirectory()) output.push(...walkFiles(fullPath));
+    else output.push(fullPath);
+  }
+  return output;
+}
+const sourceRoot = scanRoot.pathname.replace(/\/$/, '');
+const unicodeViolations = [];
+for (const file of walkFiles(sourceRoot)) {
+  const relative = file.slice(sourceRoot.length + 1);
+  const ext = relative.slice(relative.lastIndexOf('.'));
+  if (!textExtensions.has(ext) && !relative.startsWith('.')) continue;
+  if (allowedMojibakeFiles.has(relative)) continue;
+  const content = fs.readFileSync(file, 'utf8');
+  const found = ['Ø','Ù','Â','Ã','â€”','â†','â—','â€œ','â€'].filter((marker)=>content.includes(marker));
+  if (found.length) unicodeViolations.push(`${relative}: ${found.join(',')}`);
+}
+assert.deepEqual(unicodeViolations, [], 'source files must not contain mojibake markers outside explicit guard tests');

@@ -48,7 +48,7 @@
     };
   }
   function inferSourceType(line,url){const blob=(line+' '+(url||'')).toLowerCase();if(/github\.com/.test(blob))return'primary';if(/youtube|youtu\.be|transcript|podcast|video/.test(blob))return'video';if(/\.gov|europa\.eu|un\.org|official|ministry|commission|regulator/.test(blob))return'official';if(/doi\.org|arxiv|journal|paper|university|academic/.test(blob))return'academic';if(/reuters|apnews|bbc|bloomberg|ft\.com|dw\.com|aljazeera|guardian|nytimes/.test(blob))return'news';if(/reddit|x\.com|twitter|hacker news|news\.ycombinator|tiktok/.test(blob))return'social';return'other';}
-  function claimFromLine(line){const cleaned=text(line).replace(URL_RE,'').replace(/^\s*[-*â€¢\d.)]+\s*/,'').replace(/\s+/g,' ').trim();return cleaned.length>240?cleaned.slice(0,237)+'â€¦':cleaned;}
+  function claimFromLine(line){const cleaned=text(line).replace(URL_RE,'').replace(/^\s*[-*•\d.)]+\s*/,'').replace(/\s+/g,' ').trim();return cleaned.length>240?cleaned.slice(0,237)+'…':cleaned;}
   function titleFromLine(line,url,index){const md=text(line).match(/\[([^\]]{3,120})\]\(https?:\/\/[^\s)]+\)/);if(md)return md[1].trim();if(url){try{return new URL(url).hostname.replace(/^www\./,'');}catch(_){}}return claimFromLine(line)||`Manual connector source ${index}`;}
   function normalizeConnectorCandidate(candidate={}, options={}){
     const connectorId=normalizeConnectorId(options.connector_id||candidate.connector_id||candidate.import_meta?.connector_id||'manual_source_packet');

@@ -19,16 +19,16 @@
         "Gel de la surface publique",
         "Revue publication",
         "preuve",
-        "Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ù†Ø´Ø±",
-        "Ø§Ù„Ø£Ø¯Ù„Ø©",
-        "ØªØµØ¯ÙŠØ±"
+        "مراجعة النشر",
+        "الأدلة",
+        "تصدير"
       ]
     },
     "ar": {
       "required": [
-        "Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù… Ø§Ù„Ù…Ø³ØªÙ‚Ø±",
-        "Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù…",
-        "Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ø£Ø¯Ù„Ø©"
+        "العرض العام المستقر",
+        "العرض العام",
+        "مراجعة الأدلة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -39,15 +39,15 @@
     },
     "fr": {
       "required": [
-        "DÃ©mo publique stable",
-        "dÃ©mo publique",
+        "Démo publique stable",
+        "démo publique",
         "revue des preuves"
       ],
       "forbidden": [
         "Source-to-Brief Intelligence Workbench",
         "Public surface freeze",
-        "Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ù†Ø´Ø±",
-        "ØªØ¯Ù‚ÙŠÙ‚ Ø­Ø¯ÙˆØ¯ Ø§Ù„Ø§Ø¯Ø¹Ø§Ø¡Ø§Øª"
+        "مراجعة النشر",
+        "تدقيق حدود الادعاءات"
       ]
     }
   },
@@ -75,8 +75,8 @@
       "required_selector": "#publicDemoReadinessPanel",
       "required_text_any": [
         "Public demo ready",
-        "Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù… Ø¬Ø§Ù‡Ø²",
-        "DÃ©mo publique prÃªte"
+        "العرض العام جاهز",
+        "Démo publique prête"
       ]
     },
     {
@@ -87,7 +87,7 @@
       "required_selector": "[data-r-i18n=\"planTitle\"]",
       "required_text_any": [
         "Research Plan",
-        "Ø®Ø·Ø© Ø§Ù„Ø¨Ø­Ø«",
+        "خطة البحث",
         "Plan de recherche"
       ]
     },
@@ -99,8 +99,8 @@
       "required_selector": "[data-r-i18n=\"templateTitle\"]",
       "required_text_any": [
         "Analysis Template",
-        "Ù‚Ø§Ù„Ø¨ Ø§Ù„ØªØ­Ù„ÙŠÙ„",
-        "ModÃ¨le"
+        "قالب التحليل",
+        "Modèle"
       ]
     },
     {
@@ -111,7 +111,7 @@
       "required_selector": "[data-r-i18n=\"sourceImportTitle\"]",
       "required_text_any": [
         "Source Import",
-        "Ø§Ø³ØªÙŠØ±Ø§Ø¯ Ø§Ù„Ù…ØµØ§Ø¯Ø±",
+        "استيراد المصادر",
         "Import"
       ]
     },
@@ -123,7 +123,7 @@
       "required_selector": "[data-r-i18n=\"evidenceReviewTitle\"]",
       "required_text_any": [
         "Evidence Review Queue",
-        "ØµÙ Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ø£Ø¯Ù„Ø©",
+        "صف مراجعة الأدلة",
         "file de revue"
       ]
     },
@@ -135,7 +135,7 @@
       "required_selector": "[data-r-i18n=\"evidenceTitle\"]",
       "required_text_any": [
         "Evidence Matrix",
-        "Ù…ØµÙÙˆÙØ© Ø§Ù„Ø£Ø¯Ù„Ø©",
+        "مصفوفة الأدلة",
         "Matrice"
       ]
     },
@@ -147,7 +147,7 @@
       "required_selector": "[data-r-i18n=\"sourcePlanningTitle\"]",
       "required_text_any": [
         "Source Planning",
-        "ØªØ®Ø·ÙŠØ· Ø§Ù„Ù…ØµØ§Ø¯Ø±",
+        "تخطيط المصادر",
         "sources"
       ]
     },
@@ -159,8 +159,8 @@
       "required_selector": "#sourcePlanningOutput",
       "required_text_any": [
         "entity",
-        "ÙƒÙŠØ§Ù†",
-        "entitÃ©"
+        "كيان",
+        "entité"
       ]
     },
     {
@@ -171,7 +171,7 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "graph",
-        "Ø±Ø³Ù…",
+        "رسم",
         "graphe"
       ]
     },
@@ -183,7 +183,7 @@
       "required_selector": ".providerHarnessCard",
       "required_text_any": [
         "Provider",
-        "Ø§Ù„Ù…Ø²ÙˆÙ‘Ø¯",
+        "المزوّد",
         "fournisseur"
       ]
     },
@@ -195,8 +195,8 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "Quality",
-        "Ø§Ù„Ø¬ÙˆØ¯Ø©",
-        "QualitÃ©"
+        "الجودة",
+        "Qualité"
       ]
     },
     {
@@ -207,7 +207,7 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "publication",
-        "Ø§Ù„Ù†Ø´Ø±",
+        "النشر",
         "publication"
       ]
     },
@@ -219,14 +219,14 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "golden",
-        "Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©",
-        "dorÃ©"
+        "الذهبية",
+        "doré"
       ]
     }
   ],
   "public_version_labels": {
     "en": "v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench",
-    "ar": "v1.1.0 Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù… Ø§Ù„Ù…Ø³ØªÙ‚Ø±",
-    "fr": "v1.1.0 DÃ©mo publique stable"
+    "ar": "v1.1.0 العرض العام المستقر",
+    "fr": "v1.1.0 Démo publique stable"
   }
 }

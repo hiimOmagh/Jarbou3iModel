@@ -82,7 +82,7 @@ for (const packetFixture of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packetFixture.source_packet_builder_report.verification_claimed, false);
   assert.equal(packetFixture.last_built_source_packet.builder_version, 'source_packet_builder.v1');
   assert.equal(packetFixture.last_built_source_packet.source_packet_version, 'manual_source_packet.v1');
-  assert.equal(packetFixture.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packetFixture.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 
 console.log('Source packet builder checks passed.');

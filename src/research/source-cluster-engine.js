@@ -89,7 +89,7 @@
   function labelForCluster(target, items){
     if(target && target !== 'UNLINKED') return target;
     const first = text(items[0]?.claim || items[0]?.source_title || 'Unlinked evidence cluster');
-    return first.length > 72 ? `${first.slice(0,69)}â€¦` : first;
+    return first.length > 72 ? `${first.slice(0,69)}…` : first;
   }
   function buildClusterRecord(target, items, index, options = {}){
     const sourceTypes = unique(items.map((item) => text(item.source_type || 'other').toLowerCase() || 'other'));

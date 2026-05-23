@@ -32,7 +32,7 @@ assert.equal(pkg.version, '1.2.0-alpha.2');
 assert.equal(publicDemo.VERSION, '1.2.0-alpha.2');
 assert.ok(index.includes('id="publicDemoReadinessPanel"'), 'public demo panel missing');
 assert.ok(index.includes('src="src/research/public-demo-readiness.js" defer'), 'public demo module missing from index');
-assert.ok(index.includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'), 'public demo badge missing');
+assert.ok(index.includes('v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench'), 'public demo badge missing');
 assert.ok(engine.includes('publicDemoReport()'), 'research packet must include public demo report');
 assert.ok(engine.includes('releaseNotesReport()'), 'research packet must include release notes report');
 assert.ok(schema.required.includes('public_demo'), 'schema must require public_demo metadata');

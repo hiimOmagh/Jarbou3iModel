@@ -10,7 +10,7 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const VERSION = '1.2.0-alpha.2';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
 const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);

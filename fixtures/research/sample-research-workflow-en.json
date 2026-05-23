@@ -141,7 +141,7 @@
       "planner_model": "research_planner_v2.v1",
       "generated_at": "2026-05-21T00:00:00.000Z",
       "topic": "Sample strategic research topic",
-      "context": "2024â€“2026",
+      "context": "2024–2026",
       "depth_preset": "standard",
       "source_type_budget": {
         "source_budget_version": "1.2.0-alpha.2",
@@ -595,7 +595,7 @@
       "template_version": "1.2.0-alpha.2",
       "display_name": "Strategic Analysis Engine",
       "short_name": "Strategic",
-      "description": "Default Interests â†’ Actors â†’ Tools â†’ Narrative â†’ Outcomes â†’ Feedback model with evidence review discipline.",
+      "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
       "output_focus": [
         "interests",
         "actors",
@@ -1114,7 +1114,7 @@
       "planner_model": "research_planner_v2.v1",
       "generated_at": "2026-05-21T00:00:00.000Z",
       "topic": "Sample strategic research topic",
-      "context": "2024â€“2026",
+      "context": "2024–2026",
       "depth_preset": "standard",
       "source_type_budget": {
         "source_budget_version": "1.2.0-alpha.2",
@@ -1867,7 +1867,7 @@
           "planner_model": "research_planner_v2.v1",
           "generated_at": "2026-05-21T00:00:00.000Z",
           "topic": "Sample strategic research topic",
-          "context": "2024â€“2026",
+          "context": "2024–2026",
           "depth_preset": "standard",
           "source_type_budget": {
             "source_budget_version": "1.2.0-alpha.2",
@@ -3400,7 +3400,7 @@
     "template_version": "1.2.0-alpha.2",
     "display_name": "Strategic Analysis Engine",
     "short_name": "Strategic",
-    "description": "Default Interests â†’ Actors â†’ Tools â†’ Narrative â†’ Outcomes â†’ Feedback model with evidence review discipline.",
+    "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
     "output_focus": [
       "interests",
       "actors",
@@ -4099,7 +4099,7 @@
   "release_notes": {
     "release_notes_version": "1.2.0-alpha.2",
     "generated_at": "2026-05-02T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench",
+    "release_title": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench",
     "release_type": "patch",
     "runtime_capability_change": false,
     "summary": "Adds Source-to-Brief Intelligence Workbench: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.",
@@ -4817,7 +4817,7 @@
   "public_demo_release_lock": {
     "public_demo_release_lock_version": "1.2.0-alpha.2",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.2 â€” Public Demo Release Lock",
+    "release_title": "v1.2.0-alpha.2 — Public Demo Release Lock",
     "lock_stage": "public_demo_release_locked",
     "release_type": "patch",
     "release_approval_state": "locked_for_public_demo",
@@ -4932,7 +4932,7 @@
   "release_apply_integrity": {
     "release_apply_integrity_version": "1.2.0-alpha.2",
     "generated_at": "2026-04-28T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench",
+    "release_title": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench",
     "integrity_stage": "release_apply_integrity_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
@@ -5047,7 +5047,7 @@
   "release_provenance_ledger": {
     "release_provenance_ledger_version": "1.2.0-alpha.2",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench",
+    "release_title": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench",
     "provenance_stage": "release_provenance_ledger_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
@@ -5441,7 +5441,7 @@
     "planner_model": "research_planner_v2.v1",
     "generated_at": "2026-05-21T00:00:00.000Z",
     "topic": "Sample strategic research topic",
-    "context": "2024â€“2026",
+    "context": "2024–2026",
     "depth_preset": "standard",
     "source_type_budget": {
       "source_budget_version": "1.2.0-alpha.2",
@@ -6813,7 +6813,7 @@
   "release_readiness_runbook": {
     "release_readiness_runbook_version": "1.2.0-alpha.2",
     "runbook_model": "golden_workflow_corpus.v1",
-    "release": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench",
+    "release": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench",
     "steps": [
       "Run node tests/golden-workflow-corpus-check.mjs.",
       "Run node tests/ci-gate-runner.mjs no-browser.",
@@ -6976,7 +6976,7 @@
   },
   "canonical_lock_evidence_bundle": {
     "lock_evidence_bundle_version": "1.2.0-alpha.2",
-    "release": "v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench",
+    "release": "v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench",
     "bundle_artifact_name": "lock-evidence-bundle_1.1.0_${GITHUB_RUN_ID}",
     "manifest_files": [
       "evidence-manifest.json",
@@ -7149,7 +7149,7 @@
         "planner_model": "research_planner_v2.v1",
         "generated_at": "2026-05-21T00:00:00.000Z",
         "topic": "Sample strategic research topic",
-        "context": "2024â€“2026",
+        "context": "2024–2026",
         "depth_preset": "standard",
         "source_type_budget": {
           "source_budget_version": "1.2.0-alpha.2",
@@ -7875,7 +7875,7 @@
         "planner_model": "research_planner_v2.v1",
         "generated_at": "2026-05-21T00:00:00.000Z",
         "topic": "Sample strategic research topic",
-        "context": "2024â€“2026",
+        "context": "2024–2026",
         "depth_preset": "standard",
         "source_type_budget": {
           "source_budget_version": "1.2.0-alpha.2",

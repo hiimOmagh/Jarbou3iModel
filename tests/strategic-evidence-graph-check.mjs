@@ -92,7 +92,7 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.ok(packet.graph_export_report.formats.includes('gephi_csv'));
   assert.ok(packet.graph_export_report.formats.includes('kumu_json'));
   assert.ok(packet.graph_export_report.formats.includes('neo4j_csv'));
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
 }
 assert.ok(registry.gates.source.node_checks.includes('tests/strategic-evidence-graph-check.mjs'), 'source gate must register graph check');
 assert.ok(registry.gates.release.node_checks.includes('tests/strategic-evidence-graph-check.mjs'), 'release gate must register graph check');

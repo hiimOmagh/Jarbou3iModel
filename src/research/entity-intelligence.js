@@ -32,9 +32,9 @@
   function extractCandidateNames(value){
     const src=text(value).replace(/https?:\/\/\S+/g,' ');
     const out=[];
-    const quoted=[...src.matchAll(/[â€œ"']([^â€œ"'\n]{2,80})[â€"']/g)].map(m=>m[1]);
+    const quoted=[...src.matchAll(/[“"']([^“"'\n]{2,80})[”"']/g)].map(m=>m[1]);
     out.push(...quoted);
-    const caps=[...src.matchAll(/\b(?:[A-Z][A-Za-z0-9&.'â€™\-]+|[A-Z]{2,10})(?:\s+(?:[A-Z][A-Za-z0-9&.'â€™\-]+|[A-Z]{2,10})){0,5}\b/g)].map(m=>m[0]);
+    const caps=[...src.matchAll(/\b(?:[A-Z][A-Za-z0-9&.'’\-]+|[A-Z]{2,10})(?:\s+(?:[A-Z][A-Za-z0-9&.'’\-]+|[A-Z]{2,10})){0,5}\b/g)].map(m=>m[0]);
     out.push(...caps);
     const arabic=[...src.matchAll(/[\u0600-\u06ff]{3,}(?:\s+[\u0600-\u06ff]{3,}){0,4}/g)].map(m=>m[0]);
     out.push(...arabic);
@@ -69,7 +69,7 @@
     for(const item of evidence||[]){
       const src=sourceText(item); const candidates=extractCandidateNames(src);
       for(const raw of candidates){
-        const name=text(raw).replace(/^['"â€œâ€]+|['"â€œâ€]+$/g,'');
+        const name=text(raw).replace(/^['"“”]+|['"“”]+$/g,'');
         if(shouldIgnore(name, ignoreList)){ ignored.push(name); continue; }
         const key=mergeKey(name, [...map.keys()]);
         if(key!==canonical(name)) aliasMerges.push({alias:name, canonical:key});

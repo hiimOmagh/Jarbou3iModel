@@ -23,7 +23,7 @@ assert.equal(release.RELEASE_VERSION, '1.2.0-alpha.2');
 assert.equal(typeof release.releaseCandidatePolicy, 'function');
 assert.equal(typeof release.buildReleaseCandidateReport, 'function');
 assert.ok(index.includes('src="src/research/release-candidate.js" defer'), 'release metadata module must be loaded by index');
-assert.ok(index.includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'), 'stable badge missing');
+assert.ok(index.includes('v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench'), 'stable badge missing');
 assert.ok(engine.includes('releaseCandidateReport'), 'research packet must include releaseCandidateReport()');
 assert.ok(engine.includes('release_candidate'), 'research packet must export release metadata');
 assert.ok(migrationSource.includes('0.29.0-rc.1'), 'v0.29 rc migration source must remain supported');
@@ -91,7 +91,7 @@ assert.equal(fixture.ci_validation.full_browser_passed, true);
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(ciGateRegistry.gates.release.node_checks.includes('tests/stable-release-check.mjs'));
 assert.ok(ciGateRegistry.gates.release.node_checks.includes('tests/patch-stabilization-check.mjs'));
-assert.ok(fs.readFileSync('src/research/render-helpers.js','utf8').includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'), 'render helper stable badge must not regress to RC copy');
+assert.ok(fs.readFileSync('src/research/render-helpers.js','utf8').includes('v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench'), 'render helper stable badge must not regress to RC copy');
 
 console.log('Stable release checks passed.');
 process.exit(0);

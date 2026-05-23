@@ -35,7 +35,7 @@ const currentMigration = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.2
 const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.2.json');
 for (const packet of [currentMigration, currentPrivacy]) {
   assert.equal(packet.workflow_version, VERSION);
-  assert.equal(packet.release_notes.release_title, `v${VERSION} â€” ${TITLE}`);
+  assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
   assert.equal(packet.release_apply_integrity.target_version, VERSION);
   assert.equal(packet.release_apply_integrity.artifact_name, PATCH_ARTIFACT);
   assert.equal(packet.release_apply_integrity.runtime_capability_change, false);
@@ -53,7 +53,7 @@ assert.ok(pkg.scripts['test:current:no-browser']?.includes('ci-gate-runner.mjs c
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${VERSION} Â· ${TITLE}`));
+assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${VERSION} · ${TITLE}`));
 assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`));
 
 console.log('Fixture registry consolidation checks passed.');

@@ -9,7 +9,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 assert.equal(pkg.version, VERSION);
 assert.ok(audit.includes(`# Source-File Refactor Readiness Audit`));
-assert.ok(audit.includes(`v${VERSION} â€” ${TITLE}`));
+assert.ok(audit.includes(`v${VERSION} — ${TITLE}`));
 assert.ok(audit.includes('audit-only, no source-file refactor yet'));
 for (const file of ['src/app.js', 'src/research-engine.js', 'src/styles.css']) {
   assert.ok(audit.includes(file), `readiness audit missing ${file}`);

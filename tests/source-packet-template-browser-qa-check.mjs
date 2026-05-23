@@ -74,7 +74,7 @@ for (const id of expectedIds) {
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.workflow_version, '1.2.0-alpha.2');
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench');
   assert.equal(packet.source_packet_template_report.template_report_version, '1.2.0-alpha.2');
   assert.equal(packet.source_packet_template_report.live_fetching_performed, false);
   assert.equal(packet.source_packet_template_report.verification_claimed, false);

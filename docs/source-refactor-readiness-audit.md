@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
 Version: `1.2.0-alpha.2`
-Release: `v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench`
+Release: `v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

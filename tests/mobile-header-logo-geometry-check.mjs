@@ -13,7 +13,7 @@ const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repo
 const VERSION = '1.2.0-alpha.2';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Source-to-Brief Intelligence Workbench';
-const RELEASE = `v${VERSION} â€” ${TITLE}`;
+const RELEASE = `v${VERSION} — ${TITLE}`;
 const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
 
 const pkg = json('package.json');
@@ -30,7 +30,7 @@ const releaseDoc = readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-tra
 assert.equal(pkg.version, VERSION, 'package version must be v1.1.0');
 assert.equal(lock.version, VERSION, 'package-lock root version must be v1.1.0');
 assert.equal(lock.packages[''].version, VERSION, 'package-lock package version must be v1.1.0');
-assert.ok(index.includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'), 'index badge must expose v1.1.0 visual-freeze identity');
+assert.ok(index.includes('v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench'), 'index badge must expose v1.1.0 visual-freeze identity');
 
 assert.ok(styles.includes('.brand > div:not(.logo)'), 'mobile overflow hardening must exclude the logo wrapper from full-width div rules');
 assert.ok(!/\.brand\s*>\s*div\s*,/.test(styles), 'mobile hardening must not target every direct brand div; that stretches the logo wrapper');
