@@ -2641,17 +2641,12 @@
   }
   function scrubVisibleMojibakeText(root = document.body){
     if(!root || typeof document === 'undefined') return;
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    const nodes = [];
-    while(walker.nextNode()) nodes.push(walker.currentNode);
-    nodes.forEach(node => {
-      const repaired = sanitizeUiText(node.nodeValue);
-      if(repaired !== node.nodeValue) node.nodeValue = repaired;
-    });
+    if(renderHelpers.sanitizeUiTree) renderHelpers.sanitizeUiTree(root);
   }
-  function render(){renderLabels(); renderOnboarding(); renderWorkspace(); renderAnalysisTemplate(); renderPlan(); renderEvidence(); renderCausalLinks(); renderAnalysisBrief(); renderSourceToBrief(); renderSourceLayer(); renderSourceImportAdapter(); renderSourcePacketBuilder(); renderEvidenceReviewQueue(); renderProviderHarness(); renderCritique(); renderQuality(); renderReleaseHealth(); updateReliabilityControls(); applyUxTab(); scrubVisibleMojibakeText();}
+  function render(){renderLabels(); renderOnboarding(); renderWorkspace(); renderAnalysisTemplate(); renderPlan(); renderEvidence(); renderCausalLinks(); renderAnalysisBrief(); renderSourceToBrief(); renderSourceLayer(); renderSourceImportAdapter(); renderSourcePacketBuilder(); renderEvidenceReviewQueue(); renderProviderHarness(); renderCritique(); renderQuality(); renderReleaseHealth(); updateReliabilityControls(); applyUxTab(); scrubVisibleMojibakeText(); if(typeof requestAnimationFrame === 'function') requestAnimationFrame(() => scrubVisibleMojibakeText());}
 
   function wire(){
+    if(renderHelpers.installMojibakeGuard) renderHelpers.installMojibakeGuard(document);
     setupUxStabilization();
     activeUxTab = initialUxTab();
     document.querySelectorAll('#researchModeNav .uxTab').forEach(btn => btn.addEventListener('click', () => setUxTab(btn.dataset.uxTab || 'analysis')));

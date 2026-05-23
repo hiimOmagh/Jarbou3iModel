@@ -836,7 +836,54 @@
   function sanitizeUiText(value){
     let text = String(value ?? '');
     for(const [bad, good] of MOJIBAKE_REPAIR_MAP) text = text.replaceAll(bad, good);
+    text = text.replace(new RegExp(cp(0x00c2), 'g'), '');
     return text;
+  }
+  function sanitizeUiTree(rootNode){
+    const doc = rootNode?.ownerDocument || rootNode || global.document;
+    const rootEl = rootNode?.nodeType ? rootNode : doc?.body;
+    if(!doc || !rootEl || typeof doc.createTreeWalker !== 'function') return;
+    const walker = doc.createTreeWalker(rootEl, global.NodeFilter?.SHOW_TEXT || 4);
+    const textNodes = [];
+    while(walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach(node => {
+      const repaired = sanitizeUiText(node.nodeValue);
+      if(repaired !== node.nodeValue) node.nodeValue = repaired;
+    });
+    if(typeof rootEl.querySelectorAll === 'function'){
+      rootEl.querySelectorAll('input, textarea, [placeholder], [title], [aria-label], [data-collapse-note]').forEach(node => {
+        ['placeholder','title','aria-label','data-collapse-note'].forEach(attr => {
+          if(node.hasAttribute?.(attr)){
+            const current = node.getAttribute(attr);
+            const repaired = sanitizeUiText(current);
+            if(repaired !== current) node.setAttribute(attr, repaired);
+          }
+        });
+        if('value' in node && typeof node.value === 'string'){
+          const repaired = sanitizeUiText(node.value);
+          if(repaired !== node.value) node.value = repaired;
+        }
+      });
+    }
+  }
+  function installMojibakeGuard(documentRef = global.document){
+    if(!documentRef || documentRef.__jarbou3iMojibakeGuardInstalled) return;
+    documentRef.__jarbou3iMojibakeGuardInstalled = true;
+    const run = () => sanitizeUiTree(documentRef.body || documentRef.documentElement);
+    run();
+    if(typeof global.MutationObserver === 'function'){
+      let scheduled = false;
+      const schedule = () => {
+        if(scheduled) return;
+        scheduled = true;
+        const flush = () => { scheduled = false; run(); };
+        if(typeof global.requestAnimationFrame === 'function') global.requestAnimationFrame(flush);
+        else global.setTimeout(flush, 0);
+      };
+      const observer = new global.MutationObserver(schedule);
+      observer.observe(documentRef.documentElement || documentRef.body, { childList:true, subtree:true, characterData:true, attributes:true, attributeFilter:['placeholder','title','aria-label','data-collapse-note','value'] });
+      documentRef.__jarbou3iMojibakeGuardObserver = observer;
+    }
   }
   function esc(value){ return sanitizeUiText(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
 
@@ -915,7 +962,7 @@
     });
     if(typeof updateEvidenceButtonLabel === 'function') updateEvidenceButtonLabel();
   }
-  root.renderHelpers = {COPY, SUPPORTED_LANGS, sanitizeUiText, esc, getLang, tr, applyLabels};
+  root.renderHelpers = {COPY, SUPPORTED_LANGS, sanitizeUiText, sanitizeUiTree, installMojibakeGuard, esc, getLang, tr, applyLabels};
 })(window);
 
 /* v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench */
