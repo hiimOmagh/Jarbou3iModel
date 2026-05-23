@@ -4,7 +4,7 @@
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
   const minimalStrategicAnalysis = {
-    schema_version:'1.1.0',
+    schema_version:'1.2.0-alpha.1',
     analysis_id:'FIXTURE-SYNTHESIS-1',
     subject:{title:'Fixture strategic analysis', context:'Provider contract fixture', question:'Can provider validation accept schema-shaped output?', executive_thesis:'Fixture output contains all core model layers.'},
     interests:[{id:'I1', name:'Fixture interest', type:'strategic', intensity:3, horizon:'medium', stakes:'important', confidence:'medium', observation:'Fixture observation.', inference:'Fixture inference.', estimate:'Fixture estimate.'}],
@@ -19,7 +19,7 @@
   };
 
   const minimalPlan = {
-    plan_version:'1.1.0',
+    plan_version:'1.2.0-alpha.1',
     topic:'Fixture research plan',
     context:'Contract fixture',
     questions:['What happened?','Who benefits?','What evidence would disconfirm the main thesis?'],
@@ -33,7 +33,7 @@
   function payload(task){
     const core = root.providerCore;
     return {
-      request_version:'1.1.0',
+      request_version:'1.2.0-alpha.1',
       provider:'fixture',
       provider_config:{endpoint:'fixture://local', model:'fixture-model', allow_live:false, remember_key:false},
       provider_safety:{provider:'fixture', key_exported:false, verdict:'fixture_safe'},
@@ -44,7 +44,7 @@
       response_contract: core ? core.responseContract(task) : {type:task, required:[]},
       input_fingerprint:'hfixture',
       prompt:'Fixture prompt',
-      packet:{workflow_version:'1.1.0'}
+      packet:{workflow_version:'1.2.0-alpha.1'}
     };
   }
 
@@ -94,7 +94,7 @@
     const results = contractFixtures().map((fixture) => {
       const p = payload(fixture.task);
       const response = normalizeFixtureResponse(fixture, core);
-      const validation = core.validateProviderResponse(p, response, {version:'1.1.0', nowIso:()=>'2026-04-28T00:00:00.000Z'});
+      const validation = core.validateProviderResponse(p, response, {version:'1.2.0-alpha.1', nowIso:()=>'2026-04-28T00:00:00.000Z'});
       const expectedAccepted = fixture.expected === 'accepted' || fixture.expected === 'accepted_after_normalize';
       const pass = expectedAccepted ? validation.accepted : !validation.accepted;
       return {
@@ -108,7 +108,7 @@
       };
     });
     return {
-      suite_version:'1.1.0',
+      suite_version:'1.2.0-alpha.1',
       fixture_count: results.length,
       pass_count: results.filter(item => item.pass).length,
       fail_count: results.filter(item => !item.pass).length,

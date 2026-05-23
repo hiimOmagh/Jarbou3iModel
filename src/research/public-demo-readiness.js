@@ -2,7 +2,8 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0';
+  const VERSION = '1.2.0-alpha.1';
+  const RELEASE_TITLE = 'v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate';
   const DEMO_CHECKS = Object.freeze([
     {check_id:'manual_private_default', label:'Manual/private mode is the default', required:true},
     {check_id:'first_run_path_visible', label:'First-run path is visible before advanced setup', required:true},
@@ -53,7 +54,7 @@
     return {
       release_notes_version:version,
       generated_at:now,
-      release_title:`v${version} — Research Planner V2`,
+      release_title:RELEASE_TITLE,
       release_type:'patch',
       runtime_capability_change:false,
       summary:'Public demo approval is now locked behind CI, hosted-demo evidence review, public-claim alignment, and explicit unavailable-feature boundaries without enabling new live provider, OAuth, backend, source, storage, or scraping behavior.',

@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.1.0`
-Release: `v1.1.0 — Public Demo Stable
+Version: `1.2.0-alpha.1`
+Release: `v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

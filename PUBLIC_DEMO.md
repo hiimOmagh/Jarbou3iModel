@@ -1,19 +1,17 @@
-# Public Demo — v1.1.0 Public Demo Stable
+# Public Demo — v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate
 
-`v1.1.0 — Public Demo Stable`
+The `v1.1.0` stable public-demo surface remains protected. This alpha adds planning and expansion-gate discipline only.
 
-Public label: `v1.1.0 Public Demo Stable`. Internal evidence metadata: `1.1.0`. This corrective build fixes stable EN/AR/FR public localization only; it adds no product feature surface.
+Do not present roadmap lanes as available capabilities. Live scraping, automatic source verification, real OAuth, backend expansion, provider execution expansion, and storage expansion remain disabled unless a later implementation release explicitly adds and tests them.
 
+Release evidence still requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, and version-aligned artifacts.
 
-No live scraping, no live provider execution, no OAuth/backend expansion, and no automatic source verification claims.
-Hosted evidence and hosted metadata must confirm 1.1.0 before lock.
+## Release-lock evidence boundary
 
+Screenshots alone are insufficient for public-demo approval. ZIP archive alone is insufficient for public-demo approval. The v1.2.0-alpha.1 post-stable expansion gate preserves the v1.1.0 public-demo baseline until no-browser CI, browser CI, hosted-demo evidence, and privacy/export gates are reviewed.
 
-Screenshots alone are insufficient for release approval.
-A ZIP archive alone is insufficient for release approval.
+Provenance ledger note: public-demo publication remains blocked unless changed-files-only release apply integrity, provenance ledger evidence, no-browser CI, browser CI, and hosted-demo evidence review are complete.
 
+No live connector, no live scraping, and no automatic source verification are enabled by this public-demo planning release.
 
-Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
-
-
-No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone and ZIP archive alone are insufficient for release approval.
+Public release label: v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate.

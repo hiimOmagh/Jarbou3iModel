@@ -7,8 +7,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const VERSION = '1.1.0';
-const RELEASE = 'v1.1.0 — Public Demo Stable';
+const VERSION = '1.2.0-alpha.1';
+const RELEASE = 'v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate';
 const pkg = json('package.json');
 const manifest = read('RELEASE_MANIFEST.md');
 const releaseIgnore = read('.releaseignore');
@@ -18,8 +18,8 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.1.0-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.1-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.1.json');
 
 assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes('release evidence'));
@@ -52,9 +52,9 @@ for (const file of [
   'tests/release-evidence-repo-hygiene-check.mjs',
   'tests/version-suite-registry-check.mjs',
   'fixtures/migrations/v1.0.21-packet.json',
-  'fixtures/migrations/v1.1.0-packet.json',
+  'fixtures/migrations/v1.2.0-alpha.1-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.21.json',
-  'fixtures/privacy/browser-generated-export-v1.1.0.json'
+  'fixtures/privacy/browser-generated-export-v1.2.0-alpha.1.json'
 ]) {
   assert.ok(fixturePathExists(file) || releaseDocExists(file) || releaseArtifactExists(file), `missing release cleanup file or release-history entry: ${file}`);
 }
@@ -132,7 +132,7 @@ for (const token of [
 for (const token of ['node_modules/','playwright-report/','test-results/','*.zip','backend/.dev.vars']) {
   assert.ok(releaseIgnore.includes(token), `.releaseignore missing ${token}`);
 }
-for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.1.0`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
+for (const token of ['Package: `jarbou3i-research-engine`','Version: `1.2.0-alpha.1`','Runtime capability change: no','Required browser gates before publishing','Release archive exclusions','Required cleanup commands']) {
   assert.ok(manifest.includes(token), `release manifest missing ${token}`);
 }
 for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:ci:node24','test:version-registry','test:current:no-browser','test:release:evidence']) {

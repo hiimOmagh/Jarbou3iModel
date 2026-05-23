@@ -65,6 +65,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
 | `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
 | `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0 — Public Demo Stable |
+| `v1.2.0-alpha.1-evidence-pack-export-v3-brief-traceability.md` | v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3403,6 +3404,13 @@ Audit continuity:
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline are preserved.
 
 Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
+
+Post-stable continuity note: v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate is the first planning-only expansion gate built on this locked v1.1.0 baseline.
+
+
+# v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate
+
+Hosted evidence continuity note: waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed remain required for hosted-demo evidence capture. No runtime behavior change.
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
 
 Public boundary: no live scraping, No real OAuth/production OAuth, and screenshots alone or ZIP existence alone are insufficient for approval.
@@ -3451,3 +3459,19 @@ This corrective build fixes public EN/AR/FR stable labels and public demo releas
 - language purity passed
 - no stale candidate/freeze public wording remains in hosted visible text
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
+
+<!-- release-file:v1.2.0-alpha.1-evidence-pack-export-v3-brief-traceability.md -->
+# v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate
+
+Planning-only post-stable capability roadmap and expansion gate. It preserves the v1.1.0 public-demo baseline and introduces no runtime behavior change, no provider/OAuth/backend/source/storage expansion, no live scraping, and no automatic source verification claim.
+
+Evidence continuity: changed-files-only release apply integrity, provenance ledger, fixture registry consolidation, package script compression and CI gate registry, hosted evidence capture polish, browser evidence baselines, and privacy/export gates remain required.
+
+
+Readiness artifacts:
+- docs/technical-debt-ledger.md
+- docs/source-refactor-readiness-audit.md
+- tests/language-description-audit-check.mjs
+
+No source-file refactor yet. No runtime behavior change.
+<!-- /release-file:v1.2.0-alpha.1-evidence-pack-export-v3-brief-traceability.md -->

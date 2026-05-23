@@ -7,7 +7,7 @@ const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
 const ciBrowser = fs.readFileSync('scripts/ci-browser.sh', 'utf8');
 const workflow = fs.readFileSync('.github/workflows/ci.yml', 'utf8');
 
-assert.equal(pkg.version, '1.1.0');
+assert.equal(pkg.version, '1.2.0-alpha.1');
 assert.ok(spec.includes("testInfo.project.name !== 'chromium'"), 'desktop visual screenshots must be scoped to chromium only');
 assert.ok(spec.includes("testInfo.project.name !== 'mobile-chrome'"), 'mobile visual screenshots must be scoped to mobile-chrome only');
 assert.ok(spec.includes('v121-desktop-'), 'desktop screenshots should use v1.1.0 artifact names');

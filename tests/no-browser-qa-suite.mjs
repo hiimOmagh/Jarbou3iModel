@@ -31,7 +31,8 @@ const tests = [
   'tests/golden-workflow-corpus-check.mjs',
   'tests/release-candidate-final-hygiene-check.mjs',
   'tests/provider-router-cost-ledger-check.mjs',
-  'tests/strategic-evidence-graph-check.mjs'
+  'tests/strategic-evidence-graph-check.mjs',
+  'tests/post-stable-capability-roadmap-check.mjs'
 ];
 
 for (const file of tests) {

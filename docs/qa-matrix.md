@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.1.0 — Public Demo Stable
+Current release candidate: v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate
 
 Required gates:
 - No-browser CI
@@ -23,3 +23,7 @@ Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registr
 Public Demo evidence and hosted-demo review remain required for lock.
 
 No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.
+
+## Stable baseline note
+
+Stable baseline retained: v1.1.0 remains the locked Public Demo reference for post-stable expansion gating. Node 24 CI compatibility remains preserved for the post-stable planning release.

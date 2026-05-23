@@ -1,8 +1,8 @@
 {
-  "version": "1.1.0",
-  "release_title": "v1.1.0 — Public Demo Stable",
+  "version": "1.2.0-alpha.1",
+  "release_title": "v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate",
   "package": "jarbou3i-research-engine",
-  "release_type": "cleanup-only-alpha-patch",
+  "release_type": "post-stable-alpha-planning-gate",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
   "oauth_behavior_changed": false,
@@ -44,8 +44,8 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Clean stable repack: align public and internal release version to 1.1.0 while preserving locked behavior, canonical evidence bundle, evidence matrix, golden workflow, Export Pack v3, publication review, privacy/export guards, and lockfile integrity.",
+  "release_scope": "Post-stable planning gate: define capability roadmap lanes, acceptance criteria, falsifiers, owners, and evidence requirements without enabling implementation or new live capabilities.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.1.0`\nRuntime capability change: no\nPublic surface: `v1.1.0 Public Demo Stable`\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
-  "node_runtime_note": "Node 24 CI compatibility preserved for v1.1.0."
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.2.0-alpha.1`\nRuntime capability change: no\nPublic surface: post-stable capability roadmap gate only\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
+  "node_runtime_note": "Node 24 CI compatibility preserved for v1.2.0-alpha.1."
 }

@@ -2,10 +2,10 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.1.0';
+  const VERSION = '1.2.0-alpha.1';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.1.0 — Public Demo Stable';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.1.0-evidence-pack-export-v3-brief-traceability-patch.zip';
+  const RELEASE_TITLE = 'v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.2.0-alpha.1-post-stable-capability-roadmap-expansion-gate.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
     {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0', required:true},
     {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},
@@ -33,7 +33,7 @@
     return {
       release_provenance_ledger_version: version,
       generated_at: now,
-      release_title: `v${version} — Research Planner V2`,
+      release_title: RELEASE_TITLE,
       provenance_stage: 'release_provenance_ledger_checked',
       release_type: 'patch',
       patch_type: 'changed_files_only',
@@ -61,7 +61,7 @@
       required_commands: [
         `unzip -o ${artifactName} -d .`,
         'npm ci --no-audit --no-fund --ignore-scripts',
-        'npm run test:v110a1:no-browser',
+        'npm run test:ci:no-browser',
         'npm run test:ci:no-browser',
         'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'
       ],

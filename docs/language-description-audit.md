@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.1.0`
-Release: `v1.1.0 — Public Demo Stable`
+Version: `1.2.0-alpha.1`
+Release: `v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

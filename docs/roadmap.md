@@ -2,24 +2,34 @@
 
 Current milestone:
 
-`v1.1.0 — Public Demo Stable`
+`v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate`
 
-RC0 is the canonical evidence bundling and public surface freeze. Feature surface is frozen.
+Purpose: move beyond the stable public-demo lock without collapsing into uncontrolled feature expansion.
 
-Next valid milestones:
-- `v1.1.0 — Release Candidate Corrections` only if RC0 exposes a real defect.
-- `v1.1.0 — Public Demo Stable` if RC0 locks cleanly.
+Priority lanes:
 
-No alpha.26 unless a structural blocker appears.
+1. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
+2. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
+3. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, and publication-readiness triage.
+4. `export_publication_v4` — stronger traceability, provenance, release notes, and publication review packaging.
+5. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
+6. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, and stale-artifact rejection.
 
-Allowed changes before stable: cleanup, docs, tests, fixtures, release packaging, hosted evidence runbook, export consistency, CI/browser parity.
+Allowed in this alpha: roadmap lanes, acceptance criteria, falsifiers, gate rules, docs, fixtures, tests, and release metadata.
 
-Forbidden changes before stable: new major feature surface, new live connectors, live provider expansion, OAuth/backend expansion, broad UI redesign, automatic source verification claims.
+Forbidden in this alpha: implementation of live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, or automatic source verification claims.
 
-Node 24 CI compatibility is preserved for 1.1.0.
+Next valid milestone:
 
-No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
+`v1.2.0-alpha.2 — Selected Lane Implementation Plan` only after this expansion gate stays green.
 
-Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
 
-No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.
+No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims.
+
+Node 24 CI compatibility preserved.
+
+## Stable baseline note
+
+Stable baseline retained: v1.1.0 remains the locked Public Demo reference for post-stable expansion gating. Node 24 CI compatibility remains preserved for the post-stable planning release.
+
+Planning gate note: this release is a changed-files-only post-stable planning gate with release apply integrity controls.

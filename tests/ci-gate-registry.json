@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.1.0",
-  "release_title": "v1.1.0 — Public Demo Stable",
+  "ci_gate_registry_version": "1.2.0-alpha.1",
+  "release_title": "v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -136,7 +136,8 @@
         "tests/evidence-workspace-check.mjs",
         "tests/evidence-workspace-ux-throughput-check.mjs",
         "tests/controlled-connector-architecture-check.mjs",
-        "tests/strategic-evidence-graph-check.mjs"
+        "tests/strategic-evidence-graph-check.mjs",
+        "tests/post-stable-capability-roadmap-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -366,7 +367,8 @@
         "tests/evidence-workspace-check.mjs",
         "tests/evidence-workspace-ux-throughput-check.mjs",
         "tests/controlled-connector-architecture-check.mjs",
-        "tests/strategic-evidence-graph-check.mjs"
+        "tests/strategic-evidence-graph-check.mjs",
+        "tests/post-stable-capability-roadmap-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -394,7 +396,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.1.0",
+    "version": "1.2.0-alpha.1",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -409,7 +411,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.1.0",
+    "version": "1.2.0-alpha.1",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -520,13 +522,15 @@
       "scripts/build-lock-evidence-bundle.mjs",
       "tests/canonical-lock-evidence-bundle-check.mjs",
       "tests/evidence-matrix-canonical-bundle-check.mjs",
-      "tests/lockfile-dependency-version-integrity-check.mjs"
+      "tests/lockfile-dependency-version-integrity-check.mjs",
+      "src/research/post-stable-expansion-gate.js",
+      "tests/post-stable-capability-roadmap-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.1.0",
+    "version": "1.2.0-alpha.1",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -546,7 +550,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.1.0",
+    "version": "1.2.0-alpha.1",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.1.0",
-  "release_title": "v1.1.0 — Public Demo Stable",
+  "version_suite_registry_version": "1.2.0-alpha.1",
+  "release_title": "v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
