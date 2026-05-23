@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.2.0-alpha.2",
-  "internal_build_version": "1.2.0-alpha.2",
-  "public_version_label": "v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench",
+  "evidence_matrix_config_version": "1.2.0-alpha.3",
+  "internal_build_version": "1.2.0-alpha.3",
+  "public_version_label": "v1.2.0-alpha.3 Source-to-Brief UX Compression + Operator Flow Polish",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Source-to-Brief Intelligence Workbench",
+        "Source-to-Brief UX Compression + Operator Flow Polish",
         "Public demo",
         "Export Pack v3"
       ],
@@ -44,7 +44,7 @@
         "revue des preuves"
       ],
       "forbidden": [
-        "Source-to-Brief Intelligence Workbench",
+        "Source-to-Brief UX Compression + Operator Flow Polish",
         "Public surface freeze",
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
@@ -225,7 +225,7 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench",
+    "en": "v1.2.0-alpha.3 Source-to-Brief UX Compression + Operator Flow Polish",
     "ar": "v1.1.0 العرض العام المستقر",
     "fr": "v1.1.0 Démo publique stable"
   }

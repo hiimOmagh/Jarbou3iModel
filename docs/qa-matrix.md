@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
+Current release candidate: v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.2.0-alpha.2.
+Node 24 CI compatibility is preserved for v1.2.0-alpha.3.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

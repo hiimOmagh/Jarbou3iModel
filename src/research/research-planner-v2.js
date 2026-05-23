@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.2';
+  const VERSION = '1.2.0-alpha.3';
   const MODEL = 'research_planner_v2.v1';
   const SOURCE_TYPES = ['official','academic','primary','news','expert','market','social','video','github','dataset','other'];
   const DEPTH_PRESETS = Object.freeze({

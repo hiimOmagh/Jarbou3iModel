@@ -2,7 +2,7 @@
 
 Current milestone:
 
-`v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
+`v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish`
 
 Purpose: take one controlled step beyond the stable public-demo lock by packaging the existing local/manual research plan, evidence workspace, claim review, contradiction review, source gaps, confidence metadata, and strategic brief export into one source-to-brief workflow.
 

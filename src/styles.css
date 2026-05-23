@@ -1049,3 +1049,32 @@ html[dir="rtl"] .welcomeEyebrow{
 }
 
 .entityProfileGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:10px 0}.entityProfileCard{border:1px solid rgba(148,163,184,.22);border-radius:16px;padding:12px;background:rgba(15,23,42,.22)}.entityProfileCard>div:first-child{display:flex;justify-content:space-between;gap:8px;align-items:center}.entityProfileCard p{margin:8px 0;color:var(--muted)}
+
+/* v1.2.0-alpha.3 — source-to-brief operator flow compression */
+.sourceToBriefSummary.operatorCompressed{border:1px solid color-mix(in srgb,var(--accent) 20%,var(--line));border-radius:20px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface-solid) 94%,transparent),color-mix(in srgb,var(--surface-soft) 88%,transparent));padding:12px;}
+.sourceToBriefFlow{display:grid;grid-template-columns:repeat(8,minmax(74px,1fr));gap:6px;align-items:stretch;}
+.flowStep{border:1px solid var(--line);border-radius:14px;background:var(--surface-solid);padding:8px 9px;min-width:0;}
+.flowStep b{display:block;font-size:12px;line-height:1.2;color:var(--strong);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.flowStep small{display:block;margin-top:2px;color:var(--muted);font-size:11px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.flow-complete,.flow-reviewable,.flow-strong,.flow-clear,.flow-ready_with_manual_review{border-color:color-mix(in srgb,var(--ok) 38%,var(--line));background:color-mix(in srgb,var(--ok) 6%,var(--surface-solid));}
+.flow-warning,.flow-review_required,.flow-weak,.flow-unsupported,.flow-not_ready{border-color:color-mix(in srgb,var(--warning) 36%,var(--line));background:color-mix(in srgb,var(--warning) 6%,var(--surface-solid));}
+.sourceToBriefGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px;}
+.sourceToBriefPanel{border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--surface-solid) 86%,transparent);padding:12px;min-width:0;}
+.sourceToBriefPanel h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.055em;color:var(--muted);}
+.compactCardGrid{display:grid;gap:8px;}
+.compactEvidenceCard,.compactClaimCard,.compactContradictionGroup{display:grid;gap:6px;border:1px solid var(--line);border-radius:15px;background:var(--surface-solid);padding:10px;min-width:0;}
+.compactEvidenceCard header,.compactClaimCard header,.compactContradictionGroup header{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;}
+.compactEvidenceCard p,.compactClaimCard p,.compactContradictionGroup p{margin:0;color:var(--text);font-size:13px;line-height:1.4;}
+.compactEvidenceCard header span,.compactClaimCard header span,.compactContradictionGroup header span{color:var(--muted);font-size:12px;text-align:end;}
+.compactClaimCard.support-strong{border-color:color-mix(in srgb,var(--ok) 36%,var(--line));}
+.compactClaimCard.support-partial{border-color:color-mix(in srgb,var(--accent) 36%,var(--line));}
+.compactClaimCard.support-weak,.compactClaimCard.support-unsupported{border-color:color-mix(in srgb,var(--warning) 38%,var(--line));}
+.sourceGapList,.exportReadinessList{display:grid;gap:7px;margin:0;padding:0;list-style:none;}
+.sourceGapList li,.exportReadinessList li{border:1px solid var(--line);border-radius:13px;background:var(--surface-solid);padding:8px 9px;font-size:13px;}
+.exportReadinessList li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 8px;align-items:start;}
+.exportReadinessList strong{font-weight:1000;}
+.exportReadinessList small{grid-column:2;color:var(--muted);font-size:12px;}
+.readiness-pass strong{color:var(--ok);}.readiness-warn strong{color:var(--warning);}
+.sourceToBriefEmptyGuidance span{border-style:dashed;}
+@media(max-width:920px){.sourceToBriefFlow{grid-template-columns:repeat(4,minmax(0,1fr));}.sourceToBriefGrid{grid-template-columns:1fr;}}
+@media(max-width:560px){.sourceToBriefFlow{grid-template-columns:repeat(2,minmax(0,1fr));}.flowStep b,.flowStep small{white-space:normal;}.compactEvidenceCard header,.compactClaimCard header,.compactContradictionGroup header{display:grid;}.compactEvidenceCard header span,.compactClaimCard header span,.compactContradictionGroup header span{text-align:start;}}

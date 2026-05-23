@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.2';
+const VERSION = '1.2.0-alpha.3';
 const source = fs.readFileSync('src/research/prompt-compiler.js', 'utf8');
 new vm.Script(source, { filename: 'src/research/prompt-compiler.js' });
 const context = { console, window: {} };

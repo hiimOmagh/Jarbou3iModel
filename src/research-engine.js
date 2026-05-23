@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.1.0 — Release Candidate Hardening and final repo hygiene. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.2.0-alpha.2';
+  const VERSION = '1.2.0-alpha.3';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -39,6 +39,7 @@
   const controlledConnectorEngine = modules.controlledConnectorEngine;
   const strategicEvidenceGraph = modules.strategicEvidenceGraph;
   const sourceToBriefWorkbench = modules.sourceToBriefWorkbench;
+  const sourceToBriefOperatorRenderer = modules.sourceToBriefOperatorRenderer;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
   const hostedDemoVerification = modules.hostedDemoVerification;
@@ -961,7 +962,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.2.0-alpha.2',
+      schema_version: '1.2.0-alpha.3',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),
@@ -2253,15 +2254,8 @@
     const el = $('sourceToBriefOutput');
     if(!el) return;
     const report = state.source_to_brief_workbench || state.source_to_brief_package || null;
-    if(!report){
-      el.innerHTML = emptyState(tr('sourceToBriefEmpty'), tr('sourceToBriefEmptyBody'), tr('buildSourceToBrief'));
-      return;
-    }
-    const counts = report.confidence_review?.support_level_counts || {};
-    const claimRows = (report.claim_map || []).slice(0, 10).map((claim)=>`<tr><td>${esc(claim.claim_id)}</td><td><b>${esc(claim.claim_text || '')}</b><small>${esc((claim.source_gap_warnings || []).join(' · ') || 'manual_review_required')}</small></td><td>${esc(tr('support' + kc(claim.support_level || 'unsupported')))}</td><td>${esc(claim.support_score ?? 0)}/100</td><td>${esc((claim.supporting_evidence_ids || []).join(', ') || '—')}</td><td>${esc((claim.contradicting_evidence_ids || []).join(', ') || '—')}</td></tr>`).join('');
-    const blocked = (report.blocked_unavailable_capabilities || []).map((item)=>`<span>${esc(lStatus(item))}</span>`).join('');
-    const groups = (report.contradiction_groups || []).slice(0, 6).map((group)=>`<li><strong>${esc(group.group_id)} · ${esc(group.target_claim_id)}</strong>: ${esc(group.tension_summary || '')}</li>`).join('');
-    el.innerHTML = `<div class="researchJsonCard sourceToBriefSummary"><div><b>${esc(report.research_question || topic())}</b><span>${esc(report.release_gate || 'source_to_brief_review_required')}</span></div><div class="miniChips"><span>${esc(tr('claimMapTitle'))}: ${esc((report.claim_map || []).length)}</span><span>${esc(tr('supportStrong'))}: ${esc(counts.strong || 0)}</span><span>${esc(tr('supportPartial'))}: ${esc(counts.partial || 0)}</span><span>${esc(tr('supportWeak'))}: ${esc(counts.weak || 0)}</span><span>${esc(tr('supportUnsupported'))}: ${esc(counts.unsupported || 0)}</span><span>${esc(tr('confidence'))}: ${esc(lCf(report.confidence_review?.inferred_confidence || 'low'))}</span><span>${esc(tr('gaps'))}: ${esc(report.source_gaps?.warning_count || 0)}</span></div><small>${esc(report.exportable_strategic_brief?.source_boundary_note || '')}</small></div><div class="researchTableWrap"><table class="researchTable sourceToBriefTable"><thead><tr><th>ID</th><th>${esc(tr('claimMapTitle'))}</th><th>${esc(tr('strength'))}</th><th>${esc(tr('score'))}</th><th>${esc(tr('supports'))}</th><th>${esc(tr('contradicts'))}</th></tr></thead><tbody>${claimRows || `<tr><td colspan="6">${esc(tr('noItems') || 'No items.')}</td></tr>`}</tbody></table></div><div class="researchJsonCard sourceToBriefContradictions"><h4>${esc(tr('contradictions'))}</h4><ul>${groups || '<li>—</li>'}</ul><h4>${esc(tr('blockedCapabilitiesTitle'))}</h4><div class="miniChips">${blocked}</div></div>`;
+    if(!report){ el.innerHTML = emptyState(tr('sourceToBriefEmpty'), tr('sourceToBriefEmptyBody'), tr('buildSourceToBrief')); return; }
+    el.innerHTML = sourceToBriefOperatorRenderer?.render ? sourceToBriefOperatorRenderer.render(report, {tr, esc, kc, lStatus, lST, lCf, topic}) : `<div class="researchJsonCard sourceToBriefSummary"><div><b>${esc(report.research_question || topic())}</b><span>${esc(report.release_gate || 'source_to_brief_review_required')}</span></div><small>${esc(report.exportable_strategic_brief?.source_boundary_note || '')}</small></div>`;
   }
 
   function renderDiagnostics(){

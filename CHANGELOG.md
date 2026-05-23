@@ -1,18 +1,20 @@
 # Changelog
 
-## v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
+## v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish
 
-- Adds the local/manual Source-to-Brief Intelligence Workbench.
-- Connects research questions, plans, evidence cards, generated claims, claim support levels, contradiction groups, source gap warnings, inferred confidence review metadata, and structured strategic brief export.
-- Separates user-provided or source-imported evidence, generated claims, inferred confidence, missing evidence/gaps, and blocked unavailable capabilities in the export package.
+- Adds a compact Source-to-Brief operator flow indicator.
+- Adds a pre-export readiness checklist for supported claims, weak/unsupported claims, contradictions, source gaps, confidence notes, manual/local disclaimers, and no-verification claims.
+- Compresses evidence, claim, contradiction, and gap views into scannable cards/panels.
+- Adds localized empty-state guidance for no evidence, no claims, no contradictions, and not-export-ready packages.
+- Delegates Source-to-Brief rendering into a focused renderer module to keep the main research engine below the module-size ceiling.
 - Preserves manual/private default behavior, the v1.1.0 stable public-demo boundary, and the v1.2.0-alpha.1 post-stable expansion gate.
 - Adds no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, and no automatic source verification claims.
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-`v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
+`v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish`
 
-Public label: `v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench`. Internal evidence metadata: `1.2.0-alpha.2`. This controlled alpha adds only a local/manual source-to-brief workflow and export package; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
+Public label: `v1.2.0-alpha.3 Source-to-Brief UX Compression + Operator Flow Polish`. Internal evidence metadata: `1.2.0-alpha.3`. This controlled alpha adds only a local/manual source-to-brief workflow and export package; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

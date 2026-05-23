@@ -1,6 +1,6 @@
 # Jarbou3i Research Engine
 
-`v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench`
+`v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
@@ -33,4 +33,4 @@ Screenshots alone are insufficient for release approval. ZIP archive alone is in
 
 Workbench note: this release is a changed-files-only local/manual source-to-brief implementation with release apply integrity controls.
 
-Public release label: v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench.
+Public release label: v1.2.0-alpha.3 Source-to-Brief UX Compression + Operator Flow Polish.

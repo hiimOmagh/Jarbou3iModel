@@ -1,9 +1,10 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.2. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.3. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.2';
+  const VERSION = '1.2.0-alpha.3';
   const MODEL = 'source_to_brief_workbench.v1';
+  const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const SUPPORT_LEVELS = Object.freeze(['strong','partial','weak','unsupported']);
   const BLOCKED_CAPABILITIES = Object.freeze([
     'live_scraping',
@@ -254,6 +255,82 @@
       source_boundary_note:'Evidence is user-provided or source-imported. The package does not verify, fetch, scrape, or execute providers automatically.'
     };
   }
+
+  function buildOperatorFlow(packet = {}, evidenceCards = [], claimMap = [], contradictionGroups = [], sourceGaps = {}, confidenceReview = {}){
+    const hasQuestion = !!text(packet.research_plan?.topic || packet.analysis_brief?.topic);
+    const hasPlan = !!packet.research_plan;
+    const hasEvidence = evidenceCards.length > 0;
+    const hasClaims = claimMap.length > 0;
+    const hasContradictions = contradictionGroups.length > 0;
+    const hasGaps = (sourceGaps.warning_count || 0) > 0;
+    const confidenceScore = Number(confidenceReview.confidence_score || 0);
+    const supportedClaims = claimMap.filter((claim)=>['strong','partial'].includes(claim.support_level)).length;
+    const weakClaims = claimMap.filter((claim)=>claim.support_level === 'weak').length;
+    const unsupportedClaims = claimMap.filter((claim)=>claim.support_level === 'unsupported').length;
+    const steps = [
+      {step_id:'question', label:'Question', complete:hasQuestion, status:hasQuestion ? 'complete' : 'missing', next_action:hasQuestion ? 'review_research_question_scope' : 'define_research_question'},
+      {step_id:'plan', label:'Plan', complete:hasPlan, status:hasPlan ? 'complete' : 'missing', next_action:hasPlan ? 'review_plan_budget_and_counter_evidence_targets' : 'generate_research_plan'},
+      {step_id:'evidence', label:'Evidence', complete:hasEvidence, status:hasEvidence ? 'complete' : 'missing', next_action:hasEvidence ? 'review_evidence_cards' : 'add_or_import_evidence'},
+      {step_id:'claims', label:'Claims', complete:hasClaims && supportedClaims > 0, status:hasClaims ? (supportedClaims > 0 ? 'reviewable' : 'unsupported') : 'missing', next_action:hasClaims ? 'review_claim_support_levels' : 'build_source_to_brief_package'},
+      {step_id:'contradictions', label:'Contradictions', complete:hasContradictions, status:hasContradictions ? 'review_required' : 'empty_reviewable', next_action:hasContradictions ? 'review_contradiction_groups' : 'confirm_no_contradictions_or_add_counter_evidence'},
+      {step_id:'gaps', label:'Gaps', complete:!hasGaps, status:hasGaps ? 'warning' : 'clear', next_action:hasGaps ? 'review_source_gap_warnings' : 'continue_to_confidence_review'},
+      {step_id:'confidence', label:'Confidence', complete:confidenceScore >= 45, status:confidenceScore >= 70 ? 'strong' : (confidenceScore >= 45 ? 'partial' : 'weak'), next_action:'review_confidence_notes_and_manual_boundaries'},
+      {step_id:'export', label:'Export', complete:hasEvidence && hasClaims, status:hasEvidence && hasClaims ? 'ready_with_manual_review' : 'not_ready', next_action:hasEvidence && hasClaims ? 'run_pre_export_readiness_checklist' : 'complete_evidence_and_claim_mapping'}
+    ];
+    return {
+      operator_flow_version:VERSION,
+      operator_flow_model:UX_MODEL,
+      workflow_steps:steps,
+      completed_step_count:steps.filter((step)=>step.complete).length,
+      warning_step_count:steps.filter((step)=>['warning','review_required','unsupported','weak','not_ready'].includes(step.status)).length,
+      next_best_action:(steps.find((step)=>!step.complete || ['warning','review_required','unsupported','weak','not_ready'].includes(step.status)) || steps[steps.length - 1]).next_action,
+      ux_compression_policy:'show_primary_operator_state_first_collapse_secondary_detail',
+      manual_local_boundary:'local_manual_workspace_no_live_fetch_no_automatic_verification',
+      live_fetching_performed:false,
+      verification_claimed:false,
+      summary:{supported_claims:supportedClaims, weak_claims:weakClaims, unsupported_claims:unsupportedClaims, contradiction_groups:contradictionGroups.length, source_gap_warnings:sourceGaps.warning_count || 0}
+    };
+  }
+
+  function buildExportReadinessChecklist(claimMap = [], contradictionGroups = [], sourceGaps = {}, confidenceReview = {}){
+    const supportedClaims = claimMap.filter((claim)=>['strong','partial'].includes(claim.support_level));
+    const weakClaims = claimMap.filter((claim)=>claim.support_level === 'weak');
+    const unsupportedClaims = claimMap.filter((claim)=>claim.support_level === 'unsupported');
+    const items = [
+      {check_id:'supported_claims_present', label:'Supported claims present', passed:supportedClaims.length > 0, severity:'blocker', detail:`${supportedClaims.length} strong/partial claim(s)`},
+      {check_id:'weak_or_unsupported_claims_flagged', label:'Weak or unsupported claims flagged', passed:weakClaims.length + unsupportedClaims.length === 0, severity:(weakClaims.length + unsupportedClaims.length ? 'warning' : 'info'), detail:`${weakClaims.length} weak, ${unsupportedClaims.length} unsupported`},
+      {check_id:'contradictions_reviewed', label:'Contradictions reviewed', passed:contradictionGroups.length === 0, severity:(contradictionGroups.length ? 'warning' : 'info'), detail:`${contradictionGroups.length} contradiction group(s)`},
+      {check_id:'source_gaps_reviewed', label:'Source gaps reviewed', passed:(sourceGaps.warning_count || 0) === 0, severity:(sourceGaps.warning_count ? 'warning' : 'info'), detail:`${sourceGaps.warning_count || 0} source gap warning(s)`},
+      {check_id:'confidence_notes_present', label:'Confidence notes present', passed:!!confidenceReview.inferred_confidence, severity:'info', detail:`confidence ${confidenceReview.inferred_confidence || 'unknown'}`},
+      {check_id:'manual_local_disclaimer_present', label:'Manual/local evidence disclaimer present', passed:true, severity:'blocker', detail:'user-provided or source-imported evidence only'},
+      {check_id:'no_automatic_verification_claim', label:'No automatic verification claim present', passed:confidenceReview.verification_claimed !== true, severity:'blocker', detail:'verification_claimed=false'}
+    ];
+    return {
+      checklist_version:VERSION,
+      checklist_model:UX_MODEL,
+      items,
+      blocker_count:items.filter((item)=>!item.passed && item.severity === 'blocker').length,
+      warning_count:items.filter((item)=>!item.passed && item.severity === 'warning').length,
+      export_readiness_status:items.some((item)=>!item.passed && item.severity === 'blocker') ? 'not_ready' : (items.some((item)=>!item.passed) ? 'ready_with_warnings' : 'ready_for_manual_export'),
+      manual_review_required:true,
+      automatic_source_verification_claimed:false,
+      live_fetching_performed:false,
+      verification_claimed:false
+    };
+  }
+
+  function buildEmptyStateGuidance(workbench = {}){
+    const cards = asArray(workbench.evidence_cards);
+    const claims = asArray(workbench.claim_map);
+    const contradictions = asArray(workbench.contradiction_groups);
+    return {
+      no_evidence:{visible:cards.length === 0, next_action:'add_or_import_evidence_before_claim_mapping'},
+      no_claims:{visible:claims.length === 0, next_action:'build_source_to_brief_package_after_evidence'},
+      no_contradictions:{visible:contradictions.length === 0, next_action:'add_counter_evidence_or_confirm_no_contradiction'},
+      no_export_ready_package:{visible:workbench.release_gate !== 'source_to_brief_reviewable', next_action:'resolve_blockers_or_export_with_manual_warning'}
+    };
+  }
+
   function buildSourceToBriefWorkbench(packet = {}, options = {}){
     const version = options.version || VERSION;
     const generatedAt = options.now || nowIso();
@@ -264,7 +341,9 @@
     const sourceGaps = Object.assign(buildSourceGaps(packet, evidenceCards, claimMap), {generated_at:generatedAt, source_gap_report_version:version});
     const confidenceReview = Object.assign(buildConfidenceReview(claimMap, contradictionGroups, sourceGaps), {generated_at:generatedAt, confidence_review_version:version});
     const strategic = strategicBrief(packet, claimMap, contradictionGroups, sourceGaps, confidenceReview);
-    const releaseGate = confidenceReview.release_gate === 'confidence_reviewable' && sourceGaps.release_gate === 'source_gap_reviewable' ? 'source_to_brief_reviewable' : 'source_to_brief_review_required';
+    const operatorFlow = buildOperatorFlow(packet, evidenceCards, claimMap, contradictionGroups, sourceGaps, confidenceReview);
+    const exportReadinessChecklist = buildExportReadinessChecklist(claimMap, contradictionGroups, sourceGaps, confidenceReview);
+    const releaseGate = evidenceCards.length && claimMap.length && confidenceReview.release_gate === 'confidence_reviewable' && sourceGaps.release_gate === 'source_gap_reviewable' ? 'source_to_brief_reviewable' : 'source_to_brief_review_required';
     return {
       source_to_brief_version:version,
       workbench_model:MODEL,
@@ -280,6 +359,10 @@
       source_gaps:sourceGaps,
       confidence_review:confidenceReview,
       exportable_strategic_brief:strategic,
+      operator_flow:operatorFlow,
+      export_readiness_checklist:exportReadinessChecklist,
+      ux_compression_model:UX_MODEL,
+      empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),
       blocked_unavailable_capabilities:BLOCKED_CAPABILITIES.slice(),
       local_manual_workspace_model:true,
       live_fetching_performed:false,
@@ -334,6 +417,7 @@
   root.sourceToBriefWorkbench = Object.freeze({
     VERSION,
     MODEL,
+    UX_MODEL,
     SUPPORT_LEVELS,
     BLOCKED_CAPABILITIES,
     buildSourceToBriefWorkbench,
@@ -342,6 +426,9 @@
     buildContradictionGroups,
     buildSourceGaps,
     buildConfidenceReview,
+    buildOperatorFlow,
+    buildExportReadinessChecklist,
+    buildEmptyStateGuidance,
     claimMapRows,
     markdownBrief
   });

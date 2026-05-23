@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.2.0-alpha.2';
-export const RELEASE_TITLE = 'v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench';
+export const VERSION = '1.2.0-alpha.3';
+export const RELEASE_TITLE = 'v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

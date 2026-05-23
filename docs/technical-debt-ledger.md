@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.2.0-alpha.2`
-Release: `v1.2.0-alpha.2 — Source-to-Brief Intelligence Workbench
+Version: `1.2.0-alpha.3`
+Release: `v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

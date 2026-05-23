@@ -76,7 +76,7 @@ jobs:
           const fs = require('node:fs');
           const path = process.env.RUNNER_TEMP + '/hosted-demo-evidence/matrix-summary.json';
           const summary = JSON.parse(fs.readFileSync(path, 'utf8'));
-          if (summary.internal_build_version !== '1.2.0-alpha.2') throw new Error(`matrix version mismatch: ${summary.internal_build_version}`);
+          if (summary.internal_build_version !== '1.2.0-alpha.3') throw new Error(`matrix version mismatch: ${summary.internal_build_version}`);
           if (summary.expected_rows !== 39 || summary.actual_rows !== 39 || summary.passed_rows !== 39 || summary.failed_rows !== 0) throw new Error(`matrix rows invalid: ${JSON.stringify({expected:summary.expected_rows, actual:summary.actual_rows, passed:summary.passed_rows, failed:summary.failed_rows})}`);
           if (summary.language_purity_passed !== true || summary.visual_guard_passed !== true || summary.stale_version_residue_detected !== false) throw new Error('matrix summary release guards failed');
           NODE
@@ -129,5 +129,5 @@ jobs:
       - name: Upload canonical lock evidence bundle
         uses: actions/upload-artifact@v6
         with:
-          name: lock-evidence-bundle_1.2.0-alpha.2_${{ github.run_id }}
-          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.2.0-alpha.2_${{ github.run_id }}
+          name: lock-evidence-bundle_1.2.0-alpha.3_${{ github.run_id }}
+          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.2.0-alpha.3_${{ github.run_id }}
