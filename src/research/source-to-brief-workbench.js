@@ -1,11 +1,12 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.5. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.6. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.5';
+  const VERSION = '1.2.0-alpha.6';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
+  const operatorCommandPalette = root.operatorCommandPalette;
   const SUPPORT_LEVELS = Object.freeze(['strong','partial','weak','unsupported']);
   const BLOCKED_CAPABILITIES = Object.freeze([
     'live_scraping',
@@ -371,6 +372,8 @@
       'source-to-brief/claim-traceability.csv',
       'source-to-brief/review-decision-ledger.json',
       'source-to-brief/review-decision-ledger.md',
+        'source-to-brief/operator-command-palette.json',
+        'source-to-brief/review-navigation-shortcuts.json',
       'source-to-brief/operator-handoff.md'
     ];
     if(Number(reviewSummary.unresolved_count || 0) > 0) files.push('source-to-brief/review-throughput-summary.json');
@@ -569,6 +572,8 @@
     const traceabilityBase = {claim_map:claimMap, evidence_cards:evidenceCards, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, export_polish_report:exportPolish};
     const claimTraceabilityConsole = buildClaimTraceabilityConsole(traceabilityBase, packet);
     const reviewDecisionLedger = buildReviewDecisionLedger(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole}), packet);
+    const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
+    const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
     return {
       source_to_brief_version:version,
       workbench_model:MODEL,
@@ -590,6 +595,8 @@
       export_polish_report:exportPolish,
       claim_traceability_console:claimTraceabilityConsole,
       review_decision_ledger:reviewDecisionLedger,
+      operator_command_palette:commandPalette,
+      review_navigation_shortcuts:navigationShortcuts,
       ux_compression_model:'source_to_brief_operator_flow.v1',
       export_polish_model:EXPORT_POLISH_MODEL,
       empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),

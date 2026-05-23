@@ -2,9 +2,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.5';
+const VERSION = '1.2.0-alpha.6';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
+  'src/research/operator-command-palette.js',
   'src/research/source-to-brief-workbench.js',
   'src/research/export-pack.js'
 ];
@@ -62,7 +63,9 @@ assert.equal(workbench.review_throughput_summary.unresolved_count, 3);
 assert.equal(workbench.review_throughput_summary.export_throughput_gate, 'manual_review_queue_open');
 assert.ok(workbench.review_throughput_summary.priority_lanes.some((lane)=>lane.lane_id === 'contradictions' && lane.review_ids.includes('RQ2')));
 assert.equal(workbench.export_polish_report.export_polish_version, VERSION);
-assert.ok(workbench.export_polish_report.handoff_file_plan.includes('source-to-brief/operator-handoff.md'));
+assert.ok(workbench.export_polish_report.handoff_file_plan.includes('source-to-brief/operator-command-palette.json',
+  'source-to-brief/review-navigation-shortcuts.json',
+  'source-to-brief/operator-handoff.md'));
 assert.ok(workbench.export_polish_report.handoff_file_plan.includes('source-to-brief/export-readiness.json'));
 assert.ok(workbench.export_polish_report.warnings.includes('review_queue_unresolved'));
 assert.equal(workbench.export_polish_report.no_automatic_verification_claim, true);
@@ -76,6 +79,8 @@ for (const required of [
   'source-to-brief/export-readiness.json',
   'source-to-brief/export-polish-report.json',
   'source-to-brief/review-throughput-summary.json',
+  'source-to-brief/operator-command-palette.json',
+  'source-to-brief/review-navigation-shortcuts.json',
   'source-to-brief/operator-handoff.md',
   'review/review-throughput-report.json'
 ]) {

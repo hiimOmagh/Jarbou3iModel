@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.2.0-alpha.5';
+  const EXPORT_PACK_VERSION = '1.2.0-alpha.6';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -186,6 +186,8 @@
       `Unresolved review items: ${safeString(review.unresolved_count ?? 0)}`,
       `Traceability console rows: ${safeString(workbench.claim_traceability_console?.rows?.length ?? 0)}`,
       `Open ledger decisions: ${safeString(workbench.review_decision_ledger?.unresolved_decision_count ?? 0)}`,
+      `Command palette commands: ${safeString(workbench.operator_command_palette?.enabled_command_count ?? 0)}`,
+      `Navigation shortcuts: ${safeString(workbench.review_navigation_shortcuts?.shortcut_count ?? 0)}`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
       `Low-traceability review items: ${safeString(review.low_traceability_open_count ?? 0)}`,
       '',
@@ -253,6 +255,8 @@
     if(workbench.claim_traceability_console) files.push(fileEntry('source-to-brief/claim-traceability.csv', 'text/csv', claimTraceabilityCsv(workbench), 'source-to-brief-claim-traceability-csv'));
     if(workbench.review_decision_ledger) files.push(fileEntry('source-to-brief/review-decision-ledger.json', 'application/json', jsonContent(workbench.review_decision_ledger), 'source-to-brief-review-decision-ledger'));
     if(workbench.review_decision_ledger) files.push(fileEntry('source-to-brief/review-decision-ledger.md', 'text/markdown', reviewDecisionLedgerMarkdown(workbench), 'source-to-brief-review-decision-ledger-md'));
+    if(workbench.operator_command_palette) files.push(fileEntry('source-to-brief/operator-command-palette.json', 'application/json', jsonContent(workbench.operator_command_palette), 'source-to-brief-command-palette'));
+    if(workbench.review_navigation_shortcuts) files.push(fileEntry('source-to-brief/review-navigation-shortcuts.json', 'application/json', jsonContent(workbench.review_navigation_shortcuts), 'source-to-brief-navigation-shortcuts'));
     files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }

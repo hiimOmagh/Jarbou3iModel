@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.2.0-alpha.5';
-const TITLE = 'Claim Traceability Console + Review Decision Ledger';
+const VERSION = '1.2.0-alpha.6';
+const TITLE = 'Operator Command Palette + Review Navigation Shortcuts';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
 const DOC = 'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md';

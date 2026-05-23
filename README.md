@@ -1,6 +1,6 @@
 # Jarbou3i Research Engine
 
-`v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger`
+`v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
@@ -31,6 +31,6 @@ Evidence manifest continuity: hosted-demo review still requires a single final m
 
 Screenshots alone are insufficient for release approval. ZIP archive alone is insufficient for release approval. The v1.2.0-alpha.1 post-stable expansion gate preserves the v1.1.0 public-demo baseline until no-browser CI, browser CI, hosted-demo evidence, and privacy/export gates are reviewed.
 
-Workbench note: this release is a changed-files-only local/manual claim-traceability console and review-decision ledger implementation with release apply integrity controls.
+Workbench note: this release is a changed-files-only local/manual operator command palette and review navigation shortcuts implementation with release apply integrity controls.
 
-Public release label: v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger.
+Public release label: v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts.

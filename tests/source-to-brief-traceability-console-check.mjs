@@ -2,9 +2,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.5';
+const VERSION = '1.2.0-alpha.6';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
+  'src/research/operator-command-palette.js',
   'src/research/source-to-brief-workbench.js',
   'src/research/export-pack.js'
 ];
@@ -72,11 +73,15 @@ for (const required of [
   'source-to-brief/claim-traceability-console.json',
   'source-to-brief/claim-traceability.csv',
   'source-to-brief/review-decision-ledger.json',
-  'source-to-brief/review-decision-ledger.md'
+  'source-to-brief/review-decision-ledger.md',
+  'source-to-brief/operator-command-palette.json',
+  'source-to-brief/review-navigation-shortcuts.json'
 ]) assert.ok(paths.includes(required), `export pack missing ${required}`);
 assert.equal(pack.manifest.export_pack_version, VERSION);
 assert.equal(JSON.parse(pack.files.find((file)=>file.path === 'source-to-brief/review-decision-ledger.json').content).automatic_source_verification_claimed, false);
-assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/review-decision-ledger.md').content.includes('do not verify source truth'));
+assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/review-decision-ledger.md',
+  'source-to-brief/operator-command-palette.json',
+  'source-to-brief/review-navigation-shortcuts.json').content.includes('do not verify source truth'));
 
 const renderer = fs.readFileSync('src/research/source-to-brief-operator-renderer.js','utf8');
 for (const marker of ['claimTraceabilityTitle','decisionLedgerTitle','claimTraceabilityConsole','reviewDecisionLedgerPanel']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);

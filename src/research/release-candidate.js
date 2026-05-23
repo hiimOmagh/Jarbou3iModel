@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const RELEASE_VERSION = '1.2.0-alpha.5';
+  const RELEASE_VERSION = '1.2.0-alpha.6';
   const REQUIRED_GATES = Object.freeze([
     'test:qa:core',
     'test:privacy',

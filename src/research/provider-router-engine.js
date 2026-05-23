@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.5';
+  const VERSION = '1.2.0-alpha.6';
   const ROUTER_MODEL = 'provider_router.v1';
   const TASK_CAPABILITIES = Object.freeze({
     plan:['structured_output','reasoning','long_context'],

@@ -15,17 +15,17 @@ const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.5-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.5.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.6-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.6.json');
 
-assert.equal(pkg.version, '1.2.0-alpha.5');
-assert.equal(schema.properties.workflow_version.const, '1.2.0-alpha.5');
+assert.equal(pkg.version, '1.2.0-alpha.6');
+assert.equal(schema.properties.workflow_version.const, '1.2.0-alpha.6');
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.2.0-alpha.5');
-  assert.equal(packet.source_packet_builder_report.builder_version, '1.2.0-alpha.5');
-  assert.equal(packet.last_built_source_packet.workflow_version, '1.2.0-alpha.5');
+  assert.equal(packet.workflow_version, '1.2.0-alpha.6');
+  assert.equal(packet.source_packet_builder_report.builder_version, '1.2.0-alpha.6');
+  assert.equal(packet.last_built_source_packet.workflow_version, '1.2.0-alpha.6');
   assert.equal(packet.last_built_source_packet.builder_version, 'source_packet_builder.v1');
-  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger');
+  assert.equal(packet.release_notes.release_title, 'v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts');
 }
 
 assert.ok(index.includes('data-browser-qa="source-packet-builder"'), 'builder card must expose a browser-QA hook');

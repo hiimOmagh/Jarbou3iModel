@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.2.0-alpha.5`
-Release: `v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger`
+Version: `1.2.0-alpha.6`
+Release: `v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

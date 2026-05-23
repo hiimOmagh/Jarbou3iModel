@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.2.0-alpha.5';
-const TITLE = 'Claim Traceability Console + Review Decision Ledger';
+const VERSION = '1.2.0-alpha.6';
+const TITLE = 'Operator Command Palette + Review Navigation Shortcuts';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');

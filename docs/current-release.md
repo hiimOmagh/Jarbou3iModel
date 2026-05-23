@@ -1,10 +1,10 @@
 # Current Release
 
-## v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger
+## v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts
 
-This is the fourth post-stable alpha after `v1.1.0 — Public Demo Stable`.
+This is the sixth post-stable alpha after `v1.1.0 — Public Demo Stable`.
 
-Scope: controlled claim traceability and review decision ledgering inside the existing local/manual workspace. The release keeps the alpha.4 review/export polish intact while adding claim traceability rows, decision states, open-decision counts, ledgered contradiction/gap/export decisions, and traceability export artifacts.
+Scope: controlled operator navigation inside the existing local/manual Source-to-Brief workspace. The release keeps the alpha.5 claim traceability console and review decision ledger intact while adding a compact command palette, visible keyboard shortcuts, and exported navigation metadata for evidence, claims, contradictions, source gaps, traceability, ledger, export readiness, and export polish surfaces.
 
 Boundaries preserved: manual/private mode remains first-class; no live scraping, no live connector expansion, no provider execution expansion, no production OAuth, no backend behavior expansion, no storage expansion, no broad UI redesign, and no automatic source verification claims.
 
@@ -17,7 +17,7 @@ No live scraping. No production OAuth. No backend behavior expansion. No provide
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
-Version: `1.2.0-alpha.5`
+Version: `1.2.0-alpha.6`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions
@@ -33,11 +33,11 @@ green no-browser CI is required before release claim.
 green browser CI is required before release claim.
 reviewed hosted-demo evidence is required before public-demo publication.
 
-Workbench note: this release is a changed-files-only local/manual traceability-console and decision-ledger step with release apply integrity controls. It adds no data acquisition or verification capability.
+Workbench note: this release is a changed-files-only local/manual operator-navigation step. It adds command/shortcut surfaces and navigation metadata only; it adds no data acquisition or verification capability.
 
 Evidence manifest continuity: hosted-demo review still requires a single final metadata capture manifest with desktop, mobile, provider-mode, and quality/export evidence.
 
-Feature surface guard: the v1.1.0 public-demo boundaries remain frozen while this alpha adds a focused source-to-brief workbench surface.
+Feature surface guard: the v1.1.0 public-demo boundaries remain frozen while this alpha adds a focused Source-to-Brief navigation surface.
 
-Public and internal release versions are aligned: v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger.
-Feature surface is frozen for the v1.1.0 public-demo boundary; only the scoped local/manual claim-traceability console and review-decision ledger surface is activated in this alpha. Live sourcing, provider execution, production OAuth, backend behavior, storage expansion, and automatic source verification remain unavailable.
+Public and internal release versions are aligned: v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts.
+Feature surface is frozen for the v1.1.0 public-demo boundary; only the scoped local/manual operator command palette and review navigation shortcuts are activated in this alpha. Live sourcing, provider execution, production OAuth, backend behavior, storage expansion, and automatic source verification remain unavailable.

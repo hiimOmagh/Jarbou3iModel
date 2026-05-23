@@ -1,20 +1,20 @@
 # Changelog
 
-## v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger
+## v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts
 
-- Adds a claim traceability console that maps each claim to support level, evidence IDs, traceability status, source types, warnings, and manual decision state.
-- Adds a review decision ledger covering evidence review decisions, claim traceability decisions, contradiction resolution, source-gap decisions, and export handoff decisions.
-- Adds export artifacts for claim traceability JSON/CSV and review decision ledger JSON/Markdown.
-- Adds compact UI panels for traceability rows and open ledger decisions inside the Source-to-Brief operator surface.
-- Keeps the alpha.4 review-throughput and export-polish path intact while making decisions auditable before handoff.
+- Adds a local/manual operator command palette for Source-to-Brief review surfaces.
+- Adds review navigation shortcuts for evidence, claim map, contradictions, source gaps, traceability console, decision ledger, export readiness, and export polish.
+- Adds export artifacts for operator command palette JSON and review navigation shortcuts JSON.
+- Adds compact UI panels for commands and shortcut hints inside the Source-to-Brief operator surface.
+- Preserves alpha.5 claim traceability console and review decision ledger behavior.
 - Preserves manual/private default behavior, the v1.1.0 stable public-demo boundary, and the v1.2.0-alpha.1 post-stable expansion gate.
 - Adds no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, and no automatic source verification claims.
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-`v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger`
+`v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
 
-Public label: `v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger`. Internal evidence metadata: `1.2.0-alpha.5`. This controlled alpha adds a local/manual claim traceability console and review decision ledger so every claim, evidence link, contradiction, gap, and export decision remains auditable before handoff; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
+Public label: `v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts`. Internal evidence metadata: `1.2.0-alpha.6`. This controlled alpha improves operator navigation and review efficiency inside the local/manual Source-to-Brief workbench; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

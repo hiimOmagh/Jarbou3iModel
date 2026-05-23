@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.2.0-alpha.5",
-  "release_title": "v1.2.0-alpha.5 \u2014 Claim Traceability Console + Review Decision Ledger",
+  "ci_gate_registry_version": "1.2.0-alpha.6",
+  "release_title": "v1.2.0-alpha.6 \u2014 Operator Command Palette + Review Navigation Shortcuts",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -139,6 +139,7 @@
         "tests/source-to-brief-ux-compression-check.mjs",
         "tests/source-to-brief-export-polish-check.mjs",
         "tests/source-to-brief-traceability-console-check.mjs",
+        "tests/source-to-brief-command-palette-check.mjs",
         "tests/controlled-connector-architecture-check.mjs",
         "tests/strategic-evidence-graph-check.mjs",
         "tests/post-stable-capability-roadmap-check.mjs"
@@ -253,6 +254,7 @@
         "tests/source-to-brief-ux-compression-check.mjs",
         "tests/source-to-brief-export-polish-check.mjs",
         "tests/source-to-brief-traceability-console-check.mjs",
+        "tests/source-to-brief-command-palette-check.mjs",
         "tests/controlled-connector-architecture-check.mjs",
         "tests/strategic-evidence-graph-check.mjs",
         "tests/lockfile-dependency-version-integrity-check.mjs"
@@ -408,7 +410,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.2.0-alpha.5",
+    "version": "1.2.0-alpha.6",
     "optimization_scope": "syntax_tail_parallelization_and_release_doc_timeline_pruning",
     "previous_serial_no_browser_syntax_checks": 64,
     "no_browser_syntax_checks_replaced_by": "tests/syntax-matrix-check.mjs",
@@ -423,7 +425,7 @@
     "storage_behavior_changed": false
   },
   "syntax_matrix": {
-    "version": "1.2.0-alpha.5",
+    "version": "1.2.0-alpha.6",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -547,7 +549,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.2.0-alpha.5",
+    "version": "1.2.0-alpha.6",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -567,7 +569,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.2.0-alpha.5",
+    "version": "1.2.0-alpha.6",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

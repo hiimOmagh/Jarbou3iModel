@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.2.0-alpha.5';
+  const VERSION = '1.2.0-alpha.6';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -39,6 +39,7 @@
   const controlledConnectorEngine = modules.controlledConnectorEngine;
   const strategicEvidenceGraph = modules.strategicEvidenceGraph;
   const sourceToBriefWorkbench = modules.sourceToBriefWorkbench;
+  const operatorCommandPalette = modules.operatorCommandPalette;
   const sourceToBriefOperatorRenderer = modules.sourceToBriefOperatorRenderer;
   const onboarding = modules.onboarding;
   const publicDemoReadiness = modules.publicDemoReadiness;
@@ -962,7 +963,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.2.0-alpha.5',
+      schema_version: '1.2.0-alpha.6',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),
@@ -2269,6 +2270,7 @@
     el.innerHTML = `<div class="researchJsonCard diagnosticsCard"><h4>${esc(tr('diagnosticsTitle'))}</h4><div class="miniChips">${coverageRows || '<span>—</span>'}${migrationHtml}</div><small>${esc(lStatus(diagnostics.status || 'review_required'))} · ${esc((diagnostics.gaps || []).length)} ${esc(tr('gaps'))}${migrationReport ? ' · ' + esc(tr('migrationReportExported')) : ''}</small></div>`;
   }
 
+
   function renderSourceLayer(){
     const el = $('sourcePlanningOutput');
     if(!el) return;
@@ -2706,6 +2708,7 @@
     $('clearAnalysisBriefBtn')?.addEventListener('click', () => { if(!confirmDestructive('Clear analysis brief?')) return; state.analysis_brief = null; state.diagnostics = null; save(); render(); setStatus(tr('statusBriefCleared'), 'warn'); });
     $('buildSourceToBriefBtn')?.addEventListener('click', () => { if(!state.plan) state.plan = buildResearchPlan(); if(!state.analysis_brief) compileAnalysisBrief(true); buildSourceToBriefPackage(state.analysis_brief, true); save(); render(); setStatus(tr('statusSourceToBriefBuilt'), 'good'); });
     $('exportSourceToBriefBtn')?.addEventListener('click', () => { const report = state.source_to_brief_workbench || buildSourceToBriefPackage(state.analysis_brief || null, true); downloadJson(`jarbou3i-source-to-brief-${Date.now()}.json`, report); save(); render(); setStatus(tr('statusSourceToBriefExported'), 'good'); });
+    operatorCommandPalette?.installNavigation?.({document,setUxTab,setStatus,tr,$});
     $('validateProviderSettingsBtn')?.addEventListener('click', () => { persistProviderSettings(); render(); setStatus(tr('statusProviderSettingsSaved'), 'good'); });
     $('connectPortableAccountBtn')?.addEventListener('click', connectPortableAccount);
     $('refreshPortableAccountBtn')?.addEventListener('click', refreshPortableAccount);
