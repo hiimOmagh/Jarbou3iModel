@@ -825,7 +825,20 @@
   });
 
   const SUPPORTED_LANGS = ['ar','en','fr'];
-  function esc(value){ return String(value ?? '').replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
+  function cp(...codes){ return String.fromCharCode(...codes); }
+  const MOJIBAKE_REPAIR_MAP = Object.freeze([
+    [cp(0xe2,0x20ac,0x201d),'—'], [cp(0xe2,0x20ac,0x201c),'–'], [cp(0xe2,0x20ac,0xa0),'†'],
+    [cp(0xe2,0x2020,0x2019),'→'], [cp(0xe2,0x2020,0x0090),'←'], [cp(0xe2,0x20ac,0xa2),'•'],
+    [cp(0xe2,0x20ac,0xa6),'…'], [cp(0xe2,0x20ac,0x0153),'“'], [cp(0xe2,0x20ac,0x009d),'”'],
+    [cp(0xe2,0x20ac,0x02dc),'‘'], [cp(0xe2,0x20ac,0x2122),'’'], [cp(0x00c2,0x00b7),'·'],
+    [cp(0x00c2,0x00a0),' '], [cp(0x00c2,0x20),' '], [cp(0x00c2),'']
+  ]);
+  function sanitizeUiText(value){
+    let text = String(value ?? '');
+    for(const [bad, good] of MOJIBAKE_REPAIR_MAP) text = text.replaceAll(bad, good);
+    return text;
+  }
+  function esc(value){ return sanitizeUiText(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
 
   Object.assign(COPY.en, {
 
@@ -902,7 +915,7 @@
     });
     if(typeof updateEvidenceButtonLabel === 'function') updateEvidenceButtonLabel();
   }
-  root.renderHelpers = {COPY, SUPPORTED_LANGS, esc, getLang, tr, applyLabels};
+  root.renderHelpers = {COPY, SUPPORTED_LANGS, sanitizeUiText, esc, getLang, tr, applyLabels};
 })(window);
 
 /* v1.2.0-alpha.2 · Source-to-Brief Intelligence Workbench */

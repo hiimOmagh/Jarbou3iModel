@@ -44,7 +44,8 @@
   const hostedDemoVerification = modules.hostedDemoVerification;
   const releaseApplyIntegrity = modules.releaseApplyIntegrity;
   const releaseProvenanceLedger = modules.releaseProvenanceLedger;
-  const esc = (value) => renderHelpers.esc(value);
+  const sanitizeUiText = (value) => renderHelpers.sanitizeUiText ? renderHelpers.sanitizeUiText(value) : String(value ?? '');
+  const esc = (value) => renderHelpers.esc(sanitizeUiText(value));
   const nowIso = () => new Date().toISOString();
 
   function getLang(){return renderHelpers.getLang();}
@@ -2638,7 +2639,17 @@
     const reportHtml = scoringHtml + graphHtml + '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(lStatus(report.publication_readiness)) + '</h4><div class="miniChips"><span>' + esc(lStatus(report.release_gate)) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' ' + esc(tr('blockers')) + '</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
     el.innerHTML = scoreHtml + reportHtml;
   }
-  function render(){renderLabels(); renderOnboarding(); renderWorkspace(); renderAnalysisTemplate(); renderPlan(); renderEvidence(); renderCausalLinks(); renderAnalysisBrief(); renderSourceToBrief(); renderSourceLayer(); renderSourceImportAdapter(); renderSourcePacketBuilder(); renderEvidenceReviewQueue(); renderProviderHarness(); renderCritique(); renderQuality(); renderReleaseHealth(); updateReliabilityControls(); applyUxTab();}
+  function scrubVisibleMojibakeText(root = document.body){
+    if(!root || typeof document === 'undefined') return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      const repaired = sanitizeUiText(node.nodeValue);
+      if(repaired !== node.nodeValue) node.nodeValue = repaired;
+    });
+  }
+  function render(){renderLabels(); renderOnboarding(); renderWorkspace(); renderAnalysisTemplate(); renderPlan(); renderEvidence(); renderCausalLinks(); renderAnalysisBrief(); renderSourceToBrief(); renderSourceLayer(); renderSourceImportAdapter(); renderSourcePacketBuilder(); renderEvidenceReviewQueue(); renderProviderHarness(); renderCritique(); renderQuality(); renderReleaseHealth(); updateReliabilityControls(); applyUxTab(); scrubVisibleMojibakeText();}
 
   function wire(){
     setupUxStabilization();
