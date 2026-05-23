@@ -1,10 +1,10 @@
 # Jarbou3i Research Engine
 
-`v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
+`v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
-This alpha does not add live execution capability. It improves the controlled local/manual source-to-brief workflow with claim traceability rows, decision-state ledgers, contradiction/gap/export decision entries, and traceability export artifacts.
+This alpha does not add live execution capability. It improves the controlled local/manual source-to-brief workflow with review-quality diagnostics, weak-claim repair suggestions, contradiction/source-gap repair hints, and exported diagnostics artifacts.
 
 Preserved boundaries: manual/private mode remains first-class; no live scraping; no production OAuth; no backend behavior expansion; no live provider execution expansion; no storage expansion; no automatic source verification claims.
 
@@ -31,6 +31,6 @@ Evidence manifest continuity: hosted-demo review still requires a single final m
 
 Screenshots alone are insufficient for release approval. ZIP archive alone is insufficient for release approval. The v1.2.0-alpha.1 post-stable expansion gate preserves the v1.1.0 public-demo baseline until no-browser CI, browser CI, hosted-demo evidence, and privacy/export gates are reviewed.
 
-Workbench note: this release is a changed-files-only local/manual operator command palette and review navigation shortcuts implementation with release apply integrity controls.
+Workbench note: this release is a changed-files-only local/manual review-quality diagnostics and weak-claim repair suggestions implementation with release apply integrity controls.
 
-Public release label: v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts.
+Public release label: v1.2.0-alpha.7 Review Quality Diagnostics + Weak-Claim Repair Suggestions.

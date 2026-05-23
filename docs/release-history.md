@@ -65,7 +65,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
 | `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
 | `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0 — Public Demo Stable |
-| `v1.2.0-alpha.6-evidence-pack-export-v3-brief-traceability.md` | v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts |
+| `v1.2.0-alpha.7-evidence-pack-export-v3-brief-traceability.md` | v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3410,7 +3410,7 @@ Provenance continuity: Package Script Compression, CI Gate Registry, Root Manife
 Post-stable continuity note: v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate is the first planning-only expansion gate built on this locked v1.1.0 baseline.
 
 
-# v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts
+# v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions
 
 Hosted evidence continuity note: waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed remain required for hosted-demo evidence capture. No runtime behavior change.
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
@@ -3462,8 +3462,8 @@ This corrective build fixes public EN/AR/FR stable labels and public demo releas
 - no stale candidate/freeze public wording remains in hosted visible text
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
 
-<!-- release-file:v1.2.0-alpha.6-evidence-pack-export-v3-brief-traceability.md -->
-# v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts
+<!-- release-file:v1.2.0-alpha.7-evidence-pack-export-v3-brief-traceability.md -->
+# v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions
 
 Controlled local/manual source-to-brief workbench. It connects research plans, evidence cards, generated claims, contradiction groups, source gap warnings, inferred confidence review metadata, and structured strategic brief export while preserving the v1.1.0 public-demo baseline. It introduces no live scraping, no provider/OAuth/backend/source/storage expansion, and no automatic source verification claim.
 
@@ -3476,4 +3476,4 @@ Readiness artifacts:
 - tests/language-description-audit-check.mjs
 
 No source-file refactor yet. No runtime behavior change.
-<!-- /release-file:v1.2.0-alpha.6-evidence-pack-export-v3-brief-traceability.md -->
+<!-- /release-file:v1.2.0-alpha.7-evidence-pack-export-v3-brief-traceability.md -->

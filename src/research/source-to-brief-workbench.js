@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.6. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.7. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.6';
+  const VERSION = '1.2.0-alpha.7';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -374,6 +374,9 @@
       'source-to-brief/review-decision-ledger.md',
         'source-to-brief/operator-command-palette.json',
         'source-to-brief/review-navigation-shortcuts.json',
+      'source-to-brief/review-quality-diagnostics.json',
+      'source-to-brief/weak-claim-repair-suggestions.json',
+      'source-to-brief/weak-claim-repair-suggestions.md',
       'source-to-brief/operator-handoff.md'
     ];
     if(Number(reviewSummary.unresolved_count || 0) > 0) files.push('source-to-brief/review-throughput-summary.json');
@@ -554,6 +557,140 @@
     };
   }
 
+
+  function repairSuggestionForClaim(claim = {}, context = {}){
+    const warnings = asArray(claim.source_gap_warnings);
+    if(claim.support_level === 'unsupported') return 'Add at least one traceable supporting evidence item, or demote/remove the claim before export.';
+    if(claim.support_level === 'weak') return 'Add an independent high-confidence source, repair source URL/date metadata, and keep the claim in manual review until support improves.';
+    if(context.hasContradiction) return 'Resolve the contradiction group by adding counter-evidence notes, narrowing the claim, or marking the conflict unresolved in the decision ledger.';
+    if(warnings.includes('missing_counter_evidence')) return 'Add counter-evidence or document why counter-evidence could not be collected.';
+    if(warnings.length) return 'Repair source metadata and evidence-to-claim links before publication review.';
+    return 'Review the claim boundary and keep the manual/local evidence disclaimer attached to the export.';
+  }
+  function diagnosticSeverity(claim = {}, hasContradiction = false){
+    if(claim.support_level === 'unsupported') return 'high';
+    if(claim.support_level === 'weak' || hasContradiction) return 'medium';
+    if(asArray(claim.source_gap_warnings).length) return 'low';
+    return 'info';
+  }
+  function buildReviewQualityDiagnostics(workbench = {}, packet = {}){
+    const claims = asArray(workbench.claim_map);
+    const contradictions = asArray(workbench.contradiction_groups);
+    const gaps = asArray(workbench.source_gaps?.warnings);
+    const confidence = workbench.confidence_review || {};
+    const findings = [];
+    claims.forEach((claim, index)=>{
+      const hasContradiction = contradictions.some((group)=>group.target_claim_id === claim.claim_id);
+      const warnings = asArray(claim.source_gap_warnings);
+      if(['weak','unsupported'].includes(claim.support_level) || hasContradiction || warnings.length){
+        const issueTypes = unique([claim.support_level === 'unsupported' ? 'unsupported_claim' : '', claim.support_level === 'weak' ? 'weak_claim' : '', hasContradiction ? 'unresolved_contradiction' : '', ...warnings]);
+        findings.push({
+          diagnostic_id:`QD${findings.length + 1}`,
+          claim_id:claim.claim_id,
+          claim_text:claim.claim_text,
+          severity:diagnosticSeverity(claim, hasContradiction),
+          issue_types:issueTypes,
+          support_level:claim.support_level,
+          support_score:Number(claim.support_score || 0),
+          inferred_confidence:claim.inferred_confidence,
+          supporting_evidence_ids:asArray(claim.supporting_evidence_ids),
+          contradicting_evidence_ids:asArray(claim.contradicting_evidence_ids),
+          source_gap_warnings:warnings,
+          contradiction_group_ids:contradictions.filter((group)=>group.target_claim_id === claim.claim_id).map((group)=>group.group_id),
+          diagnosis:`${claim.claim_id} has ${claim.support_level} support${hasContradiction ? ' and unresolved contradiction pressure' : ''}.`,
+          repair_suggestion:repairSuggestionForClaim(claim, {hasContradiction}),
+          disconfirming_condition:'Finding is cleared only when linked evidence, contradiction review, and source-gap status change in the local review data.',
+          human_review_required:true,
+          automatic_source_verification_claimed:false,
+          verification_claimed:false,
+          live_fetching_performed:false
+        });
+      }
+    });
+    if(!claims.length){
+      findings.push({
+        diagnostic_id:'QD0',
+        claim_id:null,
+        claim_text:'No claim map available',
+        severity:'high',
+        issue_types:['claim_map_missing'],
+        support_level:'unsupported',
+        support_score:0,
+        diagnosis:'The package has no claim map to diagnose.',
+        repair_suggestion:'Build the source-to-brief package after adding evidence and research-plan context.',
+        disconfirming_condition:'Finding is cleared when a claim map exists.',
+        human_review_required:true,
+        automatic_source_verification_claimed:false,
+        verification_claimed:false,
+        live_fetching_performed:false
+      });
+    }
+    const weakClaimIds = findings.filter((item)=>['weak_claim','unsupported_claim'].some((issue)=>item.issue_types.includes(issue))).map((item)=>item.claim_id).filter(Boolean);
+    const contradictionClaimIds = unique(contradictions.map((group)=>group.target_claim_id));
+    const gapClaimIds = unique(gaps.map((gap)=>gap.claim_id).filter(Boolean));
+    const high = findings.filter((item)=>item.severity === 'high').length;
+    const medium = findings.filter((item)=>item.severity === 'medium').length;
+    const releaseGate = high || medium || (Number(confidence.source_gap_warning_count || 0) > 0) ? 'review_quality_repair_required' : 'review_quality_reviewable';
+    const suggestions = findings.slice(0, 12).map((finding, index)=>({
+      suggestion_id:`WRS${index + 1}`,
+      claim_id:finding.claim_id,
+      priority:finding.severity === 'high' ? 'first' : (finding.severity === 'medium' ? 'next' : 'later'),
+      issue_types:finding.issue_types,
+      repair_action:finding.repair_suggestion,
+      expected_operator_result:finding.claim_id ? 'claim_support_or_review_status_improved' : 'claim_map_created',
+      must_remain_manual:true,
+      no_live_fetching:true,
+      no_automatic_verification_claim:true
+    }));
+    return {
+      review_quality_diagnostics_version:VERSION,
+      diagnostics_model:'review_quality_diagnostics.v1',
+      generated_at:nowIso(),
+      findings,
+      finding_count:findings.length,
+      severity_counts:{high, medium, low:findings.filter((item)=>item.severity === 'low').length, info:findings.filter((item)=>item.severity === 'info').length},
+      weak_claim_ids:weakClaimIds,
+      contradiction_claim_ids:contradictionClaimIds,
+      source_gap_claim_ids:gapClaimIds,
+      weak_claim_repair_suggestions:{
+        weak_claim_repair_version:VERSION,
+        suggestion_model:'weak_claim_repair_suggestions.v1',
+        suggestions,
+        suggestion_count:suggestions.length,
+        release_gate:suggestions.length ? 'weak_claim_repair_suggestions_open' : 'weak_claim_repair_suggestions_clear',
+        manual_only:true,
+        no_live_fetching:true,
+        no_provider_execution:true,
+        no_automatic_verification_claim:true
+      },
+      operator_next_action:weakClaimIds.length ? 'repair_weak_or_unsupported_claims' : (contradictionClaimIds.length ? 'resolve_contradiction_pressure' : (gapClaimIds.length ? 'repair_source_gap_warnings' : 'confirm_export_quality_boundary')),
+      release_gate:releaseGate,
+      manual_local_boundary:'Review quality diagnostics are local/manual heuristics. They do not verify source truth, fetch live data, execute providers, or replace operator judgment.',
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function weakClaimRepairMarkdown(workbench = {}){
+    const diagnostics = workbench.review_quality_diagnostics || {};
+    const suggestions = asArray(diagnostics.weak_claim_repair_suggestions?.suggestions).map((item)=>`- ${item.suggestion_id}: ${text(item.claim_id || 'workflow')} — ${text(item.repair_action)} (${text(item.priority)})`).join('\n') || '- No weak-claim repair suggestions open.';
+    return [
+      '# Weak-Claim Repair Suggestions',
+      '',
+      `Diagnostics gate: ${text(diagnostics.release_gate || 'review_quality_repair_required')}`,
+      `Finding count: ${Number(diagnostics.finding_count || 0)}`,
+      '',
+      '## Suggestions',
+      suggestions,
+      '',
+      '## Boundary',
+      'Suggestions are local/manual review heuristics. They do not verify sources, fetch live data, execute providers, or claim truth.',
+      ''
+    ].join('\n');
+  }
+
   function buildSourceToBriefWorkbench(packet = {}, options = {}){
     const version = options.version || VERSION;
     const generatedAt = options.now || nowIso();
@@ -572,7 +709,8 @@
     const traceabilityBase = {claim_map:claimMap, evidence_cards:evidenceCards, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, export_polish_report:exportPolish};
     const claimTraceabilityConsole = buildClaimTraceabilityConsole(traceabilityBase, packet);
     const reviewDecisionLedger = buildReviewDecisionLedger(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole}), packet);
-    const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
+    const reviewQualityDiagnostics = buildReviewQualityDiagnostics(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview}), packet);
+    const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
     const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
     return {
       source_to_brief_version:version,
@@ -595,6 +733,8 @@
       export_polish_report:exportPolish,
       claim_traceability_console:claimTraceabilityConsole,
       review_decision_ledger:reviewDecisionLedger,
+      review_quality_diagnostics:reviewQualityDiagnostics,
+      weak_claim_repair_suggestions:reviewQualityDiagnostics.weak_claim_repair_suggestions,
       operator_command_palette:commandPalette,
       review_navigation_shortcuts:navigationShortcuts,
       ux_compression_model:'source_to_brief_operator_flow.v1',
@@ -662,6 +802,11 @@
       `- Open decisions: ${Number(workbench.review_decision_ledger?.unresolved_decision_count || 0)}`,
       `- Ledger gate: ${text(workbench.review_decision_ledger?.release_gate || 'review_decision_ledger_open')}`,
       '',
+      '## Review Quality Diagnostics',
+      `- Findings: ${Number(workbench.review_quality_diagnostics?.finding_count || 0)}`,
+      `- Gate: ${text(workbench.review_quality_diagnostics?.release_gate || 'review_quality_repair_required')}`,
+      `- Next action: ${text(workbench.review_quality_diagnostics?.operator_next_action || 'manual_quality_review')}`,
+      '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')
     ].join('\n') + '\n';
@@ -684,6 +829,8 @@
     buildExportReadinessChecklist,
     buildClaimTraceabilityConsole,
     buildReviewDecisionLedger,
+    buildReviewQualityDiagnostics,
+    weakClaimRepairMarkdown,
     buildEmptyStateGuidance,
     reviewThroughputSummary,
     exportPolishReport,

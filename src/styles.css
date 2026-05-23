@@ -1050,7 +1050,7 @@ html[dir="rtl"] .welcomeEyebrow{
 
 .entityProfileGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:10px 0}.entityProfileCard{border:1px solid rgba(148,163,184,.22);border-radius:16px;padding:12px;background:rgba(15,23,42,.22)}.entityProfileCard>div:first-child{display:flex;justify-content:space-between;gap:8px;align-items:center}.entityProfileCard p{margin:8px 0;color:var(--muted)}
 
-/* v1.2.0-alpha.6 — source-to-brief operator flow compression */
+/* v1.2.0-alpha.7 — source-to-brief operator flow compression */
 .sourceToBriefSummary.operatorCompressed{border:1px solid color-mix(in srgb,var(--accent) 20%,var(--line));border-radius:20px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface-solid) 94%,transparent),color-mix(in srgb,var(--surface-soft) 88%,transparent));padding:12px;}
 .sourceToBriefFlow{display:grid;grid-template-columns:repeat(8,minmax(74px,1fr));gap:6px;align-items:stretch;}
 .flowStep{border:1px solid var(--line);border-radius:14px;background:var(--surface-solid);padding:8px 9px;min-width:0;}
@@ -1100,7 +1100,7 @@ html[dir="rtl"] .welcomeEyebrow{
 .reviewDecisionLedgerList{margin:8px 0 0;padding-left:18px;color:var(--muted);}.reviewDecisionLedgerList li{margin:5px 0;}.reviewDecisionLedgerList small{display:block;overflow-wrap:anywhere;}[dir="rtl"] .reviewDecisionLedgerList{padding-left:0;padding-right:18px;}
 @media(max-width:560px){.claimTraceabilityRow header{display:grid;}.claimTraceabilityRow header span{text-align:start;}}
 
-/* v1.2.0-alpha.6 operator command palette + review navigation shortcuts */
+/* v1.2.0-alpha.7 operator command palette + review navigation shortcuts */
 .operatorCommandPalettePanel,
 .reviewNavigationShortcutsPanel { border-color: rgba(153, 212, 255, 0.22); }
 .operatorCommandGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:0.6rem; margin-top:0.75rem; }
@@ -1117,7 +1117,7 @@ html[dir="rtl"] .welcomeEyebrow{
 html[dir="rtl"] .operatorCommand { text-align:right; }
 @media (max-width: 640px){ .operatorCommand { grid-template-columns:1fr; align-items:start; } .reviewNavigationShortcutList { grid-template-columns:1fr; } }
 
-/* v1.2.0-alpha.6 operator command palette + review navigation shortcuts */
+/* v1.2.0-alpha.7 operator command palette + review navigation shortcuts */
 .operatorCommandPalettePanel,
 .reviewNavigationShortcutsPanel { border-color: rgba(153, 212, 255, 0.22); }
 .operatorCommandGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:0.6rem; margin-top:0.75rem; }
@@ -1135,3 +1135,18 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
 @media (max-width: 640px){ .operatorCommand { grid-template-columns:1fr; align-items:start; } .reviewNavigationShortcutList { grid-template-columns:1fr; } }
 .operatorNavPulse { animation: operatorNavPulse 0.9s ease-out; }
 @keyframes operatorNavPulse { 0% { box-shadow:0 0 0 0 rgba(153,212,255,0.32); } 100% { box-shadow:0 0 0 18px rgba(153,212,255,0); } }
+
+/* v1.2.0-alpha.7 review quality diagnostics */
+.reviewQualityDiagnosticsPanel{border-color:rgba(248,181,81,.26)}
+.reviewQualityFindingGrid{display:grid;gap:.65rem;margin-top:.6rem}
+.reviewQualityFinding{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.7rem;background:rgba(255,255,255,.035)}
+.reviewQualityFinding header{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.35rem}
+.reviewQualityFinding p{margin:.2rem 0;color:rgba(255,255,255,.86)}
+.reviewQualityFinding small{display:block;color:rgba(255,255,255,.62);line-height:1.35}
+.reviewQualityFinding.severity-high{border-color:rgba(255,92,92,.35);background:rgba(255,92,92,.055)}
+.reviewQualityFinding.severity-medium{border-color:rgba(248,181,81,.35);background:rgba(248,181,81,.055)}
+.reviewQualityFinding.severity-low{border-color:rgba(109,213,237,.3);background:rgba(109,213,237,.04)}
+.weakClaimRepairList{display:grid;gap:.45rem;margin:.7rem 0 0;padding:0;list-style:none}
+.weakClaimRepairList li{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.55rem .65rem;background:rgba(0,0,0,.16)}
+.weakClaimRepairList strong{display:block;color:rgba(255,255,255,.88);margin-bottom:.18rem}
+.weakClaimRepairList small{display:block;color:rgba(255,255,255,.62);line-height:1.35}

@@ -2,14 +2,14 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.6';
+const VERSION = '1.2.0-alpha.7';
 const source = fs.readFileSync('src/research/golden-workflow-corpus.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const exportPackSource = fs.readFileSync('src/research/export-pack.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
-const goldenFixture = JSON.parse(fs.readFileSync('fixtures/research/golden-workflow-corpus-v1.2.0-alpha.6.json', 'utf8'));
+const goldenFixture = JSON.parse(fs.readFileSync('fixtures/research/golden-workflow-corpus-v1.2.0-alpha.7.json', 'utf8'));
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 

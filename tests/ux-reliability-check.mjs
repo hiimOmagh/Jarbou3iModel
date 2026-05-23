@@ -16,10 +16,10 @@ catch (error) { fail(`syntax/runtime error: ${error.message}`); }
 
 const ux = context.Jarbou3iResearchModules?.uxReliability || context.module.exports;
 if (!ux) fail('uxReliability module not exported');
-if (ux.VERSION !== '1.2.0-alpha.6') fail('unexpected UX reliability version');
+if (ux.VERSION !== '1.2.0-alpha.7') fail('unexpected UX reliability version');
 
 const packet = {
-  workflow_version: '1.2.0-alpha.6',
+  workflow_version: '1.2.0-alpha.7',
   research_plan: { topic: 'Test topic' },
   evidence_matrix: [{ evidence_id: 'E1' }, { evidence_id: 'E2' }],
   causal_links: [{ from: 'I1', to: 'A1', evidence_ids: ['E1'] }],

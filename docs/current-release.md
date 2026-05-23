@@ -1,10 +1,10 @@
 # Current Release
 
-## v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts
+## v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions
 
 This is the sixth post-stable alpha after `v1.1.0 — Public Demo Stable`.
 
-Scope: controlled operator navigation inside the existing local/manual Source-to-Brief workspace. The release keeps the alpha.5 claim traceability console and review decision ledger intact while adding a compact command palette, visible keyboard shortcuts, and exported navigation metadata for evidence, claims, contradictions, source gaps, traceability, ledger, export readiness, and export polish surfaces.
+Scope: controlled review quality diagnostics inside the existing local/manual Source-to-Brief workspace. The release keeps the alpha.5 claim traceability console and review decision ledger intact while adding a compact command palette, visible keyboard shortcuts, and exported navigation metadata for evidence, claims, contradictions, source gaps, traceability, ledger, export readiness, and export polish surfaces.
 
 Boundaries preserved: manual/private mode remains first-class; no live scraping, no live connector expansion, no provider execution expansion, no production OAuth, no backend behavior expansion, no storage expansion, no broad UI redesign, and no automatic source verification claims.
 
@@ -17,7 +17,7 @@ No live scraping. No production OAuth. No backend behavior expansion. No provide
 ## Release Manifest
 
 Package: `jarbou3i-research-engine`
-Version: `1.2.0-alpha.6`
+Version: `1.2.0-alpha.7`
 Runtime capability change: no
 Required browser gates before publishing
 Release archive exclusions
@@ -39,5 +39,5 @@ Evidence manifest continuity: hosted-demo review still requires a single final m
 
 Feature surface guard: the v1.1.0 public-demo boundaries remain frozen while this alpha adds a focused Source-to-Brief navigation surface.
 
-Public and internal release versions are aligned: v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts.
-Feature surface is frozen for the v1.1.0 public-demo boundary; only the scoped local/manual operator command palette and review navigation shortcuts are activated in this alpha. Live sourcing, provider execution, production OAuth, backend behavior, storage expansion, and automatic source verification remain unavailable.
+Public and internal release versions are aligned: v1.2.0-alpha.7 Review Quality Diagnostics + Weak-Claim Repair Suggestions.
+Feature surface is frozen for the v1.1.0 public-demo boundary; only the scoped local/manual operator review quality diagnostics and weak-claim repair suggestions are activated in this alpha. Live sourcing, provider execution, production OAuth, backend behavior, storage expansion, and automatic source verification remain unavailable.

@@ -5,8 +5,8 @@ This document consolidates release and evidence policy previously scattered acro
 ## Current release
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.2.0-alpha.6`
-- Release: `v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
+- Version: `1.2.0-alpha.7`
+- Release: `v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions`
 - Release type: controlled local/manual source-to-brief alpha
 - Runtime capability change: no
 - Provider behavior change: no
@@ -45,7 +45,7 @@ Hosted URL mode:
 HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
 ```
 
-The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.2.0-alpha.6` and the evidence-review panel present.
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.2.0-alpha.7` and the evidence-review panel present.
 
 The hosted-demo evidence artifact must contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, full-page status, and horizontal-overflow sanity. Partial per-test metadata overwrites remain blocked by no-browser gates.
 
@@ -151,7 +151,7 @@ The following legacy root artifacts are intentionally consolidated and should no
 - Public-demo visual freeze baseline: `v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze`
 - Fixture registry consolidation baseline: `v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation`
 - Version/documentation registry baseline: `v1.1.0-alpha.5 — Repository-Wide Structural Cleanup + Version/Documentation Registry Consolidation`
-- Current root artifact consolidation: `v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
+- Current root artifact consolidation: `v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions`
 
 Evidence manifest continuity: v1.1.0 preserves the single final metadata hosted-demo evidence manifest gate.
 Release apply integrity gate for changed-files-only patch handoff remains active.
@@ -163,7 +163,7 @@ Required validation: `npm run test:current:no-browser`, `npm run test:ci:no-brow
 Hosted Demo evidence must preserve browser evidence and evidence review language for existing guards.
 
 
-Release-lock guard: v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: v1.2.0-alpha.7 Review Quality Diagnostics + Weak-Claim Repair Suggestions requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
 

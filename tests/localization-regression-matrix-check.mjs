@@ -4,11 +4,11 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts', 'English public version label must identify alpha.6');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.2.0-alpha.6 لوحة أوامر المشغّل + اختصارات التنقل في المراجعة', 'Arabic public version label must identify alpha.6');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.2.0-alpha.6 Palette de commandes opérateur + raccourcis de navigation de revue', 'French public version label must identify alpha.6');
-assert.ok(matrixConfig.language_rules.ar.required.includes('لوحة أوامر المشغّل'), 'Arabic evidence matrix must require alpha.6 operator copy');
-assert.ok(matrixConfig.language_rules.fr.required.includes('Palette de commandes opérateur'), 'French evidence matrix must require alpha.6 operator copy');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.2.0-alpha.7 Review Quality Diagnostics + Weak-Claim Repair Suggestions', 'English public version label must identify alpha.7');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.2.0-alpha.7 تشخيص جودة المراجعة + اقتراحات إصلاح الادعاءات الضعيفة', 'Arabic public version label must identify alpha.7');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.2.0-alpha.7 Diagnostics qualité de revue + suggestions de réparation des affirmations faibles', 'French public version label must identify alpha.7');
+assert.ok(matrixConfig.language_rules.ar.required.includes('تشخيص جودة المراجعة'), 'Arabic evidence matrix must require alpha.7 review quality copy');
+assert.ok(matrixConfig.language_rules.fr.required.includes('Diagnostics qualité de revue'), 'French evidence matrix must require alpha.7 review quality copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
 for (const currentLocaleStale of ['alphaBadge:\'v1.1.0 العرض العام المستقر', 'alphaBadge:\'v1.1.0 Démo publique stable']) {
   assert.equal(renderPublicLabels.includes(currentLocaleStale), false, `current localized alpha badge must not expose stale stable label: ${currentLocaleStale}`);

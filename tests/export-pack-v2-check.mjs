@@ -24,15 +24,15 @@ const exportPack = modules.exportPack;
 const migrations = modules.migrations;
 const audit = modules.privacyAudit;
 
-assert.equal(exportPack.EXPORT_PACK_VERSION, '1.2.0-alpha.6');
+assert.equal(exportPack.EXPORT_PACK_VERSION, '1.2.0-alpha.7');
 assert.equal(typeof exportPack.createExportPack, 'function');
 assert.equal(typeof exportPack.analysisBriefMarkdown, 'function');
 assert.equal(typeof exportPack.evidenceMatrixCsv, 'function');
 assert.equal(typeof exportPack.reviewQueueCsv, 'function');
 
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
-assert.equal(fixture.workflow_version, '1.2.0-alpha.6');
-assert.equal(fixture.export_pack.export_pack_version, '1.2.0-alpha.6');
+assert.equal(fixture.workflow_version, '1.2.0-alpha.7');
+assert.equal(fixture.export_pack.export_pack_version, '1.2.0-alpha.7');
 assert.equal(fixture.export_pack.format, 'export_pack_v3');
 
 const hostile = JSON.parse(JSON.stringify(fixture));
@@ -40,12 +40,12 @@ hostile.provider_config = { endpoint: 'https://api.example.test', model: 'x', ap
 hostile.ai_runs = [{ run_id: 'R1', output_summary: 'Bearer SHOULDNOTEXPORT1234567890abcdef', response_validation: { accepted: true } }];
 hostile.evidence_matrix[0].notes = 'access_token="SHOULDNOTEXPORT1234567890abcdef"';
 
-const pack = exportPack.createExportPack(hostile, { version: '1.2.0-alpha.6' });
-assert.equal(pack.export_pack_version, '1.2.0-alpha.6');
-assert.equal(pack.manifest.file_count, 58, 'manifest should describe core export artifacts, graph artifacts, source-to-brief artifacts, provider-router artifacts, review artifacts, and traceability artifacts before manifest insertion');
-assert.equal(pack.files.length, 59, 'pack should include manifest plus core, graph, source-to-brief, provider-router, review, and traceability artifacts');
+const pack = exportPack.createExportPack(hostile, { version: '1.2.0-alpha.7' });
+assert.equal(pack.export_pack_version, '1.2.0-alpha.7');
+assert.equal(pack.manifest.file_count, 61, 'manifest should describe core export artifacts, graph artifacts, source-to-brief artifacts, provider-router artifacts, review artifacts, and traceability artifacts before manifest insertion');
+assert.equal(pack.files.length, 62, 'pack should include manifest plus core, graph, source-to-brief, provider-router, review, and traceability artifacts');
 const paths = pack.files.map((file) => file.path);
-for (const required of ['export-manifest.json','research-packet.json','analysis-brief.md','evidence-matrix.csv','review-queue.csv','provider-run-ledger.json','quality-report.json','privacy-audit.json','graph/gephi-nodes.csv','graph/gephi-edges.csv','graph/kumu-map.json','graph/neo4j-nodes.csv','graph/neo4j-edges.csv','graph/graph-quality-report.json','graph/graph-export-report.json','source-to-brief/source-to-brief-package.json','source-to-brief/strategic-brief.md','source-to-brief/claim-map.csv','source-to-brief/source-gaps.json','source-to-brief/confidence-review.json','source-to-brief/export-readiness.json','source-to-brief/export-polish-report.json','source-to-brief/review-throughput-summary.json','source-to-brief/claim-traceability-console.json','source-to-brief/claim-traceability.csv','source-to-brief/review-decision-ledger.json','source-to-brief/review-decision-ledger.md','source-to-brief/operator-command-palette.json','source-to-brief/review-navigation-shortcuts.json','source-to-brief/operator-handoff.md','provider/provider-route-plan.json','provider/provider-route-report.json','provider/provider-cost-report.json','provider/provider-router-safety-report.json','review/evidence-workspace-ux-report.json','review/brief-traceability-report.json','traceability/brief-traceability-report.json','traceability/contradiction-falsifier-appendix.json','traceability/bundle-consistency-report.json','traceability/publication-readiness-export-report.json','traceability/evidence-pack-v3-manifest.json','publication-review/claim-classification-report.json','publication-review/claim-boundary-audit-report.json','publication-review/contradiction-falsifier-completeness-report.json','publication-review/publication-review-gate-report.json','publication-review/export-safe-final-review-report.json','golden/golden-workflow-corpus.json','golden/golden-end-to-end-demo-report.json','golden/golden-export-pack-validation-report.json','golden/hosted-demo-scenario-evidence.json','golden/release-readiness-runbook.json','release-candidate/final-repo-hygiene-report.json','release-candidate/stale-release-copy-sweep.json','release-candidate/golden-workflow-regression-lock.json','release-candidate/export-pack-artifact-consistency-lock.json','release-candidate/hosted-demo-evidence-runbook.json','release-candidate/no-browser-browser-ci-parity-report.json','release-candidate/release-candidate-readiness-report.json']) {
+for (const required of ['export-manifest.json','research-packet.json','analysis-brief.md','evidence-matrix.csv','review-queue.csv','provider-run-ledger.json','quality-report.json','privacy-audit.json','graph/gephi-nodes.csv','graph/gephi-edges.csv','graph/kumu-map.json','graph/neo4j-nodes.csv','graph/neo4j-edges.csv','graph/graph-quality-report.json','graph/graph-export-report.json','source-to-brief/source-to-brief-package.json','source-to-brief/strategic-brief.md','source-to-brief/claim-map.csv','source-to-brief/source-gaps.json','source-to-brief/confidence-review.json','source-to-brief/export-readiness.json','source-to-brief/export-polish-report.json','source-to-brief/review-throughput-summary.json','source-to-brief/claim-traceability-console.json','source-to-brief/claim-traceability.csv','source-to-brief/review-decision-ledger.json','source-to-brief/review-decision-ledger.md','source-to-brief/operator-command-palette.json','source-to-brief/review-navigation-shortcuts.json','source-to-brief/review-quality-diagnostics.json','source-to-brief/weak-claim-repair-suggestions.json','source-to-brief/weak-claim-repair-suggestions.md','source-to-brief/operator-handoff.md','provider/provider-route-plan.json','provider/provider-route-report.json','provider/provider-cost-report.json','provider/provider-router-safety-report.json','review/evidence-workspace-ux-report.json','review/brief-traceability-report.json','traceability/brief-traceability-report.json','traceability/contradiction-falsifier-appendix.json','traceability/bundle-consistency-report.json','traceability/publication-readiness-export-report.json','traceability/evidence-pack-v3-manifest.json','publication-review/claim-classification-report.json','publication-review/claim-boundary-audit-report.json','publication-review/contradiction-falsifier-completeness-report.json','publication-review/publication-review-gate-report.json','publication-review/export-safe-final-review-report.json','golden/golden-workflow-corpus.json','golden/golden-end-to-end-demo-report.json','golden/golden-export-pack-validation-report.json','golden/hosted-demo-scenario-evidence.json','golden/release-readiness-runbook.json','release-candidate/final-repo-hygiene-report.json','release-candidate/stale-release-copy-sweep.json','release-candidate/golden-workflow-regression-lock.json','release-candidate/export-pack-artifact-consistency-lock.json','release-candidate/hosted-demo-evidence-runbook.json','release-candidate/no-browser-browser-ci-parity-report.json','release-candidate/release-candidate-readiness-report.json']) {
   assert.ok(paths.includes(required), `missing export pack file ${required}`);
 }
 
@@ -68,6 +68,8 @@ assert.ok(paths.includes('review/review-throughput-report.json'), 'review throug
 assert.ok(paths.includes('source-to-brief/operator-handoff.md'), 'operator handoff export missing');
 assert.ok(paths.includes('source-to-brief/operator-command-palette.json'), 'operator command palette export missing');
 assert.ok(paths.includes('source-to-brief/review-navigation-shortcuts.json'), 'review navigation shortcuts export missing');
+assert.ok(paths.includes('source-to-brief/review-quality-diagnostics.json'), 'review quality diagnostics export missing');
+assert.ok(paths.includes('source-to-brief/weak-claim-repair-suggestions.json'), 'weak-claim repair suggestions export missing');
 
 const joined = pack.files.map((file) => file.content).join('\n---FILE---\n');
 for (const forbidden of ['SHOULDNOTEXPORT', 'sk-testsecret', 'Bearer SHOULDNOTEXPORT', 'access_token="']) {
@@ -79,20 +81,20 @@ for (const file of pack.files) {
 }
 
 const privacyFile = JSON.parse(pack.files.find((file) => file.path === 'privacy-audit.json').content);
-assert.equal(privacyFile.export_pack_version, '1.2.0-alpha.6');
+assert.equal(privacyFile.export_pack_version, '1.2.0-alpha.7');
 assert.equal(privacyFile.release_gate, 'pass');
 assert.ok(Array.isArray(privacyFile.file_reports));
 
 const migrated = migrations.migrateResearchPacket(getMigrationFixture('fixtures/migrations/v0.23.0-packet.json'));
 assert.equal(migrated.ok, true);
-assert.equal(migrated.packet.workflow_version, '1.2.0-alpha.6');
-assert.equal(migrated.packet.export_pack.export_pack_version, '1.2.0-alpha.6');
+assert.equal(migrated.packet.workflow_version, '1.2.0-alpha.7');
+assert.equal(migrated.packet.export_pack.export_pack_version, '1.2.0-alpha.7');
 assert.equal(migrated.packet.export_pack.format, 'export_pack_v3');
 assert.ok(migrated.packet.export_pack.files.includes('privacy-audit.json'));
 
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.ok(schema.required.includes('export_pack'), 'workflow schema must require export_pack metadata');
-assert.equal(schema.properties.export_pack.properties.export_pack_version.const, '1.2.0-alpha.6');
+assert.equal(schema.properties.export_pack.properties.export_pack_version.const, '1.2.0-alpha.7');
 
 console.log('Export Pack v2 checks passed.');
 process.exit(0);

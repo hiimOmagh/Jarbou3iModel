@@ -1,20 +1,21 @@
 # Changelog
 
-## v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts
+## v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions
 
-- Adds a local/manual operator command palette for Source-to-Brief review surfaces.
-- Adds review navigation shortcuts for evidence, claim map, contradictions, source gaps, traceability console, decision ledger, export readiness, and export polish.
-- Adds export artifacts for operator command palette JSON and review navigation shortcuts JSON.
-- Adds compact UI panels for commands and shortcut hints inside the Source-to-Brief operator surface.
+- Adds local/manual review quality diagnostics for weak, unsupported, contradicted, and source-gap-heavy claims.
+- Adds weak-claim repair suggestions with explicit operator actions and manual-only boundaries.
+- Adds Source-to-Brief export artifacts for review-quality diagnostics and weak-claim repair suggestions.
+- Adds compact UI panels for review quality findings and repair suggestions inside the Source-to-Brief operator surface.
+- Preserves alpha.6 command palette and review navigation shortcuts.
 - Preserves alpha.5 claim traceability console and review decision ledger behavior.
 - Preserves manual/private default behavior, the v1.1.0 stable public-demo boundary, and the v1.2.0-alpha.1 post-stable expansion gate.
 - Adds no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, and no automatic source verification claims.
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-`v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
+`v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions`
 
-Public label: `v1.2.0-alpha.6 Operator Command Palette + Review Navigation Shortcuts`. Internal evidence metadata: `1.2.0-alpha.6`. This controlled alpha improves operator navigation and review efficiency inside the local/manual Source-to-Brief workbench; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
+Public label: `v1.2.0-alpha.7 Review Quality Diagnostics + Weak-Claim Repair Suggestions`. Internal evidence metadata: `1.2.0-alpha.7`. This controlled alpha improves review-quality triage and weak-claim repair guidance inside the local/manual Source-to-Brief workbench; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

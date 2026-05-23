@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.2.0-alpha.6';
+  const EXPORT_PACK_VERSION = '1.2.0-alpha.7';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -257,6 +257,9 @@
     if(workbench.review_decision_ledger) files.push(fileEntry('source-to-brief/review-decision-ledger.md', 'text/markdown', reviewDecisionLedgerMarkdown(workbench), 'source-to-brief-review-decision-ledger-md'));
     if(workbench.operator_command_palette) files.push(fileEntry('source-to-brief/operator-command-palette.json', 'application/json', jsonContent(workbench.operator_command_palette), 'source-to-brief-command-palette'));
     if(workbench.review_navigation_shortcuts) files.push(fileEntry('source-to-brief/review-navigation-shortcuts.json', 'application/json', jsonContent(workbench.review_navigation_shortcuts), 'source-to-brief-navigation-shortcuts'));
+    if(workbench.review_quality_diagnostics) files.push(fileEntry('source-to-brief/review-quality-diagnostics.json', 'application/json', jsonContent(workbench.review_quality_diagnostics), 'source-to-brief-review-quality-diagnostics'));
+    if(workbench.weak_claim_repair_suggestions) files.push(fileEntry('source-to-brief/weak-claim-repair-suggestions.json', 'application/json', jsonContent(workbench.weak_claim_repair_suggestions), 'source-to-brief-weak-claim-repair-suggestions'));
+    if(workbench.review_quality_diagnostics && workbenchApi?.weakClaimRepairMarkdown) files.push(fileEntry('source-to-brief/weak-claim-repair-suggestions.md', 'text/markdown', workbenchApi.weakClaimRepairMarkdown(workbench), 'source-to-brief-weak-claim-repair-suggestions-md'));
     files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }

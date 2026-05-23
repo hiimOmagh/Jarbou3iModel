@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0-alpha.6",
-  "release_title": "v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts",
+  "version": "1.2.0-alpha.7",
+  "release_title": "v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions",
   "package": "jarbou3i-research-engine",
   "release_type": "post-stable-alpha-controlled-workbench",
   "runtime_capability_change": false,
@@ -44,8 +44,8 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Controlled local/manual Source-to-Brief operator navigation: command palette, review navigation shortcuts, and exported navigation metadata without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, or automatic source verification claims.",
+  "release_scope": "Controlled local/manual Source-to-Brief review quality diagnostics: weak-claim detection, repair suggestions, contradiction/source-gap review hints, and exported diagnostics metadata without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, or automatic source verification claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.2.0-alpha.6`\nRuntime capability change: no\nPublic surface: local/manual source-to-brief workbench only\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
-  "node_runtime_note": "Node 24 CI compatibility preserved for v1.2.0-alpha.6."
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.2.0-alpha.7`\nRuntime capability change: no\nPublic surface: local/manual source-to-brief workbench only\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
+  "node_runtime_note": "Node 24 CI compatibility preserved for v1.2.0-alpha.7."
 }

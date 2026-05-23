@@ -1,10 +1,10 @@
-/* Jarbou3i Research Engine post-stable capability roadmap and expansion gate v1.2.0-alpha.6. */
+/* Jarbou3i Research Engine post-stable capability roadmap and expansion gate v1.2.0-alpha.7. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.6';
+  const VERSION = '1.2.0-alpha.7';
   const STABLE_BASELINE = '1.1.0';
-  const RELEASE_TITLE = 'v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts';
+  const RELEASE_TITLE = 'v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions';
   const MIN_ACCEPTANCE_CRITERIA = 4;
   const MIN_FALSIFIERS = 3;
   const MIN_EVIDENCE_REQUIREMENTS = 3;

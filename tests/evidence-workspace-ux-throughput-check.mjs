@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.6';
+const VERSION = '1.2.0-alpha.7';
 const source = fs.readFileSync('src/research/evidence-workspace-ux.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
@@ -63,7 +63,7 @@ assert.ok(index.includes('rejectVisibleReviewEvidenceBtn'), 'visible reject batc
 assert.ok(engine.includes('evidenceWorkspaceUxReport'), 'research engine must export evidence workspace UX report');
 assert.ok(engine.includes('reviewThroughputReport'), 'research engine must export review throughput report');
 assert.ok(helpers.includes('reviewThroughputTitle'), 'localized throughput labels missing');
-assert.ok(helpers.includes('Operator Command Palette + Review Navigation Shortcuts'));
+assert.ok(helpers.includes('Review Quality Diagnostics + Weak-Claim Repair Suggestions'));
 assert.ok(helpers.includes('مرشح مستقر'));
 assert.ok(helpers.includes('candidat stable'));
 

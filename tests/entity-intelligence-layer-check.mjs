@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.6';
+const VERSION = '1.2.0-alpha.7';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const scorerSource = read('src/research/evidence-scorer.js');
 const clusterSource = read('src/research/source-cluster-engine.js');

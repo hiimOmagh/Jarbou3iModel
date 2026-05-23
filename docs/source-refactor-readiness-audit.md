@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.2.0-alpha.6`
-Release: `v1.2.0-alpha.6 — Operator Command Palette + Review Navigation Shortcuts`
+Version: `1.2.0-alpha.7`
+Release: `v1.2.0-alpha.7 — Review Quality Diagnostics + Weak-Claim Repair Suggestions`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation
