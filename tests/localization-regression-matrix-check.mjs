@@ -4,9 +4,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine', 'English public version label must identify alpha8.1');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.2.0-alpha.8.1 تثبيت CI + عزل سير العمل', 'Arabic public version label must identify alpha8.1');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.2.0-alpha.8.1 Stabilisation CI + quarantaine du workflow', 'French public version label must identify alpha8.1');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow', 'English public version label must identify v1.3.0-alpha.1');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.3.0-alpha.1 محرك جلسة البحث الموجّه + سير تجميع الموجز', 'Arabic public version label must identify v1.3.0-alpha.1');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.3.0-alpha.1 Moteur de session de recherche guidée + workflow d’assemblage du brief', 'French public version label must identify v1.3.0-alpha.1');
 assert.ok(matrixConfig.language_rules.ar.required.includes('تشخيص جودة المراجعة'), 'Arabic evidence matrix must require alpha.7 review quality copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diagnostics qualité de revue'), 'French evidence matrix must require alpha.7 review quality copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');

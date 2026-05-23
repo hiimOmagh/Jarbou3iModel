@@ -2,7 +2,7 @@
 
 Current milestone:
 
-`v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine`
+`v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow`
 
 Purpose: take one controlled step beyond the stable public-demo lock by packaging the existing local/manual research plan, evidence workspace, claim review, contradiction review, source gaps, confidence metadata, and strategic brief export into one source-to-brief workflow.
 

@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.2.0-alpha.8.1';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.1';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -190,6 +190,8 @@
       `Navigation shortcuts: ${safeString(workbench.review_navigation_shortcuts?.shortcut_count ?? 0)}`,
       `Diagnostic repair queue open: ${safeString(workbench.diagnostic_repair_queue?.open_count ?? 0)}`,
       `Export risk blockers: ${safeString(workbench.export_risk_resolution?.blocker_count ?? 0)}`,
+      `Guided session state: ${safeString(workbench.guided_research_session?.session_state ?? 'manual_review_required')}`,
+      `Guided session progress: ${safeString(workbench.guided_research_session?.session_progress_percent ?? 0)}%`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
       `Low-traceability review items: ${safeString(review.low_traceability_open_count ?? 0)}`,
       '',
@@ -266,6 +268,10 @@
     if(workbench.diagnostic_repair_queue && workbenchApi?.diagnosticRepairQueueMarkdown) files.push(fileEntry('source-to-brief/diagnostic-repair-queue.md', 'text/markdown', workbenchApi.diagnosticRepairQueueMarkdown(workbench), 'source-to-brief-diagnostic-repair-queue-md'));
     if(workbench.export_risk_resolution) files.push(fileEntry('source-to-brief/export-risk-resolution.json', 'application/json', jsonContent(workbench.export_risk_resolution), 'source-to-brief-export-risk-resolution'));
     if(workbench.export_risk_resolution && workbenchApi?.exportRiskResolutionMarkdown) files.push(fileEntry('source-to-brief/export-risk-resolution.md', 'text/markdown', workbenchApi.exportRiskResolutionMarkdown(workbench), 'source-to-brief-export-risk-resolution-md'));
+    const guidedApi = root.guidedResearchSession;
+    if(workbench.guided_research_session) files.push(fileEntry('source-to-brief/guided-research-session.json', 'application/json', jsonContent(workbench.guided_research_session), 'source-to-brief-guided-research-session'));
+    if(workbench.guided_research_session && guidedApi?.guidedSessionMarkdown) files.push(fileEntry('source-to-brief/guided-research-session.md', 'text/markdown', guidedApi.guidedSessionMarkdown(workbench.guided_research_session), 'source-to-brief-guided-research-session-md'));
+    if(workbench.guided_research_session && guidedApi?.briefAssemblyMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-preview.md', 'text/markdown', guidedApi.briefAssemblyMarkdown(workbench.guided_research_session), 'source-to-brief-brief-assembly-preview-md'));
     files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }

@@ -1,12 +1,13 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.8.1. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.1. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.8.1';
+  const VERSION = '1.3.0-alpha.1';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
   const operatorCommandPalette = root.operatorCommandPalette;
+  const guidedResearchSession = root.guidedResearchSession;
   const SUPPORT_LEVELS = Object.freeze(['strong','partial','weak','unsupported']);
   const BLOCKED_CAPABILITIES = Object.freeze([
     'live_scraping',
@@ -381,6 +382,9 @@
       'source-to-brief/diagnostic-repair-queue.md',
       'source-to-brief/export-risk-resolution.json',
       'source-to-brief/export-risk-resolution.md',
+      'source-to-brief/guided-research-session.json',
+      'source-to-brief/guided-research-session.md',
+      'source-to-brief/brief-assembly-preview.md',
       'source-to-brief/operator-handoff.md'
     ];
     if(Number(reviewSummary.unresolved_count || 0) > 0) files.push('source-to-brief/review-throughput-summary.json');
@@ -965,6 +969,8 @@
     const exportRiskResolution = buildExportRiskResolution(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
     const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
     const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
+    const sessionBase = {research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question), research_plan:packet.research_plan || null, evidence_cards:evidenceCards, evidence_to_claim_links:links, claim_map:claimMap, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, confidence_review:confidenceReview, exportable_strategic_brief:strategic, operator_flow:operatorFlow, export_readiness_checklist:exportReadinessChecklist, review_throughput_summary:reviewSummary, export_polish_report:exportPolish, claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, operator_command_palette:commandPalette, review_navigation_shortcuts:navigationShortcuts};
+    const guidedSession = guidedResearchSession?.buildGuidedResearchSession ? guidedResearchSession.buildGuidedResearchSession(sessionBase, packet, {version, now:generatedAt}) : null;
     return {
       source_to_brief_version:version,
       workbench_model:MODEL,
@@ -992,6 +998,8 @@
       export_risk_resolution:exportRiskResolution,
       operator_command_palette:commandPalette,
       review_navigation_shortcuts:navigationShortcuts,
+      guided_research_session:guidedSession,
+      brief_assembly_preview:guidedSession?.brief_assembly_preview || null,
       ux_compression_model:'source_to_brief_operator_flow.v1',
       export_polish_model:EXPORT_POLISH_MODEL,
       empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),
@@ -1071,6 +1079,11 @@
       `- Risk gate: ${text(workbench.export_risk_resolution?.resolution_gate || 'export_risk_resolution_required')}`,
       `- Blockers: ${Number(workbench.export_risk_resolution?.blocker_count || 0)}`,
       `- Warnings: ${Number(workbench.export_risk_resolution?.warning_count || 0)}`,
+      '',
+      '## Guided Research Session',
+      `- Session state: ${text(workbench.guided_research_session?.session_state || 'manual_review_required')}`,
+      `- Progress: ${Number(workbench.guided_research_session?.session_progress_percent || 0)}%`,
+      `- Next action: ${text(workbench.guided_research_session?.next_best_action?.label || 'continue_manual_review')}`,
       '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')

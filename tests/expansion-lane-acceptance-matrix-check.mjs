@@ -10,20 +10,20 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.2.0-alpha.8.1';
+const VERSION = '1.3.0-alpha.1';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'CI Stabilization + Workflow Quarantine';
+const TITLE = 'Guided Research Session Engine + Brief Assembly Workflow';
 const DOC = 'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.8.1-post-stable-capability-roadmap-expansion-gate.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.3.0-alpha.1-post-stable-capability-roadmap-expansion-gate.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
 const releaseDoc = readReleaseDoc(DOC);
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.8.1-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.8.1.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.1-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.1.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
@@ -32,7 +32,7 @@ assert.ok(pkg.description.includes('package script compression and CI gate regis
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
 assert.ok(index.includes('data-r-i18n="stableWorkflowTitle"') && index.includes('تدقيق الاحتفاظ بالملفات'), 'localized index must keep repository audit workflow visible');
 assert.ok(index.includes('إثبات الدمج الآمن'), 'localized index must mention proof before reduction');
-assert.ok(moduleSource.includes("const VERSION = '1.2.0-alpha.8.1'"));
+assert.ok(moduleSource.includes("const VERSION = '1.3.0-alpha.1'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('acceptance_criteria'));

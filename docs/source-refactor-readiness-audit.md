@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.2.0-alpha.8.1`
-Release: `v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine`
+Version: `1.3.0-alpha.1`
+Release: `v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

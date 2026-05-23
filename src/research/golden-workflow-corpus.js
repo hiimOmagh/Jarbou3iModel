@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.8.1';
+  const VERSION = '1.3.0-alpha.1';
   const MODEL = 'golden_workflow_corpus.v1';
   function nowIso(){ return new Date().toISOString(); }
   function asArray(value){ return Array.isArray(value) ? value : []; }
@@ -80,7 +80,7 @@
   }
   function buildReleaseReadinessRunbook(packet = {}, options = {}){
     const version = options.version || VERSION;
-    return {release_readiness_runbook_version:version, runbook_model:MODEL, generated_at:nowIso(), release:'v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine', steps:['Run node tests/golden-workflow-corpus-check.mjs.','Run node tests/ci-gate-runner.mjs no-browser.','Run GitHub browser CI.','Capture hosted-demo evidence.','Confirm hosted metadata app_version is 1.1.0.','Reject lock if visible-text snapshots contain stale alpha.23 release copy.'], blocker_policy:['Screenshots alone are insufficient.','ZIP existence alone is insufficient.','No live scraping/provider execution/OAuth expansion is allowed.'], live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false, release_gate:'release_readiness_review_required'};
+    return {release_readiness_runbook_version:version, runbook_model:MODEL, generated_at:nowIso(), release:'v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow', steps:['Run node tests/golden-workflow-corpus-check.mjs.','Run node tests/ci-gate-runner.mjs no-browser.','Run GitHub browser CI.','Capture hosted-demo evidence.','Confirm hosted metadata app_version is 1.1.0.','Reject lock if visible-text snapshots contain stale alpha.23 release copy.'], blocker_policy:['Screenshots alone are insufficient.','ZIP existence alone is insufficient.','No live scraping/provider execution/OAuth expansion is allowed.'], live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false, release_gate:'release_readiness_review_required'};
   }
   function buildGoldenWorkflowBundle(packet = {}, exportPack = null, options = {}){
     const base = packet && Object.keys(packet).length ? packet : buildGoldenWorkflowCorpus(options);

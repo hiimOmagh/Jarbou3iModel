@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine
+## v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow
 
 - Adds local/manual review quality diagnostics for weak, unsupported, contradicted, and source-gap-heavy claims.
 - Adds weak-claim repair suggestions with explicit operator actions and manual-only boundaries.
@@ -13,9 +13,9 @@
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-`v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine`
+`v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow`
 
-Public label: `v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine`. Internal evidence metadata: `1.2.0-alpha.8.1`. This controlled alpha improves review-quality triage and weak-claim repair guidance inside the local/manual Source-to-Brief workbench; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
+Public label: `v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow`. Internal evidence metadata: `1.3.0-alpha.1`. This controlled alpha improves review-quality triage and weak-claim repair guidance inside the local/manual Source-to-Brief workbench; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

@@ -1,6 +1,6 @@
 # Jarbou3i Research Engine
 
-`v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine`
+`v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
@@ -33,7 +33,7 @@ Screenshots alone are insufficient for release approval. ZIP archive alone is in
 
 Workbench note: this release is a changed-files-only local/manual review-quality diagnostics and weak-claim repair suggestions implementation with release apply integrity controls.
 
-Public release label: v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine.
+Public release label: v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow.
 
 
 Alpha.8 preserved feature surface: Diagnostic Repair Queue + Export Risk Resolution.

@@ -13,7 +13,7 @@ if (!files.length) fail('no JSON fixtures found');
 for (const file of files) {
   const data = JSON.parse(fs.readFileSync(`fixtures/${file}`, 'utf8'));
   for (const key of requiredTop) if (!(key in data)) fail(`${file}: missing ${key}`);
-  if (data.schema_version !== '1.2.0-alpha.8.1') fail(`${file}: schema_version must be 1.2.0-alpha.8.1`);
+  if (data.schema_version !== '1.3.0-alpha.1') fail(`${file}: schema_version must be 1.3.0-alpha.1`);
   for (const key of pillarKeys) {
     if (!Array.isArray(data[key]) || data[key].length === 0) fail(`${file}: ${key} must contain at least one item`);
     data[key].forEach((item, idx) => {

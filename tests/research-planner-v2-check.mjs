@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION='1.2.0-alpha.8.1';
-const RELEASE='v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine';
+const VERSION='1.3.0-alpha.1';
+const RELEASE='v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow';
 const read=(file)=>fs.readFileSync(file,'utf8');
 const source=read('src/research/research-planner-v2.js');
 const engine=read('src/research-engine.js');
@@ -13,8 +13,8 @@ const index=read('index.html');
 const schema=JSON.parse(read('schema/research-workflow.schema.json'));
 const registry=JSON.parse(read('tests/ci-gate-registry.json'));
 const sample=JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-const migrationFixture=getMigrationFixture('fixtures/migrations/v1.2.0-alpha.8.1-packet.json');
-const privacyFixture=getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.8.1.json');
+const migrationFixture=getMigrationFixture('fixtures/migrations/v1.3.0-alpha.1-packet.json');
+const privacyFixture=getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.1.json');
 
 new vm.Script(source,{filename:'src/research/research-planner-v2.js'});
 const context={console, window:{Jarbou3iResearchModules:{}}, globalThis:null}; context.globalThis=context; vm.createContext(context); vm.runInContext(source, context, {filename:'src/research/research-planner-v2.js'});

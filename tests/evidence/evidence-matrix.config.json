@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.2.0-alpha.8.1",
-  "internal_build_version": "1.2.0-alpha.8.1",
-  "public_version_label": "v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine",
+  "evidence_matrix_config_version": "1.3.0-alpha.1",
+  "internal_build_version": "1.3.0-alpha.1",
+  "public_version_label": "v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow",
   "locales": [
     "en",
     "ar",
@@ -194,6 +194,9 @@
       "tab": "quality",
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
+        "Guided Research Session",
+        "جلسة بحث موجّهة",
+        "Session de recherche guidée",
         "Quality",
         "الجودة",
         "Qualité"
@@ -225,8 +228,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine",
-    "ar": "v1.2.0-alpha.8.1 تثبيت CI + عزل سير العمل",
-    "fr": "v1.2.0-alpha.8.1 Stabilisation CI + quarantaine du workflow"
+    "en": "v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow",
+    "ar": "v1.3.0-alpha.1 محرك جلسة البحث الموجّه + سير تجميع الموجز",
+    "fr": "v1.3.0-alpha.1 Moteur de session de recherche guidée + workflow d’assemblage du brief"
   }
 }

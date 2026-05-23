@@ -18,9 +18,9 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const node24Doc = readReleaseDoc('docs/v1.0.21-node-24-ci-compatibility.md');
 
-assert.equal(pkg.version, '1.2.0-alpha.8.1', 'package.json must identify v1.1.0');
-assert.equal(lock.version, '1.2.0-alpha.8.1', 'package-lock root version must identify v1.1.0');
-assert.equal(lock.packages[''].version, '1.2.0-alpha.8.1', 'package-lock package root must identify v1.1.0');
+assert.equal(pkg.version, '1.3.0-alpha.1', 'package.json must identify v1.1.0');
+assert.equal(lock.version, '1.3.0-alpha.1', 'package-lock root version must identify v1.1.0');
+assert.equal(lock.packages[''].version, '1.3.0-alpha.1', 'package-lock package root must identify v1.1.0');
 
 for (const forbidden of [
   'actions/checkout@v4',
