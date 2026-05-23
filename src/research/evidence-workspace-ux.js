@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Evidence Review Throughput + Source-to-Brief Export Polish. Local-only review ergonomics; no queue bypass. */
+/* Jarbou3i Research Engine Claim Traceability Console + Review Decision Ledger. Local-only review ergonomics; no queue bypass. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.4';
+  const VERSION = '1.2.0-alpha.5';
   const VALID_STATUS = new Set(['all','pending','needs_edit','accepted','rejected','resolved','unresolved']);
   const VALID_REL = new Set(['all','supports','contradicts','unlinked']);
   const VALID_SORT = new Set(['newest','oldest','reliability_desc','attention_desc','needs_review_first']);

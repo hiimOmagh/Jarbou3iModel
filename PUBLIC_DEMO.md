@@ -1,4 +1,4 @@
-# Public Demo — v1.2.0-alpha.4 Evidence Review Throughput + Source-to-Brief Export Polish
+# Public Demo — v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger
 
 The `v1.1.0` stable public-demo surface remains protected. This alpha adds a local/manual source-to-brief workbench that packages user-provided or source-imported evidence, generated claims, inferred confidence, missing evidence/gaps, and blocked unavailable capabilities for review.
 
@@ -14,4 +14,4 @@ Provenance ledger note: public-demo publication remains blocked unless changed-f
 
 No live connector, no live scraping, and no automatic source verification are enabled by this source-to-brief release.
 
-Public release label: v1.2.0-alpha.4 Evidence Review Throughput + Source-to-Brief Export Polish.
+Public release label: v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger.

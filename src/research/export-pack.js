@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.2.0-alpha.4';
+  const EXPORT_PACK_VERSION = '1.2.0-alpha.5';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -184,6 +184,8 @@
       `Research question: ${safeString(workbench.research_question || 'Untitled')}`,
       `Export review status: ${safeString(polish.export_review_status || 'manual_review_required')}`,
       `Unresolved review items: ${safeString(review.unresolved_count ?? 0)}`,
+      `Traceability console rows: ${safeString(workbench.claim_traceability_console?.rows?.length ?? 0)}`,
+      `Open ledger decisions: ${safeString(workbench.review_decision_ledger?.unresolved_decision_count ?? 0)}`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
       `Low-traceability review items: ${safeString(review.low_traceability_open_count ?? 0)}`,
       '',
@@ -205,6 +207,31 @@
     ].join('\n');
   }
 
+
+  function claimTraceabilityCsv(workbench = {}){
+    const rows = [['row_id','claim_id','support_level','support_score','traceability_status','decision_state','supporting_evidence_ids','contradicting_evidence_ids','warnings']];
+    asArray(workbench.claim_traceability_console?.rows).forEach((row)=>rows.push([row.row_id, row.claim_id, row.support_level, row.support_score, row.traceability_status, row.decision_state, asArray(row.supporting_evidence_ids).join('|'), asArray(row.contradicting_evidence_ids).join('|'), asArray(row.warnings).join('|')]));
+    return rowsToCsv(rows);
+  }
+  function reviewDecisionLedgerMarkdown(workbench = {}){
+    const ledger = workbench.review_decision_ledger || {};
+    const entries = asArray(ledger.entries).slice(0, 80).map((entry)=>`- ${safeString(entry.entry_id)} · ${safeString(entry.decision_type)} · ${safeString(entry.target_id)} · ${safeString(entry.decision_state)}`).join('\n') || '- No decision entries recorded';
+    return [
+      '# Review Decision Ledger',
+      '',
+      `Ledger gate: ${safeString(ledger.release_gate || 'review_decision_ledger_open')}`,
+      `Open decisions: ${safeString(ledger.unresolved_decision_count ?? 0)}`,
+      `Entry count: ${safeString(ledger.entry_count ?? 0)}`,
+      '',
+      '## Decision Entries',
+      entries,
+      '',
+      '## Boundary',
+      'Ledger entries are local/manual review decisions. They do not verify source truth, fetch live data, execute providers, or enable OAuth/backend behavior.',
+      ''
+    ].join('\n');
+  }
+
   function sourceToBriefFiles(packet){
     const files = [];
     const workbenchApi = root.sourceToBriefWorkbench;
@@ -222,6 +249,10 @@
     if(workbench.export_readiness_checklist) files.push(fileEntry('source-to-brief/export-readiness.json', 'application/json', jsonContent(workbench.export_readiness_checklist), 'source-to-brief-export-readiness'));
     if(workbench.export_polish_report) files.push(fileEntry('source-to-brief/export-polish-report.json', 'application/json', jsonContent(workbench.export_polish_report), 'source-to-brief-export-polish'));
     if(workbench.review_throughput_summary) files.push(fileEntry('source-to-brief/review-throughput-summary.json', 'application/json', jsonContent(workbench.review_throughput_summary), 'source-to-brief-review-throughput'));
+    if(workbench.claim_traceability_console) files.push(fileEntry('source-to-brief/claim-traceability-console.json', 'application/json', jsonContent(workbench.claim_traceability_console), 'source-to-brief-claim-traceability-console'));
+    if(workbench.claim_traceability_console) files.push(fileEntry('source-to-brief/claim-traceability.csv', 'text/csv', claimTraceabilityCsv(workbench), 'source-to-brief-claim-traceability-csv'));
+    if(workbench.review_decision_ledger) files.push(fileEntry('source-to-brief/review-decision-ledger.json', 'application/json', jsonContent(workbench.review_decision_ledger), 'source-to-brief-review-decision-ledger'));
+    if(workbench.review_decision_ledger) files.push(fileEntry('source-to-brief/review-decision-ledger.md', 'text/markdown', reviewDecisionLedgerMarkdown(workbench), 'source-to-brief-review-decision-ledger-md'));
     files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }
@@ -346,6 +377,6 @@
     const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
     return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v3</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
-  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, sourceToBriefFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, goldenWorkflowFiles, releaseCandidateHygieneFiles, evidencePackV3Files, exportPackSummaryHtml});
+  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, sourceToBriefFiles, claimTraceabilityCsv, reviewDecisionLedgerMarkdown, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, goldenWorkflowFiles, releaseCandidateHygieneFiles, evidencePackV3Files, exportPackSummaryHtml});
   if(typeof module !== 'undefined' && module.exports) module.exports = root.exportPack;
 })(typeof window !== 'undefined' ? window : globalThis);

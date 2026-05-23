@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.2.0-alpha.4",
-  "internal_build_version": "1.2.0-alpha.4",
-  "public_version_label": "v1.2.0-alpha.4 Evidence Review Throughput + Source-to-Brief Export Polish",
+  "evidence_matrix_config_version": "1.2.0-alpha.5",
+  "internal_build_version": "1.2.0-alpha.5",
+  "public_version_label": "v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Evidence Review Throughput + Source-to-Brief Export Polish",
+        "Claim Traceability Console + Review Decision Ledger",
         "Public demo",
         "Export Pack v3"
       ],
@@ -44,7 +44,7 @@
         "revue des preuves"
       ],
       "forbidden": [
-        "Evidence Review Throughput + Source-to-Brief Export Polish",
+        "Claim Traceability Console + Review Decision Ledger",
         "Public surface freeze",
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
@@ -225,7 +225,7 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.2.0-alpha.4 Evidence Review Throughput + Source-to-Brief Export Polish",
+    "en": "v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger",
     "ar": "v1.1.0 العرض العام المستقر",
     "fr": "v1.1.0 Démo publique stable"
   }

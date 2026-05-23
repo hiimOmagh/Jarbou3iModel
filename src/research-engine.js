@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.2.0-alpha.4';
+  const VERSION = '1.2.0-alpha.5';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -962,7 +962,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.2.0-alpha.4',
+      schema_version: '1.2.0-alpha.5',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),

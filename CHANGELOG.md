@@ -1,21 +1,20 @@
 # Changelog
 
-## v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish
+## v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger
 
-- Adds evidence-review priority lanes for priority review, contradictions, traceability repairs, unlinked evidence, and ready-to-decide candidates.
-- Adds next-review actions so the operator can triage the highest-value queue item before export.
-- Adds an export throughput gate that keeps unresolved review work visible without bypassing human review.
-- Adds Source-to-Brief export polish metadata: export-polish report, review-throughput summary, export-readiness JSON, and operator-handoff Markdown.
-- Adds Source-to-Brief export-polish UI panels that surface handoff files, blockers, warnings, review queue pressure, and manual/local boundaries.
-- Keeps the alpha.3 operator-flow compression intact while improving review throughput and export handoff clarity.
+- Adds a claim traceability console that maps each claim to support level, evidence IDs, traceability status, source types, warnings, and manual decision state.
+- Adds a review decision ledger covering evidence review decisions, claim traceability decisions, contradiction resolution, source-gap decisions, and export handoff decisions.
+- Adds export artifacts for claim traceability JSON/CSV and review decision ledger JSON/Markdown.
+- Adds compact UI panels for traceability rows and open ledger decisions inside the Source-to-Brief operator surface.
+- Keeps the alpha.4 review-throughput and export-polish path intact while making decisions auditable before handoff.
 - Preserves manual/private default behavior, the v1.1.0 stable public-demo boundary, and the v1.2.0-alpha.1 post-stable expansion gate.
 - Adds no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, and no automatic source verification claims.
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-`v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish`
+`v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger`
 
-Public label: `v1.2.0-alpha.4 Evidence Review Throughput + Source-to-Brief Export Polish`. Internal evidence metadata: `1.2.0-alpha.4`. This controlled alpha improves local/manual evidence-review throughput and source-to-brief export handoff; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
+Public label: `v1.2.0-alpha.5 Claim Traceability Console + Review Decision Ledger`. Internal evidence metadata: `1.2.0-alpha.5`. This controlled alpha adds a local/manual claim traceability console and review decision ledger so every claim, evidence link, contradiction, gap, and export decision remains auditable before handoff; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

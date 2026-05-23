@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.2.0-alpha.4';
-const TITLE = 'Evidence Review Throughput + Source-to-Brief Export Polish';
+const VERSION = '1.2.0-alpha.5';
+const TITLE = 'Claim Traceability Console + Review Decision Ledger';
 const REGISTRY_BUDGET_BYTES = 900 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
@@ -13,14 +13,14 @@ const registries = [
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
     expectedEntries: 59,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.2.0-alpha.4-packet.json')
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.2.0-alpha.5-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
     expectedEntries: 49,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.4.json')
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.5.json')
   }
 ];
 

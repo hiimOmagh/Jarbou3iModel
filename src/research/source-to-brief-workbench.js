@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.4. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.5. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.4';
+  const VERSION = '1.2.0-alpha.5';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -367,6 +367,10 @@
       'source-to-brief/source-gaps.json',
       'source-to-brief/confidence-review.json',
       'source-to-brief/export-readiness.json',
+      'source-to-brief/claim-traceability-console.json',
+      'source-to-brief/claim-traceability.csv',
+      'source-to-brief/review-decision-ledger.json',
+      'source-to-brief/review-decision-ledger.md',
       'source-to-brief/operator-handoff.md'
     ];
     if(Number(reviewSummary.unresolved_count || 0) > 0) files.push('source-to-brief/review-throughput-summary.json');
@@ -394,6 +398,159 @@
     };
   }
 
+
+  function traceabilityStatusForClaim(claim = {}, evidence = []){
+    const linkedIds = unique([].concat(asArray(claim.supporting_evidence_ids), asArray(claim.contradicting_evidence_ids)));
+    const linked = evidence.filter((item)=>linkedIds.includes(item.evidence_id));
+    if(!linkedIds.length) return 'missing_evidence_links';
+    if(!linked.length) return 'linked_evidence_not_found';
+    const complete = linked.filter((item)=>item.traceability_complete === true || traceable(item)).length;
+    if(complete === linked.length) return 'complete_traceability';
+    if(complete > 0) return 'partial_traceability';
+    return 'traceability_missing';
+  }
+  function claimDecisionState(claim = {}, contradictionGroups = []){
+    const hasContradiction = contradictionGroups.some((group)=>group.target_claim_id === claim.claim_id);
+    if(hasContradiction) return 'contradiction_review_required';
+    if(claim.support_level === 'strong') return 'provisionally_supported_manual_review';
+    if(claim.support_level === 'partial') return 'partial_support_manual_review';
+    if(claim.support_level === 'weak') return 'weak_support_decision_required';
+    return 'unsupported_decision_required';
+  }
+  function buildClaimTraceabilityConsole(workbench = {}, packet = {}){
+    const evidence = asArray(workbench.evidence_cards || packet.evidence_matrix || packet.evidence);
+    const contradictions = asArray(workbench.contradiction_groups);
+    const rows = asArray(workbench.claim_map).map((claim, index)=>{
+      const linkedIds = unique([].concat(asArray(claim.supporting_evidence_ids), asArray(claim.contradicting_evidence_ids)));
+      const linkedEvidence = evidence.filter((item)=>linkedIds.includes(item.evidence_id));
+      const missingIds = linkedIds.filter((id)=>!linkedEvidence.some((item)=>item.evidence_id === id));
+      const warningSet = unique([].concat(asArray(claim.source_gap_warnings), missingIds.length ? ['linked_evidence_missing_from_package'] : []));
+      return {
+        row_id:`CTR${index + 1}`,
+        claim_id:claim.claim_id,
+        claim_text:claim.claim_text,
+        support_level:claim.support_level,
+        support_score:claim.support_score,
+        inferred_confidence:claim.inferred_confidence,
+        evidence_link_count:linkedIds.length,
+        supporting_evidence_ids:asArray(claim.supporting_evidence_ids),
+        contradicting_evidence_ids:asArray(claim.contradicting_evidence_ids),
+        source_types:unique(linkedEvidence.map((item)=>item.source_type || 'other')),
+        traceability_status:traceabilityStatusForClaim(claim, evidence),
+        decision_state:claimDecisionState(claim, contradictions),
+        warnings:warningSet,
+        manual_review_required:true,
+        evidence_boundary:'user_provided_or_source_imported_evidence',
+        live_fetching_performed:false,
+        verification_claimed:false
+      };
+    });
+    const counts = {
+      total_claims:rows.length,
+      complete_traceability:rows.filter((row)=>row.traceability_status === 'complete_traceability').length,
+      partial_traceability:rows.filter((row)=>row.traceability_status === 'partial_traceability').length,
+      missing_traceability:rows.filter((row)=>['missing_evidence_links','linked_evidence_not_found','traceability_missing'].includes(row.traceability_status)).length,
+      decision_required:rows.filter((row)=>/required/.test(row.decision_state)).length,
+      contradiction_review_required:rows.filter((row)=>row.decision_state === 'contradiction_review_required').length
+    };
+    return {
+      claim_traceability_console_version:VERSION,
+      traceability_model:'claim_traceability_console.v1',
+      generated_at:nowIso(),
+      rows,
+      counts,
+      release_gate:counts.missing_traceability || counts.decision_required || counts.contradiction_review_required ? 'claim_traceability_review_required' : 'claim_traceability_reviewable',
+      operator_next_action:counts.missing_traceability ? 'repair_missing_claim_evidence_links' : (counts.contradiction_review_required ? 'review_claim_contradictions' : 'review_decision_ledger'),
+      manual_local_boundary:'claim traceability is derived from local evidence links and does not verify source truth',
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function ledgerEntry(entry_id, decision_type, target_id, label, state, details = {}){
+    return Object.assign({
+      entry_id,
+      decision_type,
+      target_id,
+      label:text(label || target_id),
+      decision_state:state,
+      human_review_required:true,
+      decided_by:'operator_pending',
+      decided_at:null,
+      decision_basis:'local_manual_evidence_traceability',
+      live_fetching_performed:false,
+      verification_claimed:false
+    }, details);
+  }
+  function buildReviewDecisionLedger(workbench = {}, packet = {}){
+    const entries = [];
+    asArray(workbench.evidence_cards).forEach((item, index)=>{
+      const linked = unique([].concat(asArray(item.supports), asArray(item.contradicts)));
+      const state = linked.length && item.traceability_complete ? 'evidence_review_ready' : 'evidence_traceability_decision_required';
+      entries.push(ledgerEntry(`DL-E${index + 1}`, 'evidence_review_decision', item.evidence_id, item.claim || item.source_title, state, {
+        evidence_id:item.evidence_id,
+        source_type:item.source_type,
+        linked_claim_ids:linked,
+        warnings:asArray(item.source_gap_warnings)
+      }));
+    });
+    asArray(workbench.claim_traceability_console?.rows).forEach((row, index)=>{
+      entries.push(ledgerEntry(`DL-C${index + 1}`, 'claim_traceability_decision', row.claim_id, row.claim_text, row.decision_state, {
+        claim_id:row.claim_id,
+        support_level:row.support_level,
+        support_score:row.support_score,
+        supporting_evidence_ids:asArray(row.supporting_evidence_ids),
+        contradicting_evidence_ids:asArray(row.contradicting_evidence_ids),
+        traceability_status:row.traceability_status,
+        warnings:asArray(row.warnings)
+      }));
+    });
+    asArray(workbench.contradiction_groups).forEach((group, index)=>{
+      entries.push(ledgerEntry(`DL-X${index + 1}`, 'contradiction_resolution_decision', group.group_id, group.target_claim_text || group.target_claim_id, 'contradiction_resolution_required', {
+        contradiction_group_id:group.group_id,
+        target_claim_id:group.target_claim_id,
+        supporting_evidence_ids:asArray(group.supporting_evidence_ids),
+        contradicting_evidence_ids:asArray(group.contradicting_evidence_ids),
+        severity:group.severity
+      }));
+    });
+    asArray(workbench.source_gaps?.warnings).slice(0,12).forEach((gap, index)=>{
+      entries.push(ledgerEntry(`DL-G${index + 1}`, 'source_gap_decision', gap.claim_id || gap.evidence_id || `gap-${index + 1}`, gap.warning, 'gap_accept_or_repair_decision_required', {
+        gap_scope:gap.scope,
+        claim_id:gap.claim_id || null,
+        evidence_id:gap.evidence_id || null,
+        warning:gap.warning
+      }));
+    });
+    const polish = workbench.export_polish_report || {};
+    entries.push(ledgerEntry('DL-EXPORT-1', 'export_handoff_decision', 'source-to-brief-export', 'Export handoff readiness', polish.export_review_status || 'manual_export_review_required', {
+      blockers:asArray(polish.blockers),
+      warnings:asArray(polish.warnings),
+      handoff_file_count:Number(polish.handoff_file_count || 0),
+      no_automatic_verification_claim:polish.no_automatic_verification_claim === true
+    }));
+    const unresolved = entries.filter((entry)=>!/ready$|reviewable$|supported/.test(entry.decision_state)).length;
+    return {
+      review_decision_ledger_version:VERSION,
+      ledger_model:'review_decision_ledger.v1',
+      generated_at:nowIso(),
+      entries,
+      entry_count:entries.length,
+      unresolved_decision_count:unresolved,
+      decision_types:unique(entries.map((entry)=>entry.decision_type)),
+      release_gate:unresolved ? 'review_decision_ledger_open' : 'review_decision_ledger_reviewable',
+      operator_next_action:unresolved ? 'resolve_open_review_decisions_before_publication' : 'confirm_export_handoff_boundary',
+      queue_bypass_enabled:false,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+
   function buildSourceToBriefWorkbench(packet = {}, options = {}){
     const version = options.version || VERSION;
     const generatedAt = options.now || nowIso();
@@ -409,6 +566,9 @@
     const reviewSummary = reviewThroughputSummary(packet);
     const releaseGate = evidenceCards.length && claimMap.length && confidenceReview.release_gate === 'confidence_reviewable' && sourceGaps.release_gate === 'source_gap_reviewable' ? 'source_to_brief_reviewable' : 'source_to_brief_review_required';
     const exportPolish = exportPolishReport({export_readiness_checklist:exportReadinessChecklist, release_gate:releaseGate}, reviewSummary);
+    const traceabilityBase = {claim_map:claimMap, evidence_cards:evidenceCards, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, export_polish_report:exportPolish};
+    const claimTraceabilityConsole = buildClaimTraceabilityConsole(traceabilityBase, packet);
+    const reviewDecisionLedger = buildReviewDecisionLedger(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole}), packet);
     return {
       source_to_brief_version:version,
       workbench_model:MODEL,
@@ -428,6 +588,8 @@
       export_readiness_checklist:exportReadinessChecklist,
       review_throughput_summary:reviewSummary,
       export_polish_report:exportPolish,
+      claim_traceability_console:claimTraceabilityConsole,
+      review_decision_ledger:reviewDecisionLedger,
       ux_compression_model:'source_to_brief_operator_flow.v1',
       export_polish_model:EXPORT_POLISH_MODEL,
       empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),
@@ -483,6 +645,16 @@
       `- Review queue unresolved: ${Number(workbench.review_throughput_summary?.unresolved_count || 0)}`,
       `- Manual boundary: ${text(workbench.export_polish_report?.manual_local_disclaimer || brief.source_boundary_note || '')}`,
       '',
+      '## Claim Traceability Console',
+      `- Traceability rows: ${Number(workbench.claim_traceability_console?.rows?.length || 0)}`,
+      `- Missing traceability: ${Number(workbench.claim_traceability_console?.counts?.missing_traceability || 0)}`,
+      `- Decision required: ${Number(workbench.claim_traceability_console?.counts?.decision_required || 0)}`,
+      '',
+      '## Review Decision Ledger',
+      `- Ledger entries: ${Number(workbench.review_decision_ledger?.entry_count || 0)}`,
+      `- Open decisions: ${Number(workbench.review_decision_ledger?.unresolved_decision_count || 0)}`,
+      `- Ledger gate: ${text(workbench.review_decision_ledger?.release_gate || 'review_decision_ledger_open')}`,
+      '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')
     ].join('\n') + '\n';
@@ -503,6 +675,8 @@
     buildConfidenceReview,
     buildOperatorFlow,
     buildExportReadinessChecklist,
+    buildClaimTraceabilityConsole,
+    buildReviewDecisionLedger,
     buildEmptyStateGuidance,
     reviewThroughputSummary,
     exportPolishReport,

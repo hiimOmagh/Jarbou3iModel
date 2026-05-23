@@ -1,8 +1,8 @@
 {
-  "workflow_version": "1.2.0-alpha.4",
+  "workflow_version": "1.2.0-alpha.5",
   "generated_at": "2026-04-28T00:00:00.000Z",
   "research_plan": {
-    "plan_version": "1.2.0-alpha.4",
+    "plan_version": "1.2.0-alpha.5",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
     "mode": "source-heavy",
@@ -58,7 +58,7 @@
       "feedback"
     ],
     "prompt_compiler": {
-      "prompt_compiler_version": "1.2.0-alpha.4",
+      "prompt_compiler_version": "1.2.0-alpha.5",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "mode": "source-heavy",
       "topic_raw": "Sample: US-China chip war",
@@ -137,14 +137,14 @@
     "live_ai_used": false,
     "live_fetching_performed": false,
     "research_planner_report": {
-      "research_planner_version": "1.2.0-alpha.4",
+      "research_planner_version": "1.2.0-alpha.5",
       "planner_model": "research_planner_v2.v1",
       "generated_at": "2026-05-21T00:00:00.000Z",
       "topic": "Sample strategic research topic",
       "context": "2024–2026",
       "depth_preset": "standard",
       "source_type_budget": {
-        "source_budget_version": "1.2.0-alpha.4",
+        "source_budget_version": "1.2.0-alpha.5",
         "depth_preset": "standard",
         "source_types": [
           "official",
@@ -262,7 +262,7 @@
       "notes": "Fixture source is illustrative; replace before publication.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.2.0-alpha.4",
+        "scorer_version": "1.2.0-alpha.5",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 80,
@@ -322,7 +322,7 @@
       "notes": "Used to test contradiction links.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.2.0-alpha.4",
+        "scorer_version": "1.2.0-alpha.5",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 60,
         "reliability_score": 71,
@@ -378,7 +378,7 @@
       "notes": "Used to test feedback loops.",
       "evidence_scoring": {
         "scoring_version": "evidence_scoring.v1",
-        "scorer_version": "1.2.0-alpha.4",
+        "scorer_version": "1.2.0-alpha.5",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "attention_signal_score": 40,
         "reliability_score": 69,
@@ -446,11 +446,11 @@
     }
   ],
   "critique": {
-    "critique_version": "1.2.0-alpha.4",
+    "critique_version": "1.2.0-alpha.5",
     "summary": "Fixture has enough structure for research-packet validation, not publication."
   },
   "analysis_brief": {
-    "brief_version": "1.2.0-alpha.4",
+    "brief_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "topic": "Sample: US-China chip war",
     "context": "2022-2026 technology competition",
@@ -592,7 +592,7 @@
     "handoff_summary": "Compile the fixture evidence into a strategic analysis of semiconductor export controls as an adaptive system.",
     "analysis_template": {
       "template_id": "strategic_analysis_engine",
-      "template_version": "1.2.0-alpha.4",
+      "template_version": "1.2.0-alpha.5",
       "display_name": "Strategic Analysis Engine",
       "short_name": "Strategic",
       "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -637,7 +637,7 @@
       ]
     },
     "template_fit_report": {
-      "fit_version": "1.2.0-alpha.4",
+      "fit_version": "1.2.0-alpha.5",
       "template_id": "strategic_analysis_engine",
       "required_layers": [
         "interests",
@@ -659,7 +659,7 @@
       "fit_score": 100
     },
     "quality_gate_report": {
-      "quality_gate_version": "1.2.0-alpha.4",
+      "quality_gate_version": "1.2.0-alpha.5",
       "generated_at": "2026-04-28T21:08:50.659Z",
       "gate_name": "Advanced Quality Gate v3",
       "overall_score": 84,
@@ -775,7 +775,7 @@
         "readiness": 85
       },
       "evidence_scoring_report": {
-        "evidence_scoring_version": "1.2.0-alpha.4",
+        "evidence_scoring_version": "1.2.0-alpha.5",
         "scoring_model": "evidence_scoring.v1",
         "generated_at": "2026-05-02T00:00:00.000Z",
         "item_count": 3,
@@ -798,7 +798,7 @@
       "Add counter-evidence and contradiction-linked claims before treating the analysis as robust."
     ],
     "evidence_scoring_report": {
-      "evidence_scoring_version": "1.2.0-alpha.4",
+      "evidence_scoring_version": "1.2.0-alpha.5",
       "scoring_model": "evidence_scoring.v1",
       "calibration_version": "evidence_scoring_calibration.v1",
       "generated_at": "2026-05-02T00:00:00.000Z",
@@ -842,7 +842,7 @@
     "entity_profiles": [
       {
         "entity_id": "ENT1",
-        "entity_version": "1.2.0-alpha.4",
+        "entity_version": "1.2.0-alpha.5",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "OpenAI",
         "normalized_name": "openai",
@@ -873,7 +873,7 @@
       },
       {
         "entity_id": "ENT2",
-        "entity_version": "1.2.0-alpha.4",
+        "entity_version": "1.2.0-alpha.5",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "Microsoft",
         "normalized_name": "microsoft",
@@ -904,7 +904,7 @@
       },
       {
         "entity_id": "ENT3",
-        "entity_version": "1.2.0-alpha.4",
+        "entity_version": "1.2.0-alpha.5",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "NVIDIA",
         "normalized_name": "nvidia",
@@ -935,7 +935,7 @@
       },
       {
         "entity_id": "ENT4",
-        "entity_version": "1.2.0-alpha.4",
+        "entity_version": "1.2.0-alpha.5",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "TSMC",
         "normalized_name": "tsmc",
@@ -966,7 +966,7 @@
       },
       {
         "entity_id": "ENT5",
-        "entity_version": "1.2.0-alpha.4",
+        "entity_version": "1.2.0-alpha.5",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "Taiwan",
         "normalized_name": "taiwan",
@@ -997,7 +997,7 @@
       },
       {
         "entity_id": "ENT6",
-        "entity_version": "1.2.0-alpha.4",
+        "entity_version": "1.2.0-alpha.5",
         "entity_model": "entity_intelligence_layer.v1",
         "canonical_name": "European Union",
         "normalized_name": "european union",
@@ -1028,7 +1028,7 @@
       }
     ],
     "entity_map_report": {
-      "entity_map_report_version": "1.2.0-alpha.4",
+      "entity_map_report_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "entity_count": 6,
@@ -1099,7 +1099,7 @@
       "verification_claimed": false
     },
     "entity_alias_report": {
-      "entity_alias_report_version": "1.2.0-alpha.4",
+      "entity_alias_report_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "entity_count": 6,
@@ -1110,14 +1110,14 @@
       "verification_claimed": false
     },
     "research_planner_report": {
-      "research_planner_version": "1.2.0-alpha.4",
+      "research_planner_version": "1.2.0-alpha.5",
       "planner_model": "research_planner_v2.v1",
       "generated_at": "2026-05-21T00:00:00.000Z",
       "topic": "Sample strategic research topic",
       "context": "2024–2026",
       "depth_preset": "standard",
       "source_type_budget": {
-        "source_budget_version": "1.2.0-alpha.4",
+        "source_budget_version": "1.2.0-alpha.5",
         "depth_preset": "standard",
         "source_types": [
           "official",
@@ -1217,7 +1217,7 @@
     "planner_quality_score": 90,
     "depth_preset": "standard",
     "strategic_evidence_graph": {
-      "strategic_evidence_graph_version": "1.2.0-alpha.4",
+      "strategic_evidence_graph_version": "1.2.0-alpha.5",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "graph_nodes": [
@@ -1637,7 +1637,7 @@
         }
       ],
       "graph_quality_report": {
-        "graph_quality_report_version": "1.2.0-alpha.4",
+        "graph_quality_report_version": "1.2.0-alpha.5",
         "graph_model": "strategic_evidence_graph.v1",
         "generated_at": "2026-05-22T00:00:00.000Z",
         "node_count": 18,
@@ -1654,7 +1654,7 @@
         "verification_claimed": false
       },
       "graph_export_report": {
-        "graph_export_report_version": "1.2.0-alpha.4",
+        "graph_export_report_version": "1.2.0-alpha.5",
         "graph_model": "strategic_evidence_graph.v1",
         "generated_at": "2026-05-22T00:00:00.000Z",
         "formats": [
@@ -1680,7 +1680,7 @@
       "release_gate": "graph_export_ready"
     },
     "graph_quality_report": {
-      "graph_quality_report_version": "1.2.0-alpha.4",
+      "graph_quality_report_version": "1.2.0-alpha.5",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "node_count": 18,
@@ -1697,7 +1697,7 @@
       "verification_claimed": false
     },
     "graph_export_report": {
-      "graph_export_report_version": "1.2.0-alpha.4",
+      "graph_export_report_version": "1.2.0-alpha.5",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "formats": [
@@ -1712,7 +1712,7 @@
       "release_gate": "graph_exports_ready"
     },
     "source_to_brief_workbench": {
-      "source_to_brief_version": "1.2.0-alpha.4",
+      "source_to_brief_version": "1.2.0-alpha.5",
       "workbench_model": "source_to_brief_workbench.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "workflow_stage": "research_question_to_exportable_strategic_brief",
@@ -1728,7 +1728,7 @@
       ],
       "research_question": "Sample: US-China chip war",
       "research_plan": {
-        "plan_version": "1.2.0-alpha.4",
+        "plan_version": "1.2.0-alpha.5",
         "topic": "Sample: US-China chip war",
         "context": "2022-2026 technology competition",
         "mode": "source-heavy",
@@ -1784,7 +1784,7 @@
           "feedback"
         ],
         "prompt_compiler": {
-          "prompt_compiler_version": "1.2.0-alpha.4",
+          "prompt_compiler_version": "1.2.0-alpha.5",
           "generated_at": "2026-04-28T00:00:00.000Z",
           "mode": "source-heavy",
           "topic_raw": "Sample: US-China chip war",
@@ -1863,14 +1863,14 @@
         "live_ai_used": false,
         "live_fetching_performed": false,
         "research_planner_report": {
-          "research_planner_version": "1.2.0-alpha.4",
+          "research_planner_version": "1.2.0-alpha.5",
           "planner_model": "research_planner_v2.v1",
           "generated_at": "2026-05-21T00:00:00.000Z",
           "topic": "Sample strategic research topic",
           "context": "2024–2026",
           "depth_preset": "standard",
           "source_type_budget": {
-            "source_budget_version": "1.2.0-alpha.4",
+            "source_budget_version": "1.2.0-alpha.5",
             "depth_preset": "standard",
             "source_types": [
               "official",
@@ -2306,7 +2306,7 @@
         }
       ],
       "source_gaps": {
-        "source_gap_report_version": "1.2.0-alpha.4",
+        "source_gap_report_version": "1.2.0-alpha.5",
         "gap_model": "source_to_brief_workbench.v1",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "warning_count": 12,
@@ -2374,7 +2374,7 @@
         "verification_claimed": false
       },
       "confidence_review": {
-        "confidence_review_version": "1.2.0-alpha.4",
+        "confidence_review_version": "1.2.0-alpha.5",
         "confidence_model": "source_to_brief_workbench.v1",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "claim_count": 9,
@@ -2399,7 +2399,7 @@
         "verification_claimed": false
       },
       "exportable_strategic_brief": {
-        "brief_version": "1.2.0-alpha.4",
+        "brief_version": "1.2.0-alpha.5",
         "brief_model": "source_to_brief_workbench.v1",
         "title": "Sample: US-China chip war",
         "research_question": "Sample: US-China chip war",
@@ -2650,7 +2650,7 @@
       }
     ],
     "confidence_review": {
-      "confidence_review_version": "1.2.0-alpha.4",
+      "confidence_review_version": "1.2.0-alpha.5",
       "confidence_model": "source_to_brief_workbench.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "claim_count": 9,
@@ -2676,7 +2676,7 @@
     }
   },
   "diagnostics": {
-    "diagnostics_version": "1.2.0-alpha.4",
+    "diagnostics_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "linked_ids": [
       "A1",
@@ -2708,7 +2708,7 @@
   "ai_runs": [
     {
       "run_id": "RUN-FIXTURE-001",
-      "run_version": "1.2.0-alpha.4",
+      "run_version": "1.2.0-alpha.5",
       "provider": "mock",
       "task": "synthesis",
       "status": "ok",
@@ -2741,7 +2741,7 @@
         "verdict": "mock_safe"
       },
       "response_validation": {
-        "validation_version": "1.2.0-alpha.4",
+        "validation_version": "1.2.0-alpha.5",
         "validated_at": "2026-04-28T00:00:00.060Z",
         "task": "synthesis",
         "expected_type": "strategic_analysis",
@@ -2811,7 +2811,7 @@
     "remember_key": false
   },
   "provider_validation": {
-    "validation_version": "1.2.0-alpha.4",
+    "validation_version": "1.2.0-alpha.5",
     "validated_at": "2026-04-28T00:00:00.060Z",
     "task": "synthesis",
     "expected_type": "strategic_analysis",
@@ -2826,7 +2826,7 @@
     "status": "not_required"
   },
   "provider_diagnostics": {
-    "diagnostics_version": "1.2.0-alpha.4",
+    "diagnostics_version": "1.2.0-alpha.5",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "task": "synthesis",
     "provider": "mock",
@@ -2877,7 +2877,7 @@
     }
   },
   "provider_fixture_report": {
-    "suite_version": "1.2.0-alpha.4",
+    "suite_version": "1.2.0-alpha.5",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -2937,7 +2937,7 @@
     ]
   },
   "source_policy": {
-    "policy_version": "1.2.0-alpha.4",
+    "policy_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "live_fetching_enabled": false,
     "current_layer": "planning_only",
@@ -2958,10 +2958,10 @@
       "source URL/date/type preservation"
     ],
     "verdict": "safe_planning_layer_only",
-    "source_policy_version": "1.2.0-alpha.4"
+    "source_policy_version": "1.2.0-alpha.5"
   },
   "source_diagnostics": {
-    "diagnostics_version": "1.2.0-alpha.4",
+    "diagnostics_version": "1.2.0-alpha.5",
     "checked_at": "2026-04-28T00:00:00.000Z",
     "connector": "manual_mock",
     "task": "source_plan",
@@ -2981,7 +2981,7 @@
     ]
   },
   "source_fixture_report": {
-    "suite_version": "1.2.0-alpha.4",
+    "suite_version": "1.2.0-alpha.5",
     "fixture_count": 5,
     "pass_count": 5,
     "fail_count": 0,
@@ -3026,7 +3026,7 @@
   },
   "source_requests": [
     {
-      "request_version": "1.2.0-alpha.4",
+      "request_version": "1.2.0-alpha.5",
       "created_at": "2026-04-28T00:00:00.000Z",
       "connector": "manual_mock",
       "task": "source_plan",
@@ -3053,7 +3053,7 @@
         "China"
       ],
       "safety_policy": {
-        "policy_version": "1.2.0-alpha.4",
+        "policy_version": "1.2.0-alpha.5",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "live_fetching_enabled": false,
         "current_layer": "planning_only",
@@ -3080,7 +3080,7 @@
   "source_runs": [
     {
       "run_id": "SRC-FIXTURE-1",
-      "run_version": "1.2.0-alpha.4",
+      "run_version": "1.2.0-alpha.5",
       "connector": "manual_mock",
       "task": "source_plan",
       "status": "planned",
@@ -3093,7 +3093,7 @@
     }
   ],
   "source_import_report": {
-    "import_version": "1.2.0-alpha.4",
+    "import_version": "1.2.0-alpha.5",
     "imported_at": "2026-05-02T00:00:00.000Z",
     "input_format": "source_packet",
     "source_packet_schema": "manual_source_packet.v1",
@@ -3121,7 +3121,7 @@
       "import_id": "IMP-fixture-v113",
       "imported_at": "2026-05-02T00:00:00.000Z",
       "report": {
-        "import_version": "1.2.0-alpha.4",
+        "import_version": "1.2.0-alpha.5",
         "imported_at": "2026-05-02T00:00:00.000Z",
         "input_format": "source_packet",
         "source_packet_schema": "manual_source_packet.v1",
@@ -3264,7 +3264,7 @@
     }
   ],
   "evidence_review_report": {
-    "review_version": "1.2.0-alpha.4",
+    "review_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "queue_count": 3,
     "pending_count": 2,
@@ -3309,7 +3309,7 @@
     ]
   },
   "portable_account": {
-    "portable_account_version": "1.2.0-alpha.4",
+    "portable_account_version": "1.2.0-alpha.5",
     "provider_id": "portable_oauth",
     "status": "connected_mock",
     "account_id": "pa_fixture0001",
@@ -3340,8 +3340,8 @@
     "code_verifier_exported": false
   },
   "privacy_export": {
-    "audit_version": "1.2.0-alpha.4",
-    "guard_version": "1.2.0-alpha.4",
+    "audit_version": "1.2.0-alpha.5",
+    "guard_version": "1.2.0-alpha.5",
     "safe": true,
     "release_gate": "pass",
     "issue_count": 0,
@@ -3363,9 +3363,9 @@
     }
   },
   "packet_migration_report": {
-    "migration_version": "1.2.0-alpha.4",
-    "source_version": "1.2.0-alpha.4",
-    "target_version": "1.2.0-alpha.4",
+    "migration_version": "1.2.0-alpha.5",
+    "source_version": "1.2.0-alpha.5",
+    "target_version": "1.2.0-alpha.5",
     "started_at": "2026-04-28T00:00:00.000Z",
     "completed_at": "2026-04-28T00:00:00.000Z",
     "migrated": false,
@@ -3378,7 +3378,7 @@
     "import_safe": true
   },
   "project_workspace": {
-    "workspace_version": "1.2.0-alpha.4",
+    "workspace_version": "1.2.0-alpha.5",
     "storage_mode": "local_only",
     "active_project_id": null,
     "active_project_name": null,
@@ -3386,7 +3386,7 @@
     "storage_warning": "Projects are stored only in this browser localStorage.",
     "last_saved_at": null,
     "quota": {
-      "diagnostics_version": "1.2.0-alpha.4",
+      "diagnostics_version": "1.2.0-alpha.5",
       "available": true,
       "storage_mode": "local_only",
       "project_count": 0,
@@ -3397,7 +3397,7 @@
   },
   "analysis_template": {
     "template_id": "strategic_analysis_engine",
-    "template_version": "1.2.0-alpha.4",
+    "template_version": "1.2.0-alpha.5",
     "display_name": "Strategic Analysis Engine",
     "short_name": "Strategic",
     "description": "Default Interests → Actors → Tools → Narrative → Outcomes → Feedback model with evidence review discipline.",
@@ -3442,7 +3442,7 @@
     ]
   },
   "quality_gate": {
-    "quality_gate_version": "1.2.0-alpha.4",
+    "quality_gate_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-28T21:08:50.659Z",
     "gate_name": "Advanced Quality Gate v3",
     "overall_score": 84,
@@ -3558,7 +3558,7 @@
       "readiness": 85
     },
     "evidence_scoring_report": {
-      "evidence_scoring_version": "1.2.0-alpha.4",
+      "evidence_scoring_version": "1.2.0-alpha.5",
       "scoring_model": "evidence_scoring.v1",
       "calibration_version": "evidence_scoring_calibration.v1",
       "generated_at": "2026-05-02T00:00:00.000Z",
@@ -3601,7 +3601,7 @@
     }
   },
   "export_pack": {
-    "export_pack_version": "1.2.0-alpha.4",
+    "export_pack_version": "1.2.0-alpha.5",
     "format": "export_pack_v3",
     "release_gate": "privacy_audit_required",
     "files": [
@@ -3613,8 +3613,8 @@
     ]
   },
   "backend_hardening": {
-    "hardening_version": "1.2.0-alpha.4",
-    "proxy_version": "1.2.0-alpha.4",
+    "hardening_version": "1.2.0-alpha.5",
+    "proxy_version": "1.2.0-alpha.5",
     "status": "optional_backend_hardened",
     "rate_limiting": {
       "supported": true,
@@ -3655,7 +3655,7 @@
   "source_results": [
     {
       "result_id": "SR-FIXTURE-1",
-      "result_version": "1.2.0-alpha.4",
+      "result_version": "1.2.0-alpha.5",
       "connector": "github_public_repo",
       "task": "source_plan",
       "created_at": "2026-04-28T00:00:00.000Z",
@@ -3672,7 +3672,7 @@
     }
   ],
   "search_provider_identity": {
-    "identity_version": "1.2.0-alpha.4",
+    "identity_version": "1.2.0-alpha.5",
     "provider_id": "mock_search",
     "display_name": "Mock Search Provider",
     "status": "available_dry_run",
@@ -3694,7 +3694,7 @@
     ]
   },
   "search_query_budget": {
-    "budget_version": "1.2.0-alpha.4",
+    "budget_version": "1.2.0-alpha.5",
     "max_queries": 6,
     "max_results_per_query": 5,
     "max_total_results": 30,
@@ -3708,9 +3708,9 @@
     "live_search_enabled": false
   },
   "search_policy": {
-    "search_policy_version": "1.2.0-alpha.4",
+    "search_policy_version": "1.2.0-alpha.5",
     "provider_identity": {
-      "identity_version": "1.2.0-alpha.4",
+      "identity_version": "1.2.0-alpha.5",
       "provider_id": "mock_search",
       "display_name": "Mock Search Provider",
       "status": "available_dry_run",
@@ -3732,7 +3732,7 @@
       ]
     },
     "query_budget": {
-      "budget_version": "1.2.0-alpha.4",
+      "budget_version": "1.2.0-alpha.5",
       "max_queries": 6,
       "max_results_per_query": 5,
       "max_total_results": 30,
@@ -3771,7 +3771,7 @@
     "verdict": "web_search_abstraction_ready_no_live_fetch"
   },
   "portable_oauth_spike": {
-    "oauth_spike_version": "1.2.0-alpha.4",
+    "oauth_spike_version": "1.2.0-alpha.5",
     "provider_id": "portable_oauth",
     "status": "disconnected",
     "mode": "real_oauth_pkce_spike",
@@ -3793,11 +3793,11 @@
     "safety_verdict": "oauth_dev_disconnected_token_state_cleared"
   },
   "release_candidate": {
-    "release_candidate_version": "1.2.0-alpha.4",
-    "stable_release_version": "1.2.0-alpha.4",
+    "release_candidate_version": "1.2.0-alpha.5",
+    "stable_release_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-29T18:54:43.435Z",
     "policy": {
-      "release_version": "1.2.0-alpha.4",
+      "release_version": "1.2.0-alpha.5",
       "release_stage": "public_beta_stable",
       "rc_number": null,
       "freeze_status": "stable_feature_baseline",
@@ -3860,7 +3860,7 @@
         "gate": "migration_report_present",
         "required": false,
         "passed": true,
-        "notes": "1.2.0-alpha.4"
+        "notes": "1.2.0-alpha.5"
       },
       {
         "gate": "oauth_tokens_not_exported",
@@ -3887,7 +3887,7 @@
     "verdict": "public_beta_stable_ready"
   },
   "ci_validation": {
-    "ci_validation_version": "1.2.0-alpha.4",
+    "ci_validation_version": "1.2.0-alpha.5",
     "external_ci_passed": true,
     "browser_provider_passed": true,
     "full_browser_passed": true,
@@ -3895,7 +3895,7 @@
     "notes": "External CI/browser validation reported as successful before v1.1.0 promotion."
   },
   "browser_qa_hardening": {
-    "hardening_version": "1.2.0-alpha.4",
+    "hardening_version": "1.2.0-alpha.5",
     "release_type": "patch_only_browser_qa_visual_regression",
     "feature_surface_added": false,
     "browser_gate": {
@@ -3925,7 +3925,7 @@
     "release_gate": "browser_qa_hardened"
   },
   "onboarding": {
-    "onboarding_version": "1.2.0-alpha.4",
+    "onboarding_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "first_run": false,
     "dismissed": false,
@@ -4013,7 +4013,7 @@
     ]
   },
   "public_demo": {
-    "public_demo_version": "1.2.0-alpha.4",
+    "public_demo_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "demo_stage": "public_demo_ready",
     "release_type": "patch",
@@ -4097,12 +4097,12 @@
     "release_gate": "public_demo_ready_checked"
   },
   "release_notes": {
-    "release_notes_version": "1.2.0-alpha.4",
+    "release_notes_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-02T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish",
+    "release_title": "v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger",
     "release_type": "patch",
     "runtime_capability_change": false,
-    "summary": "Adds Evidence Review Throughput + Source-to-Brief Export Polish: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.",
+    "summary": "Adds Claim Traceability Console + Review Decision Ledger: a local dry-run provider routing layer with task/capability matching, provider capability matrix, cost/latency/risk preview, model suitability scoring, run-ledger enrichment, and provider route/cost/safety reports in the research packet/export pack without automatic paid API calls, live provider execution, OAuth/backend expansion, source connector expansion, secret export, or storage expansion.",
     "notable_changes": [
       "Converted hosted-demo evidence metadata from per-test overwrite risk to a single complete capture manifest.",
       "Added viewport/image dimension and horizontal-overflow sanity metadata for every required screenshot.",
@@ -4124,10 +4124,10 @@
       "Confirm release archive excludes generated and secret-bearing files."
     ],
     "release_gate": "release_notes_polished",
-    "release_version": "1.2.0-alpha.4"
+    "release_version": "1.2.0-alpha.5"
   },
   "hosted_demo_verification": {
-    "hosted_demo_version": "1.2.0-alpha.4",
+    "hosted_demo_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_verification",
@@ -4215,7 +4215,7 @@
     "release_gate": "hosted_demo_verified"
   },
   "browser_evidence_capture": {
-    "browser_evidence_version": "1.2.0-alpha.4",
+    "browser_evidence_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-30T00:00:00.000Z",
     "evidence_mode": "playwright_capture_attach_and_write_artifacts",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -4303,7 +4303,7 @@
     ]
   },
   "hosted_demo_smoke_fixes": {
-    "smoke_fixes_version": "1.2.0-alpha.4",
+    "smoke_fixes_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "release_type": "patch",
     "deployment_stage": "hosted_demo_smoke_fixes",
@@ -4409,7 +4409,7 @@
     "release_gate": "hosted_demo_smoke_fixed"
   },
   "hosted_demo_evidence_review": {
-    "evidence_review_version": "1.2.0-alpha.4",
+    "evidence_review_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-01T00:00:00.000Z",
     "review_stage": "hosted_demo_evidence_review",
     "artifact_root": "test-results/hosted-demo-evidence",
@@ -4524,7 +4524,7 @@
     "expected_matrix_rows": 39
   },
   "source_capability_registry": {
-    "source_strategy_version": "1.2.0-alpha.4",
+    "source_strategy_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "release_gate": "source_strategy_blueprint_checked",
     "runtime_capability_change": false,
@@ -4631,7 +4631,7 @@
       }
     ],
     "audit": {
-      "registry_version": "1.2.0-alpha.4",
+      "registry_version": "1.2.0-alpha.5",
       "generated_at": "2026-05-02T00:00:00.000Z",
       "capability_count": 6,
       "visible_demo_capabilities": [
@@ -4666,7 +4666,7 @@
     "scoring_warning": "Attention/engagement is not truth. Evidence reliability must remain separate from public signal strength."
   },
   "evidence_scoring_report": {
-    "evidence_scoring_version": "1.2.0-alpha.4",
+    "evidence_scoring_version": "1.2.0-alpha.5",
     "scoring_model": "evidence_scoring.v1",
     "calibration_version": "evidence_scoring_calibration.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
@@ -4708,7 +4708,7 @@
     ]
   },
   "source_packet_builder_report": {
-    "builder_version": "1.2.0-alpha.4",
+    "builder_version": "1.2.0-alpha.5",
     "packet_schema": "manual_source_packet.v1",
     "built_at": "2026-05-02T00:00:00.000Z",
     "packet_count": 1,
@@ -4717,7 +4717,7 @@
     "verification_claimed": false,
     "queue_only_recommended": true,
     "scoring_review": {
-      "review_version": "1.2.0-alpha.4",
+      "review_version": "1.2.0-alpha.5",
       "builder_version": "source_packet_builder.v1",
       "item_count": 3,
       "high_reliability_count": 1,
@@ -4735,11 +4735,11 @@
   "last_built_source_packet": {
     "source_packet_version": "manual_source_packet.v1",
     "builder_version": "source_packet_builder.v1",
-    "workflow_version": "1.2.0-alpha.4",
+    "workflow_version": "1.2.0-alpha.5",
     "built_at": "2026-05-02T00:00:00.000Z",
     "source_packets": [],
     "builder_report": {
-      "builder_version": "1.2.0-alpha.4",
+      "builder_version": "1.2.0-alpha.5",
       "packet_schema": "manual_source_packet.v1",
       "built_at": "2026-05-02T00:00:00.000Z",
       "packet_count": 1,
@@ -4748,7 +4748,7 @@
       "verification_claimed": false,
       "queue_only_recommended": true,
       "scoring_review": {
-        "review_version": "1.2.0-alpha.4",
+        "review_version": "1.2.0-alpha.5",
         "builder_version": "source_packet_builder.v1",
         "item_count": 3,
         "high_reliability_count": 1,
@@ -4765,7 +4765,7 @@
     }
   },
   "source_packet_roundtrip_report": {
-    "roundtrip_version": "1.2.0-alpha.4",
+    "roundtrip_version": "1.2.0-alpha.5",
     "roundtrip_model": "source_packet_roundtrip.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "builder_version": "source_packet_builder.v1",
@@ -4786,7 +4786,7 @@
     "policy": "local_manual_source_packet_export_import_roundtrip_no_fetch_no_verification"
   },
   "source_packet_template_report": {
-    "template_report_version": "1.2.0-alpha.4",
+    "template_report_version": "1.2.0-alpha.5",
     "template_model": "source_packet_template_presets.v1",
     "generated_at": "2026-05-02T00:00:00.000Z",
     "template_count": 6,
@@ -4815,9 +4815,9 @@
     "policy": "local_manual_source_packet_templates_no_fetch_no_verification"
   },
   "public_demo_release_lock": {
-    "public_demo_release_lock_version": "1.2.0-alpha.4",
+    "public_demo_release_lock_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.4 — Public Demo Release Lock",
+    "release_title": "v1.2.0-alpha.5 — Public Demo Release Lock",
     "lock_stage": "public_demo_release_locked",
     "release_type": "patch",
     "release_approval_state": "locked_for_public_demo",
@@ -4930,15 +4930,15 @@
     "release_gate": "public_demo_release_locked"
   },
   "release_apply_integrity": {
-    "release_apply_integrity_version": "1.2.0-alpha.4",
+    "release_apply_integrity_version": "1.2.0-alpha.5",
     "generated_at": "2026-04-28T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish",
+    "release_title": "v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger",
     "integrity_stage": "release_apply_integrity_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
-    "target_version": "1.2.0-alpha.4",
-    "artifact_name": "jarbou3i-research-engine-v1.2.0-alpha.4-post-stable-capability-roadmap-expansion-gate.zip",
+    "target_version": "1.2.0-alpha.5",
+    "artifact_name": "jarbou3i-research-engine-v1.2.0-alpha.5-post-stable-capability-roadmap-expansion-gate.zip",
     "artifact_sha256": "computed_after_packaging",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
@@ -5031,7 +5031,7 @@
       }
     ],
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.2.0-alpha.4-post-stable-capability-roadmap-expansion-gate.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.2.0-alpha.5-post-stable-capability-roadmap-expansion-gate.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:ci:no-browser",
       "npm run test:ci:no-browser",
@@ -5045,15 +5045,15 @@
     ]
   },
   "release_provenance_ledger": {
-    "release_provenance_ledger_version": "1.2.0-alpha.4",
+    "release_provenance_ledger_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-04T00:00:00.000Z",
-    "release_title": "v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish",
+    "release_title": "v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger",
     "provenance_stage": "release_provenance_ledger_checked",
     "release_type": "patch",
     "patch_type": "changed_files_only",
     "base_version": "1.0.30",
-    "target_version": "1.2.0-alpha.4",
-    "artifact_name": "jarbou3i-research-engine-v1.2.0-alpha.4-post-stable-capability-roadmap-expansion-gate.zip",
+    "target_version": "1.2.0-alpha.5",
+    "artifact_name": "jarbou3i-research-engine-v1.2.0-alpha.5-post-stable-capability-roadmap-expansion-gate.zip",
     "artifact_sha256": "computed_after_packaging",
     "changed_files_manifest_required": true,
     "release_apply_integrity_required": true,
@@ -5073,7 +5073,7 @@
     "fail_count": 0,
     "release_gate": "release_provenance_ledger_pass",
     "required_commands": [
-      "unzip -o jarbou3i-research-engine-v1.2.0-alpha.4-post-stable-capability-roadmap-expansion-gate.zip -d .",
+      "unzip -o jarbou3i-research-engine-v1.2.0-alpha.5-post-stable-capability-roadmap-expansion-gate.zip -d .",
       "npm ci --no-audit --no-fund --ignore-scripts",
       "npm run test:ci:no-browser",
       "npm run test:ci:no-browser",
@@ -5153,7 +5153,7 @@
     ]
   },
   "dev_productivity_command_center": {
-    "version": "1.2.0-alpha.4",
+    "version": "1.2.0-alpha.5",
     "commands": [
       "dev:doctor",
       "dev:baseline",
@@ -5169,7 +5169,7 @@
   "entity_profiles": [
     {
       "entity_id": "ENT1",
-      "entity_version": "1.2.0-alpha.4",
+      "entity_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "OpenAI",
       "normalized_name": "openai",
@@ -5200,7 +5200,7 @@
     },
     {
       "entity_id": "ENT2",
-      "entity_version": "1.2.0-alpha.4",
+      "entity_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "Microsoft",
       "normalized_name": "microsoft",
@@ -5231,7 +5231,7 @@
     },
     {
       "entity_id": "ENT3",
-      "entity_version": "1.2.0-alpha.4",
+      "entity_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "NVIDIA",
       "normalized_name": "nvidia",
@@ -5262,7 +5262,7 @@
     },
     {
       "entity_id": "ENT4",
-      "entity_version": "1.2.0-alpha.4",
+      "entity_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "TSMC",
       "normalized_name": "tsmc",
@@ -5293,7 +5293,7 @@
     },
     {
       "entity_id": "ENT5",
-      "entity_version": "1.2.0-alpha.4",
+      "entity_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "Taiwan",
       "normalized_name": "taiwan",
@@ -5324,7 +5324,7 @@
     },
     {
       "entity_id": "ENT6",
-      "entity_version": "1.2.0-alpha.4",
+      "entity_version": "1.2.0-alpha.5",
       "entity_model": "entity_intelligence_layer.v1",
       "canonical_name": "European Union",
       "normalized_name": "european union",
@@ -5355,7 +5355,7 @@
     }
   ],
   "entity_map_report": {
-    "entity_map_report_version": "1.2.0-alpha.4",
+    "entity_map_report_version": "1.2.0-alpha.5",
     "entity_model": "entity_intelligence_layer.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "entity_count": 6,
@@ -5426,7 +5426,7 @@
     "verification_claimed": false
   },
   "entity_alias_report": {
-    "entity_alias_report_version": "1.2.0-alpha.4",
+    "entity_alias_report_version": "1.2.0-alpha.5",
     "entity_model": "entity_intelligence_layer.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "entity_count": 6,
@@ -5437,14 +5437,14 @@
     "verification_claimed": false
   },
   "research_planner_report": {
-    "research_planner_version": "1.2.0-alpha.4",
+    "research_planner_version": "1.2.0-alpha.5",
     "planner_model": "research_planner_v2.v1",
     "generated_at": "2026-05-21T00:00:00.000Z",
     "topic": "Sample strategic research topic",
     "context": "2024–2026",
     "depth_preset": "standard",
     "source_type_budget": {
-      "source_budget_version": "1.2.0-alpha.4",
+      "source_budget_version": "1.2.0-alpha.5",
       "depth_preset": "standard",
       "source_types": [
         "official",
@@ -5542,11 +5542,11 @@
     ]
   },
   "controlled_connector_report": {
-    "controlled_connector_report_version": "1.2.0-alpha.4",
+    "controlled_connector_report_version": "1.2.0-alpha.5",
     "connector_model": "controlled_connector_architecture.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "registry": {
-      "connector_registry_version": "1.2.0-alpha.4",
+      "connector_registry_version": "1.2.0-alpha.5",
       "registry_model": "controlled_connector_architecture.v1",
       "connectors": [],
       "safety_boundary": {
@@ -5568,7 +5568,7 @@
     "release_gate": "controlled_connector_review_ready"
   },
   "connector_safety_report": {
-    "connector_safety_report_version": "1.2.0-alpha.4",
+    "connector_safety_report_version": "1.2.0-alpha.5",
     "connector_model": "controlled_connector_architecture.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "connector_id": "url_list_import",
@@ -5585,7 +5585,7 @@
     "verdict": "controlled_connector_safe_dry_run_or_manual_import"
   },
   "strategic_evidence_graph": {
-    "strategic_evidence_graph_version": "1.2.0-alpha.4",
+    "strategic_evidence_graph_version": "1.2.0-alpha.5",
     "graph_model": "strategic_evidence_graph.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "graph_nodes": [
@@ -6005,7 +6005,7 @@
       }
     ],
     "graph_quality_report": {
-      "graph_quality_report_version": "1.2.0-alpha.4",
+      "graph_quality_report_version": "1.2.0-alpha.5",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "node_count": 18,
@@ -6022,7 +6022,7 @@
       "verification_claimed": false
     },
     "graph_export_report": {
-      "graph_export_report_version": "1.2.0-alpha.4",
+      "graph_export_report_version": "1.2.0-alpha.5",
       "graph_model": "strategic_evidence_graph.v1",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "formats": [
@@ -6048,7 +6048,7 @@
     "release_gate": "graph_export_ready"
   },
   "graph_quality_report": {
-    "graph_quality_report_version": "1.2.0-alpha.4",
+    "graph_quality_report_version": "1.2.0-alpha.5",
     "graph_model": "strategic_evidence_graph.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "node_count": 18,
@@ -6065,7 +6065,7 @@
     "verification_claimed": false
   },
   "graph_export_report": {
-    "graph_export_report_version": "1.2.0-alpha.4",
+    "graph_export_report_version": "1.2.0-alpha.5",
     "graph_model": "strategic_evidence_graph.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "formats": [
@@ -6080,7 +6080,7 @@
     "release_gate": "graph_exports_ready"
   },
   "provider_route_plan": {
-    "provider_route_plan_version": "1.2.0-alpha.4",
+    "provider_route_plan_version": "1.2.0-alpha.5",
     "route_model": "provider_router.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "task": "synthesis",
@@ -6142,7 +6142,7 @@
       "credential_exported": false
     },
     "safety_report": {
-      "provider_router_safety_version": "1.2.0-alpha.4",
+      "provider_router_safety_version": "1.2.0-alpha.5",
       "dry_run_only": true,
       "live_execution_performed": false,
       "automatic_paid_call_performed": false,
@@ -6161,7 +6161,7 @@
     "verification_claimed": false
   },
   "provider_route_report": {
-    "provider_route_report_version": "1.2.0-alpha.4",
+    "provider_route_report_version": "1.2.0-alpha.5",
     "route_model": "provider_router.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "selected_provider": "mock",
@@ -6180,7 +6180,7 @@
     ]
   },
   "provider_cost_report": {
-    "provider_cost_report_version": "1.2.0-alpha.4",
+    "provider_cost_report_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "currency": "USD",
     "selected_provider": "mock",
@@ -6201,7 +6201,7 @@
     "release_gate": "cost_preview_review_required"
   },
   "provider_router_safety_report": {
-    "provider_router_safety_version": "1.2.0-alpha.4",
+    "provider_router_safety_version": "1.2.0-alpha.5",
     "dry_run_only": true,
     "live_execution_performed": false,
     "automatic_paid_call_performed": false,
@@ -6211,7 +6211,7 @@
     "release_gate": "provider_route_review_required"
   },
   "evidence_workspace_ux_report": {
-    "workspace_ux_version": "1.2.0-alpha.4",
+    "workspace_ux_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "local_only": true,
     "live_fetching_performed": false,
@@ -6228,7 +6228,7 @@
       "cluster": "all"
     },
     "facets": {
-      "facet_version": "1.2.0-alpha.4",
+      "facet_version": "1.2.0-alpha.5",
       "source_types": [
         "official",
         "social"
@@ -6265,7 +6265,7 @@
       ]
     },
     "throughput_report": {
-      "throughput_version": "1.2.0-alpha.4",
+      "throughput_version": "1.2.0-alpha.5",
       "generated_at": "2026-05-22T00:00:00.000Z",
       "counts": {
         "total": 3,
@@ -6298,7 +6298,7 @@
     "release_gate": "evidence_review_queue_required"
   },
   "review_throughput_report": {
-    "throughput_version": "1.2.0-alpha.4",
+    "throughput_version": "1.2.0-alpha.5",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "counts": {
       "total": 3,
@@ -6329,7 +6329,7 @@
     "release_gate": "review_required"
   },
   "brief_traceability_report": {
-    "brief_traceability_version": "1.2.0-alpha.4",
+    "brief_traceability_version": "1.2.0-alpha.5",
     "traceability_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "paragraph_count": 3,
@@ -6419,7 +6419,7 @@
     "verification_claimed": false
   },
   "contradiction_falsifier_appendix": {
-    "contradiction_falsifier_appendix_version": "1.2.0-alpha.4",
+    "contradiction_falsifier_appendix_version": "1.2.0-alpha.5",
     "appendix_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "contradiction_evidence_count": 1,
@@ -6466,7 +6466,7 @@
     "evidence_index_count": 3
   },
   "bundle_consistency_report": {
-    "bundle_consistency_report_version": "1.2.0-alpha.4",
+    "bundle_consistency_report_version": "1.2.0-alpha.5",
     "bundle_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "coverage": {
@@ -6483,7 +6483,7 @@
     "verification_claimed": false
   },
   "publication_readiness_export_report": {
-    "publication_readiness_export_report_version": "1.2.0-alpha.4",
+    "publication_readiness_export_report_version": "1.2.0-alpha.5",
     "report_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
     "publication_readiness_score": 78,
@@ -6500,12 +6500,12 @@
     "verification_claimed": false
   },
   "evidence_pack_v3_manifest": {
-    "evidence_pack_v3_manifest_version": "1.2.0-alpha.4",
-    "export_pack_version": "1.2.0-alpha.4",
+    "evidence_pack_v3_manifest_version": "1.2.0-alpha.5",
+    "export_pack_version": "1.2.0-alpha.5",
     "export_pack_format": "export_pack_v3",
     "manifest_model": "evidence_pack_v3.v1",
     "generated_at": "2026-05-22T00:00:00.000Z",
-    "workflow_version": "1.2.0-alpha.4",
+    "workflow_version": "1.2.0-alpha.5",
     "topic": "Sample: US-China chip war",
     "file_count": 0,
     "files": [],
@@ -6518,7 +6518,7 @@
     "verification_claimed": false
   },
   "claim_classification_report": {
-    "claim_classification_report_version": "1.2.0-alpha.4",
+    "claim_classification_report_version": "1.2.0-alpha.5",
     "report_model": "publication_review_gate.v1",
     "claim_count": 3,
     "observation_count": 1,
@@ -6530,7 +6530,7 @@
     "verification_claimed": false
   },
   "claim_boundary_audit_report": {
-    "claim_boundary_audit_version": "1.2.0-alpha.4",
+    "claim_boundary_audit_version": "1.2.0-alpha.5",
     "audit_model": "publication_review_gate.v1",
     "unsupported_conclusion_count": 0,
     "boundary_issue_count": 0,
@@ -6539,7 +6539,7 @@
     "verification_claimed": false
   },
   "contradiction_falsifier_completeness_report": {
-    "contradiction_falsifier_completeness_version": "1.2.0-alpha.4",
+    "contradiction_falsifier_completeness_version": "1.2.0-alpha.5",
     "completeness_model": "publication_review_gate.v1",
     "completeness_score": 75,
     "missing_completeness_items": [],
@@ -6548,7 +6548,7 @@
     "verification_claimed": false
   },
   "publication_review_gate_report": {
-    "publication_review_gate_version": "1.2.0-alpha.4",
+    "publication_review_gate_version": "1.2.0-alpha.5",
     "gate_model": "publication_review_gate.v1",
     "publication_review_score": 82,
     "blocker_count": 0,
@@ -6560,7 +6560,7 @@
     "evidence_review_queue_required": true
   },
   "export_safe_final_review_report": {
-    "export_safe_final_review_report_version": "1.2.0-alpha.4",
+    "export_safe_final_review_report_version": "1.2.0-alpha.5",
     "report_model": "publication_review_gate.v1",
     "final_review_status": "export_safe_manual_review_required",
     "release_gate": "publication_review_passed_manual_review_required",
@@ -6576,8 +6576,8 @@
     }
   },
   "golden_workflow_corpus": {
-    "workflow_version": "1.2.0-alpha.4",
-    "corpus_version": "1.2.0-alpha.4",
+    "workflow_version": "1.2.0-alpha.5",
+    "corpus_version": "1.2.0-alpha.5",
     "corpus_model": "golden_workflow_corpus.v1",
     "corpus_id": "golden-workflow-alpha24",
     "topic": "Golden workflow demo: source-grounded strategic brief reliability",
@@ -6670,7 +6670,7 @@
       }
     ],
     "strategic_evidence_graph": {
-      "graph_version": "1.2.0-alpha.4",
+      "graph_version": "1.2.0-alpha.5",
       "graph_nodes": [
         {
           "id": "EV-E1",
@@ -6694,7 +6694,7 @@
       ]
     },
     "analysis_brief": {
-      "brief_version": "1.2.0-alpha.4",
+      "brief_version": "1.2.0-alpha.5",
       "handoff_summary": "Golden conclusion is traceable to E1, E2, and E3; contradiction N1 remains visible.",
       "evidence_priorities": [
         "Review E2 against E3."
@@ -6705,7 +6705,7 @@
     }
   },
   "golden_end_to_end_demo_report": {
-    "golden_end_to_end_demo_report_version": "1.2.0-alpha.4",
+    "golden_end_to_end_demo_report_version": "1.2.0-alpha.5",
     "demo_model": "golden_workflow_corpus.v1",
     "stage_count": 9,
     "passed_stage_count": 9,
@@ -6756,7 +6756,7 @@
     "release_gate": "golden_demo_reviewable"
   },
   "golden_export_pack_validation_report": {
-    "golden_export_pack_validation_report_version": "1.2.0-alpha.4",
+    "golden_export_pack_validation_report_version": "1.2.0-alpha.5",
     "validation_model": "golden_workflow_corpus.v1",
     "export_pack_format": "export_pack_v3",
     "expected_format": "export_pack_v3",
@@ -6779,7 +6779,7 @@
     "release_gate": "golden_export_pack_reviewable"
   },
   "hosted_demo_scenario_evidence": {
-    "hosted_demo_scenario_evidence_version": "1.2.0-alpha.4",
+    "hosted_demo_scenario_evidence_version": "1.2.0-alpha.5",
     "scenario_model": "golden_workflow_corpus.v1",
     "scenario_id": "alpha24-golden-public-demo",
     "required_captures": [
@@ -6804,16 +6804,16 @@
       "inspect_publication_gate",
       "export_pack_v3"
     ],
-    "app_version_expected": "1.2.0-alpha.4",
+    "app_version_expected": "1.2.0-alpha.5",
     "live_fetching_performed": false,
     "provider_execution_performed": false,
     "verification_claimed": false,
     "release_gate": "hosted_demo_scenario_evidence_required"
   },
   "release_readiness_runbook": {
-    "release_readiness_runbook_version": "1.2.0-alpha.4",
+    "release_readiness_runbook_version": "1.2.0-alpha.5",
     "runbook_model": "golden_workflow_corpus.v1",
-    "release": "v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish",
+    "release": "v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger",
     "steps": [
       "Run node tests/golden-workflow-corpus-check.mjs.",
       "Run node tests/ci-gate-runner.mjs no-browser.",
@@ -6832,7 +6832,7 @@
     "release_gate": "release_readiness_review_required"
   },
   "final_repo_hygiene_report": {
-    "final_repo_hygiene_report_version": "1.2.0-alpha.4",
+    "final_repo_hygiene_report_version": "1.2.0-alpha.5",
     "hygiene_model": "release_candidate_hygiene.v1",
     "checked_file_count": 173,
     "generated_artifact_match_count": 0,
@@ -6850,7 +6850,7 @@
     "verification_claimed": false
   },
   "stale_release_copy_sweep": {
-    "stale_release_copy_sweep_version": "1.2.0-alpha.4",
+    "stale_release_copy_sweep_version": "1.2.0-alpha.5",
     "sweep_model": "release_candidate_hygiene.v1",
     "checked_file_count": 20,
     "protected_historical_files": [
@@ -6863,7 +6863,7 @@
     "verification_claimed": false
   },
   "golden_workflow_regression_lock": {
-    "golden_workflow_regression_lock_version": "1.2.0-alpha.4",
+    "golden_workflow_regression_lock_version": "1.2.0-alpha.5",
     "lock_model": "release_candidate_hygiene.v1",
     "golden_demo_failed_stage_count": 0,
     "golden_export_missing_required_path_count": 0,
@@ -6875,7 +6875,7 @@
     "verification_claimed": false
   },
   "export_pack_artifact_consistency_lock": {
-    "export_pack_artifact_consistency_lock_version": "1.2.0-alpha.4",
+    "export_pack_artifact_consistency_lock_version": "1.2.0-alpha.5",
     "lock_model": "release_candidate_hygiene.v1",
     "required_export_paths": [
       "export-manifest.json",
@@ -6895,12 +6895,12 @@
     "verification_claimed": false
   },
   "hosted_demo_evidence_runbook": {
-    "hosted_demo_evidence_runbook_version": "1.2.0-alpha.4",
+    "hosted_demo_evidence_runbook_version": "1.2.0-alpha.5",
     "runbook_model": "release_candidate_hygiene.v1",
     "required_metadata": {
-      "evidence_review_version": "1.2.0-alpha.4",
-      "capture_polish_version": "1.2.0-alpha.4",
-      "app_version": "1.2.0-alpha.4",
+      "evidence_review_version": "1.2.0-alpha.5",
+      "capture_polish_version": "1.2.0-alpha.5",
+      "app_version": "1.2.0-alpha.5",
       "capture_count": 4,
       "all_required_captures_present": true,
       "visual_artifact_guard_required": true,
@@ -6937,7 +6937,7 @@
     "verification_claimed": false
   },
   "no_browser_browser_ci_parity_report": {
-    "ci_parity_report_version": "1.2.0-alpha.4",
+    "ci_parity_report_version": "1.2.0-alpha.5",
     "parity_model": "release_candidate_hygiene.v1",
     "no_browser_ci_passed": true,
     "browser_ci_passed": true,
@@ -6950,7 +6950,7 @@
     "verification_claimed": false
   },
   "release_candidate_readiness_report": {
-    "release_candidate_readiness_report_version": "1.2.0-alpha.4",
+    "release_candidate_readiness_report_version": "1.2.0-alpha.5",
     "readiness_model": "release_candidate_hygiene.v1",
     "readiness_score": 90,
     "blocker_count": 1,
@@ -6975,8 +6975,8 @@
     "verification_claimed": false
   },
   "canonical_lock_evidence_bundle": {
-    "lock_evidence_bundle_version": "1.2.0-alpha.4",
-    "release": "v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish",
+    "lock_evidence_bundle_version": "1.2.0-alpha.5",
+    "release": "v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger",
     "bundle_artifact_name": "lock-evidence-bundle_1.1.0_${GITHUB_RUN_ID}",
     "manifest_files": [
       "evidence-manifest.json",
@@ -6994,7 +6994,7 @@
     "oauth_backend_expanded": false
   },
   "source_to_brief_workbench": {
-    "source_to_brief_version": "1.2.0-alpha.4",
+    "source_to_brief_version": "1.2.0-alpha.5",
     "workbench_model": "source_to_brief_workbench.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "workflow_stage": "research_question_to_exportable_strategic_brief",
@@ -7010,7 +7010,7 @@
     ],
     "research_question": "Sample: US-China chip war",
     "research_plan": {
-      "plan_version": "1.2.0-alpha.4",
+      "plan_version": "1.2.0-alpha.5",
       "topic": "Sample: US-China chip war",
       "context": "2022-2026 technology competition",
       "mode": "source-heavy",
@@ -7066,7 +7066,7 @@
         "feedback"
       ],
       "prompt_compiler": {
-        "prompt_compiler_version": "1.2.0-alpha.4",
+        "prompt_compiler_version": "1.2.0-alpha.5",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "mode": "source-heavy",
         "topic_raw": "Sample: US-China chip war",
@@ -7145,14 +7145,14 @@
       "live_ai_used": false,
       "live_fetching_performed": false,
       "research_planner_report": {
-        "research_planner_version": "1.2.0-alpha.4",
+        "research_planner_version": "1.2.0-alpha.5",
         "planner_model": "research_planner_v2.v1",
         "generated_at": "2026-05-21T00:00:00.000Z",
         "topic": "Sample strategic research topic",
         "context": "2024–2026",
         "depth_preset": "standard",
         "source_type_budget": {
-          "source_budget_version": "1.2.0-alpha.4",
+          "source_budget_version": "1.2.0-alpha.5",
           "depth_preset": "standard",
           "source_types": [
             "official",
@@ -7588,7 +7588,7 @@
       }
     ],
     "source_gaps": {
-      "source_gap_report_version": "1.2.0-alpha.4",
+      "source_gap_report_version": "1.2.0-alpha.5",
       "gap_model": "source_to_brief_workbench.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "warning_count": 12,
@@ -7656,7 +7656,7 @@
       "verification_claimed": false
     },
     "confidence_review": {
-      "confidence_review_version": "1.2.0-alpha.4",
+      "confidence_review_version": "1.2.0-alpha.5",
       "confidence_model": "source_to_brief_workbench.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "claim_count": 9,
@@ -7681,7 +7681,7 @@
       "verification_claimed": false
     },
     "exportable_strategic_brief": {
-      "brief_version": "1.2.0-alpha.4",
+      "brief_version": "1.2.0-alpha.5",
       "brief_model": "source_to_brief_workbench.v1",
       "title": "Sample: US-China chip war",
       "research_question": "Sample: US-China chip war",
@@ -7720,7 +7720,7 @@
     "release_gate": "source_to_brief_review_required"
   },
   "source_to_brief_package": {
-    "source_to_brief_version": "1.2.0-alpha.4",
+    "source_to_brief_version": "1.2.0-alpha.5",
     "workbench_model": "source_to_brief_workbench.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "workflow_stage": "research_question_to_exportable_strategic_brief",
@@ -7736,7 +7736,7 @@
     ],
     "research_question": "Sample: US-China chip war",
     "research_plan": {
-      "plan_version": "1.2.0-alpha.4",
+      "plan_version": "1.2.0-alpha.5",
       "topic": "Sample: US-China chip war",
       "context": "2022-2026 technology competition",
       "mode": "source-heavy",
@@ -7792,7 +7792,7 @@
         "feedback"
       ],
       "prompt_compiler": {
-        "prompt_compiler_version": "1.2.0-alpha.4",
+        "prompt_compiler_version": "1.2.0-alpha.5",
         "generated_at": "2026-04-28T00:00:00.000Z",
         "mode": "source-heavy",
         "topic_raw": "Sample: US-China chip war",
@@ -7871,14 +7871,14 @@
       "live_ai_used": false,
       "live_fetching_performed": false,
       "research_planner_report": {
-        "research_planner_version": "1.2.0-alpha.4",
+        "research_planner_version": "1.2.0-alpha.5",
         "planner_model": "research_planner_v2.v1",
         "generated_at": "2026-05-21T00:00:00.000Z",
         "topic": "Sample strategic research topic",
         "context": "2024–2026",
         "depth_preset": "standard",
         "source_type_budget": {
-          "source_budget_version": "1.2.0-alpha.4",
+          "source_budget_version": "1.2.0-alpha.5",
           "depth_preset": "standard",
           "source_types": [
             "official",
@@ -8314,7 +8314,7 @@
       }
     ],
     "source_gaps": {
-      "source_gap_report_version": "1.2.0-alpha.4",
+      "source_gap_report_version": "1.2.0-alpha.5",
       "gap_model": "source_to_brief_workbench.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "warning_count": 12,
@@ -8382,7 +8382,7 @@
       "verification_claimed": false
     },
     "confidence_review": {
-      "confidence_review_version": "1.2.0-alpha.4",
+      "confidence_review_version": "1.2.0-alpha.5",
       "confidence_model": "source_to_brief_workbench.v1",
       "generated_at": "2026-04-28T00:00:00.000Z",
       "claim_count": 9,
@@ -8407,7 +8407,7 @@
       "verification_claimed": false
     },
     "exportable_strategic_brief": {
-      "brief_version": "1.2.0-alpha.4",
+      "brief_version": "1.2.0-alpha.5",
       "brief_model": "source_to_brief_workbench.v1",
       "title": "Sample: US-China chip war",
       "research_question": "Sample: US-China chip war",
@@ -8658,7 +8658,7 @@
     }
   ],
   "source_to_brief_confidence_review": {
-    "confidence_review_version": "1.2.0-alpha.4",
+    "confidence_review_version": "1.2.0-alpha.5",
     "confidence_model": "source_to_brief_workbench.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "claim_count": 9,
@@ -8683,7 +8683,7 @@
     "verification_claimed": false
   },
   "source_to_brief_gap_report": {
-    "source_gap_report_version": "1.2.0-alpha.4",
+    "source_gap_report_version": "1.2.0-alpha.5",
     "gap_model": "source_to_brief_workbench.v1",
     "generated_at": "2026-04-28T00:00:00.000Z",
     "warning_count": 12,

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.2.0-alpha.4';
-const TITLE = 'Evidence Review Throughput + Source-to-Brief Export Polish';
+const VERSION = '1.2.0-alpha.5';
+const TITLE = 'Claim Traceability Console + Review Decision Ledger';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');

@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.2.0-alpha.4`
-Release: `v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish
+Version: `1.2.0-alpha.5`
+Release: `v1.2.0-alpha.5 — Claim Traceability Console + Review Decision Ledger
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

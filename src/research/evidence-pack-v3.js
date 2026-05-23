@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.4';
+  const VERSION = '1.2.0-alpha.5';
   const MODEL = 'evidence_pack_v3.v1';
 
   function nowIso(){ return new Date().toISOString(); }
