@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.2.0-alpha.8",
-  "internal_build_version": "1.2.0-alpha.8",
-  "public_version_label": "v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution",
+  "evidence_matrix_config_version": "1.2.0-alpha.8.1",
+  "internal_build_version": "1.2.0-alpha.8.1",
+  "public_version_label": "v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine",
   "locales": [
     "en",
     "ar",
@@ -225,8 +225,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution",
-    "ar": "v1.2.0-alpha.8 صف إصلاح التشخيص + حل مخاطر التصدير",
-    "fr": "v1.2.0-alpha.8 File de réparation diagnostique + résolution des risques export"
+    "en": "v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine",
+    "ar": "v1.2.0-alpha.8.1 تثبيت CI + عزل سير العمل",
+    "fr": "v1.2.0-alpha.8.1 Stabilisation CI + quarantaine du workflow"
   }
 }

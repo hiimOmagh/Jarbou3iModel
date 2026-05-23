@@ -1,8 +1,14 @@
 name: CI
+run-name: v1.2.0-alpha.8.1 CI quarantine — ${{ github.ref_name }} @ ${{ github.sha }}
 
 on:
   push:
   pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -16,6 +22,7 @@ env:
 jobs:
   no-browser:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -46,6 +53,8 @@ jobs:
 
   browser:
     runs-on: ubuntu-latest
+    needs: no-browser
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -76,7 +85,7 @@ jobs:
           const fs = require('node:fs');
           const path = process.env.RUNNER_TEMP + '/hosted-demo-evidence/matrix-summary.json';
           const summary = JSON.parse(fs.readFileSync(path, 'utf8'));
-          if (summary.internal_build_version !== '1.2.0-alpha.8') throw new Error(`matrix version mismatch: ${summary.internal_build_version}`);
+          if (summary.internal_build_version !== '1.2.0-alpha.8.1') throw new Error(`matrix version mismatch: ${summary.internal_build_version}`);
           if (summary.expected_rows !== 39 || summary.actual_rows !== 39 || summary.passed_rows !== 39 || summary.failed_rows !== 0) throw new Error(`matrix rows invalid: ${JSON.stringify({expected:summary.expected_rows, actual:summary.actual_rows, passed:summary.passed_rows, failed:summary.failed_rows})}`);
           if (summary.language_purity_passed !== true || summary.visual_guard_passed !== true || summary.stale_version_residue_detected !== false) throw new Error('matrix summary release guards failed');
           NODE
@@ -96,6 +105,7 @@ jobs:
   lock-evidence-bundle:
     runs-on: ubuntu-latest
     needs: [no-browser, browser]
+    timeout-minutes: 15
     if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
     steps:
       - uses: actions/checkout@v6
@@ -129,5 +139,5 @@ jobs:
       - name: Upload canonical lock evidence bundle
         uses: actions/upload-artifact@v6
         with:
-          name: lock-evidence-bundle_1.2.0-alpha.8_${{ github.run_id }}
-          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.2.0-alpha.8_${{ github.run_id }}
+          name: lock-evidence-bundle_1.2.0-alpha.8.1_${{ github.run_id }}
+          path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.2.0-alpha.8.1_${{ github.run_id }}

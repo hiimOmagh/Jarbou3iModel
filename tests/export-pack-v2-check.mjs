@@ -24,15 +24,15 @@ const exportPack = modules.exportPack;
 const migrations = modules.migrations;
 const audit = modules.privacyAudit;
 
-assert.equal(exportPack.EXPORT_PACK_VERSION, '1.2.0-alpha.8');
+assert.equal(exportPack.EXPORT_PACK_VERSION, '1.2.0-alpha.8.1');
 assert.equal(typeof exportPack.createExportPack, 'function');
 assert.equal(typeof exportPack.analysisBriefMarkdown, 'function');
 assert.equal(typeof exportPack.evidenceMatrixCsv, 'function');
 assert.equal(typeof exportPack.reviewQueueCsv, 'function');
 
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
-assert.equal(fixture.workflow_version, '1.2.0-alpha.8');
-assert.equal(fixture.export_pack.export_pack_version, '1.2.0-alpha.8');
+assert.equal(fixture.workflow_version, '1.2.0-alpha.8.1');
+assert.equal(fixture.export_pack.export_pack_version, '1.2.0-alpha.8.1');
 assert.equal(fixture.export_pack.format, 'export_pack_v3');
 
 const hostile = JSON.parse(JSON.stringify(fixture));
@@ -40,8 +40,8 @@ hostile.provider_config = { endpoint: 'https://api.example.test', model: 'x', ap
 hostile.ai_runs = [{ run_id: 'R1', output_summary: 'Bearer SHOULDNOTEXPORT1234567890abcdef', response_validation: { accepted: true } }];
 hostile.evidence_matrix[0].notes = 'access_token="SHOULDNOTEXPORT1234567890abcdef"';
 
-const pack = exportPack.createExportPack(hostile, { version: '1.2.0-alpha.8' });
-assert.equal(pack.export_pack_version, '1.2.0-alpha.8');
+const pack = exportPack.createExportPack(hostile, { version: '1.2.0-alpha.8.1' });
+assert.equal(pack.export_pack_version, '1.2.0-alpha.8.1');
 assert.equal(pack.manifest.file_count, 65, 'manifest should describe core export artifacts, graph artifacts, source-to-brief artifacts, provider-router artifacts, review artifacts, and traceability artifacts before manifest insertion');
 assert.equal(pack.files.length, 66, 'pack should include manifest plus core, graph, source-to-brief, provider-router, review, and traceability artifacts');
 const paths = pack.files.map((file) => file.path);
@@ -83,20 +83,20 @@ for (const file of pack.files) {
 }
 
 const privacyFile = JSON.parse(pack.files.find((file) => file.path === 'privacy-audit.json').content);
-assert.equal(privacyFile.export_pack_version, '1.2.0-alpha.8');
+assert.equal(privacyFile.export_pack_version, '1.2.0-alpha.8.1');
 assert.equal(privacyFile.release_gate, 'pass');
 assert.ok(Array.isArray(privacyFile.file_reports));
 
 const migrated = migrations.migrateResearchPacket(getMigrationFixture('fixtures/migrations/v0.23.0-packet.json'));
 assert.equal(migrated.ok, true);
-assert.equal(migrated.packet.workflow_version, '1.2.0-alpha.8');
-assert.equal(migrated.packet.export_pack.export_pack_version, '1.2.0-alpha.8');
+assert.equal(migrated.packet.workflow_version, '1.2.0-alpha.8.1');
+assert.equal(migrated.packet.export_pack.export_pack_version, '1.2.0-alpha.8.1');
 assert.equal(migrated.packet.export_pack.format, 'export_pack_v3');
 assert.ok(migrated.packet.export_pack.files.includes('privacy-audit.json'));
 
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.ok(schema.required.includes('export_pack'), 'workflow schema must require export_pack metadata');
-assert.equal(schema.properties.export_pack.properties.export_pack_version.const, '1.2.0-alpha.8');
+assert.equal(schema.properties.export_pack.properties.export_pack_version.const, '1.2.0-alpha.8.1');
 
 console.log('Export Pack v2 checks passed.');
 process.exit(0);

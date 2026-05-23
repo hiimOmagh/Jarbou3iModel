@@ -1,4 +1,4 @@
-/* v1.2.0-alpha.8 · Diagnostic Repair Queue + Export Risk Resolution; public surface displays v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution.  Jarbou3i Research Engine render helpers v1.1.0. */
+/* v1.2.0-alpha.8.1 · CI Stabilization + Workflow Quarantine; public surface displays v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine.  Jarbou3i Research Engine render helpers v1.1.0. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -6,7 +6,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, source clusters, entity profiles, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution · Diagnostic Repair Queue + Export Risk Resolution',
+      alphaBadge:'v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine · Diagnostic Repair Queue + Export Risk Resolution',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، تجميعات مصادر، ملفات كيانات، روابط سببية، نقد، وبوابة جودة v3.',
-      alphaBadge:'v1.2.0-alpha.8 صف إصلاح التشخيص + حل مخاطر التصدير · صف إصلاح التشخيص + حل مخاطر التصدير' ,
+      alphaBadge:'v1.2.0-alpha.8.1 تثبيت CI + عزل سير العمل · صف إصلاح التشخيص + حل مخاطر التصدير' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, clusters de sources, profils d’entités, liens causaux, critique et barrière qualité v3.',
-      alphaBadge:'v1.2.0-alpha.8 File de réparation diagnostique + résolution des risques export · File de réparation diagnostique + résolution des risques export',
+      alphaBadge:'v1.2.0-alpha.8.1 Stabilisation CI + quarantaine du workflow · File de réparation diagnostique + résolution des risques export',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -404,7 +404,7 @@
     publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
     localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
     hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
-    hostedDemoVerificationBody:'Diagnostic Repair Queue + Export Risk Resolution is ready for release evidence: the public copy is stable, the golden workflow and Export Pack v3 remain locked, and hosted evidence must report 1.2.0-alpha.8 internally while showing v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution to users. No live scraping, real OAuth, backend expansion, live provider execution, or automatic source verification is enabled.',
+    hostedDemoVerificationBody:'Diagnostic Repair Queue + Export Risk Resolution is ready for release evidence: the public copy is stable, the golden workflow and Export Pack v3 remain locked, and hosted evidence must report 1.2.0-alpha.8.1 internally while showing v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine to users. No live scraping, real OAuth, backend expansion, live provider execution, or automatic source verification is enabled.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
     evidenceReviewGateBody:'Stable release evidence preserves the Evidence Review Queue, publication review gate, Export Pack v3, golden workflow, and privacy guards. Screenshots or ZIP files alone are insufficient for release approval.',
@@ -423,7 +423,7 @@
     publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
     localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
     hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
-    hostedDemoVerificationBody:'العرض العام المستقر جاهز لأدلة الإصدار: النسخة العامة مستقرة، المجموعة الذهبية وExport Pack v3 مقفولان، ويجب أن تعلن أدلة الاستضافة داخليًا 1.2.0-alpha.8 مع عرض v1.2.0-alpha.8 صف إصلاح التشخيص + حل مخاطر التصدير للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو ادعاء تحقق آلي من المصادر.',
+    hostedDemoVerificationBody:'العرض العام المستقر جاهز لأدلة الإصدار: النسخة العامة مستقرة، المجموعة الذهبية وExport Pack v3 مقفولان، ويجب أن تعلن أدلة الاستضافة داخليًا 1.2.0-alpha.8.1 مع عرض v1.2.0-alpha.8.1 تثبيت CI + عزل سير العمل للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو ادعاء تحقق آلي من المصادر.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
     evidenceReviewGateBody:'تحافظ أدلة الإصدار المستقر على صف مراجعة الأدلة، بوابة مراجعة النشر، Export Pack v3، المجموعة الذهبية، وحراس الخصوصية. لا تكفي اللقطات أو ملفات ZIP وحدها لاعتماد الإصدار.',
@@ -443,7 +443,7 @@
     publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
     localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
     hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
-    hostedDemoVerificationBody:'La démo publique stable est prête pour les preuves de release : la copie publique est stable, le golden workflow et Export Pack v3 restent verrouillés, et les preuves hébergées doivent annoncer 1.2.0-alpha.8 en interne tout en affichant v1.2.0-alpha.8 File de réparation diagnostique + résolution des risques export aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live ni vérification automatique des sources.',
+    hostedDemoVerificationBody:'La démo publique stable est prête pour les preuves de release : la copie publique est stable, le golden workflow et Export Pack v3 restent verrouillés, et les preuves hébergées doivent annoncer 1.2.0-alpha.8.1 en interne tout en affichant v1.2.0-alpha.8.1 Stabilisation CI + quarantaine du workflow aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live ni vérification automatique des sources.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
     evidenceReviewGateBody:'Les preuves de release stable conservent la file de revue des preuves, la revue publication, Export Pack v3, le golden workflow et les garde-fous de confidentialité. Captures ou ZIP seuls sont insuffisants pour approuver la release.',
@@ -536,7 +536,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'1.2.0-alpha.8 corrects stable public localization: English, Arabic, and French release copy are language-pure, public copy shows v1.2.0-alpha.8 Diagnostic Repair Queue + Export Risk Resolution, and internal evidence metadata reports 1.1.0.',
+    analysisReleaseNote:'1.2.0-alpha.8.1 corrects stable public localization: English, Arabic, and French release copy are language-pure, public copy shows v1.2.0-alpha.8.1 CI Stabilization + Workflow Quarantine, and internal evidence metadata reports 1.1.0.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -551,7 +551,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'تصحح 1.2.0-alpha.8 ترجمة السطح العام المستقر: نسخة الإنجليزية والعربية والفرنسية صارت نقية لغويًا، النسخة العامة تعرض v1.2.0-alpha.8 صف إصلاح التشخيص + حل مخاطر التصدير، وبيانات أدلة الاستضافة الداخلية تعلن 1.2.0-alpha.8.',
+    analysisReleaseNote:'تصحح 1.2.0-alpha.8.1 ترجمة السطح العام المستقر: نسخة الإنجليزية والعربية والفرنسية صارت نقية لغويًا، النسخة العامة تعرض v1.2.0-alpha.8.1 تثبيت CI + عزل سير العمل، وبيانات أدلة الاستضافة الداخلية تعلن 1.2.0-alpha.8.1.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -567,7 +567,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'1.2.0-alpha.8 corrige la localisation publique stable : les copies anglaise, arabe et française restent dans leur langue, la surface publique affiche v1.2.0-alpha.8 File de réparation diagnostique + résolution des risques export, et les métadonnées internes de preuve annoncent 1.2.0-alpha.8.',
+    analysisReleaseNote:'1.2.0-alpha.8.1 corrige la localisation publique stable : les copies anglaise, arabe et française restent dans leur langue, la surface publique affiche v1.2.0-alpha.8.1 Stabilisation CI + quarantaine du workflow, et les métadonnées internes de preuve annoncent 1.2.0-alpha.8.1.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',
@@ -1264,7 +1264,7 @@
   root.renderHelpers = {COPY, SUPPORTED_LANGS, sanitizeUiText, sanitizeUiTree, installMojibakeGuard, esc, getLang, tr, applyLabels};
 })(window);
 
-/* v1.2.0-alpha.8 · Diagnostic Repair Queue + Export Risk Resolution */
+/* v1.2.0-alpha.8.1 · CI Stabilization + Workflow Quarantine */
 
 /* legacy-test-token: مرشح مستقر; candidat stable. Public visible stable labels are العرض العام المستقر / Démo publique stable. */
 

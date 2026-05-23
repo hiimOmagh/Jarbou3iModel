@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.2.0-alpha.8';
+  const VERSION = '1.2.0-alpha.8.1';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -963,7 +963,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.2.0-alpha.8',
+      schema_version: '1.2.0-alpha.8.1',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),

@@ -2,7 +2,7 @@
 
 Current milestone:
 
-`v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution`
+`v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine`
 
 Purpose: take one controlled step beyond the stable public-demo lock by packaging the existing local/manual research plan, evidence workspace, claim review, contradiction review, source gaps, confidence metadata, and strategic brief export into one source-to-brief workflow.
 
@@ -35,3 +35,6 @@ Stable baseline retained: v1.1.0 remains the locked Public Demo reference for po
 Workbench note: this release is a changed-files-only local/manual source-to-brief implementation with release apply integrity controls.
 
 Evidence manifest continuity: hosted-demo review still requires a single final metadata capture manifest with desktop, mobile, provider-mode, and quality/export evidence.
+
+
+Alpha.8 preserved feature surface: Diagnostic Repair Queue + Export Risk Resolution.

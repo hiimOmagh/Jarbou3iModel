@@ -39,6 +39,7 @@ const tests = [
   'tests/release-candidate-final-hygiene-check.mjs',
   'tests/provider-router-cost-ledger-check.mjs',
   'tests/strategic-evidence-graph-check.mjs',
+  'tests/ci-workflow-quarantine-check.mjs',
   'tests/post-stable-capability-roadmap-check.mjs'
 ];
 

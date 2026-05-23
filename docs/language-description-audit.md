@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.2.0-alpha.8`
-Release: `v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution`
+Version: `1.2.0-alpha.8.1`
+Release: `v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

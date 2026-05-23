@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.2.0-alpha.8`
-Release: `v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution`
+Version: `1.2.0-alpha.8.1`
+Release: `v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

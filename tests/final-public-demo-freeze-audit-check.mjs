@@ -6,12 +6,12 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.2.0-alpha.8';
+const VERSION = '1.2.0-alpha.8.1';
 const BASE_VERSION = '1.0.30';
-const TITLE = 'Diagnostic Repair Queue + Export Risk Resolution';
+const TITLE = 'CI Stabilization + Workflow Quarantine';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const LOCK_RELEASE = `v${VERSION} — Public Demo Release Lock`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.8-post-stable-capability-roadmap-expansion-gate.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.8.1-post-stable-capability-roadmap-expansion-gate.zip';
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -21,8 +21,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.8-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.8.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.8.1-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.8.1.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const publicDemo = read('src/research/public-demo-readiness.js');
@@ -64,7 +64,7 @@ assert.equal(schema.properties.release_apply_integrity.properties.base_version.c
 assert.equal(schema.properties.release_apply_integrity.properties.artifact_name.const, ARTIFACT);
 assert.equal(schema.properties.release_provenance_ledger.properties.base_version.const, BASE_VERSION);
 assert.equal(schema.properties.release_provenance_ledger.properties.artifact_name.const, ARTIFACT);
-assert.ok(index.includes('v1.2.0-alpha.8 · Diagnostic Repair Queue + Export Risk Resolution'), 'index badge must expose final freeze audit identity');
+assert.ok(index.includes('v1.2.0-alpha.8.1 · CI Stabilization + Workflow Quarantine'), 'index badge must expose final freeze audit identity');
 assert.ok(index.includes('id="loadSampleBtn"'), 'load sample primary action must remain in DOM');
 assert.ok(browserA11y.includes("page.locator('#loadSampleBtn')"), 'runtime a11y smoke must target loadSampleBtn visibility');
 assert.ok(browserA11y.includes("await page.locator('#loadSampleBtn').click()"), 'runtime a11y smoke must click loadSampleBtn');
@@ -78,14 +78,14 @@ for (const text of [publicDemo, releaseDoc, read('README.md'), read('RELEASE_NOT
   assert.ok(/No real OAuth|production OAuth|real OAuth/i.test(text), 'public corpus must keep OAuth boundary');
   assert.ok(/screenshots.*alone|screenshots, hosted evidence, and ZIPs|ZIP existence alone|ZIP archive alone/i.test(text), 'public corpus must reject screenshot/ZIP-only approval');
 }
-assert.ok(migrations.includes("const TARGET_VERSION = '1.2.0-alpha.8'"), 'migration target must be v1.1.0');
-assert.ok(migrations.includes("'1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.2.0-alpha.8'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.2.0-alpha.8.1'"), 'migration target must be v1.1.0');
+assert.ok(migrations.includes("'1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.2.0-alpha.8.1'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
 assert.ok(engine.includes("baseVersion:'1.0.30'"), 'engine apply/provenance reports must use v1.0.30 freeze baseline');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must run final freeze audit through registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
 assert.ok(ciBrowser.includes('ci-gate-runner.mjs browser'), 'browser CI must preserve hosted evidence through registry runner');
-for (const file of ['fixtures/migrations/v1.0.28-packet.json','fixtures/privacy/browser-generated-export-v1.0.28.json','fixtures/migrations/v1.2.0-alpha.8-packet.json','fixtures/privacy/browser-generated-export-v1.2.0-alpha.8.json','docs/v1.0.28-hosted-demo-evidence-manifest-gate.md','docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md','tests/version-suite-registry-check.mjs']) assert.ok(exists(file), `missing required baseline/current artifact: ${file}`);
+for (const file of ['fixtures/migrations/v1.0.28-packet.json','fixtures/privacy/browser-generated-export-v1.0.28.json','fixtures/migrations/v1.2.0-alpha.8.1-packet.json','fixtures/privacy/browser-generated-export-v1.2.0-alpha.8.1.json','docs/v1.0.28-hosted-demo-evidence-manifest-gate.md','docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md','tests/version-suite-registry-check.mjs']) assert.ok(exists(file), `missing required baseline/current artifact: ${file}`);
 for (const file of ['tests/final-public-demo-freeze-audit-check.mjs','tests/version-suite-registry-check.mjs']) { const syntax = spawnSync(process.execPath, ['--check', file], {encoding:'utf8'}); assert.equal(syntax.status, 0, syntax.stderr || syntax.stdout || `${file} syntax failed`); }
 console.log('Final public demo freeze audit checks passed.');
 process.exit(0);

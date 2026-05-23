@@ -1,4 +1,4 @@
-/* Jarbou3i Research Engine source-to-brief operator renderer v1.2.0-alpha.8. */
+/* Jarbou3i Research Engine source-to-brief operator renderer v1.2.0-alpha.8.1. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};

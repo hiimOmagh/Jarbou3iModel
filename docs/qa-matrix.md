@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.2.0-alpha.8 — Diagnostic Repair Queue + Export Risk Resolution
+Current release candidate: v1.2.0-alpha.8.1 — CI Stabilization + Workflow Quarantine
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.2.0-alpha.8.
+Node 24 CI compatibility is preserved for v1.2.0-alpha.8.1.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 
@@ -29,3 +29,6 @@ No live scraping. No real OAuth or production OAuth is enabled. Screenshots alon
 ## Stable baseline note
 
 Stable baseline retained: v1.1.0 remains the locked Public Demo reference for post-stable expansion gating. Node 24 CI compatibility remains preserved for the local/manual source-to-brief release.
+
+
+Alpha.8 preserved feature surface: Diagnostic Repair Queue + Export Risk Resolution.

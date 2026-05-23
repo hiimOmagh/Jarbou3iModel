@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.2.0-alpha.8';
-const TITLE = 'Diagnostic Repair Queue + Export Risk Resolution';
+const VERSION = '1.2.0-alpha.8.1';
+const TITLE = 'CI Stabilization + Workflow Quarantine';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
