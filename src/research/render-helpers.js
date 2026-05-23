@@ -831,12 +831,12 @@
     [cp(0xe2,0x2020,0x2019),'→'], [cp(0xe2,0x2020,0x0090),'←'], [cp(0xe2,0x20ac,0xa2),'•'],
     [cp(0xe2,0x20ac,0xa6),'…'], [cp(0xe2,0x20ac,0x0153),'“'], [cp(0xe2,0x20ac,0x009d),'”'],
     [cp(0xe2,0x20ac,0x02dc),'‘'], [cp(0xe2,0x20ac,0x2122),'’'], [cp(0x00c2,0x00b7),'·'],
-    [cp(0x00c2,0x00a0),' '], [cp(0x00c2,0x20),' '], [cp(0x00c2),'']
+    [cp(0x00c2,0x00a0),' '], [cp(0x00c2,0x20),' ']
   ]);
   function sanitizeUiText(value){
     let text = String(value ?? '');
     for(const [bad, good] of MOJIBAKE_REPAIR_MAP) text = text.replaceAll(bad, good);
-    text = text.replace(new RegExp(cp(0x00c2), 'g'), '');
+    text = text.replace(/(^|[^\p{L}\p{M}])\u00c2(?=$|[^\p{L}\p{M}])/gu, '$1');
     return text;
   }
   function sanitizeUiTree(rootNode){

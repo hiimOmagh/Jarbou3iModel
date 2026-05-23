@@ -29,7 +29,17 @@ const EVIDENCE_SETTLE_FRAME_COUNT = 3;
 const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 180_000;
 const HOSTED_EVIDENCE_CANONICAL_PROJECT = 'chromium';
 const TRANSIENT_ARTIFACT_SELECTORS = Object.freeze(['.toast.show','.modalBackdrop.show','[aria-busy="true"]','[data-loading="true"]','[data-testid*="loading"]','[class*="spinner"]','[class*="skeleton"]']);
-const MOJIBAKE_MARKERS = Object.freeze(['Ø','Ù','Â','Ã','â€”','â†','â—','â€œ','â€']);
+const MOJIBAKE_MARKERS = Object.freeze([
+  { label:'Ø', pattern:/Ø/ },
+  { label:'Ù', pattern:/Ù/ },
+  { label:'isolated Â', pattern:/(^|[^\p{L}\p{M}])Â(?=$|[^\p{L}\p{M}])/u },
+  { label:'Ã', pattern:/Ã/ },
+  { label:'â€”', pattern:/â€”/ },
+  { label:'â†', pattern:/â†/ },
+  { label:'â—', pattern:/â—/ },
+  { label:'â€œ', pattern:/â€œ/ },
+  { label:'â€', pattern:/â€/ }
+]);
 const ARABIC_UNICODE_RE = /[\u0600-\u06FF]/;
 
 function ensureEvidenceRoot(){ fs.mkdirSync(EVIDENCE_ROOT, { recursive:true }); }
@@ -38,7 +48,10 @@ function pngDimensions(buffer){ if(!Buffer.isBuffer(buffer) || buffer.length < 2
 function slugPath(locale, slug, ext){ return path.join(EVIDENCE_ROOT, locale, `${slug}.${ext}`); }
 function writeJson(file, value){ ensureDir(path.dirname(file)); fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n'); }
 function visibleTextCorpus(snapshot){ return (snapshot.visible_text || []).join(' '); }
-function findMojibakeMarkers(text){ return MOJIBAKE_MARKERS.filter((marker)=>String(text || '').includes(marker)); }
+function findMojibakeMarkers(text){
+  const value = String(text || '');
+  return MOJIBAKE_MARKERS.filter(({ pattern }) => pattern.test(value)).map(({ label }) => label);
+}
 function assertNoMojibake(text, label){
   const markers = findMojibakeMarkers(text);
   const offending_lines = String(text || '').split(/\n| {2,}/).filter((line)=>findMojibakeMarkers(line).length).slice(0,8);

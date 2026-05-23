@@ -39,6 +39,7 @@ for (const stale of ['fixture/test debt ledger, source-file refactor readiness',
 assert.ok(renderSource.includes('data-r-toggle-show') && renderSource.includes('data-r-toggle-hide'), 'visible-text snapshots must relocalize collapse toggles after language switching');
 
 for (const marker of ['Ø','Ù','Â','Ã','â€”','â†','â—','â€œ','â€']) assert.ok(spec.includes(marker), `mojibake guard must reject ${marker}`);
+assert.ok(spec.includes('isolated Â'), 'mojibake guard must distinguish isolated C2/Â artifacts from legitimate French uppercase Â');
 
 const scanRoot = new URL('..', import.meta.url);
 const allowedMojibakeFiles = new Set([
