@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.2.0-alpha.1';
-const TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
-const RELEASE = `v${VERSION} — ${TITLE}`;
+const VERSION = '1.2.0-alpha.2';
+const TITLE = 'Source-to-Brief Intelligence Workbench';
+const RELEASE = `v${VERSION} â€” ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const pkg = json('package.json');

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.1';
-const RELEASE = 'v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate';
+const VERSION = '1.2.0-alpha.2';
+const RELEASE = 'v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 
@@ -36,8 +36,8 @@ assert.equal(fixture.workflow_version, VERSION);
 assert.equal(fixture.release_notes.release_title, RELEASE);
 
 assert.ok(index.includes('src="src/research/post-stable-expansion-gate.js" defer'));
-assert.ok(index.includes('v1.2.0-alpha.1 · Post-Stable Capability Roadmap + Expansion Gate'));
-assert.ok(source.includes("const VERSION = '1.2.0-alpha.1'"));
+assert.ok(index.includes('v1.2.0-alpha.2 Â· Source-to-Brief Intelligence Workbench'));
+assert.ok(source.includes("const VERSION = '1.2.0-alpha.2'"));
 assert.ok(source.includes('No live scraping or uncontrolled source fetching'));
 assert.ok(source.includes('automatic_source_verification_claimed:false'));
 assert.ok(source.includes('implementation_allowed:false'));

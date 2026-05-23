@@ -24,7 +24,7 @@
  * - AUDIT_LOGS_ENABLED=false
  */
 
-const VERSION = '1.2.0-alpha.1';
+const VERSION = '1.2.0-alpha.2';
 const ALLOWED_TASKS = new Set(['plan', 'synthesis', 'repair', 'critique', 'source_discipline']);
 const ALLOWED_SOURCE_TASKS = new Set(['source_plan', 'query_plan', 'claim_extraction', 'evidence_scoring', 'cluster_plan']);
 const ALLOWED_SOURCE_CONNECTORS = new Set(['manual_mock', 'github_public_repo', 'web_search_api', 'web_search_planned', 'github_planned', 'hn_planned', 'youtube_planned', 'reddit_planned', 'polymarket_planned']);
@@ -95,7 +95,7 @@ function csvEnv(env, key) {
 function redactText(value, max = 500) {
   let text = String(value ?? '');
   for (const pattern of SECRET_TEXT_PATTERNS) text = text.replace(pattern, '[REDACTED]');
-  return text.length > max ? `${text.slice(0, max)}…` : text;
+  return text.length > max ? `${text.slice(0, max)}â€¦` : text;
 }
 
 function safeDetails(details = {}) {

@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate
+Current release candidate: v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
 
 Required gates:
 - No-browser CI
@@ -9,10 +9,12 @@ Required gates:
 - Visible-text snapshots AR/EN/FR
 - Golden workflow regression lock
 - Export Pack v3 consistency lock
+- Source-to-brief workflow structure, claim/evidence linkage, support levels, contradiction grouping, gap warnings, confidence metadata, and export integrity
+- No automatic source verification claims
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for 1.1.0.
+Node 24 CI compatibility is preserved for v1.2.0-alpha.2.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 
@@ -20,10 +22,10 @@ Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP a
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
 
-Public Demo evidence and hosted-demo review remain required for lock.
+Public Demo evidence, hosted-demo review, and source-to-brief export review remain required for lock.
 
 No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and ZIP archive alone are insufficient for release approval.
 
 ## Stable baseline note
 
-Stable baseline retained: v1.1.0 remains the locked Public Demo reference for post-stable expansion gating. Node 24 CI compatibility remains preserved for the post-stable planning release.
+Stable baseline retained: v1.1.0 remains the locked Public Demo reference for post-stable expansion gating. Node 24 CI compatibility remains preserved for the local/manual source-to-brief release.

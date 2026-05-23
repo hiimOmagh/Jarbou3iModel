@@ -42,6 +42,8 @@ async function seedEvidence(page) {
 test.describe('v1.1.0 source packet builder browser QA', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
+    await page.locator('#langEn').click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   });
 
   for (const viewport of [

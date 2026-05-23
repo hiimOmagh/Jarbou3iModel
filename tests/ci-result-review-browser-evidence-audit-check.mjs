@@ -8,10 +8,10 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.2.0-alpha.1';
+const CURRENT_VERSION = '1.2.0-alpha.2';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
+const CURRENT_TITLE = 'Source-to-Brief Intelligence Workbench';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -31,7 +31,7 @@ assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must iden
 assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify current release');
 assert.equal(schema.properties.workflow_version.const, CURRENT_VERSION, 'schema workflow version must identify current release');
 assert.equal(sample.workflow_version, CURRENT_VERSION, 'sample fixture must identify current release');
-assert.equal(sample.release_notes.release_title, `v${CURRENT_VERSION} — ${CURRENT_TITLE}`, 'sample release title must identify current release');
+assert.equal(sample.release_notes.release_title, `v${CURRENT_VERSION} â€” ${CURRENT_TITLE}`, 'sample release title must identify current release');
 
 for (const required of [
   'GitHub Actions',
@@ -99,8 +99,8 @@ for (const required of [
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
   'tests/ci-result-review-browser-evidence-audit-check.mjs',
   'tests/version-suite-registry-check.mjs',
-  'fixtures/migrations/v1.2.0-alpha.1-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.2.0-alpha.1.json',
+  'fixtures/migrations/v1.2.0-alpha.2-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.2.0-alpha.2.json',
   'docs/v1.0.25-public-demo-release-lock.md',
   'tests/public-demo-release-lock-check.mjs',
   'tests/version-suite-registry-check.mjs'
@@ -108,8 +108,8 @@ for (const required of [
   assert.ok(fixturePathExists(required) || releaseDocExists(required), `required CI/hygiene artifact missing: ${required}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.2.0-alpha.1'"), 'migration target must be current release');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.2.0-alpha.1'"), 'migration order must preserve v1.0.24 and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.2.0-alpha.2'"), 'migration target must be current release');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.2.0-alpha.2'"), 'migration order must preserve v1.0.24 and append v1.1.0');
 const releaseCorpus = [manifest, roadmap, qaMatrix, releaseHistory(), historicalDoc].join('\n');
 assert.ok(releaseCorpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');
 assert.ok(releaseCorpus.includes(HISTORICAL_TITLE), 'release corpus must preserve v1.0.23 audit title');

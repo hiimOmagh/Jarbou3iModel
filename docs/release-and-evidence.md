@@ -5,13 +5,13 @@ This document consolidates release and evidence policy previously scattered acro
 ## Current release
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.2.0-alpha.1`
-- Release: `v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate`
-- Release type: cleanup-only alpha patch
+- Version: `1.2.0-alpha.2`
+- Release: `v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench`
+- Release type: controlled local/manual source-to-brief alpha
 - Runtime capability change: no
 - Provider behavior change: no
 - OAuth behavior change: no
-- Backend/source/storage behavior change: no
+- Backend/live-source/storage behavior change: no
 - Public-demo capability expansion: no
 - Required cleanup commands: apply tracked deletions for consolidated root release artifacts before validation.
 
@@ -45,7 +45,7 @@ Hosted URL mode:
 HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
 ```
 
-The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.2.0-alpha.1` and the evidence-review panel present.
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.2.0-alpha.2` and the evidence-review panel present.
 
 The hosted-demo evidence artifact must contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, full-page status, and horizontal-overflow sanity. Partial per-test metadata overwrites remain blocked by no-browser gates.
 
@@ -82,7 +82,7 @@ Public demo release approval requires:
 
 This release must not change provider behavior, OAuth behavior, backend endpoint behavior, live source connector behavior, storage model, source verification behavior, or public-demo capability surface.
 
-Boundary reminder: no live scraping, no real OAuth/account login, and no automated source verification are enabled by this cleanup release.
+Boundary reminder: no live scraping, no real OAuth/account login, no provider execution expansion, no backend behavior expansion, no new persistent storage, and no automated source verification are enabled by this source-to-brief release. The workbench packages user-provided or source-imported evidence, generated claims, inferred confidence, missing evidence/gaps, and blocked unavailable capabilities for review.
 
 ## Release archive exclusions
 
@@ -148,10 +148,10 @@ The following legacy root artifacts are intentionally consolidated and should no
 
 ## Historical continuity
 
-- Public-demo visual freeze baseline: `v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze`
-- Fixture registry consolidation baseline: `v1.1.0-alpha.4 — Migration + Privacy Fixture Registry Consolidation`
-- Version/documentation registry baseline: `v1.1.0-alpha.5 — Repository-Wide Structural Cleanup + Version/Documentation Registry Consolidation`
-- Current root artifact consolidation: `v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate`
+- Public-demo visual freeze baseline: `v1.0.30 â€” Mobile Header Geometry Lock / Final Public Demo Visual Freeze`
+- Fixture registry consolidation baseline: `v1.1.0-alpha.4 â€” Migration + Privacy Fixture Registry Consolidation`
+- Version/documentation registry baseline: `v1.1.0-alpha.5 â€” Repository-Wide Structural Cleanup + Version/Documentation Registry Consolidation`
+- Current root artifact consolidation: `v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench`
 
 Evidence manifest continuity: v1.1.0 preserves the single final metadata hosted-demo evidence manifest gate.
 Release apply integrity gate for changed-files-only patch handoff remains active.
@@ -163,7 +163,7 @@ Required validation: `npm run test:current:no-browser`, `npm run test:ci:no-brow
 Hosted Demo evidence must preserve browser evidence and evidence review language for existing guards.
 
 
-Release-lock guard: v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
+Release-lock guard: v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence. Screenshots alone are insufficient. ZIP existence alone is insufficient. A local ZIP archive alone is insufficient.
 
 Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is insufficient.
 

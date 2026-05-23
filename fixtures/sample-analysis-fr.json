@@ -1,32 +1,32 @@
 {
   "subject": {
-    "title": "Exemple : résultats de la Seconde Guerre mondiale",
-    "context": "1939–1947, ordre international",
-    "question": "Comment les résultats de la Seconde Guerre mondiale ont-ils remodelé l’ordre international ?",
-    "executive_thesis": "La guerre a déplacé le centre de gravité du système international vers les États-Unis et l’Union soviétique, tout en créant une architecture institutionnelle destinée à empêcher une nouvelle guerre totale."
+    "title": "Exemple : rÃ©sultats de la Seconde Guerre mondiale",
+    "context": "1939â€“1947, ordre international",
+    "question": "Comment les rÃ©sultats de la Seconde Guerre mondiale ont-ils remodelÃ© lâ€™ordre international ?",
+    "executive_thesis": "La guerre a dÃ©placÃ© le centre de gravitÃ© du systÃ¨me international vers les Ã‰tats-Unis et lâ€™Union soviÃ©tique, tout en crÃ©ant une architecture institutionnelle destinÃ©e Ã  empÃªcher une nouvelle guerre totale."
   },
   "interests": [
     {
-      "name": "Empêcher le retour de l’hégémonie allemande",
+      "name": "EmpÃªcher le retour de lâ€™hÃ©gÃ©monie allemande",
       "type": "strategic",
       "intensity": 5,
       "horizon": "long",
       "stakes": "existential",
       "confidence": "high",
-      "rationale": "Deux guerres mondiales ont transformé le contrôle de la puissance allemande en priorité de sécurité.",
+      "rationale": "Deux guerres mondiales ont transformÃ© le contrÃ´le de la puissance allemande en prioritÃ© de sÃ©curitÃ©.",
       "id": "I1"
     }
   ],
   "actors": [
     {
-      "name": "États-Unis",
+      "name": "Ã‰tats-Unis",
       "category": "state",
       "financial": 5,
       "decision_access": 5,
       "disruption_capacity": 4,
       "media_influence": 4,
       "confidence": "high",
-      "rationale": "Leur capacité industrielle, financière et militaire leur permettait d’organiser l’ordre d’après-guerre.",
+      "rationale": "Leur capacitÃ© industrielle, financiÃ¨re et militaire leur permettait dâ€™organiser lâ€™ordre dâ€™aprÃ¨s-guerre.",
       "id": "A1"
     }
   ],
@@ -40,19 +40,19 @@
       "reversibility": 2,
       "deniability": 1,
       "confidence": "high",
-      "rationale": "L’ONU et Bretton Woods ont fourni des instruments de coordination et de légitimité.",
+      "rationale": "Lâ€™ONU et Bretton Woods ont fourni des instruments de coordination et de lÃ©gitimitÃ©.",
       "id": "T1"
     }
   ],
   "narrative": [
     {
-      "name": "Empêcher une nouvelle guerre totale",
+      "name": "EmpÃªcher une nouvelle guerre totale",
       "frame": "security",
       "coherence": 5,
       "media_alignment": 4,
       "public_acceptance": 5,
       "confidence": "high",
-      "rationale": "Le traumatisme humain et matériel rendait ce cadrage très puissant.",
+      "rationale": "Le traumatisme humain et matÃ©riel rendait ce cadrage trÃ¨s puissant.",
       "id": "N1"
     }
   ],
@@ -64,35 +64,35 @@
       "cost_benefit": 3,
       "power_balance_impact": "strengthened",
       "confidence": "high",
-      "rationale": "Le pouvoir s’est concentré autour de Washington et Moscou.",
+      "rationale": "Le pouvoir sâ€™est concentrÃ© autour de Washington et Moscou.",
       "id": "R1"
     }
   ],
   "feedback": [
     {
-      "description": "La rivalité entre alliés a transformé la coopération militaire en compétition idéologique.",
+      "description": "La rivalitÃ© entre alliÃ©s a transformÃ© la coopÃ©ration militaire en compÃ©tition idÃ©ologique.",
       "adapts": "actors",
       "speed": "fast",
       "confidence": "high",
-      "rationale": "Les intérêts de sécurité ont divergé dès la reconstruction.",
+      "rationale": "Les intÃ©rÃªts de sÃ©curitÃ© ont divergÃ© dÃ¨s la reconstruction.",
       "id": "F1"
     }
   ],
   "contradictions": {
     "items": [
       {
-        "rhetoric": "La sécurité collective empêcherait une nouvelle guerre mondiale.",
+        "rhetoric": "La sÃ©curitÃ© collective empÃªcherait une nouvelle guerre mondiale.",
         "contradiction_type": "result_vs_intention",
         "actions": [
-          "Le Conseil de sécurité a donné un veto aux grandes puissances.",
-          "La rivalité Est-Ouest a limité l’application collective."
+          "Le Conseil de sÃ©curitÃ© a donnÃ© un veto aux grandes puissances.",
+          "La rivalitÃ© Est-Ouest a limitÃ© lâ€™application collective."
         ],
         "affected_layers": [
           "narrative",
           "results",
           "feedback"
         ],
-        "interpretation": "La sécurité collective dépendait d’une hiérarchie de puissances plutôt que d’une égalité souveraine complète.",
+        "interpretation": "La sÃ©curitÃ© collective dÃ©pendait dâ€™une hiÃ©rarchie de puissances plutÃ´t que dâ€™une Ã©galitÃ© souveraine complÃ¨te.",
         "severity": 8,
         "confidence": "high",
         "id": "C1"
@@ -104,21 +104,21 @@
       {
         "name": "Normalisation institutionnelle contenue",
         "probability": 45,
-        "timeframe": "1947–1955",
+        "timeframe": "1947â€“1955",
         "drivers": [
-          "Reconstruction européenne",
-          "Dépendance à l’aide américaine",
-          "Institutionnalisation multilatérale"
+          "Reconstruction europÃ©enne",
+          "DÃ©pendance Ã  lâ€™aide amÃ©ricaine",
+          "Institutionnalisation multilatÃ©rale"
         ],
         "early_signals": [
           "Plans de reconstruction",
           "Nouvelles alliances",
-          "Coordination économique"
+          "Coordination Ã©conomique"
         ],
         "disproven_if": [
-          "Les grandes puissances acceptent une gouvernance réellement égalitaire."
+          "Les grandes puissances acceptent une gouvernance rÃ©ellement Ã©galitaire."
         ],
-        "rationale": "L’ordre devient stable mais hiérarchisé.",
+        "rationale": "Lâ€™ordre devient stable mais hiÃ©rarchisÃ©.",
         "id": "S1"
       }
     ]
@@ -126,9 +126,9 @@
   "evidence": {
     "items": [
       {
-        "claim": "Les États-Unis sortent de la guerre avec une puissance industrielle et financière exceptionnelle.",
+        "claim": "Les Ã‰tats-Unis sortent de la guerre avec une puissance industrielle et financiÃ¨re exceptionnelle.",
         "basis": "source_based",
-        "source_note": "Données historiques générales sur la production et le financement de guerre.",
+        "source_note": "DonnÃ©es historiques gÃ©nÃ©rales sur la production et le financement de guerre.",
         "confidence": "high",
         "id": "E1",
         "source_title": "Historical power distribution reference",
@@ -144,15 +144,15 @@
   "assumptions": {
     "items": [
       {
-        "assumption": "La stabilité d’après-guerre dépend de la capacité américaine à financer la reconstruction.",
+        "assumption": "La stabilitÃ© dâ€™aprÃ¨s-guerre dÃ©pend de la capacitÃ© amÃ©ricaine Ã  financer la reconstruction.",
         "risk": "medium",
-        "disproving_test": "Montrer une reconstruction équivalente sans financement américain.",
-        "implication_if_wrong": "Le poids causal des institutions américaines serait surestimé.",
+        "disproving_test": "Montrer une reconstruction Ã©quivalente sans financement amÃ©ricain.",
+        "implication_if_wrong": "Le poids causal des institutions amÃ©ricaines serait surestimÃ©.",
         "id": "AS1"
       }
     ]
   },
-  "schema_version": "1.2.0-alpha.1",
+  "schema_version": "1.2.0-alpha.2",
   "analysis_id": "sample-wwii-fr",
   "generated_at": "2026-04-27T00:00:00Z",
   "language": "fr",

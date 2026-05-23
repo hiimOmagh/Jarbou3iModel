@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.2.0-alpha.1",
-  "internal_build_version": "1.2.0-alpha.1",
-  "public_version_label": "v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate",
+  "evidence_matrix_config_version": "1.2.0-alpha.2",
+  "internal_build_version": "1.2.0-alpha.2",
+  "public_version_label": "v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Post-Stable Capability Roadmap + Expansion Gate",
+        "Source-to-Brief Intelligence Workbench",
         "Public demo",
         "Export Pack v3"
       ],
@@ -19,16 +19,16 @@
         "Gel de la surface publique",
         "Revue publication",
         "preuve",
-        "مراجعة النشر",
-        "الأدلة",
-        "تصدير"
+        "Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ù†Ø´Ø±",
+        "Ø§Ù„Ø£Ø¯Ù„Ø©",
+        "ØªØµØ¯ÙŠØ±"
       ]
     },
     "ar": {
       "required": [
-        "العرض العام المستقر",
-        "العرض العام",
-        "مراجعة الأدلة"
+        "Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù… Ø§Ù„Ù…Ø³ØªÙ‚Ø±",
+        "Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù…",
+        "Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ø£Ø¯Ù„Ø©"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -39,15 +39,15 @@
     },
     "fr": {
       "required": [
-        "Démo publique stable",
-        "démo publique",
+        "DÃ©mo publique stable",
+        "dÃ©mo publique",
         "revue des preuves"
       ],
       "forbidden": [
-        "Post-Stable Capability Roadmap + Expansion Gate",
+        "Source-to-Brief Intelligence Workbench",
         "Public surface freeze",
-        "مراجعة النشر",
-        "تدقيق حدود الادعاءات"
+        "Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ù†Ø´Ø±",
+        "ØªØ¯Ù‚ÙŠÙ‚ Ø­Ø¯ÙˆØ¯ Ø§Ù„Ø§Ø¯Ø¹Ø§Ø¡Ø§Øª"
       ]
     }
   },
@@ -75,8 +75,8 @@
       "required_selector": "#publicDemoReadinessPanel",
       "required_text_any": [
         "Public demo ready",
-        "العرض العام جاهز",
-        "Démo publique prête"
+        "Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù… Ø¬Ø§Ù‡Ø²",
+        "DÃ©mo publique prÃªte"
       ]
     },
     {
@@ -87,7 +87,7 @@
       "required_selector": "[data-r-i18n=\"planTitle\"]",
       "required_text_any": [
         "Research Plan",
-        "خطة البحث",
+        "Ø®Ø·Ø© Ø§Ù„Ø¨Ø­Ø«",
         "Plan de recherche"
       ]
     },
@@ -99,8 +99,8 @@
       "required_selector": "[data-r-i18n=\"templateTitle\"]",
       "required_text_any": [
         "Analysis Template",
-        "قالب التحليل",
-        "Modèle"
+        "Ù‚Ø§Ù„Ø¨ Ø§Ù„ØªØ­Ù„ÙŠÙ„",
+        "ModÃ¨le"
       ]
     },
     {
@@ -111,7 +111,7 @@
       "required_selector": "[data-r-i18n=\"sourceImportTitle\"]",
       "required_text_any": [
         "Source Import",
-        "استيراد المصادر",
+        "Ø§Ø³ØªÙŠØ±Ø§Ø¯ Ø§Ù„Ù…ØµØ§Ø¯Ø±",
         "Import"
       ]
     },
@@ -123,7 +123,7 @@
       "required_selector": "[data-r-i18n=\"evidenceReviewTitle\"]",
       "required_text_any": [
         "Evidence Review Queue",
-        "صف مراجعة الأدلة",
+        "ØµÙ Ù…Ø±Ø§Ø¬Ø¹Ø© Ø§Ù„Ø£Ø¯Ù„Ø©",
         "file de revue"
       ]
     },
@@ -135,7 +135,7 @@
       "required_selector": "[data-r-i18n=\"evidenceTitle\"]",
       "required_text_any": [
         "Evidence Matrix",
-        "مصفوفة الأدلة",
+        "Ù…ØµÙÙˆÙØ© Ø§Ù„Ø£Ø¯Ù„Ø©",
         "Matrice"
       ]
     },
@@ -147,7 +147,7 @@
       "required_selector": "[data-r-i18n=\"sourcePlanningTitle\"]",
       "required_text_any": [
         "Source Planning",
-        "تخطيط المصادر",
+        "ØªØ®Ø·ÙŠØ· Ø§Ù„Ù…ØµØ§Ø¯Ø±",
         "sources"
       ]
     },
@@ -159,8 +159,8 @@
       "required_selector": "#sourcePlanningOutput",
       "required_text_any": [
         "entity",
-        "كيان",
-        "entité"
+        "ÙƒÙŠØ§Ù†",
+        "entitÃ©"
       ]
     },
     {
@@ -171,7 +171,7 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "graph",
-        "رسم",
+        "Ø±Ø³Ù…",
         "graphe"
       ]
     },
@@ -183,7 +183,7 @@
       "required_selector": ".providerHarnessCard",
       "required_text_any": [
         "Provider",
-        "المزوّد",
+        "Ø§Ù„Ù…Ø²ÙˆÙ‘Ø¯",
         "fournisseur"
       ]
     },
@@ -195,8 +195,8 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "Quality",
-        "الجودة",
-        "Qualité"
+        "Ø§Ù„Ø¬ÙˆØ¯Ø©",
+        "QualitÃ©"
       ]
     },
     {
@@ -207,7 +207,7 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "publication",
-        "النشر",
+        "Ø§Ù„Ù†Ø´Ø±",
         "publication"
       ]
     },
@@ -219,14 +219,14 @@
       "required_selector": "#researchQualityOutput",
       "required_text_any": [
         "golden",
-        "الذهبية",
-        "doré"
+        "Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©",
+        "dorÃ©"
       ]
     }
   ],
   "public_version_labels": {
-    "en": "v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate",
-    "ar": "v1.1.0 العرض العام المستقر",
-    "fr": "v1.1.0 Démo publique stable"
+    "en": "v1.2.0-alpha.2 Source-to-Brief Intelligence Workbench",
+    "ar": "v1.1.0 Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù… Ø§Ù„Ù…Ø³ØªÙ‚Ø±",
+    "fr": "v1.1.0 DÃ©mo publique stable"
   }
 }

@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.1';
+  const VERSION = '1.2.0-alpha.2';
   const MODEL = 'entity_intelligence_layer.v1';
   const DEFAULT_IGNORE = new Set(['the','this','that','these','those','source','evidence','report','analysis','claim','official','social','news','manual','public','thread','note','sample','demo','january','february','march','april','may','june','july','august','september','october','november','december']);
   const ORG_SUFFIX = /\b(inc|corp|corporation|company|co|ltd|llc|group|agency|department|ministry|commission|council|committee|university|institute|bank|fund|foundation|association|alliance|union|government|administration|office|organization|organisation)\b/i;
@@ -32,9 +32,9 @@
   function extractCandidateNames(value){
     const src=text(value).replace(/https?:\/\/\S+/g,' ');
     const out=[];
-    const quoted=[...src.matchAll(/[“"']([^“"'\n]{2,80})[”"']/g)].map(m=>m[1]);
+    const quoted=[...src.matchAll(/[â€œ"']([^â€œ"'\n]{2,80})[â€"']/g)].map(m=>m[1]);
     out.push(...quoted);
-    const caps=[...src.matchAll(/\b(?:[A-Z][A-Za-z0-9&.'’\-]+|[A-Z]{2,10})(?:\s+(?:[A-Z][A-Za-z0-9&.'’\-]+|[A-Z]{2,10})){0,5}\b/g)].map(m=>m[0]);
+    const caps=[...src.matchAll(/\b(?:[A-Z][A-Za-z0-9&.'â€™\-]+|[A-Z]{2,10})(?:\s+(?:[A-Z][A-Za-z0-9&.'â€™\-]+|[A-Z]{2,10})){0,5}\b/g)].map(m=>m[0]);
     out.push(...caps);
     const arabic=[...src.matchAll(/[\u0600-\u06ff]{3,}(?:\s+[\u0600-\u06ff]{3,}){0,4}/g)].map(m=>m[0]);
     out.push(...arabic);
@@ -69,7 +69,7 @@
     for(const item of evidence||[]){
       const src=sourceText(item); const candidates=extractCandidateNames(src);
       for(const raw of candidates){
-        const name=text(raw).replace(/^['"“”]+|['"“”]+$/g,'');
+        const name=text(raw).replace(/^['"â€œâ€]+|['"â€œâ€]+$/g,'');
         if(shouldIgnore(name, ignoreList)){ ignored.push(name); continue; }
         const key=mergeKey(name, [...map.keys()]);
         if(key!==canonical(name)) aliasMerges.push({alias:name, canonical:key});

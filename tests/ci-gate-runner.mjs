@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
-const requestedGate = process.argv[2] || 'no-browser';
+const requestedArgs = process.argv.slice(2);
+const requestedGate = requestedArgs.find((arg) => registry.gates?.[arg]) || requestedArgs[0] || 'no-browser';
 const gate = registry.gates?.[requestedGate];
 
 if (!gate) {
@@ -14,6 +15,7 @@ if (!gate) {
 const timeoutSeconds = Number.parseInt(process.env.CI_NODE_TEST_TIMEOUT_SECONDS || '60', 10);
 const timeoutMs = Number.isFinite(timeoutSeconds) && timeoutSeconds > 0 ? timeoutSeconds * 1000 : 60000;
 const timings = [];
+const playwrightCommand = process.platform === 'win32' ? 'playwright.cmd' : './node_modules/.bin/playwright';
 
 function run(command, args, options = {}) {
   const rendered = [command, ...args].join(' ');
@@ -62,7 +64,7 @@ for (const file of gate.syntax_checks || []) {
 }
 
 for (const spec of gate.playwright_specs || []) {
-  run('./node_modules/.bin/playwright', ['test', spec], { timeout: 0 });
+  run(playwrightCommand, ['test', spec], { timeout: 0 });
 }
 
 printTimingSummary();

@@ -17,12 +17,12 @@
       synthesis: {
         type:'strategic_analysis',
         title:'Strategic Analysis Contract',
-        purpose:'Return a schema-compatible Jarbou3i strategic analysis object using the Interests → Actors → Tools → Narrative → Results → Feedback model.',
+        purpose:'Return a schema-compatible Jarbou3i strategic analysis object using the Interests â†’ Actors â†’ Tools â†’ Narrative â†’ Results â†’ Feedback model.',
         required:['schema_version','subject','interests','actors','tools','narrative','results','feedback','scenarios'],
         recommended:['analysis_id','evidence','contradictions','causal_links','assumptions'],
         reject_if:['missing any core model layer','markdown-wrapped explanation without JSON','no scenario falsifiers','no evidence/counter-evidence discipline'],
         diagnostic_hints:['Check all six model layers','Check stable IDs','Check scenarios.disproven_if','Check source-based evidence'],
-        example_shape:{schema_version:'1.2.0-alpha.1', subject:{title:'string'}, interests:[], actors:[], tools:[], narrative:[], results:[], feedback:[], scenarios:{items:[]}}
+        example_shape:{schema_version:'1.2.0-alpha.2', subject:{title:'string'}, interests:[], actors:[], tools:[], narrative:[], results:[], feedback:[], scenarios:{items:[]}}
       },
       repair: {
         type:'repaired_strategic_analysis',
@@ -30,9 +30,9 @@
         purpose:'Repair malformed or incomplete strategic-analysis JSON while preserving meaning where possible.',
         required:['schema_version','analysis_id','evidence','scenarios'],
         recommended:['subject','interests','actors','tools','narrative','results','feedback'],
-        reject_if:['still malformed JSON','removes core analytical content','does not preserve schema_version 1.2.0-alpha.1'],
+        reject_if:['still malformed JSON','removes core analytical content','does not preserve schema_version 1.2.0-alpha.2'],
         diagnostic_hints:['Check parseability','Check missing required fields','Check that repair is marked traceably'],
-        example_shape:{schema_version:'1.2.0-alpha.1', analysis_id:'A-REPAIRED', evidence:{items:[]}, scenarios:{items:[]}}
+        example_shape:{schema_version:'1.2.0-alpha.2', analysis_id:'A-REPAIRED', evidence:{items:[]}, scenarios:{items:[]}}
       },
       critique: {
         type:'critique_report',
@@ -117,7 +117,7 @@
     const accepted = response?.ok === true && issues.length === 0;
     const nowIso = options.nowIso || (() => new Date().toISOString());
     return {
-      validation_version: options.version || '1.2.0-alpha.1',
+      validation_version: options.version || '1.2.0-alpha.2',
       validated_at: nowIso(),
       task: payload?.task || 'unknown',
       expected_type: contract.type,
@@ -154,8 +154,8 @@
   function validationSummary(validation, repairTrace){
     if(!validation) return 'not validated';
     const base = validation.accepted ? 'accepted' : 'rejected';
-    const repair = repairTrace?.attempted ? ` · repair:${repairTrace.status}` : '';
-    return `${base} · issues:${validation.issue_count}${repair}`;
+    const repair = repairTrace?.attempted ? ` Â· repair:${repairTrace.status}` : '';
+    return `${base} Â· issues:${validation.issue_count}${repair}`;
   }
   root.providerCore = {responseContract, stableHash, normalizeProviderTextResponse, validateProviderResponse, repairProviderResponse, validationSummary};
 })(window);

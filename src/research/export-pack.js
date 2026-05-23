@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Export Pack v3 — v1.1.0. */
+/* Jarbou3i Research Engine Export Pack v3 â€” v1.1.0. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.2.0-alpha.1';
+  const EXPORT_PACK_VERSION = '1.2.0-alpha.2';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -74,8 +74,8 @@
     const template = packet.analysis_template || {};
     const quality = packet.quality_gate || brief.quality_gate_report || {};
     const clusters = asArray(brief.source_clusters).map((cluster) => `- ${safeString(cluster.cluster_id || cluster.layer || 'cluster')}: ${asArray(cluster.claims).join('; ') || 'No claims recorded'} (${asArray(cluster.evidence_ids).join(', ') || 'no evidence IDs'})`).join('\n') || '- No source clusters recorded';
-    const links = asArray(packet.causal_links).map((link) => `- ${safeString(link.from)} ${safeString(link.relationship)} ${safeString(link.to)} — evidence: ${asArray(link.evidence_ids).join(', ') || 'none'}; confidence: ${safeString(link.confidence || 'unknown')}`).join('\n') || '- No causal links recorded';
-    const evidence = asArray(packet.evidence_matrix).map((item) => `- ${safeString(item.evidence_id)}: ${safeString(item.claim)} — ${safeString(item.source_title || 'untitled source')}`).join('\n') || '- No evidence recorded';
+    const links = asArray(packet.causal_links).map((link) => `- ${safeString(link.from)} ${safeString(link.relationship)} ${safeString(link.to)} â€” evidence: ${asArray(link.evidence_ids).join(', ') || 'none'}; confidence: ${safeString(link.confidence || 'unknown')}`).join('\n') || '- No causal links recorded';
+    const evidence = asArray(packet.evidence_matrix).map((item) => `- ${safeString(item.evidence_id)}: ${safeString(item.claim)} â€” ${safeString(item.source_title || 'untitled source')}`).join('\n') || '- No evidence recorded';
     return [
       `# ${safeString(brief.topic || packet.research_plan?.topic || 'Jarbou3i Analysis Brief')}`,
       '',
@@ -128,6 +128,13 @@
       `- Export formats: ${asArray(packet.graph_export_report?.formats).join(', ') || 'none recorded'}`,
       `- Release gate: ${safeString(packet.graph_quality_report?.release_gate || 'graph_review_required')}`,
       '',
+      '## Source-to-Brief Workbench',
+      `- Claim map entries: ${safeString(packet.source_to_brief_workbench?.claim_map?.length ?? packet.source_to_brief_package?.claim_map?.length ?? 0)}`,
+      `- Contradiction groups: ${safeString(packet.source_to_brief_workbench?.contradiction_groups?.length ?? packet.source_to_brief_package?.contradiction_groups?.length ?? 0)}`,
+      `- Source gap warnings: ${safeString(packet.source_to_brief_workbench?.source_gaps?.warning_count ?? packet.source_to_brief_package?.source_gaps?.warning_count ?? 0)}`,
+      `- Inferred confidence: ${safeString(packet.source_to_brief_workbench?.confidence_review?.inferred_confidence ?? packet.source_to_brief_package?.confidence_review?.inferred_confidence ?? 'low')}`,
+      `- Automatic source verification claimed: ${safeString(packet.source_to_brief_workbench?.automatic_source_verification_claimed === true || packet.source_to_brief_package?.automatic_source_verification_claimed === true)}`,
+      '',
       '## Provider Routing',
       `- Selected provider: ${safeString(packet.provider_route_report?.selected_provider || 'mock')}`,
       `- Cost preview: $${safeString(packet.provider_cost_report?.selected_estimated_cost_usd ?? 0)}`,
@@ -165,6 +172,21 @@
     if(exports.neo4j_edges_csv) files.push(fileEntry('graph/neo4j-edges.csv', 'text/csv', exports.neo4j_edges_csv, 'graph-neo4j'));
     if(packet.graph_quality_report) files.push(fileEntry('graph/graph-quality-report.json', 'application/json', jsonContent(packet.graph_quality_report), 'graph-quality'));
     if(packet.graph_export_report) files.push(fileEntry('graph/graph-export-report.json', 'application/json', jsonContent(packet.graph_export_report), 'graph-export-report'));
+    return files;
+  }
+
+  function sourceToBriefFiles(packet){
+    const files = [];
+    const workbenchApi = root.sourceToBriefWorkbench;
+    const workbench = packet.source_to_brief_package || packet.source_to_brief_workbench || (workbenchApi?.buildSourceToBriefWorkbench ? workbenchApi.buildSourceToBriefWorkbench(packet, {version:EXPORT_PACK_VERSION}) : null);
+    if(!workbench) return files;
+    files.push(fileEntry('source-to-brief/source-to-brief-package.json', 'application/json', jsonContent(workbench), 'source-to-brief-package'));
+    const markdown = workbenchApi?.markdownBrief ? workbenchApi.markdownBrief(workbench) : jsonContent(workbench.exportable_strategic_brief || {});
+    files.push(fileEntry('source-to-brief/strategic-brief.md', 'text/markdown', markdown, 'source-to-brief-brief'));
+    const claimRows = workbenchApi?.claimMapRows ? workbenchApi.claimMapRows(workbench) : [['claim_id','support_level','supporting_evidence_ids','contradicting_evidence_ids']].concat(asArray(workbench.claim_map).map((claim)=>[claim.claim_id, claim.support_level, asArray(claim.supporting_evidence_ids).join('|'), asArray(claim.contradicting_evidence_ids).join('|')]));
+    files.push(fileEntry('source-to-brief/claim-map.csv', 'text/csv', rowsToCsv(claimRows), 'source-to-brief-claim-map'));
+    if(workbench.source_gaps) files.push(fileEntry('source-to-brief/source-gaps.json', 'application/json', jsonContent(workbench.source_gaps), 'source-to-brief-gaps'));
+    if(workbench.confidence_review) files.push(fileEntry('source-to-brief/confidence-review.json', 'application/json', jsonContent(workbench.confidence_review), 'source-to-brief-confidence'));
     return files;
   }
 
@@ -254,6 +276,7 @@
     files.push(fileEntry('quality-report.json', 'application/json', jsonContent(qualityReport(safePacket)), 'quality'));
     files.push(fileEntry('privacy-audit.json', 'application/json', jsonContent(privacyAuditReport(safePacket, files)), 'privacy'));
     graphExportFiles(safePacket).forEach((file)=>files.push(file));
+    sourceToBriefFiles(safePacket).forEach((file)=>files.push(file));
     providerRouteFiles(safePacket).forEach((file)=>files.push(file));
     reviewThroughputFiles(safePacket).forEach((file)=>files.push(file));
     publicationReviewFiles(safePacket).forEach((file)=>files.push(file));
@@ -284,9 +307,9 @@
   }
   function exportPackSummaryHtml(pack, esc){
     const safeEsc = typeof esc === 'function' ? esc : (value) => safeString(value).replace(/[&<>'"]/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
-    const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} · ${safeEsc(file.bytes)} B</span>`).join('');
+    const fileRows = asArray(pack.files).map((file) => `<span>${safeEsc(file.path)} Â· ${safeEsc(file.bytes)} B</span>`).join('');
     return `<div class="researchJsonCard exportPackCard"><h4>Export Pack v3</h4><div class="miniChips"><span>${safeEsc(pack.file_count)} files</span><span>privacy:${safeEsc(pack.privacy_release_gate)}</span><span>${safeEsc(pack.export_pack_version)}</span></div><div class="miniChips">${fileRows}</div><small>Downloaded as separate files for GitHub, archive, Claude/ChatGPT handoff, or publication pipeline.</small></div>`;
   }
-  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, goldenWorkflowFiles, releaseCandidateHygieneFiles, evidencePackV3Files, exportPackSummaryHtml});
+  root.exportPack = Object.freeze({EXPORT_PACK_VERSION, EXPORT_PACK_NAME, createExportPack, downloadExportPack, evidenceMatrixCsv, reviewQueueCsv, graphExportFiles, sourceToBriefFiles, providerRouteFiles, analysisBriefMarkdown, providerRunLedger, qualityReport, privacyAuditReport, reviewThroughputFiles, publicationReviewFiles, goldenWorkflowFiles, releaseCandidateHygieneFiles, evidencePackV3Files, exportPackSummaryHtml});
   if(typeof module !== 'undefined' && module.exports) module.exports = root.exportPack;
 })(typeof window !== 'undefined' ? window : globalThis);

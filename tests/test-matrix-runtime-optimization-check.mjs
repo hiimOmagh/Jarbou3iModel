@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.2.0-alpha.1';
-const TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
+const VERSION = '1.2.0-alpha.2';
+const TITLE = 'Source-to-Brief Intelligence Workbench';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');
@@ -10,7 +10,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 assert.equal(pkg.version, VERSION);
 assert.equal(registry.ci_gate_registry_version, VERSION);
-assert.equal(registry.release_title, `v${VERSION} — ${TITLE}`);
+assert.equal(registry.release_title, `v${VERSION} â€” ${TITLE}`);
 assert.equal(registry.runtime_optimization?.version, VERSION);
 assert.equal(registry.runtime_optimization?.syntax_matrix_parallelization_enabled, true);
 assert.equal(registry.runtime_optimization?.node_check_parallelization_enabled, false);

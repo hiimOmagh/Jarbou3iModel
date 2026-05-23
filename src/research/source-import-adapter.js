@@ -2,10 +2,10 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.1';
+  const VERSION = '1.2.0-alpha.2';
   const URL_RE = /https?:\/\/[^\s)\]>"']+/gi;
   const DATE_RE = /\b(20\d{2}[-/.](0?[1-9]|1[0-2])[-/.](0?[1-9]|[12]\d|3[01])|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+20\d{2}|\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+20\d{2})\b/i;
-  const BULLET_RE = /^\s*(?:[-*•]|\d+[.)]|\[[x ]\])\s+/;
+  const BULLET_RE = /^\s*(?:[-*â€¢]|\d+[.)]|\[[x ]\])\s+/;
 
   function normalizeText(text){return String(text || '').replace(/\r\n/g,'\n').replace(/\t/g,'  ').trim();}
   function unique(values){return [...new Set((values || []).filter(Boolean))];}
@@ -41,7 +41,7 @@
     return s;
   }
   function stripMarkup(line){return String(line||'').replace(BULLET_RE,'').replace(/[#*_`>]+/g,'').replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g,'$1 $2').replace(/\s+/g,' ').trim();}
-  function claimFromLine(line){const cleaned=stripMarkup(line).replace(URL_RE,'').replace(/\b(source|url|link|date|published|retrieved)\s*[:=]\s*/gi,'').trim(); return cleaned.length>260?`${cleaned.slice(0,257)}…`:cleaned;}
+  function claimFromLine(line){const cleaned=stripMarkup(line).replace(URL_RE,'').replace(/\b(source|url|link|date|published|retrieved)\s*[:=]\s*/gi,'').trim(); return cleaned.length>260?`${cleaned.slice(0,257)}â€¦`:cleaned;}
   function sourceTitleFromLine(line, url, idx){
     const md=String(line||'').match(/\[([^\]]{3,120})\]\(https?:\/\/[^\s)]+\)/); if(md) return md[1].trim();
     const after=String(line||'').match(/(?:source|title|publication)\s*[:=]\s*([^\n|;]{3,120})/i); if(after) return stripMarkup(after[1]);

@@ -21,6 +21,7 @@ const uxReliability = read('src/research/ux-reliability.js');
 const projectWorkspace = read('src/research/project-workspace.js');
 const analysisTemplates = read('src/research/analysis-templates.js');
 const exportPack = read('src/research/export-pack.js');
+const sourceToBrief = read('src/research/source-to-brief-workbench.js');
 const migrations = read('src/research/migrations.js');
 const sourceImportAdapter = read('src/research/source-import-adapter.js');
 const evidenceScorer = read('src/research/evidence-scorer.js');
@@ -42,6 +43,7 @@ try {
   new vm.Script(projectWorkspace, { filename: 'src/research/project-workspace.js' });
   new vm.Script(analysisTemplates, { filename: 'src/research/analysis-templates.js' });
   new vm.Script(exportPack, { filename: 'src/research/export-pack.js' });
+  new vm.Script(sourceToBrief, { filename: 'src/research/source-to-brief-workbench.js' });
   new vm.Script(migrations, { filename: 'src/research/migrations.js' });
   new vm.Script(sourceImportAdapter, { filename: 'src/research/source-import-adapter.js' });
   new vm.Script(evidenceScorer, { filename: 'src/research/evidence-scorer.js' });
@@ -102,7 +104,7 @@ for (const asset of ['assets/jarbou3i-mascot-192.png', 'assets/jarbou3i-mascot-5
   if (size > runtimeAssetLimit) fail(`${asset} is too large for runtime use: ${size} bytes`);
 }
 
-if (index.length > 50000) fail(`index.html is too large after modularization: ${index.length} bytes`);
+if (index.length > 52000) fail(`index.html is too large after source-to-brief workbench integration: ${index.length} bytes`);
 if (!index.includes('href="src/styles.css"')) fail('external stylesheet link missing');
 if (!index.includes('src="src/app.js" defer')) fail('deferred app script missing');
 if (!index.includes('src="src/research-engine.js" defer')) fail('deferred research script missing');
@@ -123,8 +125,11 @@ if (!index.includes('src="src/research/ux-reliability.js" defer')) fail('UX reli
 if (!index.includes('src="src/research/project-workspace.js" defer')) fail('project workspace module missing from index');
 if (!index.includes('src="src/research/analysis-templates.js" defer')) fail('analysis templates module missing from index');
 if (!index.includes('src="src/research/export-pack.js" defer')) fail('export pack module missing from index');
+if (!index.includes('src="src/research/source-to-brief-workbench.js" defer')) fail('source-to-brief workbench module missing from index');
 if (!index.includes('id="exportPackBtn"') || !index.includes('id="exportPackOutput"')) fail('Export Pack v2 UI missing');
 if (!exportPack.includes('EXPORT_PACK_VERSION') || !exportPack.includes('research-packet.json') || !exportPack.includes('privacy-audit.json')) fail('Export Pack v2 module missing required artifacts');
+if (!index.includes('id="buildSourceToBriefBtn"') || !index.includes('id="sourceToBriefOutput"')) fail('Source-to-brief workbench UI missing');
+if (!sourceToBrief.includes('SUPPORT_LEVELS') || !sourceToBrief.includes('buildSourceToBriefWorkbench') || !exportPack.includes('source-to-brief/source-to-brief-package.json')) fail('Source-to-brief export module missing required artifacts');
 if (!index.includes('id="analysisTemplateSelect"') || !index.includes('id="applyTemplateBtn"') || !index.includes('id="analysisTemplateOutput"')) fail('analysis template UI missing');
 if (!analysisTemplates.includes('TEMPLATE_REGISTRY') || !analysisTemplates.includes('scenario_forecast') || !analysisTemplates.includes('contradiction_audit')) fail('analysis template registry missing expected templates');
 if (!index.includes('id="projectWorkspacePanel"') || !index.includes('id="saveProjectBtn"') || !index.includes('id="importProjectInput"')) fail('project workspace UI missing');
@@ -156,8 +161,8 @@ if (!app.includes('schema_version')) fail('schema_version support is missing');
 if (!app.includes('modeResearch')) fail('research prompt mode is missing');
 if (!app.includes('qualityGateHtml')) fail('quality gate UI is missing');
 if (!app.includes('actorPowerScore')) fail('computed API scoring is missing');
-if (pkg.version !== '1.2.0-alpha.1') fail('package version must be 1.2.0-alpha.1');
-if (!index.includes('name="app-version" content="1.2.0-alpha.1"')) fail('app version metadata missing');
+if (pkg.version !== '1.2.0-alpha.2') fail('package version must be 1.2.0-alpha.2');
+if (!index.includes('name="app-version" content="1.2.0-alpha.2"')) fail('app version metadata missing');
 
 console.log('Static checks passed.');
 process.exit(0);

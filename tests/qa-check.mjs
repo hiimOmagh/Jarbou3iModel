@@ -51,7 +51,7 @@ for (const asset of ['assets/jarbou3i-mascot-192.png','assets/jarbou3i-mascot-51
   const size = fs.statSync(asset).size;
   if (size > 600 * 1024) fail(`${asset} is too large for runtime use: ${size} bytes`);
 }
-if (index.length > 50000) fail(`index.html is too large after modularization: ${index.length} bytes`);
+if (index.length > 52000) fail(`index.html is too large after source-to-brief workbench integration: ${index.length} bytes`);
 if (!index.includes('href="src/styles.css"')) fail('external stylesheet link missing');
 if (!index.includes('src="src/app.js" defer')) fail('deferred app script missing');
 if (!index.includes('src="src/research-engine.js" defer')) fail('deferred research script missing');
@@ -111,8 +111,8 @@ if (!researchApp.includes('source_policy')) fail('source policy support missing'
 if (!index.includes('id="evidenceReviewOutput"')) fail('evidence review queue UI missing');
 if (!researchApp.includes('evidence_review_queue') || !researchApp.includes('promoteReviewItem')) fail('evidence review queue support missing');
 if (!sourceConnectors.includes('SOURCE_CONNECTORS') || !sourceConnectors.includes('runSourceFixtureSuite')) fail('source connector contracts missing');
-if (pkg.version !== '1.2.0-alpha.1') fail('package version must be 1.2.0-alpha.1');
-if (!index.includes('name="app-version" content="1.2.0-alpha.1"')) fail('app version metadata missing');
+if (pkg.version !== '1.2.0-alpha.2') fail('package version must be 1.2.0-alpha.2');
+if (!index.includes('name="app-version" content="1.2.0-alpha.2"')) fail('app version metadata missing');
 
 const requiredTop = ['schema_version','subject','interests','actors','tools','narrative','results','feedback','contradictions','scenarios'];
 const arraySections = ['interests','actors','tools','narrative','results','feedback'];
@@ -135,7 +135,7 @@ for (const section of arraySections) {
 if (!resolveRequired(schema.properties.evidence?.properties?.items?.items).includes('counter_evidence')) fail('evidence items must require counter_evidence');
 if (!resolveRequired(schema.properties.scenarios?.properties?.items?.items).includes('disproven_if')) fail('scenario items must require disproven_if');
 
-if (researchSchema.properties?.workflow_version?.const !== '1.2.0-alpha.1') fail('research workflow schema version mismatch');
+if (researchSchema.properties?.workflow_version?.const !== '1.2.0-alpha.2') fail('research workflow schema version mismatch');
 if (!researchSchema.required?.includes('research_plan')) fail('research schema must require research_plan');
 if (!researchSchema.required?.includes('evidence_matrix')) fail('research schema must require evidence_matrix');
 if (!researchSchema.required?.includes('analysis_brief')) fail('research schema must require analysis_brief');

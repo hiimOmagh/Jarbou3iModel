@@ -10,29 +10,29 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.2.0-alpha.1';
+const VERSION = '1.2.0-alpha.2';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
+const TITLE = 'Source-to-Brief Intelligence Workbench';
 const DOC = 'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.1-post-stable-capability-roadmap-expansion-gate.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
 const index = read('index.html');
 const moduleSource = read('src/research/post-freeze-planning-gate.js');
 const releaseDoc = readReleaseDoc(DOC);
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.1-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.1.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.2-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.2.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
 assert.equal(lock.packages[''].version, VERSION);
 assert.ok(pkg.description.includes('package script compression and CI gate registry'));
-assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
-assert.ok(index.includes('data-r-i18n="stableWorkflowTitle"') && index.includes('تدقيق الاحتفاظ بالملفات'), 'localized index must keep repository audit workflow visible');
-assert.ok(index.includes('إثبات الدمج الآمن'), 'localized index must mention proof before reduction');
-assert.ok(moduleSource.includes("const VERSION = '1.2.0-alpha.1'"));
+assert.ok(index.includes(`v${VERSION} Â· ${TITLE}`), 'index badge must expose alpha.2 lane criteria identity');
+assert.ok(index.includes('data-r-i18n="stableWorkflowTitle"') && index.includes('ØªØ¯Ù‚ÙŠÙ‚ Ø§Ù„Ø§Ø­ØªÙØ§Ø¸ Ø¨Ø§Ù„Ù…Ù„ÙØ§Øª'), 'localized index must keep repository audit workflow visible');
+assert.ok(index.includes('Ø¥Ø«Ø¨Ø§Øª Ø§Ù„Ø¯Ù…Ø¬ Ø§Ù„Ø¢Ù…Ù†'), 'localized index must mention proof before reduction');
+assert.ok(moduleSource.includes("const VERSION = '1.2.0-alpha.2'"));
 assert.ok(moduleSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.1'"));
 assert.ok(moduleSource.includes("const FREEZE_BASELINE = '1.0.30'"));
 assert.ok(moduleSource.includes('acceptance_criteria'));
@@ -77,7 +77,7 @@ assert.equal(subset.release_gate, 'expansion_lane_criteria_ready');
 
 for (const packet of [migrationFixture, privacyFixture]) {
   assert.equal(packet.workflow_version, VERSION);
-  assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
+  assert.equal(packet.release_notes.release_title, `v${VERSION} â€” ${TITLE}`);
   assert.equal(packet.release_apply_integrity.base_version, FREEZE_BASELINE);
   assert.equal(packet.release_apply_integrity.artifact_name, ARTIFACT);
   assert.equal(packet.release_apply_integrity.runtime_capability_change, false);

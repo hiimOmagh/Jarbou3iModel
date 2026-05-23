@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.1';
+  const VERSION = '1.2.0-alpha.2';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
 
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }
@@ -66,7 +66,7 @@
       contradicts: asArray(item.contradicts).map(String),
       confidence: confidence(item.confidence),
       notes: [
-        quote ? `Quote/excerpt: ${quote.slice(0, 220)}${quote.length > 220 ? '…' : ''}` : '',
+        quote ? `Quote/excerpt: ${quote.slice(0, 220)}${quote.length > 220 ? 'â€¦' : ''}` : '',
         'Imported from manual source packet; review source metadata, contradiction markers, and claim links before synthesis.'
       ].filter(Boolean).join(' '),
       import_meta: {

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { migrationRegistry, privacyRegistry } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.2.0-alpha.1';
-const TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
+const VERSION = '1.2.0-alpha.2';
+const TITLE = 'Source-to-Brief Intelligence Workbench';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const ledger = fs.readFileSync('docs/technical-debt-ledger.md', 'utf8');
@@ -12,7 +12,7 @@ assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes('fixture/test debt ledger'));
 assert.ok(pkg.description.includes('professional trilingual language-description review'));
 assert.ok(ledger.includes(`# Fixture/Test Debt Ledger`));
-assert.ok(ledger.includes(`v${VERSION} — ${TITLE}`));
+assert.ok(ledger.includes(`v${VERSION} â€” ${TITLE}`));
 for (const id of ['FTD-001', 'FTD-002', 'FTD-003', 'FTD-004', 'FTD-005']) {
   assert.ok(ledger.includes(id), `debt ledger missing ${id}`);
 }

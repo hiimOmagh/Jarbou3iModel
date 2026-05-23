@@ -4,9 +4,9 @@ import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.2.0-alpha.1';
-const TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
-const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.1-post-stable-capability-roadmap-expansion-gate.zip';
+const VERSION = '1.2.0-alpha.2';
+const TITLE = 'Source-to-Brief Intelligence Workbench';
+const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
 
 assert.equal(migrationRegistry.registry_version, VERSION);
 assert.equal(migrationRegistry.registry_type, 'migration_fixture_registry');
@@ -31,11 +31,11 @@ for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0']) {
   assert.ok(getPrivacyFixture(`fixtures/privacy/browser-generated-export-${version}.json`), `${version} privacy fixture must load from registry`);
 }
 
-const currentMigration = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.1-packet.json');
-const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.1.json');
+const currentMigration = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.2-packet.json');
+const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.2.json');
 for (const packet of [currentMigration, currentPrivacy]) {
   assert.equal(packet.workflow_version, VERSION);
-  assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
+  assert.equal(packet.release_notes.release_title, `v${VERSION} â€” ${TITLE}`);
   assert.equal(packet.release_apply_integrity.target_version, VERSION);
   assert.equal(packet.release_apply_integrity.artifact_name, PATCH_ARTIFACT);
   assert.equal(packet.release_apply_integrity.runtime_capability_change, false);
@@ -53,7 +53,7 @@ assert.ok(pkg.scripts['test:current:no-browser']?.includes('ci-gate-runner.mjs c
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${VERSION} · ${TITLE}`));
+assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${VERSION} Â· ${TITLE}`));
 assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`));
 
 console.log('Fixture registry consolidation checks passed.');

@@ -1,15 +1,15 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.2.0-alpha.1';
-const TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
+const VERSION = '1.2.0-alpha.2';
+const TITLE = 'Source-to-Brief Intelligence Workbench';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 assert.equal(pkg.version, VERSION);
 assert.ok(audit.includes(`# Source-File Refactor Readiness Audit`));
-assert.ok(audit.includes(`v${VERSION} — ${TITLE}`));
+assert.ok(audit.includes(`v${VERSION} â€” ${TITLE}`));
 assert.ok(audit.includes('audit-only, no source-file refactor yet'));
 for (const file of ['src/app.js', 'src/research-engine.js', 'src/styles.css']) {
   assert.ok(audit.includes(file), `readiness audit missing ${file}`);

@@ -21,12 +21,12 @@ const walk = (dir) => {
   return out;
 };
 
-const VERSION = '1.2.0-alpha.1';
+const VERSION = '1.2.0-alpha.2';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';
-const TITLE = 'Post-Stable Capability Roadmap + Expansion Gate';
+const TITLE = 'Source-to-Brief Intelligence Workbench';
 const DOC = 'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md';
-const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.1-post-stable-capability-roadmap-expansion-gate.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.2.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -34,8 +34,8 @@ const schema = json('schema/research-workflow.schema.json');
 const index = read('index.html');
 const auditSource = read('src/research/repository-consolidation-audit.js');
 const releaseDoc = readReleaseDoc(DOC);
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.1-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.1.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.2.0-alpha.2-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.2.json');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(lock.version, VERSION);
@@ -44,10 +44,10 @@ assert.ok(pkg.description.includes('fixture registry payload compression'));
 assert.ok(pkg.description.includes('test organization audit'));
 assert.ok(pkg.description.includes('runtime/provider/OAuth/backend/source/storage boundaries remain unchanged'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.4 fixture registry consolidation identity');
-assert.ok((index.includes('hosted evidence capture polish') || index.includes('حارس الشوائب البصرية')) && (index.includes('visual artifact guard') || index.includes('أدلة الاستضافة')), 'index must communicate alpha.10 hosted evidence polish scope in the active shell language');
-assert.ok(index.includes('without changing runtime behavior') || index.includes('دون تغيير سلوك التشغيل'), 'index must preserve runtime boundary in the active shell language');
-assert.ok(auditSource.includes("const VERSION = '1.2.0-alpha.1'"));
+assert.ok(index.includes(`v${VERSION} Â· ${TITLE}`), 'index badge must expose alpha.4 fixture registry consolidation identity');
+assert.ok((index.includes('hosted evidence capture polish') || index.includes('Ø­Ø§Ø±Ø³ Ø§Ù„Ø´ÙˆØ§Ø¦Ø¨ Ø§Ù„Ø¨ØµØ±ÙŠØ©')) && (index.includes('visual artifact guard') || index.includes('Ø£Ø¯Ù„Ø© Ø§Ù„Ø§Ø³ØªØ¶Ø§ÙØ©')), 'index must communicate alpha.10 hosted evidence polish scope in the active shell language');
+assert.ok(index.includes('without changing runtime behavior') || index.includes('Ø¯ÙˆÙ† ØªØºÙŠÙŠØ± Ø³Ù„ÙˆÙƒ Ø§Ù„ØªØ´ØºÙŠÙ„'), 'index must preserve runtime boundary in the active shell language');
+assert.ok(auditSource.includes("const VERSION = '1.2.0-alpha.2'"));
 assert.ok(auditSource.includes("const PREVIOUS_VERSION = '1.1.0-alpha.3'"));
 
 await import(`file://${path.join(repoRoot, 'src/research/repository-consolidation-audit.js')}`);
@@ -96,7 +96,7 @@ assert.ok(audit.completed_actions.some(action => action.includes('current-no-bro
 
 for (const packet of [migrationFixture, privacyFixture]) {
   assert.equal(packet.workflow_version, VERSION);
-  assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);
+  assert.equal(packet.release_notes.release_title, `v${VERSION} â€” ${TITLE}`);
   assert.equal(packet.release_apply_integrity.base_version, FREEZE_BASELINE);
   assert.equal(packet.release_apply_integrity.target_version, VERSION);
   assert.equal(packet.release_apply_integrity.artifact_name, ARTIFACT);
@@ -109,9 +109,9 @@ for (const packet of [migrationFixture, privacyFixture]) {
 }
 
 assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.1.0-alpha.3-packet.json'), 'alpha.3 migration fixture must remain in registry');
-assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.2.0-alpha.1-packet.json'), 'alpha.11 migration fixture must exist in registry');
+assert.ok(registryHasMigrationFixture('fixtures/migrations/v1.2.0-alpha.2-packet.json'), 'alpha.11 migration fixture must exist in registry');
 assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.1.0-alpha.3.json'), 'alpha.3 privacy fixture must remain in registry');
-assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.1.json'), 'alpha.11 privacy fixture must exist in registry');
+assert.ok(registryHasPrivacyFixture('fixtures/privacy/browser-generated-export-v1.2.0-alpha.2.json'), 'alpha.11 privacy fixture must exist in registry');
 assert.ok(releaseDocExists(DOC), 'alpha.11 release doc must exist');
 assert.ok(releaseDoc.includes('docs/technical-debt-ledger.md'));
 assert.ok(releaseDoc.includes('docs/source-refactor-readiness-audit.md'));

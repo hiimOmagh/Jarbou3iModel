@@ -20,6 +20,7 @@ const tests = [
   'tests/evidence-scoring-check.mjs',
   'tests/evidence-workspace-check.mjs',
   'tests/evidence-workspace-ux-throughput-check.mjs',
+  'tests/source-to-brief-workbench-check.mjs',
   'tests/export-pack-v2-check.mjs',
   'tests/browser-qa-hardening-check.mjs',
   'tests/onboarding-first-run-check.mjs',

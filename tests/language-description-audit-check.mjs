@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.1';
+const VERSION = '1.2.0-alpha.2';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');
@@ -52,13 +52,13 @@ for (const lang of ['ar', 'en', 'fr']) {
   }
 }
 for (const [lang, expected] of Object.entries({
-  ar: 'مساحة عمل استخباراتية الطابع',
+  ar: 'Ù…Ø³Ø§Ø­Ø© Ø¹Ù…Ù„ Ø§Ø³ØªØ®Ø¨Ø§Ø±Ø§ØªÙŠØ© Ø§Ù„Ø·Ø§Ø¨Ø¹',
   en: 'inspectable, export-ready strategic review',
-  fr: 'revue stratégique vérifiable et exportable'
+  fr: 'revue stratÃ©gique vÃ©rifiable et exportable'
 })) {
   assert.ok(i18n[lang].appSubtitle.includes(expected), `${lang} appSubtitle not professionally localized`);
 }
-for (const forbidden of ['friendly visual guide', 'convivial', 'رفيق بصري']) {
+for (const forbidden of ['friendly visual guide', 'convivial', 'Ø±ÙÙŠÙ‚ Ø¨ØµØ±ÙŠ']) {
   assert.equal(app.includes(forbidden), false, `informal product copy must be removed: ${forbidden}`);
 }
 for (const [lang, text] of Object.entries({ ar: i18n.ar.pillars.interests[1], en: i18n.en.pillars.interests[1], fr: i18n.fr.pillars.interests[1] })) {
@@ -83,7 +83,7 @@ for (const lang of ['ar', 'en', 'fr']) {
 }
 
 assert.ok(researchCopy.en.evidenceReviewGateBody.includes('Stable release evidence') && researchCopy.en.evidenceReviewGateBody.includes('Export Pack v3'), 'English evidence review gate body must describe stable public localization fix scope');
-assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('أدلة الإصدار المستقر') && researchCopy.ar.evidenceReviewGateBody.includes('Export Pack v3'), 'Arabic evidence review gate body must describe stable public localization fix scope');
+assert.ok(researchCopy.ar.evidenceReviewGateBody.includes('Ø£Ø¯Ù„Ø© Ø§Ù„Ø¥ØµØ¯Ø§Ø± Ø§Ù„Ù…Ø³ØªÙ‚Ø±') && researchCopy.ar.evidenceReviewGateBody.includes('Export Pack v3'), 'Arabic evidence review gate body must describe stable public localization fix scope');
 assert.ok(researchCopy.fr.evidenceReviewGateBody.includes('preuves de release stable') && researchCopy.fr.evidenceReviewGateBody.includes('Export Pack v3'), 'French evidence review gate body must describe stable public localization fix scope');
 assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('preserves the public-demo freeze'), false, 'French stable evidence review gate body must not inherit English release copy');
 assert.equal(researchCopy.fr.evidenceReviewGateBody.includes('provider routing'), false, 'French stable evidence review gate body must not expose alpha.20 provider-router release copy');
@@ -128,7 +128,7 @@ for (const lang of ['ar', 'fr']) {
     assert.ok(value && value !== researchCopy.en[key], `${lang}.${key} must be localized, not inherited English copy`);
   }
 }
-assert.ok(researchCopy.ar.firstRunGuideTitle.includes('الموضوع') && researchCopy.ar.firstRunGuideTitle.includes('التصدير'), 'Arabic first-run title must be clear and domain-specific');
+assert.ok(researchCopy.ar.firstRunGuideTitle.includes('Ø§Ù„Ù…ÙˆØ¶ÙˆØ¹') && researchCopy.ar.firstRunGuideTitle.includes('Ø§Ù„ØªØµØ¯ÙŠØ±'), 'Arabic first-run title must be clear and domain-specific');
 assert.ok(researchCopy.fr.firstRunGuideTitle.includes('sujet') && researchCopy.fr.firstRunGuideTitle.includes('export'), 'French first-run title must be clear and domain-specific');
 
 const metadataCorpus = [

@@ -8,69 +8,69 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 
 | Release document | Milestone |
 | --- | --- |
-| `repo-cleanup-audit-v1.0.6.md` | Repository Cleanup Audit — v1.0.6 Hotfix |
-| `v0.16.0-beta-provider-browser-privacy-qa.md` | v0.16.0-beta — Provider Mode Browser QA + Privacy Export Tests |
-| `v0.17.0-beta-state-migration.md` | v0.17.0-beta — State Migration + Version Compatibility Layer |
-| `v0.18.0-beta-module-split.md` | v0.18.0-beta — Research Engine Module Split |
-| `v0.19.0-beta-privacy-audit-hardening.md` | v0.19.0-beta — Privacy Audit Hardening |
-| `v0.20.0-beta-ux-reliability-pass.md` | v0.20.0-beta — UX Reliability Pass |
-| `v0.21.0-beta-project-workspace.md` | v0.21.0-beta — Project Workspace + Local Storage Management |
-| `v0.22.0-beta-analysis-template-system.md` | v0.22.0-beta — Analysis Template System |
-| `v0.23.0-beta-advanced-quality-gate-v3.md` | v0.23.0-beta — Advanced Quality Gate v3 |
-| `v0.24.0-beta-export-pack-v2.md` | v0.24.0-beta — Export Pack v2 |
-| `v0.25.0-beta-real-backend-provider-hardening.md` | v0.25.0-beta — Real Backend Provider Hardening |
-| `v0.26.0-beta-real-source-connector-prototype.md` | v0.26.0-beta — Real Source Connector Prototype |
-| `v0.27.0-beta-web-search-provider-abstraction.md` | v0.27.0-beta — Web Search Provider Abstraction |
-| `v0.28.0-beta-real-portable-oauth-spike.md` | v0.28.0-beta — Real Portable OAuth Spike |
-| `v0.29.0-rc.1-release-candidate-freeze.md` | v0.29.0-rc.1 — Release Candidate Freeze |
+| `repo-cleanup-audit-v1.0.6.md` | Repository Cleanup Audit â€” v1.0.6 Hotfix |
+| `v0.16.0-beta-provider-browser-privacy-qa.md` | v0.16.0-beta â€” Provider Mode Browser QA + Privacy Export Tests |
+| `v0.17.0-beta-state-migration.md` | v0.17.0-beta â€” State Migration + Version Compatibility Layer |
+| `v0.18.0-beta-module-split.md` | v0.18.0-beta â€” Research Engine Module Split |
+| `v0.19.0-beta-privacy-audit-hardening.md` | v0.19.0-beta â€” Privacy Audit Hardening |
+| `v0.20.0-beta-ux-reliability-pass.md` | v0.20.0-beta â€” UX Reliability Pass |
+| `v0.21.0-beta-project-workspace.md` | v0.21.0-beta â€” Project Workspace + Local Storage Management |
+| `v0.22.0-beta-analysis-template-system.md` | v0.22.0-beta â€” Analysis Template System |
+| `v0.23.0-beta-advanced-quality-gate-v3.md` | v0.23.0-beta â€” Advanced Quality Gate v3 |
+| `v0.24.0-beta-export-pack-v2.md` | v0.24.0-beta â€” Export Pack v2 |
+| `v0.25.0-beta-real-backend-provider-hardening.md` | v0.25.0-beta â€” Real Backend Provider Hardening |
+| `v0.26.0-beta-real-source-connector-prototype.md` | v0.26.0-beta â€” Real Source Connector Prototype |
+| `v0.27.0-beta-web-search-provider-abstraction.md` | v0.27.0-beta â€” Web Search Provider Abstraction |
+| `v0.28.0-beta-real-portable-oauth-spike.md` | v0.28.0-beta â€” Real Portable OAuth Spike |
+| `v0.29.0-rc.1-release-candidate-freeze.md` | v0.29.0-rc.1 â€” Release Candidate Freeze |
 | `v1.0.0-ci-browser-validation.md` | v1.0.0 CI / Browser Validation Status |
-| `v1.0.0-public-beta-stable-research-engine.md` | v1.0.0 — Public Beta / Stable Research Engine |
-| `v1.0.1-patch-only-stabilization.md` | v1.0.1 — Patch-only Stabilization |
-| `v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md` | v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix |
-| `v1.0.11-repository-hygiene-stale-artifact-cleanup.md` | v1.0.11 — Repository Hygiene + Stale Artifact Cleanup |
-| `v1.0.12-research-source-strategy-blueprint.md` | v1.0.12 — Research Source Strategy Blueprint |
-| `v1.0.13-manual-source-packet-import.md` | v1.0.13 — Manual Source Packet Import |
-| `v1.0.14-evidence-scoring-v1.md` | v1.0.14 — Evidence Scoring v1 |
-| `v1.0.15-evidence-scoring-ui-calibration.md` | v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass |
-| `v1.0.16-source-packet-builder-ui-scoring-review-controls.md` | v1.0.16 — Source Packet Builder UI + Scoring Review Controls |
-| `v1.0.17-source-packet-builder-browser-qa-ux-tightening.md` | v1.0.17 — Source Packet Builder Browser QA + UX Tightening |
-| `v1.0.18-source-packet-builder-export-roundtrip-qa.md` | v1.0.18 — Source Packet Builder Export Roundtrip QA |
-| `v1.0.19-source-packet-template-presets.md` | v1.0.19 — Source Packet Template Presets |
-| `v1.0.2-ux-stabilization-patch.md` | v1.0.2 — UX Stabilization Patch |
-| `v1.0.20-source-packet-template-browser-qa-copy-safety.md` | v1.0.20 — Source Packet Template Browser QA + Copy Safety |
-| `v1.0.21-node-24-ci-compatibility.md` | v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration |
-| `v1.0.22-release-evidence-repo-hygiene-verification.md` | v1.0.22 — Release Evidence + Repo Hygiene Verification |
-| `v1.0.23-ci-result-review-browser-evidence-artifact-audit.md` | v1.0.23 — CI Result Review + Browser Evidence Artifact Audit |
-| `v1.0.24-repo-hygiene-execution-stale-documentation-correction.md` | v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction |
-| `v1.0.25-public-demo-release-lock.md` | v1.0.25 — Public Demo Release Lock |
-| `v1.0.26-release-apply-integrity-gate.md` | v1.0.26 — Release Apply Integrity Gate |
-| `v1.0.27-release-provenance-ledger-gate.md` | v1.0.27 — Release Provenance Ledger Gate |
-| `v1.0.28-hosted-demo-evidence-manifest-gate.md` | v1.0.28 — Hosted Demo Evidence Manifest Gate |
-| `v1.0.29-final-public-demo-hardening-release-freeze-audit.md` | v1.0.29 — Final Public Demo Hardening / Release Freeze Audit |
-| `v1.0.3-screen-discipline-patch.md` | v1.0.3 — Screen Discipline Patch |
-| `v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md` | v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze |
-| `v1.0.4-browser-qa-visual-regression-hardening.md` | v1.0.4 — Browser QA + Visual Regression Hardening |
-| `v1.0.5-onboarding-first-run-success.md` | v1.0.5 — Onboarding + First-Run Success |
-| `v1.0.6-documentation-release-packaging-cleanup.md` | v1.0.6 — Documentation + Release Packaging Cleanup |
-| `v1.0.7-public-demo-readiness-release-notes.md` | v1.0.7 — Public Demo Readiness + Release Notes Polish |
-| `v1.0.8-hosted-demo-deployment-browser-evidence.md` | v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture |
-| `v1.0.9-hosted-demo-smoke-fixes-evidence-review.md` | v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review |
-| `v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md` | v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate |
-| `v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md` | v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix |
-| `v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md` | v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry |
-| `v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md` | v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry |
+| `v1.0.0-public-beta-stable-research-engine.md` | v1.0.0 â€” Public Beta / Stable Research Engine |
+| `v1.0.1-patch-only-stabilization.md` | v1.0.1 â€” Patch-only Stabilization |
+| `v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md` | v1.0.10 â€” Hosted URL CI Artifact Review + Module-Type Warning Fix |
+| `v1.0.11-repository-hygiene-stale-artifact-cleanup.md` | v1.0.11 â€” Repository Hygiene + Stale Artifact Cleanup |
+| `v1.0.12-research-source-strategy-blueprint.md` | v1.0.12 â€” Research Source Strategy Blueprint |
+| `v1.0.13-manual-source-packet-import.md` | v1.0.13 â€” Manual Source Packet Import |
+| `v1.0.14-evidence-scoring-v1.md` | v1.0.14 â€” Evidence Scoring v1 |
+| `v1.0.15-evidence-scoring-ui-calibration.md` | v1.0.15 â€” Evidence Scoring UI Explanation + Calibration Pass |
+| `v1.0.16-source-packet-builder-ui-scoring-review-controls.md` | v1.0.16 â€” Source Packet Builder UI + Scoring Review Controls |
+| `v1.0.17-source-packet-builder-browser-qa-ux-tightening.md` | v1.0.17 â€” Source Packet Builder Browser QA + UX Tightening |
+| `v1.0.18-source-packet-builder-export-roundtrip-qa.md` | v1.0.18 â€” Source Packet Builder Export Roundtrip QA |
+| `v1.0.19-source-packet-template-presets.md` | v1.0.19 â€” Source Packet Template Presets |
+| `v1.0.2-ux-stabilization-patch.md` | v1.0.2 â€” UX Stabilization Patch |
+| `v1.0.20-source-packet-template-browser-qa-copy-safety.md` | v1.0.20 â€” Source Packet Template Browser QA + Copy Safety |
+| `v1.0.21-node-24-ci-compatibility.md` | v1.0.21 â€” Node 24 CI Compatibility + Action Runtime Migration |
+| `v1.0.22-release-evidence-repo-hygiene-verification.md` | v1.0.22 â€” Release Evidence + Repo Hygiene Verification |
+| `v1.0.23-ci-result-review-browser-evidence-artifact-audit.md` | v1.0.23 â€” CI Result Review + Browser Evidence Artifact Audit |
+| `v1.0.24-repo-hygiene-execution-stale-documentation-correction.md` | v1.0.24 â€” Repo Hygiene Execution + Stale Documentation Correction |
+| `v1.0.25-public-demo-release-lock.md` | v1.0.25 â€” Public Demo Release Lock |
+| `v1.0.26-release-apply-integrity-gate.md` | v1.0.26 â€” Release Apply Integrity Gate |
+| `v1.0.27-release-provenance-ledger-gate.md` | v1.0.27 â€” Release Provenance Ledger Gate |
+| `v1.0.28-hosted-demo-evidence-manifest-gate.md` | v1.0.28 â€” Hosted Demo Evidence Manifest Gate |
+| `v1.0.29-final-public-demo-hardening-release-freeze-audit.md` | v1.0.29 â€” Final Public Demo Hardening / Release Freeze Audit |
+| `v1.0.3-screen-discipline-patch.md` | v1.0.3 â€” Screen Discipline Patch |
+| `v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md` | v1.0.30 â€” Mobile Header Geometry Lock / Final Public Demo Visual Freeze |
+| `v1.0.4-browser-qa-visual-regression-hardening.md` | v1.0.4 â€” Browser QA + Visual Regression Hardening |
+| `v1.0.5-onboarding-first-run-success.md` | v1.0.5 â€” Onboarding + First-Run Success |
+| `v1.0.6-documentation-release-packaging-cleanup.md` | v1.0.6 â€” Documentation + Release Packaging Cleanup |
+| `v1.0.7-public-demo-readiness-release-notes.md` | v1.0.7 â€” Public Demo Readiness + Release Notes Polish |
+| `v1.0.8-hosted-demo-deployment-browser-evidence.md` | v1.0.8 â€” Hosted Demo Deployment Verification + Browser Evidence Capture |
+| `v1.0.9-hosted-demo-smoke-fixes-evidence-review.md` | v1.0.9 â€” Hosted Demo Smoke Fixes + Evidence Review |
+| `v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md` | v1.1.0-alpha.1 â€” Post-Freeze Product Expansion Planning Gate |
+| `v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md` | v1.1.0-alpha.2 â€” Expansion Lane Acceptance Criteria Matrix |
+| `v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md` | v1.1.0-alpha.7 â€” Package Script Compression + CI Gate Registry |
+| `v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md` | v1.1.0-alpha.7 â€” Package Script Compression + CI Gate Registry |
 | `visual-qa.md` | Visual QA Checklist |
-| `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
-| `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
-| `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard |
-| `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
-| `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0 — Public Demo Stable |
-| `v1.2.0-alpha.1-evidence-pack-export-v3-brief-traceability.md` | v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate |
+| `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 â€” Fixture Registry Payload Compression + Test Organization Audit |
+| `v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md` | v1.1.0-alpha.9 â€” Test Matrix Runtime Optimization + Release Doc Timeline Pruning |
+| `v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md` | v1.1.0-alpha.10 â€” Hosted Evidence Capture Polish + Visual Artifact Guard |
+| `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 â€” Controlled Connector Architecture MVP |
+| `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0 â€” Public Demo Stable |
+| `v1.2.0-alpha.2-evidence-pack-export-v3-brief-traceability.md` | v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
 
-# Repository Cleanup Audit — v1.0.6 Hotfix
+# Repository Cleanup Audit â€” v1.0.6 Hotfix
 
 ## Verdict
 
@@ -175,7 +175,7 @@ If CI still fails at `release-packaging-cleanup-check.mjs`, the repository still
 
 <!-- release-file:v0.16.0-beta-provider-browser-privacy-qa.md -->
 
-# v0.16.0-beta — Provider Mode Browser QA + Privacy Export Tests
+# v0.16.0-beta â€” Provider Mode Browser QA + Privacy Export Tests
 
 ## Purpose
 
@@ -231,7 +231,7 @@ This release does not implement real OAuth, real BrainLink/OpenRouter integratio
 
 <!-- release-file:v0.17.0-beta-state-migration.md -->
 
-# v0.17.0-beta — State Migration + Version Compatibility Layer
+# v0.17.0-beta â€” State Migration + Version Compatibility Layer
 
 ## Goal
 
@@ -251,7 +251,7 @@ Protect the research packet format from schema drift by adding an explicit migra
 Import now follows this order:
 
 ```text
-raw packet → migrateResearchPacket() → validateWorkflowPacket() → state assignment → render/export
+raw packet â†’ migrateResearchPacket() â†’ validateWorkflowPacket() â†’ state assignment â†’ render/export
 ```
 
 Migration defaults missing fields safely, disables live calls, disables remembered keys, renumbers evidence IDs, repairs causal-link evidence references, and attaches a report to the packet.
@@ -274,7 +274,7 @@ This release is a stability layer, not a feature expansion.
 
 <!-- release-file:v0.18.0-beta-module-split.md -->
 
-# v0.18.0-beta — Research Engine Module Split
+# v0.18.0-beta â€” Research Engine Module Split
 
 v0.18.0-beta is a behavior-preserving architecture release. It reduces the central weight of `src/research-engine.js` by moving stable boundaries into focused browser modules while keeping manual/private mode, provider flows, migration, privacy export, and evidence-review behavior unchanged.
 
@@ -295,27 +295,27 @@ src/research/quality-gate.js
 
 ```text
 index.html
-  → render-helpers.js
-  → state-store.js
-  → evidence-controller.js
-  → evidence-review-controller.js
-  → provider-controller.js
-  → source-controller.js
-  → export-controller.js
-  → quality-gate.js
-  → prompt-builders.js
-  → provider-core.js
-  → provider-identity.js
-  → portable-account-mock.js
-  → privacy-export-guard.js
-  → migrations.js
-  → provider-fixtures.js
-  → mock-provider.js
-  → openai-compatible-provider.js
-  → backend-proxy-provider.js
-  → source-connectors.js
-  → source-import-adapter.js
-  → research-engine.js
+  â†’ render-helpers.js
+  â†’ state-store.js
+  â†’ evidence-controller.js
+  â†’ evidence-review-controller.js
+  â†’ provider-controller.js
+  â†’ source-controller.js
+  â†’ export-controller.js
+  â†’ quality-gate.js
+  â†’ prompt-builders.js
+  â†’ provider-core.js
+  â†’ provider-identity.js
+  â†’ portable-account-mock.js
+  â†’ privacy-export-guard.js
+  â†’ migrations.js
+  â†’ provider-fixtures.js
+  â†’ mock-provider.js
+  â†’ openai-compatible-provider.js
+  â†’ backend-proxy-provider.js
+  â†’ source-connectors.js
+  â†’ source-import-adapter.js
+  â†’ research-engine.js
 ```
 
 ## Boundary intent
@@ -358,7 +358,7 @@ npm run test:browser:provider
 
 <!-- release-file:v0.19.0-beta-privacy-audit-hardening.md -->
 
-# v0.19.0-beta — Privacy Audit Hardening
+# v0.19.0-beta â€” Privacy Audit Hardening
 
 This release upgrades privacy from basic export sanitation to an explicit release gate.
 
@@ -376,7 +376,7 @@ This release upgrades privacy from basic export sanitation to an explicit releas
 The export path now routes through:
 
 ```text
-payload → privacy export guard → privacy audit final pass → JSON export
+payload â†’ privacy export guard â†’ privacy audit final pass â†’ JSON export
 ```
 
 The final pass removes sensitive keys and redacts secret-shaped text. The report preserves audit metadata without preserving secret values.
@@ -396,7 +396,7 @@ The final pass removes sensitive keys and redacts secret-shaped text. The report
 
 <!-- release-file:v0.20.0-beta-ux-reliability-pass.md -->
 
-# v0.20.0-beta — UX Reliability Pass
+# v0.20.0-beta â€” UX Reliability Pass
 
 ## Purpose
 
@@ -505,7 +505,7 @@ This reduces ambiguity around auth, billing, privacy, and production status.
 
 <!-- release-file:v0.21.0-beta-project-workspace.md -->
 
-# v0.21.0-beta — Project Workspace + Local Storage Management
+# v0.21.0-beta â€” Project Workspace + Local Storage Management
 
 ## Purpose
 
@@ -543,14 +543,14 @@ This release adds a local-only project workspace for managing multiple research 
 
 <!-- release-file:v0.22.0-beta-analysis-template-system.md -->
 
-# v0.22.0-beta — Analysis Template System
+# v0.22.0-beta â€” Analysis Template System
 
 ## Purpose
 
 v0.22.0-beta adds selectable analysis templates while preserving the shared research substrate:
 
 ```text
-Evidence Matrix → Evidence Review Queue → Causal Links → Analysis Brief → Provider Harness → Export
+Evidence Matrix â†’ Evidence Review Queue â†’ Causal Links â†’ Analysis Brief â†’ Provider Harness â†’ Export
 ```
 
 Templates change the analytical lens, prompt directives, source priorities, template diagnostics, and brief metadata. They do not bypass source review, provider validation, privacy export scanning, or manual/private mode.
@@ -628,7 +628,7 @@ npm run test:browser:provider
 
 <!-- release-file:v0.23.0-beta-advanced-quality-gate-v3.md -->
 
-# v0.23.0-beta — Advanced Quality Gate v3
+# v0.23.0-beta â€” Advanced Quality Gate v3
 
 ## Purpose
 
@@ -687,7 +687,7 @@ Quality Gate v3 scores:
 
 <!-- release-file:v0.24.0-beta-export-pack-v2.md -->
 
-# v0.24.0-beta — Export Pack v2
+# v0.24.0-beta â€” Export Pack v2
 
 ## Purpose
 
@@ -738,11 +738,11 @@ The pipeline is:
 
 ```text
 research packet
-→ privacy export guard
-→ privacy audit final pass
-→ export pack artifact generation
-→ per-file privacy scan
-→ download
+â†’ privacy export guard
+â†’ privacy audit final pass
+â†’ export pack artifact generation
+â†’ per-file privacy scan
+â†’ download
 ```
 
 Forbidden raw provider keys, bearer tokens, OAuth access tokens, refresh tokens, and secret-shaped values must be removed or redacted before artifacts are downloaded.
@@ -797,7 +797,7 @@ npm run test:browser:provider
 
 <!-- release-file:v0.25.0-beta-real-backend-provider-hardening.md -->
 
-# v0.25.0-beta — Real Backend Provider Hardening
+# v0.25.0-beta â€” Real Backend Provider Hardening
 
 This release hardens the optional hosted backend proxy. It does not add real OAuth, real source fetching, cloud accounts, or mandatory backend dependency.
 
@@ -854,7 +854,7 @@ AUDIT_LOGS_ENABLED         true enables metadata-only audit logs
 
 <!-- release-file:v0.26.0-beta-real-source-connector-prototype.md -->
 
-# v0.26.0-beta — Real Source Connector Prototype
+# v0.26.0-beta â€” Real Source Connector Prototype
 
 ## Purpose
 
@@ -894,7 +894,7 @@ These are official GitHub REST API shapes. Public resources can be requested wit
 Fetched source metadata becomes `evidence_candidates` and enters the Evidence Review Queue.
 
 ```text
-GitHub public metadata → evidence candidates → Evidence Review Queue → human accept/edit/reject → Evidence Matrix
+GitHub public metadata â†’ evidence candidates â†’ Evidence Review Queue â†’ human accept/edit/reject â†’ Evidence Matrix
 ```
 
 This release does not allow connector results to bypass human review.
@@ -932,7 +932,7 @@ npm run test:v026:no-browser
 
 <!-- release-file:v0.27.0-beta-web-search-provider-abstraction.md -->
 
-# v0.27.0-beta — Web Search Provider Abstraction
+# v0.27.0-beta â€” Web Search Provider Abstraction
 
 ## Purpose
 
@@ -996,10 +996,10 @@ Only `mock_search` is available as a dry-run fixture. Other providers are modele
 
 ```text
 web_search_api
-→ dry-run query plan
-→ source result ledger
-→ Evidence Review Queue boundary
-→ human review before Evidence Matrix promotion
+â†’ dry-run query plan
+â†’ source result ledger
+â†’ Evidence Review Queue boundary
+â†’ human review before Evidence Matrix promotion
 ```
 
 Live search remains disabled:
@@ -1033,7 +1033,7 @@ npm run test:v027
 
 <!-- release-file:v0.28.0-beta-real-portable-oauth-spike.md -->
 
-# v0.28.0-beta — Real Portable OAuth Spike
+# v0.28.0-beta â€” Real Portable OAuth Spike
 
 ## Purpose
 
@@ -1127,7 +1127,7 @@ authorization header
 
 <!-- release-file:v0.29.0-rc.1-release-candidate-freeze.md -->
 
-# v0.29.0-rc.1 — Release Candidate Freeze
+# v0.29.0-rc.1 â€” Release Candidate Freeze
 
 ## Purpose
 
@@ -1278,7 +1278,7 @@ v1.0.0 must not be promoted until both CI jobs are green.
 
 <!-- release-file:v1.0.0-public-beta-stable-research-engine.md -->
 
-# v1.0.0 — Public Beta / Stable Research Engine
+# v1.0.0 â€” Public Beta / Stable Research Engine
 
 ## Release basis
 
@@ -1330,7 +1330,7 @@ The user reported the new CI succeeded before this promotion package was created
 
 <!-- release-file:v1.0.1-patch-only-stabilization.md -->
 
-# v1.0.1 — Patch-only Stabilization
+# v1.0.1 â€” Patch-only Stabilization
 
 ## Scope
 
@@ -1342,7 +1342,7 @@ v1.0.1 is a stabilization patch on top of v1.0.0. It does not add new product ca
 - Updated CI no-browser syntax gate to check the active stable no-browser suite instead of the obsolete RC wrapper.
 - Added `tests/patch-stabilization-check.mjs` to enforce patch-only stabilization constraints.
 - Added `tests/v102-no-browser-suite.mjs`.
-- Added v1.0.0 → v1.0.1 migration fixture support.
+- Added v1.0.0 â†’ v1.0.1 migration fixture support.
 - Added v1.0.1 privacy fixture.
 
 ## Patch policy
@@ -1385,7 +1385,7 @@ npm run test:ci:no-browser
 
 <!-- release-file:v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md -->
 
-# v1.0.10 — Hosted URL CI Artifact Review + Module-Type Warning Fix
+# v1.0.10 â€” Hosted URL CI Artifact Review + Module-Type Warning Fix
 
 v1.0.10 rebuilds the failed-download patch from the confirmed v1.0.9 baseline. It keeps runtime behavior stable while making hosted-demo CI artifacts easier to review and removing Node's module-type warning in backend smoke validation.
 
@@ -1452,7 +1452,7 @@ The evidence review gate remains active for hosted demo publication.
 
 <!-- release-file:v1.0.11-repository-hygiene-stale-artifact-cleanup.md -->
 
-# v1.0.11 — Repository Hygiene + Stale Artifact Cleanup
+# v1.0.11 â€” Repository Hygiene + Stale Artifact Cleanup
 
 v1.0.11 is a patch-only cleanup release. It tightens repository hygiene, repairs migration fixture coverage, and adds release-drift checks without changing browser runtime behavior, provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, or storage behavior.
 
@@ -1505,7 +1505,7 @@ No historical release documents were deleted. They remain useful as an auditable
 
 <!-- release-file:v1.0.12-research-source-strategy-blueprint.md -->
 
-# v1.0.12 — Research Source Strategy Blueprint
+# v1.0.12 â€” Research Source Strategy Blueprint
 
 ## Purpose
 
@@ -1542,7 +1542,7 @@ Engagement is not truth. Public signal strength must stay separate from evidence
 
 <!-- release-file:v1.0.13-manual-source-packet-import.md -->
 
-# v1.0.13 — Manual Source Packet Import
+# v1.0.13 â€” Manual Source Packet Import
 
 ## Scope
 
@@ -1582,7 +1582,7 @@ Imported packets are explicitly marked as unverified manual imports and remain r
 
 <!-- release-file:v1.0.14-evidence-scoring-v1.md -->
 
-# v1.0.14 — Evidence Scoring v1
+# v1.0.14 â€” Evidence Scoring v1
 
 ## Summary
 
@@ -1645,7 +1645,7 @@ Browser validation remains required before public release merge.
 
 <!-- release-file:v1.0.15-evidence-scoring-ui-calibration.md -->
 
-# v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
+# v1.0.15 â€” Evidence Scoring UI Explanation + Calibration Pass
 
 v1.0.15 adds an interpretation layer around Evidence Scoring v1. The scoring algorithm remains `evidence_scoring.v1`; this patch adds `evidence_scoring_calibration.v1` to make score meaning explicit in the UI, schema, fixtures, and CI checks.
 
@@ -1687,7 +1687,7 @@ npm run test:ci:no-browser
 
 <!-- release-file:v1.0.16-source-packet-builder-ui-scoring-review-controls.md -->
 
-# v1.0.16 — Source Packet Builder UI + Scoring Review Controls
+# v1.0.16 â€” Source Packet Builder UI + Scoring Review Controls
 
 Patch scope: local/manual source packet builder UI and scoring review controls.
 
@@ -1728,7 +1728,7 @@ npm run test:ci:browser
 
 <!-- release-file:v1.0.17-source-packet-builder-browser-qa-ux-tightening.md -->
 
-# v1.0.17 — Source Packet Builder Browser QA + UX Tightening
+# v1.0.17 â€” Source Packet Builder Browser QA + UX Tightening
 
 ## Purpose
 
@@ -1780,7 +1780,7 @@ npm run test:ci:browser
 
 <!-- release-file:v1.0.18-source-packet-builder-export-roundtrip-qa.md -->
 
-# v1.0.18 — Source Packet Builder Export Roundtrip QA
+# v1.0.18 â€” Source Packet Builder Export Roundtrip QA
 
 ## Purpose
 
@@ -1823,7 +1823,7 @@ npm run test:ci:no-browser
 
 <!-- release-file:v1.0.19-source-packet-template-presets.md -->
 
-# v1.0.19 — Source Packet Template Presets
+# v1.0.19 â€” Source Packet Template Presets
 
 ## Summary
 
@@ -1863,7 +1863,7 @@ No provider, OAuth, backend, source connector, or storage behavior changed.
 
 <!-- release-file:v1.0.2-ux-stabilization-patch.md -->
 
-# v1.0.2 — UX Stabilization Patch
+# v1.0.2 â€” UX Stabilization Patch
 
 ## Purpose
 
@@ -1882,7 +1882,7 @@ The goal is to reduce the visible operational wall exposed in v1.0.1 and make th
 - Release Health summary card.
 - Collapsed advanced panels by default.
 - UX stabilization regression test.
-- v1.0.1 → v1.0.2 migration fixture.
+- v1.0.1 â†’ v1.0.2 migration fixture.
 - v1.0.2 privacy fixture.
 
 ## UX rule
@@ -1918,7 +1918,7 @@ npm run test:v102:no-browser
 
 <!-- release-file:v1.0.20-source-packet-template-browser-qa-copy-safety.md -->
 
-# v1.0.20 — Source Packet Template Browser QA + Copy Safety
+# v1.0.20 â€” Source Packet Template Browser QA + Copy Safety
 
 v1.0.20 consolidates the unresolved v1.0.19 CI fixes and hardens Source Packet Template Presets in browser QA.
 
@@ -1980,7 +1980,7 @@ The quality/export evidence capture now asserts visible controls that belong to 
 
 <!-- release-file:v1.0.21-node-24-ci-compatibility.md -->
 
-# v1.0.21 — Node 24 CI Compatibility + Action Runtime Migration
+# v1.0.21 â€” Node 24 CI Compatibility + Action Runtime Migration
 
 ## Observation
 
@@ -2046,7 +2046,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- release-file:v1.0.22-release-evidence-repo-hygiene-verification.md -->
 
-# v1.0.22 — Release Evidence + Repo Hygiene Verification
+# v1.0.22 â€” Release Evidence + Repo Hygiene Verification
 
 ## Observation
 
@@ -2089,7 +2089,7 @@ This patch is verification-only. It must not alter provider behavior, OAuth beha
 
 <!-- release-file:v1.0.23-ci-result-review-browser-evidence-artifact-audit.md -->
 
-# v1.0.23 — CI Result Review + Browser Evidence Artifact Audit
+# v1.0.23 â€” CI Result Review + Browser Evidence Artifact Audit
 
 ## Observation
 
@@ -2155,7 +2155,7 @@ This patch is audit-only. It must not alter provider behavior, OAuth behavior, b
 
 <!-- release-file:v1.0.24-repo-hygiene-execution-stale-documentation-correction.md -->
 
-# v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
+# v1.0.24 â€” Repo Hygiene Execution + Stale Documentation Correction
 
 ## Observation
 
@@ -2215,7 +2215,7 @@ This patch is release-hygiene only. It must not alter provider behavior, OAuth b
 
 <!-- release-file:v1.0.25-public-demo-release-lock.md -->
 
-# v1.0.25 — Public Demo Release Lock
+# v1.0.25 â€” Public Demo Release Lock
 
 ## Purpose
 
@@ -2257,7 +2257,7 @@ Do not publish the public demo if the intended release commit lacks green no-bro
 
 <!-- release-file:v1.0.26-release-apply-integrity-gate.md -->
 
-# v1.0.26 — Release Apply Integrity Gate
+# v1.0.26 â€” Release Apply Integrity Gate
 
 ## Purpose
 
@@ -2290,7 +2290,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- release-file:v1.0.27-release-provenance-ledger-gate.md -->
 
-# v1.0.27 — Release Provenance Ledger Gate
+# v1.0.27 â€” Release Provenance Ledger Gate
 
 ## Purpose
 
@@ -2326,7 +2326,7 @@ A named artifact is not sufficient provenance by itself. The changed-files manif
 
 <!-- release-file:v1.0.28-hosted-demo-evidence-manifest-gate.md -->
 
-# v1.0.28 — Hosted Demo Evidence Manifest Gate
+# v1.0.28 â€” Hosted Demo Evidence Manifest Gate
 
 v1.0.28 hardens the public-demo evidence trail after the hosted screenshots were reviewed. The observed weakness was not a product capability defect: the page rendered, CI was green, and the evidence files existed. The release weakness was evidentiary: `hosted-demo-metadata.json` could be overwritten by separate browser tests, leaving only a partial capture list while screenshots existed elsewhere in the artifact folder.
 
@@ -2359,7 +2359,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- release-file:v1.0.29-final-public-demo-hardening-release-freeze-audit.md -->
 
-# v1.0.29 — Final Public Demo Hardening / Release Freeze Audit
+# v1.0.29 â€” Final Public Demo Hardening / Release Freeze Audit
 
 ## Release purpose
 
@@ -2385,7 +2385,7 @@ This patch recovers the failed v1.0.29 preparation from the validated v1.0.28 ba
 
 ---
 
-# v1.0.29 — Final Public Demo Hardening / Release Freeze Audit
+# v1.0.29 â€” Final Public Demo Hardening / Release Freeze Audit
 
 v1.0.29 hardens the public-demo evidence trail after the hosted screenshots were reviewed. The observed weakness was not a product capability defect: the page rendered, CI was green, and the evidence files existed. The release weakness was evidentiary: `hosted-demo-metadata.json` could be overwritten by separate browser tests, leaving only a partial capture list while screenshots existed elsewhere in the artifact folder.
 
@@ -2418,7 +2418,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- release-file:v1.0.3-screen-discipline-patch.md -->
 
-# v1.0.3 — Screen Discipline Patch
+# v1.0.3 â€” Screen Discipline Patch
 
 ## Purpose
 
@@ -2442,7 +2442,7 @@ The goal is to reduce screen-level noise after the v1.0.2 workflow navigation pa
 The first screen must now emphasize one path:
 
 ```text
-Plan → Evidence → Quality → Export
+Plan â†’ Evidence â†’ Quality â†’ Export
 ```
 
 Advanced/provider/OAuth/backend/source internals remain available, but they no longer compete visually with the primary workflow by default.
@@ -2469,7 +2469,7 @@ npm run test:v103:no-browser
 
 <!-- release-file:v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md -->
 
-# v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+# v1.0.30 â€” Mobile Header Geometry Lock / Final Public Demo Visual Freeze
 
 ## Release purpose
 
@@ -2495,7 +2495,7 @@ This patch recovers the failed v1.0.30 preparation from the validated v1.0.29 ba
 
 ---
 
-# v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+# v1.0.30 â€” Mobile Header Geometry Lock / Final Public Demo Visual Freeze
 
 v1.0.30 hardens the public-demo evidence trail after the hosted screenshots were reviewed. The observed weakness was not a product capability defect: the page rendered, CI was green, and the evidence files existed. The release weakness was evidentiary: `hosted-demo-metadata.json` could be overwritten by separate browser tests, leaving only a partial capture list while screenshots existed elsewhere in the artifact folder.
 
@@ -2528,7 +2528,7 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- release-file:v1.0.4-browser-qa-visual-regression-hardening.md -->
 
-# v1.0.4 — Browser QA + Visual Regression Hardening
+# v1.0.4 â€” Browser QA + Visual Regression Hardening
 
 ## Scope
 
@@ -2576,12 +2576,12 @@ Default visual mode captures and attaches screenshots. Strict mode uses Playwrig
 
 <!-- release-file:v1.0.5-onboarding-first-run-success.md -->
 
-# v1.0.5 — Onboarding + First-Run Success
+# v1.0.5 â€” Onboarding + First-Run Success
 
 This patch adds a local-only first-run guide that turns the first session into an explicit operational path:
 
 ```text
-Topic → Plan → Evidence → Review queue → Quality gate → Safe export
+Topic â†’ Plan â†’ Evidence â†’ Review queue â†’ Quality gate â†’ Safe export
 ```
 
 ## Added
@@ -2614,7 +2614,7 @@ Topic → Plan → Evidence → Review queue → Quality gate → Safe export
 
 <!-- release-file:v1.0.6-documentation-release-packaging-cleanup.md -->
 
-# v1.0.6 — Documentation + Release Packaging Cleanup
+# v1.0.6 â€” Documentation + Release Packaging Cleanup
 
 ## Scope
 
@@ -2661,7 +2661,7 @@ npm run test:ci:browser
 
 <!-- release-file:v1.0.7-public-demo-readiness-release-notes.md -->
 
-# v1.0.7 — Public Demo Readiness + Release Notes Polish
+# v1.0.7 â€” Public Demo Readiness + Release Notes Polish
 
 ## Purpose
 
@@ -2709,7 +2709,7 @@ Browser tests remain required before publishing a hosted public demo.
 
 <!-- release-file:v1.0.8-hosted-demo-deployment-browser-evidence.md -->
 
-# v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture
+# v1.0.8 â€” Hosted Demo Deployment Verification + Browser Evidence Capture
 
 v1.0.8 adds hosted-demo deployment verification and browser evidence capture to make the public demo publishable with proof rather than assumption.
 
@@ -2740,7 +2740,7 @@ Run no-browser CI first, then browser CI with evidence capture. A hosted deploym
 
 <!-- release-file:v1.0.9-hosted-demo-smoke-fixes-evidence-review.md -->
 
-# v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review
+# v1.0.9 â€” Hosted Demo Smoke Fixes + Evidence Review
 
 v1.0.9 converts hosted-demo proof from loose Playwright attachments into a stable evidence bundle that can be reviewed before publishing.
 
@@ -2800,7 +2800,7 @@ The evidence review release gate is `evidence_review_complete` only when all req
 
 <!-- release-file:v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md -->
 
-# v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate
+# v1.1.0-alpha.1 â€” Post-Freeze Product Expansion Planning Gate
 
 ## Release purpose
 
@@ -2808,7 +2808,7 @@ This release starts the post-freeze development track after the v1.0.30 public-d
 
 ## Baseline
 
-- Freeze baseline: v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+- Freeze baseline: v1.0.30 â€” Mobile Header Geometry Lock / Final Public Demo Visual Freeze
 - Current track: v1.1.0-alpha.1
 - Release type: alpha planning gate
 
@@ -2851,7 +2851,7 @@ Do not claim any of the following in public demo material:
 ## Acceptance criteria
 
 - `package.json` and `package-lock.json` identify `1.1.0-alpha.1`.
-- `index.html` shows `v1.1.0-alpha.1 · Post-Freeze Product Expansion Planning Gate`.
+- `index.html` shows `v1.1.0-alpha.1 Â· Post-Freeze Product Expansion Planning Gate`.
 - `src/research/post-freeze-planning-gate.js` exports a planning gate with `implementation_allowed: false` and all runtime behavior-change flags false.
 - v1.0.30 freeze artifacts remain present as the baseline.
 - migration support includes `1.0.30` before `1.1.0-alpha.1`.
@@ -2866,7 +2866,7 @@ This release is invalid if it enables any new runtime capability, exposes a plan
 
 <!-- release-file:v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md -->
 
-# v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix
+# v1.1.0-alpha.2 â€” Expansion Lane Acceptance Criteria Matrix
 
 ## Release purpose
 
@@ -2874,8 +2874,8 @@ This release converts the post-freeze planning lanes from v1.1.0-alpha.1 into an
 
 ## Baseline
 
-- Previous alpha gate: v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate
-- Public-demo freeze baseline: v1.0.30 — Mobile Header Geometry Lock / Final Public Demo Visual Freeze
+- Previous alpha gate: v1.1.0-alpha.1 â€” Post-Freeze Product Expansion Planning Gate
+- Public-demo freeze baseline: v1.0.30 â€” Mobile Header Geometry Lock / Final Public Demo Visual Freeze
 - Current track: v1.1.0-alpha.2
 - Release type: alpha planning gate
 
@@ -2930,7 +2930,7 @@ Do not claim any of the following in public demo material:
 ## Acceptance criteria
 
 - `package.json` and `package-lock.json` identify `1.1.0-alpha.2`.
-- `index.html` shows `v1.1.0-alpha.2 · Expansion Lane Acceptance Criteria Matrix`.
+- `index.html` shows `v1.1.0-alpha.2 Â· Expansion Lane Acceptance Criteria Matrix`.
 - `src/research/post-freeze-planning-gate.js` exports lane criteria, falsifiers, evidence requirements, and blocked-until gates.
 - Every lane has at least three acceptance criteria and two falsifiers.
 - Every lane has `implementation_allowed: false` and `capability_expansion: false`.
@@ -2947,7 +2947,7 @@ This release is invalid if it enables any runtime capability, exposes a planned 
 
 <!-- release-file:v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md -->
 
-# v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
+# v1.1.0-alpha.7 â€” Package Script Compression + CI Gate Registry
 
 ## Scope
 
@@ -3002,7 +3002,7 @@ MERGE_TO_REGISTRY is now executed for migration and privacy fixtures. No files a
 
 <!-- release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
 
-# v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
+# v1.1.0-alpha.7 â€” Package Script Compression + CI Gate Registry
 
 ## Release type
 
@@ -3060,7 +3060,7 @@ This release is invalid if:
 
 ## Next safe step
 
-`v1.1.0-alpha.7 — Documentation Timeline Consolidation`
+`v1.1.0-alpha.7 â€” Documentation Timeline Consolidation`
 
 That release may merge version-specific documentation into timeline-style documents after doc hygiene gates are remapped.
 
@@ -3140,7 +3140,7 @@ Complete this before a public release.
 <!-- /release-file:visual-qa.md -->
 
 <!-- release-file:v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md -->
-# v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit
+# v1.1.0-alpha.8 â€” Fixture Registry Payload Compression + Test Organization Audit
 
 Cleanup-only fixture and QA organization gate. Compresses the oversized migration/privacy fixture registry payloads while preserving historical fixture semantics through `tests/fixture-registry-loader.mjs` expansion, then adds budget and organization checks so the repository does not drift back into registry bloat or unregistered test sprawl.
 
@@ -3186,7 +3186,7 @@ This release is invalid if compressed fixture payloads cannot be expanded by the
 <!-- /release-file:v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md -->
 
 <!-- release-file:v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md -->
-# v1.1.0-alpha.9 — Test Matrix Runtime Optimization + Release Doc Timeline Pruning
+# v1.1.0-alpha.9 â€” Test Matrix Runtime Optimization + Release Doc Timeline Pruning
 
 Cleanup-only CI and documentation gate. Compresses the expensive no-browser syntax tail into a bounded parallel syntax matrix and prunes the release-history surface into a canonical timeline index while preserving release-file anchors for CI lookup.
 
@@ -3228,7 +3228,7 @@ This release is invalid if the syntax matrix drops previous syntax coverage, if 
 
 
 <!-- release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
-# v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard
+# v1.1.0-alpha.10 â€” Hosted Evidence Capture Polish + Visual Artifact Guard
 
 Evidence-quality hardening gate. Polishes hosted-demo evidence capture by waiting for stable DOM/fonts/frames before every screenshot, blocking transient overlays/loading artifacts, and recording settle/artifact guard metadata in the single final hosted-demo manifest.
 
@@ -3270,7 +3270,7 @@ This release is invalid if screenshots can be captured while transient overlays,
 <!-- /release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
 
 <!-- release-file:v1.1.0-alpha.18-research-planner-v2.md -->
-# v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+# v1.1.0-alpha.18 â€” Controlled Connector Architecture MVP
 
 Adds a local-only entity intelligence layer over reviewed evidence and source clusters. The release extracts entity profiles, categories, aliases, evidence links, cluster links, review flags, and entity-map reports without external NER model download, live scraping, provider calls, OAuth/backend expansion, source connector expansion, storage expansion, broad UI redesign, or source refactor.
 
@@ -3316,13 +3316,13 @@ Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is 
 No live scraping and No real OAuth remain enforced.
 
 
-## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+## v1.1.0-alpha.18 â€” Controlled Connector Architecture MVP
 
 Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
 
 
 <!-- release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
-# v1.1.0-alpha.18 — Controlled Connector Architecture MVP
+# v1.1.0-alpha.18 â€” Controlled Connector Architecture MVP
 
 Controlled Connector Architecture MVP adds connector interface contracts, dry-run execution, URL-list/manual transcript/source-list import, controlled result normalization into the Evidence Review Queue, connector safety reports, and connector report export continuity.
 
@@ -3356,12 +3356,12 @@ Registry policy: MERGE_TO_REGISTRY remains the fixture handling mode. No files a
 <!-- /release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
 
 
-## v1.1.0 — Public Demo Stable
+## v1.1.0 â€” Public Demo Stable
 
 Adds a local Strategic Evidence Graph model, graph quality diagnostics, and Gephi/Kumu/Neo4J export continuity without live scraping, live search execution, provider execution, OAuth/backend expansion, external graph service dependency, or automatic source verification claims.
 
 <!-- release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
-# v1.1.0 — Public Demo Stable
+# v1.1.0 â€” Public Demo Stable
 
 Alpha.19 adds Public Demo Stable. It connects reviewed evidence, source clusters, entity profiles, analysis targets, and causal links into a local graph bundle and exports Gephi-compatible CSV, Kumu-compatible JSON, and Neo4J import CSV artifacts.
 
@@ -3384,6 +3384,8 @@ Hosted evidence capture continuity:
 - visual_artifact_guard_passed
 - No runtime behavior change
 
+Evidence manifest continuity: hosted-demo review still requires a single final metadata capture manifest with desktop, mobile, provider-mode, and quality/export evidence.
+
 
 Mobile Header Geometry Lock continuity: the existing mobile header/logo geometry guard remains in scope and unchanged for alpha.19.
 
@@ -3405,10 +3407,10 @@ Governance continuity: Root Manifest, Release Artifact Consolidation, Version Su
 
 Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, changed-files-only discipline, visual freeze, and mobile header continuity are preserved.
 
-Post-stable continuity note: v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate is the first planning-only expansion gate built on this locked v1.1.0 baseline.
+Post-stable continuity note: v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate is the first planning-only expansion gate built on this locked v1.1.0 baseline.
 
 
-# v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate
+# v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
 
 Hosted evidence continuity note: waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed remain required for hosted-demo evidence capture. No runtime behavior change.
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
@@ -3420,10 +3422,10 @@ Release continuity note: Root Manifest, Release Artifact Consolidation, Version 
 Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
 
 
-| `v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md` | v1.1.0 — Public Demo Stable |
+| `v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md` | v1.1.0 â€” Public Demo Stable |
 
 <!-- release-file:v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md -->
-# v1.1.0 — Public Demo Stable
+# v1.1.0 â€” Public Demo Stable
 
 Public Demo Stable. Feature surface frozen; final public-demo docs, golden workflow regression lock, Export Pack v3 consistency lock, hosted-demo evidence runbook, stale-copy sweep, repo/package hygiene, and CI parity verification.
 
@@ -3432,16 +3434,16 @@ No new major feature surface. No live connector expansion. No provider execution
 
 
 <!-- release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
-# v1.1.0 — Public Demo Stable
+# v1.1.0 â€” Public Demo Stable
 
-Public Demo Stable for `v1.1.0 — Public Demo Stable`.
+Public Demo Stable for `v1.1.0 â€” Public Demo Stable`.
 
 This corrective build fixes public EN/AR/FR stable labels and public demo release copy while preserving internal evidence metadata as `1.1.0` and the public label as `v1.1.0 Public Demo Stable`.
 
 ## Scope
 
-- Arabic stable public label corrected to `v1.1.0 العرض العام المستقر`.
-- French stable public label corrected to `v1.1.0 Démo publique stable`.
+- Arabic stable public label corrected to `v1.1.0 Ø§Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø¹Ø§Ù… Ø§Ù„Ù…Ø³ØªÙ‚Ø±`.
+- French stable public label corrected to `v1.1.0 DÃ©mo publique stable`.
 - English stable public label remains `v1.1.0 Public Demo Stable`.
 - Evidence matrix expectations align with stable public labels.
 - docs/technical-debt-ledger.md remains the technical debt reference.
@@ -3460,10 +3462,10 @@ This corrective build fixes public EN/AR/FR stable labels and public demo releas
 - no stale candidate/freeze public wording remains in hosted visible text
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
 
-<!-- release-file:v1.2.0-alpha.1-evidence-pack-export-v3-brief-traceability.md -->
-# v1.2.0-alpha.1 — Post-Stable Capability Roadmap + Expansion Gate
+<!-- release-file:v1.2.0-alpha.2-evidence-pack-export-v3-brief-traceability.md -->
+# v1.2.0-alpha.2 â€” Source-to-Brief Intelligence Workbench
 
-Planning-only post-stable capability roadmap and expansion gate. It preserves the v1.1.0 public-demo baseline and introduces no runtime behavior change, no provider/OAuth/backend/source/storage expansion, no live scraping, and no automatic source verification claim.
+Controlled local/manual source-to-brief workbench. It connects research plans, evidence cards, generated claims, contradiction groups, source gap warnings, inferred confidence review metadata, and structured strategic brief export while preserving the v1.1.0 public-demo baseline. It introduces no live scraping, no provider/OAuth/backend/source/storage expansion, and no automatic source verification claim.
 
 Evidence continuity: changed-files-only release apply integrity, provenance ledger, fixture registry consolidation, package script compression and CI gate registry, hosted evidence capture polish, browser evidence baselines, and privacy/export gates remain required.
 
@@ -3474,4 +3476,4 @@ Readiness artifacts:
 - tests/language-description-audit-check.mjs
 
 No source-file refactor yet. No runtime behavior change.
-<!-- /release-file:v1.2.0-alpha.1-evidence-pack-export-v3-brief-traceability.md -->
+<!-- /release-file:v1.2.0-alpha.2-evidence-pack-export-v3-brief-traceability.md -->
