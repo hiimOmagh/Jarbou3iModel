@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine Source-to-Brief UX Compression + Operator Flow Polish v1.1.0. Local-only review ergonomics; no queue bypass. */
+/* Jarbou3i Research Engine Evidence Review Throughput + Source-to-Brief Export Polish. Local-only review ergonomics; no queue bypass. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.3';
+  const VERSION = '1.2.0-alpha.4';
   const VALID_STATUS = new Set(['all','pending','needs_edit','accepted','rejected','resolved','unresolved']);
   const VALID_REL = new Set(['all','supports','contradicts','unlinked']);
   const VALID_SORT = new Set(['newest','oldest','reliability_desc','attention_desc','needs_review_first']);
@@ -105,6 +105,68 @@
     const target_indexes = idx.filter((index)=>isOpen(queue[index]));
     return {batch_plan_version:VERSION, decision:action, requested_count:idx.length, eligible_count:target_indexes.length, skipped_count:idx.length-target_indexes.length, target_indexes, release_gate:'human_review_required'};
   }
+  function priorityScore(item){
+    if(!item) return 0;
+    const e = item.evidence || {};
+    const contradictionWeight = asArray(e.contradicts).length ? 32 : 0;
+    const unlinkedWeight = (!asArray(e.supports).length && !asArray(e.contradicts).length) ? 20 : 0;
+    const traceabilityWeight = (!text(e.source_url) || !text(e.source_date) || e.source_date === 'unknown') ? 18 : 0;
+    const editWeight = item.status === 'needs_edit' ? 24 : 0;
+    const pendingWeight = item.status === 'pending' ? 8 : 0;
+    return Math.min(100, Math.round(score(item,'attention_signal_score') * 0.42 + score(item,'reliability_score') * 0.18 + contradictionWeight + unlinkedWeight + traceabilityWeight + editWeight + pendingWeight));
+  }
+  function laneItem(item){
+    const e = item?.evidence || {};
+    return {
+      review_id:item?.review_id,
+      evidence_id:e.evidence_id || item?.review_id,
+      status:item?.status || 'pending',
+      claim:text(e.claim).slice(0, 160),
+      source_type:text(e.source_type || 'other'),
+      priority_score:priorityScore(item),
+      supports:asArray(e.supports),
+      contradicts:asArray(e.contradicts),
+      traceability_complete:!!text(e.source_url) && !!text(e.source_date) && e.source_date !== 'unknown',
+      recommended_action:asArray(e.contradicts).length ? 'review_contradiction_before_export' : (!text(e.source_url) || !text(e.source_date) || e.source_date === 'unknown' ? 'repair_traceability_before_export' : (item?.status === 'needs_edit' ? 'edit_or_reject_before_export' : 'manual_accept_or_continue_review'))
+    };
+  }
+  function reviewLanes(queue = [], context = {}){
+    const open = asArray(queue).filter(isOpen).map(laneItem).sort((a,b)=>b.priority_score-a.priority_score);
+    const lanes = [
+      {lane_id:'priority', label:'Priority review', items:open.slice(0, 5)},
+      {lane_id:'contradictions', label:'Contradictions', items:open.filter((item)=>item.contradicts.length).slice(0, 5)},
+      {lane_id:'traceability', label:'Traceability repairs', items:open.filter((item)=>!item.traceability_complete).slice(0, 5)},
+      {lane_id:'unlinked', label:'Unlinked evidence', items:open.filter((item)=>!item.supports.length && !item.contradicts.length).slice(0, 5)},
+      {lane_id:'ready_to_decide', label:'Ready to decide', items:open.filter((item)=>item.traceability_complete && !item.contradicts.length && item.status === 'pending').slice(0, 5)}
+    ];
+    const signals = unresolvedSignals(queue, context);
+    return {
+      lane_model:'evidence_review_throughput_lanes.v1',
+      lanes,
+      lane_count:lanes.length,
+      open_lane_item_count:lanes.reduce((sum,lane)=>sum + lane.items.length, 0),
+      unresolved_signal_count:signals.contradiction_items.length + signals.unlinked_items.length + signals.low_traceability_items.length,
+      queue_bypass_enabled:false,
+      local_only:true,
+      live_fetching_performed:false,
+      verification_claimed:false
+    };
+  }
+  function nextReviewActions(queue = [], filters = {}, context = {}){
+    const lanes = reviewLanes(queue, context);
+    const counts = statusCounts(queue);
+    const actions = [];
+    const contradiction = lanes.lanes.find((lane)=>lane.lane_id === 'contradictions')?.items?.[0];
+    const traceability = lanes.lanes.find((lane)=>lane.lane_id === 'traceability')?.items?.[0];
+    const unlinked = lanes.lanes.find((lane)=>lane.lane_id === 'unlinked')?.items?.[0];
+    const ready = lanes.lanes.find((lane)=>lane.lane_id === 'ready_to_decide')?.items?.[0];
+    if(contradiction) actions.push({action_id:'review_top_contradiction', label:'Review top contradiction before export', review_id:contradiction.review_id, priority:'high', reason:'counter-evidence affects claim confidence'});
+    if(traceability) actions.push({action_id:'repair_traceability', label:'Repair missing URL/date/source type', review_id:traceability.review_id, priority:'high', reason:'export should preserve source provenance'});
+    if(unlinked) actions.push({action_id:'link_or_reject_unlinked', label:'Link or reject unlinked evidence', review_id:unlinked.review_id, priority:'medium', reason:'unlinked evidence cannot support the brief'});
+    if(ready) actions.push({action_id:'decide_ready_candidate', label:'Accept or reject ready candidate manually', review_id:ready.review_id, priority:'medium', reason:'candidate is traceable and pending'});
+    if(!actions.length && counts.unresolved === 0) actions.push({action_id:'review_export_package', label:'Review export package before handoff', review_id:null, priority:'low', reason:'queue resolved; export still requires manual boundary review'});
+    return actions.slice(0, 5).map((action, index)=>Object.assign({order:index + 1, automatic_decision:false, human_review_required:true}, action));
+  }
   function throughputReport(queue = [], filters = {}, context = {}){
     const counts = statusCounts(queue);
     const filtered = filterAndSortReviewQueue(queue, filters, context);
@@ -122,6 +184,9 @@
       low_traceability_open_count:unresolved.low_traceability_items.length,
       unlinked_open_count:unresolved.unlinked_items.length,
       average_open_attention: Math.round(asArray(queue).filter(isOpen).reduce((sum,item)=>sum + score(item,'attention_signal_score'),0)/open),
+      review_lanes:reviewLanes(queue, context),
+      next_review_actions:nextReviewActions(queue, filters, context),
+      export_throughput_gate: counts.unresolved ? 'manual_review_queue_open' : 'manual_export_review_ready',
       keyboard_flow:{enabled:true, shortcuts:['Enter=accept focused candidate','E=edit focused candidate','N=mark needs edit','R=reject focused candidate','/=focus search']},
       readiness,
       release_gate: counts.unresolved ? 'review_required' : 'review_throughput_clear'
@@ -142,9 +207,12 @@
       facets:deriveFacets(queue, context),
       visible_review_ids:filtered.items.map((item)=>item.review_id).filter(Boolean),
       unresolved_signals:unresolvedSignals(queue, context),
+      review_lanes:reviewLanes(queue, context),
+      next_review_actions:nextReviewActions(queue, normalized, context),
       throughput_report:throughputReport(queue, normalized, context),
+      export_polish_boundary:'review decisions remain manual; export readiness is a checklist, not verification',
       release_gate:'evidence_review_queue_required'
     };
   }
-  root.evidenceWorkspaceUx = Object.freeze({VERSION, defaultFilters, normalizeFilters, statusCounts, filterAndSortReviewQueue, deriveFacets, unresolvedSignals, batchDecisionPlan, throughputReport, workspaceUxReport});
+  root.evidenceWorkspaceUx = Object.freeze({VERSION, defaultFilters, normalizeFilters, statusCounts, filterAndSortReviewQueue, deriveFacets, unresolvedSignals, batchDecisionPlan, priorityScore, reviewLanes, nextReviewActions, throughputReport, workspaceUxReport});
 })(typeof window !== 'undefined' ? window : globalThis);

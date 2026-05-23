@@ -1050,7 +1050,7 @@ html[dir="rtl"] .welcomeEyebrow{
 
 .entityProfileGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:10px 0}.entityProfileCard{border:1px solid rgba(148,163,184,.22);border-radius:16px;padding:12px;background:rgba(15,23,42,.22)}.entityProfileCard>div:first-child{display:flex;justify-content:space-between;gap:8px;align-items:center}.entityProfileCard p{margin:8px 0;color:var(--muted)}
 
-/* v1.2.0-alpha.3 — source-to-brief operator flow compression */
+/* v1.2.0-alpha.4 — source-to-brief operator flow compression */
 .sourceToBriefSummary.operatorCompressed{border:1px solid color-mix(in srgb,var(--accent) 20%,var(--line));border-radius:20px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface-solid) 94%,transparent),color-mix(in srgb,var(--surface-soft) 88%,transparent));padding:12px;}
 .sourceToBriefFlow{display:grid;grid-template-columns:repeat(8,minmax(74px,1fr));gap:6px;align-items:stretch;}
 .flowStep{border:1px solid var(--line);border-radius:14px;background:var(--surface-solid);padding:8px 9px;min-width:0;}
@@ -1078,3 +1078,16 @@ html[dir="rtl"] .welcomeEyebrow{
 .sourceToBriefEmptyGuidance span{border-style:dashed;}
 @media(max-width:920px){.sourceToBriefFlow{grid-template-columns:repeat(4,minmax(0,1fr));}.sourceToBriefGrid{grid-template-columns:1fr;}}
 @media(max-width:560px){.sourceToBriefFlow{grid-template-columns:repeat(2,minmax(0,1fr));}.flowStep b,.flowStep small{white-space:normal;}.compactEvidenceCard header,.compactClaimCard header,.compactContradictionGroup header{display:grid;}.compactEvidenceCard header span,.compactClaimCard header span,.compactContradictionGroup header span{text-align:start;}}
+.reviewLaneGrid,.sourceToBriefLaneGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:10px 0;}
+.reviewLaneCard,.sourceToBriefLane{border:1px solid var(--line);border-radius:14px;padding:9px;background:color-mix(in srgb,var(--surface-soft) 78%,transparent);min-width:0;}
+.reviewLaneCard header,.sourceToBriefLane header{display:flex;justify-content:space-between;gap:8px;align-items:center;}
+.reviewLaneCard b,.sourceToBriefLane b{font-size:12px;}
+.reviewLaneCard small,.sourceToBriefLane small{display:block;color:var(--muted);margin-top:4px;overflow-wrap:anywhere;}
+.reviewNextActions,.sourceToBriefActionList{margin:8px 0 10px;padding-left:18px;color:var(--muted);}
+[dir="rtl"] .reviewNextActions,[dir="rtl"] .sourceToBriefActionList{padding-left:0;padding-right:18px;}
+.reviewNextActions li,.sourceToBriefActionList li{margin:4px 0;}
+.reviewNextActions small,.sourceToBriefActionList small{display:block;color:var(--muted);}
+.sourceToBriefExportFiles span{max-width:100%;overflow-wrap:anywhere;}
+.sourceToBriefExportPolishPanel p{margin:6px 0;color:var(--muted);}
+@media(max-width:920px){.reviewLaneGrid,.sourceToBriefLaneGrid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:560px){.reviewLaneGrid,.sourceToBriefLaneGrid{grid-template-columns:1fr;}}

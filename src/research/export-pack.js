@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.2.0-alpha.3';
+  const EXPORT_PACK_VERSION = '1.2.0-alpha.4';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -175,10 +175,42 @@
     return files;
   }
 
+  function sourceToBriefHandoffMarkdown(workbench = {}){
+    const polish = workbench.export_polish_report || {};
+    const review = workbench.review_throughput_summary || {};
+    return [
+      `# Source-to-Brief Operator Handoff`,
+      '',
+      `Research question: ${safeString(workbench.research_question || 'Untitled')}`,
+      `Export review status: ${safeString(polish.export_review_status || 'manual_review_required')}`,
+      `Unresolved review items: ${safeString(review.unresolved_count ?? 0)}`,
+      `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
+      `Low-traceability review items: ${safeString(review.low_traceability_open_count ?? 0)}`,
+      '',
+      '## Next Review Actions',
+      markdownList(asArray(review.next_review_actions).map((action)=>`${safeString(action.label || action.action_id)}${action.review_id ? ` — ${safeString(action.review_id)}` : ''}`)),
+      '',
+      '## Handoff Files',
+      markdownList(polish.handoff_file_plan),
+      '',
+      '## Export Boundary',
+      safeString(polish.manual_local_disclaimer || 'Evidence is user-provided or source-imported. No automatic source verification is claimed.'),
+      '',
+      '## Blockers',
+      markdownList(polish.blockers),
+      '',
+      '## Warnings',
+      markdownList(polish.warnings),
+      ''
+    ].join('\n');
+  }
+
   function sourceToBriefFiles(packet){
     const files = [];
     const workbenchApi = root.sourceToBriefWorkbench;
-    const workbench = packet.source_to_brief_package || packet.source_to_brief_workbench || (workbenchApi?.buildSourceToBriefWorkbench ? workbenchApi.buildSourceToBriefWorkbench(packet, {version:EXPORT_PACK_VERSION}) : null);
+    const existingWorkbench = packet.source_to_brief_package || packet.source_to_brief_workbench || null;
+    const generatedWorkbench = workbenchApi?.buildSourceToBriefWorkbench ? workbenchApi.buildSourceToBriefWorkbench(packet, {version:EXPORT_PACK_VERSION}) : null;
+    const workbench = generatedWorkbench ? Object.assign({}, existingWorkbench || {}, generatedWorkbench) : existingWorkbench;
     if(!workbench) return files;
     files.push(fileEntry('source-to-brief/source-to-brief-package.json', 'application/json', jsonContent(workbench), 'source-to-brief-package'));
     const markdown = workbenchApi?.markdownBrief ? workbenchApi.markdownBrief(workbench) : jsonContent(workbench.exportable_strategic_brief || {});
@@ -187,6 +219,10 @@
     files.push(fileEntry('source-to-brief/claim-map.csv', 'text/csv', rowsToCsv(claimRows), 'source-to-brief-claim-map'));
     if(workbench.source_gaps) files.push(fileEntry('source-to-brief/source-gaps.json', 'application/json', jsonContent(workbench.source_gaps), 'source-to-brief-gaps'));
     if(workbench.confidence_review) files.push(fileEntry('source-to-brief/confidence-review.json', 'application/json', jsonContent(workbench.confidence_review), 'source-to-brief-confidence'));
+    if(workbench.export_readiness_checklist) files.push(fileEntry('source-to-brief/export-readiness.json', 'application/json', jsonContent(workbench.export_readiness_checklist), 'source-to-brief-export-readiness'));
+    if(workbench.export_polish_report) files.push(fileEntry('source-to-brief/export-polish-report.json', 'application/json', jsonContent(workbench.export_polish_report), 'source-to-brief-export-polish'));
+    if(workbench.review_throughput_summary) files.push(fileEntry('source-to-brief/review-throughput-summary.json', 'application/json', jsonContent(workbench.review_throughput_summary), 'source-to-brief-review-throughput'));
+    files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }
 
@@ -204,7 +240,7 @@
   function reviewThroughputFiles(packet){
     const files = [];
     if(packet.evidence_workspace_ux_report) files.push(fileEntry('review/evidence-workspace-ux-report.json', 'application/json', jsonContent(packet.evidence_workspace_ux_report), 'review-ux'));
-    if(packet.review_throughput_report) files.push(fileEntry('review/brief-traceability-report.json', 'application/json', jsonContent(packet.review_throughput_report), 'brief-traceability'));
+    if(packet.review_throughput_report) { files.push(fileEntry('review/brief-traceability-report.json', 'application/json', jsonContent(packet.review_throughput_report), 'brief-traceability')); files.push(fileEntry('review/review-throughput-report.json', 'application/json', jsonContent(packet.review_throughput_report), 'review-throughput')); }
     return files;
   }
 

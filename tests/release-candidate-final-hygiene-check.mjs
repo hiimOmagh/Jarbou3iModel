@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.2.0-alpha.3';
+const VERSION = '1.2.0-alpha.4';
 const source = fs.readFileSync('src/research/release-candidate-hygiene.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const exportPack = fs.readFileSync('src/research/export-pack.js', 'utf8');

@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.2.0-alpha.3`
-Release: `v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish`
+Version: `1.2.0-alpha.4`
+Release: `v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

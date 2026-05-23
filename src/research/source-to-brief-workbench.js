@@ -1,10 +1,11 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.3. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.2.0-alpha.4. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.3';
+  const VERSION = '1.2.0-alpha.4';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
+  const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
   const SUPPORT_LEVELS = Object.freeze(['strong','partial','weak','unsupported']);
   const BLOCKED_CAPABILITIES = Object.freeze([
     'live_scraping',
@@ -330,6 +331,68 @@
       no_export_ready_package:{visible:workbench.release_gate !== 'source_to_brief_reviewable', next_action:'resolve_blockers_or_export_with_manual_warning'}
     };
   }
+  function reviewThroughputSummary(packet = {}){
+    const report = packet.review_throughput_report || packet.evidence_workspace_ux_report?.throughput_report || {};
+    const ux = packet.evidence_workspace_ux_report || {};
+    const counts = report.counts || {};
+    const lanes = report.review_lanes || ux.review_lanes || {lanes:[]};
+    const actions = asArray(report.next_review_actions || ux.next_review_actions);
+    return {
+      review_throughput_summary_version:VERSION,
+      model:'source_to_brief_review_throughput_summary.v1',
+      pending_count:Number(counts.pending || 0),
+      needs_edit_count:Number(counts.needs_edit || 0),
+      unresolved_count:Number(counts.unresolved || 0),
+      contradiction_open_count:Number(report.contradiction_open_count || 0),
+      low_traceability_open_count:Number(report.low_traceability_open_count || 0),
+      unlinked_open_count:Number(report.unlinked_open_count || 0),
+      review_pressure:Number(report.review_pressure || 0),
+      export_throughput_gate:report.export_throughput_gate || (Number(counts.unresolved || 0) ? 'manual_review_queue_open' : 'manual_export_review_ready'),
+      priority_lanes:asArray(lanes.lanes).map((lane)=>({lane_id:lane.lane_id, label:lane.label, item_count:asArray(lane.items).length, review_ids:asArray(lane.items).map((item)=>item.review_id).filter(Boolean)})),
+      next_review_actions:actions.slice(0,5),
+      queue_bypass_enabled:false,
+      local_only:true,
+      live_fetching_performed:false,
+      verification_claimed:false
+    };
+  }
+  function exportPolishReport(workbench = {}, reviewSummary = {}){
+    const checklist = workbench.export_readiness_checklist || {};
+    const items = asArray(checklist.items);
+    const failed = items.filter((item)=>!item.passed);
+    const files = [
+      'source-to-brief/source-to-brief-package.json',
+      'source-to-brief/strategic-brief.md',
+      'source-to-brief/claim-map.csv',
+      'source-to-brief/source-gaps.json',
+      'source-to-brief/confidence-review.json',
+      'source-to-brief/export-readiness.json',
+      'source-to-brief/operator-handoff.md'
+    ];
+    if(Number(reviewSummary.unresolved_count || 0) > 0) files.push('source-to-brief/review-throughput-summary.json');
+    const blockers = failed.filter((item)=>item.severity === 'blocker').map((item)=>item.check_id);
+    const warnings = failed.filter((item)=>item.severity !== 'blocker').map((item)=>item.check_id);
+    if(Number(reviewSummary.unresolved_count || 0) > 0) warnings.push('review_queue_unresolved');
+    return {
+      export_polish_version:VERSION,
+      export_polish_model:EXPORT_POLISH_MODEL,
+      handoff_file_plan:files,
+      handoff_file_count:files.length,
+      blockers:unique(blockers),
+      warnings:unique(warnings),
+      unresolved_review_count:Number(reviewSummary.unresolved_count || 0),
+      contradiction_review_count:Number(reviewSummary.contradiction_open_count || 0),
+      export_review_status:blockers.length ? 'blocked_for_manual_export' : (warnings.length ? 'ready_with_manual_warnings' : 'ready_for_manual_handoff'),
+      operator_handoff_note:'Review throughput, source gaps, contradictions, confidence notes, and the manual/local evidence boundary before sharing or publishing.',
+      manual_local_disclaimer:'Evidence is user-provided or source-imported; export polish does not verify, fetch, scrape, or execute providers automatically.',
+      no_automatic_verification_claim:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      verification_claimed:false,
+      automatic_source_verification_claimed:false
+    };
+  }
 
   function buildSourceToBriefWorkbench(packet = {}, options = {}){
     const version = options.version || VERSION;
@@ -343,7 +406,9 @@
     const strategic = strategicBrief(packet, claimMap, contradictionGroups, sourceGaps, confidenceReview);
     const operatorFlow = buildOperatorFlow(packet, evidenceCards, claimMap, contradictionGroups, sourceGaps, confidenceReview);
     const exportReadinessChecklist = buildExportReadinessChecklist(claimMap, contradictionGroups, sourceGaps, confidenceReview);
+    const reviewSummary = reviewThroughputSummary(packet);
     const releaseGate = evidenceCards.length && claimMap.length && confidenceReview.release_gate === 'confidence_reviewable' && sourceGaps.release_gate === 'source_gap_reviewable' ? 'source_to_brief_reviewable' : 'source_to_brief_review_required';
+    const exportPolish = exportPolishReport({export_readiness_checklist:exportReadinessChecklist, release_gate:releaseGate}, reviewSummary);
     return {
       source_to_brief_version:version,
       workbench_model:MODEL,
@@ -361,7 +426,10 @@
       exportable_strategic_brief:strategic,
       operator_flow:operatorFlow,
       export_readiness_checklist:exportReadinessChecklist,
-      ux_compression_model:UX_MODEL,
+      review_throughput_summary:reviewSummary,
+      export_polish_report:exportPolish,
+      ux_compression_model:'source_to_brief_operator_flow.v1',
+      export_polish_model:EXPORT_POLISH_MODEL,
       empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),
       blocked_unavailable_capabilities:BLOCKED_CAPABILITIES.slice(),
       local_manual_workspace_model:true,
@@ -409,6 +477,12 @@
       '## Source Gaps',
       `Warnings: ${Number(workbench.source_gaps?.warning_count || 0)}`,
       '',
+      '## Export Polish Review',
+      `- Export review status: ${text(workbench.export_polish_report?.export_review_status || 'manual_review_required')}`,
+      `- Handoff files: ${Number(workbench.export_polish_report?.handoff_file_count || 0)}`,
+      `- Review queue unresolved: ${Number(workbench.review_throughput_summary?.unresolved_count || 0)}`,
+      `- Manual boundary: ${text(workbench.export_polish_report?.manual_local_disclaimer || brief.source_boundary_note || '')}`,
+      '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')
     ].join('\n') + '\n';
@@ -418,6 +492,7 @@
     VERSION,
     MODEL,
     UX_MODEL,
+    EXPORT_POLISH_MODEL,
     SUPPORT_LEVELS,
     BLOCKED_CAPABILITIES,
     buildSourceToBriefWorkbench,
@@ -429,6 +504,8 @@
     buildOperatorFlow,
     buildExportReadinessChecklist,
     buildEmptyStateGuidance,
+    reviewThroughputSummary,
+    exportPolishReport,
     claimMapRows,
     markdownBrief
   });

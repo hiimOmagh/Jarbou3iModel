@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.2.0-alpha.3",
-  "release_title": "v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish",
+  "version_suite_registry_version": "1.2.0-alpha.4",
+  "release_title": "v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

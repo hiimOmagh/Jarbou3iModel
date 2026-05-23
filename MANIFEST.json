@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0-alpha.3",
-  "release_title": "v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish",
+  "version": "1.2.0-alpha.4",
+  "release_title": "v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish",
   "package": "jarbou3i-research-engine",
   "release_type": "post-stable-alpha-controlled-workbench",
   "runtime_capability_change": false,
@@ -46,6 +46,6 @@
   ],
   "release_scope": "Controlled local/manual source-to-brief workbench: connect research plans, evidence cards, generated claims, contradiction groups, source gap warnings, inferred confidence review metadata, and structured strategic brief export without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, or automatic source verification claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.2.0-alpha.3`\nRuntime capability change: no\nPublic surface: local/manual source-to-brief workbench only\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
-  "node_runtime_note": "Node 24 CI compatibility preserved for v1.2.0-alpha.3."
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.2.0-alpha.4`\nRuntime capability change: no\nPublic surface: local/manual source-to-brief workbench only\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
+  "node_runtime_note": "Node 24 CI compatibility preserved for v1.2.0-alpha.4."
 }

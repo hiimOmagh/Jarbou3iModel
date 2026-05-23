@@ -1,10 +1,10 @@
 # Jarbou3i Research Engine
 
-`v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish`
+`v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
-This alpha does not add live execution capability. It adds a controlled local/manual source-to-brief workbench that connects the research plan, evidence cards, generated claims, contradiction groups, source gap warnings, inferred confidence review metadata, and structured strategic brief export.
+This alpha does not add live execution capability. It improves the controlled local/manual source-to-brief workflow with evidence-review priority lanes, next-review actions, export-throughput gating, export-polish metadata, and operator handoff files.
 
 Preserved boundaries: manual/private mode remains first-class; no live scraping; no production OAuth; no backend behavior expansion; no live provider execution expansion; no storage expansion; no automatic source verification claims.
 
@@ -31,6 +31,6 @@ Evidence manifest continuity: hosted-demo review still requires a single final m
 
 Screenshots alone are insufficient for release approval. ZIP archive alone is insufficient for release approval. The v1.2.0-alpha.1 post-stable expansion gate preserves the v1.1.0 public-demo baseline until no-browser CI, browser CI, hosted-demo evidence, and privacy/export gates are reviewed.
 
-Workbench note: this release is a changed-files-only local/manual source-to-brief implementation with release apply integrity controls.
+Workbench note: this release is a changed-files-only local/manual evidence-review throughput and source-to-brief export-polish implementation with release apply integrity controls.
 
-Public release label: v1.2.0-alpha.3 Source-to-Brief UX Compression + Operator Flow Polish.
+Public release label: v1.2.0-alpha.4 Evidence Review Throughput + Source-to-Brief Export Polish.

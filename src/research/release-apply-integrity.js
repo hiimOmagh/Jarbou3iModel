@@ -2,10 +2,10 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.2.0-alpha.3';
+  const VERSION = '1.2.0-alpha.4';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.2.0-alpha.3 — Source-to-Brief UX Compression + Operator Flow Polish';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.2.0-alpha.3-post-stable-capability-roadmap-expansion-gate.zip';
+  const RELEASE_TITLE = 'v1.2.0-alpha.4 — Evidence Review Throughput + Source-to-Brief Export Polish';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.2.0-alpha.4-post-stable-capability-roadmap-expansion-gate.zip';
   const APPLY_CHECKS = Object.freeze([
     {check_id:'base_version_known', label:'Patch is declared as changed-files-only over v1.1.0-alpha.1', required:true},
     {check_id:'artifact_name_fixed', label:'Release artifact name is fixed and versioned', required:true},
