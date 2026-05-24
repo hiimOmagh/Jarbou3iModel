@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.3.0-alpha.1`
-Release: `v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow`
+Version: `1.3.0-alpha.2`
+Release: `v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

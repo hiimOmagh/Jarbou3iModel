@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.1';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.2';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -192,6 +192,8 @@
       `Export risk blockers: ${safeString(workbench.export_risk_resolution?.blocker_count ?? 0)}`,
       `Guided session state: ${safeString(workbench.guided_research_session?.session_state ?? 'manual_review_required')}`,
       `Guided session progress: ${safeString(workbench.guided_research_session?.session_progress_percent ?? 0)}%`,
+      `Guided UX focus: ${safeString(workbench.guided_session_ux_compression?.primary_focus_group ?? 'manual_review')}`,
+      `Brief export QA gate: ${safeString(workbench.brief_assembly_export_qa?.qa_gate ?? 'brief_assembly_export_review_required')}`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
       `Low-traceability review items: ${safeString(review.low_traceability_open_count ?? 0)}`,
       '',
@@ -272,6 +274,9 @@
     if(workbench.guided_research_session) files.push(fileEntry('source-to-brief/guided-research-session.json', 'application/json', jsonContent(workbench.guided_research_session), 'source-to-brief-guided-research-session'));
     if(workbench.guided_research_session && guidedApi?.guidedSessionMarkdown) files.push(fileEntry('source-to-brief/guided-research-session.md', 'text/markdown', guidedApi.guidedSessionMarkdown(workbench.guided_research_session), 'source-to-brief-guided-research-session-md'));
     if(workbench.guided_research_session && guidedApi?.briefAssemblyMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-preview.md', 'text/markdown', guidedApi.briefAssemblyMarkdown(workbench.guided_research_session), 'source-to-brief-brief-assembly-preview-md'));
+    if(workbench.guided_session_ux_compression) files.push(fileEntry('source-to-brief/guided-session-ux-compression.json', 'application/json', jsonContent(workbench.guided_session_ux_compression), 'source-to-brief-guided-session-ux-compression'));
+    if(workbench.brief_assembly_export_qa) files.push(fileEntry('source-to-brief/brief-assembly-export-qa.json', 'application/json', jsonContent(workbench.brief_assembly_export_qa), 'source-to-brief-brief-assembly-export-qa'));
+    if(workbench.brief_assembly_export_qa && guidedApi?.briefAssemblyExportQaMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-export-qa.md', 'text/markdown', guidedApi.briefAssemblyExportQaMarkdown(workbench.brief_assembly_export_qa), 'source-to-brief-brief-assembly-export-qa-md'));
     files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }

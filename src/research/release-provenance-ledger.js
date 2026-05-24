@@ -2,10 +2,10 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.1';
+  const VERSION = '1.3.0-alpha.2';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.3.0-alpha.1-post-stable-capability-roadmap-expansion-gate.zip';
+  const RELEASE_TITLE = 'v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.3.0-alpha.2-post-stable-capability-roadmap-expansion-gate.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
     {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0', required:true},
     {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},

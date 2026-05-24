@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow
+Current release candidate: v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.3.0-alpha.1.
+Node 24 CI compatibility is preserved for v1.3.0-alpha.2.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

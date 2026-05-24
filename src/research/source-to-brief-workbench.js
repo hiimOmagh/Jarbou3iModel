@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.1. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.2. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.1';
+  const VERSION = '1.3.0-alpha.2';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -1000,6 +1000,8 @@
       review_navigation_shortcuts:navigationShortcuts,
       guided_research_session:guidedSession,
       brief_assembly_preview:guidedSession?.brief_assembly_preview || null,
+      guided_session_ux_compression:guidedSession?.ux_compression || null,
+      brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null,
       ux_compression_model:'source_to_brief_operator_flow.v1',
       export_polish_model:EXPORT_POLISH_MODEL,
       empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),
@@ -1084,6 +1086,8 @@
       `- Session state: ${text(workbench.guided_research_session?.session_state || 'manual_review_required')}`,
       `- Progress: ${Number(workbench.guided_research_session?.session_progress_percent || 0)}%`,
       `- Next action: ${text(workbench.guided_research_session?.next_best_action?.label || 'continue_manual_review')}`,
+      `- UX compression focus: ${text(workbench.guided_session_ux_compression?.primary_focus_group || 'manual_review')}`,
+      `- Brief export QA gate: ${text(workbench.brief_assembly_export_qa?.qa_gate || 'brief_assembly_export_review_required')}`,
       '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.1';
+const VERSION = '1.3.0-alpha.2';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
   'src/research/operator-command-palette.js',
@@ -67,7 +67,7 @@ const engine = fs.readFileSync('src/research-engine.js','utf8');
 for (const marker of ['modules.operatorCommandPalette','operatorCommandPalette?.installNavigation']) assert.ok(engine.includes(marker), `engine missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
 for (const marker of ['Operator command palette','لوحة أوامر المشغّل','Palette de commandes opérateur','Review navigation shortcuts']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
-for (const marker of ['v1.3.0-alpha.1 محرك جلسة البحث الموجّه + سير تجميع الموجز', 'v1.3.0-alpha.1 Moteur de session de recherche guidée + workflow d’assemblage du brief']) assert.ok(helpers.includes(marker), `localized public alpha label missing ${marker}`);
+for (const marker of ['v1.3.0-alpha.2 ضغط تجربة الجلسة الموجّهة + تدقيق تصدير تجميع الموجز', 'v1.3.0-alpha.2 Compression UX de session guidée + QA export assemblage du brief']) assert.ok(helpers.includes(marker), `localized public alpha label missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
 for (const marker of ['operatorCommandPalettePanel','operatorCommandGrid','reviewNavigationShortcutList','operatorNavPulse']) assert.ok(styles.includes(marker), `styles missing ${marker}`);
 

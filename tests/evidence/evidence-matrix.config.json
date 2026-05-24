@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.3.0-alpha.1",
-  "internal_build_version": "1.3.0-alpha.1",
-  "public_version_label": "v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow",
+  "evidence_matrix_config_version": "1.3.0-alpha.2",
+  "internal_build_version": "1.3.0-alpha.2",
+  "public_version_label": "v1.3.0-alpha.2 Guided Session UX Compression + Brief Assembly Export QA",
   "locales": [
     "en",
     "ar",
@@ -11,8 +11,8 @@
   "language_rules": {
     "en": {
       "required": [
-        "Diagnostic Repair Queue + Export Risk Resolution",
-        "Public demo",
+        "Guided Session UX Compression + Brief Assembly Export QA",
+        "Guided Research Session",
         "Export Pack v3"
       ],
       "forbidden": [
@@ -26,9 +26,9 @@
     },
     "ar": {
       "required": [
-        "تشخيص جودة المراجعة",
-        "اقتراحات إصلاح الادعاءات الضعيفة",
-        "مراجعة الأدلة"
+        "ضغط تجربة الجلسة الموجّهة",
+        "تدقيق تصدير تجميع الموجز",
+        "جلسة بحث موجّهة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -39,12 +39,11 @@
     },
     "fr": {
       "required": [
-        "Diagnostics qualité de revue",
-        "suggestions de réparation",
-        "revue des preuves"
+        "Compression UX de session guidée",
+        "QA export assemblage du brief",
+        "Session de recherche guidée"
       ],
       "forbidden": [
-        "Diagnostic Repair Queue + Export Risk Resolution",
         "Public surface freeze",
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
@@ -228,8 +227,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow",
-    "ar": "v1.3.0-alpha.1 محرك جلسة البحث الموجّه + سير تجميع الموجز",
-    "fr": "v1.3.0-alpha.1 Moteur de session de recherche guidée + workflow d’assemblage du brief"
+    "en": "v1.3.0-alpha.2 Guided Session UX Compression + Brief Assembly Export QA",
+    "ar": "v1.3.0-alpha.2 ضغط تجربة الجلسة الموجّهة + تدقيق تصدير تجميع الموجز",
+    "fr": "v1.3.0-alpha.2 Compression UX de session guidée + QA export assemblage du brief"
   }
 }

@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.3.0-alpha.1`
-Release: `v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow
+Version: `1.3.0-alpha.2`
+Release: `v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

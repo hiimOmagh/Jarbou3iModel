@@ -152,7 +152,7 @@
       }
     ]
   },
-  "schema_version": "1.3.0-alpha.1",
+  "schema_version": "1.3.0-alpha.2",
   "analysis_id": "sample-wwii-fr",
   "generated_at": "2026-04-27T00:00:00Z",
   "language": "fr",

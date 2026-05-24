@@ -2,7 +2,7 @@
 
 Current milestone:
 
-`v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow`
+`v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA`
 
 Purpose: take one controlled step beyond the stable public-demo lock by packaging the existing local/manual research plan, evidence workspace, claim review, contradiction review, source gaps, confidence metadata, and strategic brief export into one source-to-brief workflow.
 

@@ -2,9 +2,9 @@
 
 Public Demo continuity: retained. Diagnostic Repair Queue + Export Risk Resolution continuity retained from the alpha8 repair workflow. The v1.1.0 stable public-demo baseline remains the protected reference for post-stable expansion gating.
 
-## v1.3.0-alpha.1 — Guided Research Session Engine + Brief Assembly Workflow
+## v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA
 
-Public release label: v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow.
+Public release label: v1.3.0-alpha.2 Guided Session UX Compression + Brief Assembly Export QA.
 
 Public and internal release versions are aligned. Internal stable validation metadata remains explicit for hosted evidence review. Feature surface is frozen: the release adds guided orchestration over existing local/manual tools and no new feature surface beyond that scoped workflow.
 
@@ -44,7 +44,7 @@ Feature surface: guided session orchestration and brief assembly over existing l
 ## Release manifest
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0-alpha.1`
+- Version: `1.3.0-alpha.2`
 - Runtime capability change: no
 - Required browser gates before publishing
 - Release archive exclusions

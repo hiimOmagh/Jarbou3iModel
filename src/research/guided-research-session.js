@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.1. Local/manual only. */
+/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.2. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.1';
+  const VERSION = '1.3.0-alpha.2';
   const SESSION_MODEL = 'guided_research_session_engine.v1';
   const BRIEF_ASSEMBLY_MODEL = 'brief_assembly_workflow.v1';
   const STEP_IDS = Object.freeze([
@@ -138,6 +138,8 @@
       steps,
       manual_operator_checkpoints:steps.filter((item)=>item.operator_checkpoint_required).map((item)=>({step_id:item.step_id, next_action:item.next_action, state:item.state})),
       brief_assembly_preview:preview,
+      ux_compression:buildGuidedSessionUxCompression({guided_research_session_version:version, steps, session_progress_percent:progress, next_best_action:next, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench),
+      brief_assembly_export_qa:buildBriefAssemblyExportQa({guided_research_session_version:version, brief_assembly_preview:preview, session_progress_percent:progress, local_manual_session:true, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench),
       session_handoff_files:['source-to-brief/guided-research-session.json','source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md'],
       local_manual_session:true,
       blocked_unavailable_capabilities:BLOCKED_CAPABILITIES.slice(),
@@ -151,6 +153,115 @@
       release_gate:blockers ? 'guided_session_blocked' : 'guided_session_reviewable'
     };
   }
+
+  function buildGuidedSessionUxCompression(session = {}, workbench = {}){
+    const steps = asArray(session.steps);
+    const groupDefs = [
+      {group_id:'setup', label:'Setup', step_ids:['research_question','research_mode','research_plan']},
+      {group_id:'evidence_review', label:'Evidence review', step_ids:['evidence_intake','evidence_review_queue','evidence_to_claim_linking']},
+      {group_id:'repair_clearance', label:'Repair clearance', step_ids:['weak_claim_repair','contradiction_resolution','export_risk_clearance']},
+      {group_id:'brief_export', label:'Brief export', step_ids:['brief_assembly','export_package']}
+    ];
+    const groups = groupDefs.map((def)=>{
+      const groupSteps = steps.filter((step)=>def.step_ids.includes(step.step_id));
+      const blockers = groupSteps.filter((step)=>step.blocker).length;
+      const warnings = groupSteps.filter((step)=>step.warning).length;
+      const complete = groupSteps.filter((step)=>step.complete && !step.blocker).length;
+      const total = groupSteps.length || def.step_ids.length;
+      const firstOpen = groupSteps.find((step)=>step.blocker || step.state === 'incomplete' || step.warning);
+      return {
+        group_id:def.group_id,
+        label:def.label,
+        step_ids:def.step_ids.slice(),
+        compact_state:blockers ? 'blocked' : (warnings ? 'warning' : (complete >= total ? 'complete' : 'incomplete')),
+        completed_step_count:complete,
+        total_step_count:total,
+        warning_step_count:warnings,
+        blocker_step_count:blockers,
+        next_step:firstOpen?.step_id || def.step_ids[def.step_ids.length - 1],
+        next_action:firstOpen?.next_action || 'review_group_and_continue',
+        visible:true
+      };
+    });
+    const primary = groups.find((group)=>group.compact_state === 'blocked') || groups.find((group)=>group.compact_state === 'warning') || groups.find((group)=>group.compact_state === 'incomplete') || groups[groups.length - 1];
+    return {
+      ux_compression_version:session.guided_research_session_version || VERSION,
+      compression_model:'guided_session_ux_compression.v1',
+      compact_group_count:groups.length,
+      visible_step_count:groups.length,
+      original_step_count:steps.length,
+      reduced_visible_decision_count:Math.max(0, steps.length - groups.length),
+      primary_focus_group:primary?.group_id || 'brief_export',
+      primary_next_action:primary?.next_action || session.next_best_action?.label || 'continue_manual_review',
+      progress_percent:Number(session.session_progress_percent || 0),
+      compact_groups:groups,
+      operator_density_gate:'guided_session_compressed_reviewable',
+      visual_density_risk:groups.some((group)=>group.blocker_step_count) ? 'medium' : 'low',
+      manual_local_boundary:'UX compression summarizes local/manual session state and does not verify claims or sources automatically.',
+      live_fetching_performed:false,
+      live_web_search_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function buildBriefAssemblyExportQa(session = {}, workbench = {}){
+    const preview = session.brief_assembly_preview || workbench.brief_assembly_preview || {};
+    const checks = [
+      {check_id:'session_progress_visible', label:'Guided session progress is visible', passed:Number(session.session_progress_percent || 0) >= 0, severity:'blocker'},
+      {check_id:'brief_preview_present', label:'Brief assembly preview is present', passed:!!preview && !!text(preview.title || workbench.research_question), severity:'blocker'},
+      {check_id:'evidence_boundary_present', label:'Evidence boundary note is present', passed:!!text(preview.evidence_boundary_note || workbench.exportable_strategic_brief?.source_boundary_note), severity:'blocker'},
+      {check_id:'manual_disclaimer_present', label:'Manual/local disclaimer is present', passed:session.local_manual_session === true || workbench.local_manual_workspace_model === true, severity:'blocker'},
+      {check_id:'export_risks_visible', label:'Export risks are visible before export', passed:!!workbench.export_risk_resolution || Number(preview.unresolved_export_risk_count || 0) >= 0, severity:'warning'},
+      {check_id:'repair_queue_visible', label:'Repair queue state is visible', passed:!!workbench.diagnostic_repair_queue, severity:'warning'},
+      {check_id:'traceability_visible', label:'Traceability/ledger state is visible', passed:!!workbench.claim_traceability_console && !!workbench.review_decision_ledger, severity:'warning'},
+      {check_id:'no_auto_verification_claim', label:'No automatic verification claim is present', passed:session.automatic_source_verification_claimed !== true && workbench.automatic_source_verification_claimed !== true && preview.automatic_source_verification_claimed !== true, severity:'blocker'},
+      {check_id:'no_live_provider_behavior', label:'No live/provider execution behavior is enabled', passed:session.live_fetching_performed !== true && session.provider_execution_expanded !== true && workbench.provider_execution_expanded !== true, severity:'blocker'}
+    ];
+    const failed = checks.filter((check)=>!check.passed);
+    const blockers = failed.filter((check)=>check.severity === 'blocker');
+    return {
+      brief_assembly_export_qa_version:session.guided_research_session_version || VERSION,
+      qa_model:'brief_assembly_export_qa.v1',
+      generated_at:nowIso(),
+      check_count:checks.length,
+      passed_check_count:checks.filter((check)=>check.passed).length,
+      failed_check_count:failed.length,
+      blocker_count:blockers.length,
+      warning_count:failed.length - blockers.length,
+      checks,
+      qa_gate:blockers.length ? 'brief_assembly_export_blocked' : (failed.length ? 'brief_assembly_export_reviewable_with_warnings' : 'brief_assembly_export_reviewable'),
+      export_ready:blockers.length === 0,
+      next_action:blockers.length ? 'repair_brief_assembly_export_blockers' : (failed.length ? 'review_export_warnings_before_handoff' : 'confirm_operator_handoff'),
+      required_export_files:['source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md','source-to-brief/brief-assembly-export-qa.json','source-to-brief/brief-assembly-export-qa.md'],
+      manual_local_boundary:'Brief assembly export QA is a local/manual checklist. It does not verify source truth, fetch live data, or execute providers.',
+      live_fetching_performed:false,
+      live_web_search_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function briefAssemblyExportQaMarkdown(qa = {}){
+    const checks = asArray(qa.checks).map((check)=>`- ${check.passed ? '[x]' : '[ ]'} ${check.label} (${check.severity})`).join('\n') || '- No export QA checks recorded.';
+    return [
+      '# Brief Assembly Export QA',
+      '',
+      `QA gate: ${text(qa.qa_gate || 'brief_assembly_export_review_required')}`,
+      `Passed checks: ${Number(qa.passed_check_count || 0)}/${Number(qa.check_count || 0)}`,
+      `Blockers: ${Number(qa.blocker_count || 0)}`,
+      `Warnings: ${Number(qa.warning_count || 0)}`,
+      `Next action: ${text(qa.next_action || 'manual_export_review')}`,
+      '',
+      '## Checks',
+      checks,
+      '',
+      '## Boundary',
+      text(qa.manual_local_boundary || 'Local/manual QA only. No automatic source verification is claimed.'),
+      ''
+    ].join('\n');
+  }
+
   function guidedSessionMarkdown(session = {}){
     const steps = asArray(session.steps).map((item)=>`- ${item.complete && !item.blocker ? '[x]' : '[ ]'} ${item.label}: ${item.state} — ${item.next_action}`).join('\n') || '- No session steps recorded.';
     const checkpoints = asArray(session.manual_operator_checkpoints).map((item)=>`- ${item.step_id}: ${item.state} — ${item.next_action}`).join('\n') || '- No manual checkpoints open.';
@@ -201,6 +312,9 @@
     STEP_IDS,
     BLOCKED_CAPABILITIES,
     buildGuidedResearchSession,
+    buildGuidedSessionUxCompression,
+    buildBriefAssemblyExportQa,
+    briefAssemblyExportQaMarkdown,
     buildSessionSteps,
     buildBriefAssemblyPreview,
     guidedSessionMarkdown,

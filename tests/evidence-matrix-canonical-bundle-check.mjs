@@ -4,9 +4,9 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.3.0-alpha.1';
-const TITLE = 'Guided Research Session Engine + Brief Assembly Workflow';
-const PUBLIC_LABEL = 'v1.3.0-alpha.1 Guided Research Session Engine + Brief Assembly Workflow';
+const VERSION = '1.3.0-alpha.2';
+const TITLE = 'Guided Session UX Compression + Brief Assembly Export QA';
+const PUBLIC_LABEL = 'v1.3.0-alpha.2 Guided Session UX Compression + Brief Assembly Export QA';
 const config = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
 const spec = fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs', 'utf8');
 const script = fs.readFileSync('scripts/build-lock-evidence-bundle.mjs', 'utf8');
@@ -63,7 +63,7 @@ assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false);
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false);
 
 for (const token of [
-  'lock-evidence-bundle_1.3.0-alpha.1_${{ github.run_id }}',
+  'lock-evidence-bundle_1.3.0-alpha.2_${{ github.run_id }}',
   '${{ runner.temp }}/lock-evidence-input/logs',
   '${{ runner.temp }}/hosted-demo-evidence',
   '${{ runner.temp }}/lock-evidence-bundle'
@@ -77,7 +77,7 @@ assert.ok(workflow.includes('exit $status'), 'workflow must return the captured 
 assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log"'), false, 'no-browser gate must not mask failures through tee pipeline');
 assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"'), false, 'browser gate must not mask failures through tee pipeline');
 assert.ok(workflow.includes('test -f "$RUNNER_TEMP/hosted-demo-evidence/matrix-summary.json"'), 'browser job must require matrix-summary.json before artifact upload');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.3.0-alpha.1'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.3.0-alpha.2'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
 

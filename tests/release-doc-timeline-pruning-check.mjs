@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.3.0-alpha.1';
-const TITLE = 'Guided Research Session Engine + Brief Assembly Workflow';
+const VERSION = '1.3.0-alpha.2';
+const TITLE = 'Guided Session UX Compression + Brief Assembly Export QA';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');
