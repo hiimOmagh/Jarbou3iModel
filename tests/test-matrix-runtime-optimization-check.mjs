@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0-alpha.2';
-const TITLE = 'Guided Session UX Compression + Brief Assembly Export QA';
+const VERSION = '1.3.0-alpha.3';
+const TITLE = 'Brief Template System + Assembly Variant QA';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');

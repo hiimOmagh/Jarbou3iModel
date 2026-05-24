@@ -1,10 +1,19 @@
 # Jarbou3i Research Engine
 
-`v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA`
+`v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
-This alpha does not add live execution capability. It improves the controlled local/manual source-to-brief workflow with review-quality diagnostics, weak-claim repair suggestions, contradiction/source-gap repair hints, and exported diagnostics artifacts.
+This alpha does not add live execution capability. It adds local/manual brief assembly variants and QA checks over the existing Guided Research Session and Source-to-Brief workflow.
+
+Added surface:
+
+- Strategic Brief template
+- Source Audit Brief template
+- Contradiction Brief template
+- Executive Summary template
+- Assembly Variant QA
+- Template recommendation and export files
 
 Preserved boundaries: manual/private mode remains first-class; no live scraping; no production OAuth; no backend behavior expansion; no live provider execution expansion; no storage expansion; no automatic source verification claims.
 
@@ -23,17 +32,16 @@ npx playwright install --with-deps
 npm run test:ci:browser
 ```
 
-Public Demo boundary: the stable public-demo surface remains protected.
+Release-lock evidence boundary: screenshots alone are insufficient. ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, hosted-demo evidence, and the canonical lock bundle.
 
-Evidence manifest continuity: hosted-demo review still requires a single final metadata capture manifest with desktop, mobile, provider-mode, and quality/export evidence.
+Public release label: v1.3.0-alpha.3 Brief Template System + Assembly Variant QA.
 
-## Release-lock evidence boundary
+Public Demo continuity is preserved; release lock still requires hosted evidence review.
 
-Screenshots alone are insufficient for release approval. ZIP archive alone is insufficient for release approval. The v1.2.0-alpha.1 post-stable expansion gate preserves the v1.1.0 public-demo baseline until no-browser CI, browser CI, hosted-demo evidence, and privacy/export gates are reviewed.
+Node 24 CI compatibility is preserved.
 
-Workbench note: this release is a changed-files-only local/manual review-quality diagnostics and weak-claim repair suggestions implementation with release apply integrity controls.
+v1.1.0 stable public-demo baseline remains protected.
 
-Public release label: v1.3.0-alpha.2 Guided Session UX Compression + Brief Assembly Export QA.
-
+Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline remain preserved.
 
 Alpha.8 preserved feature surface: Diagnostic Repair Queue + Export Risk Resolution.

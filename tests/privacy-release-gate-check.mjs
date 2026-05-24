@@ -36,8 +36,8 @@ for (const candidate of exportCandidates) {
   assert.equal(report.safe, true, `${candidate.label} failed privacy release gate:\n${report.issues.map((issue) => `- ${issue.path}: ${issue.code}/${issue.pattern_id}`).join('\n')}`);
 }
 
-const sample = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.2.json');
-assert.equal(sample.privacy_export.audit_version, '1.3.0-alpha.2');
+const sample = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.3.json');
+assert.equal(sample.privacy_export.audit_version, '1.3.0-alpha.3');
 assert.equal(sample.privacy_export.release_gate, 'pass');
 assert.equal(sample.privacy_export.post_redaction_issue_count, 0);
 assert.equal(sample.privacy_export.key_exported, false);

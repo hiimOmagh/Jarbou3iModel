@@ -16,8 +16,8 @@ const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const ciBrowser = read('scripts/ci-browser.sh');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.2-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.2.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.3-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.3.json');
 const templatesSource = read('src/research/source-packet-templates.js');
 const importerSource = read('src/research/source-packet-importer.js');
 const roundtripSource = read('src/research/source-packet-roundtrip.js');
@@ -42,10 +42,10 @@ const templates = context.window.Jarbou3iResearchModules.sourcePacketTemplates;
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const roundtrip = context.window.Jarbou3iResearchModules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.3.0-alpha.2');
-assert.equal(templates.VERSION, '1.3.0-alpha.2');
-assert.equal(schema.properties.workflow_version.const, '1.3.0-alpha.2');
-assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.3.0-alpha.2');
+assert.equal(pkg.version, '1.3.0-alpha.3');
+assert.equal(templates.VERSION, '1.3.0-alpha.3');
+assert.equal(schema.properties.workflow_version.const, '1.3.0-alpha.3');
+assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.3.0-alpha.3');
 
 const expectedIds = ['official_report', 'reddit_thread', 'youtube_transcript', 'market_signal', 'github_release', 'generic_article'];
 assert.equal(JSON.stringify(templates.listTemplates().map((item) => item.template_id)), JSON.stringify(expectedIds));
@@ -57,7 +57,7 @@ for (const id of expectedIds) {
     claim: `Template ${id} claim remains a manual drafting scaffold.`,
     quote: `Template ${id} traceable excerpt placeholder.`
   }, { now: '2026-05-03T00:00:00.000Z' });
-  assert.equal(packet.workflow_version, '1.3.0-alpha.2');
+  assert.equal(packet.workflow_version, '1.3.0-alpha.3');
   assert.equal(packet.builder_report.live_fetching_performed, false);
   assert.equal(packet.builder_report.verification_claimed, false);
   assert.match(packet.builder_report.policy, /no_fetch_no_verification/);
@@ -73,9 +73,9 @@ for (const id of expectedIds) {
 }
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.3.0-alpha.2');
-  assert.equal(packet.release_notes.release_title, 'v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA');
-  assert.equal(packet.source_packet_template_report.template_report_version, '1.3.0-alpha.2');
+  assert.equal(packet.workflow_version, '1.3.0-alpha.3');
+  assert.equal(packet.release_notes.release_title, 'v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA');
+  assert.equal(packet.source_packet_template_report.template_report_version, '1.3.0-alpha.3');
   assert.equal(packet.source_packet_template_report.live_fetching_performed, false);
   assert.equal(packet.source_packet_template_report.verification_claimed, false);
   assert.equal(packet.source_packet_template_report.source_behavior_changed, false);

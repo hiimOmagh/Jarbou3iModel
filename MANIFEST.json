@@ -1,6 +1,6 @@
 {
-  "version": "1.3.0-alpha.2",
-  "release_title": "v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA",
+  "version": "1.3.0-alpha.3",
+  "release_title": "v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA",
   "package": "jarbou3i-research-engine",
   "release_type": "post-stable-alpha-controlled-workbench",
   "runtime_capability_change": false,
@@ -46,6 +46,6 @@
   ],
   "release_scope": "Controlled local/manual Source-to-Brief review quality diagnostics: weak-claim detection, repair suggestions, contradiction/source-gap review hints, and exported diagnostics metadata without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, or automatic source verification claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.3.0-alpha.2`\nRuntime capability change: no\nPublic surface: local/manual source-to-brief workbench only\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
-  "node_runtime_note": "Node 24 CI compatibility preserved for v1.3.0-alpha.2."
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.3.0-alpha.3`\nRuntime capability change: no\nPublic surface: local/manual source-to-brief workbench only\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
+  "node_runtime_note": "Node 24 CI compatibility preserved for v1.3.0-alpha.3."
 }

@@ -1,21 +1,18 @@
 # Changelog
 
-## v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA
+## v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA
 
-- Adds local/manual review quality diagnostics for weak, unsupported, contradicted, and source-gap-heavy claims.
-- Adds weak-claim repair suggestions with explicit operator actions and manual-only boundaries.
-- Adds Source-to-Brief export artifacts for review-quality diagnostics and weak-claim repair suggestions.
-- Adds compact UI panels for review quality findings and repair suggestions inside the Source-to-Brief operator surface.
-- Preserves alpha.6 command palette and review navigation shortcuts.
-- Preserves alpha.5 claim traceability console and review decision ledger behavior.
-- Preserves manual/private default behavior, the v1.1.0 stable public-demo boundary, and the v1.2.0-alpha.1 post-stable expansion gate.
+- Adds a local/manual Brief Template System for assembly variants.
+- Adds four templates: Strategic Brief, Source Audit Brief, Contradiction Brief, and Executive Summary.
+- Adds Assembly Variant QA with template coverage, traceability, evidence-boundary, and no-auto-verification checks.
+- Adds Source-to-Brief export artifacts for template system and variant QA.
+- Preserves guided session UX compression and brief assembly export QA from alpha.2.
+- Preserves Diagnostic Repair Queue, Export Risk Resolution, command palette, traceability console, and review decision ledger continuity.
 - Adds no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, and no automatic source verification claims.
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-`v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA`
-
-Public label: `v1.3.0-alpha.2 Guided Session UX Compression + Brief Assembly Export QA`. Internal evidence metadata: `1.3.0-alpha.2`. This controlled alpha improves review-quality triage and weak-claim repair guidance inside the local/manual Source-to-Brief workbench; it does not verify sources, fetch live data, expand providers, enable production OAuth, add backend behavior, or change persistent storage.
+Public label: `v1.3.0-alpha.3 Brief Template System + Assembly Variant QA`. Internal evidence metadata: `1.3.0-alpha.3`.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

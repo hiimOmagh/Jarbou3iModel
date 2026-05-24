@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.3.0-alpha.2';
+  const VERSION = '1.3.0-alpha.3';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -40,6 +40,7 @@
   const strategicEvidenceGraph = modules.strategicEvidenceGraph;
   const sourceToBriefWorkbench = modules.sourceToBriefWorkbench;
   const operatorCommandPalette = modules.operatorCommandPalette;
+  const briefTemplateSystem = modules.briefTemplateSystem;
   const guidedResearchSession = modules.guidedResearchSession;
   const sourceToBriefOperatorRenderer = modules.sourceToBriefOperatorRenderer;
   const onboarding = modules.onboarding;
@@ -964,7 +965,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.3.0-alpha.2',
+      schema_version: '1.3.0-alpha.3',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),

@@ -1,10 +1,10 @@
-/* Jarbou3i Research Engine post-stable capability roadmap and expansion gate v1.3.0-alpha.2. */
+/* Jarbou3i Research Engine post-stable capability roadmap and expansion gate v1.3.0-alpha.3. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.2';
+  const VERSION = '1.3.0-alpha.3';
   const STABLE_BASELINE = '1.1.0';
-  const RELEASE_TITLE = 'v1.3.0-alpha.2 — Guided Session UX Compression + Brief Assembly Export QA';
+  const RELEASE_TITLE = 'v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA';
   const MIN_ACCEPTANCE_CRITERIA = 4;
   const MIN_FALSIFIERS = 3;
   const MIN_EVIDENCE_REQUIREMENTS = 3;

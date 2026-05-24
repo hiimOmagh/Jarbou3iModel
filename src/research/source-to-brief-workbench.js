@@ -1,13 +1,14 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.2. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.3. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.2';
+  const VERSION = '1.3.0-alpha.3';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
   const operatorCommandPalette = root.operatorCommandPalette;
   const guidedResearchSession = root.guidedResearchSession;
+  const briefTemplateSystem = root.briefTemplateSystem;
   const SUPPORT_LEVELS = Object.freeze(['strong','partial','weak','unsupported']);
   const BLOCKED_CAPABILITIES = Object.freeze([
     'live_scraping',
@@ -971,6 +972,9 @@
     const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
     const sessionBase = {research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question), research_plan:packet.research_plan || null, evidence_cards:evidenceCards, evidence_to_claim_links:links, claim_map:claimMap, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, confidence_review:confidenceReview, exportable_strategic_brief:strategic, operator_flow:operatorFlow, export_readiness_checklist:exportReadinessChecklist, review_throughput_summary:reviewSummary, export_polish_report:exportPolish, claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, operator_command_palette:commandPalette, review_navigation_shortcuts:navigationShortcuts};
     const guidedSession = guidedResearchSession?.buildGuidedResearchSession ? guidedResearchSession.buildGuidedResearchSession(sessionBase, packet, {version, now:generatedAt}) : null;
+    const templateBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null});
+    const briefTemplates = briefTemplateSystem?.buildBriefTemplateSystem ? briefTemplateSystem.buildBriefTemplateSystem(templateBase, packet, {version, now:generatedAt}) : null;
+    const assemblyVariantQa = briefTemplateSystem?.buildAssemblyVariantQa ? briefTemplateSystem.buildAssemblyVariantQa(templateBase, briefTemplates, {version, now:generatedAt}) : null;
     return {
       source_to_brief_version:version,
       workbench_model:MODEL,
@@ -1002,6 +1006,8 @@
       brief_assembly_preview:guidedSession?.brief_assembly_preview || null,
       guided_session_ux_compression:guidedSession?.ux_compression || null,
       brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null,
+      brief_template_system:briefTemplates,
+      assembly_variant_qa:assemblyVariantQa,
       ux_compression_model:'source_to_brief_operator_flow.v1',
       export_polish_model:EXPORT_POLISH_MODEL,
       empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),
@@ -1088,6 +1094,16 @@
       `- Next action: ${text(workbench.guided_research_session?.next_best_action?.label || 'continue_manual_review')}`,
       `- UX compression focus: ${text(workbench.guided_session_ux_compression?.primary_focus_group || 'manual_review')}`,
       `- Brief export QA gate: ${text(workbench.brief_assembly_export_qa?.qa_gate || 'brief_assembly_export_review_required')}`,
+      '',
+      '## Brief Template System',
+      `- Templates: ${Number(workbench.brief_template_system?.template_count || 0)}`,
+      `- Selected template: ${text(workbench.brief_template_system?.selected_template_id || 'manual_selection_required')}`,
+      `- Recommended template: ${text(workbench.brief_template_system?.recommended_template_id || 'strategic_brief')}`,
+      '',
+      '## Assembly Variant QA',
+      `- QA gate: ${text(workbench.assembly_variant_qa?.qa_gate || 'assembly_variant_review_required')}`,
+      `- Checks passed: ${Number(workbench.assembly_variant_qa?.passed_check_count || 0)}/${Number(workbench.assembly_variant_qa?.check_count || 0)}`,
+      `- Blockers: ${Number(workbench.assembly_variant_qa?.blocker_count || 0)}`,
       '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')

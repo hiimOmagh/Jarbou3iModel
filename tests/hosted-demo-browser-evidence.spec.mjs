@@ -19,8 +19,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.3.0-alpha.2';
-const PUBLIC_VERSION_LABEL = 'v1.3.0-alpha.2 Guided Session UX Compression + Brief Assembly Export QA';
+const VERSION = '1.3.0-alpha.3';
+const PUBLIC_VERSION_LABEL = 'v1.3.0-alpha.3 Brief Template System + Assembly Variant QA';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const MATRIX_CONFIG = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));

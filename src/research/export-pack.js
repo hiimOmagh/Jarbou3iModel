@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.2';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.3';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -277,6 +277,11 @@
     if(workbench.guided_session_ux_compression) files.push(fileEntry('source-to-brief/guided-session-ux-compression.json', 'application/json', jsonContent(workbench.guided_session_ux_compression), 'source-to-brief-guided-session-ux-compression'));
     if(workbench.brief_assembly_export_qa) files.push(fileEntry('source-to-brief/brief-assembly-export-qa.json', 'application/json', jsonContent(workbench.brief_assembly_export_qa), 'source-to-brief-brief-assembly-export-qa'));
     if(workbench.brief_assembly_export_qa && guidedApi?.briefAssemblyExportQaMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-export-qa.md', 'text/markdown', guidedApi.briefAssemblyExportQaMarkdown(workbench.brief_assembly_export_qa), 'source-to-brief-brief-assembly-export-qa-md'));
+    const templateApi = root.briefTemplateSystem;
+    if(workbench.brief_template_system) files.push(fileEntry('source-to-brief/brief-template-system.json', 'application/json', jsonContent(workbench.brief_template_system), 'source-to-brief-brief-template-system'));
+    if(workbench.brief_template_system && templateApi?.briefTemplateSystemMarkdown) files.push(fileEntry('source-to-brief/brief-template-system.md', 'text/markdown', templateApi.briefTemplateSystemMarkdown(workbench.brief_template_system), 'source-to-brief-brief-template-system-md'));
+    if(workbench.assembly_variant_qa) files.push(fileEntry('source-to-brief/assembly-variant-qa.json', 'application/json', jsonContent(workbench.assembly_variant_qa), 'source-to-brief-assembly-variant-qa'));
+    if(workbench.assembly_variant_qa && templateApi?.assemblyVariantQaMarkdown) files.push(fileEntry('source-to-brief/assembly-variant-qa.md', 'text/markdown', templateApi.assemblyVariantQaMarkdown(workbench.assembly_variant_qa), 'source-to-brief-assembly-variant-qa-md'));
     files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }

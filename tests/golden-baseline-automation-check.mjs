@@ -3,7 +3,7 @@ import fs from 'node:fs';
 for (const file of ['docs/golden-baseline-inventory.md','docs/source-refactor-partition-plan.md','docs/localization-regression-matrix.md']) {
   assert.ok(fs.existsSync(file), `${file} must exist`);
   const text=fs.readFileSync(file,'utf8');
-  assert.ok(text.includes('1.3.0-alpha.2') || text.includes('v1.1.0'));
+  assert.ok(text.includes('1.3.0-alpha.3') || text.includes('v1.1.0'));
 }
 const baseline=fs.readFileSync('docs/golden-baseline-inventory.md','utf8');
 for (const token of ['manual/private mode','visible-text snapshots','Fixture Registry payload compression','Node 24 CI compatibility']) assert.ok(baseline.includes(token), token);
