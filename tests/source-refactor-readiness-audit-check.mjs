@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0-rc.1';
-const TITLE = 'Manual Workflow Release Candidate Freeze';
+const VERSION = '1.3.0-rc.2';
+const TITLE = 'RC Evidence Tightening + Release Notes Finalization';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));

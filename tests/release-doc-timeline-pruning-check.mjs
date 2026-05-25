@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.3.0-rc.1';
-const TITLE = 'Manual Workflow Release Candidate Freeze';
+const VERSION = '1.3.0-rc.2';
+const TITLE = 'RC Evidence Tightening + Release Notes Finalization';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');

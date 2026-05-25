@@ -1,13 +1,21 @@
 # Changelog
 
-## v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze
+## v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization
 
-- Freezes the manual source-to-brief/publication workflow after the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` baseline.
+- Tightens RC evidence and finalizes release notes after the locked `v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`.
+- Preserves the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` manual workflow baseline.
 - Preserves Brief Publication Pack v4, Source-to-Claim Gap Closure Queue, Signed Export Handoff Pack, Lock Ledger Review Surface, Operator Signoff State, and Export Lock Ledger.
-- Adds explicit manual workflow release-candidate freeze coverage.
+- Adds explicit RC evidence tightening and release notes finalization coverage.
 - Preserves no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, no automatic signoff, no automatic export lock, no publishing permission claim, no cryptographic signature claim, and no automatic source verification claims.
 
-Public label: `v1.3.0-rc.1 Manual Workflow Release Candidate Freeze`. Internal evidence metadata: `1.3.0-rc.1`.
+Public label: `v1.3.0-rc.2 RC Evidence Tightening + Release Notes Finalization`. Internal evidence metadata: `1.3.0-rc.2`.
+
+## v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze
+
+- LOCKED by no-browser CI, browser CI, hosted evidence matrix, visible-text snapshots, and canonical lock evidence bundle.
+- Froze the manual source-to-brief/publication workflow after the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` baseline.
+- Added explicit RC freeze guard coverage.
+- Preserved no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, no automatic signoff, no automatic export lock, no publishing permission claim, no cryptographic signature claim, and no automatic source verification claims.
 
 ## v1.3.0-alpha.10 — Brief Publication Pack v4
 
@@ -46,6 +54,6 @@ Public label: `v1.3.0-rc.1 Manual Workflow Release Candidate Freeze`. Internal e
 
 Continuity note: v1.1.0 stable public-demo baseline and Diagnostic Repair Queue + Export Risk Resolution remain preserved.
 
-Node 24 CI compatibility is preserved for v1.3.0-rc.1 and the v1.1.0 stable public-demo baseline.
+Node 24 CI compatibility is preserved for v1.3.0-rc.2 and the v1.1.0 stable public-demo baseline.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.

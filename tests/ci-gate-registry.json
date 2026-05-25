@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.3.0-rc.1",
-  "release_title": "v1.3.0-rc.1 \u2014 Manual Workflow Release Candidate Freeze",
+  "ci_gate_registry_version": "1.3.0-rc.2",
+  "release_title": "v1.3.0-rc.2 \u2014 RC Evidence Tightening + Release Notes Finalization",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -37,7 +37,7 @@
         "tests/qa-check.mjs",
         "tests/static-check.mjs",
         "tests/release-truth-consistency-check.mjs",
-        "tests/manual-workflow-release-candidate-freeze-check.mjs",
+        "tests/rc-evidence-tightening-release-notes-finalization-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
         "tests/fixtures-check.mjs",
@@ -167,7 +167,7 @@
         "tests/ci-gate-registry-check.mjs",
         "tests/version-suite-registry-check.mjs",
         "tests/release-truth-consistency-check.mjs",
-        "tests/manual-workflow-release-candidate-freeze-check.mjs",
+        "tests/rc-evidence-tightening-release-notes-finalization-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
         "tests/fixture-registry-consolidation-check.mjs",
@@ -350,7 +350,7 @@
       "description": "Release, patch, hygiene, evidence, and public-demo lock gate without browser specs.",
       "node_checks": [
         "tests/release-truth-consistency-check.mjs",
-        "tests/manual-workflow-release-candidate-freeze-check.mjs",
+        "tests/rc-evidence-tightening-release-notes-finalization-check.mjs",
         "tests/release-candidate-freeze-check.mjs",
         "tests/stable-release-check.mjs",
         "tests/patch-stabilization-check.mjs",
@@ -450,7 +450,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.3.0-rc.1",
+    "version": "1.3.0-rc.2",
     "optimization_scope": "brief_publication_pack_v4",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
@@ -463,7 +463,7 @@
     "previous_serial_no_browser_syntax_checks": 1
   },
   "syntax_matrix": {
-    "version": "1.3.0-rc.1",
+    "version": "1.3.0-rc.2",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -593,13 +593,13 @@
       "tests/no-browser-qa-suite.mjs",
       "tests/release-truth-consistency-check.mjs",
       "tests/source-to-brief-brief-publication-pack-v4-check.mjs",
-      "tests/manual-workflow-release-candidate-freeze-check.mjs"
+      "tests/rc-evidence-tightening-release-notes-finalization-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.3.0-rc.1",
+    "version": "1.3.0-rc.2",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -619,7 +619,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.3.0-rc.1",
+    "version": "1.3.0-rc.2",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

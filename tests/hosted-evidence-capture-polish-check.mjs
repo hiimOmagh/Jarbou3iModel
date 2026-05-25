@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.3.0-rc.1';
-const TITLE = 'Manual Workflow Release Candidate Freeze';
+const VERSION = '1.3.0-rc.2';
+const TITLE = 'RC Evidence Tightening + Release Notes Finalization';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
 const DOC = `docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`;

@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-rc.1';
+  const VERSION = '1.3.0-rc.2';
   const MAX_PROJECTS = 25;
   function nowIso(){ return new Date().toISOString(); }
   function clone(v){ return v === undefined ? undefined : JSON.parse(JSON.stringify(v)); }

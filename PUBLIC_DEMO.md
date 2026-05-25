@@ -1,6 +1,6 @@
-# Public Demo — v1.3.0-rc.1 Manual Workflow Release Candidate Freeze
+# Public Demo — v1.3.0-rc.2 RC Evidence Tightening + Release Notes Finalization
 
-This public-demo release candidate freezes the manual source-to-brief/publication workflow after the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` baseline. It does not add runtime execution, live provider behavior, OAuth, backend behavior, source acquisition, or storage behavior.
+This public-demo release candidate tightens release evidence and finalizes release notes after the locked `v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`, while preserving the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` manual workflow baseline. It does not add runtime execution, live provider behavior, OAuth, backend behavior, source acquisition, or storage behavior.
 
 Frozen manual workflow surface:
 
@@ -13,7 +13,9 @@ Frozen manual workflow surface:
 - final brief and appendices
 - publication-readiness summary
 
-Public release label: v1.3.0-rc.1 Manual Workflow Release Candidate Freeze.
+Public release label: v1.3.0-rc.2 RC Evidence Tightening + Release Notes Finalization.
+
+Last locked RC baseline: v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze.
 
 Hosted evidence lock remains required. Screenshots alone are insufficient; the canonical lock-evidence bundle is the lock authority.
 

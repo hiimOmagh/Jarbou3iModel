@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process';
 
 const tests = [
   'tests/qa-check.mjs',
-  'tests/manual-workflow-release-candidate-freeze-check.mjs',
+  'tests/rc-evidence-tightening-release-notes-finalization-check.mjs',
   'tests/static-check.mjs',
   'tests/schema-check.mjs',
   'tests/fixtures-check.mjs',

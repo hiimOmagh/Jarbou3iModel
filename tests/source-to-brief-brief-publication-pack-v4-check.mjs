@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-rc.1';
+const VERSION = '1.3.0-rc.2';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
   'src/research/operator-command-palette.js',
@@ -84,7 +84,7 @@ const signedPacket = {
     operator_id:'operator-alpha10',
     signed_at:'2026-05-25T04:00:00.000Z',
     confirmations:requiredConfirmations,
-    notes:'Reviewed Manual Workflow Release Candidate Freeze appendices and lock ledger.'
+    notes:'Reviewed RC Evidence Tightening + Release Notes Finalization appendices and lock ledger.'
   }
 };
 const signedWorkbench = workbenchApi.buildSourceToBriefWorkbench(signedPacket, {version:VERSION, now:'2026-05-25T03:00:00.000Z'});
@@ -113,7 +113,7 @@ assert.ok(blockedWorkbench.brief_publication_pack_v4.publication_readiness_summa
 assert.equal(blockedWorkbench.brief_publication_pack_v4.publication_readiness_summary.publication_release_gate, 'brief_publication_pack_blocked');
 
 const markdown = workbenchApi.briefPublicationPackV4Markdown(signedWorkbench);
-assert.ok(markdown.includes('Manual Workflow Release Candidate Freeze'));
+assert.ok(markdown.includes('RC Evidence Tightening + Release Notes Finalization'));
 assert.ok(markdown.includes('Publication Readiness Summary'));
 assert.ok(workbenchApi.publicationReadyBriefMarkdown(signedWorkbench).includes('Publication pack status'));
 assert.ok(workbenchApi.evidenceAppendixMarkdown(signedWorkbench).includes('Evidence Appendix'));
@@ -133,13 +133,13 @@ for (const required of [
   'source-to-brief/operator-signoff-lock-ledger-appendix.md',
   'source-to-brief/operator-handoff.md'
 ]) assert.ok(paths.includes(required), `export pack missing ${required}`);
-assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/brief-publication-pack-v4.md').content.includes('Manual Workflow Release Candidate Freeze'));
+assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/brief-publication-pack-v4.md').content.includes('RC Evidence Tightening + Release Notes Finalization'));
 assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/operator-handoff.md').content.includes('Brief publication pack status'));
 
 const renderer = fs.readFileSync('src/research/source-to-brief-operator-renderer.js','utf8');
-for (const marker of ['briefPublicationPackPanel','manual-workflow-release-candidate-freeze','briefPublicationFiles']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);
+for (const marker of ['briefPublicationPackPanel','rc-evidence-tightening-release-notes-finalization','briefPublicationFiles']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
-for (const marker of ['Manual Workflow Release Candidate Freeze','حزمة النشر v4','Manual Workflow Release Candidate Freeze']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
+for (const marker of ['RC Evidence Tightening + Release Notes Finalization','حزمة النشر v4','RC Evidence Tightening + Release Notes Finalization']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
 for (const marker of ['briefPublicationPackPanel','briefPublicationFiles']) assert.ok(styles.includes(marker), `style missing ${marker}`);
 
@@ -148,5 +148,5 @@ for (const forbidden of ['automatic_source_verification_claimed":true','live_web
   assert.equal(serialized.includes(forbidden), false, `forbidden capability marker present: ${forbidden}`);
 }
 
-console.log('Manual Workflow Release Candidate Freeze checks passed.');
+console.log('RC Evidence Tightening + Release Notes Finalization checks passed.');
 process.exit(0);

@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-rc.1';
+  const VERSION = '1.3.0-rc.2';
   const BUILDER_VERSION = 'source_packet_builder.v1';
   const PACKET_SCHEMA = 'manual_source_packet.v1';
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }

@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.3.0-rc.1';
+  const VERSION = '1.3.0-rc.2';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -965,7 +965,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.3.0-rc.1',
+      schema_version: '1.3.0-rc.2',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),

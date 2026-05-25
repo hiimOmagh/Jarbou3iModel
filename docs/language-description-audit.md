@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.3.0-rc.1`
-Release: `v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`
+Version: `1.3.0-rc.2`
+Release: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy
