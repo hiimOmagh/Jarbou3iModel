@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.3';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.4';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -194,6 +194,8 @@
       `Guided session progress: ${safeString(workbench.guided_research_session?.session_progress_percent ?? 0)}%`,
       `Guided UX focus: ${safeString(workbench.guided_session_ux_compression?.primary_focus_group ?? 'manual_review')}`,
       `Brief export QA gate: ${safeString(workbench.brief_assembly_export_qa?.qa_gate ?? 'brief_assembly_export_review_required')}`,
+      `Brief template UX gate: ${safeString(workbench.brief_template_ux_polish?.density_gate ?? 'brief_template_ux_review_required')}`,
+      `Assembly variants compared: ${safeString(workbench.assembly_variant_comparison?.variant_count ?? 0)}`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
       `Low-traceability review items: ${safeString(review.low_traceability_open_count ?? 0)}`,
       '',
@@ -282,6 +284,10 @@
     if(workbench.brief_template_system && templateApi?.briefTemplateSystemMarkdown) files.push(fileEntry('source-to-brief/brief-template-system.md', 'text/markdown', templateApi.briefTemplateSystemMarkdown(workbench.brief_template_system), 'source-to-brief-brief-template-system-md'));
     if(workbench.assembly_variant_qa) files.push(fileEntry('source-to-brief/assembly-variant-qa.json', 'application/json', jsonContent(workbench.assembly_variant_qa), 'source-to-brief-assembly-variant-qa'));
     if(workbench.assembly_variant_qa && templateApi?.assemblyVariantQaMarkdown) files.push(fileEntry('source-to-brief/assembly-variant-qa.md', 'text/markdown', templateApi.assemblyVariantQaMarkdown(workbench.assembly_variant_qa), 'source-to-brief-assembly-variant-qa-md'));
+    if(workbench.brief_template_ux_polish) files.push(fileEntry('source-to-brief/brief-template-ux-polish.json', 'application/json', jsonContent(workbench.brief_template_ux_polish), 'source-to-brief-brief-template-ux-polish'));
+    if(workbench.brief_template_ux_polish && templateApi?.briefTemplateUxPolishMarkdown) files.push(fileEntry('source-to-brief/brief-template-ux-polish.md', 'text/markdown', templateApi.briefTemplateUxPolishMarkdown(workbench.brief_template_ux_polish), 'source-to-brief-brief-template-ux-polish-md'));
+    if(workbench.assembly_variant_comparison) files.push(fileEntry('source-to-brief/assembly-variant-comparison.json', 'application/json', jsonContent(workbench.assembly_variant_comparison), 'source-to-brief-assembly-variant-comparison'));
+    if(workbench.assembly_variant_comparison && templateApi?.assemblyVariantComparisonMarkdown) files.push(fileEntry('source-to-brief/assembly-variant-comparison.md', 'text/markdown', templateApi.assemblyVariantComparisonMarkdown(workbench.assembly_variant_comparison), 'source-to-brief-assembly-variant-comparison-md'));
     files.push(fileEntry('source-to-brief/operator-handoff.md', 'text/markdown', sourceToBriefHandoffMarkdown(workbench), 'source-to-brief-operator-handoff'));
     return files;
   }

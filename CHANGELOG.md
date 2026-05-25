@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA
+## v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup
 
 - Adds a local/manual Brief Template System for assembly variants.
 - Adds four templates: Strategic Brief, Source Audit Brief, Contradiction Brief, and Executive Summary.
@@ -12,7 +12,7 @@
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-Public label: `v1.3.0-alpha.3 Brief Template System + Assembly Variant QA`. Internal evidence metadata: `1.3.0-alpha.3`.
+Public label: `v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup`. Internal evidence metadata: `1.3.0-alpha.4`.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

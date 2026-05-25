@@ -1,6 +1,6 @@
 # Jarbou3i Research Engine
 
-`v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA`
+`v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
@@ -34,7 +34,7 @@ npm run test:ci:browser
 
 Release-lock evidence boundary: screenshots alone are insufficient. ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, hosted-demo evidence, and the canonical lock bundle.
 
-Public release label: v1.3.0-alpha.3 Brief Template System + Assembly Variant QA.
+Public release label: v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup.
 
 Public Demo continuity is preserved; release lock still requires hosted evidence review.
 

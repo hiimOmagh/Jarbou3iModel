@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.3.0-alpha.3",
-  "internal_build_version": "1.3.0-alpha.3",
-  "public_version_label": "v1.3.0-alpha.3 Brief Template System + Assembly Variant QA",
+  "evidence_matrix_config_version": "1.3.0-alpha.4",
+  "internal_build_version": "1.3.0-alpha.4",
+  "public_version_label": "v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup",
   "locales": [
     "en",
     "ar",
@@ -11,8 +11,8 @@
   "language_rules": {
     "en": {
       "required": [
-        "Brief Template System + Assembly Variant QA",
-        "Guided Research Session",
+        "Brief Template UX Polish + Matrix Hygiene Cleanup",
+        "Brief Template UX Polish",
         "Export Pack v3"
       ],
       "forbidden": [
@@ -26,9 +26,9 @@
     },
     "ar": {
       "required": [
-        "نظام قوالب الموجز",
-        "تدقيق متغيرات التجميع",
-        "جلسة بحث موجّهة"
+        "تحسين تجربة قوالب الموجز",
+        "تنظيف مصفوفة الأدلة",
+        "تصدير"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -39,9 +39,9 @@
     },
     "fr": {
       "required": [
-        "Système de modèles de brief",
-        "QA des variantes d’assemblage",
-        "Session de recherche guidée"
+        "Polish UX des modèles de brief",
+        "nettoyage de la matrice",
+        "Export Pack v3"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -227,8 +227,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.3.0-alpha.3 Brief Template System + Assembly Variant QA",
-    "ar": "v1.3.0-alpha.3 نظام قوالب الموجز + تدقيق متغيرات التجميع",
-    "fr": "v1.3.0-alpha.3 Système de modèles de brief + QA des variantes d’assemblage"
+    "en": "v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup",
+    "ar": "v1.3.0-alpha.4 تحسين تجربة قوالب الموجز + تنظيف مصفوفة الأدلة",
+    "fr": "v1.3.0-alpha.4 Polish UX des modèles de brief + nettoyage de la matrice"
   }
 }

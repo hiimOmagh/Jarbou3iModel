@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.3';
+const VERSION = '1.3.0-alpha.4';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
   'src/research/operator-command-palette.js',
@@ -48,6 +48,8 @@ const workbench = workbenchApi.buildSourceToBriefWorkbench(packet, {version:VERS
 
 assert.ok(workbench.brief_template_system, 'brief template system missing');
 assert.ok(workbench.assembly_variant_qa, 'assembly variant QA missing');
+assert.ok(workbench.assembly_variant_comparison, 'assembly variant comparison missing');
+assert.ok(workbench.brief_template_ux_polish, 'brief template UX polish missing');
 assert.equal(workbench.brief_template_system.template_model, 'brief_template_system.v1');
 assert.equal(workbench.brief_template_system.template_count, 4);
 for (const required of ['strategic_brief','source_audit_brief','contradiction_brief','executive_summary']) {
@@ -63,6 +65,15 @@ assert.ok(workbench.assembly_variant_qa.checks.some((check)=>check.check_id === 
 assert.ok(workbench.assembly_variant_qa.checks.some((check)=>check.check_id === 'no_auto_verification_claim' && check.passed === true));
 assert.ok(workbench.assembly_variant_qa.required_export_files.includes('source-to-brief/assembly-variant-qa.md'));
 assert.equal(workbench.assembly_variant_qa.provider_execution_expanded, false);
+assert.equal(workbench.assembly_variant_comparison.comparison_model, 'assembly_variant_comparison.v1');
+assert.equal(workbench.assembly_variant_comparison.variant_count, 4);
+assert.ok(workbench.assembly_variant_comparison.variants.some((variant)=>variant.selected === true));
+assert.ok(workbench.assembly_variant_comparison.variants.every((variant)=>['low','medium','high'].includes(variant.risk_band)));
+assert.equal(workbench.assembly_variant_comparison.automatic_source_verification_claimed, false);
+assert.equal(workbench.brief_template_ux_polish.ux_model, 'brief_template_ux_polish.v1');
+assert.ok(workbench.brief_template_ux_polish.readability_checks.some((check)=>check.check_id === 'matrix_hygiene_current' && check.passed === true));
+assert.equal(workbench.brief_template_ux_polish.matrix_hygiene_cleanup.guided_session_legacy_requirement_removed, true);
+assert.equal(workbench.brief_template_ux_polish.automatic_source_verification_claimed, false);
 
 const pack = exportPack.createExportPack(Object.assign({}, packet, {source_to_brief_workbench:workbench}), {version:VERSION});
 const paths = pack.files.map((file)=>file.path);
@@ -70,17 +81,21 @@ for (const required of [
   'source-to-brief/brief-template-system.json',
   'source-to-brief/brief-template-system.md',
   'source-to-brief/assembly-variant-qa.json',
-  'source-to-brief/assembly-variant-qa.md'
+  'source-to-brief/assembly-variant-qa.md',
+  'source-to-brief/brief-template-ux-polish.json',
+  'source-to-brief/brief-template-ux-polish.md',
+  'source-to-brief/assembly-variant-comparison.json',
+  'source-to-brief/assembly-variant-comparison.md'
 ]) assert.ok(paths.includes(required), `export pack missing ${required}`);
 assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/brief-template-system.md').content.includes('Brief Template System'));
 assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/assembly-variant-qa.md').content.includes('Assembly Variant QA'));
 
 const renderer = fs.readFileSync('src/research/source-to-brief-operator-renderer.js','utf8');
-for (const marker of ['briefTemplateSystemPanel','assemblyVariantQaPanel','brief-template-system','assembly-variant-qa']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);
+for (const marker of ['briefTemplateSystemPanel','assemblyVariantQaPanel','briefTemplateUxPolishPanel','assemblyVariantComparisonPanel','brief-template-system','assembly-variant-qa','brief-template-ux-polish','assembly-variant-comparison']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
-for (const marker of ['Brief Template System','Assembly Variant QA','نظام قوالب الموجز','تدقيق متغيرات التجميع','Système de modèles de brief','QA des variantes d’assemblage']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
+for (const marker of ['Brief Template System','Assembly Variant QA','Brief Template UX Polish','Assembly Variant Comparison','نظام قوالب الموجز','تدقيق متغيرات التجميع','تحسين تجربة قوالب الموجز','مقارنة متغيرات التجميع','Système de modèles de brief','QA des variantes d’assemblage','Polish UX des modèles de brief','Comparaison des variantes d’assemblage']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
-for (const marker of ['briefTemplateSystemPanel','assemblyVariantQaPanel','briefTemplateGrid','assemblyVariantQaList']) assert.ok(styles.includes(marker), `styles missing ${marker}`);
+for (const marker of ['briefTemplateSystemPanel','assemblyVariantQaPanel','briefTemplateUxPolishPanel','assemblyVariantComparisonPanel','briefTemplateGrid','assemblyVariantQaList','briefTemplateUxPolishList','assemblyVariantComparisonGrid']) assert.ok(styles.includes(marker), `styles missing ${marker}`);
 
 const serialized = JSON.stringify(workbench) + JSON.stringify(pack.manifest);
 for (const forbidden of ['automatic_source_verification_claimed":true','live_web_search_performed":true','provider_execution_expanded":true','production_oauth_enabled":true','backend_behavior_expanded":true']) assert.equal(serialized.includes(forbidden), false, `forbidden capability marker present: ${forbidden}`);

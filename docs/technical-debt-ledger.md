@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.3.0-alpha.3`
-Release: `v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA
+Version: `1.3.0-alpha.4`
+Release: `v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

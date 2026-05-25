@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA
+Current release candidate: v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.3.0-alpha.3.
+Node 24 CI compatibility is preserved for v1.3.0-alpha.4.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

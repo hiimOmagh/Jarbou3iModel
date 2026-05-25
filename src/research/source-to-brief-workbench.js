@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.3. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.4. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.3';
+  const VERSION = '1.3.0-alpha.4';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -975,6 +975,8 @@
     const templateBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null});
     const briefTemplates = briefTemplateSystem?.buildBriefTemplateSystem ? briefTemplateSystem.buildBriefTemplateSystem(templateBase, packet, {version, now:generatedAt}) : null;
     const assemblyVariantQa = briefTemplateSystem?.buildAssemblyVariantQa ? briefTemplateSystem.buildAssemblyVariantQa(templateBase, briefTemplates, {version, now:generatedAt}) : null;
+    const assemblyVariantComparison = briefTemplateSystem?.buildAssemblyVariantComparison ? briefTemplateSystem.buildAssemblyVariantComparison(briefTemplates, assemblyVariantQa, {version, now:generatedAt}) : null;
+    const briefTemplateUxPolish = briefTemplateSystem?.buildBriefTemplateUxPolish ? briefTemplateSystem.buildBriefTemplateUxPolish(briefTemplates, assemblyVariantQa, assemblyVariantComparison, {version, now:generatedAt, matrix_hygiene_current:true}) : null;
     return {
       source_to_brief_version:version,
       workbench_model:MODEL,
@@ -1008,6 +1010,8 @@
       brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null,
       brief_template_system:briefTemplates,
       assembly_variant_qa:assemblyVariantQa,
+      assembly_variant_comparison:assemblyVariantComparison,
+      brief_template_ux_polish:briefTemplateUxPolish,
       ux_compression_model:'source_to_brief_operator_flow.v1',
       export_polish_model:EXPORT_POLISH_MODEL,
       empty_state_guidance:buildEmptyStateGuidance({evidence_cards:evidenceCards, claim_map:claimMap, contradiction_groups:contradictionGroups, release_gate:releaseGate}),
@@ -1104,6 +1108,16 @@
       `- QA gate: ${text(workbench.assembly_variant_qa?.qa_gate || 'assembly_variant_review_required')}`,
       `- Checks passed: ${Number(workbench.assembly_variant_qa?.passed_check_count || 0)}/${Number(workbench.assembly_variant_qa?.check_count || 0)}`,
       `- Blockers: ${Number(workbench.assembly_variant_qa?.blocker_count || 0)}`,
+      '',
+      '## Brief Template UX Polish',
+      `- Density gate: ${text(workbench.brief_template_ux_polish?.density_gate || 'brief_template_ux_review_required')}`,
+      `- Visible decisions: ${Number(workbench.brief_template_ux_polish?.visible_decision_count || 0)}`,
+      `- Matrix hygiene current: ${text(workbench.brief_template_ux_polish?.matrix_hygiene_cleanup?.current_release_label_required === true)}`,
+      '',
+      '## Assembly Variant Comparison',
+      `- Comparison gate: ${text(workbench.assembly_variant_comparison?.comparison_gate || 'variant_comparison_review_required')}`,
+      `- Variants compared: ${Number(workbench.assembly_variant_comparison?.variant_count || 0)}`,
+      `- Selected template: ${text(workbench.assembly_variant_comparison?.selected_template_id || 'manual_selection_required')}`,
       '',
       '## Blocked Capabilities',
       asArray(workbench.blocked_unavailable_capabilities).map((item)=>`- ${item}`).join('\n')

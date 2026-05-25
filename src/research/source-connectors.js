@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.3';
+  const VERSION = '1.3.0-alpha.4';
 
   const SOURCE_CONNECTORS = {
     manual_mock: {

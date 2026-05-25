@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.3.0-alpha.3",
-  "release_title": "v1.3.0-alpha.3 — Brief Template System + Assembly Variant QA",
+  "ci_gate_registry_version": "1.3.0-alpha.4",
+  "release_title": "v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -146,6 +146,7 @@
         "tests/source-to-brief-guided-session-check.mjs",
         "tests/source-to-brief-guided-session-ux-export-qa-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs",
+        "tests/source-to-brief-brief-template-ux-polish-check.mjs",
         "tests/controlled-connector-architecture-check.mjs",
         "tests/strategic-evidence-graph-check.mjs",
         "tests/post-stable-capability-roadmap-check.mjs"
@@ -427,7 +428,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.3.0-alpha.3",
+    "version": "1.3.0-alpha.4",
     "optimization_scope": "guided_research_session_engine_brief_assembly_workflow",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
@@ -440,7 +441,7 @@
     "previous_serial_no_browser_syntax_checks": 1
   },
   "syntax_matrix": {
-    "version": "1.3.0-alpha.3",
+    "version": "1.3.0-alpha.4",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -568,7 +569,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.3.0-alpha.3",
+    "version": "1.3.0-alpha.4",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -588,7 +589,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.3.0-alpha.3",
+    "version": "1.3.0-alpha.4",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
