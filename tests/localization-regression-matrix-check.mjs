@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
@@ -53,7 +55,7 @@ assert.ok(renderSource.includes('data-r-toggle-show') && renderSource.includes('
 for (const marker of ['Ø','Ù','Â','Ã','â€”','â†','â—','â€œ','â€']) assert.ok(spec.includes(marker), `mojibake guard must reject ${marker}`);
 assert.ok(spec.includes('isolated Â'), 'mojibake guard must distinguish isolated C2/Â artifacts from legitimate French uppercase Â');
 
-const scanRoot = new URL('..', import.meta.url);
+const scanRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const allowedMojibakeFiles = new Set([
   'tests/hosted-demo-browser-evidence.spec.mjs',
   'tests/localization-regression-matrix-check.mjs'
@@ -64,16 +66,16 @@ function walkFiles(dir) {
   const output = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (generatedDirs.has(entry.name)) continue;
-    const fullPath = `${dir}/${entry.name}`;
+    const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) output.push(...walkFiles(fullPath));
     else output.push(fullPath);
   }
   return output;
 }
-const sourceRoot = scanRoot.pathname.replace(/\/$/, '');
+const sourceRoot = scanRoot;
 const unicodeViolations = [];
 for (const file of walkFiles(sourceRoot)) {
-  const relative = file.slice(sourceRoot.length + 1);
+  const relative = path.relative(sourceRoot, file).replaceAll(path.sep, '/');
   const ext = relative.slice(relative.lastIndexOf('.'));
   if (!textExtensions.has(ext) && !relative.startsWith('.')) continue;
   if (allowedMojibakeFiles.has(relative)) continue;
