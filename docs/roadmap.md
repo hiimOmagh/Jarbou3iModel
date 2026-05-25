@@ -1,56 +1,28 @@
 # Roadmap
 
-Current milestone:
+Current milestone: `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
 
-`v1.3.0 — Stable Manual Workflow Release`
+Purpose: controlled provider/source execution preparation after the locked `v1.3.0 — Stable Manual Workflow Release`. This is an ADR/threat-model/preflight milestone only.
 
-Purpose: promote the manual workflow after the locked `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`, while preserving the `v1.3.0-alpha.10 — Brief Publication Pack v4` manual workflow baseline.
+Locked baselines:
 
-## Locked baselines
+- `v1.3.0 — Stable Manual Workflow Release` is locked. Do not patch it further.
+- `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` is locked. Do not patch it further.
+- `v1.3.0-alpha.10 — Brief Publication Pack v4` is locked and remains the manual publication-pack baseline.
 
-`v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` is locked. Do not patch rc.2 further.
+Compressed next milestones:
 
-`v1.3.0-alpha.10 — Brief Publication Pack v4` is locked. Do not patch alpha.10 further. It remains the completed manual publication-pack baseline for this stable line.
+1. `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation` — planning/preflight only.
+2. `v1.4.0-alpha.2 — Provider Execution Harness Mock-to-Live Equivalence` — still no default live execution.
+3. `v1.4.0-alpha.3 — Source Acquisition Control Surface` — manual/provider toggles with strict controls.
+4. `v1.4.0-alpha.4 — Credential Boundary Runtime Drill` — leak tests and redaction drills.
 
-## Compressed next milestones
+Forbidden until explicit later approval: live scraping, live source fetching, provider execution expansion, production OAuth, backend behavior expansion, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, publication permission claim.
 
-1. `v1.3.0 — Stable Manual Workflow Release`
-   - promote only if stable evidence is clean
-   - require no-browser CI, browser CI, hosted evidence matrix, and canonical lock bundle
-   - keep manual/private mode first-class
-   - preserve manual workflow behavior
-   - assert no provider/OAuth/backend/source/storage expansion
-   - keep release lock evidence bundle as the only lock authority
+No alpha.2 should start until v1.4.0-alpha.1 is locked with green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
 
-2. `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
-   - threat model
-   - ADR
-   - privacy boundary
-   - credential leak tests
-   - failure UX
-   - cost/timeout controls
-   - mock-to-live equivalence tests
+Boundary shorthand: no live scraping; no production OAuth; no backend behavior expansion; no provider execution expansion; no cryptographic signature claim.
 
-## Priority lanes
+Node 24 CI compatibility remains mandatory for v1.4.0-alpha.1 and later.
 
-1. `manual_workflow_stable_promotion` — promote only after clean stable evidence, not after feature expansion.
-2. `export_publication_v4` — preserve traceability, provenance, lock-ledger review, source-to-claim gap closure, and publication packaging.
-3. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
-4. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, falsifier tracking, and publication-readiness triage.
-5. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, stale-artifact rejection, and release-truth checks.
-6. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
-7. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
-
-Allowed in this stable release: version identity update, stable release guard, fixture/registry alignment, manifest/package/docs updates, and tests proving the manual workflow boundary.
-
-Forbidden in this stable release: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, automatic export lock, automatic source verification claims, publishing permission claims, and cryptographic signature claims.
-
-No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims. No automatic signoff. No automatic export lock.
-
-Node 24 CI compatibility preserved.
-
-Stable baseline retained: v1.1.0 remains the locked Public Demo reference for post-stable expansion gating.
-
-Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
-
-Release discipline preserved: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only handoff remain in force.
+Planning gate continuity: apply integrity and changed-files-only discipline remain required before any provider/source execution expansion.

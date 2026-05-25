@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
+
+- Adds provider execution threat model planning module.
+- Adds provider execution preflight planning module.
+- Adds ADR-001 provider execution model.
+- Adds ADR-002 source acquisition controls.
+- Adds ADR-003 credential boundary.
+- Updates release identity from locked `v1.3.0 — Stable Manual Workflow Release` to `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`.
+- Preserves `v1.3.0-alpha.10 — Brief Publication Pack v4` as the manual workflow baseline.
+- Preserves no live scraping, no live source fetching, no provider execution expansion, no production OAuth, no backend/storage expansion, no automatic source verification, no automatic signoff, no automatic export lock, no cryptographic signature claim, and no publication permission claim.
+
+## v1.3.0 — Stable Manual Workflow Release
+
+- Stable manual workflow release locked with green no-browser CI, green browser CI, hosted evidence matrix, and canonical lock evidence bundle.
+- Preserves the locked `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` and `v1.3.0-alpha.10 — Brief Publication Pack v4` baselines.
+
+---
+
+# Changelog
+
 ## v1.3.0 — Stable Manual Workflow Release
 
 - Promotes the locked `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` manual workflow to stable release identity.

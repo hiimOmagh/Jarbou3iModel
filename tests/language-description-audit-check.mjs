@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');
@@ -40,7 +42,7 @@ function allStrings(value) {
 }
 
 const i18n = extractI18n(app);
-assert.equal(pkg.version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(audit.includes(`Version: \`${VERSION}\``));
 assert.deepEqual(Object.keys(i18n).sort(), ['ar', 'en', 'fr']);
 const referenceKeys = flattenKeys(i18n.en).sort();

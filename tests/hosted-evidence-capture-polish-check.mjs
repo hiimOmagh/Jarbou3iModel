@@ -4,6 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -21,10 +23,10 @@ const spec = read(SPEC);
 const hostedModuleSource = read('src/research/hosted-demo-verification.js');
 const migrationSource = read('src/research/migrations.js');
 
-assert.equal(pkg.version, VERSION);
-assert.equal(registry.ci_gate_registry_version, VERSION);
-assert.equal(registry.release_title, RELEASE);
-assert.equal(registry.hosted_evidence_capture_polish?.version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
+assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
+assert.equal(registry.release_title, `v${CURRENT_VERSION} — ${CURRENT_TITLE}`);
+assert.equal(registry.hosted_evidence_capture_polish?.version, CURRENT_VERSION);
 assert.equal(registry.hosted_evidence_capture_polish?.screenshot_settle_required, true);
 assert.equal(registry.hosted_evidence_capture_polish?.visual_artifact_guard_required, true);
 assert.equal(registry.hosted_evidence_capture_polish?.quality_export_capture_after_settle_required, true);

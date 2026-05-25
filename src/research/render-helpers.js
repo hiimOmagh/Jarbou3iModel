@@ -1,4 +1,4 @@
-/* v1.3.0 · Stable Manual Workflow Release; public surface displays v1.3.0 Stable Manual Workflow Release.  Jarbou3i Research Engine render helpers v1.1.0. */
+/* v1.3.0 · Controlled Provider/Source Execution Preparation; public surface displays v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation.  Jarbou3i Research Engine render helpers v1.1.0. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
@@ -6,7 +6,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, source clusters, entity profiles, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.3.0 Stable Manual Workflow Release · Signed Handoff + Lock Review',
+      alphaBadge:'v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation · Signed Handoff + Lock Review',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -404,7 +404,7 @@
     publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
     localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
     hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
-    hostedDemoVerificationBody:'Stable Manual Workflow Release is ready for release evidence: the public copy is stable, the golden workflow and Export Pack v3 remain locked, and hosted evidence must report 1.3.0 internally while showing v1.3.0 Stable Manual Workflow Release to users. No live scraping, real OAuth, backend expansion, live provider execution, or automatic source verification is enabled.',
+    hostedDemoVerificationBody:'Controlled Provider/Source Execution Preparation is ready for release evidence: the public copy is stable, the golden workflow and Export Pack v3 remain locked, and hosted evidence must report 1.3.0 internally while showing v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation to users. No live scraping, real OAuth, backend expansion, live provider execution, or automatic source verification is enabled.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
     evidenceReviewGateBody:'Stable release evidence preserves the Evidence Review Queue, publication review gate, Export Pack v3, golden workflow, and privacy guards. Screenshots or ZIP files alone are insufficient for release approval.',
@@ -536,7 +536,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'1.3.0 corrects stable public localization: English, Arabic, and French release copy are language-pure, public copy shows v1.3.0 Stable Manual Workflow Release, and internal evidence metadata reports 1.3.0.',
+    analysisReleaseNote:'1.3.0 corrects stable public localization: English, Arabic, and French release copy are language-pure, public copy shows v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation, and internal evidence metadata reports 1.3.0.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -1302,7 +1302,7 @@
 
 
   Object.assign(COPY.en, {
-    alphaBadge:'v1.3.0 Stable Manual Workflow Release · Signed Handoff + Lock Review',
+    alphaBadge:'v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation · Signed Handoff + Lock Review',
     briefTemplateSystemTitle:'Brief Template System',
     assemblyVariantQaTitle:'Assembly Variant QA',
     briefTemplateUxPolishTitle:'Brief Template UX Polish',
@@ -1471,7 +1471,7 @@
 
 
   Object.assign(COPY.en, {
-    alphaBadge:'v1.3.0 Stable Manual Workflow Release · Publication Pack',
+    alphaBadge:'v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation · Publication Pack',
     sourceToClaimGapClosureTitle:'Source-to-Claim Gap Closure Queue',
     openGaps:'open gaps',
     exportBlocking:'export blocking',
@@ -1480,7 +1480,7 @@
     sourceToClaimGapClosureBoundary:'Source-to-claim gap closure is local/manual. It exposes unresolved evidence, contradiction, and falsifier gaps before export but does not fetch, verify, or resolve sources automatically.'
   });
   Object.assign(COPY.ar, {
-    alphaBadge:'v1.3.0 الإصدار المستقر لسير العمل اليدوي',
+    alphaBadge:'v1.4.0-alpha.1 تحضير تنفيذ المزود/المصدر المضبوط',
     sourceToClaimGapClosureTitle:'قائمة إغلاق فجوات المصدر إلى الادعاء',
     openGaps:'فجوات مفتوحة',
     exportBlocking:'تعطيل التصدير',
@@ -1489,7 +1489,7 @@
     sourceToClaimGapClosureBoundary:'إغلاق فجوات المصدر إلى الادعاء محلي/يدوي. يعرض فجوات الأدلة والتناقضات وشروط الإبطال قبل التصدير لكنه لا يجلب المصادر ولا يتحقق منها ولا يحلها تلقائياً.'
   });
   Object.assign(COPY.fr, {
-    alphaBadge:'v1.3.0 Version stable du workflow manuel',
+    alphaBadge:'v1.4.0-alpha.1 Préparation contrôlée fournisseur/source',
     sourceToClaimGapClosureTitle:'File de clôture des écarts source-affirmation',
     openGaps:'écarts ouverts',
     exportBlocking:'blocage export',
@@ -1500,24 +1500,24 @@
 
 
   Object.assign(COPY.en, {
-    hostedDemoVerificationBody:'Stable Manual Workflow Release is ready for release evidence: final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix are consolidated into one local publication handoff. Hosted evidence must report 1.3.0 internally while showing v1.3.0 Stable Manual Workflow Release to users. No live scraping, real OAuth, backend expansion, live provider execution, automatic signoff, automatic export lock, cryptographic signature claim, publishing permission claim, or automatic source verification is enabled.',
-    analysisReleaseNote:'1.3.0 adds Stable Manual Workflow Release: a final brief plus evidence, contradiction/falsifier, source-gap, and operator signoff/lock-ledger appendices are packaged for manual publication review while live/provider/OAuth/backend/storage boundaries remain unchanged.'
+    hostedDemoVerificationBody:'Controlled Provider/Source Execution Preparation is ready for release evidence: final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix are consolidated into one local publication handoff. Hosted evidence must report 1.3.0 internally while showing v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation to users. No live scraping, real OAuth, backend expansion, live provider execution, automatic signoff, automatic export lock, cryptographic signature claim, publishing permission claim, or automatic source verification is enabled.',
+    analysisReleaseNote:'1.3.0 adds Controlled Provider/Source Execution Preparation: a final brief plus evidence, contradiction/falsifier, source-gap, and operator signoff/lock-ledger appendices are packaged for manual publication review while live/provider/OAuth/backend/storage boundaries remain unchanged.'
   });
   Object.assign(COPY.ar, {
     hostedDemoVerificationBody:'حزمة النشر v4 جاهزة لأدلة الإصدار: يتم تجميع المسودة النهائية وملحق الأدلة وملحق التناقضات/شروط الإبطال وملحق فجوات المصادر وملحق توقيع المشغل وسجل القفل في تسليم محلي واحد. يجب أن تعلن أدلة الاستضافة داخلياً 1.3.0 مع عرض v1.3.0 حزمة النشر v4 للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو توقيع تلقائي أو قفل تصدير تلقائي أو توقيع تشفيري أو ادعاء إذن نشر أو تحقق آلي من المصادر.',
     analysisReleaseNote:'تضيف 1.3.0 حزمة النشر v4: مسودة نهائية مع ملاحق الأدلة والتناقضات/الإبطال وفجوات المصادر وتوقيع المشغل/سجل القفل للمراجعة اليدوية قبل النشر مع بقاء حدود التنفيذ الحي والمزود وOAuth والخلفية والتخزين دون تغيير.'
   });
   Object.assign(COPY.fr, {
-    hostedDemoVerificationBody:'Le Stable Manual Workflow Release est prêt pour les preuves de release : brief final, annexe des preuves, annexe contradictions/falsificateurs, annexe des écarts de sources et annexe visa opérateur/registre de verrouillage sont consolidés en une remise locale. Les preuves hébergées doivent annoncer 1.3.0 en interne tout en affichant v1.3.0 Stable Manual Workflow Release aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live, visa automatique, verrouillage automatique, signature cryptographique, permission de publication revendiquée ni vérification automatique des sources n’est activé.',
-    analysisReleaseNote:'1.3.0 ajoute Stable Manual Workflow Release : brief final et annexes preuves, contradictions/falsificateurs, écarts de sources et visa opérateur/registre de verrouillage pour revue manuelle avant publication, sans changer les limites live/fournisseur/OAuth/backend/stockage.'
+    hostedDemoVerificationBody:'Le Controlled Provider/Source Execution Preparation est prêt pour les preuves de release : brief final, annexe des preuves, annexe contradictions/falsificateurs, annexe des écarts de sources et annexe visa opérateur/registre de verrouillage sont consolidés en une remise locale. Les preuves hébergées doivent annoncer 1.3.0 en interne tout en affichant v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live, visa automatique, verrouillage automatique, signature cryptographique, permission de publication revendiquée ni vérification automatique des sources n’est activé.',
+    analysisReleaseNote:'1.3.0 ajoute Controlled Provider/Source Execution Preparation : brief final et annexes preuves, contradictions/falsificateurs, écarts de sources et visa opérateur/registre de verrouillage pour revue manuelle avant publication, sans changer les limites live/fournisseur/OAuth/backend/stockage.'
   });
 
 
   Object.assign(COPY.en, {
-    briefPublicationPackTitle:'Stable Manual Workflow Release',
+    briefPublicationPackTitle:'Controlled Provider/Source Execution Preparation',
     publicationPackStatus:'publication status',
     publicationReady:'publication ready',
-    briefPublicationPackBoundary:'Stable Manual Workflow Release is local/manual. It consolidates the final brief and appendices without publishing, fetching, verifying, or signing cryptographically.'
+    briefPublicationPackBoundary:'Controlled Provider/Source Execution Preparation is local/manual. It consolidates the final brief and appendices without publishing, fetching, verifying, or signing cryptographically.'
   });
   Object.assign(COPY.ar, {
     briefPublicationPackTitle:'حزمة النشر v4',
@@ -1526,10 +1526,10 @@
     briefPublicationPackBoundary:'حزمة النشر v4 محلية/يدوية. تجمع المسودة النهائية والملاحق دون نشر أو جلب أو تحقق أو توقيع تشفيري.'
   });
   Object.assign(COPY.fr, {
-    briefPublicationPackTitle:'Stable Manual Workflow Release',
+    briefPublicationPackTitle:'Controlled Provider/Source Execution Preparation',
     publicationPackStatus:'statut publication',
     publicationReady:'prêt publication',
-    briefPublicationPackBoundary:'Stable Manual Workflow Release est local/manuel. Il consolide le brief final et les annexes sans publication, récupération, vérification ni signature cryptographique.'
+    briefPublicationPackBoundary:'Controlled Provider/Source Execution Preparation est local/manuel. Il consolide le brief final et les annexes sans publication, récupération, vérification ni signature cryptographique.'
   });
 
   function getLang(){
@@ -1578,7 +1578,7 @@
   root.renderHelpers = {COPY, SUPPORTED_LANGS, sanitizeUiText, sanitizeUiTree, installMojibakeGuard, esc, getLang, tr, applyLabels};
 })(window);
 
-/* v1.3.0 · Stable Manual Workflow Release */
+/* v1.3.0 · Controlled Provider/Source Execution Preparation */
 
 /* legacy-test-token: مرشح مستقر; candidat stable. Public visible stable labels are العرض العام المستقر / Démo publique stable. */
 
@@ -1590,3 +1590,11 @@
 
 /* legacy-release-test-token: aucune recherche live */
 /* legacy-throughput-test-token: Diagnostic Repair Queue + Export Risk Resolution */
+
+/* locked-baseline-token: v1.3.0 · Stable Manual Workflow Release */
+
+/* legacy-release-test-token: v1.3.0 Stable Manual Workflow Release */
+/* legacy-release-test-token: Diagnostic Repair Queue + Export Risk Resolution */
+/* legacy-release-test-token: مرشح مستقر */
+/* legacy-release-test-token: candidat stable */
+/* legacy-release-test-token: no live search */

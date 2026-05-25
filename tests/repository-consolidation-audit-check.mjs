@@ -21,6 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';
@@ -37,14 +39,14 @@ const releaseDoc = readReleaseDoc(DOC);
 const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-packet.json');
 const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0.json');
 
-assert.equal(pkg.version, VERSION);
-assert.equal(lock.version, VERSION);
-assert.equal(lock.packages[''].version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
+assert.equal(lock.version, CURRENT_VERSION);
+assert.equal(lock.packages[''].version, CURRENT_VERSION);
 assert.ok(pkg.description.includes('fixture registry payload compression'));
 assert.ok(pkg.description.includes('test organization audit'));
 assert.ok(pkg.description.includes('runtime/provider/OAuth/backend/source/storage boundaries remain unchanged'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose alpha.4 fixture registry consolidation identity');
+assert.ok(index.includes(`v${CURRENT_VERSION} · ${CURRENT_TITLE}`), 'index badge must expose current alpha.1 planning identity');
 assert.ok((index.includes('hosted evidence capture polish') || index.includes('حارس الشوائب البصرية')) && (index.includes('visual artifact guard') || index.includes('أدلة الاستضافة')), 'index must communicate alpha.10 hosted evidence polish scope in the active shell language');
 assert.ok(index.includes('without changing runtime behavior') || index.includes('دون تغيير سلوك التشغيل'), 'index must preserve runtime boundary in the active shell language');
 assert.ok(auditSource.includes("const VERSION = '1.3.0'"));

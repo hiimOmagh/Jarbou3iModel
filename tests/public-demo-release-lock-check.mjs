@@ -7,6 +7,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -41,9 +43,9 @@ const aiIntegration = read('docs/ai-integration.md');
 const privacyAudit = read('docs/privacy-audit.md');
 const releaseDoc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md')}`;
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0');
+assert.equal(pkg.version, CURRENT_VERSION, 'package.json must identify v1.1.0');
+assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify v1.4.0-alpha.1');
+assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify v1.4.0-alpha.1');
 assert.equal(schema.properties.workflow_version.const, VERSION, 'workflow schema target must identify v1.1.0');
 assert.equal(sample.workflow_version, VERSION, 'sample workflow must identify v1.1.0');
 assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0');
@@ -107,8 +109,8 @@ assert.ok(migrations.includes("'1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0
 assert.ok(migrations.includes('defaultPublicDemoReleaseLock'), 'migrations must add default public demo release lock');
 
 for (const corpus of [readme, releaseNotes, releaseManifest, changelog, publicDemoGuide, browserEvidence, hostedDemo, roadmap, qaMatrix, architecture, aiIntegration, privacyAudit, releaseDoc]) {
-  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.3.0'), 'release corpus must mention v1.1.0');
-  assert.ok(corpus.includes(TITLE) || corpus.includes('release-lock') || corpus.includes('release lock'), 'release corpus must mention release lock');
+  assert.ok(corpus.includes(CURRENT_VERSION) || corpus.includes('v1.1.0') || corpus.includes('1.3.0'), 'release corpus must mention current alpha.1, retained history, or stable baseline');
+  assert.ok(corpus.includes(CURRENT_TITLE) || corpus.includes(TITLE) || corpus.includes('release-lock') || corpus.includes('release lock'), 'release corpus must mention alpha.1, stable baseline, or release lock');
 }
 for (const corpus of [readme, releaseNotes, releaseManifest, publicDemoGuide, browserEvidence, hostedDemo, qaMatrix, releaseDoc]) {
   assert.ok(/screenshots alone/i.test(corpus), 'release docs must state screenshots alone are insufficient');

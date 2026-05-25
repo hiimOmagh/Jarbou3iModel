@@ -1,13 +1,15 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
-assert.equal(pkg.version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(audit.includes(`# Source-File Refactor Readiness Audit`));
 assert.ok(audit.includes(`v${VERSION} — ${TITLE}`));
 assert.ok(audit.includes('audit-only, no source-file refactor yet'));

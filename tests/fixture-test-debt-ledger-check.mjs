@@ -2,13 +2,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { migrationRegistry, privacyRegistry } from './fixture-registry-loader.mjs';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const ledger = fs.readFileSync('docs/technical-debt-ledger.md', 'utf8');
 
-assert.equal(pkg.version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(pkg.description.includes('fixture/test debt ledger'));
 assert.ok(pkg.description.includes('professional trilingual language-description review'));
 assert.ok(ledger.includes(`# Fixture/Test Debt Ledger`));

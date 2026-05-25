@@ -1,60 +1,46 @@
 # Jarbou3i Research Engine
 
-`v1.3.0 — Stable Manual Workflow Release`
+`v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
 
-Jarbou3i Research Engine is a dark editorial intelligence workspace for converting messy AI output into structured strategic briefs.
+Planning/preflight milestone after the locked `v1.3.0 — Stable Manual Workflow Release`. This release prepares controlled provider/source execution by adding threat-model and preflight planning gates only. It preserves the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` manual publication-pack baseline.
 
-This stable release promotes the locked `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` manual workflow to a stable handoff, while preserving the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` manual workflow baseline. It is not a provider/OAuth/backend expansion.
+## Scope
 
-Frozen surface:
+- Provider execution threat model.
+- Provider execution preflight gate.
+- ADR-001 provider execution model.
+- ADR-002 source acquisition controls.
+- ADR-003 credential boundary.
 
-- Source-to-Claim Gap Closure Queue
-- Signed Export Handoff Pack
-- Lock Ledger Review Surface
-- Operator Signoff State
-- Export Lock Ledger
-- Brief Assembly Preview Diff
-- Export Review Signoff dossier
-- Brief Publication Pack v4
-- final brief and evidence/contradiction/falsifier/source-gap/signoff appendices
+## Hard boundaries
 
-Boundary:
+No live scraping. No live source fetching. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
 
-- no live scraping
-- no production OAuth
-- no backend behavior expansion
-- no provider execution expansion
-- no storage expansion
-- no automatic source verification claims
-- no automatic signoff
-- no automatic export lock
-- no publishing permission claim
-- no cryptographic signature claim
+## Baselines
 
-Public release label: v1.3.0 Stable Manual Workflow Release.
+- Current package version: `1.4.0-alpha.1`.
+- Current release: `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`.
+- Last locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
+- Last locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`.
+- Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`.
 
-Last locked RC baseline: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization.
-
-Run local gates:
+## Validation
 
 ```bash
+node tests/provider-execution-threat-model-check.mjs
+node tests/provider-execution-preflight-check.mjs
 npm run test:current:no-browser
 npm run test:source
 npm run test:release
 npm run test:qa
-```
-
-Run CI gates:
-
-```bash
-npm install
-npx playwright install --with-deps
 npm run test:ci:no-browser
 npm run test:ci:browser
 ```
 
-Release approval rule: screenshots alone are insufficient, and a ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, and the canonical lock-evidence bundle.
+Screenshots alone are insufficient. A ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
 
-Continuity preserved: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only handoff discipline.
+Public version label: v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation.
 
-Stable baseline retained: v1.1.0 — Diagnostic Repair Queue + Export Risk Resolution remains the protected public-demo reference for post-stable expansion gating.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.1.
+
+Public Demo boundary: v1.4.0-alpha.1 keeps the locked public demo/manual workflow behavior unchanged while preparing controlled execution gates.

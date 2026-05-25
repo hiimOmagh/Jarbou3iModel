@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/release-candidate-hygiene.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
@@ -19,7 +21,7 @@ vm.createContext(context);
 vm.runInContext(source, context, {filename:'src/research/release-candidate-hygiene.js'});
 const hygiene = context.window.Jarbou3iResearchModules.releaseCandidateHygiene;
 
-assert.equal(pkg.version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(hygiene.VERSION, VERSION);
 assert.equal(hygiene.MODEL, 'release_candidate_hygiene.v1');
 assert.equal(typeof hygiene.buildFinalRepoHygieneReport, 'function');

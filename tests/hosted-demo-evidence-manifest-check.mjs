@@ -6,6 +6,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -27,9 +29,9 @@ const workflow = read('.github/workflows/ci.yml');
 const hostedModule = read('src/research/hosted-demo-verification.js');
 const migrations = read('src/research/migrations.js');
 
-assert.equal(pkg.version, VERSION);
-assert.equal(lock.version, VERSION);
-assert.equal(lock.packages[''].version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
+assert.equal(lock.version, CURRENT_VERSION);
+assert.equal(lock.packages[''].version, CURRENT_VERSION);
 assert.equal(schema.properties.workflow_version.const, VERSION);
 assert.equal(sample.workflow_version, VERSION);
 assert.equal(migrationFixture.workflow_version, VERSION);

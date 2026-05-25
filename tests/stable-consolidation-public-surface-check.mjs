@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
+const CURRENT_PUBLIC = 'v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation';
 const STABLE_PUBLIC = 'v1.3.0 Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -12,16 +15,19 @@ const current = fs.readFileSync('docs/current-release.md','utf8');
 const readme = fs.readFileSync('README.md','utf8');
 const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 
-assert.equal(pkg.version, VERSION);
-assert.equal(registry.ci_gate_registry_version, VERSION);
-assert.equal(registry.release_title, RELEASE);
-assert.ok(index.includes('content="1.3.0"'), 'hosted metadata must report the stable internal version');
-assert.ok(index.includes(STABLE_PUBLIC), 'public surface should expose post-stable capability roadmap language');
-assert.ok(helpers.includes(STABLE_PUBLIC), 'localized copy must expose post-stable capability roadmap language');
-assert.ok(current.includes(STABLE_PUBLIC));
-assert.ok(readme.includes(STABLE_PUBLIC));
-assert.ok(publicDemo.includes(STABLE_PUBLIC));
-assert.ok(current.includes('Internal stable validation metadata') || current.includes('Public and internal release versions are aligned'));
+assert.equal(pkg.version, CURRENT_VERSION);
+assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
+assert.equal(registry.release_title, 'v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation');
+assert.ok(index.includes('content="1.4.0-alpha.1"'), 'hosted metadata must report the alpha.1 internal version');
+assert.ok(index.includes(CURRENT_PUBLIC), 'public surface should expose alpha.1 planning identity');
+assert.ok(helpers.includes(CURRENT_PUBLIC), 'localized copy must expose alpha.1 planning identity');
+assert.ok(current.includes(CURRENT_PUBLIC));
+assert.ok(readme.includes(CURRENT_PUBLIC));
+assert.ok(publicDemo.includes(CURRENT_PUBLIC));
+assert.ok(current.includes(RELEASE));
+assert.ok(readme.includes(RELEASE));
+assert.ok(publicDemo.includes(RELEASE));
+assert.ok(current.includes('Lock is pending green no-browser CI') || current.includes('Public and internal release versions are aligned'));
 assert.ok(current.includes('Screenshots alone are insufficient'));
 assert.ok(current.includes('A ZIP archive alone is insufficient'));
 assert.ok(current.includes('no new feature surface') || current.includes('Feature surface is frozen'));
@@ -30,5 +36,5 @@ assert.ok(!helpers.includes('v1.1.0-alpha.25'), 'localized copy must not contain
 assert.ok(!index.includes('v1.1.0-rc.0 · Public Demo Release Candidate'), 'public index must not expose old rc.0 release badge');
 assert.ok(registry.gates['no-browser'].node_checks.includes('tests/stable-consolidation-public-surface-check.mjs'));
 assert.ok(registry.syntax_matrix.files.includes('tests/stable-consolidation-public-surface-check.mjs'));
-console.log('Canonical lock evidence bundle and final stable handoff checks passed.');
+console.log('Stable baseline and alpha.1 public-surface checks passed.');
 process.exit(0);

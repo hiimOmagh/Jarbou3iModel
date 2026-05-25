@@ -6,7 +6,7 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.3.0';
+const CURRENT_VERSION = '1.4.0-alpha.1'; const VERSION = '1.3.0';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -33,7 +33,8 @@ const browserA11y = read('tests/a11y.spec.js');
 const smoke = read('tests/smoke.spec.js');
 const releaseDoc = readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md');
 
-for (const [actual, label] of [[pkg.version,'package.json'],[lock.version,'package-lock root'],[lock.packages[''].version,'package-lock package root'],[schema.properties.workflow_version.const,'schema workflow_version'],[sample.workflow_version,'sample workflow'],[migrationFixture.workflow_version,'migration fixture'],[privacyFixture.workflow_version,'privacy fixture']]) assert.equal(actual, VERSION, `${label} must identify v${VERSION}`);
+for (const [actual, label] of [[pkg.version,'package.json'],[lock.version,'package-lock root'],[lock.packages[''].version,'package-lock package root']]) assert.equal(actual, CURRENT_VERSION, `${label} must identify v${CURRENT_VERSION}`);
+for (const [actual, label] of [[schema.properties.workflow_version.const,'schema workflow_version'],[sample.workflow_version,'sample workflow'],[migrationFixture.workflow_version,'migration fixture'],[privacyFixture.workflow_version,'privacy fixture']]) assert.equal(actual, VERSION, `${label} must preserve v${VERSION} stable baseline`);
 
 for (const packet of [sample, migrationFixture, privacyFixture]) {
   assert.equal(packet.release_notes.release_title, RELEASE);

@@ -4,8 +4,9 @@
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.3.0';
-  const ALPHA_MILESTONE = '1.4.0-alpha.1';
+  const VERSION = '1.4.0-alpha.1';
+  const STABLE_BASELINE = '1.3.0';
+  const MILESTONE = 'v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation';
   const MODEL = 'provider_execution_threat_model.v1';
 
   const THREAT_CATEGORIES = Object.freeze([
@@ -148,7 +149,7 @@
     const now = (options.now) ? new Date(options.now) : new Date();
     return Object.freeze({
       threat_model_version: VERSION,
-      alpha_milestone: ALPHA_MILESTONE,
+      alpha_milestone: MILESTONE,
       model: MODEL,
       generated_at: now.toISOString(),
       live_execution_enabled: false,
@@ -181,7 +182,8 @@
 
   root.providerExecutionThreatModel = Object.freeze({
     VERSION,
-    ALPHA_MILESTONE,
+    STABLE_BASELINE,
+    MILESTONE,
     MODEL,
     buildThreatModel,
     getThreat,

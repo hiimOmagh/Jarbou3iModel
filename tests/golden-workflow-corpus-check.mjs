@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/golden-workflow-corpus.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
@@ -20,7 +22,7 @@ vm.createContext(context);
 vm.runInContext(source, context, {filename:'src/research/golden-workflow-corpus.js'});
 const golden = context.window.Jarbou3iResearchModules.goldenWorkflowCorpus;
 
-assert.equal(pkg.version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(golden.VERSION, VERSION);
 assert.equal(golden.MODEL, 'golden_workflow_corpus.v1');
 const corpus = golden.buildGoldenWorkflowCorpus({version:VERSION});

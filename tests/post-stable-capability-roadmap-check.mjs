@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const read = (file) => fs.readFileSync(file, 'utf8');
@@ -19,12 +21,12 @@ const changelog = read('CHANGELOG.md');
 const registry = json('tests/ci-gate-registry.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
 
-assert.equal(pkg.version, VERSION);
-assert.equal(lock.version, VERSION);
-assert.equal(lock.packages[''].version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
+assert.equal(lock.version, CURRENT_VERSION);
+assert.equal(lock.packages[''].version, CURRENT_VERSION);
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.equal(manifest.version, VERSION);
-assert.equal(manifest.release_title, RELEASE);
+assert.equal(manifest.version, CURRENT_VERSION);
+assert.equal(manifest.release_title, 'v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation');
 assert.equal(manifest.runtime_capability_change, false);
 assert.equal(manifest.provider_behavior_changed, false);
 assert.equal(manifest.oauth_behavior_changed, false);

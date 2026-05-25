@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.3.0';
-export const RELEASE_TITLE = 'v1.3.0 — Stable Manual Workflow Release';
+export const VERSION = '1.4.0-alpha.1';
+export const RELEASE_TITLE = 'v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {
@@ -41,6 +41,7 @@ export function changedFilesFromArgs(args = process.argv.slice(2)) {
 }
 
 export const IMPACT_RULES = [
+  { pattern: /^src\/research\/provider-execution-(threat-model|preflight)\.js$/, gates: ['provider-execution-threat-model-check', 'provider-execution-preflight-check', 'test:current:no-browser'], risk: 'provider/source execution preflight boundary' },
   { pattern: /^src\/research\/render-helpers\.js$/, gates: ['language-description-audit-check', 'provider-mode-browser', 'hosted-demo-browser-evidence', 'quality-export'], risk: 'visible multilingual rendering' },
   { pattern: /^src\/research-engine\.js$/, gates: ['research-module-check', 'language-description-audit-check', 'hosted-demo-browser-evidence'], risk: 'runtime orchestration and visible copy' },
   { pattern: /^src\/styles\.css$/, gates: ['browser-layout-persistence', 'browser-visual-regression', 'hosted-demo-browser-evidence'], risk: 'layout, RTL/LTR, visual regressions' },

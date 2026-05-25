@@ -8,10 +8,10 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.3.0';
+const CURRENT_VERSION = '1.4.0-alpha.1';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Stable Manual Workflow Release';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -29,9 +29,9 @@ const migrations = read('src/research/migrations.js');
 assert.equal(pkg.version, CURRENT_VERSION, 'package.json must identify current release');
 assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify current release');
 assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify current release');
-assert.equal(schema.properties.workflow_version.const, CURRENT_VERSION, 'schema workflow version must identify current release');
-assert.equal(sample.workflow_version, CURRENT_VERSION, 'sample fixture must identify current release');
-assert.equal(sample.release_notes.release_title, `v${CURRENT_VERSION} — ${CURRENT_TITLE}`, 'sample release title must identify current release');
+assert.equal(schema.properties.workflow_version.const, '1.3.0', 'schema workflow version must preserve stable manual workflow baseline');
+assert.equal(sample.workflow_version, '1.3.0', 'sample fixture must preserve stable manual workflow baseline');
+assert.equal(sample.release_notes.release_title, 'v1.3.0 — Stable Manual Workflow Release', 'sample release title must preserve stable manual workflow baseline');
 
 for (const required of [
   'GitHub Actions',
@@ -108,7 +108,7 @@ for (const required of [
   assert.ok(fixturePathExists(required) || releaseDocExists(required), `required CI/hygiene artifact missing: ${required}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0'"), 'migration target must be current release');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0'"), 'migration target must preserve stable manual workflow baseline');
 assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0'"), 'migration order must preserve v1.0.24 and append v1.1.0');
 const releaseCorpus = [manifest, roadmap, qaMatrix, releaseHistory(), historicalDoc].join('\n');
 assert.ok(releaseCorpus.includes(`v${HISTORICAL_VERSION}`), 'release corpus must preserve v1.0.23 audit history');

@@ -1,7 +1,9 @@
+Current release reference: v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release.
+
 # Source-File Refactor Readiness Audit
 
 Version: `1.3.0`
-Release: `v1.3.0 — Stable Manual Workflow Release`
+Release: `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

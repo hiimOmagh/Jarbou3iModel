@@ -10,6 +10,8 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const BASELINE = '1.1.0-alpha.1';
 const TITLE = 'Stable Manual Workflow Release';
@@ -25,9 +27,9 @@ const schema = json('schema/research-workflow.schema.json');
 const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-packet.json');
 const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0.json');
 
-assert.equal(pkg.version, VERSION);
-assert.equal(lock.version, VERSION);
-assert.equal(lock.packages[''].version, VERSION);
+assert.equal(pkg.version, CURRENT_VERSION);
+assert.equal(lock.version, CURRENT_VERSION);
+assert.equal(lock.packages[''].version, CURRENT_VERSION);
 assert.ok(pkg.description.includes('package script compression and CI gate registry'));
 assert.ok(index.includes(`v${VERSION} · ${TITLE}`), 'index badge must expose post-freeze planning identity');
 assert.ok(index.includes('data-r-i18n="hostedDemoVerificationBody"') && index.includes('بوابة تخطيط فقط'), 'localized index must state planning gate only');

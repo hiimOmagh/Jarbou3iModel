@@ -1,3 +1,5 @@
+Current release reference: v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release.
+
 # Release and Evidence Policy
 
 This document consolidates release and evidence policy previously scattered across root artifacts such as `BROWSER_EVIDENCE.md`, `HOSTED_DEMO_VERIFICATION.md`, `RELEASE_MANIFEST.md`, `RELEASE_NOTES.md`, `MANIFEST.md`, and `CHANGED_FILES_MANIFEST.json`.
@@ -6,7 +8,7 @@ This document consolidates release and evidence policy previously scattered acro
 
 - Package: `jarbou3i-research-engine`
 - Version: `1.3.0`
-- Release: `v1.3.0 — Stable Manual Workflow Release`
+- Release: `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
 - Release type: controlled local/manual source-to-brief alpha
 - Runtime capability change: no
 - Provider behavior change: no

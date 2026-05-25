@@ -2,8 +2,9 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0';
-const ALPHA_MILESTONE = '1.4.0-alpha.1';
+const VERSION = '1.4.0-alpha.1';
+const STABLE_BASELINE = '1.3.0';
+const MILESTONE = 'v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation';
 const source = fs.readFileSync('src/research/provider-execution-preflight.js', 'utf8');
 
 new vm.Script(source, { filename: 'src/research/provider-execution-preflight.js' });
@@ -15,13 +16,14 @@ vm.runInContext(source, ctx, { filename: 'src/research/provider-execution-prefli
 const mod = ctx.window.Jarbou3iResearchModules.providerExecutionPreflight;
 assert.ok(mod, 'providerExecutionPreflight must be registered');
 assert.equal(mod.VERSION, VERSION);
-assert.equal(mod.ALPHA_MILESTONE, ALPHA_MILESTONE);
+assert.equal(mod.STABLE_BASELINE, STABLE_BASELINE);
+assert.equal(mod.MILESTONE, MILESTONE);
 assert.equal(mod.MODEL, 'provider_execution_preflight.v1');
 
 // Planning mode: preflight must not pass (no live execution configured)
 const planningResult = mod.runPreflight({ planning_mode: true }, { now: '2026-05-25T00:00:00.000Z' });
 assert.equal(planningResult.preflight_version, VERSION);
-assert.equal(planningResult.alpha_milestone, ALPHA_MILESTONE);
+assert.equal(planningResult.alpha_milestone, MILESTONE);
 assert.equal(planningResult.planning_mode, true);
 assert.equal(planningResult.live_execution_enabled, false);
 assert.equal(planningResult.provider_behavior_changed, false);

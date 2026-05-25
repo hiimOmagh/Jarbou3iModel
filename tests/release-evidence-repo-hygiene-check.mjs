@@ -8,6 +8,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
+const CURRENT_VERSION = '1.4.0-alpha.1';
+const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -30,9 +32,9 @@ const doc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${re
 const migrations = read('src/research/migrations.js');
 const evidenceSpec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 
-assert.equal(pkg.version, VERSION, 'package.json must identify v1.1.0');
-assert.equal(lock.version, VERSION, 'package-lock root version must identify v1.1.0');
-assert.equal(lock.packages[''].version, VERSION, 'package-lock package root must identify v1.1.0');
+assert.equal(pkg.version, CURRENT_VERSION, 'package.json must identify v1.1.0');
+assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify v1.4.0-alpha.1');
+assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify v1.4.0-alpha.1');
 assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0');
 assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0');
 assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0');
@@ -42,8 +44,8 @@ assert.equal(migrationFixture.release_notes.release_title, RELEASE, 'migration f
 assert.equal(privacyFixture.release_notes.release_title, RELEASE, 'privacy fixture release title must identify v1.1.0');
 
 for (const text of [manifest, notes, changelog, roadmap, qaMatrix, doc]) {
-  assert.ok(text.includes('v1.1.0'), 'release corpus must mention v1.1.0');
-  assert.ok(text.includes(TITLE) || /release[- ]lock/i.test(text), 'release corpus must mention public demo release lock');
+  assert.ok(text.includes('v1.4.0-alpha.1') || text.includes('v1.3.0') || text.includes('v1.1.0'), 'release corpus must mention current alpha.1, stable baseline, or retained release evidence history');
+  assert.ok(text.includes(CURRENT_TITLE) || text.includes(TITLE) || /release[- ]lock/i.test(text), 'release corpus must mention current alpha.1, stable baseline, or public demo release lock');
 }
 
 for (const required of [

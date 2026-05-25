@@ -1,91 +1,66 @@
 # Current Release
 
-Public Demo continuity: retained. The v1.1.0 stable public-demo baseline remains the protected reference for post-stable expansion gating.
+## v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
 
-Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
+Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle upload.
 
-## v1.3.0 — Stable Manual Workflow Release
+Public release label: v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation.
 
-Public release label: v1.3.0 Stable Manual Workflow Release.
+Last locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
+Last locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`.
+Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`. Do not patch v1.3.0, rc.2, or alpha.10 further.
 
-Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for stable.
+## Scope
 
-Public and internal release versions are aligned.
+Planning/preflight only:
 
-Last locked release: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`. RC.2 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, release-note guard, Windows path-normalization fix, repository hygiene cleanup, and bundle integrity were accepted before this stable promotion.
+- Provider execution threat model.
+- Provider execution preflight gate.
+- ADR-001 provider execution model.
+- ADR-002 source acquisition controls.
+- ADR-003 credential boundary.
 
-Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4` remains the completed manual publication-pack baseline. Do not patch alpha.10 or rc.2 further.
+## Boundary flags
 
-Purpose: promote the completed manual source-to-brief/publication workflow to stable without adding product capability. This is a release identity and final handoff milestone, not a new feature layer. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion. No new feature surface is introduced.
+```text
+live_fetching_performed: false
+live_source_fetching_performed: false
+provider_execution_performed: false
+provider_behavior_changed: false
+oauth_behavior_changed: false
+backend_behavior_changed: false
+source_behavior_changed: false
+storage_behavior_changed: false
+automatic_source_verification_claimed: false
+automatic_signoff_performed: false
+automatic_export_lock_performed: false
+cryptographic_signature_claimed: false
+publication_permission_claimed: false
+```
 
-## Frozen manual workflow surface
+No live scraping. No live source fetching. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
 
-- Source-to-Claim Gap Closure Queue
-- Signed Export Handoff Pack
-- Lock Ledger Review Surface
-- Operator Signoff State
-- Export Lock Ledger
-- Brief Assembly Preview Diff
-- Export Review Signoff dossier
-- Brief Publication Pack v4
-- publication-ready brief Markdown
-- evidence appendix
-- contradiction/falsifier appendix
-- source-gap appendix
-- operator signoff / lock-ledger appendix
-- publication-readiness summary
+Screenshots alone are insufficient. A ZIP archive alone is insufficient.
 
-## Evidence boundary flags
+## Validation
 
-- live_fetching_performed: false
-- live_web_search_performed: false
-- provider_execution_performed: false
-- provider_execution_expanded: false
-- production_oauth_enabled: false
-- backend_behavior_expanded: false
-- storage_behavior_expanded: false
-- automatic_source_verification_claimed: false
-- verification_claimed: false
-- automatic_signoff_performed: false
-- automatic_export_lock_performed: false
-- cryptographic_signature_claimed: false
-- publication_permission_claimed: false
+- Version: `1.4.0-alpha.1`
+- Required targeted checks: `tests/provider-execution-threat-model-check.mjs`, `tests/provider-execution-preflight-check.mjs`.
+- Required CI: `npm run test:ci:no-browser`, `npm run test:ci:browser`.
 
-## Release manifest
+Feature surface is frozen except planning/preflight artifacts; no live execution is enabled.
 
-- Package: `jarbou3i-research-engine`
-- Version: `1.3.0`
-- Runtime capability change: no
-- Public surface: Stable manual workflow release
-- Required browser gates before publishing
-- Release archive exclusions
-- Required cleanup commands
+## Release Manifest Compatibility
 
-## CI controls retained
+Package: `jarbou3i-research-engine`
+Version: `1.4.0-alpha.1`
+Runtime capability change: no
+Required browser gates before publishing: `npm run test:ci:browser`
+Release archive exclusions: `node_modules/`, `playwright-report/`, `test-results/`, `*.zip`, `backend/.dev.vars`
+Required cleanup commands: remove generated Playwright/test output before packaging.
 
-- workflow-level concurrency
-- cancel-in-progress
-- manual workflow_dispatch
-- no-browser before browser
-- bounded job timeouts
-- canonical lock-evidence bundle
-
-## Release lock requirements
-
-Screenshots alone are insufficient for release approval. A ZIP archive alone is insufficient for release approval. Lock requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, and canonical lock-evidence bundle.
-
-Lock only after:
-
-- no-browser CI passes
-- browser CI passes
-- hosted evidence matrix passes 39/39
-- visible text is clean in EN / AR / FR
-- mojibake detected is false
-- horizontal overflow is 0
-- forbidden-capability flags remain false
-
-Boundary wording: no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no automatic source verification claims, no automatic signoff, no automatic export lock, no publishing permission claim, and no cryptographic signature claim.
-
-Node 24 CI compatibility is preserved.
-
-Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+Machine tokens: runtime_capability_change=false; release_type=controlled-provider-source-execution-preparation; release_scope=planning-preflight-only; test:ci:browser required.
+Node 24 CI compatibility preserved.
+Release lock requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
+Planning gate continuity: apply integrity, changed-files-only patching, Package Script Compression, Version Suite Registry, Fixture Registry, and test organization checks remain active.
+Public Demo boundary: v1.4.0-alpha.1 keeps the locked public demo/manual workflow behavior unchanged while preparing controlled execution gates.

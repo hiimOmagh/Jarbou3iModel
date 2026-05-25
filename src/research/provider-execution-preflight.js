@@ -4,8 +4,9 @@
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.3.0';
-  const ALPHA_MILESTONE = '1.4.0-alpha.1';
+  const VERSION = '1.4.0-alpha.1';
+  const STABLE_BASELINE = '1.3.0';
+  const MILESTONE = 'v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation';
   const MODEL = 'provider_execution_preflight.v1';
 
   const PREFLIGHT_CHECKS = Object.freeze([
@@ -91,7 +92,7 @@
 
     return Object.freeze({
       preflight_version: VERSION,
-      alpha_milestone: ALPHA_MILESTONE,
+      alpha_milestone: MILESTONE,
       model: MODEL,
       evaluated_at: now.toISOString(),
       planning_mode: isPlanningMode,
@@ -122,7 +123,8 @@
 
   root.providerExecutionPreflight = Object.freeze({
     VERSION,
-    ALPHA_MILESTONE,
+    STABLE_BASELINE,
+    MILESTONE,
     MODEL,
     runPreflight,
     getCheckDefinitions,
