@@ -66,6 +66,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-alpha.18-research-planner-v2.md` | v1.1.0-alpha.18 — Controlled Connector Architecture MVP |
 | `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0 — Public Demo Stable |
 | `v1.3.0-alpha.8-evidence-pack-export-v3-brief-traceability.md` | v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface |
+| `v1.3.0-alpha.9-evidence-pack-export-v3-brief-traceability.md` | v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3409,6 +3410,8 @@ Provenance continuity: Package Script Compression, CI Gate Registry, Root Manife
 
 Post-stable continuity note: v1.2.0-alpha.1 Post-Stable Capability Roadmap + Expansion Gate is the first planning-only expansion gate built on this locked v1.1.0 baseline.
 
+Current post-stable continuity note: v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue preserves the v1.1.0 stable public-demo baseline while adding only local/manual before-export gap diagnostics.
+
 
 # v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface
 
@@ -3467,7 +3470,7 @@ This corrective build fixes public EN/AR/FR stable labels and public demo releas
 
 Controlled local/manual source-to-brief workbench. It connects research plans, evidence cards, generated claims, contradiction groups, source gap warnings, inferred confidence review metadata, and structured strategic brief export while preserving the v1.1.0 public-demo baseline. It introduces no live scraping, no provider/OAuth/backend/source/storage expansion, and no automatic source verification claim.
 
-Evidence continuity: changed-files-only release apply integrity, provenance ledger, fixture registry consolidation, package script compression and CI gate registry, hosted evidence capture polish, browser evidence baselines, and privacy/export gates remain required.
+Evidence continuity: changed-files-only release apply integrity, provenance ledger, fixture registry consolidation, package script compression and CI gate registry, hosted evidence capture polish, browser evidence baselines, and privacy/export gates remain required. Hosted evidence continuity preserves waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 
 
 Readiness artifacts:
@@ -3477,3 +3480,21 @@ Readiness artifacts:
 
 No source-file refactor yet. No runtime behavior change.
 <!-- /release-file:v1.3.0-alpha.8-evidence-pack-export-v3-brief-traceability.md -->
+
+
+<!-- release-file:v1.3.0-alpha.9-evidence-pack-export-v3-brief-traceability.md -->
+# v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue
+
+Controlled local/manual source-to-brief workbench. It adds a Source-to-Claim Gap Closure Queue that exposes claims missing evidence, weak evidence linkage, evidence without claim links, unresolved contradiction gaps, counter-evidence target gaps, scenario falsifier gaps, and export-blocking before-export closure items.
+
+Boundary: no live scraping, no live web search execution, no provider execution expansion, no production OAuth, no backend/storage expansion, no automatic signoff, no automatic export lock, no cryptographic signature claim, and no automatic source verification claims.
+
+Evidence continuity: changed-files-only release apply integrity, provenance ledger, fixture registry consolidation, package script compression and CI gate registry, hosted evidence capture polish, browser evidence baselines, and privacy/export gates remain required. Hosted evidence continuity preserves waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
+
+Readiness artifacts:
+- docs/technical-debt-ledger.md
+- docs/source-refactor-readiness-audit.md
+- tests/language-description-audit-check.mjs
+
+No source-file refactor yet. No runtime behavior change.
+<!-- /release-file:v1.3.0-alpha.9-evidence-pack-export-v3-brief-traceability.md -->

@@ -1499,3 +1499,37 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
 @media(max-width:640px){
   .lockLedgerReviewCard header { display: grid; }
 }
+
+/* v1.3.0-alpha.9 source-to-claim gap closure queue */
+.sourceToClaimGapClosurePanel {
+  border-color: color-mix(in srgb, var(--warning) 34%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-solid) 91%, transparent), color-mix(in srgb, var(--surface-soft) 95%, transparent));
+}
+.sourceToClaimGapClosureList {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+}
+.sourceToClaimGapItem {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.62rem 0.68rem;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 15px;
+  background: rgba(255,255,255,0.035);
+}
+.sourceToClaimGapItem header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.55rem;
+  align-items: flex-start;
+}
+.sourceToClaimGapItem p { margin: 0; color: var(--text); font-size: 0.83rem; line-height: 1.35; }
+.sourceToClaimGapItem small { color: var(--muted); font-size: 0.72rem; }
+.sourceToClaimGapItem.severity-blocker,
+.sourceToClaimGapItem.severity-high { border-color: color-mix(in srgb, var(--danger) 38%, var(--line)); }
+.sourceToClaimGapItem.severity-warning,
+.sourceToClaimGapItem.severity-medium { border-color: color-mix(in srgb, var(--warning) 38%, var(--line)); }
+@media(max-width:640px){
+  .sourceToClaimGapItem header { display: grid; }
+}

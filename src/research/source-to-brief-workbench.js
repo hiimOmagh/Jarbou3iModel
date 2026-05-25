@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.8. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.9. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.8';
+  const VERSION = '1.3.0-alpha.9';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -379,6 +379,8 @@
       'source-to-brief/review-quality-diagnostics.json',
       'source-to-brief/weak-claim-repair-suggestions.json',
       'source-to-brief/weak-claim-repair-suggestions.md',
+      'source-to-brief/source-to-claim-gap-closure-queue.json',
+      'source-to-brief/source-to-claim-gap-closure-queue.md',
       'source-to-brief/diagnostic-repair-queue.json',
       'source-to-brief/diagnostic-repair-queue.md',
       'source-to-brief/export-risk-resolution.json',
@@ -819,6 +821,175 @@
     };
   }
 
+
+  function scenarioItems(packet = {}){
+    return asArray(packet.scenarios?.items || packet.scenarios)
+      .concat(asArray(packet.analysis?.scenarios?.items || packet.analysis_brief?.scenarios?.items || packet.analysis_brief?.scenarios));
+  }
+  function falsifiersForScenario(item = {}){
+    return unique([].concat(asArray(item.disproven_if), asArray(item.disprovenIf), asArray(item.falsifiers), asArray(item.disconfirming_conditions)));
+  }
+  function counterEvidenceTargets(packet = {}){
+    return asArray(packet.research_plan?.counter_evidence_targets || packet.counter_evidence_targets).map((item, index)=>{
+      if(typeof item === 'string') return {target_id:item, label:item, source:'research_plan_counter_evidence_target'};
+      return {
+        target_id:text(item.target_id || item.claim_id || item.id || `CET${index + 1}`),
+        label:text(item.label || item.claim || item.question || item.target_id || item.claim_id || `Counter-evidence target ${index + 1}`),
+        source:'research_plan_counter_evidence_target'
+      };
+    }).filter((item)=>text(item.target_id));
+  }
+  function gapClosureItem(queueId, category, targetId, label, severity, action, details = {}){
+    const required = severity === 'blocker' || details.required_before_export === true;
+    return Object.assign({
+      queue_id:queueId,
+      category,
+      target_id:text(targetId || queueId),
+      label:text(label || targetId || queueId),
+      severity:severity || 'warning',
+      priority:required ? 'first' : (severity === 'warning' ? 'next' : 'later'),
+      required_before_export:required,
+      closure_state:'open_manual_closure',
+      recommended_action:text(action || 'Review and close the source-to-claim gap before export.'),
+      clearance_condition:text(details.clearance_condition || 'Gap is closed only when local evidence links, contradiction status, or falsifier data are repaired or explicitly accepted by the operator.'),
+      evidence_boundary:'user_provided_or_source_imported_evidence',
+      manual_review_required:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    }, details);
+  }
+  function buildSourceToClaimGapClosureQueue(workbench = {}, packet = {}){
+    const claims = asArray(workbench.claim_map);
+    const evidence = asArray(workbench.evidence_cards);
+    const contradictions = asArray(workbench.contradiction_groups);
+    const sourceGaps = asArray(workbench.source_gaps?.warnings);
+    const items = [];
+    claims.forEach((claim)=>{
+      if(claim.support_level === 'unsupported'){
+        items.push(gapClosureItem(`SCG-${items.length + 1}`, 'claim_missing_evidence', claim.claim_id, claim.claim_text, 'blocker', 'Add traceable supporting evidence, narrow the claim, or remove/demote it before export.', {
+          claim_id:claim.claim_id,
+          support_level:claim.support_level,
+          support_score:Number(claim.support_score || 0),
+          supporting_evidence_ids:asArray(claim.supporting_evidence_ids),
+          contradicting_evidence_ids:asArray(claim.contradicting_evidence_ids),
+          source_gap_warnings:asArray(claim.source_gap_warnings),
+          clearance_condition:'At least one traceable supporting evidence item is linked, or the claim is removed/demoted with operator decision recorded.'
+        }));
+      } else if(claim.support_level === 'weak'){
+        items.push(gapClosureItem(`SCG-${items.length + 1}`, 'weak_claim_linkage', claim.claim_id, claim.claim_text, 'blocker', 'Strengthen the claim with independent traceable evidence or mark it as non-publication material.', {
+          claim_id:claim.claim_id,
+          support_level:claim.support_level,
+          support_score:Number(claim.support_score || 0),
+          supporting_evidence_ids:asArray(claim.supporting_evidence_ids),
+          contradicting_evidence_ids:asArray(claim.contradicting_evidence_ids),
+          source_gap_warnings:asArray(claim.source_gap_warnings),
+          clearance_condition:'Claim support becomes partial/strong, or the operator records a decision to exclude or explicitly caveat it.'
+        }));
+      }
+      const metadataWarnings = asArray(claim.source_gap_warnings).filter((warning)=>!['claim_without_supporting_evidence','weak_claim_support'].includes(warning));
+      if(metadataWarnings.length){
+        items.push(gapClosureItem(`SCG-${items.length + 1}`, 'claim_source_metadata_gap', claim.claim_id, claim.claim_text, 'warning', 'Repair source metadata and evidence-to-claim links for this claim before publication review.', {
+          claim_id:claim.claim_id,
+          support_level:claim.support_level,
+          source_gap_warnings:metadataWarnings,
+          required_before_export:false,
+          clearance_condition:'Source metadata warnings are repaired or explicitly accepted as manual publication caveats.'
+        }));
+      }
+    });
+    evidence.forEach((item)=>{
+      const links = unique([].concat(asArray(item.supports), asArray(item.contradicts)));
+      if(!links.length){
+        items.push(gapClosureItem(`SCG-${items.length + 1}`, 'evidence_without_claim_link', item.evidence_id, item.claim || item.source_title, 'blocker', 'Link the evidence to a supported or contradicting claim, or exclude it from the export package.', {
+          evidence_id:item.evidence_id,
+          source_type:item.source_type,
+          source_title:item.source_title,
+          clearance_condition:'Evidence is linked to at least one claim, or excluded from the export with operator decision recorded.'
+        }));
+      }
+      if(item.traceability_complete !== true){
+        items.push(gapClosureItem(`SCG-${items.length + 1}`, 'evidence_traceability_gap', item.evidence_id, item.claim || item.source_title, links.length ? 'warning' : 'blocker', 'Add source URL/date/type metadata or keep the evidence out of publication-critical claims.', {
+          evidence_id:item.evidence_id,
+          source_type:item.source_type,
+          source_gap_warnings:asArray(item.source_gap_warnings),
+          required_before_export:!links.length,
+          clearance_condition:'Evidence includes traceable source metadata, or it is kept out of publication-critical claims with manual caveat.'
+        }));
+      }
+    });
+    contradictions.forEach((group)=>{
+      items.push(gapClosureItem(`SCG-${items.length + 1}`, 'unresolved_contradiction_gap', group.group_id, group.target_claim_text || group.target_claim_id, 'blocker', 'Resolve, narrow, or explicitly disclose the contradiction before export.', {
+        contradiction_group_id:group.group_id,
+        claim_id:group.target_claim_id,
+        supporting_evidence_ids:asArray(group.supporting_evidence_ids),
+        contradicting_evidence_ids:asArray(group.contradicting_evidence_ids),
+        severity:group.severity || 'medium',
+        clearance_condition:'Contradiction is resolved, claim scope is narrowed, or unresolved contradiction is explicitly carried in the export appendix.'
+      }));
+    });
+    counterEvidenceTargets(packet).forEach((target)=>{
+      const hasCounter = evidence.some((item)=>asArray(item.contradicts).includes(target.target_id));
+      if(!hasCounter){
+        items.push(gapClosureItem(`SCG-${items.length + 1}`, 'counter_evidence_target_gap', target.target_id, target.label, 'blocker', 'Add counter-evidence for the research-plan target or record why the target cannot be tested yet.', {
+          claim_id:target.target_id,
+          target_source:target.source,
+          clearance_condition:'At least one contradicting evidence item is linked to the target, or the operator records a bounded no-counter-evidence finding.'
+        }));
+      }
+    });
+    scenarioItems(packet).forEach((scenario, index)=>{
+      const scenarioId = text(scenario.id || scenario.scenario_id || `S${index + 1}`);
+      if(!falsifiersForScenario(scenario).length){
+        items.push(gapClosureItem(`SCG-${items.length + 1}`, 'scenario_falsifier_gap', scenarioId, scenario.name || scenario.title || scenarioId, 'blocker', 'Add explicit disproven_if / falsifier conditions before publication export.', {
+          scenario_id:scenarioId,
+          clearance_condition:'Scenario includes at least one explicit falsifier/disproven_if condition, or scenario is removed from publication export.'
+        }));
+      }
+    });
+    sourceGaps.filter((gap)=>gap.scope === 'workflow').slice(0, 8).forEach((gap)=>{
+      items.push(gapClosureItem(`SCG-${items.length + 1}`, 'workflow_source_gap', gap.warning, gap.warning, 'warning', 'Review workflow-level source gap and decide whether to repair or disclose it.', {
+        workflow_gap:gap.warning,
+        required_before_export:false,
+        clearance_condition:'Workflow gap is repaired or carried forward as an explicit manual caveat.'
+      }));
+    });
+    const counts = {
+      total_open:items.length,
+      claim_gap_count:items.filter((item)=>['claim_missing_evidence','claim_source_metadata_gap'].includes(item.category)).length,
+      weak_linkage_count:items.filter((item)=>['weak_claim_linkage','evidence_without_claim_link','evidence_traceability_gap'].includes(item.category)).length,
+      contradiction_gap_count:items.filter((item)=>item.category === 'unresolved_contradiction_gap').length,
+      falsifier_gap_count:items.filter((item)=>['counter_evidence_target_gap','scenario_falsifier_gap'].includes(item.category)).length,
+      export_blocking_gap_count:items.filter((item)=>item.required_before_export).length
+    };
+    return {
+      source_to_claim_gap_closure_queue_version:VERSION,
+      queue_model:'source_to_claim_gap_closure_queue.v1',
+      generated_at:nowIso(),
+      items,
+      item_count:items.length,
+      open_count:items.length,
+      counts,
+      closure_categories:unique(items.map((item)=>item.category)),
+      required_before_export_count:counts.export_blocking_gap_count,
+      release_gate:counts.export_blocking_gap_count ? 'source_to_claim_gap_closure_required_before_export' : (items.length ? 'source_to_claim_gap_closure_open' : 'source_to_claim_gap_closure_clear'),
+      operator_next_action:counts.export_blocking_gap_count ? 'close_source_to_claim_gaps_before_export_lock' : (items.length ? 'review_source_to_claim_gap_caveats' : 'continue_to_signed_export_handoff'),
+      queue_bypass_enabled:false,
+      export_lock_blocking:counts.export_blocking_gap_count > 0,
+      manual_only:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      backend_behavior_expanded:false,
+      production_oauth_enabled:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false,
+      manual_local_boundary:'Source-to-claim gap closure is a local/manual queue. It exposes unresolved evidence, contradiction, and falsifier gaps before export but does not fetch, verify, or resolve sources automatically.'
+    };
+  }
+
   function buildLockLedgerReviewSurface(workbench = {}, packet = {}, options = {}){
     const version = options.version || VERSION;
     const generatedAt = options.now || nowIso();
@@ -902,6 +1073,8 @@
       'source-to-brief/signed-export-handoff-pack.md',
       'source-to-brief/lock-ledger-review-surface.json',
       'source-to-brief/lock-ledger-review-surface.md',
+      'source-to-brief/source-to-claim-gap-closure-queue.json',
+      'source-to-brief/source-to-claim-gap-closure-queue.md',
       'source-to-brief/export-lock-ledger.json',
       'source-to-brief/operator-signoff-state.json',
       'source-to-brief/export-review-signoff.json',
@@ -934,6 +1107,8 @@
         claim_count:Number(asArray(workbench.claim_map).length),
         contradiction_group_count:Number(asArray(workbench.contradiction_groups).length),
         source_gap_warning_count:Number(workbench.source_gaps?.warning_count || 0),
+        source_to_claim_gap_open_count:Number(workbench.source_to_claim_gap_closure_queue?.open_count || 0),
+        source_to_claim_gap_blocking_count:Number(workbench.source_to_claim_gap_closure_queue?.required_before_export_count || 0),
         review_decision_open_count:Number(workbench.review_decision_ledger?.unresolved_decision_count || 0),
         export_risk_blocker_count:Number(workbench.export_risk_resolution?.blocker_count || 0),
         export_risk_warning_count:Number(workbench.export_risk_resolution?.warning_count || 0)
@@ -994,7 +1169,9 @@
       `- Claims: ${Number(summary.claim_count || 0)}`,
       `- Contradiction groups: ${Number(summary.contradiction_group_count || 0)}`,
       `- Source-gap warnings: ${Number(summary.source_gap_warning_count || 0)}`,
-      `- Open review decisions: ${Number(summary.review_decision_open_count || 0)}`,
+      `- Source-to-claim gaps open: ${Number(summary.source_to_claim_gap_open_count || 0)}`,
+      `- Source-to-claim export blockers: ${Number(summary.source_to_claim_gap_blocking_count || 0)}`,
+      `- Open review decisions: ${Number(summary.review_decision_open_count || 0)}`, 
       `- Export-risk blockers: ${Number(summary.export_risk_blocker_count || 0)}`,
       `- Export-risk warnings: ${Number(summary.export_risk_warning_count || 0)}`,
       '',
@@ -1014,6 +1191,7 @@
     const queue = workbench.diagnostic_repair_queue || {};
     const readiness = workbench.export_readiness_checklist || {};
     const polish = workbench.export_polish_report || {};
+    const sourceClaimQueue = workbench.source_to_claim_gap_closure_queue || {};
     const risks = [];
     asArray(queue.items).filter((item)=>item.required_before_export || item.priority === 'first').forEach((item)=>{
       risks.push({
@@ -1024,6 +1202,19 @@
         target_id:item.target_id,
         risk_summary:`Required repair remains open: ${item.issue_type}`,
         clearance_condition:item.clearance_condition || 'Repair item is resolved or export remains blocked.',
+        resolution_state:'open_manual_resolution',
+        manual_review_required:true
+      });
+    });
+    asArray(sourceClaimQueue.items).filter((item)=>item.required_before_export || item.severity === 'blocker').forEach((item)=>{
+      risks.push({
+        risk_id:`ERR-${risks.length + 1}`,
+        risk_type:'source_to_claim_gap_open',
+        severity:'blocker',
+        linked_gap_id:item.queue_id,
+        target_id:item.target_id,
+        risk_summary:`Source-to-claim gap remains open: ${text(item.category)}`,
+        clearance_condition:item.clearance_condition || 'Source-to-claim gap is closed or export remains blocked.',
         resolution_state:'open_manual_resolution',
         manual_review_required:true
       });
@@ -1059,6 +1250,7 @@
     const checklist = [
       {check_id:'repair_queue_triaged', label:'Diagnostic repair queue triaged', passed:Number(queue.open_count || 0) === 0, severity:Number(queue.required_before_export_count || 0) ? 'blocker' : 'warning'},
       {check_id:'required_repairs_cleared', label:'Required repairs cleared before export', passed:Number(queue.required_before_export_count || 0) === 0, severity:'blocker'},
+      {check_id:'source_to_claim_gaps_closed', label:'Source-to-claim gaps closed before export', passed:Number(sourceClaimQueue.required_before_export_count || 0) === 0, severity:'blocker'},
       {check_id:'export_blockers_cleared', label:'Export blockers cleared', passed:!asArray(polish.blockers).length, severity:'blocker'},
       {check_id:'warnings_disclosed', label:'Warnings disclosed or accepted manually', passed:!warningCount, severity:'warning'},
       {check_id:'manual_local_disclaimer_present', label:'Manual/local disclaimer present', passed:true, severity:'blocker'},
@@ -1102,6 +1294,28 @@
       ''
     ].join('\n');
   }
+
+  function sourceToClaimGapClosureQueueMarkdown(workbench = {}){
+    const queue = workbench.source_to_claim_gap_closure_queue || {};
+    const items = asArray(queue.items).slice(0, 100).map((item)=>`- ${item.queue_id}: ${item.severity} · ${item.category} · ${item.target_id} — ${item.recommended_action}`).join('\n') || '- No source-to-claim gaps open.';
+    return [
+      '# Source-to-Claim Gap Closure Queue',
+      '',
+      `Queue gate: ${text(queue.release_gate || 'source_to_claim_gap_closure_clear')}`,
+      `Open gaps: ${Number(queue.open_count || 0)}`,
+      `Required before export: ${Number(queue.required_before_export_count || 0)}`,
+      `Export lock blocking: ${queue.export_lock_blocking === true}`,
+      '',
+      '## Gap Items',
+      items,
+      '',
+      '## Boundary',
+      text(queue.manual_local_boundary || 'Local/manual source-to-claim gap closure only. No automatic source verification is claimed.'),
+      ''
+    ].join('\n');
+  }
+
+
   function exportRiskResolutionMarkdown(workbench = {}){
     const risk = workbench.export_risk_resolution || {};
     const items = asArray(risk.risk_items).slice(0, 80).map((item)=>`- ${item.risk_id}: ${item.severity} · ${item.risk_type} · ${item.target_id} — ${item.clearance_condition}`).join('\n') || '- No export risk items open.';
@@ -1163,10 +1377,11 @@
     const reviewDecisionLedger = buildReviewDecisionLedger(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole}), packet);
     const reviewQualityDiagnostics = buildReviewQualityDiagnostics(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview}), packet);
     const diagnosticRepairQueue = buildDiagnosticRepairQueue(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
-    const exportRiskResolution = buildExportRiskResolution(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
-    const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
+    const sourceToClaimGapClosureQueue = buildSourceToClaimGapClosureQueue(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
+    const exportRiskResolution = buildExportRiskResolution(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, source_to_claim_gap_closure_queue:sourceToClaimGapClosureQueue, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
+    const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, source_to_claim_gap_closure_queue:sourceToClaimGapClosureQueue, export_risk_resolution:exportRiskResolution, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
     const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
-    const sessionBase = {research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question), research_plan:packet.research_plan || null, previous_brief_assembly_preview:packet.previous_brief_assembly_preview || packet.brief_assembly_preview_baseline || null, evidence_cards:evidenceCards, evidence_to_claim_links:links, claim_map:claimMap, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, confidence_review:confidenceReview, exportable_strategic_brief:strategic, operator_flow:operatorFlow, export_readiness_checklist:exportReadinessChecklist, review_throughput_summary:reviewSummary, export_polish_report:exportPolish, claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, operator_command_palette:commandPalette, review_navigation_shortcuts:navigationShortcuts};
+    const sessionBase = {research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question), research_plan:packet.research_plan || null, previous_brief_assembly_preview:packet.previous_brief_assembly_preview || packet.brief_assembly_preview_baseline || null, evidence_cards:evidenceCards, evidence_to_claim_links:links, claim_map:claimMap, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, confidence_review:confidenceReview, exportable_strategic_brief:strategic, operator_flow:operatorFlow, export_readiness_checklist:exportReadinessChecklist, review_throughput_summary:reviewSummary, export_polish_report:exportPolish, claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, source_to_claim_gap_closure_queue:sourceToClaimGapClosureQueue, export_risk_resolution:exportRiskResolution, operator_command_palette:commandPalette, review_navigation_shortcuts:navigationShortcuts};
     const guidedSession = guidedResearchSession?.buildGuidedResearchSession ? guidedResearchSession.buildGuidedResearchSession(sessionBase, packet, {version, now:generatedAt}) : null;
     const signoffBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, brief_assembly_preview_diff:guidedSession?.brief_assembly_preview_diff || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null, export_review_signoff:guidedSession?.export_review_signoff || null, operator_signoff_state:guidedSession?.operator_signoff_state || null, export_lock_ledger:guidedSession?.export_lock_ledger || null});
     const lockLedgerReviewSurface = buildLockLedgerReviewSurface(signoffBase, packet, {version, now:generatedAt});
@@ -1181,7 +1396,7 @@
       workbench_model:MODEL,
       generated_at:generatedAt,
       workflow_stage:'research_question_to_exportable_strategic_brief',
-      workflow_steps:['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','lock_ledger_review_surface','signed_export_handoff_pack'],
+      workflow_steps:['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','source_to_claim_gap_closure_queue','lock_ledger_review_surface','signed_export_handoff_pack'],
       research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question),
       research_plan: packet.research_plan || null,
       evidence_cards:evidenceCards,
@@ -1200,6 +1415,7 @@
       review_quality_diagnostics:reviewQualityDiagnostics,
       weak_claim_repair_suggestions:reviewQualityDiagnostics.weak_claim_repair_suggestions,
       diagnostic_repair_queue:diagnosticRepairQueue,
+      source_to_claim_gap_closure_queue:sourceToClaimGapClosureQueue,
       export_risk_resolution:exportRiskResolution,
       operator_command_palette:commandPalette,
       review_navigation_shortcuts:navigationShortcuts,
@@ -1292,8 +1508,13 @@
       `- Required before export: ${Number(workbench.diagnostic_repair_queue?.required_before_export_count || 0)}`,
       `- Queue gate: ${text(workbench.diagnostic_repair_queue?.release_gate || 'diagnostic_repair_queue_open')}`,
       '',
+      '## Source-to-Claim Gap Closure Queue',
+      `- Queue gate: ${text(workbench.source_to_claim_gap_closure_queue?.release_gate || 'source_to_claim_gap_closure_clear')}`,
+      `- Open gaps: ${Number(workbench.source_to_claim_gap_closure_queue?.open_count || 0)}`,
+      `- Required before export: ${Number(workbench.source_to_claim_gap_closure_queue?.required_before_export_count || 0)}`,
+      '',
       '## Export Risk Resolution',
-      `- Risk gate: ${text(workbench.export_risk_resolution?.resolution_gate || 'export_risk_resolution_required')}`,
+      `- Risk gate: ${text(workbench.export_risk_resolution?.resolution_gate || 'export_risk_resolution_required')}`, 
       `- Blockers: ${Number(workbench.export_risk_resolution?.blocker_count || 0)}`,
       `- Warnings: ${Number(workbench.export_risk_resolution?.warning_count || 0)}`,
       '',
@@ -1355,6 +1576,7 @@
     buildReviewDecisionLedger,
     buildReviewQualityDiagnostics,
     buildDiagnosticRepairQueue,
+    buildSourceToClaimGapClosureQueue,
     buildExportRiskResolution,
     buildLockLedgerReviewSurface,
     buildSignedExportHandoffPack,
@@ -1362,6 +1584,7 @@
     signedExportHandoffPackMarkdown,
     weakClaimRepairMarkdown,
     diagnosticRepairQueueMarkdown,
+    sourceToClaimGapClosureQueueMarkdown,
     exportRiskResolutionMarkdown,
     buildEmptyStateGuidance,
     reviewThroughputSummary,

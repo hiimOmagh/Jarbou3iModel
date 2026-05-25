@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.3.0-alpha.8';
-const TITLE = 'Signed Export Handoff Pack + Lock Ledger Review Surface';
+const VERSION = '1.3.0-alpha.9';
+const TITLE = 'Source-to-Claim Gap Closure Queue';
 const REGISTRY_BUDGET_BYTES = 900 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
@@ -12,15 +12,15 @@ const registries = [
     label: 'migration',
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
-    expectedEntries: 59,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.3.0-alpha.8-packet.json')
+    expectedEntries: 60,
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.3.0-alpha.9-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
-    expectedEntries: 49,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.8.json')
+    expectedEntries: 50,
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json')
   }
 ];
 

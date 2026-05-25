@@ -1,6 +1,6 @@
-# Public Demo — v1.3.0-alpha.8 Signed Export Handoff Pack + Lock Ledger Review Surface
+# Public Demo — v1.3.0-alpha.9 Source-to-Claim Gap Closure Queue
 
-This public-demo alpha adds a reviewer-facing signed export handoff pack and lock-ledger review surface. It does not add runtime execution, live provider behavior, OAuth, backend behavior, source acquisition, or storage behavior.
+This public-demo alpha adds a reviewer-facing source-to-claim gap closure queue and gap-closure review surface. It does not add runtime execution, live provider behavior, OAuth, backend behavior, source acquisition, or storage behavior.
 
 The visible product surface remains manual/local and now includes:
 
@@ -16,7 +16,7 @@ The visible product surface remains manual/local and now includes:
 
 The signed handoff pack is not a cryptographic signature. It records operator-review metadata and exposes the lock hash only when explicit operator signoff created an export lock.
 
-Public release label: v1.3.0-alpha.8 Signed Export Handoff Pack + Lock Ledger Review Surface.
+Public release label: v1.3.0-alpha.9 Source-to-Claim Gap Closure Queue.
 
 Last locked release: v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression.
 

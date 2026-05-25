@@ -2,31 +2,26 @@
 
 Current milestone:
 
-`v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`
+`v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
 
-Purpose: make the alpha.6/alpha.7 manual review state useful to a reviewer before export by adding a compact handoff pack and lock-ledger review surface.
+Purpose: expose unresolved claim/evidence gaps, weak linkage, contradiction gaps, counter-evidence gaps, and scenario falsifier gaps before export.
 
 ## Locked baseline
 
-`v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression` is locked. Do not patch alpha.7 further. It remains the release-truth and roadmap baseline for this feature increment.
+`v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface` is locked. Do not patch alpha.8 further. It remains the reviewer-facing handoff and lock-ledger baseline for this gap-closure increment.
 
 ## Compressed next milestones
 
-1. `v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`
-   - reviewer-facing handoff summary
-   - lock-ledger review card/panel
-   - blocked / unlocked / locked handoff status
-   - JSON/Markdown handoff files
-   - no cryptographic signing claim
-
-2. `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
+1. `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
    - claims with missing evidence
    - evidence with weak claim linkage
+   - evidence without claim links
    - unresolved contradictions
+   - counter-evidence target gaps
    - falsifier gaps
    - export-blocking gap queue
 
-3. `v1.3.0-alpha.10 — Brief Publication Pack v4`
+2. `v1.3.0-alpha.10 — Brief Publication Pack v4`
    - final brief markdown
    - evidence appendix
    - contradiction/falsifier appendix
@@ -34,7 +29,7 @@ Purpose: make the alpha.6/alpha.7 manual review state useful to a reviewer befor
    - operator signoff / lock ledger appendix
    - publication-readiness summary
 
-4. `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
+3. `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
    - threat model
    - ADR
    - privacy boundary
@@ -45,14 +40,14 @@ Purpose: make the alpha.6/alpha.7 manual review state useful to a reviewer befor
 
 ## Priority lanes
 
-1. `export_publication_v4` — stronger traceability, provenance, lock-ledger review, and publication packaging.
+1. `export_publication_v4` — stronger traceability, provenance, lock-ledger review, source-to-claim gap closure, and publication packaging.
 2. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
-3. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, and publication-readiness triage.
+3. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, falsifier tracking, and publication-readiness triage.
 4. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, stale-artifact rejection, and release-truth checks.
 5. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
 6. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
 
-Allowed in this alpha: signed export handoff pack, lock-ledger review surface, export pack files, UI review panels, EN/AR/FR labels, tests, manifest/package/docs updates.
+Allowed in this alpha: source-to-claim gap closure queue, before-export blocker counts, JSON/Markdown queue files, UI review panel, EN/AR/FR labels, tests, fixture/registry updates, manifest/package/docs updates.
 
 Forbidden in this alpha: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, automatic export lock, automatic source verification claims, and cryptographic signature claims.
 

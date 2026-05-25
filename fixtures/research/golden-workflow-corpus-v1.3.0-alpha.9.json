@@ -1,0 +1,129 @@
+{
+  "workflow_version": "1.3.0-alpha.9",
+  "corpus_version": "1.3.0-alpha.9",
+  "corpus_model": "golden_workflow_corpus.v1",
+  "corpus_id": "golden-workflow-alpha24",
+  "topic": "Golden workflow demo: source-grounded strategic brief reliability",
+  "context": "Deterministic public-demo corpus for end-to-end validation; no live fetching or provider execution.",
+  "generated_at": "2026-05-22T00:00:00.000Z",
+  "release_gate": "golden_workflow_review_required",
+  "live_fetching_performed": false,
+  "provider_execution_performed": false,
+  "verification_claimed": false,
+  "evidence_matrix": [
+    {
+      "evidence_id": "E1",
+      "claim": "Official baseline position published.",
+      "claim_type": "observation",
+      "source_type": "official",
+      "source_url": "https://example.org/official",
+      "source_date": "2026-05-01",
+      "supports": [
+        "I1"
+      ],
+      "contradicts": []
+    },
+    {
+      "evidence_id": "E2",
+      "claim": "Expert analysis indicates implementation risk.",
+      "claim_type": "inference",
+      "source_type": "expert",
+      "source_url": "https://example.org/expert",
+      "source_date": "2026-05-02",
+      "supports": [
+        "R1"
+      ],
+      "contradicts": [
+        "N1"
+      ]
+    },
+    {
+      "evidence_id": "E3",
+      "claim": "Counter-assessment challenges implementation risk.",
+      "claim_type": "inference",
+      "source_type": "expert",
+      "source_url": "https://example.org/counter",
+      "source_date": "2026-05-03",
+      "supports": [
+        "N1"
+      ],
+      "contradicts": [
+        "R1"
+      ]
+    }
+  ],
+  "entity_profiles": [
+    {
+      "entity_id": "ENT1",
+      "name": "Official institution",
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "entity_id": "ENT2",
+      "name": "Expert bloc",
+      "evidence_ids": [
+        "E2",
+        "E3"
+      ]
+    }
+  ],
+  "source_clusters": [
+    {
+      "cluster_id": "CL1",
+      "target_id": "I1",
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "cluster_id": "CL2",
+      "target_id": "R1",
+      "evidence_ids": [
+        "E2"
+      ]
+    },
+    {
+      "cluster_id": "CL3",
+      "target_id": "N1",
+      "evidence_ids": [
+        "E3"
+      ]
+    }
+  ],
+  "strategic_evidence_graph": {
+    "graph_version": "1.3.0-alpha.9",
+    "graph_nodes": [
+      {
+        "id": "EV-E1",
+        "type": "evidence"
+      },
+      {
+        "id": "EV-E2",
+        "type": "evidence"
+      },
+      {
+        "id": "R1",
+        "type": "risk"
+      }
+    ],
+    "graph_edges": [
+      {
+        "from": "EV-E2",
+        "to": "R1",
+        "relationship": "supports"
+      }
+    ]
+  },
+  "analysis_brief": {
+    "brief_version": "1.3.0-alpha.9",
+    "handoff_summary": "Golden conclusion is traceable to E1, E2, and E3; contradiction N1 remains visible.",
+    "evidence_priorities": [
+      "Review E2 against E3."
+    ],
+    "gaps": [
+      "Manual contradiction review required."
+    ]
+  }
+}

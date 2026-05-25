@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.8';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.9';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -201,7 +201,9 @@
       `Export lock status: ${safeString(workbench.export_lock_ledger?.lock_status ?? 'unlocked_manual_signoff_required')}`,
       `Lock ledger review gate: ${safeString(workbench.lock_ledger_review_surface?.release_gate ?? 'lock_ledger_review_unlocked')}`,
       `Signed export handoff status: ${safeString(workbench.signed_export_handoff_pack?.handoff_status ?? 'unlocked')}`,
-      `Export locked: ${safeString(workbench.export_lock_ledger?.export_locked === true)}`,
+      `Source-to-claim gaps open: ${safeString(workbench.source_to_claim_gap_closure_queue?.open_count ?? 0)}`,
+      `Source-to-claim export blockers: ${safeString(workbench.source_to_claim_gap_closure_queue?.required_before_export_count ?? 0)}`,
+      `Export locked: ${safeString(workbench.export_lock_ledger?.export_locked === true)}`, 
       `Brief template UX gate: ${safeString(workbench.brief_template_ux_polish?.density_gate ?? 'brief_template_ux_review_required')}`,
       `Assembly variants compared: ${safeString(workbench.assembly_variant_comparison?.variant_count ?? 0)}`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
@@ -276,6 +278,8 @@
     if(workbench.review_quality_diagnostics) files.push(fileEntry('source-to-brief/review-quality-diagnostics.json', 'application/json', jsonContent(workbench.review_quality_diagnostics), 'source-to-brief-review-quality-diagnostics'));
     if(workbench.weak_claim_repair_suggestions) files.push(fileEntry('source-to-brief/weak-claim-repair-suggestions.json', 'application/json', jsonContent(workbench.weak_claim_repair_suggestions), 'source-to-brief-weak-claim-repair-suggestions'));
     if(workbench.review_quality_diagnostics && workbenchApi?.weakClaimRepairMarkdown) files.push(fileEntry('source-to-brief/weak-claim-repair-suggestions.md', 'text/markdown', workbenchApi.weakClaimRepairMarkdown(workbench), 'source-to-brief-weak-claim-repair-suggestions-md'));
+    if(workbench.source_to_claim_gap_closure_queue) files.push(fileEntry('source-to-brief/source-to-claim-gap-closure-queue.json', 'application/json', jsonContent(workbench.source_to_claim_gap_closure_queue), 'source-to-brief-source-to-claim-gap-closure-queue'));
+    if(workbench.source_to_claim_gap_closure_queue && workbenchApi?.sourceToClaimGapClosureQueueMarkdown) files.push(fileEntry('source-to-brief/source-to-claim-gap-closure-queue.md', 'text/markdown', workbenchApi.sourceToClaimGapClosureQueueMarkdown(workbench), 'source-to-brief-source-to-claim-gap-closure-queue-md'));
     if(workbench.diagnostic_repair_queue) files.push(fileEntry('source-to-brief/diagnostic-repair-queue.json', 'application/json', jsonContent(workbench.diagnostic_repair_queue), 'source-to-brief-diagnostic-repair-queue'));
     if(workbench.diagnostic_repair_queue && workbenchApi?.diagnosticRepairQueueMarkdown) files.push(fileEntry('source-to-brief/diagnostic-repair-queue.md', 'text/markdown', workbenchApi.diagnosticRepairQueueMarkdown(workbench), 'source-to-brief-diagnostic-repair-queue-md'));
     if(workbench.export_risk_resolution) files.push(fileEntry('source-to-brief/export-risk-resolution.json', 'application/json', jsonContent(workbench.export_risk_resolution), 'source-to-brief-export-risk-resolution'));

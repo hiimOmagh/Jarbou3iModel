@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.3.0-alpha.8`
-Release: `v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`
+Version: `1.3.0-alpha.9`
+Release: `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

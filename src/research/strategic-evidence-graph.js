@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.8';
+  const VERSION = '1.3.0-alpha.9';
   const GRAPH_MODEL = 'strategic_evidence_graph.v1';
 
   function text(value, fallback=''){return String(value ?? fallback).trim();}

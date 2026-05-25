@@ -4,29 +4,36 @@ Public Demo continuity: retained. The v1.1.0 stable public-demo baseline remains
 
 Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
 
-## v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface
+## v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue
 
-Public release label: v1.3.0-alpha.8 Signed Export Handoff Pack + Lock Ledger Review Surface.
+Public release label: v1.3.0-alpha.9 Source-to-Claim Gap Closure Queue.
 
-Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for alpha.8.
+Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for alpha.9.
 
-Public and internal release versions are aligned. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion; alpha.8 adds only reviewer-facing manual export handoff and lock-ledger review surface.
+Public and internal release versions are aligned. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion; alpha.9 adds only a manual source-to-claim gap closure queue and reviewer-facing before-export diagnostics.
 
-Last locked release: `v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`. Alpha.7 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, and bundle integrity were accepted before this handoff-surface build.
+Last locked release: `v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`. Alpha.8 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, and bundle integrity were accepted before this gap-closure build.
 
-Purpose: convert the locked operator-signoff/export-lock state into a reviewer-facing signed export handoff pack and lock-ledger review surface. This release adds review/export packaging surface, not live execution.
+Purpose: expose unresolved claim/evidence gaps before export. This release adds closure queue diagnostics and export artifacts, not live execution.
 
-## Alpha.8 feature surface
+## Alpha.9 feature surface
 
-- Signed Export Handoff Pack
-- Lock Ledger Review Surface
-- locked / blocked / unlocked export handoff status
-- operator ID, signoff timestamp, and lock hash only when explicit operator signoff created a lock
-- JSON/Markdown handoff files
-- UI review panels and trilingual labels
+- Source-to-Claim Gap Closure Queue
+- claims missing evidence
+- weak claim/evidence linkage
+- evidence without claim links
+- unresolved contradiction gaps
+- counter-evidence target gaps
+- scenario falsifier gaps
+- workflow source gaps
+- export-blocking required-before-export count
+- JSON/Markdown gap-closure files
+- UI review panel and trilingual labels
 
 ## Preserved feature surface
 
+- Signed Export Handoff Pack
+- Lock Ledger Review Surface
 - Operator Signoff State
 - Export Lock Ledger
 - Brief Assembly Preview Diff
@@ -52,9 +59,9 @@ Purpose: convert the locked operator-signoff/export-lock state into a reviewer-f
 ## Release manifest
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0-alpha.8`
+- Version: `1.3.0-alpha.9`
 - Runtime capability change: no
-- Public surface: reviewer-facing manual export handoff surface
+- Public surface: manual source-to-claim gap closure queue
 - Required browser gates before publishing
 - Release archive exclusions
 - Required cleanup commands

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0-alpha.8';
-const TITLE = 'Signed Export Handoff Pack + Lock Ledger Review Surface';
+const VERSION = '1.3.0-alpha.9';
+const TITLE = 'Source-to-Claim Gap Closure Queue';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');

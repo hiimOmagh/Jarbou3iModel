@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.3.0-alpha.8';
-const TITLE = 'Signed Export Handoff Pack + Lock Ledger Review Surface';
+const VERSION = '1.3.0-alpha.9';
+const TITLE = 'Source-to-Claim Gap Closure Queue';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
-const DOC = 'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md';
+const DOC = `docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`;
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -122,7 +122,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 
 assert.ok(migrationSource.includes('capture_settle_required:true'), 'migration default must preserve capture settle metadata');
 assert.ok(migrationSource.includes('visual_artifact_guard_required:true'), 'migration default must preserve visual artifact guard metadata');
-assert.ok(releaseDocExists(DOC), 'alpha.10 release-history doc anchor missing');
+assert.ok(releaseDocExists(DOC), 'alpha.9 release-history doc anchor missing');
 const doc = readReleaseDoc(DOC);
 for (const token of [
   `# ${RELEASE}`,
@@ -132,7 +132,7 @@ for (const token of [
   'visual_artifact_guard_passed',
   'No runtime behavior change'
 ]) {
-  assert.ok(doc.includes(token), `alpha.10 release doc missing ${token}`);
+  assert.ok(doc.includes(token), `alpha.9 release doc missing ${token}`);
 }
 
 console.log('Hosted evidence capture polish checks passed.');

@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.8. Local/manual only. */
+/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.9. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.8';
+  const VERSION = '1.3.0-alpha.9';
   const SESSION_MODEL = 'guided_research_session_engine.v1';
   const BRIEF_ASSEMBLY_MODEL = 'brief_assembly_workflow.v1';
   const STEP_IDS = Object.freeze([
@@ -422,7 +422,7 @@
       export_review_signoff:exportSignoff,
       operator_signoff_state:operatorSignoffState,
       export_lock_ledger:exportLockLedger,
-      session_handoff_files:['source-to-brief/guided-research-session.json','source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md','source-to-brief/brief-assembly-preview-diff.json','source-to-brief/brief-assembly-preview-diff.md','source-to-brief/export-review-signoff.json','source-to-brief/export-review-signoff.md','source-to-brief/operator-signoff-state.json','source-to-brief/operator-signoff-state.md','source-to-brief/export-lock-ledger.json','source-to-brief/export-lock-ledger.md'],
+      session_handoff_files:['source-to-brief/guided-research-session.json','source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md','source-to-brief/brief-assembly-preview-diff.json','source-to-brief/brief-assembly-preview-diff.md','source-to-brief/export-review-signoff.json','source-to-brief/export-review-signoff.md','source-to-brief/operator-signoff-state.json','source-to-brief/operator-signoff-state.md','source-to-brief/export-lock-ledger.json','source-to-brief/export-lock-ledger.md','source-to-brief/source-to-claim-gap-closure-queue.json','source-to-brief/source-to-claim-gap-closure-queue.md'],
       local_manual_session:true,
       blocked_unavailable_capabilities:BLOCKED_CAPABILITIES.slice(),
       live_fetching_performed:false,

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 
-const VERSION = '1.3.0-alpha.8';
-const TITLE = 'Signed Export Handoff Pack + Lock Ledger Review Surface';
+const VERSION = '1.3.0-alpha.9';
+const TITLE = 'Source-to-Claim Gap Closure Queue';
 const history = releaseHistory();
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 const releaseEvidence = fs.readFileSync('docs/release-and-evidence.md', 'utf8');

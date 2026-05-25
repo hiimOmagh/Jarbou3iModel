@@ -7,8 +7,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.3.0-alpha.8';
-const TITLE = 'Signed Export Handoff Pack + Lock Ledger Review Surface';
+const VERSION = '1.3.0-alpha.9';
+const TITLE = 'Source-to-Claim Gap Closure Queue';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const LOCK_RELEASE = `v${VERSION} — Public Demo Release Lock`;
 const repoRoot = process.cwd();
@@ -20,8 +20,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.8-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.8.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.9-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const publicDemoModule = read('src/research/public-demo-readiness.js');
@@ -102,12 +102,12 @@ assert.equal(blocked.fail_count, 1);
 
 assert.ok(engine.includes('publicDemoReleaseLockReport()'), 'research engine must build release-lock metadata');
 assert.ok(engine.includes('public_demo_release_lock'), 'research packet must include public_demo_release_lock');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.8'"), 'migrations target must be v1.1.0');
-assert.ok(migrations.includes("'1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.8'"), 'migration order must preserve v1.0.24 and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.9'"), 'migrations target must be v1.1.0');
+assert.ok(migrations.includes("'1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.9'"), 'migration order must preserve v1.0.24 and append v1.1.0');
 assert.ok(migrations.includes('defaultPublicDemoReleaseLock'), 'migrations must add default public demo release lock');
 
 for (const corpus of [readme, releaseNotes, releaseManifest, changelog, publicDemoGuide, browserEvidence, hostedDemo, roadmap, qaMatrix, architecture, aiIntegration, privacyAudit, releaseDoc]) {
-  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.3.0-alpha.8'), 'release corpus must mention v1.1.0');
+  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.3.0-alpha.9'), 'release corpus must mention v1.1.0');
   assert.ok(corpus.includes(TITLE) || corpus.includes('release-lock') || corpus.includes('release lock'), 'release corpus must mention release lock');
 }
 for (const corpus of [readme, releaseNotes, releaseManifest, publicDemoGuide, browserEvidence, hostedDemo, qaMatrix, releaseDoc]) {
@@ -117,8 +117,8 @@ for (const corpus of [readme, releaseNotes, releaseManifest, publicDemoGuide, br
 
 for (const required of [
   'docs/v1.0.25-public-demo-release-lock.md',
-  'fixtures/migrations/v1.3.0-alpha.8-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.3.0-alpha.8.json',
+  'fixtures/migrations/v1.3.0-alpha.9-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json',
   'fixtures/migrations/v1.0.24-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.24.json',
   'tests/public-demo-release-lock-check.mjs',
