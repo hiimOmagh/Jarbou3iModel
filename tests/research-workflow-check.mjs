@@ -20,25 +20,25 @@ for (const token of ['compilePromptPlan','buildResearchPlan','activeTemplateProf
   if (!app.includes(token) && !index.includes(token)) fail(`missing research workflow token: ${token}`);
 }
 if (schema.$schema !== 'https://json-schema.org/draft/2020-12/schema') fail('research schema must use draft 2020-12');
-if (schema.properties?.workflow_version?.const !== '1.3.0-alpha.10') fail('workflow_version const mismatch');
+if (schema.properties?.workflow_version?.const !== '1.3.0-rc.1') fail('workflow_version const mismatch');
 for (const key of ['workflow_version','analysis_template','project_workspace','quality_gate','research_plan','evidence_matrix','evidence_scoring_report','analysis_brief','diagnostics','provider_identity','provider_billing_policy','privacy_export','ai_runs','source_policy','source_diagnostics','source_fixture_report','source_requests','source_runs','search_provider_identity','search_query_budget','search_policy','source_to_brief_workbench','source_to_brief_package','backend_hardening']) {
   if (!schema.required?.includes(key)) fail(`research schema must require ${key}`);
 }
-if (!fixture.analysis_template || fixture.analysis_template.template_version !== '1.3.0-alpha.10' || fixture.analysis_template.template_id !== 'strategic_analysis_engine') fail('fixture needs analysis template metadata');
+if (!fixture.analysis_template || fixture.analysis_template.template_version !== '1.3.0-rc.1' || fixture.analysis_template.template_id !== 'strategic_analysis_engine') fail('fixture needs analysis template metadata');
 const plan = fixture.research_plan;
 const evidence = fixture.evidence_matrix;
 const causalLinks = fixture.causal_links;
-if (fixture.workflow_version !== '1.3.0-alpha.10') fail('fixture workflow version mismatch');
-if (!plan || plan.plan_version !== '1.3.0-alpha.10' || plan.analysis_template_id !== fixture.analysis_template.template_id) fail('fixture missing templated research plan');
+if (fixture.workflow_version !== '1.3.0-rc.1') fail('fixture workflow version mismatch');
+if (!plan || plan.plan_version !== '1.3.0-rc.1' || plan.analysis_template_id !== fixture.analysis_template.template_id) fail('fixture missing templated research plan');
 if (!Array.isArray(plan.questions) || plan.questions.length < 3) fail('fixture needs at least three research questions');
 if (!Array.isArray(plan.counter_evidence_targets) || !plan.counter_evidence_targets.length) fail('fixture needs counter-evidence targets');
 if (!Array.isArray(plan.early_warning_indicators) || !plan.early_warning_indicators.length) fail('fixture needs early-warning indicators');
 if (!Array.isArray(evidence) || !evidence.length) fail('fixture needs evidence matrix');
 if (!fixture.evidence_scoring_report || fixture.evidence_scoring_report.scoring_model !== 'evidence_scoring.v1' || fixture.evidence_scoring_report.policy !== 'public attention is tracked separately from evidence reliability') fail('fixture needs evidence scoring report');
 if (!Array.isArray(causalLinks) || !causalLinks.length) fail('fixture needs causal links');
-if (!fixture.analysis_brief || fixture.analysis_brief.brief_version !== '1.3.0-alpha.10' || fixture.analysis_brief.analysis_template?.template_id !== fixture.analysis_template.template_id || !fixture.analysis_brief.template_fit_report || !fixture.analysis_brief.quality_gate_report) fail('fixture needs templated compiled analysis brief with quality gate report');
+if (!fixture.analysis_brief || fixture.analysis_brief.brief_version !== '1.3.0-rc.1' || fixture.analysis_brief.analysis_template?.template_id !== fixture.analysis_template.template_id || !fixture.analysis_brief.template_fit_report || !fixture.analysis_brief.quality_gate_report) fail('fixture needs templated compiled analysis brief with quality gate report');
 if (!Array.isArray(fixture.analysis_brief.source_clusters) || !fixture.analysis_brief.source_clusters.length) fail('fixture needs source clusters');
-if (!fixture.diagnostics || fixture.diagnostics.diagnostics_version !== '1.3.0-alpha.10') fail('fixture needs diagnostics');
+if (!fixture.diagnostics || fixture.diagnostics.diagnostics_version !== '1.3.0-rc.1') fail('fixture needs diagnostics');
 for (const [idx, item] of evidence.entries()) {
   if (!/^E\d+$/.test(item.evidence_id || '')) fail(`evidence[${idx}] invalid evidence_id`);
   if (!item.claim) fail(`evidence[${idx}] missing claim`);
@@ -47,7 +47,7 @@ for (const [idx, item] of evidence.entries()) {
   if (!item.evidence_scoring || item.evidence_scoring.scoring_version !== 'evidence_scoring.v1' || item.evidence_scoring.attention_is_truth_score !== false) fail(`evidence[${idx}] missing source packet builder browser QA and UX tightening`);
 }
 
-if (!fixture.portable_oauth_spike || fixture.portable_oauth_spike.oauth_spike_version !== '1.3.0-alpha.10' || fixture.portable_oauth_spike.raw_token_exported !== false || fixture.portable_oauth_spike.access_token_exported !== false || fixture.portable_oauth_spike.refresh_token_exported !== false || fixture.portable_oauth_spike.code_verifier_exported !== false) fail('fixture needs safe portable OAuth spike metadata');
+if (!fixture.portable_oauth_spike || fixture.portable_oauth_spike.oauth_spike_version !== '1.3.0-rc.1' || fixture.portable_oauth_spike.raw_token_exported !== false || fixture.portable_oauth_spike.access_token_exported !== false || fixture.portable_oauth_spike.refresh_token_exported !== false || fixture.portable_oauth_spike.code_verifier_exported !== false) fail('fixture needs safe portable OAuth spike metadata');
 if (!fixture.provider_config || fixture.provider_config.allow_live !== false) fail('fixture needs safe provider_config');
 if (!fixture.provider_identity || fixture.provider_identity.key_exported !== false || !fixture.provider_identity.auth_type) fail('fixture needs provider identity metadata');
 if (!fixture.provider_billing_policy || !fixture.provider_billing_policy.billing_owner || !Array.isArray(fixture.provider_billing_policy.notes)) fail('fixture needs provider billing policy metadata');
@@ -55,11 +55,11 @@ if (!fixture.provider_validation || fixture.provider_validation.accepted !== tru
 if (!fixture.repair_trace || fixture.repair_trace.attempted !== false) fail('fixture needs no-repair trace');
 if (!fixture.provider_diagnostics || fixture.provider_diagnostics.key_exported !== false) fail('fixture needs provider diagnostics with key_exported false');
 if (!fixture.provider_fixture_report || fixture.provider_fixture_report.fail_count !== 0) fail('fixture needs passing provider fixture report');
-if (!fixture.project_workspace || fixture.project_workspace.workspace_version !== '1.3.0-alpha.10' || fixture.project_workspace.storage_mode !== 'local_only' || !fixture.project_workspace.quota) fail('fixture needs local-only project workspace metadata');
-if (!fixture.quality_gate || fixture.quality_gate.quality_gate_version !== '1.3.0-alpha.10' || typeof fixture.quality_gate.overall_score !== 'number' || !Array.isArray(fixture.quality_gate.fix_actions)) fail('fixture needs Advanced Quality Gate v3 metadata');
-if (!fixture.backend_hardening || fixture.backend_hardening.hardening_version !== '1.3.0-alpha.10' || fixture.backend_hardening.audit_policy?.prompt_logged !== false || fixture.backend_hardening.release_gate !== 'backend_hardening_checked') fail('fixture needs backend hardening metadata');
+if (!fixture.project_workspace || fixture.project_workspace.workspace_version !== '1.3.0-rc.1' || fixture.project_workspace.storage_mode !== 'local_only' || !fixture.project_workspace.quota) fail('fixture needs local-only project workspace metadata');
+if (!fixture.quality_gate || fixture.quality_gate.quality_gate_version !== '1.3.0-rc.1' || typeof fixture.quality_gate.overall_score !== 'number' || !Array.isArray(fixture.quality_gate.fix_actions)) fail('fixture needs Advanced Quality Gate v3 metadata');
+if (!fixture.backend_hardening || fixture.backend_hardening.hardening_version !== '1.3.0-rc.1' || fixture.backend_hardening.audit_policy?.prompt_logged !== false || fixture.backend_hardening.release_gate !== 'backend_hardening_checked') fail('fixture needs backend hardening metadata');
 
-if (!fixture.privacy_export || fixture.privacy_export.guard_version !== '1.3.0-alpha.10' || fixture.privacy_export.key_exported !== false || fixture.privacy_export.raw_token_exported !== false) fail('fixture needs privacy export guard metadata');
+if (!fixture.privacy_export || fixture.privacy_export.guard_version !== '1.3.0-rc.1' || fixture.privacy_export.key_exported !== false || fixture.privacy_export.raw_token_exported !== false) fail('fixture needs privacy export guard metadata');
 
 if (!fixture.search_provider_identity || fixture.search_provider_identity.provider_id !== 'mock_search' || fixture.search_provider_identity.key_exported !== false || fixture.search_provider_identity.raw_token_exported !== false) fail('fixture needs safe search provider identity');
 if (!fixture.search_query_budget || fixture.search_query_budget.live_search_enabled !== false || fixture.search_query_budget.counter_evidence_queries < 1) fail('fixture needs no-live search query budget with counter-evidence');
@@ -69,11 +69,11 @@ if (!fixture.source_diagnostics || fixture.source_diagnostics.live_fetching_enab
 if (!fixture.source_fixture_report || fixture.source_fixture_report.fail_count !== 0 || fixture.source_fixture_report.live_fetching_performed !== false) fail('fixture needs passing source fixture report');
 if (!Array.isArray(fixture.source_requests) || !fixture.source_requests.length || fixture.source_requests[0].live_fetching_enabled !== false) fail('fixture needs source request with live_fetching_enabled false');
 if (!Array.isArray(fixture.source_runs) || !fixture.source_runs.length || fixture.source_runs[0].live_fetching_performed !== false) fail('fixture needs source run ledger with no live fetching');
-if (!fixture.source_to_brief_workbench || fixture.source_to_brief_workbench.source_to_brief_version !== '1.3.0-alpha.10' || !Array.isArray(fixture.source_to_brief_workbench.claim_map) || !fixture.source_to_brief_workbench.confidence_review || fixture.source_to_brief_workbench.automatic_source_verification_claimed !== false || fixture.source_to_brief_workbench.live_fetching_performed !== false) fail('fixture needs source-to-brief workbench with no automatic verification claim');
+if (!fixture.source_to_brief_workbench || fixture.source_to_brief_workbench.source_to_brief_version !== '1.3.0-rc.1' || !Array.isArray(fixture.source_to_brief_workbench.claim_map) || !fixture.source_to_brief_workbench.confidence_review || fixture.source_to_brief_workbench.automatic_source_verification_claimed !== false || fixture.source_to_brief_workbench.live_fetching_performed !== false) fail('fixture needs source-to-brief workbench with no automatic verification claim');
 if (!fixture.source_to_brief_package || !Array.isArray(fixture.claim_map) || !Array.isArray(fixture.contradiction_groups) || !fixture.source_to_brief_confidence_review || !fixture.source_to_brief_gap_report) fail('fixture needs structured source-to-brief export fields');
 
 if (!Array.isArray(fixture.ai_runs) || !fixture.ai_runs.length) fail('fixture needs provider run ledger');
-if (!fixture.ai_runs.every((run) => run.run_version === '1.3.0-alpha.10' && run.provider && run.task && run.response_contract && run.response_validation && run.repair_trace && run.provider_safety && run.provider_identity && run.provider_billing_policy)) fail('fixture provider runs need contracts, identity, billing, and safety metadata');
+if (!fixture.ai_runs.every((run) => run.run_version === '1.3.0-rc.1' && run.provider && run.task && run.response_contract && run.response_validation && run.repair_trace && run.provider_safety && run.provider_identity && run.provider_billing_policy)) fail('fixture provider runs need contracts, identity, billing, and safety metadata');
 
 for (const [idx, link] of causalLinks.entries()) {
   if (!/^[A-Z]+\d+$/.test(link.from || '')) fail(`causal_links[${idx}] invalid from`);

@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.3.0-alpha.10`
-Release: `v1.3.0-alpha.10 — Brief Publication Pack v4`
+Version: `1.3.0-rc.1`
+Release: `v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.10';
+  const VERSION = '1.3.0-rc.1';
 
   const ALLOWED = Object.freeze({
     availability:['local','mock','manual','external','unavailable','controlled_backend'],

@@ -38,7 +38,7 @@ for (const [scriptFile, args, out] of [
 }
 
 const doctor = JSON.parse(fs.readFileSync('dist/dev-doctor-summary.json', 'utf8'));
-assert.equal(doctor.doctor_version, '1.3.0-alpha.10');
+assert.equal(doctor.doctor_version, '1.3.0-rc.1');
 assert.equal(doctor.status, 'pass');
 const impact = JSON.parse(fs.readFileSync('dist/dev-impact-summary.json', 'utf8'));
 assert.ok(impact.required_gates.includes('language-description-audit-check'));

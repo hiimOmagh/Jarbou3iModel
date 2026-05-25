@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.3.0-alpha.10';
-const TITLE = 'Brief Publication Pack v4';
+const VERSION = '1.3.0-rc.1';
+const TITLE = 'Manual Workflow Release Candidate Freeze';
 const REGISTRY_BUDGET_BYTES = 960 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
@@ -13,14 +13,14 @@ const registries = [
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
     expectedEntries: 61,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.3.0-alpha.10-packet.json')
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.3.0-rc.1-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
     expectedEntries: 51,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.10.json')
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-rc.1.json')
   }
 ];
 

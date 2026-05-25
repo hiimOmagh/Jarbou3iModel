@@ -1,28 +1,21 @@
 # Changelog
 
-## v1.3.0-alpha.10 — Brief Publication Pack v4
+## v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze
 
-- Adds Brief Publication Pack v4 for manual publication-review handoff.
-- Adds final/publication-ready brief Markdown export.
-- Adds evidence appendix Markdown export.
-- Adds contradiction/falsifier appendix Markdown export.
-- Adds source-gap appendix Markdown export.
-- Adds operator signoff / lock-ledger appendix Markdown export.
-- Adds publication-readiness summary with blocker and warning counts.
-- Adds source-to-brief export files:
-  - `source-to-brief/brief-publication-pack-v4.json`
-  - `source-to-brief/brief-publication-pack-v4.md`
-  - `source-to-brief/publication-ready-brief.md`
-  - `source-to-brief/evidence-appendix.md`
-  - `source-to-brief/contradiction-falsifier-appendix.md`
-  - `source-to-brief/source-gap-appendix.md`
-  - `source-to-brief/operator-signoff-lock-ledger-appendix.md`
-- Adds reviewer-facing UI panel and trilingual copy for the publication pack.
+- Freezes the manual source-to-brief/publication workflow after the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` baseline.
+- Preserves Brief Publication Pack v4, Source-to-Claim Gap Closure Queue, Signed Export Handoff Pack, Lock Ledger Review Surface, Operator Signoff State, and Export Lock Ledger.
+- Adds explicit manual workflow release-candidate freeze coverage.
 - Preserves no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, no automatic signoff, no automatic export lock, no publishing permission claim, no cryptographic signature claim, and no automatic source verification claims.
 
-Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
+Public label: `v1.3.0-rc.1 Manual Workflow Release Candidate Freeze`. Internal evidence metadata: `1.3.0-rc.1`.
 
-Public label: `v1.3.0-alpha.10 Brief Publication Pack v4`. Internal evidence metadata: `1.3.0-alpha.10`.
+## v1.3.0-alpha.10 — Brief Publication Pack v4
+
+- LOCKED by no-browser CI, browser CI, hosted evidence matrix, visible-text snapshots, and canonical lock evidence bundle.
+- Added Brief Publication Pack v4 for manual publication-review handoff.
+- Added final/publication-ready brief Markdown export.
+- Added evidence, contradiction/falsifier, source-gap, and operator signoff/lock-ledger appendices.
+- Preserved the manual review boundary and did not claim automatic verification, publication permission, cryptographic signing, automatic signoff, or automatic export lock.
 
 ## v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue
 
@@ -53,6 +46,6 @@ Public label: `v1.3.0-alpha.10 Brief Publication Pack v4`. Internal evidence met
 
 Continuity note: v1.1.0 stable public-demo baseline and Diagnostic Repair Queue + Export Risk Resolution remain preserved.
 
-Node 24 CI compatibility is preserved for v1.3.0-alpha.10 and the v1.1.0 stable public-demo baseline.
+Node 24 CI compatibility is preserved for v1.3.0-rc.1 and the v1.1.0 stable public-demo baseline.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.

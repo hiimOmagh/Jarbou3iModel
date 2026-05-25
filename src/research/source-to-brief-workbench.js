@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.10. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-rc.1. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.10';
+  const VERSION = '1.3.0-rc.1';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -1324,7 +1324,7 @@
       automatic_source_verification_claimed:false,
       verification_claimed:false,
       cryptographic_signature_claimed:false,
-      manual_local_boundary:'Brief Publication Pack v4 consolidates local/manual brief, evidence, contradiction/falsifier, source-gap, and operator signoff appendices. It does not fetch, verify, publish, sign cryptographically, or authorize export automatically.'
+      manual_local_boundary:'Manual Workflow Release Candidate Freeze consolidates local/manual brief, evidence, contradiction/falsifier, source-gap, and operator signoff appendices. It does not fetch, verify, publish, sign cryptographically, or authorize export automatically.'
     };
   }
   function publicationReadyBriefMarkdown(workbench = {}){
@@ -1375,7 +1375,7 @@
     const pack = workbench.brief_publication_pack_v4 || {};
     const summary = pack.publication_readiness_summary || {};
     return [
-      '# Brief Publication Pack v4',
+      '# Manual Workflow Release Candidate Freeze',
       '',
       `Publication pack status: ${text(pack.publication_pack_status || 'manual_publication_review_required')}`,
       `Publication ready: ${pack.publication_ready === true}`,
@@ -1723,7 +1723,7 @@
       `- Required before export: ${Number(workbench.diagnostic_repair_queue?.required_before_export_count || 0)}`,
       `- Queue gate: ${text(workbench.diagnostic_repair_queue?.release_gate || 'diagnostic_repair_queue_open')}`,
       '',
-      '## Brief Publication Pack v4',
+      '## Manual Workflow Release Candidate Freeze',
       `- Queue gate: ${text(workbench.source_to_claim_gap_closure_queue?.release_gate || 'source_to_claim_gap_closure_clear')}`,
       `- Open gaps: ${Number(workbench.source_to_claim_gap_closure_queue?.open_count || 0)}`,
       `- Required before export: ${Number(workbench.source_to_claim_gap_closure_queue?.required_before_export_count || 0)}`,

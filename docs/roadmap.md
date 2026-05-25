@@ -2,31 +2,33 @@
 
 Current milestone:
 
-`v1.3.0-alpha.10 — Brief Publication Pack v4`
+`v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`
 
-Purpose: consolidate the final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix into one manual publication-review pack.
+Purpose: freeze the manual source-to-brief/publication workflow after `v1.3.0-alpha.10 — Brief Publication Pack v4` and move from alpha feature increments into release-candidate validation.
 
 ## Locked baseline
 
-`v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue` is locked. Do not patch alpha.9 further. It remains the before-export gap-closure baseline for this publication-pack increment.
+`v1.3.0-alpha.10 — Brief Publication Pack v4` is locked. Do not patch alpha.10 further. It remains the completed manual publication-pack baseline for this RC.
 
 ## Compressed next milestones
 
-1. `v1.3.0-alpha.10 — Brief Publication Pack v4`
-   - final brief markdown
-   - evidence appendix
-   - contradiction/falsifier appendix
-   - source gap appendix
-   - operator signoff / lock ledger appendix
-   - publication-readiness summary
+1. `v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`
+   - freeze manual workflow behavior
+   - assert no provider/OAuth/backend/source/storage expansion
+   - preserve Brief Publication Pack v4 artifacts and appendices
+   - keep release lock evidence bundle as the only lock authority
 
-2. `v1.3.0-alpha.11 — Publication Pack QA + Review Density Polish`
-   - reduce publication-pack panel density
-   - add compact appendix status cards
-   - tighten export-file naming consistency
-   - preserve manual review boundary
+2. `v1.3.0-rc.2 — RC Evidence Review + Defect-Only Polish`
+   - only fix CI, docs, accessibility, localization, or evidence defects found in rc.1
+   - no new product capability
+   - no new provider/OAuth/backend/source/storage behavior
 
-3. `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
+3. `v1.3.0 — Manual Workflow Stable Release`
+   - promote only if rc evidence is clean
+   - require no-browser CI, browser CI, hosted evidence matrix, and canonical lock bundle
+   - keep manual/private mode first-class
+
+4. `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
    - threat model
    - ADR
    - privacy boundary
@@ -37,16 +39,17 @@ Purpose: consolidate the final brief, evidence appendix, contradiction/falsifier
 
 ## Priority lanes
 
-1. `export_publication_v4` — stronger traceability, provenance, lock-ledger review, source-to-claim gap closure, and publication packaging.
-2. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
-3. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, falsifier tracking, and publication-readiness triage.
-4. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, stale-artifact rejection, and release-truth checks.
-5. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
-6. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
+1. `release_candidate_freeze` — lock current manual workflow and prevent new feature drift.
+2. `export_publication_v4` — preserve traceability, provenance, lock-ledger review, source-to-claim gap closure, and publication packaging.
+3. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
+4. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, falsifier tracking, and publication-readiness triage.
+5. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, stale-artifact rejection, and release-truth checks.
+6. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
+7. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
 
-Allowed in this alpha: Brief Publication Pack v4, final brief Markdown, evidence appendix, contradiction/falsifier appendix, source-gap appendix, operator signoff/lock-ledger appendix, publication-readiness summary, UI review panel, EN/AR/FR labels, tests, fixture/registry updates, manifest/package/docs updates.
+Allowed in this RC: version identity update, release-candidate freeze guard, fixture/registry alignment, manifest/package/docs updates, and tests proving the manual workflow boundary.
 
-Forbidden in this alpha: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, automatic export lock, automatic source verification claims, publishing permission claims, and cryptographic signature claims.
+Forbidden in this RC: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, automatic export lock, automatic source verification claims, publishing permission claims, and cryptographic signature claims.
 
 No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims. No automatic signoff. No automatic export lock.
 

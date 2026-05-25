@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.10';
+const VERSION = '1.3.0-rc.1';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');

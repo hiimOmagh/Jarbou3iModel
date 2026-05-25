@@ -1,8 +1,8 @@
 {
-  "version": "1.3.0-alpha.10",
-  "release_title": "v1.3.0-alpha.10 \u2014 Brief Publication Pack v4",
+  "version": "1.3.0-rc.1",
+  "release_title": "v1.3.0-rc.1 \u2014 Manual Workflow Release Candidate Freeze",
   "package": "jarbou3i-research-engine",
-  "release_type": "post-stable-alpha-brief-publication-pack-v4",
+  "release_type": "manual-workflow-release-candidate-freeze",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
   "oauth_behavior_changed": false,
@@ -44,9 +44,9 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Brief publication pack v4 pass: consolidates final brief markdown, evidence appendix, contradiction/falsifier appendix, source-gap appendix, operator signoff/lock-ledger appendix, and publication-readiness summary without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, automatic signoff, automatic export lock, publishing permission claims, cryptographic signing, or automatic source verification claims.",
+  "release_scope": "Manual workflow release-candidate freeze: freezes the local/manual source-to-brief and Brief Publication Pack v4 chain after locked v1.3.0-alpha.10. It preserves source-to-claim gap closure, signed export handoff metadata, lock-ledger review, operator signoff state, export lock ledger, final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, automatic signoff, automatic export lock, publishing permission claims, cryptographic signing, or automatic source verification claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "v1.3.0-alpha.10 Brief Publication Pack v4. Manual publication handoff pack, final brief and appendix Markdown files, publication-readiness summary, and reviewer-facing UI surface. No live/provider/OAuth/backend/storage expansion and no automatic verification/signoff/lock/publish claims.",
-  "node_runtime_note": "Node 24 CI compatibility preserved for v1.3.0-alpha.10.",
+  "release_manifest_text": "v1.3.0-rc.1 Manual Workflow Release Candidate Freeze. RC freeze for the manual source-to-brief/publication workflow after the locked v1.3.0-alpha.10 Brief Publication Pack v4. No live/provider/OAuth/backend/storage expansion and no automatic verification/signoff/lock/publish claims.",
+  "node_runtime_note": "Node 24 CI compatibility preserved for v1.3.0-rc.1.",
   "baseline_continuity_note": "v1.1.0 stable public-demo baseline and Diagnostic Repair Queue + Export Risk Resolution continuity preserved."
 }

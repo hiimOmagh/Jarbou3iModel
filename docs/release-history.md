@@ -67,6 +67,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.1.0-evidence-pack-export-v3-brief-traceability.md` | v1.1.0 — Public Demo Stable |
 | `v1.3.0-alpha.8-evidence-pack-export-v3-brief-traceability.md` | v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface |
 | `v1.3.0-alpha.10-evidence-pack-export-v3-brief-traceability.md` | v1.3.0-alpha.10 — Brief Publication Pack v4 |
+| `v1.3.0-rc.1-evidence-pack-export-v3-brief-traceability.md` | v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze |
 
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
@@ -3478,7 +3479,7 @@ Readiness artifacts:
 - docs/source-refactor-readiness-audit.md
 - tests/language-description-audit-check.mjs
 
-No source-file refactor yet. No runtime behavior change.
+No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-alpha.8-evidence-pack-export-v3-brief-traceability.md -->
 
 
@@ -3496,5 +3497,13 @@ Readiness artifacts:
 - docs/source-refactor-readiness-audit.md
 - tests/language-description-audit-check.mjs
 
-No source-file refactor yet. No runtime behavior change.
+No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-alpha.10-evidence-pack-export-v3-brief-traceability.md -->
+<!-- release-file:v1.3.0-rc.1-evidence-pack-export-v3-brief-traceability.md -->
+# v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze
+
+Manual workflow release-candidate freeze after the locked v1.3.0-alpha.10 Brief Publication Pack v4. No new live provider, OAuth, backend, storage, source acquisition, automatic source verification, automatic signoff, automatic export lock, cryptographic signature, or publishing-permission behavior is added.
+
+The RC preserves the manual source-to-brief chain: source-to-claim gap closure queue, signed export handoff metadata, lock-ledger review surface, operator signoff state, export lock ledger, final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix. Supporting audit files remain docs/technical-debt-ledger.md and docs/source-refactor-readiness-audit.md. Coverage remains tests/language-description-audit-check.mjs. No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
+<!-- /release-file:v1.3.0-rc.1-evidence-pack-export-v3-brief-traceability.md -->
+

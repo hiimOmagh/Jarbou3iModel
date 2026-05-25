@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.3.0-alpha.10",
-  "internal_build_version": "1.3.0-alpha.10",
-  "public_version_label": "v1.3.0-alpha.10 Brief Publication Pack v4",
+  "evidence_matrix_config_version": "1.3.0-rc.1",
+  "internal_build_version": "1.3.0-rc.1",
+  "public_version_label": "v1.3.0-rc.1 Manual Workflow Release Candidate Freeze",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Brief Publication Pack v4",
+        "Manual Workflow Release Candidate Freeze",
         "Brief Template UX Polish",
         "Export Pack v3",
         "Signed Export Handoff Pack",
@@ -233,8 +233,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.3.0-alpha.10 Brief Publication Pack v4",
-    "ar": "v1.3.0-alpha.10 قائمة إغلاق فجوات المصدر إلى الادعاء",
-    "fr": "v1.3.0-alpha.10 File de clôture des écarts source-affirmation"
+    "en": "v1.3.0-rc.1 Manual Workflow Release Candidate Freeze",
+    "ar": "v1.3.0-rc.1 قائمة إغلاق فجوات المصدر إلى الادعاء",
+    "fr": "v1.3.0-rc.1 File de clôture des écarts source-affirmation"
   }
 }

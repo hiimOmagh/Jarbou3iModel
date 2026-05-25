@@ -1,63 +1,58 @@
 # Jarbou3i Research Engine
 
-`v1.3.0-alpha.10 — Brief Publication Pack v4`
+`v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`
 
-A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
+Jarbou3i Research Engine is a dark editorial intelligence workspace for converting messy AI output into structured strategic briefs.
 
-This alpha adds **Brief Publication Pack v4**: a manual/local publication-review handoff that consolidates the final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, operator signoff/lock-ledger appendix, and publication-readiness summary.
+This RC freezes the complete manual source-to-brief/publication workflow after the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` baseline. It is not a provider/OAuth/backend expansion.
 
-Alpha.10 capability surface:
-
-- Brief Publication Pack v4
-- publication-ready brief Markdown
-- evidence appendix
-- contradiction/falsifier appendix
-- source-gap appendix
-- operator signoff / lock-ledger appendix
-- publication-readiness summary
-- JSON/Markdown publication-pack artifacts
-- UI review panel and EN/AR/FR copy
-
-Preserved alpha.9 baseline:
+Frozen surface:
 
 - Source-to-Claim Gap Closure Queue
-- export-blocking gap counts
-- weak claim/evidence linkage diagnostics
-- unresolved contradiction gap diagnostics
-- counter-evidence target gap diagnostics
-- scenario falsifier gap diagnostics
+- Signed Export Handoff Pack
+- Lock Ledger Review Surface
+- Operator Signoff State
+- Export Lock Ledger
+- Brief Assembly Preview Diff
+- Export Review Signoff dossier
+- Brief Publication Pack v4
+- final brief and evidence/contradiction/falsifier/source-gap/signoff appendices
 
-Preserved boundaries: manual/private mode remains first-class; no live scraping; no production OAuth; no backend behavior expansion; no live provider execution expansion; no storage expansion; no automatic source verification claims; no automatic signoff; no automatic export lock; no publishing permission claim; no cryptographic signature claim.
+Boundary:
 
-Core local validation:
+- no live scraping
+- no production OAuth
+- no backend behavior expansion
+- no provider execution expansion
+- no storage expansion
+- no automatic source verification claims
+- no automatic signoff
+- no automatic export lock
+- no publishing permission claim
+- no cryptographic signature claim
+
+Public release label: v1.3.0-rc.1 Manual Workflow Release Candidate Freeze.
+
+Run local gates:
 
 ```bash
-npm install
-npm run test:qa
 npm run test:current:no-browser
 npm run test:source
 npm run test:release
+npm run test:qa
 ```
 
-Browser validation before publication:
+Run CI gates:
 
 ```bash
+npm install
 npx playwright install --with-deps
+npm run test:ci:no-browser
 npm run test:ci:browser
 ```
 
-Release-lock evidence boundary: screenshots alone are insufficient. ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, hosted-demo evidence, and the canonical lock bundle.
+Release approval rule: screenshots alone are insufficient, and a ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, and the canonical lock-evidence bundle.
 
-Public release label: v1.3.0-alpha.10 Brief Publication Pack v4.
+Continuity preserved: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only handoff discipline.
 
-Last locked release: v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue.
-
-Public Demo continuity is preserved; release lock still requires hosted evidence review.
-
-Node 24 CI compatibility is preserved.
-
-v1.1.0 stable public-demo baseline remains protected.
-
-Continuity: source strategy continuity, release evidence continuity, repository hygiene continuity, PLAYWRIGHT_SKIP_INSTALL continuity, evidence scoring continuity, fixture/test debt ledger continuity, professional trilingual language-description review continuity, package script compression and CI gate registry, fixture registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
-
-Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
+Stable baseline retained: v1.1.0 — Diagnostic Repair Queue + Export Risk Resolution remains the protected public-demo reference for post-stable expansion gating.

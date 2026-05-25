@@ -4,31 +4,19 @@ Public Demo continuity: retained. The v1.1.0 stable public-demo baseline remains
 
 Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
 
-## v1.3.0-alpha.10 — Brief Publication Pack v4
+## v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze
 
-Public release label: v1.3.0-alpha.10 Brief Publication Pack v4.
+Public release label: v1.3.0-rc.1 Manual Workflow Release Candidate Freeze.
 
-Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for alpha.10.
+Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for rc.1.
 
-Public and internal release versions are aligned. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion; alpha.10 adds only a manual Brief Publication Pack v4 and reviewer-facing publication handoff surface.
+Public and internal release versions are aligned.
 
-Last locked release: `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`. Alpha.9 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, and bundle integrity were accepted before this publication-pack build.
+Last locked release: `v1.3.0-alpha.10 — Brief Publication Pack v4`. Alpha.10 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, and bundle integrity were accepted before this RC freeze.
 
-Purpose: consolidate the manual source-to-brief output into a publication-review handoff pack. This release packages a final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, operator signoff/lock-ledger appendix, and publication-readiness summary. It does not publish, verify sources, sign cryptographically, or authorize export automatically.
+Purpose: freeze the complete manual source-to-brief/publication workflow for release-candidate validation. This is a defect-control milestone, not a new feature layer. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion.
 
-## Alpha.10 feature surface
-
-- Brief Publication Pack v4
-- publication-ready brief Markdown
-- evidence appendix
-- contradiction/falsifier appendix
-- source-gap appendix
-- operator signoff / lock-ledger appendix
-- publication-readiness summary
-- JSON/Markdown publication-pack files
-- reviewer-facing publication-pack UI panel and trilingual labels
-
-## Preserved feature surface
+## Frozen manual workflow surface
 
 - Source-to-Claim Gap Closure Queue
 - Signed Export Handoff Pack
@@ -37,8 +25,13 @@ Purpose: consolidate the manual source-to-brief output into a publication-review
 - Export Lock Ledger
 - Brief Assembly Preview Diff
 - Export Review Signoff dossier
-- Required operator confirmations before export lock
-- Release Truth Sweep + Roadmap Compression guardrails
+- Brief Publication Pack v4
+- publication-ready brief Markdown
+- evidence appendix
+- contradiction/falsifier appendix
+- source-gap appendix
+- operator signoff / lock-ledger appendix
+- publication-readiness summary
 
 ## Evidence boundary flags
 
@@ -59,9 +52,9 @@ Purpose: consolidate the manual source-to-brief output into a publication-review
 ## Release manifest
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0-alpha.10`
+- Version: `1.3.0-rc.1`
 - Runtime capability change: no
-- Public surface: manual Brief Publication Pack v4
+- Public surface: manual workflow release-candidate freeze
 - Required browser gates before publishing
 - Release archive exclusions
 - Required cleanup commands
