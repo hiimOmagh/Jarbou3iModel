@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.3.0-alpha.9`
-Release: `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
+Version: `1.3.0-alpha.10`
+Release: `v1.3.0-alpha.10 — Brief Publication Pack v4`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.3.0-alpha.9",
-  "release_title": "v1.3.0-alpha.9 \u2014 Source-to-Claim Gap Closure Queue",
+  "ci_gate_registry_version": "1.3.0-alpha.10",
+  "release_title": "v1.3.0-alpha.10 \u2014 Brief Publication Pack v4",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -150,6 +150,7 @@
         "tests/source-to-brief-operator-signoff-lock-ledger-check.mjs",
         "tests/source-to-brief-signed-export-handoff-check.mjs",
         "tests/source-to-brief-source-to-claim-gap-closure-check.mjs",
+        "tests/source-to-brief-brief-publication-pack-v4-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs",
         "tests/source-to-brief-brief-template-ux-polish-check.mjs",
         "tests/controlled-connector-architecture-check.mjs",
@@ -203,6 +204,7 @@
         "tests/source-to-brief-operator-signoff-lock-ledger-check.mjs",
         "tests/source-to-brief-signed-export-handoff-check.mjs",
         "tests/source-to-brief-source-to-claim-gap-closure-check.mjs",
+        "tests/source-to-brief-brief-publication-pack-v4-check.mjs",
         "tests/source-cluster-gap-intelligence-check.mjs",
         "tests/entity-intelligence-layer-check.mjs",
         "tests/research-planner-v2-check.mjs",
@@ -286,6 +288,7 @@
         "tests/source-to-brief-operator-signoff-lock-ledger-check.mjs",
         "tests/source-to-brief-signed-export-handoff-check.mjs",
         "tests/source-to-brief-source-to-claim-gap-closure-check.mjs",
+        "tests/source-to-brief-brief-publication-pack-v4-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs"
       ],
       "syntax_checks": [],
@@ -444,8 +447,8 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.3.0-alpha.9",
-    "optimization_scope": "source_to_claim_gap_closure_queue",
+    "version": "1.3.0-alpha.10",
+    "optimization_scope": "brief_publication_pack_v4",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -457,7 +460,7 @@
     "previous_serial_no_browser_syntax_checks": 1
   },
   "syntax_matrix": {
-    "version": "1.3.0-alpha.9",
+    "version": "1.3.0-alpha.10",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -585,13 +588,14 @@
       "tests/source-to-brief-signed-export-handoff-check.mjs",
       "tests/source-to-brief-source-to-claim-gap-closure-check.mjs",
       "tests/no-browser-qa-suite.mjs",
-      "tests/release-truth-consistency-check.mjs"
+      "tests/release-truth-consistency-check.mjs",
+      "tests/source-to-brief-brief-publication-pack-v4-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.3.0-alpha.9",
+    "version": "1.3.0-alpha.10",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -611,7 +615,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.3.0-alpha.9",
+    "version": "1.3.0-alpha.10",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

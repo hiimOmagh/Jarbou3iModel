@@ -6,10 +6,10 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.3.0-alpha.9';
-const TITLE = 'Source-to-Claim Gap Closure Queue';
+const VERSION = '1.3.0-alpha.10';
+const TITLE = 'Brief Publication Pack v4';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.3.0-alpha.9-source-to-claim-gap-closure-queue.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.3.0-alpha.10-source-to-claim-gap-closure-queue.zip';
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || releaseDocExists(file);
@@ -18,8 +18,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.9-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.10-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.10.json');
 const spec = read('tests/hosted-demo-browser-evidence.spec.mjs');
 const ciBrowser = read('scripts/ci-browser.sh');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
@@ -54,7 +54,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.3.0-alpha.9'",
+  "const VERSION = '1.3.0-alpha.10'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',
@@ -95,8 +95,8 @@ const review = hosted.buildHostedDemoEvidenceReview({}, { version:VERSION, now:'
 assert.equal(review.metadata_manifest_required, true);
 assert.ok(review.review_items.some((item) => item.artifact_id === 'complete_capture_manifest'));
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.9'"));
-assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.9'"), 'migration order must preserve v1.0.28 and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.10'"));
+assert.ok(migrations.includes("'1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.10'"), 'migration order must preserve v1.0.28 and append v1.1.0');
 assert.ok(migrations.includes('metadata_manifest_required:true'), 'migration defaults must include evidence manifest metadata requirement');
 
 for (const file of [
@@ -104,9 +104,9 @@ for (const file of [
   'docs/v1.0.28-hosted-demo-evidence-manifest-gate.md',
   'docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md',
   'fixtures/migrations/v1.0.28-packet.json',
-  'fixtures/migrations/v1.3.0-alpha.9-packet.json',
+  'fixtures/migrations/v1.3.0-alpha.10-packet.json',
   'fixtures/privacy/browser-generated-export-v1.0.28.json',
-  'fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json',
+  'fixtures/privacy/browser-generated-export-v1.3.0-alpha.10.json',
   'tests/hosted-demo-evidence-manifest-check.mjs',
   'tests/version-suite-registry-check.mjs'
 ]) assert.ok(exists(file), `missing ${file}`);
@@ -125,7 +125,7 @@ for (const corpus of [
   read('docs/privacy-audit.md'),
   readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md')
 ]) {
-  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.3.0-alpha.9'), 'release corpus must mention v1.1.0');
+  assert.ok(corpus.includes('v1.1.0') || corpus.includes('1.3.0-alpha.10'), 'release corpus must mention v1.1.0');
   assert.ok(/Package Script|CI Gate Registry|Root Manifest|Release Artifact Consolidation|Migration \+ Privacy Fixture Registry Consolidation|Fixture Registry|payload compression|test organization|planning gate|evidence manifest|single final metadata|capture manifest|visual freeze|mobile header/i.test(corpus), 'release corpus must describe evidence manifest gate');
 }
 

@@ -3,24 +3,24 @@ import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.3.0-alpha.9';
-const TITLE = 'Source-to-Claim Gap Closure Queue';
-const REGISTRY_BUDGET_BYTES = 900 * 1024;
+const VERSION = '1.3.0-alpha.10';
+const TITLE = 'Brief Publication Pack v4';
+const REGISTRY_BUDGET_BYTES = 960 * 1024;
 const MIN_SIZE_REDUCTION_RATIO = 4;
 const registries = [
   {
     label: 'migration',
     path: 'fixtures/migrations/migration-registry.json',
     registry: migrationRegistry,
-    expectedEntries: 60,
-    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.3.0-alpha.9-packet.json')
+    expectedEntries: 61,
+    currentFixture: () => getMigrationFixture('fixtures/migrations/v1.3.0-alpha.10-packet.json')
   },
   {
     label: 'privacy',
     path: 'fixtures/privacy/privacy-export-registry.json',
     registry: privacyRegistry,
-    expectedEntries: 50,
-    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json')
+    expectedEntries: 51,
+    currentFixture: () => getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.10.json')
   }
 ];
 

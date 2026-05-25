@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0-alpha.9';
-const RELEASE = 'v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue';
-const PUBLIC_LABEL = 'v1.3.0-alpha.9 Source-to-Claim Gap Closure Queue';
-const LOCKED_BASELINE = 'v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface';
+const VERSION = '1.3.0-alpha.10';
+const RELEASE = 'v1.3.0-alpha.10 — Brief Publication Pack v4';
+const PUBLIC_LABEL = 'v1.3.0-alpha.10 Brief Publication Pack v4';
+const LOCKED_BASELINE = 'v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue';
 
 function read(path) {
   return fs.readFileSync(path, 'utf8');
@@ -21,7 +21,7 @@ const refactorAudit = read('docs/source-refactor-readiness-audit.md');
 const ciRegistry = JSON.parse(read('tests/ci-gate-registry.json'));
 
 assert.equal(pkg.version, VERSION);
-assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.9 public label');
+assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.10 public label');
 assert.ok(pkg.description.includes('release evidence continuity'), 'package description must preserve release evidence token');
 assert.ok(pkg.description.includes('package script compression and CI gate registry'), 'package description must preserve CI gate registry token');
 assert.ok(pkg.description.includes('source strategy continuity'), 'package description must preserve source strategy token');
@@ -35,11 +35,11 @@ assert.equal(manifest.oauth_behavior_changed, false);
 assert.equal(manifest.backend_behavior_changed, false);
 assert.equal(manifest.source_behavior_changed, false);
 assert.equal(manifest.storage_behavior_changed, false);
-assert.ok(manifest.release_scope.includes('Source-to-Claim gap closure queue pass'));
+assert.ok(manifest.release_scope.includes('Brief publication pack v4 pass'));
 assert.ok(manifest.release_scope.includes('cryptographic signing'));
 
 for (const [name, text] of Object.entries({ current, roadmap, readme, changelog, publicDemo })) {
-  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.9 release identity`);
+  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.10 release identity`);
   assert.ok(text.includes('no live scraping') || text.includes('No live scraping'), `${name} must preserve no-live boundary`);
   assert.ok(text.includes('no production OAuth') || text.includes('No production OAuth'), `${name} must preserve OAuth boundary`);
   assert.ok(text.includes('cryptographic') || text.includes('Cryptographic'), `${name} must preserve no-cryptographic-signature boundary`);
@@ -47,14 +47,15 @@ for (const [name, text] of Object.entries({ current, roadmap, readme, changelog,
 
 assert.ok(current.includes(`Last locked release: \`${LOCKED_BASELINE}\``), 'current-release must explicitly mark alpha.8 as locked baseline');
 assert.equal(current.includes('built locally, no-browser validated pending browser lock evidence'), false, 'current-release must not keep stale pending-browser wording');
-assert.ok(current.includes('Status: built locally. Lock is pending green no-browser CI, green browser CI'), 'current-release must describe alpha.9 lock state precisely');
-assert.ok(current.includes('Source-to-Claim Gap Closure Queue'));
-assert.ok(current.includes('weak claim/evidence linkage'));
-assert.ok(current.includes('scenario falsifier gaps'));
-assert.ok(current.includes('export-blocking required-before-export count'));
+assert.ok(current.includes('Status: built locally. Lock is pending green no-browser CI, green browser CI'), 'current-release must describe alpha.10 lock state precisely');
+assert.ok(current.includes('Brief Publication Pack v4'));
+assert.ok(current.includes('publication-ready brief Markdown'));
+assert.ok(current.includes('evidence appendix'));
+assert.ok(current.includes('operator signoff / lock-ledger appendix'));
+assert.ok(current.includes('publication-readiness summary'));
 
-assert.ok(roadmap.includes('v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue'));
 assert.ok(roadmap.includes('v1.3.0-alpha.10 — Brief Publication Pack v4'));
+assert.ok(roadmap.includes('v1.3.0-alpha.11 — Publication Pack QA + Review Density Polish'));
 assert.ok(roadmap.includes('v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation'));
 assert.equal(roadmap.includes('only after alpha.5 no-browser CI'), false, 'roadmap must not preserve stale alpha.5 dependency text');
 assert.equal(roadmap.includes('Next valid milestone:'), false, 'roadmap should use compressed next milestones rather than stale next-valid milestone wording');

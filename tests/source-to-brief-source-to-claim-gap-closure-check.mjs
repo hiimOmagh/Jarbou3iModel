@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.9';
+const VERSION = '1.3.0-alpha.10';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
   'src/research/operator-command-palette.js',
@@ -47,7 +47,7 @@ const packet = {
 
 const workbench = workbenchApi.buildSourceToBriefWorkbench(packet, {version:VERSION, now:'2026-05-25T02:00:00.000Z'});
 const queue = workbench.source_to_claim_gap_closure_queue;
-assert.ok(queue, 'source-to-claim gap closure queue missing');
+assert.ok(queue, 'brief publication pack v4 missing');
 assert.equal(queue.queue_model, 'source_to_claim_gap_closure_queue.v1');
 assert.equal(queue.release_gate, 'source_to_claim_gap_closure_required_before_export');
 assert.equal(queue.export_lock_blocking, true);

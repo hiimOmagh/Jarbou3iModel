@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.3.0-alpha.9",
-  "release_title": "v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue",
+  "version_suite_registry_version": "1.3.0-alpha.10",
+  "release_title": "v1.3.0-alpha.10 — Brief Publication Pack v4",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.9';
+const VERSION = '1.3.0-alpha.10';
 const context = { console, TextEncoder, window: { Jarbou3iResearchModules: {} } };
 context.globalThis = context;
 context.window = context;
@@ -58,7 +58,7 @@ const packet = {
 
 const workbench = workbenchApi.buildSourceToBriefWorkbench(packet, {version: VERSION, now:'2026-05-23T00:00:00.000Z'});
 assert.equal(workbench.source_to_brief_version, VERSION);
-assert.deepEqual(Array.from(workbench.workflow_steps), ['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','source_to_claim_gap_closure_queue','lock_ledger_review_surface','signed_export_handoff_pack']);
+assert.deepEqual(Array.from(workbench.workflow_steps), ['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','source_to_claim_gap_closure_queue','lock_ledger_review_surface','signed_export_handoff_pack','brief_publication_pack_v4']);
 assert.equal(workbench.live_fetching_performed, false);
 assert.equal(workbench.provider_execution_expanded, false);
 assert.equal(workbench.backend_behavior_expanded, false);
@@ -104,7 +104,9 @@ for (const required of [
   'source-to-brief/export-lock-ledger.json',
   'source-to-brief/source-to-claim-gap-closure-queue.json',
   'source-to-brief/lock-ledger-review-surface.json',
-  'source-to-brief/signed-export-handoff-pack.json'
+  'source-to-brief/signed-export-handoff-pack.json',
+  'source-to-brief/brief-publication-pack-v4.json',
+  'source-to-brief/publication-ready-brief.md'
 ]) {
   assert.ok(paths.includes(required), `missing source-to-brief export file ${required}`);
 }
@@ -122,6 +124,9 @@ assert.equal(exported.lock_ledger_review_surface.export_handoff_status, 'blocked
 assert.equal(exported.lock_ledger_review_surface.cryptographic_signature_claimed, false);
 assert.equal(exported.signed_export_handoff_pack.handoff_status, 'blocked');
 assert.equal(exported.signed_export_handoff_pack.cryptographic_signature_claimed, false);
+assert.ok(exported.brief_publication_pack_v4, 'brief publication pack missing');
+assert.equal(exported.brief_publication_pack_v4.cryptographic_signature_claimed, false);
+assert.equal(exported.brief_publication_pack_v4.publication_permission_claimed, false);
 assert.equal(exported.evidence_cards[0].source_provenance, 'user_provided_or_source_imported_evidence');
 assert.equal(pack.files.map((file) => file.content).join('\n').includes('verified sources'), false);
 

@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue
+Current release candidate: v1.3.0-alpha.10 — Brief Publication Pack v4
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.3.0-alpha.9.
+Node 24 CI compatibility is preserved for v1.3.0-alpha.10.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

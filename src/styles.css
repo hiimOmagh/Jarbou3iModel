@@ -1500,7 +1500,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
   .lockLedgerReviewCard header { display: grid; }
 }
 
-/* v1.3.0-alpha.9 source-to-claim gap closure queue */
+/* v1.3.0-alpha.10 brief publication pack v4 */
 .sourceToClaimGapClosurePanel {
   border-color: color-mix(in srgb, var(--warning) 34%, var(--line));
   background: linear-gradient(180deg, color-mix(in srgb, var(--surface-solid) 91%, transparent), color-mix(in srgb, var(--surface-soft) 95%, transparent));
@@ -1532,4 +1532,16 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
 .sourceToClaimGapItem.severity-medium { border-color: color-mix(in srgb, var(--warning) 38%, var(--line)); }
 @media(max-width:640px){
   .sourceToClaimGapItem header { display: grid; }
+}
+
+/* v1.3.0-alpha.10 brief publication pack v4 */
+.briefPublicationPackPanel {
+  border-color: color-mix(in srgb, var(--ok) 34%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-solid) 92%, transparent), color-mix(in srgb, var(--surface-soft) 96%, transparent));
+}
+.briefPublicationFiles {
+  margin-top: 0.65rem;
+}
+.briefPublicationPackPanel .miniChips span {
+  max-width: 100%;
 }

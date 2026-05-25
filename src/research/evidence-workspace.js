@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.9';
+  const VERSION = '1.3.0-alpha.10';
   const SOURCE_TYPES = Object.freeze(['official','academic','news','social','market','expert','primary','other']);
   const CONFIDENCE = Object.freeze(['low','medium','high']);
 

@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.3.0-alpha.9';
-const TITLE = 'Source-to-Claim Gap Closure Queue';
+const VERSION = '1.3.0-alpha.10';
+const TITLE = 'Brief Publication Pack v4';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
 const DOC = `docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`;

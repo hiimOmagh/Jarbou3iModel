@@ -10,11 +10,11 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const VERSION = '1.3.0-alpha.9';
+const VERSION = '1.3.0-alpha.10';
 const BASE_VERSION = '1.0.30';
-const TITLE = 'Source-to-Claim Gap Closure Queue';
+const TITLE = 'Brief Publication Pack v4';
 const RELEASE = `v${VERSION} — ${TITLE}`;
-const ARTIFACT = 'jarbou3i-research-engine-v1.3.0-alpha.9-source-to-claim-gap-closure-queue.zip';
+const ARTIFACT = 'jarbou3i-research-engine-v1.3.0-alpha.10-source-to-claim-gap-closure-queue.zip';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');
@@ -22,15 +22,15 @@ const styles = read('src/styles.css');
 const index = read('index.html');
 const migrations = read('src/research/migrations.js');
 const schema = json('schema/research-workflow.schema.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.9-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.10-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.10.json');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const releaseDoc = readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md');
 
 assert.equal(pkg.version, VERSION, 'package version must be v1.1.0');
 assert.equal(lock.version, VERSION, 'package-lock root version must be v1.1.0');
 assert.equal(lock.packages[''].version, VERSION, 'package-lock package version must be v1.1.0');
-assert.ok(index.includes('v1.3.0-alpha.9 · Source-to-Claim Gap Closure Queue'), 'index badge must expose v1.1.0 visual-freeze identity');
+assert.ok(index.includes('v1.3.0-alpha.10 · Brief Publication Pack v4'), 'index badge must expose v1.1.0 visual-freeze identity');
 
 assert.ok(styles.includes('.brand > div:not(.logo)'), 'mobile overflow hardening must exclude the logo wrapper from full-width div rules');
 assert.ok(!/\.brand\s*>\s*div\s*,/.test(styles), 'mobile hardening must not target every direct brand div; that stretches the logo wrapper');
@@ -58,8 +58,8 @@ for (const packet of [migrationFixture, privacyFixture]) {
 }
 
 assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must be v1.1.0');
-assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.9'"), 'migration target must be v1.1.0');
-assert.ok(migrations.includes("'1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.9'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.10'"), 'migration target must be v1.1.0');
+assert.ok(migrations.includes("'1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.10'"), 'migration order must preserve v1.0.30 freeze baseline and append v1.1.0');
 assert.ok(releaseDocExists('docs/v1.0.29-final-public-demo-hardening-release-freeze-audit.md'), 'v1.0.30 freeze baseline release doc must remain present');
 assert.ok(releaseDocExists('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md'), 'v1.1.0 release doc must exist');
 assert.ok(releaseDoc.includes('Mobile Header Geometry Lock'), 'v1.1.0 release doc must state the visual-freeze scope');

@@ -10,8 +10,8 @@ const quality = read('src/research/quality-gate.js');
 const index = read('index.html');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.9-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.9.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.10-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.10.json');
 const pkg = JSON.parse(read('package.json'));
 
 new vm.Script(scorerSource, {filename:'src/research/evidence-scorer.js'});
@@ -24,8 +24,8 @@ vm.createContext(context);
 vm.runInContext(scorerSource, context, {filename:'src/research/evidence-scorer.js'});
 const scorer = context.window.Jarbou3iResearchModules.evidenceScorer;
 
-assert.equal(pkg.version, '1.3.0-alpha.9');
-assert.equal(scorer.VERSION, '1.3.0-alpha.9');
+assert.equal(pkg.version, '1.3.0-alpha.10');
+assert.equal(scorer.VERSION, '1.3.0-alpha.10');
 assert.equal(scorer.SCORING_VERSION, 'evidence_scoring.v1');
 assert.equal(typeof scorer.scoreEvidenceItem, 'function');
 assert.equal(typeof scorer.scoreEvidenceSet, 'function');
@@ -63,21 +63,21 @@ assert.ok(quality.includes('attention_signal_integrity'), 'quality gate must inc
 assert.ok(schema.required.includes('evidence_scoring_report'), 'schema must require evidence_scoring_report');
 assert.equal(schema.$defs.evidence_scoring.properties.scoring_version.const, 'evidence_scoring.v1');
 assert.equal(schema.$defs.evidence_scoring.properties.attention_is_truth_score.const, false);
-assert.equal(schema.$defs.evidence_scoring_report.properties.evidence_scoring_version.const, '1.3.0-alpha.9');
+assert.equal(schema.$defs.evidence_scoring_report.properties.evidence_scoring_version.const, '1.3.0-alpha.10');
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.3.0-alpha.9');
-  assert.equal(packet.evidence_scoring_report.evidence_scoring_version, '1.3.0-alpha.9');
+  assert.equal(packet.workflow_version, '1.3.0-alpha.10');
+  assert.equal(packet.evidence_scoring_report.evidence_scoring_version, '1.3.0-alpha.10');
   assert.equal(packet.evidence_scoring_report.scoring_model, 'evidence_scoring.v1');
   assert.equal(packet.evidence_scoring_report.policy, 'public attention is tracked separately from evidence reliability');
   assert.ok(Array.isArray(packet.evidence_matrix) && packet.evidence_matrix.length > 0);
   for (const item of packet.evidence_matrix) {
     assert.equal(item.evidence_scoring.scoring_version, 'evidence_scoring.v1');
-    assert.equal(item.evidence_scoring.scorer_version, '1.3.0-alpha.9');
+    assert.equal(item.evidence_scoring.scorer_version, '1.3.0-alpha.10');
     assert.equal(item.evidence_scoring.attention_is_truth_score, false);
     assert.equal(item.evidence_scoring.policy, 'attention_signal_is_not_evidence_reliability');
   }
-  assert.equal(packet.release_notes.release_title, 'v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue');
+  assert.equal(packet.release_notes.release_title, 'v1.3.0-alpha.10 — Brief Publication Pack v4');
 }
 
 console.log('Evidence scoring v1 checks passed.');

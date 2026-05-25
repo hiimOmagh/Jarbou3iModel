@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.3.0-alpha.9';
-const TITLE = 'Source-to-Claim Gap Closure Queue';
+const VERSION = '1.3.0-alpha.10';
+const TITLE = 'Brief Publication Pack v4';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

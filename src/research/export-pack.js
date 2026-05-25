@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.9';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.10';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -201,6 +201,8 @@
       `Export lock status: ${safeString(workbench.export_lock_ledger?.lock_status ?? 'unlocked_manual_signoff_required')}`,
       `Lock ledger review gate: ${safeString(workbench.lock_ledger_review_surface?.release_gate ?? 'lock_ledger_review_unlocked')}`,
       `Signed export handoff status: ${safeString(workbench.signed_export_handoff_pack?.handoff_status ?? 'unlocked')}`,
+      `Brief publication pack status: ${safeString(workbench.brief_publication_pack_v4?.publication_pack_status ?? 'manual_publication_review_required')}`,
+      `Brief publication release gate: ${safeString(workbench.brief_publication_pack_v4?.publication_readiness_summary?.publication_release_gate ?? 'brief_publication_pack_manual_review_required')}`,
       `Source-to-claim gaps open: ${safeString(workbench.source_to_claim_gap_closure_queue?.open_count ?? 0)}`,
       `Source-to-claim export blockers: ${safeString(workbench.source_to_claim_gap_closure_queue?.required_before_export_count ?? 0)}`,
       `Export locked: ${safeString(workbench.export_lock_ledger?.export_locked === true)}`, 
@@ -303,6 +305,13 @@
     if(workbench.lock_ledger_review_surface && workbenchApi?.lockLedgerReviewSurfaceMarkdown) files.push(fileEntry('source-to-brief/lock-ledger-review-surface.md', 'text/markdown', workbenchApi.lockLedgerReviewSurfaceMarkdown(workbench), 'source-to-brief-lock-ledger-review-surface-md'));
     if(workbench.signed_export_handoff_pack) files.push(fileEntry('source-to-brief/signed-export-handoff-pack.json', 'application/json', jsonContent(workbench.signed_export_handoff_pack), 'source-to-brief-signed-export-handoff-pack'));
     if(workbench.signed_export_handoff_pack && workbenchApi?.signedExportHandoffPackMarkdown) files.push(fileEntry('source-to-brief/signed-export-handoff-pack.md', 'text/markdown', workbenchApi.signedExportHandoffPackMarkdown(workbench), 'source-to-brief-signed-export-handoff-pack-md'));
+    if(workbench.brief_publication_pack_v4) files.push(fileEntry('source-to-brief/brief-publication-pack-v4.json', 'application/json', jsonContent(workbench.brief_publication_pack_v4), 'source-to-brief-brief-publication-pack-v4'));
+    if(workbench.brief_publication_pack_v4 && workbenchApi?.briefPublicationPackV4Markdown) files.push(fileEntry('source-to-brief/brief-publication-pack-v4.md', 'text/markdown', workbenchApi.briefPublicationPackV4Markdown(workbench), 'source-to-brief-brief-publication-pack-v4-md'));
+    if(workbench.brief_publication_pack_v4 && workbenchApi?.publicationReadyBriefMarkdown) files.push(fileEntry('source-to-brief/publication-ready-brief.md', 'text/markdown', workbenchApi.publicationReadyBriefMarkdown(workbench), 'source-to-brief-publication-ready-brief-md'));
+    if(workbench.brief_publication_pack_v4 && workbenchApi?.evidenceAppendixMarkdown) files.push(fileEntry('source-to-brief/evidence-appendix.md', 'text/markdown', workbenchApi.evidenceAppendixMarkdown(workbench), 'source-to-brief-evidence-appendix-md'));
+    if(workbench.brief_publication_pack_v4 && workbenchApi?.contradictionFalsifierAppendixMarkdown) files.push(fileEntry('source-to-brief/contradiction-falsifier-appendix.md', 'text/markdown', workbenchApi.contradictionFalsifierAppendixMarkdown(workbench), 'source-to-brief-contradiction-falsifier-appendix-md'));
+    if(workbench.brief_publication_pack_v4 && workbenchApi?.sourceGapAppendixMarkdown) files.push(fileEntry('source-to-brief/source-gap-appendix.md', 'text/markdown', workbenchApi.sourceGapAppendixMarkdown(workbench), 'source-to-brief-source-gap-appendix-md'));
+    if(workbench.brief_publication_pack_v4 && workbenchApi?.operatorSignoffLockLedgerAppendixMarkdown) files.push(fileEntry('source-to-brief/operator-signoff-lock-ledger-appendix.md', 'text/markdown', workbenchApi.operatorSignoffLockLedgerAppendixMarkdown(workbench), 'source-to-brief-operator-signoff-lock-ledger-appendix-md'));
     const templateApi = root.briefTemplateSystem;
     if(workbench.brief_template_system) files.push(fileEntry('source-to-brief/brief-template-system.json', 'application/json', jsonContent(workbench.brief_template_system), 'source-to-brief-brief-template-system'));
     if(workbench.brief_template_system && templateApi?.briefTemplateSystemMarkdown) files.push(fileEntry('source-to-brief/brief-template-system.md', 'text/markdown', templateApi.briefTemplateSystemMarkdown(workbench.brief_template_system), 'source-to-brief-brief-template-system-md'));

@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.3.0-alpha.9`
-Release: `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
+Version: `1.3.0-alpha.10`
+Release: `v1.3.0-alpha.10 — Brief Publication Pack v4`
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

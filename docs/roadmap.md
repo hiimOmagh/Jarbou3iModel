@@ -2,32 +2,29 @@
 
 Current milestone:
 
-`v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
+`v1.3.0-alpha.10 — Brief Publication Pack v4`
 
-Purpose: expose unresolved claim/evidence gaps, weak linkage, contradiction gaps, counter-evidence gaps, and scenario falsifier gaps before export.
+Purpose: consolidate the final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix into one manual publication-review pack.
 
 ## Locked baseline
 
-`v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface` is locked. Do not patch alpha.8 further. It remains the reviewer-facing handoff and lock-ledger baseline for this gap-closure increment.
+`v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue` is locked. Do not patch alpha.9 further. It remains the before-export gap-closure baseline for this publication-pack increment.
 
 ## Compressed next milestones
 
-1. `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
-   - claims with missing evidence
-   - evidence with weak claim linkage
-   - evidence without claim links
-   - unresolved contradictions
-   - counter-evidence target gaps
-   - falsifier gaps
-   - export-blocking gap queue
-
-2. `v1.3.0-alpha.10 — Brief Publication Pack v4`
+1. `v1.3.0-alpha.10 — Brief Publication Pack v4`
    - final brief markdown
    - evidence appendix
    - contradiction/falsifier appendix
    - source gap appendix
    - operator signoff / lock ledger appendix
    - publication-readiness summary
+
+2. `v1.3.0-alpha.11 — Publication Pack QA + Review Density Polish`
+   - reduce publication-pack panel density
+   - add compact appendix status cards
+   - tighten export-file naming consistency
+   - preserve manual review boundary
 
 3. `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`
    - threat model
@@ -47,9 +44,9 @@ Purpose: expose unresolved claim/evidence gaps, weak linkage, contradiction gaps
 5. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
 6. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
 
-Allowed in this alpha: source-to-claim gap closure queue, before-export blocker counts, JSON/Markdown queue files, UI review panel, EN/AR/FR labels, tests, fixture/registry updates, manifest/package/docs updates.
+Allowed in this alpha: Brief Publication Pack v4, final brief Markdown, evidence appendix, contradiction/falsifier appendix, source-gap appendix, operator signoff/lock-ledger appendix, publication-readiness summary, UI review panel, EN/AR/FR labels, tests, fixture/registry updates, manifest/package/docs updates.
 
-Forbidden in this alpha: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, automatic export lock, automatic source verification claims, and cryptographic signature claims.
+Forbidden in this alpha: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, automatic export lock, automatic source verification claims, publishing permission claims, and cryptographic signature claims.
 
 No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims. No automatic signoff. No automatic export lock.
 

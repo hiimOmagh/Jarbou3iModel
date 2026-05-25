@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.9. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.10. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.9';
+  const VERSION = '1.3.0-alpha.10';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -1187,6 +1187,218 @@
     ].join('\n');
   }
 
+
+  function publicationSupportStatus(workbench = {}){
+    const queue = workbench.source_to_claim_gap_closure_queue || {};
+    const risk = workbench.export_risk_resolution || {};
+    const ledger = workbench.export_lock_ledger || {};
+    const signoff = workbench.operator_signoff_state || {};
+    const blockers = Number(queue.required_before_export_count || 0) + Number(risk.blocker_count || 0);
+    if(blockers > 0) return 'blocked_manual_gap_closure_required';
+    if(ledger.export_locked === true && signoff.operator_signed_off === true) return 'locked_publication_review_ready';
+    return 'manual_publication_review_required';
+  }
+  function buildBriefPublicationPackV4(workbench = {}, packet = {}, options = {}){
+    const version = options.version || VERSION;
+    const generatedAt = options.now || nowIso();
+    const brief = workbench.exportable_strategic_brief || packet.analysis_brief || {};
+    const claims = asArray(workbench.claim_map);
+    const evidence = asArray(workbench.evidence_cards || packet.evidence_matrix || packet.evidence);
+    const contradictions = asArray(workbench.contradiction_groups);
+    const queue = workbench.source_to_claim_gap_closure_queue || {};
+    const risk = workbench.export_risk_resolution || {};
+    const sourceGaps = asArray(workbench.source_gaps?.warnings);
+    const signoffState = workbench.operator_signoff_state || {};
+    const lockLedger = workbench.export_lock_ledger || {};
+    const lockReview = workbench.lock_ledger_review_surface || {};
+    const signedHandoff = workbench.signed_export_handoff_pack || {};
+    const scenarioFalsifierGaps = asArray(queue.items).filter((item)=>item.category === 'scenario_falsifier_gap');
+    const counterEvidenceGaps = asArray(queue.items).filter((item)=>item.category === 'counter_evidence_target_gap');
+    const blockerCount = Number(queue.required_before_export_count || 0) + Number(risk.blocker_count || 0);
+    const warningCount = Number(risk.warning_count || 0) + Number(sourceGaps.length || 0) + Number(queue.open_count || 0);
+    const status = publicationSupportStatus(workbench);
+    const includedFiles = [
+      'source-to-brief/brief-publication-pack-v4.json',
+      'source-to-brief/brief-publication-pack-v4.md',
+      'source-to-brief/publication-ready-brief.md',
+      'source-to-brief/evidence-appendix.md',
+      'source-to-brief/contradiction-falsifier-appendix.md',
+      'source-to-brief/source-gap-appendix.md',
+      'source-to-brief/operator-signoff-lock-ledger-appendix.md',
+      'source-to-brief/source-to-claim-gap-closure-queue.json',
+      'source-to-brief/signed-export-handoff-pack.json',
+      'source-to-brief/export-lock-ledger.json'
+    ];
+    return {
+      brief_publication_pack_v4_version:version,
+      publication_pack_model:'brief_publication_pack_v4.v1',
+      generated_at:generatedAt,
+      publication_pack_status:status,
+      publication_ready:status === 'locked_publication_review_ready',
+      publication_permission_claimed:false,
+      final_brief:{
+        title:text(brief.title || brief.topic || workbench.research_question || packet.research_plan?.topic || 'Publication brief'),
+        inferred_confidence:text(brief.inferred_confidence || workbench.confidence_review?.inferred_confidence || 'low'),
+        publication_status:text(brief.publication_status || 'manual_review_required'),
+        claim_count:claims.length,
+        evidence_count:evidence.length,
+        contradiction_group_count:contradictions.length,
+        source_gap_warning_count:sourceGaps.length,
+        summary:text(brief.handoff_summary || brief.executive_summary || 'Manual publication pack assembled from local source-to-brief artifacts.'),
+        boundary_note:'Publication pack is assembled from local/manual evidence and does not verify source truth automatically.'
+      },
+      evidence_appendix:{
+        evidence_count:evidence.length,
+        traceable_evidence_count:evidence.filter((item)=>item.traceability_complete === true || traceable(item)).length,
+        source_types:unique(evidence.map((item)=>item.source_type || 'other')),
+        items:evidence.map((item)=>({
+          evidence_id:item.evidence_id,
+          claim:text(item.claim || item.source_title),
+          source_title:text(item.source_title),
+          source_type:text(item.source_type || 'other'),
+          source_date:text(item.source_date || 'unknown'),
+          supports:asArray(item.supports),
+          contradicts:asArray(item.contradicts),
+          traceability_complete:item.traceability_complete === true || traceable(item),
+          confidence:text(item.confidence || 'medium'),
+          verification_claimed:false
+        }))
+      },
+      contradiction_falsifier_appendix:{
+        contradiction_group_count:contradictions.length,
+        unresolved_contradiction_count:asArray(queue.items).filter((item)=>item.category === 'unresolved_contradiction_gap').length,
+        counter_evidence_target_gap_count:counterEvidenceGaps.length,
+        scenario_falsifier_gap_count:scenarioFalsifierGaps.length,
+        groups:contradictions.map((group)=>({
+          group_id:group.group_id,
+          target_claim_id:group.target_claim_id,
+          severity:group.severity || 'medium',
+          supporting_evidence_ids:asArray(group.supporting_evidence_ids),
+          contradicting_evidence_ids:asArray(group.contradicting_evidence_ids),
+          resolution_state:group.resolution_state || 'manual_review_required'
+        })),
+        falsifier_gaps:scenarioFalsifierGaps.map((item)=>({queue_id:item.queue_id, scenario_id:item.scenario_id || item.target_id, clearance_condition:item.clearance_condition})),
+        counter_evidence_gaps:counterEvidenceGaps.map((item)=>({queue_id:item.queue_id, claim_id:item.claim_id || item.target_id, clearance_condition:item.clearance_condition}))
+      },
+      source_gap_appendix:{
+        source_gap_warning_count:sourceGaps.length,
+        source_to_claim_open_gap_count:Number(queue.open_count || 0),
+        source_to_claim_required_before_export_count:Number(queue.required_before_export_count || 0),
+        source_gap_warnings:sourceGaps.map((gap)=>({scope:gap.scope, warning:gap.warning, claim_id:gap.claim_id || null, evidence_id:gap.evidence_id || null})),
+        closure_queue_items:asArray(queue.items).map((item)=>({queue_id:item.queue_id, category:item.category, target_id:item.target_id, severity:item.severity, required_before_export:item.required_before_export, clearance_condition:item.clearance_condition}))
+      },
+      operator_signoff_lock_ledger_appendix:{
+        operator_signed_off:signoffState.operator_signed_off === true,
+        operator_id:signoffState.operator_signed_off === true ? signoffState.operator_id || lockLedger.operator_id || null : null,
+        operator_signed_at:signoffState.operator_signed_off === true ? signoffState.operator_signed_at || lockLedger.operator_signed_at || null : null,
+        export_locked:lockLedger.export_locked === true,
+        export_allowed:lockLedger.export_allowed === true,
+        lock_status:text(lockLedger.lock_status || 'unlocked_manual_signoff_required'),
+        lock_gate:text(lockLedger.lock_gate || 'export_lock_manual_signoff_required'),
+        lock_hash:lockLedger.export_locked === true ? text(lockLedger.export_lock_hash || '') : null,
+        lock_ledger_review_gate:text(lockReview.release_gate || 'lock_ledger_review_unlocked'),
+        signed_handoff_status:text(signedHandoff.handoff_status || 'unlocked'),
+        cryptographic_signature_claimed:false,
+        non_cryptographic_operator_signature_only:true
+      },
+      publication_readiness_summary:{
+        blocker_count:blockerCount,
+        warning_count:warningCount,
+        source_to_claim_required_before_export_count:Number(queue.required_before_export_count || 0),
+        export_risk_blocker_count:Number(risk.blocker_count || 0),
+        export_risk_warning_count:Number(risk.warning_count || 0),
+        review_decision_open_count:Number(workbench.review_decision_ledger?.unresolved_decision_count || 0),
+        publication_release_gate:blockerCount ? 'brief_publication_pack_blocked' : (status === 'locked_publication_review_ready' ? 'brief_publication_pack_review_ready' : 'brief_publication_pack_manual_signoff_required'),
+        required_operator_next_action:blockerCount ? 'close_required_publication_blockers_before_handoff' : (status === 'locked_publication_review_ready' ? 'archive_publication_pack_and_review_final_copy' : 'complete_operator_signoff_before_publication_handoff')
+      },
+      included_file_plan:includedFiles,
+      included_file_count:includedFiles.length,
+      manual_only:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      backend_behavior_expanded:false,
+      production_oauth_enabled:false,
+      automatic_signoff_performed:false,
+      automatic_export_lock_performed:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false,
+      cryptographic_signature_claimed:false,
+      manual_local_boundary:'Brief Publication Pack v4 consolidates local/manual brief, evidence, contradiction/falsifier, source-gap, and operator signoff appendices. It does not fetch, verify, publish, sign cryptographically, or authorize export automatically.'
+    };
+  }
+  function publicationReadyBriefMarkdown(workbench = {}){
+    const pack = workbench.brief_publication_pack_v4 || {};
+    const finalBrief = pack.final_brief || {};
+    const claims = asArray(workbench.claim_map).map((claim)=>`- ${claim.claim_id}: ${claim.claim_text} — ${claim.support_level} support; evidence: ${asArray(claim.supporting_evidence_ids).join(', ') || 'none'}`).join('\n') || '- No claims mapped.';
+    return [
+      `# ${text(finalBrief.title || 'Publication-ready brief')}`,
+      '',
+      `Publication pack status: ${text(pack.publication_pack_status || 'manual_publication_review_required')}`,
+      `Publication ready: ${pack.publication_ready === true}`,
+      `Confidence: ${text(finalBrief.inferred_confidence || 'low')}`,
+      '',
+      '## Summary',
+      text(finalBrief.summary || 'No summary recorded.'),
+      '',
+      '## Claims',
+      claims,
+      '',
+      '## Boundary',
+      text(finalBrief.boundary_note || pack.manual_local_boundary || 'Local/manual publication pack only.'),
+      ''
+    ].join('\n');
+  }
+  function evidenceAppendixMarkdown(workbench = {}){
+    const appendix = workbench.brief_publication_pack_v4?.evidence_appendix || {};
+    const items = asArray(appendix.items).map((item)=>`- ${item.evidence_id}: ${item.claim} — ${item.source_title || 'untitled'} (${item.source_type || 'other'}, ${item.source_date || 'unknown'}); supports ${asArray(item.supports).join(', ') || 'none'}; contradicts ${asArray(item.contradicts).join(', ') || 'none'}`).join('\n') || '- No evidence items recorded.';
+    return ['# Evidence Appendix','',`Evidence count: ${Number(appendix.evidence_count || 0)}`,`Traceable evidence: ${Number(appendix.traceable_evidence_count || 0)}`,'','## Evidence Items',items,'','## Boundary','Evidence appendix is local/manual and does not verify source truth automatically.',''].join('\n');
+  }
+  function contradictionFalsifierAppendixMarkdown(workbench = {}){
+    const appendix = workbench.brief_publication_pack_v4?.contradiction_falsifier_appendix || {};
+    const groups = asArray(appendix.groups).map((group)=>`- ${group.group_id}: ${group.target_claim_id} — ${group.severity}; supports ${asArray(group.supporting_evidence_ids).join(', ') || 'none'}; contradicts ${asArray(group.contradicting_evidence_ids).join(', ') || 'none'}`).join('\n') || '- No contradiction groups recorded.';
+    const falsifiers = asArray(appendix.falsifier_gaps).map((item)=>`- ${item.queue_id}: ${item.scenario_id} — ${item.clearance_condition}`).join('\n') || '- No scenario falsifier gaps recorded.';
+    const counter = asArray(appendix.counter_evidence_gaps).map((item)=>`- ${item.queue_id}: ${item.claim_id} — ${item.clearance_condition}`).join('\n') || '- No counter-evidence target gaps recorded.';
+    return ['# Contradiction and Falsifier Appendix','',`Contradiction groups: ${Number(appendix.contradiction_group_count || 0)}`,`Unresolved contradictions: ${Number(appendix.unresolved_contradiction_count || 0)}`,`Scenario falsifier gaps: ${Number(appendix.scenario_falsifier_gap_count || 0)}`,'','## Contradiction Groups',groups,'','## Scenario Falsifier Gaps',falsifiers,'','## Counter-Evidence Target Gaps',counter,''].join('\n');
+  }
+  function sourceGapAppendixMarkdown(workbench = {}){
+    const appendix = workbench.brief_publication_pack_v4?.source_gap_appendix || {};
+    const gaps = asArray(appendix.source_gap_warnings).map((gap)=>`- ${gap.scope || 'workflow'}: ${gap.warning}${gap.claim_id ? ` · ${gap.claim_id}` : ''}${gap.evidence_id ? ` · ${gap.evidence_id}` : ''}`).join('\n') || '- No source-gap warnings recorded.';
+    const queue = asArray(appendix.closure_queue_items).map((item)=>`- ${item.queue_id}: ${item.category} · ${item.target_id} · ${item.severity}; required before export: ${item.required_before_export === true}`).join('\n') || '- No source-to-claim closure items recorded.';
+    return ['# Source Gap Appendix','',`Source-gap warnings: ${Number(appendix.source_gap_warning_count || 0)}`,`Source-to-claim open gaps: ${Number(appendix.source_to_claim_open_gap_count || 0)}`,`Required before export: ${Number(appendix.source_to_claim_required_before_export_count || 0)}`,'','## Source Gap Warnings',gaps,'','## Closure Queue Items',queue,''].join('\n');
+  }
+  function operatorSignoffLockLedgerAppendixMarkdown(workbench = {}){
+    const appendix = workbench.brief_publication_pack_v4?.operator_signoff_lock_ledger_appendix || {};
+    return ['# Operator Signoff and Lock Ledger Appendix','',`Operator signed off: ${appendix.operator_signed_off === true}`,`Operator ID: ${text(appendix.operator_id || 'not_recorded')}`,`Operator signed at: ${text(appendix.operator_signed_at || 'not_recorded')}`,`Export locked: ${appendix.export_locked === true}`,`Export allowed: ${appendix.export_allowed === true}`,`Lock status: ${text(appendix.lock_status || 'unlocked_manual_signoff_required')}`,`Lock gate: ${text(appendix.lock_gate || 'export_lock_manual_signoff_required')}`,`Lock hash: ${text(appendix.lock_hash || 'not_locked')}`,`Lock-ledger review gate: ${text(appendix.lock_ledger_review_gate || 'lock_ledger_review_unlocked')}`,`Signed handoff status: ${text(appendix.signed_handoff_status || 'unlocked')}`,`Cryptographic signature claimed: ${appendix.cryptographic_signature_claimed === true}`,'','## Boundary','Operator signoff metadata is local/manual and non-cryptographic.',''].join('\n');
+  }
+  function briefPublicationPackV4Markdown(workbench = {}){
+    const pack = workbench.brief_publication_pack_v4 || {};
+    const summary = pack.publication_readiness_summary || {};
+    return [
+      '# Brief Publication Pack v4',
+      '',
+      `Publication pack status: ${text(pack.publication_pack_status || 'manual_publication_review_required')}`,
+      `Publication ready: ${pack.publication_ready === true}`,
+      `Publication permission claimed: ${pack.publication_permission_claimed === true}`,
+      `Publication release gate: ${text(summary.publication_release_gate || 'brief_publication_pack_manual_review_required')}`,
+      `Blockers: ${Number(summary.blocker_count || 0)}`,
+      `Warnings: ${Number(summary.warning_count || 0)}`,
+      `Next action: ${text(summary.required_operator_next_action || 'manual_publication_review')}`,
+      '',
+      '## Included Appendices',
+      asArray(pack.included_file_plan).map((item)=>`- ${item}`).join('\n') || '- No files listed.',
+      '',
+      '## Publication Readiness Summary',
+      `- Source-to-claim required before export: ${Number(summary.source_to_claim_required_before_export_count || 0)}`,
+      `- Export-risk blockers: ${Number(summary.export_risk_blocker_count || 0)}`,
+      `- Open review decisions: ${Number(summary.review_decision_open_count || 0)}`,
+      '',
+      '## Boundary',
+      text(pack.manual_local_boundary || 'Local/manual brief publication pack only.'),
+      ''
+    ].join('\n');
+  }
+
   function buildExportRiskResolution(workbench = {}, packet = {}){
     const queue = workbench.diagnostic_repair_queue || {};
     const readiness = workbench.export_readiness_checklist || {};
@@ -1386,7 +1598,9 @@
     const signoffBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, brief_assembly_preview_diff:guidedSession?.brief_assembly_preview_diff || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null, export_review_signoff:guidedSession?.export_review_signoff || null, operator_signoff_state:guidedSession?.operator_signoff_state || null, export_lock_ledger:guidedSession?.export_lock_ledger || null});
     const lockLedgerReviewSurface = buildLockLedgerReviewSurface(signoffBase, packet, {version, now:generatedAt});
     const signedExportHandoffPack = buildSignedExportHandoffPack(Object.assign({}, signoffBase, {lock_ledger_review_surface:lockLedgerReviewSurface}), packet, {version, now:generatedAt});
-    const templateBase = Object.assign({}, signoffBase, {lock_ledger_review_surface:lockLedgerReviewSurface, signed_export_handoff_pack:signedExportHandoffPack});
+    const publicationBase = Object.assign({}, signoffBase, {lock_ledger_review_surface:lockLedgerReviewSurface, signed_export_handoff_pack:signedExportHandoffPack});
+    const briefPublicationPackV4 = buildBriefPublicationPackV4(publicationBase, packet, {version, now:generatedAt});
+    const templateBase = Object.assign({}, publicationBase, {brief_publication_pack_v4:briefPublicationPackV4});
     const briefTemplates = briefTemplateSystem?.buildBriefTemplateSystem ? briefTemplateSystem.buildBriefTemplateSystem(templateBase, packet, {version, now:generatedAt}) : null;
     const assemblyVariantQa = briefTemplateSystem?.buildAssemblyVariantQa ? briefTemplateSystem.buildAssemblyVariantQa(templateBase, briefTemplates, {version, now:generatedAt}) : null;
     const assemblyVariantComparison = briefTemplateSystem?.buildAssemblyVariantComparison ? briefTemplateSystem.buildAssemblyVariantComparison(briefTemplates, assemblyVariantQa, {version, now:generatedAt}) : null;
@@ -1396,7 +1610,7 @@
       workbench_model:MODEL,
       generated_at:generatedAt,
       workflow_stage:'research_question_to_exportable_strategic_brief',
-      workflow_steps:['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','source_to_claim_gap_closure_queue','lock_ledger_review_surface','signed_export_handoff_pack'],
+      workflow_steps:['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','source_to_claim_gap_closure_queue','lock_ledger_review_surface','signed_export_handoff_pack','brief_publication_pack_v4'],
       research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question),
       research_plan: packet.research_plan || null,
       evidence_cards:evidenceCards,
@@ -1429,6 +1643,7 @@
       export_lock_ledger:guidedSession?.export_lock_ledger || null,
       lock_ledger_review_surface:lockLedgerReviewSurface,
       signed_export_handoff_pack:signedExportHandoffPack,
+      brief_publication_pack_v4:briefPublicationPackV4,
       brief_template_system:briefTemplates,
       assembly_variant_qa:assemblyVariantQa,
       assembly_variant_comparison:assemblyVariantComparison,
@@ -1508,7 +1723,7 @@
       `- Required before export: ${Number(workbench.diagnostic_repair_queue?.required_before_export_count || 0)}`,
       `- Queue gate: ${text(workbench.diagnostic_repair_queue?.release_gate || 'diagnostic_repair_queue_open')}`,
       '',
-      '## Source-to-Claim Gap Closure Queue',
+      '## Brief Publication Pack v4',
       `- Queue gate: ${text(workbench.source_to_claim_gap_closure_queue?.release_gate || 'source_to_claim_gap_closure_clear')}`,
       `- Open gaps: ${Number(workbench.source_to_claim_gap_closure_queue?.open_count || 0)}`,
       `- Required before export: ${Number(workbench.source_to_claim_gap_closure_queue?.required_before_export_count || 0)}`,
@@ -1531,6 +1746,8 @@
       `- Export lock status: ${text(workbench.export_lock_ledger?.lock_status || 'unlocked_manual_signoff_required')}`,
       `- Lock ledger review gate: ${text(workbench.lock_ledger_review_surface?.release_gate || 'lock_ledger_review_unlocked')}`,
       `- Signed export handoff status: ${text(workbench.signed_export_handoff_pack?.handoff_status || 'unlocked')}`,
+      `- Brief publication pack gate: ${text(workbench.brief_publication_pack_v4?.publication_readiness_summary?.publication_release_gate || 'brief_publication_pack_manual_review_required')}`,
+      `- Publication pack status: ${text(workbench.brief_publication_pack_v4?.publication_pack_status || 'manual_publication_review_required')}`,
       '',
       '## Brief Template System',
       `- Templates: ${Number(workbench.brief_template_system?.template_count || 0)}`,
@@ -1580,12 +1797,19 @@
     buildExportRiskResolution,
     buildLockLedgerReviewSurface,
     buildSignedExportHandoffPack,
+    buildBriefPublicationPackV4,
     lockLedgerReviewSurfaceMarkdown,
     signedExportHandoffPackMarkdown,
     weakClaimRepairMarkdown,
     diagnosticRepairQueueMarkdown,
     sourceToClaimGapClosureQueueMarkdown,
     exportRiskResolutionMarkdown,
+    briefPublicationPackV4Markdown,
+    publicationReadyBriefMarkdown,
+    evidenceAppendixMarkdown,
+    contradictionFalsifierAppendixMarkdown,
+    sourceGapAppendixMarkdown,
+    operatorSignoffLockLedgerAppendixMarkdown,
     buildEmptyStateGuidance,
     reviewThroughputSummary,
     exportPolishReport,
