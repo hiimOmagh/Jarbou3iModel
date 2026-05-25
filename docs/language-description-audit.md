@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.3.0-alpha.7`
-Release: `v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`
+Version: `1.3.0-alpha.8`
+Release: `v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

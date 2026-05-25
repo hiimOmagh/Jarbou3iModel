@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.7. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.8. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.7';
+  const VERSION = '1.3.0-alpha.8';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -818,6 +818,198 @@
       verification_claimed:false
     };
   }
+
+  function buildLockLedgerReviewSurface(workbench = {}, packet = {}, options = {}){
+    const version = options.version || VERSION;
+    const generatedAt = options.now || nowIso();
+    const ledger = workbench.export_lock_ledger || {};
+    const signoffState = workbench.operator_signoff_state || {};
+    const signoff = workbench.export_review_signoff || {};
+    const risk = workbench.export_risk_resolution || {};
+    const reviewDecision = workbench.review_decision_ledger || {};
+    const locked = ledger.export_locked === true;
+    const blocked = ledger.lock_gate === 'export_lock_blocked' || signoffState.export_permission === 'export_blocked' || Number(risk.blocker_count || 0) > 0;
+    const reviewState = locked ? 'locked_export_review_surface' : (blocked ? 'blocked_lock_review_surface' : 'unlocked_lock_review_surface');
+    const lockHash = locked ? text(ledger.export_lock_hash || '') : null;
+    const blockerReasons = unique([
+      ...(Number(risk.blocker_count || 0) > 0 ? ['export_risk_blockers_open'] : []),
+      ...(Number(signoffState.signoff_blocker_count || 0) > 0 ? ['operator_signoff_blockers_open'] : []),
+      ...(signoffState.export_permission === 'manual_signoff_required' ? ['manual_operator_signoff_missing'] : []),
+      ...(signoffState.current_state === 'incomplete_operator_signoff' ? ['operator_signoff_input_incomplete'] : []),
+      ...(signoffState.current_state === 'operator_rejected_export' ? ['operator_rejected_export'] : []),
+      ...(signoffState.current_state === 'changes_requested' ? ['operator_requested_changes'] : [])
+    ]);
+    const warningReasons = unique([
+      ...(Number(risk.warning_count || 0) > 0 ? ['export_risk_warnings_open'] : []),
+      ...(Number(reviewDecision.unresolved_decision_count || 0) > 0 ? ['review_decision_ledger_open'] : []),
+      ...(Number(workbench.source_gaps?.warning_count || 0) > 0 ? ['source_gap_warnings_present'] : []),
+      ...(Number(workbench.review_quality_diagnostics?.finding_count || 0) > 0 ? ['review_quality_findings_present'] : [])
+    ]);
+    const cards = [
+      {card_id:'LLR-1', label:'Lock status', value:text(ledger.lock_status || 'unlocked_manual_signoff_required'), state:locked ? 'pass' : (blocked ? 'blocked' : 'pending'), review_required:!locked},
+      {card_id:'LLR-2', label:'Operator signoff state', value:text(signoffState.current_state || 'awaiting_operator_confirmation'), state:signoffState.operator_signed_off ? 'pass' : 'pending', review_required:signoffState.operator_signed_off !== true},
+      {card_id:'LLR-3', label:'Export permission', value:text(signoffState.export_permission || 'manual_signoff_required'), state:signoffState.export_permission === 'export_lock_allowed' ? 'pass' : 'pending', review_required:signoffState.export_permission !== 'export_lock_allowed'},
+      {card_id:'LLR-4', label:'Export risks', value:`${Number(risk.blocker_count || 0)} blockers / ${Number(risk.warning_count || 0)} warnings`, state:Number(risk.blocker_count || 0) ? 'blocked' : (Number(risk.warning_count || 0) ? 'warning' : 'pass'), review_required:Number(risk.blocker_count || 0) > 0 || Number(risk.warning_count || 0) > 0},
+      {card_id:'LLR-5', label:'Review decisions', value:`${Number(reviewDecision.unresolved_decision_count || 0)} open`, state:Number(reviewDecision.unresolved_decision_count || 0) ? 'warning' : 'pass', review_required:Number(reviewDecision.unresolved_decision_count || 0) > 0},
+      {card_id:'LLR-6', label:'Boundary', value:'manual local handoff only', state:'pass', review_required:false}
+    ];
+    return {
+      lock_ledger_review_surface_version:version,
+      review_surface_model:'lock_ledger_review_surface.v1',
+      generated_at:generatedAt,
+      review_state:reviewState,
+      lock_status:text(ledger.lock_status || 'unlocked_manual_signoff_required'),
+      lock_gate:text(ledger.lock_gate || 'export_lock_manual_signoff_required'),
+      export_handoff_status:locked ? 'locked' : (blocked ? 'blocked' : 'unlocked'),
+      export_locked:locked,
+      export_allowed:ledger.export_allowed === true,
+      lock_hash:lockHash,
+      lock_hash_visible:!!lockHash,
+      operator_id:locked ? signoffState.operator_id || ledger.operator_id || null : null,
+      operator_signed_at:locked ? signoffState.operator_signed_at || ledger.operator_signed_at || null : null,
+      linked_signoff_gate:text(signoffState.signoff_gate || signoff.signoff_gate || 'operator_signoff_required'),
+      blocker_reasons:blockerReasons,
+      warning_reasons:warningReasons,
+      review_cards:cards,
+      visible_review_card_count:cards.length,
+      required_before_export:blockerReasons,
+      recommended_next_action:locked ? 'review_locked_export_handoff_pack' : (blocked ? 'clear_blockers_before_export_handoff' : 'collect_explicit_operator_signoff'),
+      release_gate:locked ? 'lock_ledger_review_locked' : (blocked ? 'lock_ledger_review_blocked' : 'lock_ledger_review_unlocked'),
+      cryptographic_signature_claimed:false,
+      non_cryptographic_operator_signature_only:true,
+      manual_only:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      backend_behavior_expanded:false,
+      production_oauth_enabled:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false,
+      manual_local_boundary:'Lock-ledger review surface is local/manual review metadata. It exposes authorization state and blockers but does not verify sources, fetch live data, execute providers, or create cryptographic signatures.'
+    };
+  }
+  function buildSignedExportHandoffPack(workbench = {}, packet = {}, options = {}){
+    const version = options.version || VERSION;
+    const generatedAt = options.now || nowIso();
+    const ledgerSurface = workbench.lock_ledger_review_surface || buildLockLedgerReviewSurface(workbench, packet, {version, now:generatedAt});
+    const ledger = workbench.export_lock_ledger || {};
+    const signoffState = workbench.operator_signoff_state || {};
+    const locked = ledgerSurface.export_handoff_status === 'locked';
+    const blocked = ledgerSurface.export_handoff_status === 'blocked';
+    const status = locked ? 'locked' : (blocked ? 'blocked' : 'unlocked');
+    const files = [
+      'source-to-brief/signed-export-handoff-pack.json',
+      'source-to-brief/signed-export-handoff-pack.md',
+      'source-to-brief/lock-ledger-review-surface.json',
+      'source-to-brief/lock-ledger-review-surface.md',
+      'source-to-brief/export-lock-ledger.json',
+      'source-to-brief/operator-signoff-state.json',
+      'source-to-brief/export-review-signoff.json',
+      'source-to-brief/strategic-brief.md'
+    ];
+    return {
+      signed_export_handoff_pack_version:version,
+      handoff_pack_model:'signed_export_handoff_pack.v1',
+      generated_at:generatedAt,
+      handoff_status:status,
+      export_locked:locked,
+      export_allowed:ledger.export_allowed === true,
+      operator_signed_off:signoffState.operator_signed_off === true,
+      operator_id:locked ? signoffState.operator_id || ledger.operator_id || null : null,
+      operator_signed_at:locked ? signoffState.operator_signed_at || ledger.operator_signed_at || null : null,
+      lock_hash:locked ? text(ledger.export_lock_hash || '') : null,
+      lock_hash_algorithm:'fnv1a32_review_checksum_not_cryptographic_signature',
+      cryptographic_signature_claimed:false,
+      non_cryptographic_operator_signature_only:true,
+      signature_claim:'operator_review_signature_metadata_only',
+      signed_from_explicit_operator_input:ledger.lock_created_from_explicit_operator_input === true && signoffState.signoff_input_present === true,
+      blocked_reasons:ledgerSurface.blocker_reasons,
+      warning_reasons:ledgerSurface.warning_reasons,
+      review_surface_gate:ledgerSurface.release_gate,
+      export_lock_gate:text(ledger.lock_gate || 'export_lock_manual_signoff_required'),
+      operator_signoff_gate:text(signoffState.signoff_gate || 'operator_signoff_required'),
+      included_file_plan:files,
+      included_file_count:files.length,
+      review_summary:{
+        claim_count:Number(asArray(workbench.claim_map).length),
+        contradiction_group_count:Number(asArray(workbench.contradiction_groups).length),
+        source_gap_warning_count:Number(workbench.source_gaps?.warning_count || 0),
+        review_decision_open_count:Number(workbench.review_decision_ledger?.unresolved_decision_count || 0),
+        export_risk_blocker_count:Number(workbench.export_risk_resolution?.blocker_count || 0),
+        export_risk_warning_count:Number(workbench.export_risk_resolution?.warning_count || 0)
+      },
+      required_operator_next_action:locked ? 'review_and_archive_signed_export_handoff_pack' : (blocked ? 'clear_blockers_before_export_lock' : 'complete_operator_signoff_to_lock_export'),
+      release_gate:locked ? 'signed_export_handoff_locked' : (blocked ? 'signed_export_handoff_blocked' : 'signed_export_handoff_unlocked'),
+      manual_only:true,
+      local_only:true,
+      live_fetching_performed:false,
+      provider_execution_expanded:false,
+      backend_behavior_expanded:false,
+      production_oauth_enabled:false,
+      automatic_signoff_performed:false,
+      automatic_export_lock_performed:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false,
+      manual_local_boundary:'Signed export handoff is operator-signoff metadata only. It is not a cryptographic signature and does not verify source truth automatically.'
+    };
+  }
+  function lockLedgerReviewSurfaceMarkdown(workbench = {}){
+    const surface = workbench.lock_ledger_review_surface || {};
+    const cards = asArray(surface.review_cards).map((card)=>`- ${card.card_id}: ${card.label} — ${card.value} (${card.state})`).join('\n') || '- No lock-ledger review cards recorded.';
+    return [
+      '# Lock Ledger Review Surface',
+      '',
+      `Review state: ${text(surface.review_state || 'unlocked_lock_review_surface')}`,
+      `Handoff status: ${text(surface.export_handoff_status || 'unlocked')}`,
+      `Lock gate: ${text(surface.lock_gate || 'export_lock_manual_signoff_required')}`,
+      `Lock hash: ${text(surface.lock_hash || 'not_locked')}`,
+      '',
+      '## Review Cards',
+      cards,
+      '',
+      '## Blockers',
+      asArray(surface.blocker_reasons).map((item)=>`- ${item}`).join('\n') || '- None recorded.',
+      '',
+      '## Boundary',
+      text(surface.manual_local_boundary || 'Local/manual lock-ledger review surface only.'),
+      ''
+    ].join('\n');
+  }
+  function signedExportHandoffPackMarkdown(workbench = {}){
+    const pack = workbench.signed_export_handoff_pack || {};
+    const summary = pack.review_summary || {};
+    return [
+      '# Signed Export Handoff Pack',
+      '',
+      `Handoff status: ${text(pack.handoff_status || 'unlocked')}`,
+      `Export locked: ${pack.export_locked === true}`,
+      `Export allowed: ${pack.export_allowed === true}`,
+      `Operator signed off: ${pack.operator_signed_off === true}`,
+      `Operator ID: ${text(pack.operator_id || 'not_recorded')}`,
+      `Operator signed at: ${text(pack.operator_signed_at || 'not_recorded')}`,
+      `Lock hash: ${text(pack.lock_hash || 'not_locked')}`,
+      `Cryptographic signature claimed: ${pack.cryptographic_signature_claimed === true}`,
+      '',
+      '## Review Summary',
+      `- Claims: ${Number(summary.claim_count || 0)}`,
+      `- Contradiction groups: ${Number(summary.contradiction_group_count || 0)}`,
+      `- Source-gap warnings: ${Number(summary.source_gap_warning_count || 0)}`,
+      `- Open review decisions: ${Number(summary.review_decision_open_count || 0)}`,
+      `- Export-risk blockers: ${Number(summary.export_risk_blocker_count || 0)}`,
+      `- Export-risk warnings: ${Number(summary.export_risk_warning_count || 0)}`,
+      '',
+      '## Included Files',
+      asArray(pack.included_file_plan).map((item)=>`- ${item}`).join('\n') || '- No files listed.',
+      '',
+      '## Blocked Reasons',
+      asArray(pack.blocked_reasons).map((item)=>`- ${item}`).join('\n') || '- None recorded.',
+      '',
+      '## Boundary',
+      text(pack.manual_local_boundary || 'Local/manual signed handoff metadata only.'),
+      ''
+    ].join('\n');
+  }
+
   function buildExportRiskResolution(workbench = {}, packet = {}){
     const queue = workbench.diagnostic_repair_queue || {};
     const readiness = workbench.export_readiness_checklist || {};
@@ -976,7 +1168,10 @@
     const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
     const sessionBase = {research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question), research_plan:packet.research_plan || null, previous_brief_assembly_preview:packet.previous_brief_assembly_preview || packet.brief_assembly_preview_baseline || null, evidence_cards:evidenceCards, evidence_to_claim_links:links, claim_map:claimMap, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, confidence_review:confidenceReview, exportable_strategic_brief:strategic, operator_flow:operatorFlow, export_readiness_checklist:exportReadinessChecklist, review_throughput_summary:reviewSummary, export_polish_report:exportPolish, claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, operator_command_palette:commandPalette, review_navigation_shortcuts:navigationShortcuts};
     const guidedSession = guidedResearchSession?.buildGuidedResearchSession ? guidedResearchSession.buildGuidedResearchSession(sessionBase, packet, {version, now:generatedAt}) : null;
-    const templateBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, brief_assembly_preview_diff:guidedSession?.brief_assembly_preview_diff || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null, export_review_signoff:guidedSession?.export_review_signoff || null, operator_signoff_state:guidedSession?.operator_signoff_state || null, export_lock_ledger:guidedSession?.export_lock_ledger || null});
+    const signoffBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, brief_assembly_preview_diff:guidedSession?.brief_assembly_preview_diff || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null, export_review_signoff:guidedSession?.export_review_signoff || null, operator_signoff_state:guidedSession?.operator_signoff_state || null, export_lock_ledger:guidedSession?.export_lock_ledger || null});
+    const lockLedgerReviewSurface = buildLockLedgerReviewSurface(signoffBase, packet, {version, now:generatedAt});
+    const signedExportHandoffPack = buildSignedExportHandoffPack(Object.assign({}, signoffBase, {lock_ledger_review_surface:lockLedgerReviewSurface}), packet, {version, now:generatedAt});
+    const templateBase = Object.assign({}, signoffBase, {lock_ledger_review_surface:lockLedgerReviewSurface, signed_export_handoff_pack:signedExportHandoffPack});
     const briefTemplates = briefTemplateSystem?.buildBriefTemplateSystem ? briefTemplateSystem.buildBriefTemplateSystem(templateBase, packet, {version, now:generatedAt}) : null;
     const assemblyVariantQa = briefTemplateSystem?.buildAssemblyVariantQa ? briefTemplateSystem.buildAssemblyVariantQa(templateBase, briefTemplates, {version, now:generatedAt}) : null;
     const assemblyVariantComparison = briefTemplateSystem?.buildAssemblyVariantComparison ? briefTemplateSystem.buildAssemblyVariantComparison(briefTemplates, assemblyVariantQa, {version, now:generatedAt}) : null;
@@ -986,7 +1181,7 @@
       workbench_model:MODEL,
       generated_at:generatedAt,
       workflow_stage:'research_question_to_exportable_strategic_brief',
-      workflow_steps:['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger'],
+      workflow_steps:['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','lock_ledger_review_surface','signed_export_handoff_pack'],
       research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question),
       research_plan: packet.research_plan || null,
       evidence_cards:evidenceCards,
@@ -1016,6 +1211,8 @@
       export_review_signoff:guidedSession?.export_review_signoff || null,
       operator_signoff_state:guidedSession?.operator_signoff_state || null,
       export_lock_ledger:guidedSession?.export_lock_ledger || null,
+      lock_ledger_review_surface:lockLedgerReviewSurface,
+      signed_export_handoff_pack:signedExportHandoffPack,
       brief_template_system:briefTemplates,
       assembly_variant_qa:assemblyVariantQa,
       assembly_variant_comparison:assemblyVariantComparison,
@@ -1111,6 +1308,8 @@
       `- Operator signed off: ${text(workbench.export_review_signoff?.operator_signed_off === true || workbench.operator_signoff_state?.operator_signed_off === true)}`,
       `- Operator signoff state: ${text(workbench.operator_signoff_state?.current_state || 'awaiting_operator_confirmation')}`,
       `- Export lock status: ${text(workbench.export_lock_ledger?.lock_status || 'unlocked_manual_signoff_required')}`,
+      `- Lock ledger review gate: ${text(workbench.lock_ledger_review_surface?.release_gate || 'lock_ledger_review_unlocked')}`,
+      `- Signed export handoff status: ${text(workbench.signed_export_handoff_pack?.handoff_status || 'unlocked')}`,
       '',
       '## Brief Template System',
       `- Templates: ${Number(workbench.brief_template_system?.template_count || 0)}`,
@@ -1157,6 +1356,10 @@
     buildReviewQualityDiagnostics,
     buildDiagnosticRepairQueue,
     buildExportRiskResolution,
+    buildLockLedgerReviewSurface,
+    buildSignedExportHandoffPack,
+    lockLedgerReviewSurfaceMarkdown,
+    signedExportHandoffPackMarkdown,
     weakClaimRepairMarkdown,
     diagnosticRepairQueueMarkdown,
     exportRiskResolutionMarkdown,

@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.3.0-alpha.7`
-Release: `v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`
+Version: `1.3.0-alpha.8`
+Release: `v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

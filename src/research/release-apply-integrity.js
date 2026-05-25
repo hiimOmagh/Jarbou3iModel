@@ -2,10 +2,10 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.7';
+  const VERSION = '1.3.0-alpha.8';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.3.0-alpha.7-post-stable-capability-roadmap-expansion-gate.zip';
+  const RELEASE_TITLE = 'v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.3.0-alpha.8-signed-export-handoff-pack-lock-ledger-review-surface.zip';
   const APPLY_CHECKS = Object.freeze([
     {check_id:'base_version_known', label:'Patch is declared as changed-files-only over v1.1.0-alpha.1', required:true},
     {check_id:'artifact_name_fixed', label:'Release artifact name is fixed and versioned', required:true},

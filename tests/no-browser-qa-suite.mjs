@@ -31,6 +31,7 @@ const tests = [
   'tests/source-to-brief-guided-session-ux-export-qa-check.mjs',
   'tests/source-to-brief-preview-diff-signoff-check.mjs',
   'tests/source-to-brief-operator-signoff-lock-ledger-check.mjs',
+  'tests/source-to-brief-signed-export-handoff-check.mjs',
   'tests/source-to-brief-brief-template-system-check.mjs',
   'tests/source-to-brief-brief-template-ux-polish-check.mjs',
   'tests/export-pack-v2-check.mjs',

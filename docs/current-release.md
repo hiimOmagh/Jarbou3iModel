@@ -2,37 +2,37 @@
 
 Public Demo continuity: retained. The v1.1.0 stable public-demo baseline remains the protected reference for post-stable expansion gating.
 
-## v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression
+Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
 
-Public release label: v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression.
+## v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface
 
-Public and internal release versions are aligned. Internal stable validation metadata remains explicit for hosted evidence review.
+Public release label: v1.3.0-alpha.8 Signed Export Handoff Pack + Lock Ledger Review Surface.
 
-Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for alpha.7.
+Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for alpha.8.
 
-Last locked release: `v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger`. Alpha.6 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, and bundle integrity were accepted before this release-truth sweep.
+Public and internal release versions are aligned. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion; alpha.8 adds only reviewer-facing manual export handoff and lock-ledger review surface.
 
-Purpose: correct release-truth drift and compress the next roadmap before adding more product surface. This release does not add runtime behavior.
+Last locked release: `v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`. Alpha.7 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, and bundle integrity were accepted before this handoff-surface build.
 
-Feature surface is frozen for this release: alpha.7 adds release-truth documentation and CI consistency only; the product surface remains the locked alpha.6 local/manual workflow.
+Purpose: convert the locked operator-signoff/export-lock state into a reviewer-facing signed export handoff pack and lock-ledger review surface. This release adds review/export packaging surface, not live execution.
 
-## Alpha.7 correction surface
+## Alpha.8 feature surface
 
-- Current release status reflects alpha.6 as locked, not pending evidence.
-- Roadmap next milestones are compressed and sequenced for faster progress.
-- Stale alpha.5/alpha.6 planning residue is removed.
-- Source-refactor readiness language no longer references a specific obsolete alpha.11 milestone.
-- Release-truth consistency is protected by CI.
+- Signed Export Handoff Pack
+- Lock Ledger Review Surface
+- locked / blocked / unlocked export handoff status
+- operator ID, signoff timestamp, and lock hash only when explicit operator signoff created a lock
+- JSON/Markdown handoff files
+- UI review panels and trilingual labels
 
-## Preserved alpha.6 feature surface
+## Preserved feature surface
 
 - Operator Signoff State
 - Export Lock Ledger
 - Brief Assembly Preview Diff
 - Export Review Signoff dossier
 - Required operator confirmations before export lock
-- JSON/Markdown export review artifacts
-- UI panels and EN/AR/FR labels for review/export state
+- Release Truth Sweep + Roadmap Compression guardrails
 
 ## Evidence boundary flags
 
@@ -46,12 +46,15 @@ Feature surface is frozen for this release: alpha.7 adds release-truth documenta
 - automatic_source_verification_claimed: false
 - verification_claimed: false
 - automatic_signoff_performed: false
+- automatic_export_lock_performed: false
+- cryptographic_signature_claimed: false
 
 ## Release manifest
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0-alpha.7`
+- Version: `1.3.0-alpha.8`
 - Runtime capability change: no
+- Public surface: reviewer-facing manual export handoff surface
 - Required browser gates before publishing
 - Release archive exclusions
 - Required cleanup commands
@@ -79,10 +82,8 @@ Lock only after:
 - horizontal overflow is 0
 - forbidden-capability flags remain false
 
-Boundary wording: no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no automatic source verification claims, and no automatic signoff.
+Boundary wording: no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no automatic source verification claims, no automatic signoff, no automatic export lock, and no cryptographic signature claim.
 
 Node 24 CI compatibility is preserved.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline remain preserved.
-
-Continuity note: v1.1.0 stable public-demo baseline and Diagnostic Repair Queue + Export Risk Resolution remain preserved.

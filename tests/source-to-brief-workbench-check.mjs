@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.7';
+const VERSION = '1.3.0-alpha.8';
 const context = { console, TextEncoder, window: { Jarbou3iResearchModules: {} } };
 context.globalThis = context;
 context.window = context;
@@ -58,7 +58,7 @@ const packet = {
 
 const workbench = workbenchApi.buildSourceToBriefWorkbench(packet, {version: VERSION, now:'2026-05-23T00:00:00.000Z'});
 assert.equal(workbench.source_to_brief_version, VERSION);
-assert.deepEqual(Array.from(workbench.workflow_steps), ['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger']);
+assert.deepEqual(Array.from(workbench.workflow_steps), ['research_question','research_plan','evidence_cards','claim_map','contradiction_map','source_gaps','confidence_review','exportable_strategic_brief','operator_signoff_state','export_lock_ledger','lock_ledger_review_surface','signed_export_handoff_pack']);
 assert.equal(workbench.live_fetching_performed, false);
 assert.equal(workbench.provider_execution_expanded, false);
 assert.equal(workbench.backend_behavior_expanded, false);
@@ -101,7 +101,9 @@ for (const required of [
   'source-to-brief/source-gaps.json',
   'source-to-brief/confidence-review.json',
   'source-to-brief/operator-signoff-state.json',
-  'source-to-brief/export-lock-ledger.json'
+  'source-to-brief/export-lock-ledger.json',
+  'source-to-brief/lock-ledger-review-surface.json',
+  'source-to-brief/signed-export-handoff-pack.json'
 ]) {
   assert.ok(paths.includes(required), `missing source-to-brief export file ${required}`);
 }
@@ -112,6 +114,10 @@ assert.equal(exported.provider_execution_expanded, false);
 assert.equal(exported.operator_signoff_state.operator_signed_off, false);
 assert.equal(exported.export_lock_ledger.export_locked, false);
 assert.equal(exported.export_lock_ledger.automatic_lock_performed, false);
+assert.equal(exported.lock_ledger_review_surface.export_handoff_status, 'blocked');
+assert.equal(exported.lock_ledger_review_surface.cryptographic_signature_claimed, false);
+assert.equal(exported.signed_export_handoff_pack.handoff_status, 'blocked');
+assert.equal(exported.signed_export_handoff_pack.cryptographic_signature_claimed, false);
 assert.equal(exported.evidence_cards[0].source_provenance, 'user_provided_or_source_imported_evidence');
 assert.equal(pack.files.map((file) => file.content).join('\n').includes('verified sources'), false);
 

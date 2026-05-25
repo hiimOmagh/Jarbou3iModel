@@ -3,7 +3,7 @@
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
   function defaultState(options = {}){
-    const version = options.version || '1.3.0-alpha.7';
+    const version = options.version || '1.3.0-alpha.8';
     return {
       plan: null,
       evidence: [],
@@ -98,7 +98,7 @@
     };
   }
   function migrate(parsed, options = {}){
-    const version = options.version || '1.3.0-alpha.7';
+    const version = options.version || '1.3.0-alpha.8';
     const next = Object.assign(defaultState({version}), parsed || {});
     next.version = version;
     next.evidence = Array.isArray(next.evidence) ? next.evidence : (Array.isArray(next.evidence_matrix) ? next.evidence_matrix : []);

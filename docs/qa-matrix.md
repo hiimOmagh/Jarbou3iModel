@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression
+Current release candidate: v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.3.0-alpha.7.
+Node 24 CI compatibility is preserved for v1.3.0-alpha.8.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

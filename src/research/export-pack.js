@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.7';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.8';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -199,6 +199,8 @@
       `Operator signed off: ${safeString(workbench.export_review_signoff?.operator_signed_off === true || workbench.operator_signoff_state?.operator_signed_off === true)}`,
       `Operator signoff state: ${safeString(workbench.operator_signoff_state?.current_state ?? 'awaiting_operator_confirmation')}`,
       `Export lock status: ${safeString(workbench.export_lock_ledger?.lock_status ?? 'unlocked_manual_signoff_required')}`,
+      `Lock ledger review gate: ${safeString(workbench.lock_ledger_review_surface?.release_gate ?? 'lock_ledger_review_unlocked')}`,
+      `Signed export handoff status: ${safeString(workbench.signed_export_handoff_pack?.handoff_status ?? 'unlocked')}`,
       `Export locked: ${safeString(workbench.export_lock_ledger?.export_locked === true)}`,
       `Brief template UX gate: ${safeString(workbench.brief_template_ux_polish?.density_gate ?? 'brief_template_ux_review_required')}`,
       `Assembly variants compared: ${safeString(workbench.assembly_variant_comparison?.variant_count ?? 0)}`,
@@ -293,6 +295,10 @@
     if(workbench.operator_signoff_state && guidedApi?.operatorSignoffStateMarkdown) files.push(fileEntry('source-to-brief/operator-signoff-state.md', 'text/markdown', guidedApi.operatorSignoffStateMarkdown(workbench.operator_signoff_state), 'source-to-brief-operator-signoff-state-md'));
     if(workbench.export_lock_ledger) files.push(fileEntry('source-to-brief/export-lock-ledger.json', 'application/json', jsonContent(workbench.export_lock_ledger), 'source-to-brief-export-lock-ledger'));
     if(workbench.export_lock_ledger && guidedApi?.exportLockLedgerMarkdown) files.push(fileEntry('source-to-brief/export-lock-ledger.md', 'text/markdown', guidedApi.exportLockLedgerMarkdown(workbench.export_lock_ledger), 'source-to-brief-export-lock-ledger-md'));
+    if(workbench.lock_ledger_review_surface) files.push(fileEntry('source-to-brief/lock-ledger-review-surface.json', 'application/json', jsonContent(workbench.lock_ledger_review_surface), 'source-to-brief-lock-ledger-review-surface'));
+    if(workbench.lock_ledger_review_surface && workbenchApi?.lockLedgerReviewSurfaceMarkdown) files.push(fileEntry('source-to-brief/lock-ledger-review-surface.md', 'text/markdown', workbenchApi.lockLedgerReviewSurfaceMarkdown(workbench), 'source-to-brief-lock-ledger-review-surface-md'));
+    if(workbench.signed_export_handoff_pack) files.push(fileEntry('source-to-brief/signed-export-handoff-pack.json', 'application/json', jsonContent(workbench.signed_export_handoff_pack), 'source-to-brief-signed-export-handoff-pack'));
+    if(workbench.signed_export_handoff_pack && workbenchApi?.signedExportHandoffPackMarkdown) files.push(fileEntry('source-to-brief/signed-export-handoff-pack.md', 'text/markdown', workbenchApi.signedExportHandoffPackMarkdown(workbench), 'source-to-brief-signed-export-handoff-pack-md'));
     const templateApi = root.briefTemplateSystem;
     if(workbench.brief_template_system) files.push(fileEntry('source-to-brief/brief-template-system.json', 'application/json', jsonContent(workbench.brief_template_system), 'source-to-brief-brief-template-system'));
     if(workbench.brief_template_system && templateApi?.briefTemplateSystemMarkdown) files.push(fileEntry('source-to-brief/brief-template-system.md', 'text/markdown', templateApi.briefTemplateSystemMarkdown(workbench.brief_template_system), 'source-to-brief-brief-template-system-md'));

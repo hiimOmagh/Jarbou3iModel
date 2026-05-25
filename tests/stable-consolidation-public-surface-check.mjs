@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0-alpha.7';
-const RELEASE = 'v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression';
-const STABLE_PUBLIC = 'v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression';
+const VERSION = '1.3.0-alpha.8';
+const RELEASE = 'v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface';
+const STABLE_PUBLIC = 'v1.3.0-alpha.8 Signed Export Handoff Pack + Lock Ledger Review Surface';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
@@ -15,7 +15,7 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 assert.equal(pkg.version, VERSION);
 assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(registry.release_title, RELEASE);
-assert.ok(index.includes('content="1.3.0-alpha.7"'), 'hosted metadata must report the stable internal version');
+assert.ok(index.includes('content="1.3.0-alpha.8"'), 'hosted metadata must report the stable internal version');
 assert.ok(index.includes(STABLE_PUBLIC), 'public surface should expose post-stable capability roadmap language');
 assert.ok(helpers.includes(STABLE_PUBLIC), 'localized copy must expose post-stable capability roadmap language');
 assert.ok(current.includes(STABLE_PUBLIC));

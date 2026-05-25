@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.7. Local/manual only. */
+/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.8. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.7';
+  const VERSION = '1.3.0-alpha.8';
   const SESSION_MODEL = 'guided_research_session_engine.v1';
   const BRIEF_ASSEMBLY_MODEL = 'brief_assembly_workflow.v1';
   const STEP_IDS = Object.freeze([

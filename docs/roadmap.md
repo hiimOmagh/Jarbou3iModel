@@ -2,22 +2,22 @@
 
 Current milestone:
 
-`v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`
+`v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`
 
-Purpose: remove release-truth drift and compress the next plan before adding more product surface. This prevents future implementation prompts from using stale alpha.5/alpha.6 assumptions.
+Purpose: make the alpha.6/alpha.7 manual review state useful to a reviewer before export by adding a compact handoff pack and lock-ledger review surface.
 
 ## Locked baseline
 
-`v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger` is locked. Do not patch alpha.6 further. It remains the capability baseline for manual operator signoff, export lock ledger, preview diff, and export review signoff.
+`v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression` is locked. Do not patch alpha.7 further. It remains the release-truth and roadmap baseline for this feature increment.
 
 ## Compressed next milestones
 
 1. `v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface`
    - reviewer-facing handoff summary
-   - lock ledger review card/panel
-   - blocked/unlocked/locked handoff status
+   - lock-ledger review card/panel
+   - blocked / unlocked / locked handoff status
    - JSON/Markdown handoff files
-   - no cryptographic signing claim unless rigorously implemented
+   - no cryptographic signing claim
 
 2. `v1.3.0-alpha.9 — Source-to-Claim Gap Closure Queue`
    - claims with missing evidence
@@ -45,27 +45,23 @@ Purpose: remove release-truth drift and compress the next plan before adding mor
 
 ## Priority lanes
 
-1. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, stale-artifact rejection, and release-truth checks.
-2. `export_publication_v4` — stronger traceability, provenance, lock ledger review, and publication packaging.
-3. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
-4. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, and publication-readiness triage.
+1. `export_publication_v4` — stronger traceability, provenance, lock-ledger review, and publication packaging.
+2. `source_strategy_v2` — source taxonomy, review status, source confidence, evidence-to-claim linking, and gap warnings before any live fetching.
+3. `evidence_workspace_v2` — higher-throughput evidence review, contradiction handling, and publication-readiness triage.
+4. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, stale-artifact rejection, and release-truth checks.
 5. `provider_execution_path` — threat model, ADR, backend/BYOK boundary, failure UX, and credential-leak proof before provider execution is exposed.
 6. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
 
-Allowed in this alpha: release-truth docs, roadmap compression, manifest/package metadata, CI release-truth check, and compatibility test updates.
+Allowed in this alpha: signed export handoff pack, lock-ledger review surface, export pack files, UI review panels, EN/AR/FR labels, tests, manifest/package/docs updates.
 
-Forbidden in this alpha: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, UI redesign, automatic signoff, automatic export lock, or automatic source verification claims.
+Forbidden in this alpha: live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, automatic export lock, automatic source verification claims, and cryptographic signature claims.
 
-No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims. No automatic signoff.
+No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims. No automatic signoff. No automatic export lock.
 
 Node 24 CI compatibility preserved.
 
-## Stable baseline note
-
 Stable baseline retained: v1.1.0 remains the locked Public Demo reference for post-stable expansion gating.
 
-Workbench note: alpha.7 is a changed-files-only release-truth sweep over the locked local/manual source-to-brief implementation.
+Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
 
-Evidence manifest continuity: hosted-demo review still requires a single final metadata capture manifest with desktop, mobile, provider-mode, and quality/export evidence.
-
-Continuity note: v1.1.0 stable public-demo baseline and Diagnostic Repair Queue + Export Risk Resolution remain preserved.
+Release discipline preserved: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only handoff remain in force.

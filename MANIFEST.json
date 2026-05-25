@@ -1,8 +1,8 @@
 {
-  "version": "1.3.0-alpha.7",
-  "release_title": "v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression",
+  "version": "1.3.0-alpha.8",
+  "release_title": "v1.3.0-alpha.8 \u2014 Signed Export Handoff Pack + Lock Ledger Review Surface",
   "package": "jarbou3i-research-engine",
-  "release_type": "post-stable-alpha-release-truth-sweep",
+  "release_type": "post-stable-alpha-signed-export-handoff",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
   "oauth_behavior_changed": false,
@@ -44,9 +44,9 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Release-truth and roadmap compression pass: aligns current release docs, roadmap, manifest metadata, and CI release-truth checks after the locked alpha.6 operator signoff/export lock baseline without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, automatic signoff, or automatic source verification claims.",
+  "release_scope": "Signed export handoff and lock-ledger review surface pass: adds reviewer-facing manual handoff pack, locked/blocked/unlocked status, non-cryptographic operator-review signature metadata, and JSON/Markdown handoff files without enabling live scraping, provider execution, production OAuth, backend behavior, storage expansion, automatic signoff, automatic export lock, cryptographic signing, or automatic source verification claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.3.0-alpha.7`\nRuntime capability change: no\nPublic surface: unchanged local/manual source-to-brief workbench\nRelease-truth sweep and roadmap compression\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
-  "node_runtime_note": "Node 24 CI compatibility preserved for v1.3.0-alpha.7.",
+  "release_manifest_text": "Package: `jarbou3i-research-engine`\nVersion: `1.3.0-alpha.8`\nRuntime capability change: no\nPublic surface: manual signed export handoff pack + lock-ledger review surface\nRequired browser gates before publishing\nRelease archive exclusions\nRequired cleanup commands",
+  "node_runtime_note": "Node 24 CI compatibility preserved for v1.3.0-alpha.8.",
   "baseline_continuity_note": "v1.1.0 stable public-demo baseline and Diagnostic Repair Queue + Export Risk Resolution continuity preserved."
 }

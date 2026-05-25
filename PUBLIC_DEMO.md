@@ -1,9 +1,12 @@
-# Public Demo — v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression
+# Public Demo — v1.3.0-alpha.8 Signed Export Handoff Pack + Lock Ledger Review Surface
 
-This public-demo alpha is a release-truth sweep. It does not add public-demo capability, runtime execution, live provider behavior, OAuth, backend behavior, source acquisition, or storage behavior.
+This public-demo alpha adds a reviewer-facing signed export handoff pack and lock-ledger review surface. It does not add runtime execution, live provider behavior, OAuth, backend behavior, source acquisition, or storage behavior.
 
-The visible product surface remains the locked manual/local Source-to-Brief workbench from alpha.6:
+The visible product surface remains manual/local and now includes:
 
+- Signed Export Handoff Pack
+- Lock Ledger Review Surface
+- Locked / blocked / unlocked handoff status
 - Operator Signoff State
 - Export Lock Ledger
 - Brief Assembly Preview Diff
@@ -11,9 +14,11 @@ The visible product surface remains the locked manual/local Source-to-Brief work
 - Guided Research Session
 - Brief Template System
 
-Alpha.7 aligns documentation, manifest metadata, roadmap sequencing, and CI release-truth checks so future milestones do not start from stale release assumptions.
+The signed handoff pack is not a cryptographic signature. It records operator-review metadata and exposes the lock hash only when explicit operator signoff created an export lock.
 
-Public release label: v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression.
+Public release label: v1.3.0-alpha.8 Signed Export Handoff Pack + Lock Ledger Review Surface.
+
+Last locked release: v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression.
 
 Lock evidence required before approval:
 
@@ -25,6 +30,6 @@ Lock evidence required before approval:
 
 Screenshots alone are insufficient. ZIP existence alone is insufficient.
 
-Forbidden capability claims remain false: no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, no automatic source verification, and no automatic signoff.
+Forbidden capability claims remain false: no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, no automatic source verification, no automatic signoff, no automatic export lock, and no cryptographic signature claim.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, provenance ledger, apply integrity, and changed-files-only discipline remain preserved.
