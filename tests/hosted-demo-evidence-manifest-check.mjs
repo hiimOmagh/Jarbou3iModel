@@ -56,7 +56,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.3.0'",
+  "const VERSION = '1.4.0-alpha.1'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',
