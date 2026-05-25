@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.5. Local/manual only. */
+/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.6. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.5';
+  const VERSION = '1.3.0-alpha.6';
   const SESSION_MODEL = 'guided_research_session_engine.v1';
   const BRIEF_ASSEMBLY_MODEL = 'brief_assembly_workflow.v1';
   const STEP_IDS = Object.freeze([
@@ -31,6 +31,13 @@
   function asArray(value){ return Array.isArray(value) ? value.filter(Boolean) : (value === undefined || value === null || value === '' ? [] : [value]); }
   function count(value){ return asArray(value).length; }
   function bool(value){ return !!value; }
+  function stableChecksum(value){
+    const input = JSON.stringify(value || {});
+    let hash = 2166136261;
+    for(let i = 0; i < input.length; i += 1){ hash ^= input.charCodeAt(i); hash = Math.imul(hash, 16777619); }
+    return (hash >>> 0).toString(16).padStart(8, '0');
+  }
+  function uniqueText(values){ return Array.from(new Set(asArray(values).map((value)=>text(value)).filter(Boolean))); }
   function status(complete, blocker, warning){ return blocker ? 'blocked' : (complete ? (warning ? 'warning' : 'complete') : 'incomplete'); }
   function step(id, label, complete, blocker, warning, nextAction, evidence = {}){
     const state = status(complete, blocker, warning);
@@ -249,6 +256,135 @@
     };
   }
 
+
+  function normalizeOperatorSignoffInput(packet = {}){
+    const input = packet.operator_signoff_input || packet.manual_operator_signoff || packet.export_review_operator_signoff || packet.export_lock_request || null;
+    if(!input || typeof input !== 'object') return {present:false, decision:'pending', confirmations:[], operator_id:'', signed_at:'', notes:''};
+    const decision = text(input.decision || input.status || (input.operator_signed_off === true || input.signed_off === true ? 'signed_off' : 'pending')).toLowerCase();
+    return {
+      present:true,
+      decision:decision || 'pending',
+      confirmations:uniqueText(input.confirmations || input.required_confirmations_completed || input.checked_confirmations),
+      operator_id:text(input.operator_id || input.operator || input.reviewer_id || input.reviewer || ''),
+      signed_at:text(input.signed_at || input.decided_at || input.timestamp || ''),
+      notes:text(input.notes || input.operator_notes || input.review_notes || '')
+    };
+  }
+  function buildOperatorSignoffState(signoff = {}, workbench = {}, packet = {}, options = {}){
+    const version = options.version || signoff.export_review_signoff_version || VERSION;
+    const generatedAt = options.now || nowIso();
+    const input = normalizeOperatorSignoffInput(packet);
+    const required = uniqueText(signoff.required_operator_confirmations);
+    const missing = required.filter((item)=>!input.confirmations.includes(item));
+    const riskBlockers = Number(workbench.export_risk_resolution?.blocker_count || 0);
+    const signoffBlockers = Number(signoff.blocker_count || 0) + (signoff.signoff_gate === 'export_review_signoff_blocked' ? 1 : 0) + riskBlockers;
+    const identityPresent = !!input.operator_id;
+    const signedAtPresent = !!input.signed_at;
+    const signedDecision = input.decision === 'signed_off' || input.decision === 'approved' || input.decision === 'approve_export';
+    let currentState = 'awaiting_operator_confirmation';
+    if(signoffBlockers > 0) currentState = 'blocked_for_operator_signoff';
+    else if(['rejected','reject','rejected_export'].includes(input.decision)) currentState = 'operator_rejected_export';
+    else if(['needs_changes','changes_requested','revise'].includes(input.decision)) currentState = 'changes_requested';
+    else if(signedDecision && (!identityPresent || !signedAtPresent || missing.length)) currentState = 'incomplete_operator_signoff';
+    else if(signedDecision && input.present) currentState = 'signed_off_ready_for_export_lock';
+    const operatorSignedOff = currentState === 'signed_off_ready_for_export_lock';
+    const checks = [
+      {check_id:'signoff_dossier_present', label:'Export review signoff dossier is present', passed:!!signoff.signoff_model, severity:'blocker'},
+      {check_id:'signoff_gate_reviewable', label:'Export review signoff gate is reviewable', passed:signoffBlockers === 0, severity:'blocker'},
+      {check_id:'explicit_operator_decision', label:'Explicit operator signoff decision is present', passed:signedDecision && input.present, severity:'signoff_required'},
+      {check_id:'operator_identity_present', label:'Operator identity is recorded', passed:identityPresent, severity:'signoff_required'},
+      {check_id:'operator_signed_at_present', label:'Operator signoff timestamp is recorded', passed:signedAtPresent, severity:'signoff_required'},
+      {check_id:'required_confirmations_complete', label:'All required operator confirmations are completed', passed:missing.length === 0 && required.length > 0, severity:'signoff_required'},
+      {check_id:'no_automatic_signoff', label:'No automatic signoff was performed', passed:signoff.automatic_signoff_performed !== true, severity:'blocker'},
+      {check_id:'no_automatic_source_verification_claim', label:'No automatic source verification claim is present', passed:signoff.automatic_source_verification_claimed !== true && workbench.automatic_source_verification_claimed !== true, severity:'blocker'},
+      {check_id:'no_live_provider_behavior', label:'No live fetching/provider execution is enabled', passed:workbench.live_fetching_performed !== true && workbench.provider_execution_expanded !== true, severity:'blocker'}
+    ];
+    return {
+      operator_signoff_state_version:version,
+      state_model:'operator_signoff_state.v1',
+      generated_at:generatedAt,
+      current_state:currentState,
+      signoff_gate:operatorSignedOff ? 'operator_signoff_lock_allowed' : (signoffBlockers ? 'operator_signoff_blocked' : 'operator_signoff_required'),
+      export_permission:operatorSignedOff ? 'export_lock_allowed' : (signoffBlockers ? 'export_blocked' : 'manual_signoff_required'),
+      signoff_input_present:input.present,
+      operator_decision:input.decision,
+      operator_id:input.operator_id || null,
+      operator_signed_at:input.signed_at || null,
+      operator_notes_present:!!input.notes,
+      required_operator_confirmations:required,
+      provided_operator_confirmations:input.confirmations,
+      missing_operator_confirmations:missing,
+      required_confirmation_count:required.length,
+      provided_confirmation_count:input.confirmations.length,
+      missing_confirmation_count:missing.length,
+      operator_signed_off:operatorSignedOff,
+      automatic_signoff_performed:false,
+      automatic_export_lock_performed:false,
+      signoff_blocker_count:signoffBlockers,
+      checks,
+      transition_log:[
+        {transition_id:'OST-1', from_state:'export_review_signoff', to_state:'awaiting_operator_confirmation', trigger:'signoff_dossier_created', automatic_transition:true},
+        {transition_id:'OST-2', from_state:'awaiting_operator_confirmation', to_state:currentState, trigger:input.present ? 'explicit_operator_input_evaluated' : 'operator_input_missing', automatic_transition:false}
+      ],
+      manual_local_boundary:'Operator signoff state is a local/manual state machine. It can only mark signoff complete from explicit operator input and never verifies source truth automatically.',
+      local_manual_only:true,
+      live_fetching_performed:false,
+      live_web_search_performed:false,
+      provider_execution_expanded:false,
+      backend_behavior_expanded:false,
+      production_oauth_enabled:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function buildExportLockLedger(signoffState = {}, workbench = {}, packet = {}, options = {}){
+    const version = options.version || signoffState.operator_signoff_state_version || VERSION;
+    const generatedAt = options.now || nowIso();
+    const lockAllowed = signoffState.export_permission === 'export_lock_allowed' && signoffState.operator_signed_off === true;
+    const blocked = signoffState.export_permission === 'export_blocked' || Number(signoffState.signoff_blocker_count || 0) > 0;
+    const lockStatus = lockAllowed ? 'locked_for_export' : (blocked ? 'blocked_no_export_lock' : 'unlocked_manual_signoff_required');
+    const lockHash = lockAllowed ? stableChecksum({version, operator_id:signoffState.operator_id, signed_at:signoffState.operator_signed_at, confirmations:signoffState.provided_operator_confirmations, preview_diff_gate:workbench.brief_assembly_preview_diff?.diff_gate, signoff_gate:signoffState.signoff_gate}) : null;
+    const entries = [
+      {entry_id:'ELL-1', event_type:'export_review_dossier_opened', event_state:'recorded', actor:'system', automatic_event:true, created_at:generatedAt, summary:'Export review dossier created; export remains controlled by manual operator signoff.'},
+      {entry_id:'ELL-2', event_type:signoffState.signoff_input_present ? 'operator_signoff_input_recorded' : 'operator_signoff_missing', event_state:signoffState.signoff_input_present ? 'recorded' : 'pending', actor:signoffState.operator_id || 'operator_required', automatic_event:false, created_at:signoffState.operator_signed_at || generatedAt, summary:signoffState.signoff_input_present ? `Operator decision evaluated: ${text(signoffState.operator_decision || 'pending')}` : 'No explicit operator signoff input is attached.'}
+    ];
+    entries.push(lockAllowed ?
+      {entry_id:'ELL-3', event_type:'export_locked_by_operator', event_state:'locked', actor:signoffState.operator_id || 'operator', automatic_event:false, created_at:signoffState.operator_signed_at || generatedAt, lock_hash:lockHash, summary:'Export lock created from explicit operator signoff input.'} :
+      {entry_id:'ELL-3', event_type:'export_lock_not_created', event_state:blocked ? 'blocked' : 'pending', actor:'system', automatic_event:true, created_at:generatedAt, lock_hash:null, summary:blocked ? 'Export lock blocked by signoff or export-risk blockers.' : 'Export lock pending explicit operator signoff.'}
+    );
+    return {
+      export_lock_ledger_version:version,
+      ledger_model:'export_lock_ledger.v1',
+      generated_at:generatedAt,
+      lock_status:lockStatus,
+      lock_gate:lockAllowed ? 'export_locked_operator_signed' : (blocked ? 'export_lock_blocked' : 'export_lock_manual_signoff_required'),
+      export_locked:lockAllowed,
+      export_lock_hash:lockHash,
+      lock_created_from_explicit_operator_input:lockAllowed,
+      automatic_lock_performed:false,
+      automatic_signoff_performed:false,
+      operator_id:signoffState.operator_id || null,
+      operator_signed_at:signoffState.operator_signed_at || null,
+      linked_signoff_state:signoffState.current_state || 'awaiting_operator_confirmation',
+      linked_signoff_gate:signoffState.signoff_gate || 'operator_signoff_required',
+      entry_count:entries.length,
+      lock_entries:entries,
+      immutable_after_lock:lockAllowed,
+      manual_unlock_required:lockAllowed,
+      export_allowed:lockAllowed,
+      no_secrets_exported:true,
+      manual_local_boundary:'Export lock ledger records local/manual export authorization state. It does not fetch, verify, execute providers, enable OAuth, or create a lock without explicit operator signoff input.',
+      local_manual_only:true,
+      live_fetching_performed:false,
+      live_web_search_performed:false,
+      provider_execution_expanded:false,
+      backend_behavior_expanded:false,
+      production_oauth_enabled:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+
   function buildGuidedResearchSession(workbench = {}, packet = {}, options = {}){
     const version = options.version || VERSION;
     const generatedAt = options.now || nowIso();
@@ -263,6 +399,8 @@
     const uxCompression = buildGuidedSessionUxCompression({guided_research_session_version:version, steps, session_progress_percent:progress, next_best_action:next, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench);
     const exportQa = buildBriefAssemblyExportQa({guided_research_session_version:version, brief_assembly_preview:preview, session_progress_percent:progress, local_manual_session:true, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench);
     const exportSignoff = buildExportReviewSignoff({guided_research_session_version:version, brief_assembly_preview:preview, brief_assembly_preview_diff:previewDiff, session_progress_percent:progress, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench, exportQa);
+    const operatorSignoffState = buildOperatorSignoffState(exportSignoff, Object.assign({}, workbench, {brief_assembly_preview_diff:previewDiff}), packet, {version, now:generatedAt});
+    const exportLockLedger = buildExportLockLedger(operatorSignoffState, Object.assign({}, workbench, {brief_assembly_preview_diff:previewDiff, export_review_signoff:exportSignoff}), packet, {version, now:generatedAt});
     return {
       guided_research_session_version:version,
       session_model:SESSION_MODEL,
@@ -282,7 +420,9 @@
       ux_compression:uxCompression,
       brief_assembly_export_qa:exportQa,
       export_review_signoff:exportSignoff,
-      session_handoff_files:['source-to-brief/guided-research-session.json','source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md','source-to-brief/brief-assembly-preview-diff.json','source-to-brief/brief-assembly-preview-diff.md','source-to-brief/export-review-signoff.json','source-to-brief/export-review-signoff.md'],
+      operator_signoff_state:operatorSignoffState,
+      export_lock_ledger:exportLockLedger,
+      session_handoff_files:['source-to-brief/guided-research-session.json','source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md','source-to-brief/brief-assembly-preview-diff.json','source-to-brief/brief-assembly-preview-diff.md','source-to-brief/export-review-signoff.json','source-to-brief/export-review-signoff.md','source-to-brief/operator-signoff-state.json','source-to-brief/operator-signoff-state.md','source-to-brief/export-lock-ledger.json','source-to-brief/export-lock-ledger.md'],
       local_manual_session:true,
       blocked_unavailable_capabilities:BLOCKED_CAPABILITIES.slice(),
       live_fetching_performed:false,
@@ -452,6 +592,51 @@
     ].join('\n');
   }
 
+
+  function operatorSignoffStateMarkdown(state = {}){
+    const checks = asArray(state.checks).map((check)=>`- ${check.passed ? '[x]' : '[ ]'} ${check.label} (${check.severity})`).join('\n') || '- No signoff state checks recorded.';
+    const missing = asArray(state.missing_operator_confirmations).map((item)=>`- ${item}`).join('\n') || '- None recorded.';
+    return [
+      '# Operator Signoff State',
+      '',
+      `Current state: ${text(state.current_state || 'awaiting_operator_confirmation')}`,
+      `Signoff gate: ${text(state.signoff_gate || 'operator_signoff_required')}`,
+      `Export permission: ${text(state.export_permission || 'manual_signoff_required')}`,
+      `Operator signed off: ${state.operator_signed_off === true}`,
+      `Automatic signoff performed: ${state.automatic_signoff_performed === true}`,
+      '',
+      '## Missing Confirmations',
+      missing,
+      '',
+      '## Checks',
+      checks,
+      '',
+      '## Boundary',
+      text(state.manual_local_boundary || 'Local/manual operator signoff state only. No automatic source verification is claimed.'),
+      ''
+    ].join('\n');
+  }
+  function exportLockLedgerMarkdown(ledger = {}){
+    const entries = asArray(ledger.lock_entries).map((entry)=>`- ${entry.entry_id}: ${entry.event_type} · ${entry.event_state} · ${entry.actor} — ${entry.summary}`).join('\n') || '- No export lock ledger entries recorded.';
+    return [
+      '# Export Lock Ledger',
+      '',
+      `Lock status: ${text(ledger.lock_status || 'unlocked_manual_signoff_required')}`,
+      `Lock gate: ${text(ledger.lock_gate || 'export_lock_manual_signoff_required')}`,
+      `Export locked: ${ledger.export_locked === true}`,
+      `Export allowed: ${ledger.export_allowed === true}`,
+      `Automatic lock performed: ${ledger.automatic_lock_performed === true}`,
+      `Export lock hash: ${text(ledger.export_lock_hash || 'not_locked')}`,
+      '',
+      '## Lock Entries',
+      entries,
+      '',
+      '## Boundary',
+      text(ledger.manual_local_boundary || 'Local/manual export lock ledger only. No automatic source verification is claimed.'),
+      ''
+    ].join('\n');
+  }
+
   function guidedSessionMarkdown(session = {}){
     const steps = asArray(session.steps).map((item)=>`- ${item.complete && !item.blocker ? '[x]' : '[ ]'} ${item.label}: ${item.state} — ${item.next_action}`).join('\n') || '- No session steps recorded.';
     const checkpoints = asArray(session.manual_operator_checkpoints).map((item)=>`- ${item.step_id}: ${item.state} — ${item.next_action}`).join('\n') || '- No manual checkpoints open.';
@@ -462,6 +647,8 @@
       `Progress: ${Number(session.session_progress_percent || 0)}%`,
       `Current step: ${text(session.current_step || 'research_question')}`,
       `Next action: ${text(session.next_best_action?.label || 'continue_manual_review')}`,
+      `Operator signoff state: ${text(session.operator_signoff_state?.current_state || 'awaiting_operator_confirmation')}`,
+      `Export lock status: ${text(session.export_lock_ledger?.lock_status || 'unlocked_manual_signoff_required')}`,
       '',
       '## Steps',
       steps,
@@ -506,9 +693,13 @@
     buildBriefAssemblyExportQa,
     buildBriefAssemblyPreviewDiff,
     buildExportReviewSignoff,
+    buildOperatorSignoffState,
+    buildExportLockLedger,
     briefAssemblyExportQaMarkdown,
     briefAssemblyPreviewDiffMarkdown,
     exportReviewSignoffMarkdown,
+    operatorSignoffStateMarkdown,
+    exportLockLedgerMarkdown,
     buildSessionSteps,
     buildBriefAssemblyPreview,
     guidedSessionMarkdown,

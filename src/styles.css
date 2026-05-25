@@ -1050,7 +1050,7 @@ html[dir="rtl"] .welcomeEyebrow{
 
 .entityProfileGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:10px 0}.entityProfileCard{border:1px solid rgba(148,163,184,.22);border-radius:16px;padding:12px;background:rgba(15,23,42,.22)}.entityProfileCard>div:first-child{display:flex;justify-content:space-between;gap:8px;align-items:center}.entityProfileCard p{margin:8px 0;color:var(--muted)}
 
-/* v1.3.0-alpha.5 — source-to-brief operator flow compression */
+/* v1.3.0-alpha.6 — source-to-brief operator flow compression */
 .sourceToBriefSummary.operatorCompressed{border:1px solid color-mix(in srgb,var(--accent) 20%,var(--line));border-radius:20px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface-solid) 94%,transparent),color-mix(in srgb,var(--surface-soft) 88%,transparent));padding:12px;}
 .sourceToBriefFlow{display:grid;grid-template-columns:repeat(8,minmax(74px,1fr));gap:6px;align-items:stretch;}
 .flowStep{border:1px solid var(--line);border-radius:14px;background:var(--surface-solid);padding:8px 9px;min-width:0;}
@@ -1100,7 +1100,7 @@ html[dir="rtl"] .welcomeEyebrow{
 .reviewDecisionLedgerList{margin:8px 0 0;padding-left:18px;color:var(--muted);}.reviewDecisionLedgerList li{margin:5px 0;}.reviewDecisionLedgerList small{display:block;overflow-wrap:anywhere;}[dir="rtl"] .reviewDecisionLedgerList{padding-left:0;padding-right:18px;}
 @media(max-width:560px){.claimTraceabilityRow header{display:grid;}.claimTraceabilityRow header span{text-align:start;}}
 
-/* v1.3.0-alpha.5 operator command palette + review navigation shortcuts */
+/* v1.3.0-alpha.6 operator command palette + review navigation shortcuts */
 .operatorCommandPalettePanel,
 .reviewNavigationShortcutsPanel { border-color: rgba(153, 212, 255, 0.22); }
 .operatorCommandGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:0.6rem; margin-top:0.75rem; }
@@ -1117,7 +1117,7 @@ html[dir="rtl"] .welcomeEyebrow{
 html[dir="rtl"] .operatorCommand { text-align:right; }
 @media (max-width: 640px){ .operatorCommand { grid-template-columns:1fr; align-items:start; } .reviewNavigationShortcutList { grid-template-columns:1fr; } }
 
-/* v1.3.0-alpha.5 operator command palette + review navigation shortcuts */
+/* v1.3.0-alpha.6 operator command palette + review navigation shortcuts */
 .operatorCommandPalettePanel,
 .reviewNavigationShortcutsPanel { border-color: rgba(153, 212, 255, 0.22); }
 .operatorCommandGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:0.6rem; margin-top:0.75rem; }
@@ -1136,7 +1136,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
 .operatorNavPulse { animation: operatorNavPulse 0.9s ease-out; }
 @keyframes operatorNavPulse { 0% { box-shadow:0 0 0 0 rgba(153,212,255,0.32); } 100% { box-shadow:0 0 0 18px rgba(153,212,255,0); } }
 
-/* v1.3.0-alpha.5 review quality diagnostics */
+/* v1.3.0-alpha.6 review quality diagnostics */
 .reviewQualityDiagnosticsPanel{border-color:rgba(248,181,81,.26)}
 .reviewQualityFindingGrid{display:grid;gap:.65rem;margin-top:.6rem}
 .reviewQualityFinding{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.7rem;background:rgba(255,255,255,.035)}
@@ -1150,7 +1150,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
 .weakClaimRepairList li{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.55rem .65rem;background:rgba(0,0,0,.16)}
 .weakClaimRepairList strong{display:block;color:rgba(255,255,255,.88);margin-bottom:.18rem}
 .weakClaimRepairList small{display:block;color:rgba(255,255,255,.62);line-height:1.35}
-/* v1.3.0-alpha.5 diagnostic repair queue + export risk resolution */
+/* v1.3.0-alpha.6 diagnostic repair queue + export risk resolution */
 .diagnosticRepairQueuePanel{border-color:rgba(248,181,81,.30)}
 .exportRiskResolutionPanel{border-color:rgba(255,92,92,.28)}
 .diagnosticRepairQueueList,.exportRiskResolutionList{display:grid;gap:.65rem;margin-top:.65rem}
@@ -1165,7 +1165,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
 [dir="rtl"] .exportRiskChecklist{padding-left:0;padding-right:1.1rem}
 .exportRiskChecklist li{overflow-wrap:anywhere}
 
-/* v1.3.0-alpha.5 guided research session polish */
+/* v1.3.0-alpha.6 guided research session polish */
 .guidedResearchSessionPanel,
 .briefAssemblyPanel {
   border-color: rgba(166, 194, 255, 0.26);
@@ -1213,7 +1213,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
 .briefAssemblyPanel .miniChips span,
 .guidedResearchSessionPanel .miniChips span { white-space: normal; }
 
-/* v1.3.0-alpha.5 guided session UX compression + brief assembly export QA */
+/* v1.3.0-alpha.6 guided session UX compression + brief assembly export QA */
 .guidedUxCompressionPanel,
 .briefAssemblyExportQaPanel {
   border-color: rgba(180, 214, 255, 0.22);
@@ -1274,7 +1274,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
   grid-column: 2;
 }
 
-/* v1.3.0-alpha.5 brief template system + assembly variant QA */
+/* v1.3.0-alpha.6 brief template system + assembly variant QA */
 .briefTemplateSystemPanel,
 .assemblyVariantQaPanel{
   border-color: rgba(180, 166, 255, 0.26);
@@ -1323,7 +1323,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
   .assemblyVariantQaList li small{grid-column:2;}
 }
 
-/* v1.3.0-alpha.5 brief template UX polish + matrix hygiene cleanup */
+/* v1.3.0-alpha.6 brief template UX polish + matrix hygiene cleanup */
 .briefTemplateUxPolishPanel,
 .assemblyVariantComparisonPanel{
   border-color:rgba(142, 220, 255, 0.28);
@@ -1378,7 +1378,7 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
   .assemblyVariantComparisonGrid{grid-template-columns:1fr;}
 }
 
-/* v1.3.0-alpha.5 brief assembly preview diff + export review signoff */
+/* v1.3.0-alpha.6 brief assembly preview diff + export review signoff */
 .briefAssemblyPreviewDiffPanel,
 .exportReviewSignoffPanel {
   border-color: color-mix(in srgb, var(--accent) 26%, var(--line));
@@ -1419,4 +1419,47 @@ html[dir="rtl"] .operatorCommand { text-align:right; }
   .exportReviewSignoffList li { grid-template-columns: auto minmax(0,1fr); }
   .briefAssemblyPreviewDiffList li small,
   .exportReviewSignoffList li small { grid-column: 2; text-align: start; }
+}
+
+/* v1.3.0-alpha.6 operator signoff state + export lock ledger */
+.operatorSignoffStatePanel,
+.exportLockLedgerPanel {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-solid) 90%, transparent), color-mix(in srgb, var(--surface-soft) 94%, transparent));
+}
+.operatorSignoffStateList,
+.exportLockLedgerList {
+  list-style: none;
+  padding: 0;
+  margin: 0.65rem 0 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.operatorSignoffStateList li,
+.exportLockLedgerList li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: start;
+  padding: 0.56rem 0.62rem;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.035);
+}
+.operatorSignoffStateList li span,
+.exportLockLedgerList li span { min-width: 0; }
+.operatorSignoffStateList li small,
+.exportLockLedgerList li small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-align: end;
+}
+.operatorSignoffMissing { margin-top: 0.6rem; }
+@media(max-width:640px){
+  .operatorSignoffStateList li,
+  .exportLockLedgerList li { grid-template-columns: auto minmax(0,1fr); }
+  .operatorSignoffStateList li small,
+  .exportLockLedgerList li small { grid-column: 2; text-align: start; }
 }

@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.5';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.6';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -196,7 +196,10 @@
       `Brief export QA gate: ${safeString(workbench.brief_assembly_export_qa?.qa_gate ?? 'brief_assembly_export_review_required')}`,
       `Preview diff gate: ${safeString(workbench.brief_assembly_preview_diff?.diff_gate ?? 'preview_diff_review_required')}`,
       `Export signoff gate: ${safeString(workbench.export_review_signoff?.signoff_gate ?? 'manual_operator_signoff_required')}`,
-      `Operator signed off: ${safeString(workbench.export_review_signoff?.operator_signed_off === true)}`,
+      `Operator signed off: ${safeString(workbench.export_review_signoff?.operator_signed_off === true || workbench.operator_signoff_state?.operator_signed_off === true)}`,
+      `Operator signoff state: ${safeString(workbench.operator_signoff_state?.current_state ?? 'awaiting_operator_confirmation')}`,
+      `Export lock status: ${safeString(workbench.export_lock_ledger?.lock_status ?? 'unlocked_manual_signoff_required')}`,
+      `Export locked: ${safeString(workbench.export_lock_ledger?.export_locked === true)}`,
       `Brief template UX gate: ${safeString(workbench.brief_template_ux_polish?.density_gate ?? 'brief_template_ux_review_required')}`,
       `Assembly variants compared: ${safeString(workbench.assembly_variant_comparison?.variant_count ?? 0)}`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
@@ -286,6 +289,10 @@
     if(workbench.brief_assembly_export_qa && guidedApi?.briefAssemblyExportQaMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-export-qa.md', 'text/markdown', guidedApi.briefAssemblyExportQaMarkdown(workbench.brief_assembly_export_qa), 'source-to-brief-brief-assembly-export-qa-md'));
     if(workbench.export_review_signoff) files.push(fileEntry('source-to-brief/export-review-signoff.json', 'application/json', jsonContent(workbench.export_review_signoff), 'source-to-brief-export-review-signoff'));
     if(workbench.export_review_signoff && guidedApi?.exportReviewSignoffMarkdown) files.push(fileEntry('source-to-brief/export-review-signoff.md', 'text/markdown', guidedApi.exportReviewSignoffMarkdown(workbench.export_review_signoff), 'source-to-brief-export-review-signoff-md'));
+    if(workbench.operator_signoff_state) files.push(fileEntry('source-to-brief/operator-signoff-state.json', 'application/json', jsonContent(workbench.operator_signoff_state), 'source-to-brief-operator-signoff-state'));
+    if(workbench.operator_signoff_state && guidedApi?.operatorSignoffStateMarkdown) files.push(fileEntry('source-to-brief/operator-signoff-state.md', 'text/markdown', guidedApi.operatorSignoffStateMarkdown(workbench.operator_signoff_state), 'source-to-brief-operator-signoff-state-md'));
+    if(workbench.export_lock_ledger) files.push(fileEntry('source-to-brief/export-lock-ledger.json', 'application/json', jsonContent(workbench.export_lock_ledger), 'source-to-brief-export-lock-ledger'));
+    if(workbench.export_lock_ledger && guidedApi?.exportLockLedgerMarkdown) files.push(fileEntry('source-to-brief/export-lock-ledger.md', 'text/markdown', guidedApi.exportLockLedgerMarkdown(workbench.export_lock_ledger), 'source-to-brief-export-lock-ledger-md'));
     const templateApi = root.briefTemplateSystem;
     if(workbench.brief_template_system) files.push(fileEntry('source-to-brief/brief-template-system.json', 'application/json', jsonContent(workbench.brief_template_system), 'source-to-brief-brief-template-system'));
     if(workbench.brief_template_system && templateApi?.briefTemplateSystemMarkdown) files.push(fileEntry('source-to-brief/brief-template-system.md', 'text/markdown', templateApi.briefTemplateSystemMarkdown(workbench.brief_template_system), 'source-to-brief-brief-template-system-md'));

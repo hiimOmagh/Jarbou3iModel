@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff. Manual mode remains first-class. */
+/* Jarbou3i Research Engine v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger. Manual mode remains first-class. */
 (function(){
   'use strict';
 
-  const VERSION = '1.3.0-alpha.5';
+  const VERSION = '1.3.0-alpha.6';
   const STORAGE_KEY = 'jarbou3i.researchEngine.alpha.v0.8';
   const WORKSPACE_STORAGE_KEY = 'jarbou3i.researchEngine.projects.v0.24';
   const BYOK_KEY_STORAGE = 'jarbou3i.researchEngine.byokKey.v0.8';
@@ -965,7 +965,7 @@
     const firstClaim = state.evidence[0]?.claim || `Evidence matrix is required to ground ${t}.`;
     const links = state.causal_links.length ? state.causal_links : inferCausalLinks();
     return {
-      schema_version: '1.3.0-alpha.5',
+      schema_version: '1.3.0-alpha.6',
       analysis_id: `jarbou3i-alpha-${Date.now()}`,
       language: getLang(),
       generated_at: nowIso(),

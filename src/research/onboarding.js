@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.5';
+  const VERSION = '1.3.0-alpha.6';
   const STEPS = Object.freeze([
     { step_id:'topic', label:'Define topic', target:'topicInput', tab:'analysis', success:'topic_defined' },
     { step_id:'plan', label:'Generate research plan', target:'generatePlanBtn', tab:'analysis', success:'plan_ready' },

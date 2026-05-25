@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff
+Current release candidate: v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.3.0-alpha.5.
+Node 24 CI compatibility is preserved for v1.3.0-alpha.6.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

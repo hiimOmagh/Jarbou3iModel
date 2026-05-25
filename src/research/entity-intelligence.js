@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.5';
+  const VERSION = '1.3.0-alpha.6';
   const MODEL = 'entity_intelligence_layer.v1';
   const DEFAULT_IGNORE = new Set(['the','this','that','these','those','source','evidence','report','analysis','claim','official','social','news','manual','public','thread','note','sample','demo','january','february','march','april','may','june','july','august','september','october','november','december']);
   const ORG_SUFFIX = /\b(inc|corp|corporation|company|co|ltd|llc|group|agency|department|ministry|commission|council|committee|university|institute|bank|fund|foundation|association|alliance|union|government|administration|office|organization|organisation)\b/i;

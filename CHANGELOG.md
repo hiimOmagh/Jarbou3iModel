@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff
+## v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger
 
 - Adds Brief Assembly Preview Diff for local/manual comparison between the current preview and an operator-supplied previous preview baseline.
 - Adds Export Review Signoff dossier with required operator confirmations, explicit `operator_signed_off:false`, and `automatic_signoff_performed:false`.
@@ -11,7 +11,7 @@
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-Public label: `v1.3.0-alpha.5 Brief Assembly Preview Diff + Export Review Signoff`. Internal evidence metadata: `1.3.0-alpha.5`.
+Public label: `v1.3.0-alpha.6 Operator Signoff State + Export Lock Ledger`. Internal evidence metadata: `1.3.0-alpha.6`.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

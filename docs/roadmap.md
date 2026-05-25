@@ -2,7 +2,7 @@
 
 Current milestone:
 
-`v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff`
+`v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger`
 
 Purpose: add a controlled review boundary before export by comparing the current brief assembly preview against an optional prior baseline and requiring explicit operator review signoff. This improves publication discipline without adding live acquisition or execution capability.
 

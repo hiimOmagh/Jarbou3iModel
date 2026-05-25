@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.5';
+const VERSION = '1.3.0-alpha.6';
 const context = { console, TextEncoder, window: { Jarbou3iResearchModules: {} } };
 context.globalThis = context;
 context.window = context;

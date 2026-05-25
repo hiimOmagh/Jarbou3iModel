@@ -2,9 +2,9 @@
 
 Public Demo continuity: retained. Diagnostic Repair Queue + Export Risk Resolution continuity retained from the alpha8 repair workflow. The v1.1.0 stable public-demo baseline remains the protected reference for post-stable expansion gating.
 
-## v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff
+## v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger
 
-Public release label: v1.3.0-alpha.5 Brief Assembly Preview Diff + Export Review Signoff.
+Public release label: v1.3.0-alpha.6 Operator Signoff State + Export Lock Ledger.
 
 Public and internal release versions are aligned. Internal stable validation metadata remains explicit for hosted evidence review.
 
@@ -44,7 +44,7 @@ Scope: controlled local/manual export review release. This release adds a Brief 
 ## Release manifest
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0-alpha.5`
+- Version: `1.3.0-alpha.6`
 - Runtime capability change: no
 - Required browser gates before publishing
 - Release archive exclusions

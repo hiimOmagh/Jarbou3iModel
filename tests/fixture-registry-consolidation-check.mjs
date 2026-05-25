@@ -4,9 +4,9 @@ import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const VERSION = '1.3.0-alpha.5';
-const TITLE = 'Brief Assembly Preview Diff + Export Review Signoff';
-const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.3.0-alpha.5-post-stable-capability-roadmap-expansion-gate.zip';
+const VERSION = '1.3.0-alpha.6';
+const TITLE = 'Operator Signoff State + Export Lock Ledger';
+const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.3.0-alpha.6-post-stable-capability-roadmap-expansion-gate.zip';
 
 assert.equal(migrationRegistry.registry_version, VERSION);
 assert.equal(migrationRegistry.registry_type, 'migration_fixture_registry');
@@ -31,8 +31,8 @@ for (const version of ['v1.0.24','v1.0.30','v1.1.0-alpha.3','v1.1.0']) {
   assert.ok(getPrivacyFixture(`fixtures/privacy/browser-generated-export-${version}.json`), `${version} privacy fixture must load from registry`);
 }
 
-const currentMigration = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.5-packet.json');
-const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.5.json');
+const currentMigration = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.6-packet.json');
+const currentPrivacy = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.6.json');
 for (const packet of [currentMigration, currentPrivacy]) {
   assert.equal(packet.workflow_version, VERSION);
   assert.equal(packet.release_notes.release_title, `v${VERSION} — ${TITLE}`);

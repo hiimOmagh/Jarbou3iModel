@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine operator command palette v1.3.0-alpha.5. Local/manual navigation only. */
+/* Jarbou3i Research Engine operator command palette v1.3.0-alpha.6. Local/manual navigation only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.5';
+  const VERSION = '1.3.0-alpha.6';
   const MODEL = 'operator_command_palette.v1';
   const NAV_MODEL = 'review_navigation_shortcuts.v1';
 
