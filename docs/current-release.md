@@ -1,31 +1,38 @@
 # Current Release
 
-Public Demo continuity: retained. Diagnostic Repair Queue + Export Risk Resolution continuity retained from the alpha8 repair workflow. The v1.1.0 stable public-demo baseline remains the protected reference for post-stable expansion gating.
+Public Demo continuity: retained. The v1.1.0 stable public-demo baseline remains the protected reference for post-stable expansion gating.
 
-## v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger
+## v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression
 
-Public release label: v1.3.0-alpha.6 Operator Signoff State + Export Lock Ledger.
+Public release label: v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression.
 
 Public and internal release versions are aligned. Internal stable validation metadata remains explicit for hosted evidence review.
 
-Status: built locally, no-browser validated pending browser lock evidence.
+Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for alpha.7.
 
-Feature surface is frozen for this release: preview diff and manual export review signoff over the existing brief assembly workflow only.
+Last locked release: `v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger`. Alpha.6 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, and bundle integrity were accepted before this release-truth sweep.
 
-Scope: controlled local/manual export review release. This release adds a Brief Assembly Preview Diff and Export Review Signoff dossier over the existing guided session, template system, variant QA, and source-to-brief workbench. It does not add acquisition, execution, verification, backend, OAuth, provider, or storage behavior.
+Purpose: correct release-truth drift and compress the next roadmap before adding more product surface. This release does not add runtime behavior.
 
-## Feature surface
+Feature surface is frozen for this release: alpha.7 adds release-truth documentation and CI consistency only; the product surface remains the locked alpha.6 local/manual workflow.
 
+## Alpha.7 correction surface
+
+- Current release status reflects alpha.6 as locked, not pending evidence.
+- Roadmap next milestones are compressed and sequenced for faster progress.
+- Stale alpha.5/alpha.6 planning residue is removed.
+- Source-refactor readiness language no longer references a specific obsolete alpha.11 milestone.
+- Release-truth consistency is protected by CI.
+
+## Preserved alpha.6 feature surface
+
+- Operator Signoff State
+- Export Lock Ledger
 - Brief Assembly Preview Diff
 - Export Review Signoff dossier
-- Required operator confirmations before export
-- Export artifacts:
-  - `source-to-brief/brief-assembly-preview-diff.json`
-  - `source-to-brief/brief-assembly-preview-diff.md`
-  - `source-to-brief/export-review-signoff.json`
-  - `source-to-brief/export-review-signoff.md`
-- UI panels and EN/AR/FR labels for preview-diff/signoff review
-- Continued Brief Template System and Assembly Variant QA
+- Required operator confirmations before export lock
+- JSON/Markdown export review artifacts
+- UI panels and EN/AR/FR labels for review/export state
 
 ## Evidence boundary flags
 
@@ -38,21 +45,18 @@ Scope: controlled local/manual export review release. This release adds a Brief 
 - storage_behavior_expanded: false
 - automatic_source_verification_claimed: false
 - verification_claimed: false
-- operator_signed_off: false
 - automatic_signoff_performed: false
 
 ## Release manifest
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0-alpha.6`
+- Version: `1.3.0-alpha.7`
 - Runtime capability change: no
 - Required browser gates before publishing
 - Release archive exclusions
 - Required cleanup commands
 
 ## CI controls retained
-
-The workflow quarantine controls introduced in alpha8.1 remain active:
 
 - workflow-level concurrency
 - cancel-in-progress
@@ -63,7 +67,7 @@ The workflow quarantine controls introduced in alpha8.1 remain active:
 
 ## Release lock requirements
 
-Screenshots alone are insufficient for release approval. A ZIP archive alone is insufficient for release approval. Lock requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
+Screenshots alone are insufficient for release approval. A ZIP archive alone is insufficient for release approval. Lock requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, and canonical lock-evidence bundle.
 
 Lock only after:
 
@@ -80,3 +84,5 @@ Boundary wording: no live scraping, no production OAuth, no backend behavior exp
 Node 24 CI compatibility is preserved.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+
+Continuity note: v1.1.0 stable public-demo baseline and Diagnostic Repair Queue + Export Risk Resolution remain preserved.

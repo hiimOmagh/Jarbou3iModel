@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0-alpha.6';
-const TITLE = 'Operator Signoff State + Export Lock Ledger';
+const VERSION = '1.3.0-alpha.7';
+const TITLE = 'Release Truth Sweep + Roadmap Compression';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -17,7 +17,7 @@ for (const file of ['src/app.js', 'src/research-engine.js', 'src/styles.css']) {
 }
 for (const token of [
   'No behavioral split',
-  'No module split in alpha.11',
+  'No module split before a dedicated refactor milestone',
   'No redesign',
   'Golden fixture kit',
   'Browser evidence baselines',

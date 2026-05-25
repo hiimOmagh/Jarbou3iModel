@@ -4,9 +4,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.3.0-alpha.6 Operator Signoff State + Export Lock Ledger', 'English public version label must identify v1.3.0-alpha.6');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.3.0-alpha.6 حالة اعتماد المشغّل + سجل قفل التصدير', 'Arabic public version label must identify v1.3.0-alpha.6');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.3.0-alpha.6 État de visa opérateur + registre de verrouillage export', 'French public version label must identify v1.3.0-alpha.6');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression', 'English public version label must identify v1.3.0-alpha.7');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.3.0-alpha.7 تنظيف حقيقة الإصدار + ضغط خارطة الطريق', 'Arabic public version label must identify v1.3.0-alpha.7');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.3.0-alpha.7 Vérité de release + compression de feuille de route', 'French public version label must identify v1.3.0-alpha.7');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');

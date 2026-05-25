@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.6';
+  const VERSION = '1.3.0-alpha.7';
   const MODEL = 'controlled_connector_architecture.v1';
   const REVIEW_GATE = 'evidence_review_queue_required';
   const CONNECTOR_CAPABILITIES = Object.freeze({

@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine brief template system v1.3.0-alpha.6. Local/manual only. */
+/* Jarbou3i Research Engine brief template system v1.3.0-alpha.7. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.6';
+  const VERSION = '1.3.0-alpha.7';
   const TEMPLATE_MODEL = 'brief_template_system.v1';
   const VARIANT_QA_MODEL = 'assembly_variant_qa.v1';
   const TEMPLATE_IDS = Object.freeze(['strategic_brief','source_audit_brief','contradiction_brief','executive_summary']);

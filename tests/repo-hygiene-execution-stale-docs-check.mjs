@@ -6,8 +6,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.3.0-alpha.6';
-const TITLE = 'Operator Signoff State + Export Lock Ledger';
+const VERSION = '1.3.0-alpha.7';
+const TITLE = 'Release Truth Sweep + Roadmap Compression';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const repoRoot = process.cwd();
 const read = (file) => readReleaseArtifact(file);
@@ -18,8 +18,8 @@ const pkg = json('package.json');
 const lock = json('package-lock.json');
 const schema = json('schema/research-workflow.schema.json');
 const sample = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.6-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.6.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-alpha.7-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-alpha.7.json');
 const releaseDoc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md')}`;
 const manifest = read('RELEASE_MANIFEST.md');
 const notes = read('RELEASE_NOTES.md');
@@ -52,8 +52,8 @@ for (const corpus of [releaseDoc, manifest, notes, changelog, roadmap, qaMatrix]
 
 for (const required of [
   'docs/v1.0.25-public-demo-release-lock.md',
-  'fixtures/migrations/v1.3.0-alpha.6-packet.json',
-  'fixtures/privacy/browser-generated-export-v1.3.0-alpha.6.json',
+  'fixtures/migrations/v1.3.0-alpha.7-packet.json',
+  'fixtures/privacy/browser-generated-export-v1.3.0-alpha.7.json',
   'tests/public-demo-release-lock-check.mjs',
   'tests/version-suite-registry-check.mjs',
   'docs/v1.0.23-ci-result-review-browser-evidence-artifact-audit.md',
@@ -125,9 +125,9 @@ for (const file of releaseTreeFiles) {
   assert.equal(/(^|\/)XX[A-Za-z0-9_-]*$/.test(file), false, `temporary XX artifact must stay outside committed release tree: ${file}`);
 }
 
-assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.6'"), 'migration target must be v1.1.0');
-assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.6'"), 'migration order must preserve v1.0.24 and append v1.1.0');
-assert.ok(migrations.includes("release_title:'v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger'"), 'migration default release title must identify v1.1.0');
+assert.ok(migrations.includes("const TARGET_VERSION = '1.3.0-alpha.7'"), 'migration target must be v1.1.0');
+assert.ok(migrations.includes("'1.0.21','1.0.22','1.0.23','1.0.24','1.0.25','1.0.26','1.0.27','1.0.28','1.0.29','1.0.30','1.1.0-alpha.1','1.1.0-alpha.2','1.1.0-alpha.3','1.1.0-alpha.8','1.1.0-alpha.9','1.1.0-alpha.10','1.3.0-alpha.7'"), 'migration order must preserve v1.0.24 and append v1.1.0');
+assert.ok(migrations.includes("release_title:'v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression'"), 'migration default release title must identify v1.1.0');
 
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must run release hygiene through registry runner');
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');

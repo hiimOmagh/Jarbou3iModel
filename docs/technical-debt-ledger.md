@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.3.0-alpha.6`
-Release: `v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger`
+Version: `1.3.0-alpha.7`
+Release: `v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

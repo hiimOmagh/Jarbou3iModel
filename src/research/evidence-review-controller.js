@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.6';
+  const VERSION = '1.3.0-alpha.7';
   function pendingItems(queue){ return (queue || []).filter(item => item.status === 'pending' || item.status === 'needs_edit'); }
   function report(queue, options = {}){
     if(root.evidenceWorkspace?.reviewReport){

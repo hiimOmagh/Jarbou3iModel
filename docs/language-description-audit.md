@@ -1,7 +1,7 @@
 # Language Description Audit
 
-Version: `1.3.0-alpha.6`
-Release: `v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger`
+Version: `1.3.0-alpha.7`
+Release: `v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`
 Mode: copy-quality hardening, no runtime behavior change.
 
 ## Language policy

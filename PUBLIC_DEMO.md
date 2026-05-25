@@ -1,17 +1,30 @@
-# Public Demo — v1.3.0-alpha.6 Operator Signoff State + Export Lock Ledger
+# Public Demo — v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression
 
-The `v1.1.0` stable public-demo surface remains protected. This alpha adds a local/manual source-to-brief workbench that packages user-provided or source-imported evidence, generated claims, inferred confidence, missing evidence/gaps, and blocked unavailable capabilities for review.
+This public-demo alpha is a release-truth sweep. It does not add public-demo capability, runtime execution, live provider behavior, OAuth, backend behavior, source acquisition, or storage behavior.
 
-Do not present the workbench as live sourcing or source verification. Live scraping, automatic source verification, real OAuth, backend expansion, provider execution expansion, and storage expansion remain disabled unless a later implementation release explicitly adds and tests them.
+The visible product surface remains the locked manual/local Source-to-Brief workbench from alpha.6:
 
-Release evidence still requires green no-browser CI, green browser CI, reviewed hosted-demo evidence, and version-aligned artifacts.
+- Operator Signoff State
+- Export Lock Ledger
+- Brief Assembly Preview Diff
+- Export Review Signoff dossier
+- Guided Research Session
+- Brief Template System
 
-## Release-lock evidence boundary
+Alpha.7 aligns documentation, manifest metadata, roadmap sequencing, and CI release-truth checks so future milestones do not start from stale release assumptions.
 
-Screenshots alone are insufficient for public-demo approval. ZIP archive alone is insufficient for public-demo approval. The v1.2.0-alpha.1 post-stable expansion gate preserves the v1.1.0 public-demo baseline until no-browser CI, browser CI, hosted-demo evidence, and privacy/export gates are reviewed.
+Public release label: v1.3.0-alpha.7 Release Truth Sweep + Roadmap Compression.
 
-Provenance ledger note: public-demo publication remains blocked unless changed-files-only release apply integrity, provenance ledger evidence, no-browser CI, browser CI, and hosted-demo evidence review are complete.
+Lock evidence required before approval:
 
-No live connector, no live scraping, and no automatic source verification are enabled by this source-to-brief release.
+- no-browser CI green
+- browser CI green
+- hosted-demo evidence accepted
+- evidence matrix clean across EN / AR / FR
+- canonical lock-evidence bundle available
 
-Public release label: v1.3.0-alpha.6 Operator Signoff State + Export Lock Ledger.
+Screenshots alone are insufficient. ZIP existence alone is insufficient.
+
+Forbidden capability claims remain false: no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, no automatic source verification, and no automatic signoff.
+
+Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, provenance ledger, apply integrity, and changed-files-only discipline remain preserved.

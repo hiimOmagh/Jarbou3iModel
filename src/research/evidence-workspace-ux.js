@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.6';
+  const VERSION = '1.3.0-alpha.7';
   const VALID_STATUS = new Set(['all','pending','needs_edit','accepted','rejected','resolved','unresolved']);
   const VALID_REL = new Set(['all','supports','contradicts','unlinked']);
   const VALID_SORT = new Set(['newest','oldest','reliability_desc','attention_desc','needs_review_first']);

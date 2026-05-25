@@ -1,15 +1,15 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.3.0-alpha.6`
-Release: `v1.3.0-alpha.6 — Operator Signoff State + Export Lock Ledger`
+Version: `1.3.0-alpha.7`
+Release: `v1.3.0-alpha.7 — Release Truth Sweep + Roadmap Compression`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation
 
-| File | Current role | Refactor pressure | Safe future seam | Forbidden in alpha.11 |
+| File | Current role | Refactor pressure | Safe future seam | Forbidden before explicit refactor milestone |
 | --- | --- | --- | --- | --- |
 | `src/app.js` | Client-side UI orchestration, i18n, import/repair flow, rendering glue. | Large file with mixed UI state, copy, prompt generation, validation, and rendering behavior. | Extract i18n/copy catalog, prompt builder, JSON import validation, and render sections behind behavior-preserving adapters. | No behavioral split, no new state model, no new feature path. |
-| `src/research-engine.js` | Research workflow module composition and browser integration. | High coupling across planning, evidence, provider, scoring, export, and diagnostics surfaces. | Extract module adapters only after golden fixture snapshots and browser evidence baselines are locked. | No module split in alpha.11. |
+| `src/research-engine.js` | Research workflow module composition and browser integration. | High coupling across planning, evidence, provider, scoring, export, and diagnostics surfaces. | Extract module adapters only after golden fixture snapshots and browser evidence baselines are locked. | No module split before a dedicated refactor milestone. |
 | `src/styles.css` | Full visual system, responsive layout, RTL/mobile behavior, evidence/export panels. | Large visual surface with release-frozen public-demo constraints. | Introduce token/component sections only after visual regression baselines are expanded. | No redesign, no layout behavior change, no visual freeze violation. |
 
 ## Readiness gates before any future refactor
@@ -21,4 +21,4 @@ Mode: audit-only, no source-file refactor yet.
 
 ## Disproven if
 
-This audit is invalid if alpha.11 changes runtime behavior, reorganizes source modules, weakens CSS visual freeze rules, deletes fixture coverage, or treats documentation/readiness as an implementation approval.
+This audit is invalid if a future refactor milestone changes runtime behavior, reorganizes source modules, weakens CSS visual freeze rules, deletes fixture coverage, or treats documentation/readiness as an implementation approval.
