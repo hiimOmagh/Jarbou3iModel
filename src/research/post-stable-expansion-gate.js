@@ -1,10 +1,10 @@
-/* Jarbou3i Research Engine post-stable capability roadmap and expansion gate v1.3.0-rc.2. */
+/* Jarbou3i Research Engine post-stable capability roadmap and expansion gate v1.3.0. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-rc.2';
+  const VERSION = '1.3.0';
   const STABLE_BASELINE = '1.1.0';
-  const RELEASE_TITLE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
+  const RELEASE_TITLE = 'v1.3.0 — Stable Manual Workflow Release';
   const MIN_ACCEPTANCE_CRITERIA = 4;
   const MIN_FALSIFIERS = 3;
   const MIN_EVIDENCE_REQUIREMENTS = 3;

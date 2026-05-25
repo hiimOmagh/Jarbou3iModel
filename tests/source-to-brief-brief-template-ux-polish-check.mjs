@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-rc.2';
+const VERSION = '1.3.0';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
   'src/research/operator-command-palette.js',
@@ -73,9 +73,9 @@ assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/assembly-varian
 
 const matrix = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json','utf8'));
 assert.equal(matrix.internal_build_version, VERSION);
-assert.equal(matrix.public_version_label, 'v1.3.0-rc.2 RC Evidence Tightening + Release Notes Finalization');
+assert.equal(matrix.public_version_label, 'v1.3.0 Stable Manual Workflow Release');
 assert.equal(JSON.stringify(matrix.language_rules).includes('Guided Research Session'), false, 'legacy guided-session matrix requirement should be removed');
-assert.ok(matrix.language_rules.en.required.includes('RC Evidence Tightening + Release Notes Finalization'));
+assert.ok(matrix.language_rules.en.required.includes('Stable Manual Workflow Release'));
 assert.ok(matrix.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'));
 assert.ok(matrix.language_rules.ar.required.includes('اعتماد مراجعة التصدير'));
 assert.ok(matrix.language_rules.fr.required.includes('Diff aperçu assemblage du brief'));

@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization
+Current release candidate: v1.3.0 — Stable Manual Workflow Release
 
 Required gates:
 - No-browser CI
@@ -14,7 +14,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.3.0-rc.2.
+Node 24 CI compatibility is preserved for v1.3.0.
 
 No live scraping, no live connector expansion, no live provider execution expansion, no OAuth/backend expansion, and no automatic source verification claims.
 

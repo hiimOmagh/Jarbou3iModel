@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-rc.2';
+  const VERSION = '1.3.0';
   const DEFAULT_TEMPLATE_ID = 'strategic_analysis_engine';
   const TEMPLATE_REGISTRY = Object.freeze({
     strategic_analysis_engine: Object.freeze({

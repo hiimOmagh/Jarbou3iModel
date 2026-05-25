@@ -1,10 +1,10 @@
 # Jarbou3i Research Engine
 
-`v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`
+`v1.3.0 — Stable Manual Workflow Release`
 
 Jarbou3i Research Engine is a dark editorial intelligence workspace for converting messy AI output into structured strategic briefs.
 
-This RC tightens release evidence and finalizes release notes after the locked `v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`, while preserving the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` manual workflow baseline. It is not a provider/OAuth/backend expansion.
+This stable release promotes the locked `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` manual workflow to a stable handoff, while preserving the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` manual workflow baseline. It is not a provider/OAuth/backend expansion.
 
 Frozen surface:
 
@@ -31,9 +31,9 @@ Boundary:
 - no publishing permission claim
 - no cryptographic signature claim
 
-Public release label: v1.3.0-rc.2 RC Evidence Tightening + Release Notes Finalization.
+Public release label: v1.3.0 Stable Manual Workflow Release.
 
-Last locked RC baseline: v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze.
+Last locked RC baseline: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization.
 
 Run local gates:
 

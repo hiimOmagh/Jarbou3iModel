@@ -10,8 +10,8 @@ const engine = read('src/research-engine.js');
 const index = read('index.html');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-rc.2-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-rc.2.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0.json');
 const pkg = JSON.parse(read('package.json'));
 
 new vm.Script(scorerSource, {filename:'src/research/evidence-scorer.js'});
@@ -26,8 +26,8 @@ vm.runInContext(builderSource, context, {filename:'src/research/source-packet-bu
 const scorer = context.window.Jarbou3iResearchModules.evidenceScorer;
 const builder = context.window.Jarbou3iResearchModules.sourcePacketBuilder;
 
-assert.equal(pkg.version, '1.3.0-rc.2');
-assert.equal(builder.VERSION, '1.3.0-rc.2');
+assert.equal(pkg.version, '1.3.0');
+assert.equal(builder.VERSION, '1.3.0');
 assert.equal(builder.BUILDER_VERSION, 'source_packet_builder.v1');
 assert.equal(builder.PACKET_SCHEMA, 'manual_source_packet.v1');
 assert.equal(typeof builder.buildSourcePacket, 'function');
@@ -50,7 +50,7 @@ assert.ok(controls.controls.includes('downgrade_attention_claim'));
 const packet = builder.buildSourcePacket([weakViral, official], {now:'2026-05-02T00:00:00.000Z'});
 assert.equal(packet.source_packet_version, 'manual_source_packet.v1');
 assert.equal(packet.builder_version, 'source_packet_builder.v1');
-assert.equal(packet.workflow_version, '1.3.0-rc.2');
+assert.equal(packet.workflow_version, '1.3.0');
 assert.equal(packet.builder_report.live_fetching_performed, false);
 assert.equal(packet.builder_report.verification_claimed, false);
 assert.equal(packet.builder_report.queue_only_recommended, true);
@@ -69,20 +69,20 @@ assert.ok(engine.includes('renderSourcePacketBuilder'), 'engine must render buil
 assert.ok(engine.includes('markReviewItemNeedsEdit'), 'engine must expose scoring review controls');
 assert.ok(engine.includes('source_packet_builder_report'), 'research packet must export builder report');
 
-assert.equal(schema.properties.workflow_version.const, '1.3.0-rc.2');
+assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.ok(schema.required.includes('source_packet_builder_report'));
 assert.ok(schema.required.includes('last_built_source_packet'));
-assert.equal(schema.$defs.source_packet_builder_report.properties.builder_version.const, '1.3.0-rc.2');
+assert.equal(schema.$defs.source_packet_builder_report.properties.builder_version.const, '1.3.0');
 assert.equal(schema.$defs.manual_source_packet_payload.properties.builder_version.const, 'source_packet_builder.v1');
 
 for (const packetFixture of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packetFixture.workflow_version, '1.3.0-rc.2');
-  assert.equal(packetFixture.source_packet_builder_report.builder_version, '1.3.0-rc.2');
+  assert.equal(packetFixture.workflow_version, '1.3.0');
+  assert.equal(packetFixture.source_packet_builder_report.builder_version, '1.3.0');
   assert.equal(packetFixture.source_packet_builder_report.live_fetching_performed, false);
   assert.equal(packetFixture.source_packet_builder_report.verification_claimed, false);
   assert.equal(packetFixture.last_built_source_packet.builder_version, 'source_packet_builder.v1');
   assert.equal(packetFixture.last_built_source_packet.source_packet_version, 'manual_source_packet.v1');
-  assert.equal(packetFixture.release_notes.release_title, 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization');
+  assert.equal(packetFixture.release_notes.release_title, 'v1.3.0 — Stable Manual Workflow Release');
 }
 
 console.log('Source packet builder checks passed.');

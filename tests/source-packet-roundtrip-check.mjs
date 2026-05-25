@@ -9,8 +9,8 @@ const json = (file) => JSON.parse(read(file));
 const pkg = json('package.json');
 const schema = json('schema/research-workflow.schema.json');
 const fixture = json('fixtures/research/sample-research-workflow-en.json');
-const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-rc.2-packet.json');
-const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0-rc.2.json');
+const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-packet.json');
+const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0.json');
 const index = read('index.html');
 const engine = read('src/research-engine.js');
 const importerSource = read('src/research/source-packet-importer.js');
@@ -36,10 +36,10 @@ const builder = modules.sourcePacketBuilder;
 const importer = modules.sourcePacketImporter;
 const roundtrip = modules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.3.0-rc.2');
-assert.equal(builder.VERSION, '1.3.0-rc.2');
-assert.equal(importer.VERSION, '1.3.0-rc.2');
-assert.equal(roundtrip.VERSION, '1.3.0-rc.2');
+assert.equal(pkg.version, '1.3.0');
+assert.equal(builder.VERSION, '1.3.0');
+assert.equal(importer.VERSION, '1.3.0');
+assert.equal(roundtrip.VERSION, '1.3.0');
 assert.equal(roundtrip.ROUNDTRIP_MODEL, 'source_packet_roundtrip.v1');
 assert.equal(typeof roundtrip.runSourcePacketRoundtrip, 'function');
 
@@ -81,7 +81,7 @@ const result = roundtrip.runSourcePacketRoundtrip(evidence, {now:'2026-05-02T00:
 assert.equal(result.ok, true);
 assert.equal(result.packet.source_packet_version, 'manual_source_packet.v1');
 assert.equal(result.packet.builder_version, 'source_packet_builder.v1');
-assert.equal(result.packet.workflow_version, '1.3.0-rc.2');
+assert.equal(result.packet.workflow_version, '1.3.0');
 assert.equal(result.parsed.ok, true);
 assert.equal(result.parsed.report.input_format, 'source_packet');
 assert.equal(result.parsed.report.live_fetching_performed, false);
@@ -111,18 +111,18 @@ assert.ok(index.indexOf('source-packet-roundtrip.js') < index.indexOf('source-im
 assert.ok(engine.includes('source_packet_roundtrip_report'), 'research packet must export roundtrip report');
 assert.ok(engine.includes('runSourcePacketRoundtrip'), 'engine must invoke roundtrip QA when builder runs');
 
-assert.equal(schema.properties.workflow_version.const, '1.3.0-rc.2');
+assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.ok(schema.required.includes('source_packet_roundtrip_report'));
-assert.equal(schema.$defs.source_packet_roundtrip_report.properties.roundtrip_version.const, '1.3.0-rc.2');
+assert.equal(schema.$defs.source_packet_roundtrip_report.properties.roundtrip_version.const, '1.3.0');
 assert.equal(schema.$defs.source_packet_roundtrip_report.properties.roundtrip_model.const, 'source_packet_roundtrip.v1');
 assert.equal(schema.$defs.source_packet_roundtrip_report.properties.live_fetching_performed.const, false);
 assert.equal(schema.$defs.source_packet_roundtrip_report.properties.verification_claimed.const, false);
 assert.equal(schema.$defs.source_packet_roundtrip_report.properties.attention_is_truth_score.const, false);
 
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
-  assert.equal(packet.workflow_version, '1.3.0-rc.2');
-  assert.equal(packet.release_notes.release_title, 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization');
-  assert.equal(packet.source_packet_roundtrip_report.roundtrip_version, '1.3.0-rc.2');
+  assert.equal(packet.workflow_version, '1.3.0');
+  assert.equal(packet.release_notes.release_title, 'v1.3.0 — Stable Manual Workflow Release');
+  assert.equal(packet.source_packet_roundtrip_report.roundtrip_version, '1.3.0');
   assert.equal(packet.source_packet_roundtrip_report.roundtrip_model, 'source_packet_roundtrip.v1');
   assert.equal(packet.source_packet_roundtrip_report.live_fetching_performed, false);
   assert.equal(packet.source_packet_roundtrip_report.verification_claimed, false);

@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-rc.2';
+  const VERSION = '1.3.0';
   const MODEL = 'release_candidate_hygiene.v1';
   const REQUIRED_EXPORT_PATHS = Object.freeze([
     'export-manifest.json',

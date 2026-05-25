@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { migrationRegistry, privacyRegistry } from './fixture-registry-loader.mjs';
 
-const VERSION = '1.3.0-rc.2';
-const TITLE = 'RC Evidence Tightening + Release Notes Finalization';
+const VERSION = '1.3.0';
+const TITLE = 'Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const ledger = fs.readFileSync('docs/technical-debt-ledger.md', 'utf8');

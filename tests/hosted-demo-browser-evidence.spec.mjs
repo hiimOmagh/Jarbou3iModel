@@ -19,8 +19,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.3.0-rc.2';
-const PUBLIC_VERSION_LABEL = 'v1.3.0-rc.2 RC Evidence Tightening + Release Notes Finalization';
+const VERSION = '1.3.0';
+const PUBLIC_VERSION_LABEL = 'v1.3.0 Stable Manual Workflow Release';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const MATRIX_CONFIG = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
@@ -148,7 +148,7 @@ async function captureMatrixRow(page, locale, surface){
   writeJson(domFactsFile, domFacts);
   const corpus = visibleTextCorpus(snapshot);
   const purity = languagePurity(locale, corpus);
-  const staleTokens = ['1.1.0-alpha','1.1.0-rc.0','1.1.0-rc.1','1.1.0-rc.2-fix.1','alpha.25','RC0','RC1'];
+  const staleTokens = ['1.1.0-alpha','1.1.0-rc.0','1.1.0-rc.1','1.1.0-stable-fix.1','alpha.25','RC0','RC1'];
   const staleMatches = staleTokens.filter((token)=>corpusHasToken(corpus, token));
   const validation = { matrix_id:rowId, locale, surface:surface.slug, surface_id:surface.id, internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, screenshot:path.relative(EVIDENCE_ROOT, screenshot).replaceAll(path.sep,'/'), visible_text_file:path.relative(EVIDENCE_ROOT, visibleTextFile).replaceAll(path.sep,'/'), dom_facts_file:path.relative(EVIDENCE_ROOT, domFactsFile).replaceAll(path.sep,'/'), required_copy_present:purity.required_present.length >= 1, version_visible:localizedVersionVisible(locale, corpus), language_purity_passed:purity.language_purity_passed, language_required_present:purity.required_present, language_required_missing:purity.required_missing, forbidden_language_tokens_present:purity.forbidden_present, stale_version_residue_detected:staleMatches.length > 0, stale_version_residue_tokens:staleMatches, mojibake_markers:findMojibakeMarkers(corpus), horizontal_overflow_px, capture_settled:settle.settled === true, visual_artifact_guard_passed:artifact_guard.visual_artifact_guard_passed === true, required_state_present:domFacts.required_selector_present === true, required_text_present:domFacts.required_text_present === true, image_width:image.width, image_height:image.height, bytes:buffer.byteLength, pass:false };
   validation.pass = validation.required_copy_present && validation.version_visible && validation.language_purity_passed && !validation.stale_version_residue_detected && validation.mojibake_markers.length === 0 && validation.horizontal_overflow_px <= 2 && validation.capture_settled && validation.visual_artifact_guard_passed && validation.required_state_present && validation.required_text_present && buffer.byteLength > 20_000;

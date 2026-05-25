@@ -4,19 +4,19 @@ Public Demo continuity: retained. The v1.1.0 stable public-demo baseline remains
 
 Historical continuity note: v1.1.0 Diagnostic Repair Queue + Export Risk Resolution remains preserved in release corpus history.
 
-## v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization
+## v1.3.0 — Stable Manual Workflow Release
 
-Public release label: v1.3.0-rc.2 RC Evidence Tightening + Release Notes Finalization.
+Public release label: v1.3.0 Stable Manual Workflow Release.
 
-Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for rc.2.
+Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence review, and canonical lock-evidence bundle for stable.
 
 Public and internal release versions are aligned.
 
-Last locked release: `v1.3.0-rc.1 — Manual Workflow Release Candidate Freeze`. RC.1 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, freeze boundary, and bundle integrity were accepted before this defect-only RC evidence polish.
+Last locked release: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`. RC.2 no-browser CI, browser CI, hosted-demo evidence, evidence matrix, release-note guard, Windows path-normalization fix, repository hygiene cleanup, and bundle integrity were accepted before this stable promotion.
 
-Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4` remains the completed manual publication-pack baseline. Do not patch alpha.10 or rc.1 further.
+Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4` remains the completed manual publication-pack baseline. Do not patch alpha.10 or rc.2 further.
 
-Purpose: tighten RC evidence, finalize release notes, and preserve the complete manual source-to-brief/publication workflow without adding product capability. This is a defect-control milestone, not a new feature layer. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion. no new feature surface is introduced.
+Purpose: promote the completed manual source-to-brief/publication workflow to stable without adding product capability. This is a release identity and final handoff milestone, not a new feature layer. Feature surface is frozen for runtime/provider/OAuth/backend/source/storage expansion. No new feature surface is introduced.
 
 ## Frozen manual workflow surface
 
@@ -54,9 +54,9 @@ Purpose: tighten RC evidence, finalize release notes, and preserve the complete 
 ## Release manifest
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0-rc.2`
+- Version: `1.3.0`
 - Runtime capability change: no
-- Public surface: RC evidence tightening and release notes finalization
+- Public surface: Stable manual workflow release
 - Required browser gates before publishing
 - Release archive exclusions
 - Required cleanup commands

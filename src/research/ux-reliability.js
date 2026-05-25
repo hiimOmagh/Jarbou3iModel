@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-rc.2';
+  const VERSION = '1.3.0';
 
   function count(value){ return Array.isArray(value) ? value.length : 0; }
   function hasText(value){ return typeof value === 'string' && value.trim().length > 0; }

@@ -2,10 +2,10 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-rc.2';
+  const VERSION = '1.3.0';
   const BASE_VERSION = '1.0.30';
-  const RELEASE_TITLE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
-  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.3.0-rc.2-rc-evidence-tightening-release-notes-finalization.zip';
+  const RELEASE_TITLE = 'v1.3.0 — Stable Manual Workflow Release';
+  const ARTIFACT_NAME = 'jarbou3i-research-engine-v1.3.0-manual-workflow-release.zip';
   const REQUIRED_EVIDENCE = Object.freeze([
     {evidence_id:'version_lock', label:'package/schema/fixtures identify v1.1.0', required:true},
     {evidence_id:'base_version_recorded', label:'base version v1.1.0-alpha.1 is recorded', required:true},

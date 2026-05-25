@@ -1,7 +1,7 @@
 # Fixture/Test Debt Ledger
 
-Version: `1.3.0-rc.2`
-Release: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`
+Version: `1.3.0`
+Release: `v1.3.0 — Stable Manual Workflow Release`
 Mode: audit-only, no runtime behavior change.
 
 ## Scope
