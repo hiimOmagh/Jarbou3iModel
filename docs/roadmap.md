@@ -2,9 +2,9 @@
 
 Current milestone:
 
-`v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup`
+`v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff`
 
-Purpose: take one controlled step beyond the stable public-demo lock by packaging the existing local/manual research plan, evidence workspace, claim review, contradiction review, source gaps, confidence metadata, and strategic brief export into one source-to-brief workflow.
+Purpose: add a controlled review boundary before export by comparing the current brief assembly preview against an optional prior baseline and requiring explicit operator review signoff. This improves publication discipline without adding live acquisition or execution capability.
 
 Priority lanes:
 
@@ -15,16 +15,16 @@ Priority lanes:
 5. `ux_density_polish` — first-run clarity and reduced advanced-panel load without redesigning the product surface.
 6. `release_ops_hardening` — commit-bound evidence, artifact checksums, gate registry consistency, and stale-artifact rejection.
 
-Allowed in this alpha: visible source-to-brief workflow UI, local/manual evidence-to-claim linkage, claim support levels, contradiction grouping, source gap warnings, inferred confidence review metadata, structured export package, docs, fixtures, tests, and release metadata.
+Allowed in this alpha: local/manual brief assembly preview diffing, baseline-aware change summaries, signoff checks, required operator confirmation metadata, JSON/Markdown export review dossier files, UI panels, trilingual copy, docs, fixtures, tests, and release metadata.
 
-Forbidden in this alpha: implementation of live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, or automatic source verification claims.
+Forbidden in this alpha: implementation of live scraping, uncontrolled source fetching, real OAuth, provider execution expansion, backend behavior expansion, storage expansion, broad UI redesign, automatic signoff, or automatic source verification claims.
 
 Next valid milestone:
 
-`v1.2.x controlled source-to-brief hardening` only after this workbench, the v1.2.0-alpha.1 expansion gate, no-browser CI, browser CI, privacy/export gates, and release evidence review stay green.
+`v1.3.0-alpha.6 — Export Review UX Evidence Capture + Signoff Persistence Audit` only after alpha.5 no-browser CI, browser CI, hosted evidence review, privacy/export gates, and release evidence review stay green.
 
 
-No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims.
+No live scraping. No production OAuth. No backend behavior expansion. No provider execution expansion. No storage expansion. No automatic source verification claims. No automatic signoff.
 
 Node 24 CI compatibility preserved.
 

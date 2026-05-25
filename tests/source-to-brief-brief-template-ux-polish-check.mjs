@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.3.0-alpha.4';
+const VERSION = '1.3.0-alpha.5';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
   'src/research/operator-command-palette.js',
@@ -73,11 +73,13 @@ assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/assembly-varian
 
 const matrix = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json','utf8'));
 assert.equal(matrix.internal_build_version, VERSION);
-assert.equal(matrix.public_version_label, 'v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup');
+assert.equal(matrix.public_version_label, 'v1.3.0-alpha.5 Brief Assembly Preview Diff + Export Review Signoff');
 assert.equal(JSON.stringify(matrix.language_rules).includes('Guided Research Session'), false, 'legacy guided-session matrix requirement should be removed');
-assert.ok(matrix.language_rules.en.required.includes('Brief Template UX Polish + Matrix Hygiene Cleanup'));
-assert.ok(matrix.language_rules.ar.required.includes('تحسين تجربة قوالب الموجز'));
-assert.ok(matrix.language_rules.fr.required.includes('Polish UX des modèles de brief'));
+assert.ok(matrix.language_rules.en.required.includes('Brief Assembly Preview Diff + Export Review Signoff'));
+assert.ok(matrix.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'));
+assert.ok(matrix.language_rules.ar.required.includes('اعتماد مراجعة التصدير'));
+assert.ok(matrix.language_rules.fr.required.includes('Diff aperçu assemblage du brief'));
+assert.ok(matrix.language_rules.fr.required.includes('visa de revue export'));
 
 const renderer = fs.readFileSync('src/research/source-to-brief-operator-renderer.js','utf8');
 for (const marker of ['briefTemplateUxPolishPanel','assemblyVariantComparisonPanel','brief-template-ux-polish','assembly-variant-comparison']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);

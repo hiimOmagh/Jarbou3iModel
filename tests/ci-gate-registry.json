@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.3.0-alpha.4",
-  "release_title": "v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup",
+  "ci_gate_registry_version": "1.3.0-alpha.5",
+  "release_title": "v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -145,6 +145,7 @@
         "tests/source-to-brief-diagnostic-repair-queue-check.mjs",
         "tests/source-to-brief-guided-session-check.mjs",
         "tests/source-to-brief-guided-session-ux-export-qa-check.mjs",
+        "tests/source-to-brief-preview-diff-signoff-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs",
         "tests/source-to-brief-brief-template-ux-polish-check.mjs",
         "tests/controlled-connector-architecture-check.mjs",
@@ -193,6 +194,7 @@
         "tests/source-to-brief-diagnostic-repair-queue-check.mjs",
         "tests/source-to-brief-guided-session-check.mjs",
         "tests/source-to-brief-guided-session-ux-export-qa-check.mjs",
+        "tests/source-to-brief-preview-diff-signoff-check.mjs",
         "tests/source-cluster-gap-intelligence-check.mjs",
         "tests/entity-intelligence-layer-check.mjs",
         "tests/research-planner-v2-check.mjs",
@@ -272,6 +274,7 @@
         "tests/lockfile-dependency-version-integrity-check.mjs",
         "tests/source-to-brief-guided-session-check.mjs",
         "tests/source-to-brief-guided-session-ux-export-qa-check.mjs",
+        "tests/source-to-brief-preview-diff-signoff-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs"
       ],
       "syntax_checks": [],
@@ -400,6 +403,7 @@
         "tests/post-stable-capability-roadmap-check.mjs",
         "tests/source-to-brief-guided-session-check.mjs",
         "tests/source-to-brief-guided-session-ux-export-qa-check.mjs",
+        "tests/source-to-brief-preview-diff-signoff-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs"
       ],
       "syntax_checks": [],
@@ -428,8 +432,8 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.3.0-alpha.4",
-    "optimization_scope": "guided_research_session_engine_brief_assembly_workflow",
+    "version": "1.3.0-alpha.5",
+    "optimization_scope": "brief_assembly_preview_diff_export_review_signoff",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -441,7 +445,7 @@
     "previous_serial_no_browser_syntax_checks": 1
   },
   "syntax_matrix": {
-    "version": "1.3.0-alpha.4",
+    "version": "1.3.0-alpha.5",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -563,13 +567,14 @@
       "src/research/source-to-brief-operator-renderer.js",
       "tests/source-to-brief-export-polish-check.mjs",
       "tests/source-to-brief-guided-session-check.mjs",
-      "tests/source-to-brief-guided-session-ux-export-qa-check.mjs"
+      "tests/source-to-brief-guided-session-ux-export-qa-check.mjs",
+      "tests/source-to-brief-preview-diff-signoff-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.3.0-alpha.4",
+    "version": "1.3.0-alpha.5",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -589,7 +594,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.3.0-alpha.4",
+    "version": "1.3.0-alpha.5",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

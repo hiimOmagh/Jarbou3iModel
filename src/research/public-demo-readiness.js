@@ -2,8 +2,8 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.4';
-  const RELEASE_TITLE = 'v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup';
+  const VERSION = '1.3.0-alpha.5';
+  const RELEASE_TITLE = 'v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff';
   const DEMO_CHECKS = Object.freeze([
     {check_id:'manual_private_default', label:'Manual/private mode is the default', required:true},
     {check_id:'first_run_path_visible', label:'First-run path is visible before advanced setup', required:true},

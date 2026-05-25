@@ -1,18 +1,17 @@
 # Changelog
 
-## v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup
+## v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff
 
-- Adds a local/manual Brief Template System for assembly variants.
-- Adds four templates: Strategic Brief, Source Audit Brief, Contradiction Brief, and Executive Summary.
-- Adds Assembly Variant QA with template coverage, traceability, evidence-boundary, and no-auto-verification checks.
-- Adds Source-to-Brief export artifacts for template system and variant QA.
-- Preserves guided session UX compression and brief assembly export QA from alpha.2.
-- Preserves Diagnostic Repair Queue, Export Risk Resolution, command palette, traceability console, and review decision ledger continuity.
+- Adds Brief Assembly Preview Diff for local/manual comparison between the current preview and an operator-supplied previous preview baseline.
+- Adds Export Review Signoff dossier with required operator confirmations, explicit `operator_signed_off:false`, and `automatic_signoff_performed:false`.
+- Adds Source-to-Brief export artifacts for preview diff and signoff: JSON + Markdown.
+- Adds UI panels, styles, and EN/AR/FR copy for preview-diff and signoff review.
+- Preserves guided session UX compression, brief assembly export QA, brief template system, assembly variant QA, template UX polish, and matrix hygiene continuity.
 - Adds no live scraping, no production OAuth, no backend behavior expansion, no provider execution expansion, no storage expansion, and no automatic source verification claims.
 
 Release-lock guard: any future capability expansion requires green no-browser CI, green browser CI, reviewed hosted evidence, privacy/export gates, and explicit lane approval. Screenshots or ZIPs alone are insufficient.
 
-Public label: `v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup`. Internal evidence metadata: `1.3.0-alpha.4`.
+Public label: `v1.3.0-alpha.5 Brief Assembly Preview Diff + Export Review Signoff`. Internal evidence metadata: `1.3.0-alpha.5`.
 
 ## v1.2.0-alpha.1 - Post-Stable Capability Roadmap + Expansion Gate
 

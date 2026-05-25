@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.3.0-alpha.4';
-const TITLE = 'Brief Template UX Polish + Matrix Hygiene Cleanup';
+const VERSION = '1.3.0-alpha.5';
+const TITLE = 'Brief Assembly Preview Diff + Export Review Signoff';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
 const ci = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));

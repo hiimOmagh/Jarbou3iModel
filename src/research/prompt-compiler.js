@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.4';
+  const VERSION = '1.3.0-alpha.5';
   const STOPWORDS = new Set('the a an and or but with without into from this that these those about for of in on to by is are was were be been being as at it its their his her our your they them he she we you i me my un une des les la le et ou mais avec sans dans sur de du en pour par est sont كان كانت تكون هذا هذه التي الذي من في على إلى عن مع ضد بين عبر وهو وهي هم نحن انا'.split(/\s+/));
   function text(value, fallback = ''){ return String(value ?? fallback).trim(); }
   function uniq(items, limit = 12){

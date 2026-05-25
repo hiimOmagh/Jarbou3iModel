@@ -1,21 +1,29 @@
 # Jarbou3i Research Engine
 
-`v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup`
+`v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs.
 
-This alpha does not add live execution capability. It adds local/manual brief assembly variants and QA checks over the existing Guided Research Session and Source-to-Brief workflow.
+This alpha does not add live execution capability. It adds a local/manual review boundary over the existing Guided Research Session and Source-to-Brief workflow: a Brief Assembly Preview Diff plus an Export Review Signoff dossier.
 
 Added surface:
 
-- Strategic Brief template
-- Source Audit Brief template
-- Contradiction Brief template
-- Executive Summary template
-- Assembly Variant QA
-- Template recommendation and export files
+- Brief Assembly Preview Diff
+- Export Review Signoff dossier
+- Required operator confirmation list
+- Export artifacts for preview diff and signoff
+- UI panels and trilingual copy for preview-diff/signoff review
 
-Preserved boundaries: manual/private mode remains first-class; no live scraping; no production OAuth; no backend behavior expansion; no live provider execution expansion; no storage expansion; no automatic source verification claims.
+Preserved surface:
+
+- Guided Research Session
+- Brief Assembly Export QA
+- Brief Template System
+- Assembly Variant QA
+- Brief Template UX Polish
+- Diagnostic Repair Queue + Export Risk Resolution
+
+Preserved boundaries: manual/private mode remains first-class; no live scraping; no production OAuth; no backend behavior expansion; no live provider execution expansion; no storage expansion; no automatic source verification claims; no automatic signoff.
 
 Core local validation:
 
@@ -34,7 +42,7 @@ npm run test:ci:browser
 
 Release-lock evidence boundary: screenshots alone are insufficient. ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, hosted-demo evidence, and the canonical lock bundle.
 
-Public release label: v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup.
+Public release label: v1.3.0-alpha.5 Brief Assembly Preview Diff + Export Review Signoff.
 
 Public Demo continuity is preserved; release lock still requires hosted evidence review.
 

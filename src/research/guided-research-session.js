@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.4. Local/manual only. */
+/* Jarbou3i Research Engine guided research session engine v1.3.0-alpha.5. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.4';
+  const VERSION = '1.3.0-alpha.5';
   const SESSION_MODEL = 'guided_research_session_engine.v1';
   const BRIEF_ASSEMBLY_MODEL = 'brief_assembly_workflow.v1';
   const STEP_IDS = Object.freeze([
@@ -113,6 +113,142 @@
       verification_claimed:false
     };
   }
+
+  function previewScalarRows(baseline = {}, current = {}){
+    const fields = [
+      ['assembly_state','Assembly state'],
+      ['supported_claim_count','Supported claims'],
+      ['partial_claim_count','Partial claims'],
+      ['weak_or_unsupported_claim_count','Weak or unsupported claims'],
+      ['contradiction_group_count','Contradiction groups'],
+      ['source_gap_warning_count','Source gap warnings'],
+      ['unresolved_export_risk_count','Unresolved export risks'],
+      ['ready_to_export','Ready to export']
+    ];
+    return fields.map(([field,label])=>{
+      const before = baseline[field];
+      const after = current[field];
+      return {
+        field,
+        label,
+        before:before === undefined ? null : before,
+        after:after === undefined ? null : after,
+        changed:JSON.stringify(before ?? null) !== JSON.stringify(after ?? null),
+        direction:typeof before === 'number' && typeof after === 'number' ? (after > before ? 'increased' : after < before ? 'decreased' : 'unchanged') : (JSON.stringify(before ?? null) === JSON.stringify(after ?? null) ? 'unchanged' : 'changed')
+      };
+    });
+  }
+  function sectionDiffRows(baseline = {}, current = {}){
+    const before = asArray(baseline.preview_sections);
+    const after = asArray(current.preview_sections);
+    const all = Array.from(new Set(before.concat(after)));
+    return all.map((section_id)=>({
+      section_id,
+      before_included:before.includes(section_id),
+      after_included:after.includes(section_id),
+      state:before.includes(section_id) && after.includes(section_id) ? 'unchanged' : before.includes(section_id) ? 'removed' : 'added'
+    }));
+  }
+  function summarizePreview(preview = {}){
+    return {
+      title:text(preview.title || 'Guided research brief'),
+      assembly_state:text(preview.assembly_state || 'manual_review_required'),
+      supported_claim_count:Number(preview.supported_claim_count || 0),
+      partial_claim_count:Number(preview.partial_claim_count || 0),
+      weak_or_unsupported_claim_count:Number(preview.weak_or_unsupported_claim_count || 0),
+      contradiction_group_count:Number(preview.contradiction_group_count || 0),
+      source_gap_warning_count:Number(preview.source_gap_warning_count || 0),
+      unresolved_export_risk_count:Number(preview.unresolved_export_risk_count || 0),
+      ready_to_export:preview.ready_to_export === true,
+      preview_sections:asArray(preview.preview_sections)
+    };
+  }
+  function buildBriefAssemblyPreviewDiff(workbench = {}, preview = {}, options = {}){
+    const generatedAt = options.now || nowIso();
+    const baselineRaw = workbench.previous_brief_assembly_preview || workbench.brief_assembly_preview_baseline || workbench.brief_assembly_baseline || null;
+    const baseline = baselineRaw ? summarizePreview(baselineRaw) : null;
+    const current = summarizePreview(preview);
+    const scalarRows = baseline ? previewScalarRows(baseline, current) : [];
+    const sectionRows = baseline ? sectionDiffRows(baseline, current) : asArray(current.preview_sections).map((section_id)=>({section_id, before_included:false, after_included:true, state:'added_without_baseline'}));
+    const changedScalarRows = scalarRows.filter((row)=>row.changed);
+    const changedSectionRows = sectionRows.filter((row)=>row.state !== 'unchanged');
+    const changeCount = changedScalarRows.length + changedSectionRows.length;
+    return {
+      brief_assembly_preview_diff_version:options.version || VERSION,
+      diff_model:'brief_assembly_preview_diff.v1',
+      generated_at:generatedAt,
+      baseline_available:!!baseline,
+      baseline_source:baseline ? text(baselineRaw?.baseline_source || baselineRaw?.generated_at || 'operator_supplied_previous_preview') : 'not_provided',
+      current_title:current.title,
+      current_assembly_state:current.assembly_state,
+      scalar_diff_rows:scalarRows,
+      section_diff_rows:sectionRows,
+      changed_scalar_count:changedScalarRows.length,
+      changed_section_count:changedSectionRows.length,
+      change_count:changeCount,
+      diff_gate:!baseline ? 'preview_diff_baseline_missing_manual_review_required' : (changeCount ? 'preview_diff_changes_require_operator_review' : 'preview_diff_clear'),
+      operator_next_action:!baseline ? 'review_current_preview_without_baseline_or_attach_previous_preview' : (changeCount ? 'review_changed_preview_fields_before_signoff' : 'confirm_no_preview_changes_before_signoff'),
+      manual_review_required:true,
+      local_manual_only:true,
+      live_fetching_performed:false,
+      live_web_search_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+  function buildExportReviewSignoff(session = {}, workbench = {}, qa = {}){
+    const preview = session.brief_assembly_preview || workbench.brief_assembly_preview || {};
+    const diff = session.brief_assembly_preview_diff || workbench.brief_assembly_preview_diff || {};
+    const riskBlockers = Number(workbench.export_risk_resolution?.blocker_count || 0);
+    const qaBlockers = Number(qa.blocker_count || 0);
+    const checks = [
+      {check_id:'preview_present', label:'Brief assembly preview is present', passed:!!text(preview.title || workbench.research_question), severity:'blocker'},
+      {check_id:'preview_diff_present', label:'Brief assembly preview diff is present', passed:!!diff.diff_model, severity:'blocker'},
+      {check_id:'evidence_boundary_present', label:'Evidence boundary is visible', passed:!!text(preview.evidence_boundary_note || workbench.exportable_strategic_brief?.source_boundary_note), severity:'blocker'},
+      {check_id:'export_qa_clear_or_reviewable', label:'Export QA has no blockers', passed:qaBlockers === 0, severity:'blocker'},
+      {check_id:'risk_blockers_cleared', label:'Export risk blockers are cleared', passed:riskBlockers === 0, severity:'blocker'},
+      {check_id:'manual_disclaimer_present', label:'Manual/local disclaimer is present', passed:true, severity:'blocker'},
+      {check_id:'no_auto_verification_claim', label:'No automatic verification claim is present', passed:session.automatic_source_verification_claimed !== true && workbench.automatic_source_verification_claimed !== true && preview.automatic_source_verification_claimed !== true, severity:'blocker'},
+      {check_id:'no_live_provider_behavior', label:'No live fetching/provider execution is enabled', passed:session.live_fetching_performed !== true && workbench.live_fetching_performed !== true && workbench.provider_execution_expanded !== true, severity:'blocker'}
+    ];
+    const failed = checks.filter((check)=>!check.passed);
+    const blockers = failed.filter((check)=>check.severity === 'blocker');
+    const signoffStatus = blockers.length ? 'blocked_for_operator_signoff' : 'awaiting_operator_signoff';
+    return {
+      export_review_signoff_version:session.guided_research_session_version || VERSION,
+      signoff_model:'export_review_signoff.v1',
+      generated_at:nowIso(),
+      signoff_status:signoffStatus,
+      signoff_gate:blockers.length ? 'export_review_signoff_blocked' : 'manual_operator_signoff_required',
+      operator_signed_off:false,
+      automatic_signoff_performed:false,
+      can_export_after_manual_confirmation:blockers.length === 0,
+      required_operator_confirmations:[
+        'review_brief_assembly_preview',
+        'review_preview_diff_or_confirm_no_baseline',
+        'confirm_evidence_boundary_visible',
+        'confirm_export_qa_and_risk_warnings',
+        'confirm_no_automatic_source_verification_claim'
+      ],
+      check_count:checks.length,
+      passed_check_count:checks.filter((check)=>check.passed).length,
+      blocker_count:blockers.length,
+      warning_count:failed.length - blockers.length,
+      checks,
+      preview_diff_gate:text(diff.diff_gate || 'preview_diff_review_required'),
+      qa_gate:text(qa.qa_gate || 'brief_assembly_export_review_required'),
+      risk_blocker_count:riskBlockers,
+      manual_local_boundary:'Export review signoff is a local/manual pre-export dossier. It records required confirmations but never signs off automatically.',
+      local_manual_only:true,
+      live_fetching_performed:false,
+      live_web_search_performed:false,
+      provider_execution_expanded:false,
+      automatic_source_verification_claimed:false,
+      verification_claimed:false
+    };
+  }
+
   function buildGuidedResearchSession(workbench = {}, packet = {}, options = {}){
     const version = options.version || VERSION;
     const generatedAt = options.now || nowIso();
@@ -123,6 +259,10 @@
     const progress = Math.round((completed / steps.length) * 100);
     const next = firstAction(steps);
     const preview = buildBriefAssemblyPreview(workbench, steps);
+    const previewDiff = buildBriefAssemblyPreviewDiff(workbench, preview, {version, now:generatedAt});
+    const uxCompression = buildGuidedSessionUxCompression({guided_research_session_version:version, steps, session_progress_percent:progress, next_best_action:next, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench);
+    const exportQa = buildBriefAssemblyExportQa({guided_research_session_version:version, brief_assembly_preview:preview, session_progress_percent:progress, local_manual_session:true, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench);
+    const exportSignoff = buildExportReviewSignoff({guided_research_session_version:version, brief_assembly_preview:preview, brief_assembly_preview_diff:previewDiff, session_progress_percent:progress, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench, exportQa);
     return {
       guided_research_session_version:version,
       session_model:SESSION_MODEL,
@@ -138,9 +278,11 @@
       steps,
       manual_operator_checkpoints:steps.filter((item)=>item.operator_checkpoint_required).map((item)=>({step_id:item.step_id, next_action:item.next_action, state:item.state})),
       brief_assembly_preview:preview,
-      ux_compression:buildGuidedSessionUxCompression({guided_research_session_version:version, steps, session_progress_percent:progress, next_best_action:next, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench),
-      brief_assembly_export_qa:buildBriefAssemblyExportQa({guided_research_session_version:version, brief_assembly_preview:preview, session_progress_percent:progress, local_manual_session:true, automatic_source_verification_claimed:false, live_fetching_performed:false, provider_execution_expanded:false}, workbench),
-      session_handoff_files:['source-to-brief/guided-research-session.json','source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md'],
+      brief_assembly_preview_diff:previewDiff,
+      ux_compression:uxCompression,
+      brief_assembly_export_qa:exportQa,
+      export_review_signoff:exportSignoff,
+      session_handoff_files:['source-to-brief/guided-research-session.json','source-to-brief/guided-research-session.md','source-to-brief/brief-assembly-preview.md','source-to-brief/brief-assembly-preview-diff.json','source-to-brief/brief-assembly-preview-diff.md','source-to-brief/export-review-signoff.json','source-to-brief/export-review-signoff.md'],
       local_manual_session:true,
       blocked_unavailable_capabilities:BLOCKED_CAPABILITIES.slice(),
       live_fetching_performed:false,
@@ -262,6 +404,54 @@
     ].join('\n');
   }
 
+
+  function briefAssemblyPreviewDiffMarkdown(diff = {}){
+    const scalar = asArray(diff.scalar_diff_rows).map((row)=>`- ${row.changed ? '[changed]' : '[same]'} ${text(row.label || row.field)}: ${text(row.before ?? '∅')} → ${text(row.after ?? '∅')} (${text(row.direction || 'unchanged')})`).join('\n') || '- No scalar baseline diff rows recorded.';
+    const sections = asArray(diff.section_diff_rows).map((row)=>`- ${text(row.section_id)}: ${text(row.state || 'unchanged')}`).join('\n') || '- No section diff rows recorded.';
+    return [
+      '# Brief Assembly Preview Diff',
+      '',
+      `Diff gate: ${text(diff.diff_gate || 'preview_diff_review_required')}`,
+      `Baseline available: ${diff.baseline_available === true}`,
+      `Changed scalar rows: ${Number(diff.changed_scalar_count || 0)}`,
+      `Changed section rows: ${Number(diff.changed_section_count || 0)}`,
+      `Operator next action: ${text(diff.operator_next_action || 'manual_preview_diff_review')}`,
+      '',
+      '## Scalar Changes',
+      scalar,
+      '',
+      '## Section Changes',
+      sections,
+      '',
+      '## Boundary',
+      'Preview diff is local/manual comparison metadata. It does not verify sources, fetch live data, execute providers, or sign off automatically.',
+      ''
+    ].join('\n');
+  }
+  function exportReviewSignoffMarkdown(signoff = {}){
+    const checks = asArray(signoff.checks).map((check)=>`- ${check.passed ? '[x]' : '[ ]'} ${check.label} (${check.severity})`).join('\n') || '- No signoff checks recorded.';
+    const confirmations = asArray(signoff.required_operator_confirmations).map((item)=>`- ${item}`).join('\n') || '- No confirmations recorded.';
+    return [
+      '# Export Review Signoff',
+      '',
+      `Signoff gate: ${text(signoff.signoff_gate || 'manual_operator_signoff_required')}`,
+      `Signoff status: ${text(signoff.signoff_status || 'awaiting_operator_signoff')}`,
+      `Operator signed off: ${signoff.operator_signed_off === true}`,
+      `Automatic signoff performed: ${signoff.automatic_signoff_performed === true}`,
+      `Can export after manual confirmation: ${signoff.can_export_after_manual_confirmation === true}`,
+      '',
+      '## Required Operator Confirmations',
+      confirmations,
+      '',
+      '## Checks',
+      checks,
+      '',
+      '## Boundary',
+      text(signoff.manual_local_boundary || 'Local/manual signoff dossier only. No automatic source verification is claimed.'),
+      ''
+    ].join('\n');
+  }
+
   function guidedSessionMarkdown(session = {}){
     const steps = asArray(session.steps).map((item)=>`- ${item.complete && !item.blocker ? '[x]' : '[ ]'} ${item.label}: ${item.state} — ${item.next_action}`).join('\n') || '- No session steps recorded.';
     const checkpoints = asArray(session.manual_operator_checkpoints).map((item)=>`- ${item.step_id}: ${item.state} — ${item.next_action}`).join('\n') || '- No manual checkpoints open.';
@@ -314,7 +504,11 @@
     buildGuidedResearchSession,
     buildGuidedSessionUxCompression,
     buildBriefAssemblyExportQa,
+    buildBriefAssemblyPreviewDiff,
+    buildExportReviewSignoff,
     briefAssemblyExportQaMarkdown,
+    briefAssemblyPreviewDiffMarkdown,
+    exportReviewSignoffMarkdown,
     buildSessionSteps,
     buildBriefAssemblyPreview,
     guidedSessionMarkdown,

@@ -1,8 +1,8 @@
-/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.4. Local/manual only. */
+/* Jarbou3i Research Engine source-to-brief intelligence workbench v1.3.0-alpha.5. Local/manual only. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.3.0-alpha.4';
+  const VERSION = '1.3.0-alpha.5';
   const MODEL = 'source_to_brief_workbench.v1';
   const UX_MODEL = 'source_to_brief_operator_flow.v1';
   const EXPORT_POLISH_MODEL = 'source_to_brief_export_polish.v1';
@@ -386,6 +386,10 @@
       'source-to-brief/guided-research-session.json',
       'source-to-brief/guided-research-session.md',
       'source-to-brief/brief-assembly-preview.md',
+      'source-to-brief/brief-assembly-preview-diff.json',
+      'source-to-brief/brief-assembly-preview-diff.md',
+      'source-to-brief/export-review-signoff.json',
+      'source-to-brief/export-review-signoff.md',
       'source-to-brief/operator-handoff.md'
     ];
     if(Number(reviewSummary.unresolved_count || 0) > 0) files.push('source-to-brief/review-throughput-summary.json');
@@ -970,9 +974,9 @@
     const exportRiskResolution = buildExportRiskResolution(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, confidence_review:confidenceReview, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet);
     const commandPalette = operatorCommandPalette?.buildOperatorCommandPalette ? operatorCommandPalette.buildOperatorCommandPalette(Object.assign({}, traceabilityBase, {claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, export_readiness_checklist:exportReadinessChecklist, export_polish_report:exportPolish}), packet, {version, now:generatedAt}) : null;
     const navigationShortcuts = commandPalette?.keyboard_shortcuts ? {review_navigation_shortcuts_version:version, shortcut_model:'review_navigation_shortcuts.v1', generated_at:generatedAt, shortcuts:commandPalette.keyboard_shortcuts, shortcut_count:commandPalette.keyboard_shortcuts.length, mutation_boundary:'navigation_only', queue_bypass_enabled:false, local_only:true, live_fetching_performed:false, provider_execution_expanded:false, automatic_source_verification_claimed:false, verification_claimed:false} : null;
-    const sessionBase = {research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question), research_plan:packet.research_plan || null, evidence_cards:evidenceCards, evidence_to_claim_links:links, claim_map:claimMap, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, confidence_review:confidenceReview, exportable_strategic_brief:strategic, operator_flow:operatorFlow, export_readiness_checklist:exportReadinessChecklist, review_throughput_summary:reviewSummary, export_polish_report:exportPolish, claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, operator_command_palette:commandPalette, review_navigation_shortcuts:navigationShortcuts};
+    const sessionBase = {research_question:text(packet.research_plan?.topic || packet.analysis_brief?.topic || strategic.research_question), research_plan:packet.research_plan || null, previous_brief_assembly_preview:packet.previous_brief_assembly_preview || packet.brief_assembly_preview_baseline || null, evidence_cards:evidenceCards, evidence_to_claim_links:links, claim_map:claimMap, contradiction_groups:contradictionGroups, source_gaps:sourceGaps, confidence_review:confidenceReview, exportable_strategic_brief:strategic, operator_flow:operatorFlow, export_readiness_checklist:exportReadinessChecklist, review_throughput_summary:reviewSummary, export_polish_report:exportPolish, claim_traceability_console:claimTraceabilityConsole, review_decision_ledger:reviewDecisionLedger, review_quality_diagnostics:reviewQualityDiagnostics, diagnostic_repair_queue:diagnosticRepairQueue, export_risk_resolution:exportRiskResolution, operator_command_palette:commandPalette, review_navigation_shortcuts:navigationShortcuts};
     const guidedSession = guidedResearchSession?.buildGuidedResearchSession ? guidedResearchSession.buildGuidedResearchSession(sessionBase, packet, {version, now:generatedAt}) : null;
-    const templateBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null});
+    const templateBase = Object.assign({}, sessionBase, {guided_research_session:guidedSession, brief_assembly_preview:guidedSession?.brief_assembly_preview || null, brief_assembly_preview_diff:guidedSession?.brief_assembly_preview_diff || null, guided_session_ux_compression:guidedSession?.ux_compression || null, brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null, export_review_signoff:guidedSession?.export_review_signoff || null});
     const briefTemplates = briefTemplateSystem?.buildBriefTemplateSystem ? briefTemplateSystem.buildBriefTemplateSystem(templateBase, packet, {version, now:generatedAt}) : null;
     const assemblyVariantQa = briefTemplateSystem?.buildAssemblyVariantQa ? briefTemplateSystem.buildAssemblyVariantQa(templateBase, briefTemplates, {version, now:generatedAt}) : null;
     const assemblyVariantComparison = briefTemplateSystem?.buildAssemblyVariantComparison ? briefTemplateSystem.buildAssemblyVariantComparison(briefTemplates, assemblyVariantQa, {version, now:generatedAt}) : null;
@@ -1006,8 +1010,10 @@
       review_navigation_shortcuts:navigationShortcuts,
       guided_research_session:guidedSession,
       brief_assembly_preview:guidedSession?.brief_assembly_preview || null,
+      brief_assembly_preview_diff:guidedSession?.brief_assembly_preview_diff || null,
       guided_session_ux_compression:guidedSession?.ux_compression || null,
       brief_assembly_export_qa:guidedSession?.brief_assembly_export_qa || null,
+      export_review_signoff:guidedSession?.export_review_signoff || null,
       brief_template_system:briefTemplates,
       assembly_variant_qa:assemblyVariantQa,
       assembly_variant_comparison:assemblyVariantComparison,
@@ -1098,6 +1104,9 @@
       `- Next action: ${text(workbench.guided_research_session?.next_best_action?.label || 'continue_manual_review')}`,
       `- UX compression focus: ${text(workbench.guided_session_ux_compression?.primary_focus_group || 'manual_review')}`,
       `- Brief export QA gate: ${text(workbench.brief_assembly_export_qa?.qa_gate || 'brief_assembly_export_review_required')}`,
+      `- Preview diff gate: ${text(workbench.brief_assembly_preview_diff?.diff_gate || 'preview_diff_review_required')}`,
+      `- Export signoff gate: ${text(workbench.export_review_signoff?.signoff_gate || 'manual_operator_signoff_required')}`,
+      `- Operator signed off: ${text(workbench.export_review_signoff?.operator_signed_off === true)}`,
       '',
       '## Brief Template System',
       `- Templates: ${Number(workbench.brief_template_system?.template_count || 0)}`,

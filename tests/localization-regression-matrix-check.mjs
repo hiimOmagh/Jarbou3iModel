@@ -4,11 +4,11 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.3.0-alpha.4 Brief Template UX Polish + Matrix Hygiene Cleanup', 'English public version label must identify v1.3.0-alpha.4');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.3.0-alpha.4 تحسين تجربة قوالب الموجز + تنظيف مصفوفة الأدلة', 'Arabic public version label must identify v1.3.0-alpha.4');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.3.0-alpha.4 Polish UX des modèles de brief + nettoyage de la matrice', 'French public version label must identify v1.3.0-alpha.4');
-assert.ok(matrixConfig.language_rules.ar.required.includes('تحسين تجربة قوالب الموجز'), 'Arabic evidence matrix must require alpha.4 template UX copy');
-assert.ok(matrixConfig.language_rules.fr.required.includes('Polish UX des modèles de brief'), 'French evidence matrix must require alpha.4 template UX copy');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.3.0-alpha.5 Brief Assembly Preview Diff + Export Review Signoff', 'English public version label must identify v1.3.0-alpha.5');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.3.0-alpha.5 فرق معاينة تجميع الموجز + اعتماد مراجعة التصدير', 'Arabic public version label must identify v1.3.0-alpha.5');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.3.0-alpha.5 Diff aperçu assemblage du brief + visa de revue export', 'French public version label must identify v1.3.0-alpha.5');
+assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
+assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
 for (const currentLocaleStale of ['alphaBadge:\'v1.1.0 العرض العام المستقر', 'alphaBadge:\'v1.1.0 Démo publique stable']) {
   assert.equal(renderPublicLabels.includes(currentLocaleStale), false, `current localized alpha badge must not expose stale stable label: ${currentLocaleStale}`);

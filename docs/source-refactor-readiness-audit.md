@@ -1,7 +1,7 @@
 # Source-File Refactor Readiness Audit
 
-Version: `1.3.0-alpha.4`
-Release: `v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup`
+Version: `1.3.0-alpha.5`
+Release: `v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

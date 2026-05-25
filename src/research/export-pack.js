@@ -2,7 +2,7 @@
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const EXPORT_PACK_VERSION = '1.3.0-alpha.4';
+  const EXPORT_PACK_VERSION = '1.3.0-alpha.5';
   const EXPORT_PACK_NAME = 'Export Pack v3';
 
   function nowIso(){ return new Date().toISOString(); }
@@ -194,6 +194,9 @@
       `Guided session progress: ${safeString(workbench.guided_research_session?.session_progress_percent ?? 0)}%`,
       `Guided UX focus: ${safeString(workbench.guided_session_ux_compression?.primary_focus_group ?? 'manual_review')}`,
       `Brief export QA gate: ${safeString(workbench.brief_assembly_export_qa?.qa_gate ?? 'brief_assembly_export_review_required')}`,
+      `Preview diff gate: ${safeString(workbench.brief_assembly_preview_diff?.diff_gate ?? 'preview_diff_review_required')}`,
+      `Export signoff gate: ${safeString(workbench.export_review_signoff?.signoff_gate ?? 'manual_operator_signoff_required')}`,
+      `Operator signed off: ${safeString(workbench.export_review_signoff?.operator_signed_off === true)}`,
       `Brief template UX gate: ${safeString(workbench.brief_template_ux_polish?.density_gate ?? 'brief_template_ux_review_required')}`,
       `Assembly variants compared: ${safeString(workbench.assembly_variant_comparison?.variant_count ?? 0)}`,
       `Contradiction review items: ${safeString(review.contradiction_open_count ?? 0)}`,
@@ -276,9 +279,13 @@
     if(workbench.guided_research_session) files.push(fileEntry('source-to-brief/guided-research-session.json', 'application/json', jsonContent(workbench.guided_research_session), 'source-to-brief-guided-research-session'));
     if(workbench.guided_research_session && guidedApi?.guidedSessionMarkdown) files.push(fileEntry('source-to-brief/guided-research-session.md', 'text/markdown', guidedApi.guidedSessionMarkdown(workbench.guided_research_session), 'source-to-brief-guided-research-session-md'));
     if(workbench.guided_research_session && guidedApi?.briefAssemblyMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-preview.md', 'text/markdown', guidedApi.briefAssemblyMarkdown(workbench.guided_research_session), 'source-to-brief-brief-assembly-preview-md'));
+    if(workbench.brief_assembly_preview_diff) files.push(fileEntry('source-to-brief/brief-assembly-preview-diff.json', 'application/json', jsonContent(workbench.brief_assembly_preview_diff), 'source-to-brief-brief-assembly-preview-diff'));
+    if(workbench.brief_assembly_preview_diff && guidedApi?.briefAssemblyPreviewDiffMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-preview-diff.md', 'text/markdown', guidedApi.briefAssemblyPreviewDiffMarkdown(workbench.brief_assembly_preview_diff), 'source-to-brief-brief-assembly-preview-diff-md'));
     if(workbench.guided_session_ux_compression) files.push(fileEntry('source-to-brief/guided-session-ux-compression.json', 'application/json', jsonContent(workbench.guided_session_ux_compression), 'source-to-brief-guided-session-ux-compression'));
     if(workbench.brief_assembly_export_qa) files.push(fileEntry('source-to-brief/brief-assembly-export-qa.json', 'application/json', jsonContent(workbench.brief_assembly_export_qa), 'source-to-brief-brief-assembly-export-qa'));
     if(workbench.brief_assembly_export_qa && guidedApi?.briefAssemblyExportQaMarkdown) files.push(fileEntry('source-to-brief/brief-assembly-export-qa.md', 'text/markdown', guidedApi.briefAssemblyExportQaMarkdown(workbench.brief_assembly_export_qa), 'source-to-brief-brief-assembly-export-qa-md'));
+    if(workbench.export_review_signoff) files.push(fileEntry('source-to-brief/export-review-signoff.json', 'application/json', jsonContent(workbench.export_review_signoff), 'source-to-brief-export-review-signoff'));
+    if(workbench.export_review_signoff && guidedApi?.exportReviewSignoffMarkdown) files.push(fileEntry('source-to-brief/export-review-signoff.md', 'text/markdown', guidedApi.exportReviewSignoffMarkdown(workbench.export_review_signoff), 'source-to-brief-export-review-signoff-md'));
     const templateApi = root.briefTemplateSystem;
     if(workbench.brief_template_system) files.push(fileEntry('source-to-brief/brief-template-system.json', 'application/json', jsonContent(workbench.brief_template_system), 'source-to-brief-brief-template-system'));
     if(workbench.brief_template_system && templateApi?.briefTemplateSystemMarkdown) files.push(fileEntry('source-to-brief/brief-template-system.md', 'text/markdown', templateApi.briefTemplateSystemMarkdown(workbench.brief_template_system), 'source-to-brief-brief-template-system-md'));

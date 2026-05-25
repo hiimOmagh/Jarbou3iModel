@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.3.0-alpha.4';
-export const RELEASE_TITLE = 'v1.3.0-alpha.4 — Brief Template UX Polish + Matrix Hygiene Cleanup';
+export const VERSION = '1.3.0-alpha.5';
+export const RELEASE_TITLE = 'v1.3.0-alpha.5 — Brief Assembly Preview Diff + Export Review Signoff';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {
