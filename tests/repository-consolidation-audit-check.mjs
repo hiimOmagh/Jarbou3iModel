@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.1';
-const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
+const CURRENT_VERSION = '1.4.0-alpha.2';
+const CURRENT_TITLE = 'Provider/Source Execution Policy Matrix + Failure UX Contracts';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

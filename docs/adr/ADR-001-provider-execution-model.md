@@ -1,7 +1,7 @@
 # ADR-001: Provider Execution Model
 
-**Status:** Proposed — planning-gate only (v1.4.0-alpha.1)
-**Milestone:** v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
+**Status:** Proposed — planning-gate only (v1.4.0-alpha.2)
+**Milestone:** v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
 **Date:** 2026-05-25
 **Boundary:** No live provider execution enabled by this ADR. Implementation gated on v1.4.0-beta.1 or later after all acceptance criteria are met.
 

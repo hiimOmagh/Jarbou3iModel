@@ -1,14 +1,21 @@
-# Public Demo — v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation
+# Public Demo — v1.4.0-alpha.2 Provider/Source Execution Policy Matrix + Failure UX Contracts
 
-This public demo is a planning/preflight milestone after the locked `v1.3.0 — Stable Manual Workflow Release`. It prepares controlled provider/source execution through ADRs, threat-model checks, and preflight gates only.
+The public demo remains a static/manual workflow surface. v1.4.0-alpha.2 adds planning/control-plane artifacts for provider/source execution policy states and failure UX contracts only.
 
-No live scraping. No live source fetching. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
+Public release label: v1.4.0-alpha.2 Provider/Source Execution Policy Matrix + Failure UX Contracts.
 
-Public release label: v1.4.0-alpha.1 Controlled Provider/Source Execution Preparation.
-Last locked stable baseline: v1.3.0 — Stable Manual Workflow Release.
-Last locked RC baseline: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization.
-Manual workflow baseline: v1.3.0-alpha.10 — Brief Publication Pack v4.
+Locked baselines preserved:
 
-Hosted evidence and canonical lock evidence remain required. Screenshots alone are insufficient. A ZIP archive alone is insufficient.
+- v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
+- v1.3.0 — Stable Manual Workflow Release
+- v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization
+- v1.3.0-alpha.10 — Brief Publication Pack v4
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.1.
+No live scraping. No live source fetching. No live provider execution. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim is enabled.
+
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.2.
+
+Hosted demo metadata and hosted evidence must report v1.4.0-alpha.2 before lock.
+
+Screenshots alone are insufficient for release approval.
+ZIP archive alone is insufficient for release approval.

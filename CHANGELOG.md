@@ -1,13 +1,23 @@
 # Changelog
 
-## v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
+## v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
+
+- Adds provider/source execution policy matrix planning module.
+- Adds provider/source failure UX contracts planning module.
+- Adds ADR-004 provider/source execution policy matrix.
+- Adds ADR-005 provider/source failure UX contracts.
+- Preserves locked `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation` as the control baseline.
+- Preserves locked `v1.3.0 — Stable Manual Workflow Release`, `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`, and `v1.3.0-alpha.10 — Brief Publication Pack v4` baselines.
+- Preserves no live scraping, no live source fetching, no provider execution expansion, no production OAuth, no backend/storage expansion, no automatic source verification, no automatic signoff, no automatic export lock, no cryptographic signature claim, and no publication permission claim.
+
+## v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
 
 - Adds provider execution threat model planning module.
 - Adds provider execution preflight planning module.
 - Adds ADR-001 provider execution model.
 - Adds ADR-002 source acquisition controls.
 - Adds ADR-003 credential boundary.
-- Updates release identity from locked `v1.3.0 — Stable Manual Workflow Release` to `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`.
+- Updates release identity from locked `v1.3.0 — Stable Manual Workflow Release` to `v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts`.
 - Preserves `v1.3.0-alpha.10 — Brief Publication Pack v4` as the manual workflow baseline.
 - Preserves no live scraping, no live source fetching, no provider execution expansion, no production OAuth, no backend/storage expansion, no automatic source verification, no automatic signoff, no automatic export lock, no cryptographic signature claim, and no publication permission claim.
 

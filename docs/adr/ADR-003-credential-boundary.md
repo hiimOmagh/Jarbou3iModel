@@ -1,7 +1,7 @@
 # ADR-003: Credential Boundary
 
-**Status:** Proposed — planning-gate only (v1.4.0-alpha.1)
-**Milestone:** v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
+**Status:** Proposed — planning-gate only (v1.4.0-alpha.2)
+**Milestone:** v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
 **Date:** 2026-05-25
 **Boundary:** No credential handling added by this ADR. This records the constraint contract that future implementation must satisfy.
 

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.1';
-const CURRENT_TITLE = 'Controlled Provider/Source Execution Preparation';
+const CURRENT_VERSION = '1.4.0-alpha.2';
+const CURRENT_TITLE = 'Provider/Source Execution Policy Matrix + Failure UX Contracts';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');

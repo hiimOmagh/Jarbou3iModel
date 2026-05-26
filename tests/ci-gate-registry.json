@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.1",
-  "release_title": "v1.4.0-alpha.1 \u2014 Controlled Provider/Source Execution Preparation",
+  "ci_gate_registry_version": "1.4.0-alpha.2",
+  "release_title": "v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -158,7 +158,9 @@
         "tests/strategic-evidence-graph-check.mjs",
         "tests/post-stable-capability-roadmap-check.mjs",
         "tests/provider-execution-threat-model-check.mjs",
-        "tests/provider-execution-preflight-check.mjs"
+        "tests/provider-execution-preflight-check.mjs",
+        "tests/provider-source-failure-ux-contracts-check.mjs",
+        "tests/provider-source-execution-policy-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -217,7 +219,9 @@
         "tests/lockfile-dependency-version-integrity-check.mjs",
         "tests/ci-workflow-quarantine-check.mjs",
         "tests/provider-execution-threat-model-check.mjs",
-        "tests/provider-execution-preflight-check.mjs"
+        "tests/provider-execution-preflight-check.mjs",
+        "tests/provider-source-failure-ux-contracts-check.mjs",
+        "tests/provider-source-execution-policy-matrix-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -297,7 +301,9 @@
         "tests/source-to-brief-brief-publication-pack-v4-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs",
         "tests/provider-execution-threat-model-check.mjs",
-        "tests/provider-execution-preflight-check.mjs"
+        "tests/provider-execution-preflight-check.mjs",
+        "tests/provider-source-failure-ux-contracts-check.mjs",
+        "tests/provider-source-execution-policy-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -430,7 +436,9 @@
         "tests/source-to-brief-preview-diff-signoff-check.mjs",
         "tests/source-to-brief-brief-template-system-check.mjs",
         "tests/provider-execution-threat-model-check.mjs",
-        "tests/provider-execution-preflight-check.mjs"
+        "tests/provider-execution-preflight-check.mjs",
+        "tests/provider-source-failure-ux-contracts-check.mjs",
+        "tests/provider-source-execution-policy-matrix-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -458,8 +466,8 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.1",
-    "optimization_scope": "controlled_provider_source_execution_preparation",
+    "version": "1.4.0-alpha.2",
+    "optimization_scope": "provider_source_execution_policy_failure_ux",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -468,10 +476,12 @@
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "previous_serial_no_browser_syntax_checks": 1
+    "previous_serial_no_browser_syntax_checks": 1,
+    "profile": "provider_source_execution_policy_failure_ux",
+    "title": "Provider/Source Execution Policy Matrix + Failure UX Contracts"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.1",
+    "version": "1.4.0-alpha.2",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -605,13 +615,17 @@
       "src/research/provider-execution-threat-model.js",
       "src/research/provider-execution-preflight.js",
       "tests/provider-execution-threat-model-check.mjs",
-      "tests/provider-execution-preflight-check.mjs"
+      "tests/provider-execution-preflight-check.mjs",
+      "src/research/provider-source-execution-policy-matrix.js",
+      "src/research/provider-source-failure-ux-contracts.js",
+      "tests/provider-source-execution-policy-matrix-check.mjs",
+      "tests/provider-source-failure-ux-contracts-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.1",
+    "version": "1.4.0-alpha.2",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -631,7 +645,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.4.0-alpha.1",
+    "version": "1.4.0-alpha.2",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

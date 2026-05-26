@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# apply-patch.sh — apply v1.4.0-alpha.1 patch and push to claude/elegant-mendel-F4LbC
+# apply-patch.sh — apply v1.4.0-alpha.2 patch and push to claude/elegant-mendel-F4LbC
 # Run from the root of your local clone of hiimOmagh/Jarbou3iModel.
 # Self-deletes on success.
 set -e
@@ -38,7 +38,7 @@ git add \
   tests/ci-gate-registry.json
 
 echo "==> Committing..."
-git commit -m "feat: v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
+git commit -m "feat: v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
 
 ADR scaffold, threat model, and preflight gate for controlled provider
 execution. Planning-gate only: no live execution, no boundary flag
