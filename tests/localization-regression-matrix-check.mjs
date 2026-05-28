@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract', 'English public version label must identify v1.4.0-alpha.12');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.12 صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر · صندوق رمل بلا شبكة فقط', 'Arabic public version label must identify v1.4.0-alpha.12');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.12 Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère · bac à sable sans réseau uniquement', 'French public version label must identify v1.4.0-alpha.12');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA', 'English public version label must identify v1.4.0-alpha.13');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.13 منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة · ضمان جودة إعادة تشغيل بلا شبكة فقط', 'Arabic public version label must identify v1.4.0-alpha.13');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.13 Banc de test de contrat d’adaptateur + QA de rejeu d’invocation sans réseau · QA de rejeu sans réseau uniquement', 'French public version label must identify v1.4.0-alpha.13');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
@@ -34,7 +34,7 @@ for (const staleCurrentDescription of [
   'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
   'نموذج أولي محدود للتنفيذ الحي اليدوي',
   'هيكل اشتراك يدوي فقط',
-  'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار'
+  'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
 ]) {
   assert.ok(spec.includes(staleCurrentDescription), `visible-text current-release description guard must catch ${staleCurrentDescription}`);
 }
@@ -42,12 +42,12 @@ const hostedDemoBodies = [...renderPublicLabels.matchAll(/hostedDemoVerification
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'), 'Arabic current-release description must identify alpha.12 manual provider adapter sandbox');
+  assert.ok(body.includes('منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة جاهزة لأدلة الإصدار'), 'Arabic current-release description must identify alpha.13 adapter contract test bench');
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
     'نموذج أولي محدود للتنفيذ الحي اليدوي',
     'هيكل اشتراك يدوي فقط',
-    'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار'
+    'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
   ]) assert.equal(body.includes(staleCurrentDescription), false, `Arabic current-release description must not carry stale alpha.10/alpha.11 wording: ${staleCurrentDescription}`);
 }
 for (const residual of [

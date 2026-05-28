@@ -4,8 +4,8 @@ import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.12';
-const CURRENT_TITLE = 'Manual Provider Adapter Sandbox + Ephemeral Invocation Contract';
+const CURRENT_VERSION = '1.4.0-alpha.13';
+const CURRENT_TITLE = 'Adapter Contract Test Bench + No-Network Invocation Replay QA';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.3.0-manual-workflow-release.zip';

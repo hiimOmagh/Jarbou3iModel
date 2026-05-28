@@ -1,9 +1,14 @@
-# Public Demo — v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract
+# Public Demo — v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA
 
-The public demo remains a static/manual workflow surface. v1.4.0-alpha.12 adds a no-network manual provider adapter sandbox with ephemeral invocation contract, request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe metadata-only invocation ledger.
+## v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA
 
-Public release label: v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract.
-Hosted demo metadata and hosted evidence must report v1.4.0-alpha.12 before lock.
+Adds deterministic provider adapter fixtures, request/response envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, cross-provider capability matrix, and a safe metadata-only replay ledger. It remains disabled by default and enables no real provider calls, no hidden network calls, no live source fetching, no real OAuth/token lifecycle, no credential persistence, no backend/storage expansion, no automatic source verification, no automatic signoff/export lock, and no publication permission claim. Requires hosted evidence and canonical lock evidence bundle before lock.
+
+
+The public demo remains a static/manual workflow surface. v1.4.0-alpha.13 adds an adapter contract test bench with deterministic fixtures, envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, and safe metadata-only replay ledger.
+
+Public release label: v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA.
+Hosted demo metadata and hosted evidence must report v1.4.0-alpha.13 before lock.
 
 ## Demo boundary
 

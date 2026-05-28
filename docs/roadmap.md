@@ -1,6 +1,11 @@
 # Roadmap
 
-Current milestone: `v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract`
+## v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA
+
+Adds deterministic provider adapter fixtures, request/response envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, cross-provider capability matrix, and a safe metadata-only replay ledger. It remains disabled by default and enables no real provider calls, no hidden network calls, no live source fetching, no real OAuth/token lifecycle, no credential persistence, no backend/storage expansion, no automatic source verification, no automatic signoff/export lock, and no publication permission claim. Requires hosted evidence and canonical lock evidence bundle before lock.
+
+
+Current milestone: `v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA`
 
 Purpose: define a no-network manual provider adapter sandbox before any real provider invocation attempt. The milestone adds ephemeral credential handoff semantics without persistence, request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe metadata-only invocation ledger.
 
@@ -16,14 +21,14 @@ Locked baselines:
 
 Compressed next milestones:
 
-1. `v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract` — no-network provider adapter sandbox and safe metadata ledger.
+1. `v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA` — no-network provider adapter sandbox and safe metadata ledger.
 2. `v1.4.0-alpha.13 — Manual Provider Adapter UX Compression + Evidence Capture Runtime Budget` — only after alpha.12 locks; reduce browser evidence time and improve operator review clarity.
 
 Forbidden until explicit later approval: no default live execution, no hidden network calls, no real OAuth, no real API keys, no real token storage, no credential persistence, live scraping, live source fetching, automatic source fetching, hidden background fetching, provider execution expansion, backend behavior expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, publication permission claim.
 
-No alpha.13 should start until v1.4.0-alpha.12 is locked with green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
+No alpha.14 should start until v1.4.0-alpha.13 is locked with green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
 
-Node 24 CI compatibility remains mandatory for v1.4.0-alpha.12 and later.
+Node 24 CI compatibility remains mandatory for v1.4.0-alpha.13 and later.
 Planning gate continuity: apply integrity and changed-files-only discipline remain required before any provider/source execution expansion.
 
 Boundary repetition for release-truth checks: no live scraping; no production OAuth; no real API keys; no automatic source verification; no cryptographic signature claim.

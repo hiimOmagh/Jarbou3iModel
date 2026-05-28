@@ -67,7 +67,7 @@ const engine = fs.readFileSync('src/research-engine.js','utf8');
 for (const marker of ['modules.operatorCommandPalette','operatorCommandPalette?.installNavigation']) assert.ok(engine.includes(marker), `engine missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
 for (const marker of ['Operator command palette','لوحة أوامر المشغّل','Palette de commandes opérateur','Review navigation shortcuts']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
-for (const marker of ['v1.4.0-alpha.12 صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر · صندوق رمل بلا شبكة فقط', 'v1.4.0-alpha.12 Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère · bac à sable sans réseau uniquement']) assert.ok(helpers.includes(marker), `localized alpha.1 public label missing ${marker}`);
+for (const marker of ['v1.4.0-alpha.13 منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة · ضمان جودة إعادة تشغيل بلا شبكة فقط', 'v1.4.0-alpha.13 Banc de test de contrat d’adaptateur + QA de rejeu d’invocation sans réseau · QA de rejeu sans réseau uniquement']) assert.ok(helpers.includes(marker), `localized alpha.1 public label missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
 for (const marker of ['operatorCommandPalettePanel','operatorCommandGrid','reviewNavigationShortcutList','operatorNavPulse']) assert.ok(styles.includes(marker), `styles missing ${marker}`);
 

@@ -1,5 +1,10 @@
 # Release History
 
+## v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA
+
+Adds deterministic adapter fixtures, envelope diffing, no-network replay, failure UX rehearsal, safe transcript comparison, cross-provider matrix, and safe metadata-only replay ledger. Disabled by default: no real provider calls, hidden network calls, live source fetching, OAuth/token lifecycle, credential persistence, backend/storage expansion, automatic verification, signoff/export lock, or publication claim. Requires hosted evidence and canonical lock bundle before lock.
+
+
 Consolidated historical release documentation. This file replaces per-release `docs/v*.md` files and the old repository cleanup audit note while preserving release provenance for CI checks.
 
 ## Pruned timeline index

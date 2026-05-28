@@ -177,8 +177,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/manual-provider-adapter-sandbox-ephemeral-invocation-contract.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs'));
-assert.equal(registry.runtime_optimization.optimization_scope, 'manual_provider_adapter_sandbox_ephemeral_invocation_contract');
-assert.equal(registry.runtime_optimization.version, VERSION);
+assert.ok(['manual_provider_adapter_sandbox_ephemeral_invocation_contract','adapter_contract_test_bench_no_network_invocation_replay_qa'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization scope may point to current alpha while preserving alpha.12 check');
+assert.ok([VERSION,'1.4.0-alpha.13'].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.12 check');
 
 console.log('Manual provider adapter sandbox + ephemeral invocation contract checks passed.');
 process.exit(0);

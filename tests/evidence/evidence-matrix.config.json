@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.12",
-  "internal_build_version": "1.4.0-alpha.12",
-  "public_version_label": "v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
+  "evidence_matrix_config_version": "1.4.0-alpha.13",
+  "internal_build_version": "1.4.0-alpha.13",
+  "public_version_label": "v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA",
   "locales": [
     "en",
     "ar",
@@ -17,7 +17,8 @@
         "Signed Export Handoff Pack",
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
-        "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract"
+        "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
+        "Adapter Contract Test Bench + No-Network Invocation Replay QA"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -38,7 +39,8 @@
         "سطح التحكم في اكتساب المصادر",
         "حدود بيانات الاعتماد",
         "قمرة أمان التنفيذ اليدوي + سجل الجلسة",
-        "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر"
+        "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر",
+        "منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -57,7 +59,8 @@
         "Surface de contrôle d’acquisition des sources",
         "frontière des identifiants",
         "Cockpit de sécurité d’exécution manuelle + registre de session",
-        "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère"
+        "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère",
+        "Banc de test de contrat d’adaptateur + QA de rejeu d’invocation sans réseau"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -243,8 +246,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-    "ar": "v1.4.0-alpha.12 صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر · صندوق رمل بلا شبكة فقط",
-    "fr": "v1.4.0-alpha.12 Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère · bac à sable sans réseau uniquement"
+    "en": "v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA",
+    "ar": "v1.4.0-alpha.13 منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة · ضمان جودة إعادة تشغيل بلا شبكة فقط",
+    "fr": "v1.4.0-alpha.13 Banc de test de contrat d’adaptateur + QA de rejeu d’invocation sans réseau · QA de rejeu sans réseau uniquement"
   }
 }

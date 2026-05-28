@@ -19,8 +19,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.4.0-alpha.12';
-const PUBLIC_VERSION_LABEL = 'v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract';
+const VERSION = '1.4.0-alpha.13';
+const PUBLIC_VERSION_LABEL = 'v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA';
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const MATRIX_CONFIG = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
@@ -56,15 +56,18 @@ const STALE_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS = Object.freeze([
   'هيكل اشتراك يدوي فقط',
   'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
   'محاكاة قمرة الأمان فقط',
-  'شروط تشغيل يدوية'
+  'شروط تشغيل يدوية',
+  'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار',
+  'صندوق رمل بلا شبكة فقط'
 ]);
 const EXPECTED_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS = Object.freeze([
-  'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار',
-  'واجهة تسليم اعتماد عابرة بلا تخزين',
-  'معاينة غلاف طلب المزوّد',
-  'نص استدعاء جاف بلا شبكة',
-  'تصنيف فشل للمحوّل',
-  'سجل بيانات وصفية آمن',
+  'منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة جاهزة لأدلة الإصدار',
+  'فيكستشرات محوّل مزوّد حتمية',
+  'مقارنة غلاف الطلب/الاستجابة',
+  'إعادة تشغيل استدعاء بلا شبكة',
+  'تدريب تجربة فشل المحوّل',
+  'مقارنة نصوص آمنة',
+  'مصفوفة قدرات عبر المزوّدين',
   'دون تنفيذ حي'
 ]);
 
@@ -226,7 +229,7 @@ async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, mat
   ensureEvidenceRoot(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
 }
 
-test.describe('v1.4.0-alpha.12 hosted demo evidence matrix and manifest capture', () => {
+test.describe('v1.4.0-alpha.13 hosted demo evidence matrix and manifest capture', () => {
   test.describe.configure({ mode: 'serial' });
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }, testInfo) => {
     test.setTimeout(HOSTED_EVIDENCE_TEST_TIMEOUT_MS);
