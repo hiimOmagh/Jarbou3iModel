@@ -1,40 +1,37 @@
-# Public Demo — v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger
+# Public Demo — v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract
 
-The public demo remains a static/manual workflow surface. v1.4.0-alpha.11 adds a simulation-only manual execution safety cockpit with session ledger, kill-switch drill, budget/timeout guardrails, and no-execution fallback reporting.
+The public demo remains a static/manual workflow surface. v1.4.0-alpha.12 adds a no-network manual provider adapter sandbox with ephemeral invocation contract, request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe metadata-only invocation ledger.
 
-Public release label: v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger.
+Public release label: v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract.
+Hosted demo metadata and hosted evidence must report v1.4.0-alpha.12 before lock.
 
-Boundary:
+## Demo boundary
 
-- no default live execution
-- no hidden network calls
-- no real OAuth
-- no real API keys
-- no real token storage
-- no credential persistence
-- no live scraping
-- no live source fetching
-- no automatic source fetching
-- no hidden background fetching
-- no backend behavior expansion
-- no storage expansion
-- no automatic source verification
-- no automatic signoff
-- no automatic export lock
-- no cryptographic signature claim
-- no publication permission claim
-- safety cockpit simulation only
-- safe metadata-only session ledger
+- No default live execution.
+- No hidden network calls.
+- No real OAuth/token lifecycle.
+- No credential persistence.
+- No live provider calls.
+- No live source fetching.
+- No backend/storage expansion.
+- No automatic source verification, signoff, export lock, cryptographic signature, or publication permission claim.
 
-Hosted demo metadata and hosted evidence must report v1.4.0-alpha.11 before lock.
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.11.
+## Required evidence
 
-Locked baseline: `v1.3.0 — Stable Manual Workflow Release` remains unchanged.
-Locked manual opt-in shell baseline: `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype` remains unchanged.
-Locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface` remains unchanged.
-Locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence` remains unchanged.
-Locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` remains unchanged.
-Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4` remains unchanged.
-No backend behavior expansion. No provider execution expansion.
-No production OAuth.
-Screenshots alone are insufficient. ZIP archive alone is insufficient. ZIP existence alone is insufficient.
+- no-browser CI log.
+- Playwright install-deps log.
+- Playwright install log.
+- browser CI log.
+- hosted-demo-evidence.
+- canonical lock-evidence bundle.
+
+Screenshots alone and ZIP existence alone are insufficient.
+
+Boundary repetition for release-truth checks: no live scraping; no production OAuth; no real API keys; no automatic source verification; no cryptographic signature claim.
+
+Baseline repetition for release-truth checks: v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence.
+
+Stable baseline repetition: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization; v1.3.0-alpha.10 — Brief Publication Pack v4. No backend behavior expansion. No provider execution expansion.
+
+Screenshots alone are insufficient. A ZIP archive alone is insufficient.
+Provenance continuity: Package Script Compression, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Fixture Registry payload compression, test organization audit, provenance ledger, and changed-files-only discipline remain active.

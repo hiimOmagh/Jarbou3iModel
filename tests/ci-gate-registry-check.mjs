@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.4.0-alpha.11';
-const RELEASE = 'v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger';
+const VERSION = '1.4.0-alpha.12';
+const RELEASE = 'v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');

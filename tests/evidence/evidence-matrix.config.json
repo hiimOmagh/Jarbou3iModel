@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.11",
-  "internal_build_version": "1.4.0-alpha.11",
-  "public_version_label": "v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger",
+  "evidence_matrix_config_version": "1.4.0-alpha.12",
+  "internal_build_version": "1.4.0-alpha.12",
+  "public_version_label": "v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
   "locales": [
     "en",
     "ar",
@@ -17,7 +17,7 @@
         "Signed Export Handoff Pack",
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
-        "Manual Execution Safety Cockpit + Session Ledger"
+        "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -37,7 +37,8 @@
         "سطح مراجعة سجل قفل التصدير",
         "سطح التحكم في اكتساب المصادر",
         "حدود بيانات الاعتماد",
-        "قمرة أمان التنفيذ اليدوي + سجل الجلسة"
+        "قمرة أمان التنفيذ اليدوي + سجل الجلسة",
+        "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -55,7 +56,8 @@
         "Surface de revue du registre de verrouillage",
         "Surface de contrôle d’acquisition des sources",
         "frontière des identifiants",
-        "Cockpit de sécurité d’exécution manuelle + registre de session"
+        "Cockpit de sécurité d’exécution manuelle + registre de session",
+        "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -241,8 +243,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger",
-    "ar": "v1.4.0-alpha.11 قمرة أمان التنفيذ اليدوي + سجل الجلسة · محاكاة قمرة الأمان فقط",
-    "fr": "v1.4.0-alpha.11 Cockpit de sécurité d’exécution manuelle + registre de session · simulation de cockpit uniquement"
+    "en": "v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
+    "ar": "v1.4.0-alpha.12 صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر · صندوق رمل بلا شبكة فقط",
+    "fr": "v1.4.0-alpha.12 Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère · bac à sable sans réseau uniquement"
   }
 }

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const RELEASE = 'v1.4.0-alpha.11';
-const TITLE = 'Manual Execution Safety Cockpit + Session Ledger';
+const RELEASE = 'v1.4.0-alpha.12';
+const TITLE = 'Manual Provider Adapter Sandbox + Ephemeral Invocation Contract';
 const workflowPath = '.github/workflows/ci.yml';
 const workflow = fs.readFileSync(workflowPath, 'utf8');
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
@@ -10,7 +10,7 @@ const evidenceMatrix = JSON.parse(fs.readFileSync('tests/evidence/evidence-matri
 const renderHelpers = fs.readFileSync('src/research/render-helpers.js', 'utf8');
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 
-assert.ok(workflow.includes(`run-name: ${RELEASE} ${TITLE} — \${{ github.ref_name }} @ \${{ github.sha }}`), 'workflow run-name must expose v1.4.0-alpha.11 provider execution equivalence identity');
+assert.ok(workflow.includes(`run-name: ${RELEASE} ${TITLE} — \${{ github.ref_name }} @ \${{ github.sha }}`), 'workflow run-name must expose v1.4.0-alpha.12 provider execution equivalence identity');
 assert.ok(workflow.includes('workflow_dispatch:'), 'workflow must allow manual dispatch during CI incident recovery');
 assert.ok(workflow.includes('concurrency:'), 'workflow must define concurrency to prevent stacked runs');
 assert.ok(workflow.includes('cancel-in-progress: true'), 'workflow must cancel prior in-progress runs on the same ref');
@@ -18,19 +18,19 @@ assert.match(workflow, /group:\s*\$\{\{ github\.workflow \}\}-\$\{\{ github\.ref
 assert.match(workflow, /no-browser:[\s\S]*?timeout-minutes:\s*20/, 'no-browser job must have a bounded timeout');
 assert.match(workflow, /browser:[\s\S]*?needs:\s*no-browser[\s\S]*?timeout-minutes:\s*30/, 'browser job must depend on no-browser and have a bounded timeout');
 assert.match(workflow, /lock-evidence-bundle:[\s\S]*?needs:\s*\[no-browser, browser\][\s\S]*?timeout-minutes:\s*15/, 'lock evidence job must remain gated and timeout-bounded');
-assert.ok(workflow.includes(`summary.internal_build_version !== '1.4.0-alpha.11'`), 'browser matrix guard must validate v1.4.0-alpha.11 internal build version');
-assert.ok(workflow.includes(`lock-evidence-bundle_1.4.0-alpha.11_`), 'lock evidence artifact must be versioned as v1.4.0-alpha.11');
+assert.ok(workflow.includes(`summary.internal_build_version !== '1.4.0-alpha.12'`), 'browser matrix guard must validate v1.4.0-alpha.12 internal build version');
+assert.ok(workflow.includes(`lock-evidence-bundle_1.4.0-alpha.12_`), 'lock evidence artifact must be versioned as v1.4.0-alpha.12');
 
-assert.equal(registry.release_title, `${RELEASE} — ${TITLE}`, 'CI registry release title must identify v1.4.0-alpha.11 controlled provider/source execution preparation release');
-assert.equal(evidenceMatrix.internal_build_version, '1.4.0-alpha.11', 'evidence matrix internal version must identify v1.4.0-alpha.11');
-assert.equal(evidenceMatrix.public_version_label, `${RELEASE} ${TITLE}`, 'English public label must identify v1.4.0-alpha.11 controlled provider/source execution preparation release');
-assert.equal(evidenceMatrix.public_version_labels.ar, `${RELEASE} قمرة أمان التنفيذ اليدوي + سجل الجلسة · محاكاة قمرة الأمان فقط`, 'Arabic public label must identify v1.4.0-alpha.11 controlled provider/source execution preparation release');
-assert.equal(evidenceMatrix.public_version_labels.fr, `${RELEASE} Cockpit de sécurité d’exécution manuelle + registre de session · simulation de cockpit uniquement`, 'French public label must identify v1.4.0-alpha.11 controlled provider/source execution preparation release');
+assert.equal(registry.release_title, `${RELEASE} — ${TITLE}`, 'CI registry release title must identify v1.4.0-alpha.12 controlled provider/source execution preparation release');
+assert.equal(evidenceMatrix.internal_build_version, '1.4.0-alpha.12', 'evidence matrix internal version must identify v1.4.0-alpha.12');
+assert.equal(evidenceMatrix.public_version_label, `${RELEASE} ${TITLE}`, 'English public label must identify v1.4.0-alpha.12 controlled provider/source execution preparation release');
+assert.equal(evidenceMatrix.public_version_labels.ar, `${RELEASE} صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر · صندوق رمل بلا شبكة فقط`, 'Arabic public label must identify v1.4.0-alpha.12 controlled provider/source execution preparation release');
+assert.equal(evidenceMatrix.public_version_labels.fr, `${RELEASE} Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère · bac à sable sans réseau uniquement`, 'French public label must identify v1.4.0-alpha.12 controlled provider/source execution preparation release');
 
 for (const marker of [
   `${RELEASE} ${TITLE}`,
-  `${RELEASE} قمرة أمان التنفيذ اليدوي + سجل الجلسة · محاكاة قمرة الأمان فقط`,
-  `${RELEASE} Cockpit de sécurité d’exécution manuelle + registre de session · simulation de cockpit uniquement`
+  `${RELEASE} صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر · صندوق رمل بلا شبكة فقط`,
+  `${RELEASE} Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère · bac à sable sans réseau uniquement`
 ]) {
   assert.ok(renderHelpers.includes(marker), `render helpers missing localized alpha.1 release marker: ${marker}`);
 }
@@ -39,7 +39,7 @@ for (const marker of [
   'live_fetching_performed: false',
   'provider_execution_performed: false',
   'automatic_source_verification_claimed: false',
-  'Manual Execution Safety Cockpit + Session Ledger'
+  'Manual Provider Adapter Sandbox + Ephemeral Invocation Contract'
 ]) {
   assert.ok(currentRelease.includes(marker), `current release doc missing controlled provider/source preparation marker: ${marker}`);
 }

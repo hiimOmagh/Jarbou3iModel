@@ -7,7 +7,7 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.11'; const VERSION = '1.3.0';
+const CURRENT_VERSION = '1.4.0-alpha.12'; const VERSION = '1.3.0';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -29,7 +29,7 @@ const migrations = read('src/research/migrations.js');
 const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const moduleText = read('src/research/release-provenance-ledger.js');
 
-for (const [actual, label] of [[pkg.version, 'package'], [lock.version, 'lock'], [lock.packages[''].version, 'lock root']]) assert.equal(actual, CURRENT_VERSION, `${label} must be v1.4.0-alpha.11`);
+for (const [actual, label] of [[pkg.version, 'package'], [lock.version, 'lock'], [lock.packages[''].version, 'lock root']]) assert.equal(actual, CURRENT_VERSION, `${label} must be v1.4.0-alpha.12`);
 for (const [actual, label] of [[schema.properties.workflow_version.const, 'schema'], [sample.workflow_version, 'sample'], [migrationFixture.workflow_version, 'migration fixture'], [privacyFixture.workflow_version, 'privacy fixture']]) assert.equal(actual, VERSION, `${label} must preserve v1.3.0 stable baseline`);
 
 assert.ok(schema.required.includes('release_provenance_ledger'), 'schema must require release provenance ledger');

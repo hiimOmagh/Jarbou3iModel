@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.11';
-const RELEASE = 'v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger';
-const PUBLIC_LABEL = 'v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger';
+const VERSION = '1.4.0-alpha.12';
+const RELEASE = 'v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract';
+const PUBLIC_LABEL = 'v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
 const MOCK_TO_LIVE_BASELINE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
@@ -31,14 +31,14 @@ const index = read('index.html');
 const render = read('src/research/render-helpers.js');
 
 assert.equal(pkg.version, VERSION);
-assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.11 public label');
+assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.12 public label');
 for (const token of ['source strategy continuity','release evidence continuity','package script compression and CI gate registry','cryptographic signature claim', STABLE_BASELINE, MOCK_TO_LIVE_BASELINE]) {
   assert.ok(pkg.description.includes(token), `package description missing token: ${token}`);
 }
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'manual-execution-safety-cockpit-session-ledger');
+assert.equal(manifest.release_type, 'manual-provider-adapter-sandbox-ephemeral-invocation-contract');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);
@@ -61,18 +61,21 @@ for (const baseline of [SOURCE_ACQUISITION_BASELINE, REPLAY_BASELINE, TRACE_BASE
   assert.ok(roadmap.includes(baseline), `roadmap must preserve ${baseline}`);
 }
 
+for (const token of ['ephemeral credential handoff','provider request-envelope preview','no-network dry invocation transcript','adapter failure taxonomy','safe request/response metadata ledger','ADR-018']) {
+  assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.12 adapter sandbox token missing: ${token}`);
+}
 for (const token of ['session state machine','kill-switch','timeout','budget','safe metadata-only session ledger','no-execution fallback','ADR-017']) {
-  assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.11 safety cockpit token missing: ${token}`);
+  assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.11 safety cockpit continuity token missing: ${token}`);
 }
 for (const token of ['manual_source','provider_proposed_source','future_controlled_fetch','ADR-013']) {
   assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.7 source acquisition continuity token missing: ${token}`);
 }
 
-assert.ok(index.includes('v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger'));
-assert.ok(render.includes('v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger'));
+assert.ok(index.includes('v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract'));
+assert.ok(render.includes('v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract'));
 assert.ok(render.includes('سطح التحكم في اكتساب المصادر'));
 assert.ok(render.includes('Surface de contrôle d’acquisition des sources'));
-assert.equal(render.includes('v1.4.0-alpha.11 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
+assert.equal(render.includes('v1.4.0-alpha.12 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
 assert.equal(render.includes('حزمة إعادة تشغيل التجربة الجافة'), false, 'stale AR alpha.5 label must not return');
 
 assert.equal(ciRegistry.ci_gate_registry_version, VERSION);
@@ -82,7 +85,8 @@ assert.equal(versionRegistry.release_title, RELEASE);
 
 for (const gate of ['no-browser','current-no-browser','privacy','provider','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/limited-manual-live-execution-prototype-check.mjs'), `${gate} must preserve limited manual live-execution prototype check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'), `${gate} must run manual execution safety cockpit check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'), `${gate} must preserve manual execution safety cockpit check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs'), `${gate} must run manual provider adapter sandbox check`);
 }
 for (const gate of ['no-browser','current-no-browser','source','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/source-acquisition-control-surface-check.mjs'), `${gate} must preserve source acquisition control surface check`);
@@ -94,6 +98,8 @@ assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/limited-manual-l
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/limited-manual-live-execution-prototype-check.mjs'), 'syntax matrix must cover alpha.10 check');
 assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/manual-execution-safety-cockpit-session-ledger.js'), 'syntax matrix must cover alpha.11 module');
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'), 'syntax matrix must cover alpha.11 check');
+assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/manual-provider-adapter-sandbox-ephemeral-invocation-contract.js'), 'syntax matrix must cover alpha.12 module');
+assert.ok(ciRegistry.syntax_matrix.files.includes('tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs'), 'syntax matrix must cover alpha.12 check');
 
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','source_connector_behavior_changed']) {
   assert.equal(ciRegistry[key], false, `${key} must remain false in CI registry`);

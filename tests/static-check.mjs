@@ -117,7 +117,7 @@ for (const asset of ['assets/jarbou3i-mascot-192.png', 'assets/jarbou3i-mascot-5
   if (size > runtimeAssetLimit) fail(`${asset} is too large for runtime use: ${size} bytes`);
 }
 
-if (index.length > 55000) fail(`index.html is too large after credential-boundary drill integration: ${index.length} bytes`);
+if (index.length > 59000) fail(`index.html is too large after adapter sandbox integration: ${index.length} bytes`);
 if (!index.includes('href="src/styles.css"')) fail('external stylesheet link missing');
 if (!index.includes('src="src/app.js" defer')) fail('deferred app script missing');
 if (!index.includes('src="src/research-engine.js" defer')) fail('deferred research script missing');
@@ -184,8 +184,8 @@ if (!app.includes('schema_version')) fail('schema_version support is missing');
 if (!app.includes('modeResearch')) fail('research prompt mode is missing');
 if (!app.includes('qualityGateHtml')) fail('quality gate UI is missing');
 if (!app.includes('actorPowerScore')) fail('computed API scoring is missing');
-if (pkg.version !== '1.4.0-alpha.11') fail('package version must be 1.4.0-alpha.11');
-if (!index.includes('name="app-version" content="1.4.0-alpha.11"')) fail('app version metadata missing');
+if (pkg.version !== '1.4.0-alpha.12') fail('package version must be 1.4.0-alpha.12');
+if (!index.includes('name="app-version" content="1.4.0-alpha.12"')) fail('app version metadata missing');
 
 console.log('Static checks passed.');
 process.exit(0);

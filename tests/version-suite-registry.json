@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.11",
-  "release_title": "v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger",
+  "version_suite_registry_version": "1.4.0-alpha.12",
+  "release_title": "v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

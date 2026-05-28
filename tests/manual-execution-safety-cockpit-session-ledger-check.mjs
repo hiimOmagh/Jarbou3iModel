@@ -173,8 +173,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/manual-execution-safety-cockpit-session-ledger.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'));
-assert.equal(registry.runtime_optimization.optimization_scope, 'manual_execution_safety_cockpit_session_ledger');
-assert.equal(registry.runtime_optimization.version, VERSION);
+assert.ok(['manual_execution_safety_cockpit_session_ledger','manual_provider_adapter_sandbox_ephemeral_invocation_contract'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may point to current alpha while preserving alpha.11 check');
+assert.ok([VERSION,'1.4.0-alpha.12'].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.11 check');
 
 console.log('Manual execution safety cockpit + session ledger checks passed.');
 process.exit(0);

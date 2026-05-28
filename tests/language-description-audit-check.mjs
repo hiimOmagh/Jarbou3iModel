@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.11';
-const CURRENT_TITLE = 'Manual Execution Safety Cockpit + Session Ledger';
+const CURRENT_VERSION = '1.4.0-alpha.12';
+const CURRENT_TITLE = 'Manual Provider Adapter Sandbox + Ephemeral Invocation Contract';
 const VERSION = '1.3.0';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');

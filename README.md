@@ -1,13 +1,14 @@
 # Jarbou3i Research Engine
 
-`v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`
+`v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract`
 
-A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone consolidates the alpha.6–alpha.10 safety layers into a disabled-by-default manual execution safety cockpit and safe session ledger.
+A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds a no-network manual provider adapter sandbox with an ephemeral invocation contract, request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe metadata-only invocation ledger.
 
 ## Current boundary
 
-- Current package version: `1.4.0-alpha.11`.
-- Current release: `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`.
+- Current package version: `1.4.0-alpha.12`.
+- Current release: `v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract`.
+- Locked safety cockpit baseline: `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`.
 - Locked manual opt-in shell baseline: `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype`.
 - Locked controlled execution candidate baseline: `v1.4.0-alpha.9 — Controlled Execution Candidate Gate`.
 - Locked credential boundary baseline: `v1.4.0-alpha.8 — Credential Boundary Runtime Drill`.
@@ -16,16 +17,13 @@ A dark editorial intelligence workspace that turns messy AI output into structur
 - Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
 - No default live execution.
 - No hidden network calls.
-- No real OAuth.
+- No real OAuth/token lifecycle.
 - No real API keys.
 - No real token storage.
 - No credential persistence.
-- No live scraping.
-- No live source fetching.
-- No automatic source fetching.
-- No hidden background fetching.
+- No live scraping or live source fetching.
+- No automatic source fetching or hidden background fetching.
 - No live provider execution.
-- No production OAuth.
 - No backend behavior expansion.
 - No storage expansion.
 - No automatic source verification.
@@ -35,18 +33,18 @@ A dark editorial intelligence workspace that turns messy AI output into structur
 - No cryptographic signature claim.
 - No publication permission claim.
 
-## Alpha.11 additions
+## Alpha.12 additions
 
-- `src/research/manual-execution-safety-cockpit-session-ledger.js`
-- `tests/manual-execution-safety-cockpit-session-ledger-check.mjs`
-- `docs/adr/ADR-017-manual-execution-safety-cockpit-session-ledger.md`
+- `src/research/manual-provider-adapter-sandbox-ephemeral-invocation-contract.js`
+- `tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs`
+- `docs/adr/ADR-018-manual-provider-adapter-sandbox-ephemeral-invocation-contract.md`
 
-The safety cockpit exposes a simulation-only state machine, operator start/abort/timeout drill, kill-switch status, budget/timeout/request guardrails, safe metadata-only session ledger, cross-layer continuity summaries, and no-execution fallback reporting. It does not execute provider calls, fetch sources, run background tasks, store credentials, manage OAuth/token lifecycle, or claim automatic verification/signoff/export/publication permission.
+The adapter sandbox exposes a no-network dry invocation contract: ephemeral credential handoff without persistence, provider request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe request/response metadata ledger. It performs no provider call, source fetch, OAuth/token lifecycle, credential storage, backend/storage expansion, automatic verification, signoff, export lock, cryptographic signature, or publication permission action.
 
-Public version label: v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger.
-Internal evidence metadata must report `1.4.0-alpha.11`.
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.11.
-Public Demo boundary: v1.4.0-alpha.11 keeps the locked public demo/manual workflow behavior unchanged while adding manual execution safety cockpit artifacts only.
+Public version label: v1.4.0-alpha.12 Manual Provider Adapter Sandbox + Ephemeral Invocation Contract.
+Internal evidence metadata must report `1.4.0-alpha.12`.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, Package Script checks, Playwright cache/fail-fast setup, and canonical lock-evidence bundle checks remain active for v1.4.0-alpha.12.
+Public Demo boundary: v1.4.0-alpha.12 keeps the locked public demo/manual workflow behavior unchanged while adding no-network adapter sandbox artifacts only.
 
 ## Validation
 
