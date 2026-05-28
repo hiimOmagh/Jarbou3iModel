@@ -23,12 +23,17 @@ for (const token of [
   'lock-evidence-bundle',
   'no-browser-lock-evidence-log',
   'browser-lock-evidence-log',
+  'playwright-install-log',
   'hosted-demo-evidence',
+  'lock-evidence-bundle-decision',
+  'canonical bundle policy: upload only when no-browser and browser both pass',
   'download-artifact@v6',
   'upload-artifact@v6',
   'Build canonical lock evidence bundle',
   'lock-evidence-bundle_1.4.0-alpha.6_${{ github.run_id }}',
-  'needs: [no-browser, browser]'
+  'needs: [no-browser, browser]',
+  'Download Playwright install evidence log',
+  'if: always()'
 ]) assert.ok(workflow.includes(token), `workflow missing ${token}`);
 
 for (const forbidden of [
@@ -42,6 +47,7 @@ for (const token of [
   '${{ runner.temp }}/lock-evidence-input/logs',
   '${{ runner.temp }}/hosted-demo-evidence',
   '${{ runner.temp }}/lock-evidence-bundle',
+  '${{ runner.temp }}/lock-evidence-bundle-diagnostic/lock-evidence-bundle-decision.txt',
   'LOCK_EVIDENCE_INPUT_DIR: ${{ runner.temp }}/lock-evidence-input',
   'HOSTED_DEMO_EVIDENCE_DIR: ${{ runner.temp }}/hosted-demo-evidence',
   'LOCK_EVIDENCE_BUNDLE_DIR: ${{ runner.temp }}/lock-evidence-bundle'
@@ -57,6 +63,8 @@ for (const token of [
   'visible-text-fr.json',
   'CI gate passed: no-browser',
   'CI gate passed: browser',
+  'playwright-install.log',
+  'playwright_install_log_present',
   'stale_version_residue_detected',
   'lock_artifact_ready'
 ]) assert.ok(script.includes(token), `bundle script missing ${token}`);
@@ -70,6 +78,11 @@ assert.ok(workflow.includes('exit $status'), 'workflow must return the captured 
 assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log"'), false, 'no-browser gate must not mask failures through tee pipeline');
 assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"'), false, 'browser gate must not mask failures through tee pipeline');
 assert.ok(workflow.includes('test -f "$RUNNER_TEMP/hosted-demo-evidence/matrix-summary.json"'), 'browser job must require matrix-summary.json before artifact upload');
+assert.ok(workflow.includes('Browser gate pending: Playwright install has not completed yet.'), 'browser job must initialize browser.log before setup can fail');
+assert.ok(workflow.includes('Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'), 'browser job must stamp browser.log when the browser gate starts');
+assert.ok(workflow.includes('Playwright install started: npx playwright install --with-deps chromium'), 'browser job must stamp playwright install log');
+assert.ok(workflow.includes("if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}"), 'canonical bundle upload/build steps must remain success-gated');
+assert.ok(workflow.includes('if: always()'), 'lock evidence decision job must run even when canonical bundle is not buildable');
 assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.6'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
@@ -86,7 +99,8 @@ const out = path.join(tmp, 'bundle-output');
 fs.mkdirSync(hosted, {recursive:true});
 fs.mkdirSync(logs, {recursive:true});
 fs.writeFileSync(path.join(logs, 'no-browser.log'), `Registry: ${RELEASE}\nCI gate passed: no-browser\nchecks=101\n`);
-fs.writeFileSync(path.join(logs, 'browser.log'), `Registry: ${RELEASE}\nCI gate passed: browser\nchecks=13\n`);
+fs.writeFileSync(path.join(logs, 'playwright-install.log'), 'Playwright install started: npx playwright install --with-deps chromium\n');
+fs.writeFileSync(path.join(logs, 'browser.log'), `Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser\nRegistry: ${RELEASE}\nCI gate passed: browser\nchecks=13\n`);
 const matrixRows = [];
 for (const locale of matrixConfig.locales) {
   fs.mkdirSync(path.join(hosted, locale), {recursive:true});
@@ -140,11 +154,13 @@ assert.equal(manifest.evidence_matrix.failed_rows, 0);
 assert.equal(manifest.evidence_matrix.language_purity_passed, true);
 assert.equal(manifest.bundle_validation.status, 'passed');
 assert.equal(manifest.bundle_validation.lock_artifact_ready, true);
+assert.equal(manifest.browser.playwright_install_log_file, 'logs/playwright-install.log');
 assert.ok(fs.existsSync(path.join(bundleDir, 'checksums', 'SHA256SUMS.txt')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'hosted-demo-metadata.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'matrix-summary.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'en', 'landing.validation.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'no-browser.log')));
+assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'playwright-install.log')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'browser.log')));
 
 const syntax = spawnSync(process.execPath, ['--check', 'scripts/build-lock-evidence-bundle.mjs'], {encoding:'utf8'});

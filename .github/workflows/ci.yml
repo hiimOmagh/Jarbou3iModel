@@ -65,12 +65,21 @@ jobs:
         run: node tests/lockfile-public-registry-check.mjs
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund --ignore-scripts
+      - name: Initialize browser lock evidence workspace
+        shell: bash
+        run: |
+          rm -rf "$RUNNER_TEMP/lock-evidence-input" "$RUNNER_TEMP/hosted-demo-evidence" "$RUNNER_TEMP/lock-evidence-bundle"
+          rm -rf "$GITHUB_WORKSPACE/ci-artifacts"
+          rm -rf "$GITHUB_WORKSPACE/test-results/hosted-demo-evidence"
+          mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs" "$RUNNER_TEMP/hosted-demo-evidence"
+          printf 'Browser gate pending: Playwright install has not completed yet.\n' > "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
       - name: Install Playwright browsers with evidence log
         shell: bash
         run: |
           mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
+          printf 'Playwright install started: npx playwright install --with-deps chromium\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
           set +e
-          npx playwright install --with-deps chromium > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log" 2>&1
+          npx playwright install --with-deps chromium >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log" 2>&1
           status=$?
           cat "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
           exit $status
@@ -83,12 +92,10 @@ jobs:
       - name: Run browser gate with lock-evidence log
         shell: bash
         run: |
-          rm -rf "$RUNNER_TEMP/lock-evidence-input" "$RUNNER_TEMP/hosted-demo-evidence" "$RUNNER_TEMP/lock-evidence-bundle"
-          rm -rf "$GITHUB_WORKSPACE/ci-artifacts"
-          rm -rf "$GITHUB_WORKSPACE/test-results/hosted-demo-evidence"
           mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs" "$RUNNER_TEMP/hosted-demo-evidence"
+          printf '\nBrowser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser\n' >> "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
           set +e
-          HOSTED_DEMO_EVIDENCE_DIR="$RUNNER_TEMP/hosted-demo-evidence" PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser > "$RUNNER_TEMP/lock-evidence-input/logs/browser.log" 2>&1
+          HOSTED_DEMO_EVIDENCE_DIR="$RUNNER_TEMP/hosted-demo-evidence" PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser >> "$RUNNER_TEMP/lock-evidence-input/logs/browser.log" 2>&1
           status=$?
           cat "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
           if [ $status -ne 0 ]; then
@@ -120,31 +127,62 @@ jobs:
     runs-on: ubuntu-latest
     needs: [no-browser, browser]
     timeout-minutes: 15
-    if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
+    if: always()
     steps:
+      - name: Write lock evidence bundle decision
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/lock-evidence-bundle-diagnostic"
+          {
+            echo "lock-evidence-bundle decision"
+            echo "no-browser result: ${{ needs.no-browser.result }}"
+            echo "browser result: ${{ needs.browser.result }}"
+            echo "canonical bundle required: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}"
+            echo "canonical bundle policy: upload only when no-browser and browser both pass"
+          } > "$RUNNER_TEMP/lock-evidence-bundle-diagnostic/lock-evidence-bundle-decision.txt"
+          cat "$RUNNER_TEMP/lock-evidence-bundle-diagnostic/lock-evidence-bundle-decision.txt"
+      - name: Upload lock evidence bundle decision
+        uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: lock-evidence-bundle-decision
+          path: ${{ runner.temp }}/lock-evidence-bundle-diagnostic/lock-evidence-bundle-decision.txt
       - uses: actions/checkout@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
       - uses: actions/setup-node@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         with:
           node-version: 24
           cache: npm
       - name: Install locked dependencies
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         run: npm ci --no-audit --no-fund --ignore-scripts
       - name: Download no-browser lock evidence log
         uses: actions/download-artifact@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         with:
           name: no-browser-lock-evidence-log
           path: ${{ runner.temp }}/lock-evidence-input/logs
+      - name: Download Playwright install evidence log
+        uses: actions/download-artifact@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
+        with:
+          name: playwright-install-log
+          path: ${{ runner.temp }}/lock-evidence-input/logs
       - name: Download browser lock evidence log
         uses: actions/download-artifact@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         with:
           name: browser-lock-evidence-log
           path: ${{ runner.temp }}/lock-evidence-input/logs
       - name: Download hosted demo evidence
         uses: actions/download-artifact@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         with:
           name: hosted-demo-evidence
           path: ${{ runner.temp }}/hosted-demo-evidence
       - name: Build canonical lock evidence bundle
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         env:
           LOCK_EVIDENCE_INPUT_DIR: ${{ runner.temp }}/lock-evidence-input
           HOSTED_DEMO_EVIDENCE_DIR: ${{ runner.temp }}/hosted-demo-evidence
@@ -152,6 +190,7 @@ jobs:
         run: node scripts/build-lock-evidence-bundle.mjs
       - name: Upload canonical lock evidence bundle
         uses: actions/upload-artifact@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         with:
           name: lock-evidence-bundle_1.4.0-alpha.6_${{ github.run_id }}
           path: ${{ runner.temp }}/lock-evidence-bundle/lock-evidence-bundle_1.4.0-alpha.6_${{ github.run_id }}
