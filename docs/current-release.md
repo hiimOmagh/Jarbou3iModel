@@ -1,11 +1,12 @@
 # Current Release
 
-## v1.4.0-alpha.7 — Source Acquisition Control Surface
+## v1.4.0-alpha.8 — Credential Boundary Runtime Drill
 
 Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle upload.
 
-Public release label: v1.4.0-alpha.7 Source Acquisition Control Surface.
+Public release label: v1.4.0-alpha.8 Credential Boundary Runtime Drill.
 
+Last locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
 Last locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
 Last locked replay/approval baseline: `v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation`.
 Last locked trace/readiness baseline: `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`.
@@ -18,16 +19,17 @@ Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`. Do no
 
 ## Scope
 
-Planning/control-plane only. Deterministic source acquisition control surface:
+Planning/control-plane only. Deterministic credential boundary runtime drills:
 
-- Source acquisition mode selector semantics: `manual_source`, `imported_evidence`, `fixture_source`, `provider_proposed_source`, `blocked_source`, `future_controlled_fetch`.
-- Permission, provenance, risk, and review-state labels for each source mode.
-- Review queue routing compatibility for accepted/manual/imported/fixture/provider-proposed candidates.
-- Blocked-source routing that cannot enter synthesis or export.
-- Future controlled fetch represented as disabled/future-gated state only.
-- Source-to-claim linkage preservation and source-gap warnings.
-- Provider-suggested sources cannot bypass review and cannot be auto-accepted.
-- ADR-013 source acquisition control surface.
+- Fake secret injection drill.
+- Export leak drill.
+- Log leak drill.
+- Browser-visible text leak drill.
+- Fixture leak drill.
+- Provider payload secret-boundary drill.
+- Release bundle secret-boundary drill.
+- Redaction reports and safe metadata-only outputs.
+- Provider/source acquisition control surface from alpha.7 remains preserved.
 - Provider execution mock-to-live equivalence from alpha.6 remains preserved.
 - Provider/source dry-run replay pack and operator approval simulation from alpha.5 remain preserved.
 - Provider/source dry-run trace inspector and execution readiness report from alpha.4 remain preserved.
@@ -38,6 +40,15 @@ Planning/control-plane only. Deterministic source acquisition control surface:
 ## Boundary flags
 
 ```text
+real_oauth_enabled: false
+real_api_keys_used: false
+real_token_storage_enabled: false
+raw_token_exported: false
+access_token_exported: false
+refresh_token_exported: false
+key_exported: false
+secret_exported: false
+credential_exported: false
 live_fetching_performed: false
 live_source_fetching_performed: false
 source_fetching_performed: false
@@ -56,33 +67,33 @@ automatic_signoff_performed: false
 automatic_export_lock_performed: false
 cryptographic_signature_claimed: false
 publication_permission_claimed: false
-source_acquisition_control_surface_only: true
-review_queue_required: true
+fake_secret_drill_only: true
+redaction_required: true
 ```
 
-No live scraping. No live source fetching. No hidden background fetching. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No provider-suggested source bypass. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
+No real OAuth. No production OAuth. No real API keys. No real token storage. No live scraping. No live source fetching. No hidden background fetching. No provider execution expansion. No backend behavior expansion. No storage expansion. No automatic source verification. No provider-suggested source bypass. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
 
 Screenshots alone are insufficient. A ZIP archive alone is insufficient.
 
 ## Validation
 
-- Version: `1.4.0-alpha.7`
-- Required targeted checks: `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`, `tests/provider-source-dry-run-replay-pack-check.mjs`, `tests/provider-source-operator-approval-simulation-check.mjs`.
+- Version: `1.4.0-alpha.8`
+- Required targeted checks: `tests/credential-boundary-runtime-drill-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`, `tests/provider-source-dry-run-replay-pack-check.mjs`, `tests/provider-source-operator-approval-simulation-check.mjs`.
 - Required CI: `npm run test:ci:no-browser`, `npm run test:ci:browser`.
 
-Feature surface is frozen except deterministic source-acquisition control artifacts; no live execution or live fetching is enabled.
+Feature surface is frozen except deterministic credential-boundary drill artifacts; no live execution, live fetching, or real credential handling is enabled.
 
 ## Release Manifest Compatibility
 
 Package: `jarbou3i-research-engine`
-Version: `1.4.0-alpha.7`
+Version: `1.4.0-alpha.8`
 Runtime capability change: no
 Required browser gates before publishing: `npm run test:ci:browser`
 Release archive exclusions: `node_modules/`, `playwright-report/`, `test-results/`, `*.zip`, `backend/.dev.vars`
 Required cleanup commands: remove generated Playwright/test output before packaging.
 
-Machine tokens: runtime_capability_change=false; release_type=source-acquisition-control-surface; release_scope=deterministic-source-mode-control-plane-only; test:ci:browser required.
+Machine tokens: runtime_capability_change=false; release_type=credential-boundary-runtime-drill; release_scope=fake-secret-boundary-drill-only; test:ci:browser required.
 Node 24 CI compatibility preserved.
 Release lock requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 Planning gate continuity: apply integrity, changed-files-only patching, Package Script Compression, Version Suite Registry, Fixture Registry, and test organization checks remain active.
-Public Demo boundary: v1.4.0-alpha.7 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic source acquisition control only.
+Public Demo boundary: v1.4.0-alpha.8 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic credential-boundary drill artifacts only.

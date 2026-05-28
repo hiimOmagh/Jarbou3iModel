@@ -31,6 +31,7 @@ const dryRunReplayPack = read('src/research/provider-source-dry-run-replay-pack.
 const operatorApprovalSimulation = read('src/research/provider-source-operator-approval-simulation.js');
 const mockToLiveEquivalence = read('src/research/provider-execution-mock-to-live-equivalence.js');
 const sourceAcquisitionControlSurface = read('src/research/source-acquisition-control-surface.js');
+const credentialBoundaryRuntimeDrill = read('src/research/credential-boundary-runtime-drill.js');
 const css = read('src/styles.css');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 const pkg = JSON.parse(read('package.json'));
@@ -57,6 +58,7 @@ try {
   new vm.Script(operatorApprovalSimulation, { filename: 'src/research/provider-source-operator-approval-simulation.js' });
   new vm.Script(mockToLiveEquivalence, { filename: 'src/research/provider-execution-mock-to-live-equivalence.js' });
   new vm.Script(sourceAcquisitionControlSurface, { filename: 'src/research/source-acquisition-control-surface.js' });
+  new vm.Script(credentialBoundaryRuntimeDrill, { filename: 'src/research/credential-boundary-runtime-drill.js' });
 } catch (error) {
   fail(`JavaScript syntax error: ${error.message}`);
 }
@@ -115,7 +117,7 @@ for (const asset of ['assets/jarbou3i-mascot-192.png', 'assets/jarbou3i-mascot-5
   if (size > runtimeAssetLimit) fail(`${asset} is too large for runtime use: ${size} bytes`);
 }
 
-if (index.length > 52000) fail(`index.html is too large after source-to-brief workbench integration: ${index.length} bytes`);
+if (index.length > 55000) fail(`index.html is too large after credential-boundary drill integration: ${index.length} bytes`);
 if (!index.includes('href="src/styles.css"')) fail('external stylesheet link missing');
 if (!index.includes('src="src/app.js" defer')) fail('deferred app script missing');
 if (!index.includes('src="src/research-engine.js" defer')) fail('deferred research script missing');
@@ -152,11 +154,13 @@ if (!index.includes('src="src/research/source-connectors.js" defer')) fail('sour
 if (!index.includes('src="src/research/provider-source-dry-run-replay-pack.js" defer')) fail('dry-run replay pack module missing from index');
 if (!index.includes('src="src/research/provider-source-operator-approval-simulation.js" defer')) fail('operator approval simulation module missing from index');
 if (!index.includes('src="src/research/provider-execution-mock-to-live-equivalence.js" defer')) fail('mock-to-live equivalence module missing from index');
-if (!index.includes('src="src/research/source-acquisition-control-surface.js" defer')) fail('source acquisition control surface module missing from index');
+if (!index.includes('src="src/research/source-acquisition-control-surface.js" defer')) fail('credential boundary runtime drill module missing from index');
 if (!dryRunReplayPack.includes('providerSourceDryRunReplayPack') || !dryRunReplayPack.includes('buildDryRunReplayPack')) fail('dry-run replay pack module missing required contracts');
 if (!operatorApprovalSimulation.includes('providerSourceOperatorApprovalSimulation') || !operatorApprovalSimulation.includes('simulateOperatorApproval')) fail('operator approval simulation module missing required contracts');
 if (!mockToLiveEquivalence.includes('providerExecutionMockToLiveEquivalence') || !mockToLiveEquivalence.includes('buildMockToLiveEquivalenceReport')) fail('mock-to-live equivalence module missing required contracts');
 if (!sourceAcquisitionControlSurface.includes('sourceAcquisitionControlSurface') || !sourceAcquisitionControlSurface.includes('buildSourceAcquisitionControlSurface')) fail('source acquisition control surface module missing required contracts');
+if (!credentialBoundaryRuntimeDrill.includes('credentialBoundaryRuntimeDrill') || !credentialBoundaryRuntimeDrill.includes('runCredentialBoundaryRuntimeDrill')) fail('credential boundary runtime drill module missing required contracts');
+if (!index.includes('src="src/research/credential-boundary-runtime-drill.js" defer')) fail('credential boundary runtime drill module missing from index');
 if (!index.includes('src="src/research/evidence-scorer.js" defer')) fail('evidence scorer module missing from index');
 if (!evidenceScorer.includes('SCORING_VERSION') || !evidenceScorer.includes('attention_signal_is_not_evidence_reliability')) fail('evidence scorer must separate attention from reliability');
 if (!index.includes('src="src/research/source-import-adapter.js" defer')) fail('source import adapter module missing from index');
@@ -180,8 +184,8 @@ if (!app.includes('schema_version')) fail('schema_version support is missing');
 if (!app.includes('modeResearch')) fail('research prompt mode is missing');
 if (!app.includes('qualityGateHtml')) fail('quality gate UI is missing');
 if (!app.includes('actorPowerScore')) fail('computed API scoring is missing');
-if (pkg.version !== '1.4.0-alpha.7') fail('package version must be 1.4.0-alpha.7');
-if (!index.includes('name="app-version" content="1.4.0-alpha.7"')) fail('app version metadata missing');
+if (pkg.version !== '1.4.0-alpha.8') fail('package version must be 1.4.0-alpha.8');
+if (!index.includes('name="app-version" content="1.4.0-alpha.8"')) fail('app version metadata missing');
 
 console.log('Static checks passed.');
 process.exit(0);

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.7",
-  "internal_build_version": "1.4.0-alpha.7",
-  "public_version_label": "v1.4.0-alpha.7 Source Acquisition Control Surface",
+  "evidence_matrix_config_version": "1.4.0-alpha.8",
+  "internal_build_version": "1.4.0-alpha.8",
+  "public_version_label": "v1.4.0-alpha.8 Credential Boundary Runtime Drill",
   "locales": [
     "en",
     "ar",
@@ -16,7 +16,8 @@
         "Export Pack v3",
         "Signed Export Handoff Pack",
         "Lock Ledger Review Surface",
-        "Source Acquisition Control Surface"
+        "Source Acquisition Control Surface",
+        "Credential Boundary Runtime Drill"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -34,7 +35,8 @@
         "تصدير",
         "حزمة تسليم التصدير المعتمدة",
         "سطح مراجعة سجل قفل التصدير",
-        "سطح التحكم في اكتساب المصادر"
+        "سطح التحكم في اكتساب المصادر",
+        "حدود بيانات الاعتماد"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -50,7 +52,8 @@
         "Export Pack v3",
         "Pack de remise export signé",
         "Surface de revue du registre de verrouillage",
-        "Surface de contrôle d’acquisition des sources"
+        "Surface de contrôle d’acquisition des sources",
+        "frontière des identifiants"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -236,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.7 Source Acquisition Control Surface",
-    "ar": "v1.4.0-alpha.7 سطح التحكم في اكتساب المصادر · تحكم بأنماط المصادر فقط",
-    "fr": "v1.4.0-alpha.7 Surface de contrôle d’acquisition des sources · contrôle des modes source uniquement"
+    "en": "v1.4.0-alpha.8 Credential Boundary Runtime Drill",
+    "ar": "v1.4.0-alpha.8 تدريب حدود بيانات الاعتماد وقت التشغيل · أسرار وهمية فقط",
+    "fr": "v1.4.0-alpha.8 Drill runtime de frontière des identifiants · faux secrets uniquement"
   }
 }

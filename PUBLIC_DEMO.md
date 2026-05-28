@@ -1,18 +1,19 @@
-# Public Demo — v1.4.0-alpha.7 Source Acquisition Control Surface
+# Public Demo — v1.4.0-alpha.8 Credential Boundary Runtime Drill
 
-The public demo remains a static/manual workflow surface. v1.4.0-alpha.7 adds deterministic source acquisition mode control only.
+The public demo remains a static/manual workflow surface. v1.4.0-alpha.8 adds deterministic credential-boundary runtime drills only.
 
-Public release label: v1.4.0-alpha.7 Source Acquisition Control Surface.
+Public release label: v1.4.0-alpha.8 Credential Boundary Runtime Drill.
 
 Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
+Locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
 Locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
 Locked trace/readiness baseline: `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`.
 
-No live scraping. No live source fetching. No hidden background fetching. No live provider execution. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No provider-suggested source bypass. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
+No real OAuth. No real API keys. No real token storage. No live scraping. No live source fetching. No hidden background fetching. No live provider execution. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No provider-suggested source bypass. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
 
-Hosted demo metadata and hosted evidence must report v1.4.0-alpha.7 before lock.
+Hosted demo metadata and hosted evidence must report v1.4.0-alpha.8 before lock.
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.7.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.8.
 
 Screenshots alone are insufficient. ZIP archive alone is insufficient; local ZIP existence must be paired with green CI, reviewed hosted evidence, and canonical lock evidence.
 

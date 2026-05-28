@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.7';
-const CURRENT_TITLE = 'Source Acquisition Control Surface';
+const CURRENT_VERSION = '1.4.0-alpha.8';
+const CURRENT_TITLE = 'Credential Boundary Runtime Drill';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');

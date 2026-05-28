@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.7';
-const CURRENT_TITLE = 'Source Acquisition Control Surface';
+const CURRENT_VERSION = '1.4.0-alpha.8';
+const CURRENT_TITLE = 'Credential Boundary Runtime Drill';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

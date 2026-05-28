@@ -4,8 +4,8 @@ import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.7';
-const CURRENT_TITLE = 'Source Acquisition Control Surface';
+const CURRENT_VERSION = '1.4.0-alpha.8';
+const CURRENT_TITLE = 'Credential Boundary Runtime Drill';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.3.0-manual-workflow-release.zip';

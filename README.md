@@ -1,15 +1,19 @@
 # Jarbou3i Research Engine
 
-`v1.4.0-alpha.7 — Source Acquisition Control Surface`
+`v1.4.0-alpha.8 — Credential Boundary Runtime Drill`
 
-A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds deterministic source acquisition mode control only.
+A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds deterministic credential-boundary runtime drills only.
 
 ## Current boundary
 
-- Current package version: `1.4.0-alpha.7`.
-- Current release: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
+- Current package version: `1.4.0-alpha.8`.
+- Current release: `v1.4.0-alpha.8 — Credential Boundary Runtime Drill`.
 - Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
+- Locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
 - Locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
+- No real OAuth.
+- No real API keys.
+- No real token storage.
 - No live scraping.
 - No live source fetching.
 - No hidden background fetching.
@@ -24,13 +28,13 @@ A dark editorial intelligence workspace that turns messy AI output into structur
 - No cryptographic signature claim.
 - No publication permission claim.
 
-## Alpha.7 additions
+## Alpha.8 additions
 
-- `src/research/source-acquisition-control-surface.js`
-- `tests/source-acquisition-control-surface-check.mjs`
-- `docs/adr/ADR-013-source-acquisition-control-surface.md`
+- `src/research/credential-boundary-runtime-drill.js`
+- `tests/credential-boundary-runtime-drill-check.mjs`
+- `docs/adr/ADR-014-credential-boundary-runtime-drill.md`
 
-The source acquisition control surface classifies source candidates as `manual_source`, `imported_evidence`, `fixture_source`, `provider_proposed_source`, `blocked_source`, or `future_controlled_fetch`. It adds permission/provenance/risk labels, review queue routing, source-to-claim linkage preservation, and source-gap warnings. It never fetches, scrapes, verifies, auto-accepts, or authorizes provider-suggested sources.
+The credential boundary runtime drill runs deterministic fake-secret test vectors across fake secret injection, export leak, log leak, browser-visible text leak, fixture leak, provider payload secret-boundary, and release bundle secret-boundary surfaces. It produces redaction reports and safe metadata-only outputs. It never uses or stores real credentials.
 
 ## Validation
 
@@ -40,16 +44,16 @@ npm run test:ci:no-browser
 npm run test:ci:browser
 ```
 
-Targeted alpha.7 check:
+Targeted alpha.8 check:
 
 ```bash
-node tests/source-acquisition-control-surface-check.mjs
+node tests/credential-boundary-runtime-drill-check.mjs
 ```
 
-Public version label: v1.4.0-alpha.7 Source Acquisition Control Surface.
+Public version label: v1.4.0-alpha.8 Credential Boundary Runtime Drill.
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.7.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.8.
 
-Public Demo boundary: v1.4.0-alpha.7 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic source acquisition control only.
+Public Demo boundary: v1.4.0-alpha.8 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic credential boundary drill artifacts only.
 
 Screenshots alone are insufficient. ZIP archive alone is insufficient; local ZIP existence must be paired with green CI, reviewed hosted evidence, and canonical lock evidence.

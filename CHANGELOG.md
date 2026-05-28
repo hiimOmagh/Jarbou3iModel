@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.4.0-alpha.8 — Credential Boundary Runtime Drill
+
+- Added deterministic credential boundary runtime drill.
+- Added fake secret injection, export leak, log leak, browser-visible text leak, fixture leak, provider payload secret-boundary, and release bundle secret-boundary drills.
+- Added redaction reports and safe metadata-only outputs.
+- Added ADR-014 for credential boundary runtime drills.
+- Added targeted check `tests/credential-boundary-runtime-drill-check.mjs` and CI registry integration.
+- Preserved locked v1.4.0-alpha.7 source acquisition baseline, locked v1.4.0-alpha.6 mock-to-live equivalence baseline, locked v1.4.0-alpha.5 replay/approval baseline, locked v1.4.0-alpha.4 trace/readiness baseline, and locked v1.3.0 stable manual workflow baseline.
+- No real OAuth, no real API keys, no real token storage, live scraping, live source fetching, hidden background fetching, provider execution expansion, no production OAuth, backend expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+
+
 ## v1.4.0-alpha.7 — Source Acquisition Control Surface
 
 - Added deterministic source acquisition control surface.
@@ -8,7 +19,7 @@
 - Added ADR-013 for source acquisition controls.
 - Added targeted check `tests/source-acquisition-control-surface-check.mjs` and CI registry integration.
 - Preserved locked v1.4.0-alpha.6 mock-to-live equivalence baseline, locked v1.4.0-alpha.5 replay/approval baseline, locked v1.4.0-alpha.4 trace/readiness baseline, and locked v1.3.0 stable manual workflow baseline.
-- No live scraping, live source fetching, hidden background fetching, provider execution expansion, production OAuth, backend expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+- No live scraping, live source fetching, hidden background fetching, provider execution expansion, no production OAuth, backend expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
 
 ## v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence
 
@@ -18,7 +29,7 @@
 - Added ADR-012 for the mock-to-live equivalence boundary.
 - Added targeted check `tests/provider-execution-mock-to-live-equivalence-check.mjs` and CI registry integration.
 - Preserved locked v1.4.0-alpha.5 replay/approval baseline, locked v1.4.0-alpha.4 trace/readiness baseline, and locked v1.3.0 stable manual workflow baseline.
-- No live scraping, live source fetching, provider execution expansion, production OAuth, backend expansion, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+- No live scraping, live source fetching, provider execution expansion, no production OAuth, backend expansion, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
 
 ## v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation
 
@@ -28,7 +39,7 @@
 - Added ADR-010 and ADR-011 for replay-pack and approval-simulation boundaries.
 - Added targeted checks for replay pack and approval simulation.
 - Preserved locked v1.4.0-alpha.4 trace/readiness baseline and locked v1.3.0 stable manual workflow baseline.
-- No live scraping, live source fetching, provider execution expansion, production OAuth, backend expansion, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+- No live scraping, live source fetching, provider execution expansion, no production OAuth, backend expansion, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
 
 ## v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
 

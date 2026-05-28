@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.7';
-const CURRENT_TITLE = 'Source Acquisition Control Surface';
+const CURRENT_VERSION = '1.4.0-alpha.8';
+const CURRENT_TITLE = 'Credential Boundary Runtime Drill';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/evidence-workspace-ux.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');

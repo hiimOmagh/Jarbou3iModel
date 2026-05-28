@@ -51,7 +51,7 @@ for (const asset of ['assets/jarbou3i-mascot-192.png','assets/jarbou3i-mascot-51
   const size = fs.statSync(asset).size;
   if (size > 600 * 1024) fail(`${asset} is too large for runtime use: ${size} bytes`);
 }
-if (index.length > 52000) fail(`index.html is too large after source-to-brief workbench integration: ${index.length} bytes`);
+if (index.length > 55000) fail(`index.html is too large after credential-boundary drill integration: ${index.length} bytes`);
 if (!index.includes('href="src/styles.css"')) fail('external stylesheet link missing');
 if (!index.includes('src="src/app.js" defer')) fail('deferred app script missing');
 if (!index.includes('src="src/research-engine.js" defer')) fail('deferred research script missing');
@@ -111,8 +111,8 @@ if (!researchApp.includes('source_policy')) fail('source policy support missing'
 if (!index.includes('id="evidenceReviewOutput"')) fail('evidence review queue UI missing');
 if (!researchApp.includes('evidence_review_queue') || !researchApp.includes('promoteReviewItem')) fail('evidence review queue support missing');
 if (!sourceConnectors.includes('SOURCE_CONNECTORS') || !sourceConnectors.includes('runSourceFixtureSuite')) fail('source connector contracts missing');
-if (pkg.version !== '1.4.0-alpha.7') fail('package version must be 1.4.0-alpha.7');
-if (!index.includes('name="app-version" content="1.4.0-alpha.7"')) fail('app version metadata missing');
+if (pkg.version !== '1.4.0-alpha.8') fail('package version must be 1.4.0-alpha.8');
+if (!index.includes('name="app-version" content="1.4.0-alpha.8"')) fail('app version metadata missing');
 
 const requiredTop = ['schema_version','subject','interests','actors','tools','narrative','results','feedback','contradictions','scenarios'];
 const arraySections = ['interests','actors','tools','narrative','results','feedback'];
