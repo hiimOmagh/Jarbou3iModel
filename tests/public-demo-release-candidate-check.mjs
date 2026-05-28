@@ -17,8 +17,17 @@ assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
 assert.equal(registry.release_title, 'v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger');
 assert.ok(index.includes('v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger') && (index.includes('Safety Cockpit Simulation Only') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('Safety Cockpit Simulation Only')), 'index visible badge must show alpha.9 manual execution safety cockpit + session ledger identity');
-assert.ok(index.includes('سطح التحكم في اكتساب المصادر') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('سطح التحكم في اكتساب المصادر'), 'Arabic alpha.1 public visible copy missing');
-assert.ok(index.includes('Surface de contrôle d’acquisition des sources') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('Surface de contrôle d’acquisition des sources'), 'French alpha.1 public visible copy missing');
+const renderHelpers = fs.readFileSync('src/research/render-helpers.js', 'utf8');
+assert.ok(index.includes('سطح التحكم في اكتساب المصادر') || renderHelpers.includes('سطح التحكم في اكتساب المصادر'), 'Arabic alpha.1 public visible copy missing');
+assert.ok(index.includes('Surface de contrôle d’acquisition des sources') || renderHelpers.includes('Surface de contrôle d’acquisition des sources'), 'French alpha.1 public visible copy missing');
+const hostedDemoBodies = [...renderHelpers.matchAll(/hostedDemoVerificationBody:'([^']+)'/g)].map((match)=>match[1]);
+const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
+assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار')), 'Arabic current-release description must identify alpha.11 safety cockpit/session ledger');
+for (const body of arabicHostedDemoBodies) {
+  for (const stale of ['النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار', 'نموذج أولي محدود للتنفيذ الحي اليدوي', 'هيكل اشتراك يدوي فقط']) {
+    assert.equal(body.includes(stale), false, `Arabic current-release description must not carry stale alpha.10 wording: ${stale}`);
+  }
+}
 for (const doc of [current, publicDemo, roadmap, qa]) {
   assert.ok(doc.includes(VERSION), 'release doc must include stable version');
   assert.ok(/no live|No live|لا يوجد|aucune recherche/i.test(doc), 'release doc must preserve no-live boundary');

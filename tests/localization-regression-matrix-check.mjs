@@ -30,6 +30,24 @@ for (const staleReleaseLabel of [
   assert.ok(spec.includes(staleReleaseLabel), `visible-text stale release-label guard must catch ${staleReleaseLabel}`);
   assert.equal(renderPublicLabels.includes(staleReleaseLabel), false, `render helpers must not expose stale localized release label: ${staleReleaseLabel}`);
 }
+for (const staleCurrentDescription of [
+  'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
+  'نموذج أولي محدود للتنفيذ الحي اليدوي',
+  'هيكل اشتراك يدوي فقط'
+]) {
+  assert.ok(spec.includes(staleCurrentDescription), `visible-text current-release description guard must catch ${staleCurrentDescription}`);
+}
+const hostedDemoBodies = [...renderPublicLabels.matchAll(/hostedDemoVerificationBody:'([^']+)'/g)].map((match)=>match[1]);
+const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
+assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
+for (const body of arabicHostedDemoBodies) {
+  assert.ok(body.includes('قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار'), 'Arabic current-release description must identify alpha.11 safety cockpit/session ledger');
+  for (const staleCurrentDescription of [
+    'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
+    'نموذج أولي محدود للتنفيذ الحي اليدوي',
+    'هيكل اشتراك يدوي فقط'
+  ]) assert.equal(body.includes(staleCurrentDescription), false, `Arabic current-release description must not carry stale alpha.10 wording: ${staleCurrentDescription}`);
+}
 for (const residual of [
   'scores explain prioritization not truth',
   'Scores explain prioritization, not truth',
