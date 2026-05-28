@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.4.0-alpha.2';
-export const RELEASE_TITLE = 'v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts';
+export const VERSION = '1.4.0-alpha.3';
+export const RELEASE_TITLE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

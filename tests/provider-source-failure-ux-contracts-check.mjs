@@ -2,10 +2,10 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.2';
+const VERSION = '1.4.0-alpha.3';
 const STABLE_BASELINE = '1.3.0';
 const CONTROL_BASELINE = '1.4.0-alpha.1';
-const MILESTONE = 'v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts';
+const MILESTONE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
 const source = fs.readFileSync('src/research/provider-source-failure-ux-contracts.js', 'utf8');
 
 new vm.Script(source, { filename: 'src/research/provider-source-failure-ux-contracts.js' });

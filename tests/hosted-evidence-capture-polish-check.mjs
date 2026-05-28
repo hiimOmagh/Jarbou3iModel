@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.2';
-const CURRENT_TITLE = 'Provider/Source Execution Policy Matrix + Failure UX Contracts';
+const CURRENT_VERSION = '1.4.0-alpha.3';
+const CURRENT_TITLE = 'Provider/Source Dry-Run Execution Harness + Policy Simulator';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

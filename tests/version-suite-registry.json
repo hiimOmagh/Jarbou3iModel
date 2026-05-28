@@ -1,10 +1,10 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.2",
-  "release_title": "v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts",
+  "version_suite_registry_version": "1.4.0-alpha.3",
+  "release_title": "v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
-  "entry_count": 47,
+  "entry_count": 48,
   "wrapper_files_removed": true,
   "package_script_compression": true,
   "runtime_capability_change": false,
@@ -1831,6 +1831,19 @@
       ],
       "preserved_as": "registry_entry",
       "former_console_message": ""
+    },
+    {
+      "id": "v140a3",
+      "former_file": "tests/v140a3-no-browser-suite.mjs",
+      "check_count": 4,
+      "checks": [
+        "tests/provider-execution-threat-model-check.mjs",
+        "tests/provider-execution-preflight-check.mjs",
+        "tests/provider-source-dry-run-execution-harness-check.mjs",
+        "tests/provider-source-policy-simulator-check.mjs"
+      ],
+      "preserved_as": "registry_entry",
+      "former_console_message": "v1.4.0-alpha.3 provider/source dry-run execution harness and policy simulator checks passed."
     }
   ]
 }

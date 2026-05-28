@@ -36,7 +36,7 @@ const builder = modules.sourcePacketBuilder;
 const importer = modules.sourcePacketImporter;
 const roundtrip = modules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.4.0-alpha.2');
+assert.equal(pkg.version, '1.4.0-alpha.3');
 assert.equal(builder.VERSION, '1.3.0');
 assert.equal(importer.VERSION, '1.3.0');
 assert.equal(roundtrip.VERSION, '1.3.0');

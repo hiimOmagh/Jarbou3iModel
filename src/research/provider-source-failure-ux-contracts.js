@@ -1,13 +1,13 @@
-/* Jarbou3i Research Engine provider/source failure UX contracts v1.4.0-alpha.2. */
+/* Jarbou3i Research Engine provider/source failure UX contracts v1.4.0-alpha.3. */
 /* Planning/control-plane only. No live execution enabled. See ADR-004 and ADR-005. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.2';
+  const VERSION = '1.4.0-alpha.3';
   const STABLE_BASELINE = '1.3.0';
   const CONTROL_BASELINE = '1.4.0-alpha.1';
-  const MILESTONE = 'v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts';
+  const MILESTONE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
   const MODEL = 'provider_source_failure_ux_contracts.v1';
 
   const CONTRACTS = Object.freeze([
@@ -146,7 +146,7 @@
       all_contracts_preserve_review_boundary: contracts.every(contract => contract.verification_claimed === false),
       all_contracts_define_operator_action: contracts.every(contract => typeof contract.operator_action === 'string' && contract.operator_action.length > 20),
       all_contracts_define_state_transition: contracts.every(contract => typeof contract.state_transition === 'string' && contract.state_transition.length > 5),
-      boundary_statement: 'Failure UX contracts are planning/control-plane artifacts. v1.4.0-alpha.2 defines operator-visible failure states but does not enable live provider or source execution.'
+      boundary_statement: 'Failure UX contracts are planning/control-plane artifacts. v1.4.0-alpha.3 defines operator-visible failure states but does not enable live provider or source execution.'
     });
   }
 

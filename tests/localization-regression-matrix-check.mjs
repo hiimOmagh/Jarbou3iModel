@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.2 Provider/Source Execution Policy Matrix + Failure UX Contracts', 'English public version label must identify v1.4.0-alpha.2');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.2 مصفوفة سياسة تنفيذ المزود/المصدر + عقود تجربة الفشل', 'Arabic public version label must identify v1.4.0-alpha.2');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.2 Matrice de politique d’exécution fournisseur/source + contrats UX d’échec', 'French public version label must identify v1.4.0-alpha.2');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator', 'English public version label must identify v1.4.0-alpha.3');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.3 مصفوفة سياسة تنفيذ المزود/المصدر + عقود تجربة الفشل', 'Arabic public version label must identify v1.4.0-alpha.3');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.3 Matrice de politique d’exécution fournisseur/source + contrats UX d’échec', 'French public version label must identify v1.4.0-alpha.3');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');

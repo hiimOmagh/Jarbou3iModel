@@ -1,7 +1,7 @@
 # ADR-005 — Provider/Source Failure UX Contracts
 
-**Status:** Proposed — planning/control-plane only (v1.4.0-alpha.2)  
-**Milestone:** v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts  
+**Status:** Proposed — planning/control-plane only (v1.4.0-alpha.3)  
+**Milestone:** v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator  
 **Baseline:** v1.3.0 — Stable Manual Workflow Release  
 **Preparation baseline:** v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
 

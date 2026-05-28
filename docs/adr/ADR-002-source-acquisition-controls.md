@@ -1,7 +1,7 @@
 # ADR-002: Source Acquisition Controls
 
-**Status:** Proposed — planning-gate only (v1.4.0-alpha.2)
-**Milestone:** v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
+**Status:** Proposed — planning-gate only (v1.4.0-alpha.3)
+**Milestone:** v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator
 **Date:** 2026-05-25
 **Boundary:** No live source acquisition enabled by this ADR. Implementation gated on a future milestone after all acceptance criteria below are met.
 
@@ -54,7 +54,7 @@ Live-network connectors require a separate implementation milestone with dedicat
 - `controlled-connector-engine.js` is the enforcement point. It must remain the sole entry point for connector invocation.
 - `source-capability-registry.js` must be updated before any new connector is activated.
 - The dry-run / preflight shape of each live connector must be tested in CI before live execution is enabled.
-- `live_fetching_performed: false` must remain true for all connectors in v1.4.0-alpha.2.
+- `live_fetching_performed: false` must remain true for all connectors in v1.4.0-alpha.3.
 
 ---
 

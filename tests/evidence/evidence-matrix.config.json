@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.2",
-  "internal_build_version": "1.4.0-alpha.2",
-  "public_version_label": "v1.4.0-alpha.2 Provider/Source Execution Policy Matrix + Failure UX Contracts",
+  "evidence_matrix_config_version": "1.4.0-alpha.3",
+  "internal_build_version": "1.4.0-alpha.3",
+  "public_version_label": "v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator",
   "locales": [
     "en",
     "ar",
@@ -233,8 +233,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.2 Provider/Source Execution Policy Matrix + Failure UX Contracts",
-    "ar": "v1.4.0-alpha.2 مصفوفة سياسة تنفيذ المزود/المصدر + عقود تجربة الفشل",
-    "fr": "v1.4.0-alpha.2 Matrice de politique d’exécution fournisseur/source + contrats UX d’échec"
+    "en": "v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator",
+    "ar": "v1.4.0-alpha.3 مصفوفة سياسة تنفيذ المزود/المصدر + عقود تجربة الفشل",
+    "fr": "v1.4.0-alpha.3 Matrice de politique d’exécution fournisseur/source + contrats UX d’échec"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "version": "1.4.0-alpha.2",
-  "release_title": "v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts",
+  "version": "1.4.0-alpha.3",
+  "release_title": "v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator",
   "package": "jarbou3i-research-engine",
-  "release_type": "provider-source-execution-policy-failure-ux-contracts",
+  "release_type": "provider-source-dry-run-policy-simulator",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
   "oauth_behavior_changed": false,
@@ -44,9 +44,9 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Planning/control-plane milestone after locked v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation and locked v1.3.0 — Stable Manual Workflow Release. Adds provider/source execution policy matrix, failure UX contracts, ADR-004 provider/source execution policy matrix, and ADR-005 provider/source failure UX contracts. It does not enable live provider execution, live source fetching, production OAuth, backend behavior, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.",
+  "release_scope": "Planning/control-plane milestone: deterministic dry-run after locked v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts and locked v1.3.0 — Stable Manual Workflow Release. Adds provider/source dry-run execution harness, policy simulator, ADR-006 provider/source dry-run execution harness, and ADR-007 provider/source policy simulator. It does not enable live provider execution, live source fetching, production OAuth, backend behavior, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "v1.4.0-alpha.2 Provider/Source Execution Policy Matrix + Failure UX Contracts. Planning/control-plane only after locked v1.4.0-alpha.1 and locked v1.3.0; no live/provider/OAuth/backend/storage/source expansion and no automatic verification/signoff/lock/publish claims.",
-  "node_runtime_note": "Node 24 CI compatibility preserved for 1.4.0-alpha.2.",
-  "baseline_continuity_note": "Locked v1.4.0-alpha.1 controlled provider/source execution preparation baseline, locked v1.3.0 stable manual workflow baseline, v1.3.0-rc.2 RC evidence baseline, and v1.3.0-alpha.10 manual publication-pack baseline continuity preserved."
+  "release_manifest_text": "v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator. Deterministic planning/control-plane only after locked v1.4.0-alpha.2 and locked v1.3.0; no live/provider/OAuth/backend/storage/source expansion and no automatic verification/signoff/lock/publish claims.",
+  "node_runtime_note": "Node 24 CI compatibility preserved for 1.4.0-alpha.3.",
+  "baseline_continuity_note": "Locked v1.4.0-alpha.2 provider/source policy and failure UX control baseline, locked v1.4.0-alpha.1 controlled provider/source execution preparation baseline, locked v1.3.0 stable manual workflow baseline, v1.3.0-rc.2 RC evidence baseline, and v1.3.0-alpha.10 manual publication-pack baseline continuity preserved."
 }
