@@ -1,9 +1,9 @@
-Current release reference: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release.
+Current release reference: v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
 
 # Source-File Refactor Readiness Audit
 
 Version: `1.3.0`
-Release: `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`
+Release: `v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation`
 Mode: audit-only, no source-file refactor yet.
 
 ## Files under observation

@@ -1,8 +1,8 @@
 {
-  "version": "1.4.0-alpha.4",
-  "release_title": "v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report",
+  "version": "1.4.0-alpha.5",
+  "release_title": "v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation",
   "package": "jarbou3i-research-engine",
-  "release_type": "provider-source-trace-inspector-readiness-report",
+  "release_type": "provider-source-dry-run-replay-pack-operator-approval-simulation",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
   "oauth_behavior_changed": false,
@@ -44,9 +44,9 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Planning/control-plane milestone: deterministic trace inspection and execution readiness reporting after locked v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator and locked v1.3.0 — Stable Manual Workflow Release. Adds provider/source dry-run trace inspector, execution readiness report, ADR-008 dry-run trace inspector, and ADR-009 execution readiness report. It does not enable live provider execution, live source fetching, production OAuth, backend behavior, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.",
+  "release_scope": "Planning/control-plane milestone: deterministic dry-run replay-pack generation and operator approval simulation after locked v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report and locked v1.3.0 — Stable Manual Workflow Release. Adds provider/source dry-run replay pack, operator approval simulation, ADR-010 dry-run replay pack, and ADR-011 operator approval simulation. It does not enable live provider execution, live source fetching, production OAuth, backend behavior, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report. Deterministic planning/control-plane only after locked v1.4.0-alpha.3 and locked v1.3.0; no live/provider/OAuth/backend/storage/source expansion and no automatic verification/signoff/lock/publish claims.",
-  "node_runtime_note": "Node 24 CI compatibility preserved for 1.4.0-alpha.4.",
-  "baseline_continuity_note": "Locked v1.4.0-alpha.3 dry-run harness and policy simulator baseline, locked v1.4.0-alpha.2 provider/source policy and failure UX control baseline, locked v1.4.0-alpha.1 controlled provider/source execution preparation baseline, locked v1.3.0 stable manual workflow baseline, v1.3.0-rc.2 RC evidence baseline, and v1.3.0-alpha.10 manual publication-pack baseline continuity preserved."
+  "release_manifest_text": "v1.4.0-alpha.5 Dry-Run Replay Pack + Operator Approval Simulation. Deterministic planning/control-plane only after locked v1.4.0-alpha.4 and locked v1.3.0; no live/provider/OAuth/backend/storage/source expansion and no automatic verification/signoff/lock/publish claims.",
+  "node_runtime_note": "Node 24 CI compatibility preserved for 1.4.0-alpha.5.",
+  "baseline_continuity_note": "Locked v1.4.0-alpha.4 trace-inspector/readiness-report baseline, locked v1.4.0-alpha.3 dry-run harness and policy simulator baseline, locked v1.4.0-alpha.2 provider/source policy and failure UX control baseline, locked v1.4.0-alpha.1 controlled provider/source execution preparation baseline, locked v1.3.0 stable manual workflow baseline, v1.3.0-rc.2 RC evidence baseline, and v1.3.0-alpha.10 manual publication-pack baseline continuity preserved."
 }

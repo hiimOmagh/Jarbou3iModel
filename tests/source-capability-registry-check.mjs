@@ -29,7 +29,7 @@ vm.createContext(context);
 vm.runInContext(moduleSource, context, { filename: 'src/research/source-capability-registry.js' });
 const registry = context.Jarbou3iResearchModules.sourceCapabilityRegistry;
 
-assert.equal(pkg.version, '1.4.0-alpha.4');
+assert.equal(pkg.version, '1.4.0-alpha.5');
 assert.ok(pkg.description.includes('source strategy'));
 assert.equal(registry.VERSION, '1.3.0');
 assert.equal(typeof registry.strategyBlueprint, 'function');
@@ -92,8 +92,8 @@ assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must re
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'));
 for (const corpus of [manifest, changelog, roadmap, qaMatrix]) {
-  assert.ok(corpus.includes('v1.4.0-alpha.4') || corpus.includes('v1.3.0'), 'release corpus missing current alpha.1 or stable baseline');
-  assert.ok(corpus.includes('Dry-Run Trace Inspector + Execution Readiness Report') || corpus.includes('Stable Manual Workflow Release'), 'release corpus missing current alpha.1 or stable baseline title');
+  assert.ok(corpus.includes('v1.4.0-alpha.5') || corpus.includes('v1.3.0'), 'release corpus missing current alpha.1 or stable baseline');
+  assert.ok(corpus.includes('Dry-Run Replay Pack + Operator Approval Simulation') || corpus.includes('Stable Manual Workflow Release'), 'release corpus missing current alpha.1 or stable baseline title');
 }
 
 console.log('Source capability registry checks passed.');

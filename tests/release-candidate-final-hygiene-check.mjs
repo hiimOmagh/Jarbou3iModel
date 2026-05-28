@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.4';
-const CURRENT_TITLE = 'Dry-Run Trace Inspector + Execution Readiness Report';
+const CURRENT_VERSION = '1.4.0-alpha.5';
+const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/release-candidate-hygiene.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

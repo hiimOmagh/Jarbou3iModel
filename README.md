@@ -1,58 +1,60 @@
 # Jarbou3i Research Engine
 
-`v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`
+`v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation`
 
-Deterministic planning/control-plane milestone after the locked `v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator` and the locked `v1.3.0 — Stable Manual Workflow Release`. This release makes dry-run traces reviewable and reports execution readiness gaps without enabling live provider/source execution. It preserves the locked `v1.3.0-alpha.10 — Brief Publication Pack v4` manual publication-pack baseline.
+A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds deterministic dry-run replay packaging and local operator approval simulation only.
 
-## Scope
+## Current boundary
 
-- Provider/source dry-run trace inspector.
-- Provider/source execution readiness report.
-- ADR-008 provider/source dry-run trace inspector.
-- ADR-009 provider/source execution readiness report.
-- Preserved dry-run execution harness and policy simulator from alpha.3.
-- Preserved provider/source execution policy matrix and failure UX contracts from alpha.2.
-- Preserved provider execution threat model and preflight gate from alpha.1.
-- Preserved ADR-001 through ADR-007.
+- Current package version: `1.4.0-alpha.5`.
+- Current release: `v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation`.
+- Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
+- Locked trace/readiness baseline: `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`.
+- No live scraping.
+- No live source fetching.
+- No live provider execution.
+- No production OAuth.
+- No backend behavior expansion.
+- No storage expansion.
+- No automatic source verification.
+- No automatic signoff.
+- No automatic export lock.
+- No cryptographic signature claim.
+- No publication permission claim.
 
-## Hard boundaries
+## Alpha.5 additions
 
-No live scraping. No live source fetching. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
+- `src/research/provider-source-dry-run-replay-pack.js`
+- `src/research/provider-source-operator-approval-simulation.js`
+- `tests/provider-source-dry-run-replay-pack-check.mjs`
+- `tests/provider-source-operator-approval-simulation-check.mjs`
+- `docs/adr/ADR-010-provider-source-dry-run-replay-pack.md`
+- `docs/adr/ADR-011-provider-source-operator-approval-simulation.md`
 
-## Baselines
-
-- Current package version: `1.4.0-alpha.4`.
-- Current release: `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`.
-- Last locked dry-run baseline: `v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator`.
-- Last locked policy/failure UX baseline: `v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts`.
-- Locked preparation baseline: `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`.
-- Last locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
-- Last locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`.
-- Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`.
+The replay pack packages deterministic dry-run traces, trace inspection summaries, readiness blockers, replay items, and non-cryptographic integrity checks for local review. The approval simulation classifies replay items as simulated-approved for replay review, held for operator review, or rejected for live execution. It never grants real live-execution authorization.
 
 ## Validation
 
 ```bash
-node tests/provider-execution-threat-model-check.mjs
-node tests/provider-execution-preflight-check.mjs
-node tests/provider-source-execution-policy-matrix-check.mjs
-node tests/provider-source-failure-ux-contracts-check.mjs
-node tests/provider-source-dry-run-execution-harness-check.mjs
-node tests/provider-source-policy-simulator-check.mjs
-node tests/provider-source-dry-run-trace-inspector-check.mjs
-node tests/provider-source-execution-readiness-report-check.mjs
-npm run test:current:no-browser
-npm run test:source
-npm run test:release
-npm run test:qa
+npm install
 npm run test:ci:no-browser
 npm run test:ci:browser
 ```
 
-Screenshots alone are insufficient. A ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
+Targeted alpha.5 checks:
 
-Public version label: v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report.
+```bash
+node tests/provider-source-dry-run-replay-pack-check.mjs
+node tests/provider-source-operator-approval-simulation-check.mjs
+```
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.4.
+Public version label: v1.4.0-alpha.5 Dry-Run Replay Pack + Operator Approval Simulation.
 
-Public Demo boundary: v1.4.0-alpha.4 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic dry-run trace inspection and execution readiness reporting only.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.5.
+
+Public Demo boundary: v1.4.0-alpha.5 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic replay packaging and approval simulation only.
+
+Locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`.
+Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`.
+
+Screenshots alone are insufficient. ZIP archive alone is insufficient; local ZIP existence must be paired with green CI, reviewed hosted evidence, and canonical lock evidence.

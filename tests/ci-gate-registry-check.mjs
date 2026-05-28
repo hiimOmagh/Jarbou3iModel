@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.4.0-alpha.4';
-const RELEASE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
+const VERSION = '1.4.0-alpha.5';
+const RELEASE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
@@ -11,7 +11,7 @@ const ciBrowser = fs.readFileSync('scripts/ci-browser.sh', 'utf8');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(registry.ci_gate_registry_version, VERSION);
-assert.equal(registry.release_title, 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report');
+assert.equal(registry.release_title, 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation');
 assert.equal(registry.registry_type, 'ci_gate_registry');
 assert.equal(registry.runtime_capability_change, false);
 assert.equal(registry.provider_behavior_changed, false);

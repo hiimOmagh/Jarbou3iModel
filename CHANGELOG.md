@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation
+
+- Added deterministic provider/source dry-run replay pack.
+- Added deterministic provider/source operator approval simulation.
+- Added ADR-010 and ADR-011 for replay-pack and approval-simulation boundaries.
+- Added targeted checks for replay pack and approval simulation.
+- Preserved locked v1.4.0-alpha.4 trace/readiness baseline and locked v1.3.0 stable manual workflow baseline.
+- No live scraping, live source fetching, provider execution expansion, production OAuth, backend expansion, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+
 ## v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
 
 - Adds provider/source dry-run trace inspector.
@@ -69,3 +78,5 @@ Continuity note: v1.1.0 stable public-demo baseline and Diagnostic Repair Queue 
 Node 24 CI compatibility is preserved for v1.3.0 and the v1.1.0 stable public-demo baseline.
 
 Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+
+Screenshots alone are insufficient. ZIP archive alone is insufficient; local ZIP existence must be paired with green CI, reviewed hosted evidence, and canonical lock evidence.

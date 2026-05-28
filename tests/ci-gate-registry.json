@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.4",
-  "release_title": "v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report",
+  "ci_gate_registry_version": "1.4.0-alpha.5",
+  "release_title": "v1.4.0-alpha.5 \u2014 Dry-Run Replay Pack + Operator Approval Simulation",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -164,7 +164,9 @@
         "tests/provider-source-dry-run-execution-harness-check.mjs",
         "tests/provider-source-policy-simulator-check.mjs",
         "tests/provider-source-dry-run-trace-inspector-check.mjs",
-        "tests/provider-source-execution-readiness-report-check.mjs"
+        "tests/provider-source-execution-readiness-report-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -229,7 +231,9 @@
         "tests/provider-source-dry-run-execution-harness-check.mjs",
         "tests/provider-source-policy-simulator-check.mjs",
         "tests/provider-source-dry-run-trace-inspector-check.mjs",
-        "tests/provider-source-execution-readiness-report-check.mjs"
+        "tests/provider-source-execution-readiness-report-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -253,7 +257,9 @@
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
         "tests/prompt-compiler-check.mjs",
-        "tests/evidence-pack-v3-brief-traceability-check.mjs"
+        "tests/evidence-pack-v3-brief-traceability-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -315,7 +321,9 @@
         "tests/provider-source-dry-run-execution-harness-check.mjs",
         "tests/provider-source-policy-simulator-check.mjs",
         "tests/provider-source-dry-run-trace-inspector-check.mjs",
-        "tests/provider-source-execution-readiness-report-check.mjs"
+        "tests/provider-source-execution-readiness-report-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -332,7 +340,9 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -346,7 +356,9 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -365,7 +377,9 @@
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
         "tests/prompt-compiler-check.mjs",
-        "tests/evidence-pack-v3-brief-traceability-check.mjs"
+        "tests/evidence-pack-v3-brief-traceability-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -454,7 +468,9 @@
         "tests/provider-source-dry-run-execution-harness-check.mjs",
         "tests/provider-source-policy-simulator-check.mjs",
         "tests/provider-source-dry-run-trace-inspector-check.mjs",
-        "tests/provider-source-execution-readiness-report-check.mjs"
+        "tests/provider-source-execution-readiness-report-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -465,7 +481,9 @@
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
-        "tests/prompt-compiler-check.mjs"
+        "tests/prompt-compiler-check.mjs",
+        "tests/provider-source-dry-run-replay-pack-check.mjs",
+        "tests/provider-source-operator-approval-simulation-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": [
@@ -482,8 +500,8 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.4",
-    "optimization_scope": "provider_source_dry_run_policy_simulator",
+    "version": "1.4.0-alpha.5",
+    "optimization_scope": "provider_source_dry_run_replay_pack_operator_approval_simulation",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -493,11 +511,11 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 1,
-    "profile": "provider_source_dry_run_policy_simulator",
-    "title": "Dry-Run Trace Inspector + Execution Readiness Report"
+    "profile": "provider_source_dry_run_replay_pack_operator_approval_simulation",
+    "title": "Dry-Run Replay Pack + Operator Approval Simulation"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.4",
+    "version": "1.4.0-alpha.5",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -643,13 +661,17 @@
       "src/research/provider-source-dry-run-trace-inspector.js",
       "src/research/provider-source-execution-readiness-report.js",
       "tests/provider-source-dry-run-trace-inspector-check.mjs",
-      "tests/provider-source-execution-readiness-report-check.mjs"
+      "tests/provider-source-execution-readiness-report-check.mjs",
+      "src/research/provider-source-dry-run-replay-pack.js",
+      "src/research/provider-source-operator-approval-simulation.js",
+      "tests/provider-source-dry-run-replay-pack-check.mjs",
+      "tests/provider-source-operator-approval-simulation-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.4",
+    "version": "1.4.0-alpha.5",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -669,7 +691,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.4.0-alpha.4",
+    "version": "1.4.0-alpha.5",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

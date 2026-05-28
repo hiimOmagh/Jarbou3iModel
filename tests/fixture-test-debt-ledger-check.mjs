@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { migrationRegistry, privacyRegistry } from './fixture-registry-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.4';
-const CURRENT_TITLE = 'Dry-Run Trace Inspector + Execution Readiness Report';
+const CURRENT_VERSION = '1.4.0-alpha.5';
+const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));

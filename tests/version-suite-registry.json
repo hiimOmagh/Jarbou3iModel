@@ -1,7 +1,7 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.4",
-  "release_title": "v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report",
-  "generated_from": "1.1.0-alpha.4",
+  "version_suite_registry_version": "1.4.0-alpha.5",
+  "release_title": "v1.4.0-alpha.5 \u2014 Dry-Run Replay Pack + Operator Approval Simulation",
+  "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
   "entry_count": 48,
@@ -995,7 +995,7 @@
         "tests/repository-hygiene-cleanup-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.1.0-alpha.4 no-browser consolidation suite passed."
+      "former_console_message": "v1.1.0-alpha.5 no-browser consolidation suite passed."
     },
     {
       "id": "v110a4",
@@ -1010,7 +1010,7 @@
         "tests/repo-file-hygiene-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.1.0-alpha.4 no-browser fixture registry consolidation suite passed."
+      "former_console_message": "v1.1.0-alpha.5 no-browser fixture registry consolidation suite passed."
     },
     {
       "id": "v111",
@@ -1843,7 +1843,7 @@
         "tests/provider-source-policy-simulator-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.4 provider/source dry-run execution harness and policy simulator checks passed."
+      "former_console_message": "v1.4.0-alpha.5 provider/source dry-run execution harness and policy simulator checks passed."
     }
   ]
 }

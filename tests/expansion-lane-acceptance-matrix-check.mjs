@@ -10,8 +10,8 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const CURRENT_VERSION = '1.4.0-alpha.4';
-const CURRENT_TITLE = 'Dry-Run Trace Inspector + Execution Readiness Report';
+const CURRENT_VERSION = '1.4.0-alpha.5';
+const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';

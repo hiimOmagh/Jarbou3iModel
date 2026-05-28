@@ -1,14 +1,14 @@
-/* Jarbou3i Research Engine provider/source dry-run trace inspector v1.4.0-alpha.4. */
+/* Jarbou3i Research Engine provider/source dry-run trace inspector v1.4.0-alpha.5. */
 /* Deterministic trace review only. No live execution enabled. See ADR-008. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.4';
+  const VERSION = '1.4.0-alpha.5';
   const STABLE_BASELINE = '1.3.0';
-  const CONTROL_BASELINE = '1.4.0-alpha.4';
+  const CONTROL_BASELINE = '1.4.0-alpha.5';
   const DRY_RUN_BASELINE = '1.4.0-alpha.3';
-  const MILESTONE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
+  const MILESTONE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
   const MODEL = 'provider_source_dry_run_trace_inspector.v1';
 
   const TRACE_LEVELS = Object.freeze({
@@ -126,7 +126,7 @@
       no_automatic_signoff: inspections.every(item => item.automatic_signoff_performed === false),
       no_automatic_export_lock: inspections.every(item => item.automatic_export_lock_performed === false),
       all_review_items_have_failure_contract: review.every(item => typeof item.failure_contract_id === 'string' && item.failure_contract_id.length > 5),
-      boundary_statement: 'Trace inspector reviews deterministic dry-run traces only. v1.4.0-alpha.4 does not perform live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
+      boundary_statement: 'Trace inspector reviews deterministic dry-run traces only. v1.4.0-alpha.5 does not perform live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
     });
   }
 

@@ -1,14 +1,14 @@
-/* Jarbou3i Research Engine provider/source execution readiness report v1.4.0-alpha.4. */
+/* Jarbou3i Research Engine provider/source execution readiness report v1.4.0-alpha.5. */
 /* Deterministic readiness reporting only. No live execution enabled. See ADR-009. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.4';
+  const VERSION = '1.4.0-alpha.5';
   const STABLE_BASELINE = '1.3.0';
-  const CONTROL_BASELINE = '1.4.0-alpha.4';
+  const CONTROL_BASELINE = '1.4.0-alpha.5';
   const DRY_RUN_BASELINE = '1.4.0-alpha.3';
-  const MILESTONE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
+  const MILESTONE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
   const MODEL = 'provider_source_execution_readiness_report.v1';
 
   const READINESS_STATES = Object.freeze({
@@ -161,7 +161,7 @@
       automatic_export_lock_performed: false,
       cryptographic_signature_claimed: false,
       publication_permission_claimed: false,
-      boundary_statement: 'Execution readiness report is deterministic and review-only. v1.4.0-alpha.4 reports readiness gaps but does not enable live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
+      boundary_statement: 'Execution readiness report is deterministic and review-only. v1.4.0-alpha.5 reports readiness gaps but does not enable live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
     });
   }
 

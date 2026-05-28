@@ -57,7 +57,7 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.0.9-hosted-demo-smoke-fixes-evidence-review.md` | v1.0.9 — Hosted Demo Smoke Fixes + Evidence Review |
 | `v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md` | v1.1.0-alpha.1 — Post-Freeze Product Expansion Planning Gate |
 | `v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md` | v1.1.0-alpha.2 — Expansion Lane Acceptance Criteria Matrix |
-| `v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md` | v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry |
+| `v1.1.0-alpha.5-migration-privacy-fixture-registry-consolidation.md` | v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry |
 | `v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md` | v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry |
 | `visual-qa.md` | Visual QA Checklist |
 | `v1.1.0-alpha.8-fixture-registry-payload-compression-test-organization-audit.md` | v1.1.0-alpha.8 — Fixture Registry Payload Compression + Test Organization Audit |
@@ -2947,7 +2947,7 @@ This release is invalid if it enables any runtime capability, exposes a planned 
 <!-- /release-file:v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md -->
 
 
-<!-- release-file:v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md -->
+<!-- release-file:v1.1.0-alpha.5-migration-privacy-fixture-registry-consolidation.md -->
 
 # v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
 
@@ -2999,7 +2999,7 @@ Mobile Header Geometry Lock remains preserved from the v1.0.30 visual-freeze bas
 
 MERGE_TO_REGISTRY is now executed for migration and privacy fixtures. No files are deleted beyond registry-consolidated fixture shards and the unused oversized asset.
 
-<!-- /release-file:v1.1.0-alpha.4-migration-privacy-fixture-registry-consolidation.md -->
+<!-- /release-file:v1.1.0-alpha.5-migration-privacy-fixture-registry-consolidation.md -->
 
 
 <!-- release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->

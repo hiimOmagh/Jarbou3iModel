@@ -247,7 +247,7 @@
       qaCheck('selected_template_visible','Selected template is visible', !!templateSystem.selected_template_id, 'blocker'),
       qaCheck('comparison_columns_present','Variant comparison columns are present', asArray(comparison.comparison_columns).length >= 6, 'blocker'),
       qaCheck('template_cards_compressed','Template cards expose compact risk and section counts', templates.every((template)=>asArray(template.sections).length >= 5 && number(template.variant_risk_score, -1) >= 0), 'warning'),
-      qaCheck('matrix_hygiene_current','Evidence matrix requirements use current alpha.4 release labels', options.matrix_hygiene_current !== false, 'blocker'),
+      qaCheck('matrix_hygiene_current','Evidence matrix requirements use current alpha.5 release labels', options.matrix_hygiene_current !== false, 'blocker'),
       qaCheck('manual_boundary_visible','Manual/local template boundary is visible', templateSystem.local_manual_only === true && assemblyVariantQa.local_manual_only === true, 'blocker'),
       qaCheck('no_automatic_verification_claim','No automatic verification claim is present', templateSystem.automatic_source_verification_claimed !== true && assemblyVariantQa.automatic_source_verification_claimed !== true, 'blocker')
     ];

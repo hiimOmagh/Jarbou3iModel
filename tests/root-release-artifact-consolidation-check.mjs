@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.4.0-alpha.4';
-const TITLE = 'Dry-Run Trace Inspector + Execution Readiness Report';
+const VERSION = '1.4.0-alpha.5';
+const TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
@@ -16,7 +16,7 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md', 'utf8');
 
 assert.equal(pkg.version, VERSION);
 assert.equal(manifest.version, VERSION);
-assert.equal(manifest.release_title, 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report');
+assert.equal(manifest.release_title, 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation');
 assert.equal(manifest.runtime_capability_change, false);
 assert.equal(manifest.provider_behavior_changed, false);
 assert.equal(manifest.oauth_behavior_changed, false);
