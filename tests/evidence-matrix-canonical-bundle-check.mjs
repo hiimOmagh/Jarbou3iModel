@@ -73,6 +73,7 @@ for (const token of [
 ]) assert.ok(workflow.includes(token), `workflow missing ${token}`);
 assert.equal(workflow.includes('ci-artifacts/lock-evidence-input'), false);
 assert.equal(workflow.includes('ci-artifacts/lock-evidence-bundle'), false);
+assert.equal(workflow.includes('actions/cache@v6'), false, 'workflow must not use unsupported cache action major v6');
 
 assert.ok(workflow.includes('set +e'), 'workflow must explicitly preserve command exit status during log capture');
 assert.ok(workflow.includes('status=$?'), 'workflow must capture command exit status after log capture');
@@ -82,7 +83,7 @@ assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/bro
 assert.ok(workflow.includes('test -f "$RUNNER_TEMP/hosted-demo-evidence/matrix-summary.json"'), 'browser job must require matrix-summary.json before artifact upload');
 assert.ok(workflow.includes('Browser gate pending: Playwright install has not completed yet.'), 'browser job must initialize browser.log before setup can fail');
 assert.ok(workflow.includes('Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'), 'browser job must stamp browser.log when the browser gate starts');
-assert.ok(workflow.includes('uses: actions/cache@v6'), 'browser job must cache Playwright browser binaries');
+assert.ok(workflow.includes('uses: actions/cache@v4'), 'browser job must cache Playwright browser binaries');
 assert.ok(workflow.includes('path: ~/.cache/ms-playwright'), 'browser job must cache Playwright browser binaries under ~/.cache/ms-playwright');
 assert.ok(workflow.includes("key: ${{ runner.os }}-ms-playwright-${{ steps.playwright-cache-key.outputs.version }}-${{ hashFiles('package-lock.json') }}"), 'Playwright cache key must include OS, Playwright version, and package-lock hash');
 assert.ok(workflow.includes('npx playwright install-deps chromium'), 'browser job must split system dependency install from browser install');
