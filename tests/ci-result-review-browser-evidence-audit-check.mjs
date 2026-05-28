@@ -8,10 +8,10 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.4.0-alpha.5';
+const CURRENT_VERSION = '1.4.0-alpha.6';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
+const CURRENT_TITLE = 'Provider Execution Harness Mock-to-Live Equivalence';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');

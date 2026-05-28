@@ -1,13 +1,13 @@
-/* Jarbou3i Research Engine provider/source policy simulator v1.4.0-alpha.5. */
+/* Jarbou3i Research Engine provider/source policy simulator v1.4.0-alpha.6. */
 /* Deterministic control-plane policy simulation only. No live execution enabled. See ADR-007. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.5';
+  const VERSION = '1.4.0-alpha.6';
   const STABLE_BASELINE = '1.3.0';
-  const CONTROL_BASELINE = '1.4.0-alpha.5';
-  const MILESTONE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
+  const CONTROL_BASELINE = '1.4.0-alpha.6';
+  const MILESTONE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
   const MODEL = 'provider_source_policy_simulator.v1';
 
   const DECISIONS = Object.freeze({
@@ -178,7 +178,7 @@
       all_credential_value_access_blocked: decisions.every(decision => decision.credential_value_access_allowed === false),
       all_blocked_define_failure_contract: blocked.every(decision => typeof decision.failure_contract_id === 'string' && decision.failure_contract_id.length > 5),
       all_blocked_require_future_gate: blocked.every(decision => decision.unlock_gate_required === true),
-      boundary_statement: 'Policy simulator is deterministic and side-effect-free. v1.4.0-alpha.5 does not enable live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
+      boundary_statement: 'Policy simulator is deterministic and side-effect-free. v1.4.0-alpha.6 does not enable live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
     });
   }
 

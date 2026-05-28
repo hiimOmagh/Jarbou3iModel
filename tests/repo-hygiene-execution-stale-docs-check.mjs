@@ -6,8 +6,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.5';
-const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
+const CURRENT_VERSION = '1.4.0-alpha.6';
+const CURRENT_TITLE = 'Provider Execution Harness Mock-to-Live Equivalence';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -37,8 +37,8 @@ const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const migrations = read('src/research/migrations.js');
 
 assert.equal(pkg.version, CURRENT_VERSION, 'package.json must identify v1.1.0');
-assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify v1.4.0-alpha.5');
-assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify v1.4.0-alpha.5');
+assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify v1.4.0-alpha.6');
+assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify v1.4.0-alpha.6');
 assert.equal(schema.properties.workflow_version.const, VERSION, 'schema workflow version must identify v1.1.0');
 assert.equal(sample.workflow_version, VERSION, 'sample fixture must identify v1.1.0');
 assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0');
@@ -66,11 +66,11 @@ for (const required of [
   assert.ok(exists(required), `required release/historical artifact missing: ${required}`);
 }
 
-assert.ok(aiIntegration.includes('v1.4.0-alpha.5') || aiIntegration.includes('v1.3.0') || aiIntegration.includes('## Current state: v1.1.0'), 'AI integration doc must name current alpha.1 or stable state');
+assert.ok(aiIntegration.includes('v1.4.0-alpha.6') || aiIntegration.includes('v1.3.0') || aiIntegration.includes('## Current state: v1.1.0'), 'AI integration doc must name current alpha.1 or stable state');
 assert.equal(aiIntegration.includes('## Current state: v0.20.0-beta'), false, 'AI integration doc must not claim v0.20.0-beta as current');
-assert.ok(architecture.includes('v1.4.0-alpha.5') || architecture.includes('v1.3.0') || architecture.includes('## Current v1.1.0 pipeline'), 'architecture doc must name current alpha.1 or stable pipeline');
+assert.ok(architecture.includes('v1.4.0-alpha.6') || architecture.includes('v1.3.0') || architecture.includes('## Current v1.1.0 pipeline'), 'architecture doc must name current alpha.1 or stable pipeline');
 assert.equal(architecture.includes('## Current v0.20.0-beta pipeline'), false, 'architecture doc must not claim v0.20.0-beta as current');
-assert.ok(privacyAudit.includes('v1.4.0-alpha.5') || privacyAudit.includes('v1.3.0') || privacyAudit.includes('`v1.1.0` treats every exported JSON payload as a security boundary'), 'privacy audit doc must name current alpha.1 or stable boundary');
+assert.ok(privacyAudit.includes('v1.4.0-alpha.6') || privacyAudit.includes('v1.3.0') || privacyAudit.includes('`v1.1.0` treats every exported JSON payload as a security boundary'), 'privacy audit doc must name current alpha.1 or stable boundary');
 assert.equal(privacyAudit.includes('`v0.20.0-beta` treats every exported JSON payload as a security boundary'), false, 'privacy audit doc must not claim v0.20.0-beta as current');
 assert.ok(v019Doc.startsWith('# v0.19.0-beta — Privacy Audit Hardening'), 'v0.19 historical privacy doc heading must match its filename');
 

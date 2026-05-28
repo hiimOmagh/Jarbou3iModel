@@ -1,7 +1,7 @@
 # ADR-010 — Provider/Source Dry-Run Replay Pack
 
-**Status:** Proposed — deterministic replay/control-plane only (v1.4.0-alpha.5)  
-**Milestone:** v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation  
+**Status:** Proposed — deterministic replay/control-plane only (v1.4.0-alpha.6)  
+**Milestone:** v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence  
 **Stable baseline:** v1.3.0 — Stable Manual Workflow Release  
 **Trace/readiness baseline:** v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
 

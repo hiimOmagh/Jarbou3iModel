@@ -12,7 +12,9 @@ const app = read('src/app.js');
 const researchApp = read('src/research-engine.js');
 const searchProviderAbstraction = read('src/research/search-provider-abstraction.js');
 const sourceConnectors = read('src/research/source-connectors.js');
-const providerIdentity = read('src/research/provider-identity.js');
+const providerIdentity = read('src/research/provider-identity.js'
+  ,'src/research/provider-execution-mock-to-live-equivalence.js'
+  ,'src/research/provider-execution-mock-to-live-equivalence.js');
 const portableAccountMock = read('src/research/portable-account-mock.js');
 const portableOAuthSpike = read('src/research/portable-oauth-spike.js');
 const privacyExportGuard = read('src/research/privacy-export-guard.js');
@@ -27,6 +29,7 @@ const sourceImportAdapter = read('src/research/source-import-adapter.js');
 const evidenceScorer = read('src/research/evidence-scorer.js');
 const dryRunReplayPack = read('src/research/provider-source-dry-run-replay-pack.js');
 const operatorApprovalSimulation = read('src/research/provider-source-operator-approval-simulation.js');
+const mockToLiveEquivalence = read('src/research/provider-execution-mock-to-live-equivalence.js');
 const css = read('src/styles.css');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 const pkg = JSON.parse(read('package.json'));
@@ -51,6 +54,7 @@ try {
   new vm.Script(evidenceScorer, { filename: 'src/research/evidence-scorer.js' });
   new vm.Script(dryRunReplayPack, { filename: 'src/research/provider-source-dry-run-replay-pack.js' });
   new vm.Script(operatorApprovalSimulation, { filename: 'src/research/provider-source-operator-approval-simulation.js' });
+  new vm.Script(mockToLiveEquivalence, { filename: 'src/research/provider-execution-mock-to-live-equivalence.js' });
 } catch (error) {
   fail(`JavaScript syntax error: ${error.message}`);
 }
@@ -89,6 +93,7 @@ const requiredFiles = [
   'src/research/search-provider-abstraction.js',
   'src/research/source-connectors.js',
   'src/research/provider-identity.js'
+  ,'src/research/provider-execution-mock-to-live-equivalence.js'
   ,'src/research/portable-account-mock.js'
   ,'src/research/portable-oauth-spike.js'
   ,'src/research/privacy-export-guard.js'
@@ -144,8 +149,10 @@ if (!index.includes('src="src/research/search-provider-abstraction.js" defer')) 
 if (!index.includes('src="src/research/source-connectors.js" defer')) fail('source connectors module missing from index');
 if (!index.includes('src="src/research/provider-source-dry-run-replay-pack.js" defer')) fail('dry-run replay pack module missing from index');
 if (!index.includes('src="src/research/provider-source-operator-approval-simulation.js" defer')) fail('operator approval simulation module missing from index');
+if (!index.includes('src="src/research/provider-execution-mock-to-live-equivalence.js" defer')) fail('mock-to-live equivalence module missing from index');
 if (!dryRunReplayPack.includes('providerSourceDryRunReplayPack') || !dryRunReplayPack.includes('buildDryRunReplayPack')) fail('dry-run replay pack module missing required contracts');
 if (!operatorApprovalSimulation.includes('providerSourceOperatorApprovalSimulation') || !operatorApprovalSimulation.includes('simulateOperatorApproval')) fail('operator approval simulation module missing required contracts');
+if (!mockToLiveEquivalence.includes('providerExecutionMockToLiveEquivalence') || !mockToLiveEquivalence.includes('buildMockToLiveEquivalenceReport')) fail('mock-to-live equivalence module missing required contracts');
 if (!index.includes('src="src/research/evidence-scorer.js" defer')) fail('evidence scorer module missing from index');
 if (!evidenceScorer.includes('SCORING_VERSION') || !evidenceScorer.includes('attention_signal_is_not_evidence_reliability')) fail('evidence scorer must separate attention from reliability');
 if (!index.includes('src="src/research/source-import-adapter.js" defer')) fail('source import adapter module missing from index');
@@ -169,8 +176,8 @@ if (!app.includes('schema_version')) fail('schema_version support is missing');
 if (!app.includes('modeResearch')) fail('research prompt mode is missing');
 if (!app.includes('qualityGateHtml')) fail('quality gate UI is missing');
 if (!app.includes('actorPowerScore')) fail('computed API scoring is missing');
-if (pkg.version !== '1.4.0-alpha.5') fail('package version must be 1.4.0-alpha.5');
-if (!index.includes('name="app-version" content="1.4.0-alpha.5"')) fail('app version metadata missing');
+if (pkg.version !== '1.4.0-alpha.6') fail('package version must be 1.4.0-alpha.6');
+if (!index.includes('name="app-version" content="1.4.0-alpha.6"')) fail('app version metadata missing');
 
 console.log('Static checks passed.');
 process.exit(0);

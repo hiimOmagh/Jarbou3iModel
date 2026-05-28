@@ -1,12 +1,13 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.5';
-const RELEASE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
-const PUBLIC_LABEL = 'v1.4.0-alpha.5 Dry-Run Replay Pack + Operator Approval Simulation';
+const VERSION = '1.4.0-alpha.6';
+const RELEASE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
+const PUBLIC_LABEL = 'v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_RC_BASELINE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
 const MANUAL_BASELINE = 'v1.3.0-alpha.10 — Brief Publication Pack v4';
+const REPLAY_BASELINE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
 const TRACE_BASELINE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
 const DRY_RUN_BASELINE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
 const CONTROL_BASELINE = 'v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts';
@@ -26,7 +27,7 @@ const refactorAudit = read('docs/source-refactor-readiness-audit.md');
 const ciRegistry = json('tests/ci-gate-registry.json');
 
 assert.equal(pkg.version, VERSION);
-assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.5 public label');
+assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.6 public label');
 assert.ok(pkg.description.includes('release evidence continuity'), 'package description must preserve release evidence token');
 assert.ok(pkg.description.includes('package script compression and CI gate registry'), 'package description must preserve CI gate registry token');
 assert.ok(pkg.description.includes('source strategy continuity'), 'package description must preserve source strategy token');
@@ -34,15 +35,15 @@ assert.ok(pkg.description.includes('cryptographic signature claim'), 'package de
 assert.ok(pkg.description.includes(STABLE_BASELINE), 'package description must preserve locked stable baseline');
 
 assert.equal(manifest.version, VERSION);
-assert.equal(manifest.release_title, 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation');
-assert.equal(manifest.release_type, 'provider-source-dry-run-replay-pack-operator-approval-simulation');
+assert.equal(manifest.release_title, 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence');
+assert.equal(manifest.release_type, 'provider-execution-harness-mock-to-live-equivalence');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 assert.ok(manifest.release_scope.includes('Planning/control-plane milestone') || manifest.release_scope.includes('Planning/preflight milestone'));
 assert.ok(manifest.release_scope.includes(STABLE_BASELINE));
 assert.ok(manifest.release_scope.includes('cryptographic signing'));
 
 for (const [name, text] of Object.entries({ current, roadmap, readme, changelog, publicDemo })) {
-  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.5 release identity`);
+  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.6 release identity`);
   assert.ok(text.includes(STABLE_BASELINE), `${name} must preserve v1.3.0 stable baseline`);
   assert.ok(/no live scraping/i.test(text), `${name} must preserve no-live-scraping boundary`);
   assert.ok(/no production OAuth/i.test(text), `${name} must preserve OAuth boundary`);
@@ -51,6 +52,7 @@ for (const [name, text] of Object.entries({ current, roadmap, readme, changelog,
 
 assert.ok(current.includes(`Last locked stable baseline: \`${STABLE_BASELINE}\``), 'current-release must mark v1.3.0 as locked stable baseline');
 assert.ok(current.includes(LOCKED_RC_BASELINE), 'current-release must preserve rc.2 lock baseline');
+assert.ok(current.includes(REPLAY_BASELINE), 'current-release must preserve alpha.5 replay/approval baseline');
 assert.ok(current.includes(TRACE_BASELINE), 'current-release must preserve alpha.4 trace/readiness baseline');
 assert.ok(current.includes(DRY_RUN_BASELINE), 'current-release must preserve alpha.3 dry-run baseline');
 assert.ok(current.includes(CONTROL_BASELINE), 'current-release must preserve alpha.2 control baseline');
@@ -68,8 +70,14 @@ assert.ok(current.includes('Provider/source dry-run trace inspector'));
 assert.ok(current.includes('Provider/source execution readiness report'));
 assert.ok(current.includes('Provider/source dry-run replay pack'));
 assert.ok(current.includes('Provider/source operator approval simulation'));
+assert.ok(current.includes('Provider execution mock-to-live equivalence') || current.includes('mock-to-live equivalence report'));
+assert.ok(current.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'));
+assert.ok(current.includes('ADR-012'));
+assert.ok(current.includes('mock_to_live_equivalence_only'));
+assert.ok(current.includes('future_live_envelope_only'));
 
 assert.ok(roadmap.includes(RELEASE));
+assert.ok(roadmap.includes(REPLAY_BASELINE));
 assert.ok(roadmap.includes(TRACE_BASELINE));
 assert.ok(roadmap.includes(DRY_RUN_BASELINE));
 assert.ok(roadmap.includes(CONTROL_BASELINE));
@@ -77,6 +85,7 @@ assert.ok(roadmap.includes(PREPARATION_BASELINE));
 assert.ok(roadmap.includes(STABLE_BASELINE));
 assert.ok(roadmap.includes(MANUAL_BASELINE));
 assert.equal(roadmap.includes('only after alpha.6 no-browser CI'), false, 'roadmap must not preserve stale alpha.5 dependency text');
+assert.ok(roadmap.includes('No alpha.7 should start until v1.4.0-alpha.6 is locked'), 'roadmap must gate alpha.7 behind alpha.6 lock');
 assert.equal(roadmap.includes('Next valid milestone:'), false, 'roadmap should use compressed next milestones rather than stale next-valid milestone wording');
 
 assert.equal(refactorAudit.includes('Forbidden in alpha.11'), false, 'source refactor audit must not reference stale alpha.11 ban column');
@@ -94,6 +103,7 @@ for (const gate of ['no-browser','current-no-browser','source','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-execution-readiness-report-check.mjs'), `${gate} must run provider/source execution readiness report check`);
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-dry-run-replay-pack-check.mjs'), `${gate} must run provider/source dry-run replay pack check`);
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-operator-approval-simulation-check.mjs'), `${gate} must run provider/source operator approval simulation check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'), `${gate} must run provider execution mock-to-live equivalence check`);
 }
 
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/release-truth-consistency-check.mjs'), 'syntax matrix must cover release-truth consistency check');
@@ -109,6 +119,8 @@ assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-
 assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-operator-approval-simulation.js'), 'syntax matrix must cover provider/source operator approval simulation');
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/provider-source-dry-run-replay-pack-check.mjs'), 'syntax matrix must cover provider/source dry-run replay pack check');
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/provider-source-operator-approval-simulation-check.mjs'), 'syntax matrix must cover provider/source operator approval simulation check');
+assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-execution-mock-to-live-equivalence.js'), 'syntax matrix must cover provider execution mock-to-live equivalence module');
+assert.ok(ciRegistry.syntax_matrix.files.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'), 'syntax matrix must cover provider execution mock-to-live equivalence check');
 
 console.log('Release truth consistency checks passed.');
 process.exit(0);

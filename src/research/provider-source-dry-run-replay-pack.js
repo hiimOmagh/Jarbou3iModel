@@ -1,14 +1,14 @@
-/* Jarbou3i Research Engine provider/source dry-run replay pack v1.4.0-alpha.5. */
+/* Jarbou3i Research Engine provider/source dry-run replay pack v1.4.0-alpha.6. */
 /* Deterministic replay packaging only. No live execution enabled. See ADR-010. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.5';
+  const VERSION = '1.4.0-alpha.6';
   const STABLE_BASELINE = '1.3.0';
-  const CONTROL_BASELINE = '1.4.0-alpha.5';
+  const CONTROL_BASELINE = '1.4.0-alpha.6';
   const DRY_RUN_BASELINE = '1.4.0-alpha.4';
-  const MILESTONE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
+  const MILESTONE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
   const MODEL = 'provider_source_dry_run_replay_pack.v1';
 
   const REPLAY_ITEM_STATES = Object.freeze({
@@ -191,7 +191,7 @@
       automatic_export_lock_performed: false,
       publication_permission_claimed: false,
       release_gate: blocked.length ? 'blocked_replay_items_require_review' : (review.length ? 'operator_review_required' : 'replay_pack_ready_for_manual_review'),
-      boundary_statement: 'Dry-run replay pack is deterministic and review-only. v1.4.0-alpha.5 does not perform live provider execution, live source fetching, production OAuth, backend expansion, storage expansion, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.'
+      boundary_statement: 'Dry-run replay pack is deterministic and review-only. v1.4.0-alpha.6 does not perform live provider execution, live source fetching, production OAuth, backend expansion, storage expansion, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.'
     });
   }
 

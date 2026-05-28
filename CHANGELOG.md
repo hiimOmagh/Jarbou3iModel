@@ -1,7 +1,18 @@
 # Changelog
 
+## v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence
+
+- Added deterministic provider execution mock-to-live equivalence report.
+- Added planned future-live envelope shape validation without enabling future-live execution.
+- Added payload-shape comparison, policy-boundary preservation, failure-contract mapping, readiness-blocker preservation, and operator-approval boundary checks.
+- Added ADR-012 for the mock-to-live equivalence boundary.
+- Added targeted check `tests/provider-execution-mock-to-live-equivalence-check.mjs` and CI registry integration.
+- Preserved locked v1.4.0-alpha.5 replay/approval baseline, locked v1.4.0-alpha.4 trace/readiness baseline, and locked v1.3.0 stable manual workflow baseline.
+- No live scraping, live source fetching, provider execution expansion, production OAuth, backend expansion, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+
 ## v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation
 
+- LOCKED by no-browser CI, browser CI, hosted evidence matrix, and canonical lock evidence bundle.
 - Added deterministic provider/source dry-run replay pack.
 - Added deterministic provider/source operator approval simulation.
 - Added ADR-010 and ADR-011 for replay-pack and approval-simulation boundaries.

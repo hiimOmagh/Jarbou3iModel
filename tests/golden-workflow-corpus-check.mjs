@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.5';
-const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
+const CURRENT_VERSION = '1.4.0-alpha.6';
+const CURRENT_TITLE = 'Provider Execution Harness Mock-to-Live Equivalence';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/golden-workflow-corpus.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

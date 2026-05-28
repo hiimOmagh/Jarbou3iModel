@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.5';
-const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
+const CURRENT_VERSION = '1.4.0-alpha.6';
+const CURRENT_TITLE = 'Provider Execution Harness Mock-to-Live Equivalence';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
-const CURRENT_PUBLIC = 'v1.4.0-alpha.5 Dry-Run Replay Pack + Operator Approval Simulation';
+const CURRENT_PUBLIC = 'v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence';
 const STABLE_PUBLIC = 'v1.3.0 Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -17,8 +17,8 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 
 assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
-assert.equal(registry.release_title, 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation');
-assert.ok(index.includes('content="1.4.0-alpha.5"'), 'hosted metadata must report the alpha.1 internal version');
+assert.equal(registry.release_title, 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence');
+assert.ok(index.includes('content="1.4.0-alpha.6"'), 'hosted metadata must report the alpha.1 internal version');
 assert.ok(index.includes(CURRENT_PUBLIC), 'public surface should expose alpha.1 planning identity');
 assert.ok(helpers.includes(CURRENT_PUBLIC), 'localized copy must expose alpha.1 planning identity');
 assert.ok(current.includes(CURRENT_PUBLIC));

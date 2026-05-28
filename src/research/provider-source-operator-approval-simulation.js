@@ -1,14 +1,14 @@
-/* Jarbou3i Research Engine provider/source operator approval simulation v1.4.0-alpha.5. */
+/* Jarbou3i Research Engine provider/source operator approval simulation v1.4.0-alpha.6. */
 /* Deterministic approval-state simulation only. No signoff, lock, live execution, or publication permission is performed. See ADR-011. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.5';
+  const VERSION = '1.4.0-alpha.6';
   const STABLE_BASELINE = '1.3.0';
-  const CONTROL_BASELINE = '1.4.0-alpha.5';
+  const CONTROL_BASELINE = '1.4.0-alpha.6';
   const DRY_RUN_BASELINE = '1.4.0-alpha.4';
-  const MILESTONE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
+  const MILESTONE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
   const MODEL = 'provider_source_operator_approval_simulation.v1';
 
   const APPROVAL_STATES = Object.freeze({

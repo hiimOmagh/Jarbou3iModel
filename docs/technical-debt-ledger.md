@@ -1,9 +1,9 @@
-Current release reference: v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
+Current release reference: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
 
 # Fixture/Test Debt Ledger
 
 Version: `1.3.0`
-Release: `v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation`
+Release: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`
 Mode: audit-only, no runtime behavior change.
 
 ## Scope

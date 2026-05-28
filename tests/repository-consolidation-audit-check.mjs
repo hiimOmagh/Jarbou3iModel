@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.5';
-const CURRENT_TITLE = 'Dry-Run Replay Pack + Operator Approval Simulation';
+const CURRENT_VERSION = '1.4.0-alpha.6';
+const CURRENT_TITLE = 'Provider Execution Harness Mock-to-Live Equivalence';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

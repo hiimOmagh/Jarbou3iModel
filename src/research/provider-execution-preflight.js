@@ -1,12 +1,12 @@
-/* Jarbou3i Research Engine provider execution preflight gate v1.4.0-alpha.5. */
+/* Jarbou3i Research Engine provider execution preflight gate v1.4.0-alpha.6. */
 /* Planning gate only. No live execution enabled. See ADR-001, ADR-002, ADR-003. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.5';
+  const VERSION = '1.4.0-alpha.6';
   const STABLE_BASELINE = '1.3.0';
-  const MILESTONE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
+  const MILESTONE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
   const MODEL = 'provider_execution_preflight.v1';
 
   const PREFLIGHT_CHECKS = Object.freeze([

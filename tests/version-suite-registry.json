@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.5",
-  "release_title": "v1.4.0-alpha.5 \u2014 Dry-Run Replay Pack + Operator Approval Simulation",
+  "version_suite_registry_version": "1.4.0-alpha.6",
+  "release_title": "v1.4.0-alpha.6 \u2014 Provider Execution Harness Mock-to-Live Equivalence",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1843,7 +1843,7 @@
         "tests/provider-source-policy-simulator-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.5 provider/source dry-run execution harness and policy simulator checks passed."
+      "former_console_message": "v1.4.0-alpha.6 provider/source dry-run execution harness and policy simulator checks passed."
     }
   ]
 }

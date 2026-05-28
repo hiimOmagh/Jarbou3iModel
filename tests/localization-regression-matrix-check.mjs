@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.5 Dry-Run Replay Pack + Operator Approval Simulation', 'English public version label must identify v1.4.0-alpha.5');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.5 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل', 'Arabic public version label must identify v1.4.0-alpha.5');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.5 Pack de rejeu dry-run + simulation d’approbation opérateur', 'French public version label must identify v1.4.0-alpha.5');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence', 'English public version label must identify v1.4.0-alpha.6');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل', 'Arabic public version label must identify v1.4.0-alpha.6');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur', 'French public version label must identify v1.4.0-alpha.6');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
