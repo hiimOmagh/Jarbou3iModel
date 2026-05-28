@@ -56,7 +56,9 @@ for (const required of [
   'node-version: 24',
   'npm ci --no-audit --no-fund --ignore-scripts',
   'node tests/lockfile-public-registry-check.mjs',
-  'npx playwright install --with-deps',
+  'npx playwright install --with-deps chromium',
+  'playwright-install.log',
+  'name: playwright-install-log',
   'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser',
   'name: hosted-demo-evidence',
   'path: ${{ runner.temp }}/hosted-demo-evidence',
@@ -78,7 +80,7 @@ for (const forbidden of [
 }
 
 const installIndex = workflow.indexOf('npm ci --no-audit --no-fund --ignore-scripts');
-const playwrightIndex = workflow.indexOf('npx playwright install --with-deps');
+const playwrightIndex = workflow.indexOf('npx playwright install --with-deps chromium');
 const browserIndex = workflow.indexOf('PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser');
 assert.ok(installIndex >= 0 && installIndex < playwrightIndex, 'npm ci must run before Playwright install');
 assert.ok(playwrightIndex < browserIndex, 'Playwright must install before skip-flag browser CI');

@@ -10,7 +10,7 @@ const evidenceMatrix = JSON.parse(fs.readFileSync('tests/evidence/evidence-matri
 const renderHelpers = fs.readFileSync('src/research/render-helpers.js', 'utf8');
 const currentRelease = fs.readFileSync('docs/current-release.md', 'utf8');
 
-assert.ok(workflow.includes(`run-name: ${RELEASE} Dry-run replay pack + operator approval simulation`), 'workflow run-name must expose v1.4.0-alpha.6 controlled provider/source execution preparation identity');
+assert.ok(workflow.includes(`run-name: ${RELEASE} ${TITLE} — \${{ github.ref_name }} @ \${{ github.sha }}`), 'workflow run-name must expose v1.4.0-alpha.6 provider execution equivalence identity');
 assert.ok(workflow.includes('workflow_dispatch:'), 'workflow must allow manual dispatch during CI incident recovery');
 assert.ok(workflow.includes('concurrency:'), 'workflow must define concurrency to prevent stacked runs');
 assert.ok(workflow.includes('cancel-in-progress: true'), 'workflow must cancel prior in-progress runs on the same ref');

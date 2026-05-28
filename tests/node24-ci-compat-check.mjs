@@ -48,7 +48,7 @@ for (const required of [
 
 const validateIndex = workflow.indexOf('node tests/lockfile-public-registry-check.mjs');
 const installIndex = workflow.indexOf('npm ci --no-audit --no-fund --ignore-scripts');
-const playwrightInstallIndex = workflow.indexOf('npx playwright install --with-deps');
+const playwrightInstallIndex = workflow.indexOf('npx playwright install --with-deps chromium');
 const browserIndex = workflow.indexOf('PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser');
 assert.ok(validateIndex < installIndex, 'lockfile registry validation must run before npm ci');
 assert.ok(installIndex < playwrightInstallIndex, 'npm ci must run before Playwright browser installation');
