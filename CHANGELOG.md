@@ -1,15 +1,15 @@
 # Changelog
 
-## v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype
+## v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger
 
-- Added deterministic credential boundary runtime drill.
-- Added fake secret injection, export leak, log leak, browser-visible text leak, fixture leak, provider payload secret-boundary, and release bundle secret-boundary drills.
-- Added redaction reports and safe metadata-only outputs.
-- Added ADR-014 for credential boundary runtime drills.
-- Added targeted check `tests/limited-manual-live-execution-prototype-check.mjs` and CI registry integration.
-- Preserved locked v1.4.0-alpha.7 source acquisition baseline, locked v1.4.0-alpha.6 mock-to-live equivalence baseline, locked v1.4.0-alpha.5 replay/approval baseline, locked v1.4.0-alpha.4 trace/readiness baseline, and locked v1.3.0 stable manual workflow baseline.
-- No real OAuth, no real API keys, no real token storage, live scraping, live source fetching, hidden background fetching, provider execution expansion, no production OAuth, backend expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
-
+- Added deterministic manual execution safety cockpit and safe session ledger.
+- Added session state machine: idle, preflight ready, operator review required, operator armed, simulated running, abort requested, kill-switch triggered, timed out, completed without execution, blocked, and failed precondition.
+- Added kill-switch, timeout, cost/budget, max-request, and no-execution fallback drills.
+- Added safe metadata-only ledger with checksum and forbidden credential/token/API-key fields.
+- Added cross-layer continuity checks from alpha.6 mock-to-live, alpha.7 source acquisition, alpha.8 credential drill, alpha.9 candidate gate, and alpha.10 manual opt-in shell.
+- Added ADR-017 and targeted check `tests/manual-execution-safety-cockpit-session-ledger-check.mjs`.
+- Preserved locked v1.4.0-alpha.10 manual opt-in shell baseline and all earlier execution/source/credential boundaries.
+- No default live execution. No hidden network calls. No real OAuth. No real API keys. No token storage. No credential persistence. No live scraping. No live source fetching. No provider execution expansion. No backend/storage expansion. No automatic verification. No automatic signoff/export lock. No cryptographic signature claim. No publication permission claim.
 
 ## v1.4.0-alpha.7 — Source Acquisition Control Surface
 

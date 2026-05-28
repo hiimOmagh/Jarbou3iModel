@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.10",
-  "internal_build_version": "1.4.0-alpha.10",
-  "public_version_label": "v1.4.0-alpha.10 Limited Manual Live-Execution Prototype",
+  "evidence_matrix_config_version": "1.4.0-alpha.11",
+  "internal_build_version": "1.4.0-alpha.11",
+  "public_version_label": "v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger",
   "locales": [
     "en",
     "ar",
@@ -17,7 +17,7 @@
         "Signed Export Handoff Pack",
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
-        "Limited Manual Live-Execution Prototype"
+        "Manual Execution Safety Cockpit + Session Ledger"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -37,7 +37,7 @@
         "سطح مراجعة سجل قفل التصدير",
         "سطح التحكم في اكتساب المصادر",
         "حدود بيانات الاعتماد",
-        "نموذج أولي محدود للتنفيذ الحي اليدوي"
+        "قمرة أمان التنفيذ اليدوي + سجل الجلسة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -55,7 +55,7 @@
         "Surface de revue du registre de verrouillage",
         "Surface de contrôle d’acquisition des sources",
         "frontière des identifiants",
-        "Prototype limité d’exécution live manuelle"
+        "Cockpit de sécurité d’exécution manuelle + registre de session"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -241,8 +241,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.10 Limited Manual Live-Execution Prototype",
-    "ar": "v1.4.0-alpha.10 نموذج أولي محدود للتنفيذ الحي اليدوي · هيكل اشتراك يدوي فقط",
-    "fr": "v1.4.0-alpha.10 Prototype limité d’exécution live manuelle · shell opt-in manuel uniquement"
+    "en": "v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger",
+    "ar": "v1.4.0-alpha.11 قمرة أمان التنفيذ اليدوي + سجل الجلسة · محاكاة قمرة الأمان فقط",
+    "fr": "v1.4.0-alpha.11 Cockpit de sécurité d’exécution manuelle + registre de session · simulation de cockpit uniquement"
   }
 }

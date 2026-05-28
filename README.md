@@ -1,18 +1,19 @@
 # Jarbou3i Research Engine
 
-`v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype`
+`v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`
 
-A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds a disabled-by-default manual opt-in live-execution prototype shell only.
+A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone consolidates the alpha.6–alpha.10 safety layers into a disabled-by-default manual execution safety cockpit and safe session ledger.
 
 ## Current boundary
 
-- Current package version: `1.4.0-alpha.10`.
-- Current release: `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype`.
-- Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
+- Current package version: `1.4.0-alpha.11`.
+- Current release: `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`.
+- Locked manual opt-in shell baseline: `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype`.
 - Locked controlled execution candidate baseline: `v1.4.0-alpha.9 — Controlled Execution Candidate Gate`.
 - Locked credential boundary baseline: `v1.4.0-alpha.8 — Credential Boundary Runtime Drill`.
 - Locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
 - Locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
+- Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
 - No default live execution.
 - No hidden network calls.
 - No real OAuth.
@@ -34,18 +35,18 @@ A dark editorial intelligence workspace that turns messy AI output into structur
 - No cryptographic signature claim.
 - No publication permission claim.
 
-## Alpha.10 additions
+## Alpha.11 additions
 
-- `src/research/limited-manual-live-execution-prototype.js`
-- `tests/limited-manual-live-execution-prototype-check.mjs`
-- `docs/adr/ADR-016-limited-manual-live-execution-prototype.md`
+- `src/research/manual-execution-safety-cockpit-session-ledger.js`
+- `tests/manual-execution-safety-cockpit-session-ledger-check.mjs`
+- `docs/adr/ADR-017-manual-execution-safety-cockpit-session-ledger.md`
 
-The limited manual live-execution prototype exposes a disabled-by-default manual opt-in shell. It records explicit operator preconditions, safe metadata-only status, and hard failure reasons when prerequisites are missing. It does not execute provider calls, fetch sources, run background tasks, store credentials, manage OAuth/token lifecycle, or claim automatic verification/signoff/export/publication permission.
+The safety cockpit exposes a simulation-only state machine, operator start/abort/timeout drill, kill-switch status, budget/timeout/request guardrails, safe metadata-only session ledger, cross-layer continuity summaries, and no-execution fallback reporting. It does not execute provider calls, fetch sources, run background tasks, store credentials, manage OAuth/token lifecycle, or claim automatic verification/signoff/export/publication permission.
 
-Public version label: v1.4.0-alpha.10 Limited Manual Live-Execution Prototype.
-Internal evidence metadata must report `1.4.0-alpha.10`.
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.10.
-Public Demo boundary: v1.4.0-alpha.10 keeps the locked public demo/manual workflow behavior unchanged while adding manual opt-in shell artifacts only.
+Public version label: v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger.
+Internal evidence metadata must report `1.4.0-alpha.11`.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.11.
+Public Demo boundary: v1.4.0-alpha.11 keeps the locked public demo/manual workflow behavior unchanged while adding manual execution safety cockpit artifacts only.
 
 ## Validation
 

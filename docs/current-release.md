@@ -1,11 +1,12 @@
 # Current Release
 
-## v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype
+## v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger
 
 Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle upload.
 
-Public release label: v1.4.0-alpha.10 Limited Manual Live-Execution Prototype.
+Public release label: v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger.
 
+Last locked manual opt-in shell baseline: `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype`.
 Last locked controlled execution candidate baseline: `v1.4.0-alpha.9 — Controlled Execution Candidate Gate`.
 Last locked credential boundary baseline: `v1.4.0-alpha.8 — Credential Boundary Runtime Drill`.
 Last locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
@@ -21,32 +22,20 @@ Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`. Do no
 
 ## Scope
 
-Planning/control-plane only. Deterministic limited manual live-execution prototype shell:
+Planning/control-plane only. Deterministic manual execution safety cockpit + session ledger:
 
-- Disabled-by-default manual opt-in shell.
-- Explicit operator opt-in precondition.
-- Operator runtime abort acknowledgement.
-- Operator cost and timeout acknowledgement.
-- Ephemeral credential handoff flag without credential storage.
-- Source-scope review without automatic source fetching.
-- Provider-payload review without raw secrets.
-- Failure UX review before any future manual attempt.
-- Hard failure reasons when prerequisites are missing.
-- Safe metadata-only output and checksum.
-- Candidate gate continuity from alpha.9 remains preserved.
-- Credential boundary runtime drill from alpha.8 remains preserved.
-- Source acquisition control surface from alpha.7 remains preserved.
-- Provider execution mock-to-live equivalence from alpha.6 remains preserved.
-- Provider/source dry-run replay pack and operator approval simulation from alpha.5 remain preserved.
-- Provider/source dry-run trace inspector and execution readiness report from alpha.4 remain preserved.
-- Provider/source dry-run execution harness and policy simulator from alpha.3 remain preserved.
-- Provider/source execution policy matrix and failure UX contracts from alpha.2 remain preserved.
-- Provider execution threat model and preflight gate from alpha.1 remain preserved.
+- Session state machine with idle, preflight, operator review, armed, simulated running, abort, kill-switch, timeout, completed-no-execution, blocked, and failed-precondition states.
+- Kill-switch drill and terminal-state rule: killed or timed-out sessions require a new session ID before re-arming.
+- Cost, timeout, and request-budget guardrails as metadata only.
+- Safe session ledger with summaries, failure reasons, no-execution report, and checksum.
+- Forbidden ledger fields for raw credentials, raw tokens, raw API keys, authorization headers, raw provider payloads with secrets, raw source fetch results, and browser/session secrets.
+- Cross-layer continuity from alpha.6 mock-to-live, alpha.7 source acquisition, alpha.8 credential drill, alpha.9 candidate gate, and alpha.10 manual opt-in shell.
+- No-execution fallback report when prerequisites are incomplete.
 
 ## Boundary flags
 
 ```text
-manual_only_live_execution_prototype_shell: true
+safety_cockpit_simulation_only: true
 disabled_by_default: true
 execution_enabled: false
 can_execute_now: false
@@ -66,6 +55,7 @@ credential_persistence_allowed: false
 backend_behavior_changed: false
 source_behavior_changed: false
 storage_behavior_changed: false
+uncontrolled_scraping_enabled: false
 automatic_source_fetching_enabled: false
 automatic_source_verification_claimed: false
 provider_suggested_sources_auto_accepted: false
@@ -82,23 +72,23 @@ Screenshots alone are insufficient. A ZIP archive alone is insufficient.
 
 ## Validation
 
-- Version: `1.4.0-alpha.10`
-- Required targeted checks: `tests/limited-manual-live-execution-prototype-check.mjs`, `tests/controlled-execution-candidate-gate-check.mjs`, `tests/credential-boundary-runtime-drill-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`, `tests/provider-source-dry-run-replay-pack-check.mjs`, `tests/provider-source-operator-approval-simulation-check.mjs`.
+- Version: `1.4.0-alpha.11`
+- Required targeted checks: `tests/manual-execution-safety-cockpit-session-ledger-check.mjs`, `tests/limited-manual-live-execution-prototype-check.mjs`, `tests/controlled-execution-candidate-gate-check.mjs`, `tests/credential-boundary-runtime-drill-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`, `tests/provider-source-dry-run-replay-pack-check.mjs`, `tests/provider-source-operator-approval-simulation-check.mjs`.
 - Required CI: `npm run test:ci:no-browser`, `npm run test:ci:browser`.
 
-Feature surface is frozen except deterministic limited manual live-execution prototype shell artifacts; no live execution, live fetching, or real credential handling is enabled.
+Feature surface is frozen except deterministic manual execution safety cockpit + session ledger artifacts; no live execution, live fetching, or real credential handling is enabled.
 
 ## Release Manifest Compatibility
 
 Package: `jarbou3i-research-engine`
-Version: `1.4.0-alpha.10`
+Version: `1.4.0-alpha.11`
 Runtime capability change: no
 Required browser gates before publishing: `npm run test:ci:browser`
 Release archive exclusions: `node_modules/`, `playwright-report/`, `test-results/`, `*.zip`, `backend/.dev.vars`
 Required cleanup commands: remove generated Playwright/test output before packaging.
 
-Machine tokens: runtime_capability_change=false; release_type=limited-manual-live-execution-prototype; release_scope=manual-opt-in-shell-only; test:ci:browser required.
+Machine tokens: runtime_capability_change=false; release_type=manual-execution-safety-cockpit-session-ledger; release_scope=safety-cockpit-simulation-only; test:ci:browser required.
 Node 24 CI compatibility preserved.
 Release lock requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 Planning gate continuity: apply integrity, changed-files-only patching, Package Script Compression, Version Suite Registry, Fixture Registry, and test organization checks remain active.
-Public Demo boundary: v1.4.0-alpha.10 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic limited manual live-execution prototype artifacts only.
+Public Demo boundary: v1.4.0-alpha.11 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic safety cockpit/session-ledger artifacts only.

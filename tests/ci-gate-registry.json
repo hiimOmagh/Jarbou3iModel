@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.10",
-  "release_title": "v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype",
+  "ci_gate_registry_version": "1.4.0-alpha.11",
+  "release_title": "v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -128,6 +128,7 @@
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
         "tests/limited-manual-live-execution-prototype-check.mjs",
+        "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
         "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/publication-review-gate-check.mjs",
         "tests/golden-workflow-corpus-check.mjs",
@@ -243,7 +244,8 @@
         "tests/source-acquisition-control-surface-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
-        "tests/limited-manual-live-execution-prototype-check.mjs"
+        "tests/limited-manual-live-execution-prototype-check.mjs",
+        "tests/manual-execution-safety-cockpit-session-ledger-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -272,7 +274,8 @@
         "tests/provider-source-operator-approval-simulation-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
-        "tests/limited-manual-live-execution-prototype-check.mjs"
+        "tests/limited-manual-live-execution-prototype-check.mjs",
+        "tests/manual-execution-safety-cockpit-session-ledger-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -341,7 +344,8 @@
         "tests/provider-execution-mock-to-live-equivalence-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
-        "tests/limited-manual-live-execution-prototype-check.mjs"
+        "tests/limited-manual-live-execution-prototype-check.mjs",
+        "tests/manual-execution-safety-cockpit-session-ledger-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -364,7 +368,8 @@
         "tests/provider-execution-mock-to-live-equivalence-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
-        "tests/limited-manual-live-execution-prototype-check.mjs"
+        "tests/limited-manual-live-execution-prototype-check.mjs",
+        "tests/manual-execution-safety-cockpit-session-ledger-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -430,6 +435,7 @@
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
         "tests/limited-manual-live-execution-prototype-check.mjs",
+        "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
         "tests/module-type-warning-fix-check.mjs",
         "tests/onboarding-first-run-check.mjs",
         "tests/browser-qa-hardening-check.mjs",
@@ -511,7 +517,8 @@
         "tests/prompt-compiler-check.mjs",
         "tests/provider-source-dry-run-replay-pack-check.mjs",
         "tests/provider-source-operator-approval-simulation-check.mjs",
-        "tests/provider-execution-mock-to-live-equivalence-check.mjs"
+        "tests/provider-execution-mock-to-live-equivalence-check.mjs",
+        "tests/manual-execution-safety-cockpit-session-ledger-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": [
@@ -528,9 +535,9 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.10",
-    "scope": "limited_manual_live_execution_prototype",
-    "optimization_scope": "limited_manual_live_execution_prototype",
+    "version": "1.4.0-alpha.11",
+    "scope": "manual_execution_safety_cockpit_session_ledger",
+    "optimization_scope": "manual_execution_safety_cockpit_session_ledger",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -542,7 +549,7 @@
     "previous_serial_no_browser_syntax_checks": 100
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.10",
+    "version": "1.4.0-alpha.11",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -702,13 +709,15 @@
       "src/research/limited-manual-live-execution-prototype.js",
       "tests/limited-manual-live-execution-prototype-check.mjs",
       "src/research/controlled-execution-candidate-gate.js",
-      "tests/controlled-execution-candidate-gate-check.mjs"
+      "tests/controlled-execution-candidate-gate-check.mjs",
+      "src/research/manual-execution-safety-cockpit-session-ledger.js",
+      "tests/manual-execution-safety-cockpit-session-ledger-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.10",
+    "version": "1.4.0-alpha.11",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -728,7 +737,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.4.0-alpha.10",
+    "version": "1.4.0-alpha.11",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

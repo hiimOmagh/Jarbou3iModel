@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jarbou3i Research Engine — v1.4.0-alpha.10 Limited Manual Live-Execution Prototype (1.4.0-alpha.10)</title>
+<title>Jarbou3i Research Engine — v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger (1.4.0-alpha.11)</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -11,14 +11,14 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#255ee8" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020817" />
 <meta name="color-scheme" content="light dark" />
-<meta property="og:title" content="Jarbou3i Research Engine — v1.4.0-alpha.10 Limited Manual Live-Execution Prototype (1.4.0-alpha.10)" />
+<meta property="og:title" content="Jarbou3i Research Engine — v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger (1.4.0-alpha.11)" />
 <meta property="og:description" content="Trilingual, client-side strategic research workbench with schema-governed six-layer analysis, evidence discipline, and safe export." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/jarbou3i-mascot-512.png" />
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
 <meta name="twitter:card" content="summary" />
-<meta name="app-version" content="1.4.0-alpha.10" />
+<meta name="app-version" content="1.4.0-alpha.11" />
 <link rel="stylesheet" href="src/styles.css" />
 <!-- Release approval guard: screenshots alone and ZIP existence alone are insufficient. -->
   <!-- locked-baseline: v1.3.0 · Stable Manual Workflow Release -->
@@ -47,7 +47,7 @@
 <section class="panel researchLabPanel" id="researchLabPanel">
 <div class="panelHeader researchHeader">
 <div>
-<div class="researchEyebrow" data-r-i18n="alphaBadge">v1.4.0-alpha.10 Limited Manual Live-Execution Prototype · Manual Opt-In Shell Only</div>
+<div class="researchEyebrow" data-r-i18n="alphaBadge">v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger · Safety Cockpit Simulation Only</div>
 <h2 data-r-i18n="researchTitle">Research Workflow Lab</h2>
 <p data-r-i18n="researchSubtitle">Experimental research-to-strategy pipeline. Manual mode remains untouched.</p>
 </div>
@@ -83,7 +83,7 @@
 <div>
 <div class="researchEyebrow" data-r-i18n="hostedDemoVerificationEyebrow">التحقق من العرض المستضاف</div>
 <h3 data-r-i18n="hostedDemoVerificationTitle">لا تنشر إلا بعد توفر أدلة المتصفح</h3>
-<p class="muted" data-r-i18n="hostedDemoVerificationBody">Limited Manual Live-Execution Prototype is a disabled-by-default manual opt-in shell: the locked v1.3.0 stable manual workflow, v1.4.0-alpha.9 candidate gate, v1.4.0-alpha.8 credential boundary drill, v1.4.0-alpha.7 source acquisition baseline, and v1.4.0-alpha.6 mock-to-live baseline remain locked. Hosted evidence must report 1.4.0-alpha.10 internally while showing v1.4.0-alpha.10 Limited Manual Live-Execution Prototype to users. No hidden network calls, live execution, source fetching, real OAuth/API keys, token storage, credential persistence, backend expansion, automatic verification, signoff, export lock, signature, or publication permission is enabled.</p>
+<p class="muted" data-r-i18n="hostedDemoVerificationBody">Manual Execution Safety Cockpit + Session Ledger is a disabled-by-default manual execution safety cockpit: the locked v1.3.0 stable manual workflow, v1.4.0-alpha.9 candidate gate, v1.4.0-alpha.8 credential boundary drill, v1.4.0-alpha.7 source acquisition baseline, and v1.4.0-alpha.6 mock-to-live baseline remain locked. Hosted evidence must report 1.4.0-alpha.11 internally while showing v1.4.0-alpha.11 Manual Execution Safety Cockpit + Session Ledger to users. No hidden network calls, live execution, source fetching, real OAuth/API keys, token storage, credential persistence, backend expansion, automatic verification, signoff, export lock, signature, or publication permission is enabled.</p>
 </div>
 <div class="hostedDemoChecklist">
 <span data-r-i18n="hostedUrlChecked">تم فحص رابط الاستضافة</span>
@@ -331,6 +331,7 @@
 <article class="card researchCard credentialBoundaryCard" data-browser-qa="credential-boundary-runtime-drill"><h3 data-r-i18n="credentialBoundaryTitle">Credential Boundary Runtime Drill</h3><p class="muted" data-r-i18n="credentialBoundarySubtitle">Run deterministic fake-secret drills for exports, logs, browser-visible text, fixtures, provider payloads, and release bundles.</p><p class="muted providerSafetyNote" data-r-i18n="credentialBoundaryPolicyNote">Only redaction reports, booleans, and safe fingerprints may survive; no real OAuth, API keys, raw tokens, or token storage is enabled.</p></article>
 <article class="card researchCard controlledExecutionCandidateCard" data-browser-qa="controlled-execution-candidate-gate"><h3 data-r-i18n="controlledExecutionCandidateTitle">Controlled Execution Candidate Gate</h3><p class="muted" data-r-i18n="controlledExecutionCandidateSubtitle">Assemble a no-execution candidate report from credential, source, policy, readiness, replay, and approval evidence without enabling live execution.</p><p class="muted providerSafetyNote" data-r-i18n="controlledExecutionCandidatePolicyNote">The gate lists manual preconditions and failure-to-enable reasons; it cannot authorize provider calls, source fetching, credentials, OAuth, signoff, export lock, or publication.</p></article>
 <article class="card researchCard limitedManualLiveExecutionCard" data-browser-qa="limited-manual-live-execution-prototype"><h3 data-r-i18n="limitedManualLiveExecutionTitle">Limited Manual Live-Execution Prototype</h3><p class="muted" data-r-i18n="limitedManualLiveExecutionSubtitle">Expose a disabled-by-default manual opt-in shell with operator preconditions and hard failure reasons without performing live execution.</p><p class="muted providerSafetyNote" data-r-i18n="limitedManualLiveExecutionPolicyNote">No hidden network calls, credential persistence, OAuth/token lifecycle, automatic source fetching, background execution, auto-verification, signoff, export lock, or publication permission.</p></article>
+<article class="card researchCard manualExecutionSafetyCockpitCard" data-browser-qa="manual-execution-safety-cockpit-session-ledger"><h3 data-r-i18n="manualExecutionSafetyCockpitTitle">Manual Execution Safety Cockpit + Session Ledger</h3><p class="muted" data-r-i18n="manualExecutionSafetyCockpitSubtitle">Connect the safety layers into a simulation-only cockpit with session state, kill-switch drill, timeout/budget guardrails, safe ledger, and no-execution fallback reporting.</p><p class="muted providerSafetyNote" data-r-i18n="manualExecutionSafetyCockpitPolicyNote">Simulation layer only: no live execution, hidden network calls, credentials, OAuth, token storage, source fetching, automatic verification, signoff, export lock, or publication permission.</p></article>
 <article class="card researchCard sourceImportCard">
 <h3 data-r-i18n="sourceImportTitle">Source Import Adapter</h3>
 <p class="muted" data-r-i18n="sourceImportSubtitle">Paste deep-research / last30days-style outputs or manual source packet JSON and convert them into reviewable Evidence Matrix candidates. No live fetching is performed.</p>
@@ -563,6 +564,7 @@
 <script src="src/research/credential-boundary-runtime-drill.js" defer></script>
 <script src="src/research/controlled-execution-candidate-gate.js" defer></script>
 <script src="src/research/limited-manual-live-execution-prototype.js" defer></script>
+<script src="src/research/manual-execution-safety-cockpit-session-ledger.js" defer></script>
 <script src="src/research/source-capability-registry.js" defer></script>
 <script src="src/research/source-connectors.js" defer></script>
 <script src="src/research/controlled-connector-engine.js" defer></script>
@@ -583,16 +585,16 @@
 <script src="src/research/release-provenance-ledger.js" defer></script>
 <script src="src/research/post-stable-expansion-gate.js" defer></script>
 <script src="src/research-engine.js" defer></script>
-<span class="sr-only" data-r-i18n="analysisReleaseNote">1.4.0-alpha.10 labels consistently describe Limited Manual Live-Execution Prototype while internal evidence metadata reports 1.4.0-alpha.10.</span>
+<span class="sr-only" data-r-i18n="analysisReleaseNote">1.4.0-alpha.11 labels consistently describe Manual Execution Safety Cockpit + Session Ledger while internal evidence metadata reports 1.4.0-alpha.11.</span>
 <span class="sr-only">hosted evidence capture polish visual artifact guard without changing runtime behavior</span>
 <span class="sr-only">لا تكفي اللقطات ولا ملفات ZIP وحدها لاعتماد الإصدار.</span>
-<span class="sr-only">v1.4.0-alpha.10 · Limited Manual Live-Execution Prototype; manual opt-in shell only; disabled by default; without changing runtime behavior.</span>
+<span class="sr-only">v1.4.0-alpha.11 · Manual Execution Safety Cockpit + Session Ledger; safety cockpit simulation only; disabled by default; without changing runtime behavior.</span>
 <span class="sr-only">لا يوجد استخراج حي</span>
 <span class="sr-only">OAuth حقيقي</span>
 <span class="sr-only">بوابة تخطيط فقط</span>
 </body>
 </html>
 
-<!-- v1.4.0-alpha.10 · Limited Manual Live-Execution Prototype -->
+<!-- v1.4.0-alpha.11 · Manual Execution Safety Cockpit + Session Ledger -->
 
-<!-- v1.4.0-alpha.10 localized labels: limited manual live-execution prototype / نموذج أولي محدود للتنفيذ الحي اليدوي / prototype limité d’exécution live manuelle -->
+<!-- v1.4.0-alpha.11 localized labels: manual execution safety cockpit + session ledger / قمرة أمان التنفيذ اليدوي + سجل الجلسة / cockpit de sécurité d’exécution manuelle + registre de session -->

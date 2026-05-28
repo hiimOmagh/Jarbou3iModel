@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.10';
-const CURRENT_TITLE = 'Limited Manual Live-Execution Prototype';
+const CURRENT_VERSION = '1.4.0-alpha.11';
+const CURRENT_TITLE = 'Manual Execution Safety Cockpit + Session Ledger';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');

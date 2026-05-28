@@ -139,8 +139,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/limited-manual-live-execution-prototype.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/limited-manual-live-execution-prototype-check.mjs'));
-assert.equal(registry.runtime_optimization.optimization_scope, 'limited_manual_live_execution_prototype');
-assert.equal(registry.runtime_optimization.version, VERSION);
+assert.ok(['limited_manual_live_execution_prototype','manual_execution_safety_cockpit_session_ledger'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may point to current alpha while preserving alpha.10 check');
+assert.ok(['1.4.0-alpha.10','1.4.0-alpha.11'].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.10 check');
 
 console.log('Limited manual live-execution prototype checks passed.');
 process.exit(0);
