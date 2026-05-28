@@ -23,6 +23,7 @@ for (const token of [
   'lock-evidence-bundle',
   'no-browser-lock-evidence-log',
   'browser-lock-evidence-log',
+  'playwright-install-deps-log',
   'playwright-install-log',
   'hosted-demo-evidence',
   'lock-evidence-bundle-decision',
@@ -32,6 +33,7 @@ for (const token of [
   'Build canonical lock evidence bundle',
   'lock-evidence-bundle_1.4.0-alpha.7_${{ github.run_id }}',
   'needs: [no-browser, browser]',
+  'Download Playwright install-deps evidence log',
   'Download Playwright install evidence log',
   'if: always()'
 ]) assert.ok(workflow.includes(token), `workflow missing ${token}`);
@@ -63,7 +65,9 @@ for (const token of [
   'visible-text-fr.json',
   'CI gate passed: no-browser',
   'CI gate passed: browser',
+  'playwright-install-deps.log',
   'playwright-install.log',
+  'playwright_install_deps_log_present',
   'playwright_install_log_present',
   'stale_version_residue_detected',
   'lock_artifact_ready'
@@ -80,7 +84,16 @@ assert.equal(workflow.includes('| tee "$RUNNER_TEMP/lock-evidence-input/logs/bro
 assert.ok(workflow.includes('test -f "$RUNNER_TEMP/hosted-demo-evidence/matrix-summary.json"'), 'browser job must require matrix-summary.json before artifact upload');
 assert.ok(workflow.includes('Browser gate pending: Playwright install has not completed yet.'), 'browser job must initialize browser.log before setup can fail');
 assert.ok(workflow.includes('Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'), 'browser job must stamp browser.log when the browser gate starts');
-assert.ok(workflow.includes('Playwright install started: npx playwright install --with-deps chromium'), 'browser job must stamp playwright install log');
+assert.ok(workflow.includes('uses: actions/cache@v6'), 'browser job must cache Playwright browser binaries');
+assert.ok(workflow.includes('path: ~/.cache/ms-playwright'), 'browser job must cache ~/.cache/ms-playwright');
+assert.ok(workflow.includes("key: ${{ runner.os }}-ms-playwright-${{ steps.playwright-cache-key.outputs.version }}-${{ hashFiles('package-lock.json') }}"), 'Playwright cache key must include OS, Playwright version, and package-lock hash');
+assert.ok(workflow.includes('npx playwright install-deps chromium'), 'browser job must split system dependency install from browser install');
+assert.ok(workflow.includes('npx playwright install chromium'), 'browser job must install browser binaries separately');
+assert.ok(workflow.includes('timeout 10m npx playwright install-deps chromium'), 'install-deps step must be hard-timeout bounded');
+assert.ok(workflow.includes('timeout 8m npx playwright install chromium'), 'browser install step must be hard-timeout bounded');
+assert.ok(workflow.includes('retrying once after 15 seconds'), 'browser install step must have a single bounded retry');
+assert.ok(workflow.includes('Playwright install-deps started: timeout 10m npx playwright install-deps chromium'), 'browser job must stamp playwright install-deps log');
+assert.ok(workflow.includes('Playwright browser install started: timeout 8m npx playwright install chromium'), 'browser job must stamp playwright browser install log');
 assert.ok(workflow.includes("if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}"), 'canonical bundle upload/build steps must remain success-gated');
 assert.ok(workflow.includes('if: always()'), 'lock evidence decision job must run even when canonical bundle is not buildable');
 assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.7'"), 'browser job must assert matrix summary version');
@@ -99,7 +112,8 @@ const out = path.join(tmp, 'bundle-output');
 fs.mkdirSync(hosted, {recursive:true});
 fs.mkdirSync(logs, {recursive:true});
 fs.writeFileSync(path.join(logs, 'no-browser.log'), `Registry: ${RELEASE}\nCI gate passed: no-browser\nchecks=101\n`);
-fs.writeFileSync(path.join(logs, 'playwright-install.log'), 'Playwright install started: npx playwright install --with-deps chromium\n');
+fs.writeFileSync(path.join(logs, 'playwright-install-deps.log'), 'Playwright install-deps started: timeout 10m npx playwright install-deps chromium\n');
+fs.writeFileSync(path.join(logs, 'playwright-install.log'), 'Playwright browser install started: timeout 8m npx playwright install chromium\n');
 fs.writeFileSync(path.join(logs, 'browser.log'), `Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser\nRegistry: ${RELEASE}\nCI gate passed: browser\nchecks=13\n`);
 const matrixRows = [];
 for (const locale of matrixConfig.locales) {
@@ -154,12 +168,14 @@ assert.equal(manifest.evidence_matrix.failed_rows, 0);
 assert.equal(manifest.evidence_matrix.language_purity_passed, true);
 assert.equal(manifest.bundle_validation.status, 'passed');
 assert.equal(manifest.bundle_validation.lock_artifact_ready, true);
+assert.equal(manifest.browser.playwright_install_deps_log_file, 'logs/playwright-install-deps.log');
 assert.equal(manifest.browser.playwright_install_log_file, 'logs/playwright-install.log');
 assert.ok(fs.existsSync(path.join(bundleDir, 'checksums', 'SHA256SUMS.txt')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'hosted-demo-metadata.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'matrix-summary.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'en', 'landing.validation.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'no-browser.log')));
+assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'playwright-install-deps.log')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'playwright-install.log')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'browser.log')));
 

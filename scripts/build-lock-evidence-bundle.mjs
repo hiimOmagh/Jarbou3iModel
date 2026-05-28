@@ -131,27 +131,31 @@ copyDir(evidenceDir, path.join(bundleDir, 'hosted-demo-evidence'));
 copyDir(path.join(evidenceDir, 'exports'), path.join(bundleDir, 'exports'));
 
 const noBrowserLog=path.join(inputDir,'logs','no-browser.log');
+const playwrightInstallDepsLog=path.join(inputDir,'logs','playwright-install-deps.log');
 const playwrightInstallLog=path.join(inputDir,'logs','playwright-install.log');
 const browserLog=path.join(inputDir,'logs','browser.log');
 for (const [name, file] of [
   ['no-browser.log', noBrowserLog],
+  ['playwright-install-deps.log', playwrightInstallDepsLog],
   ['playwright-install.log', playwrightInstallLog],
   ['browser.log', browserLog]
 ]) {
   if(!fs.existsSync(file)) fail(`missing browser lock evidence log ${name}`);
 }
 copyFile(noBrowserLog,path.join(bundleDir,'logs','no-browser.log'));
+copyFile(playwrightInstallDepsLog,path.join(bundleDir,'logs','playwright-install-deps.log'));
 copyFile(playwrightInstallLog,path.join(bundleDir,'logs','playwright-install.log'));
 copyFile(browserLog,path.join(bundleDir,'logs','browser.log'));
 if(!textIncludes(noBrowserLog,'CI gate passed: no-browser')) fail('no-browser.log does not contain CI gate passed: no-browser');
-if(!textIncludes(playwrightInstallLog,'Playwright install started: npx playwright install --with-deps chromium')) fail('playwright-install.log does not contain the expected install start marker');
+if(!textIncludes(playwrightInstallDepsLog,'Playwright install-deps started: timeout 10m npx playwright install-deps chromium')) fail('playwright-install-deps.log does not contain the expected install-deps start marker');
+if(!textIncludes(playwrightInstallLog,'Playwright browser install started: timeout 8m npx playwright install chromium')) fail('playwright-install.log does not contain the expected browser install start marker');
 if(!textIncludes(browserLog,'Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser')) fail('browser.log does not contain the expected browser gate start marker');
 if(!textIncludes(browserLog,'CI gate passed: browser')) fail('browser.log does not contain CI gate passed: browser');
 
 copyFile(path.join(root,'tests','ci-gate-registry.json'), path.join(bundleDir,'ci','ci-gate-registry-snapshot.json'));
 writeJson(path.join(bundleDir,'ci','package-version.json'), {name:pkg.name, version, release, public_version_label:publicVersionLabel, private:pkg.private === true});
 writeJson(path.join(bundleDir,'ci','workflow-run.json'), {run_id:runId, run_attempt:runAttempt, commit_sha:commitSha, branch});
-writeJson(path.join(bundleDir,'ci','test-summary.json'), {no_browser_log_present:true, playwright_install_log_present:true, browser_log_present:true, matrix_rows:matrixSummary.actual_rows, normalized_capture_count:normalizedCaptures.length});
+writeJson(path.join(bundleDir,'ci','test-summary.json'), {no_browser_log_present:true, playwright_install_deps_log_present:true, playwright_install_log_present:true, browser_log_present:true, matrix_rows:matrixSummary.actual_rows, normalized_capture_count:normalizedCaptures.length});
 
 const manifest={
   evidence_manifest_version: version,
@@ -165,7 +169,7 @@ const manifest={
   branch,
   bundle_name: bundleName,
   no_browser:{ status:'passed', log_file:'logs/no-browser.log' },
-  browser:{ status:'passed', playwright_install_log_file:'logs/playwright-install.log', log_file:'logs/browser.log' },
+  browser:{ status:'passed', playwright_install_deps_log_file:'logs/playwright-install-deps.log', playwright_install_log_file:'logs/playwright-install.log', log_file:'logs/browser.log' },
   hosted_demo:{ evidence_review_version:metadata.evidence_review_version, capture_polish_version:metadata.capture_polish_version, page_app_version:pageVersion, capture_count:metadata.capture_count, all_required_captures_present:metadata.all_required_captures_present, visual_artifact_guard_required:metadata.visual_artifact_guard_required, capture_settle_required:metadata.capture_settle_required, max_horizontal_overflow_px:maxOverflow(normalizedCaptures), all_visual_artifact_guards_passed:normalizedCaptures.every((capture)=>capture.visual_artifact_guard_passed === true), files:requiredHostedFiles },
   evidence_matrix:{ languages:matrixSummary.languages, surface_count:matrixSummary.surface_count, expected_rows:matrixSummary.expected_rows, actual_rows:matrixSummary.actual_rows, passed_rows:matrixSummary.passed_rows, failed_rows:matrixSummary.failed_rows, language_purity_passed:matrixSummary.language_purity_passed, visual_guard_passed:matrixSummary.visual_guard_passed, horizontal_overflow_max_px:matrixSummary.horizontal_overflow_max_px, stale_version_residue_detected:matrixSummary.stale_version_residue_detected },
   exports:{ export_pack_v3_valid:matrixSummary.export_pack_v3_valid === true, golden_workflow_valid:matrixSummary.golden_workflow_loaded === true || matrixSummary.golden_workflow_valid === true, publication_review_valid:matrixSummary.publication_review_valid === true },

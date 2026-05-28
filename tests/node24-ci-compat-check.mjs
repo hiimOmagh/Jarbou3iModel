@@ -41,6 +41,10 @@ for (const required of [
   'node-version: 24',
   'npm ci --no-audit --no-fund --ignore-scripts',
   'node tests/lockfile-public-registry-check.mjs',
+  'actions/cache@v6',
+  'path: ~/.cache/ms-playwright',
+  'npx playwright install-deps chromium',
+  'npx playwright install chromium',
   'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'
 ]) {
   assert.ok(workflow.includes(required), `CI workflow must contain Node 24 compatible token: ${required}`);
@@ -48,10 +52,12 @@ for (const required of [
 
 const validateIndex = workflow.indexOf('node tests/lockfile-public-registry-check.mjs');
 const installIndex = workflow.indexOf('npm ci --no-audit --no-fund --ignore-scripts');
-const playwrightInstallIndex = workflow.indexOf('npx playwright install --with-deps chromium');
+const playwrightDepsIndex = workflow.indexOf('npx playwright install-deps chromium');
+const playwrightInstallIndex = workflow.indexOf('npx playwright install chromium');
 const browserIndex = workflow.indexOf('PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser');
 assert.ok(validateIndex < installIndex, 'lockfile registry validation must run before npm ci');
-assert.ok(installIndex < playwrightInstallIndex, 'npm ci must run before Playwright browser installation');
+assert.ok(installIndex < playwrightDepsIndex, 'npm ci must run before Playwright system dependency installation');
+assert.ok(playwrightDepsIndex < playwrightInstallIndex, 'Playwright system dependencies must install before browser binaries');
 assert.ok(playwrightInstallIndex < browserIndex, 'browser workflow must install Playwright once before skipping duplicate install in ci-browser.sh');
 
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');

@@ -73,14 +73,64 @@ jobs:
           rm -rf "$GITHUB_WORKSPACE/test-results/hosted-demo-evidence"
           mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs" "$RUNNER_TEMP/hosted-demo-evidence"
           printf 'Browser gate pending: Playwright install has not completed yet.\n' > "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
-      - name: Install Playwright browsers with evidence log
+          printf 'Playwright system dependency install pending.\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install-deps.log"
+          printf 'Playwright browser binary install pending.\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
+      - name: Resolve Playwright cache key
+        id: playwright-cache-key
         shell: bash
         run: |
+          version="$(node -e "const lock=require('./package-lock.json'); const packages=lock.packages||{}; const version=packages['node_modules/playwright']?.version || packages['node_modules/@playwright/test']?.version || lock.dependencies?.playwright?.version || lock.dependencies?.['@playwright/test']?.version || 'unknown'; process.stdout.write(version);")"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Playwright cache version: $version"
+      - name: Restore Playwright browser cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-ms-playwright-${{ steps.playwright-cache-key.outputs.version }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-ms-playwright-${{ steps.playwright-cache-key.outputs.version }}-
+            ${{ runner.os }}-ms-playwright-
+      - name: Install Playwright system dependencies with evidence log
+        shell: bash
+        timeout-minutes: 10
+        run: |
           mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
-          printf 'Playwright install started: npx playwright install --with-deps chromium\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
+          printf 'Playwright install-deps started: timeout 10m npx playwright install-deps chromium\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install-deps.log"
           set +e
-          npx playwright install --with-deps chromium >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log" 2>&1
+          timeout 10m npx playwright install-deps chromium >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install-deps.log" 2>&1
           status=$?
+          if [ "$status" -eq 124 ]; then
+            printf '\nPlaywright install-deps timed out after 10 minutes.\n' >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install-deps.log"
+          fi
+          cat "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install-deps.log"
+          exit $status
+      - name: Upload Playwright install-deps evidence log
+        uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: playwright-install-deps-log
+          path: ${{ runner.temp }}/lock-evidence-input/logs/playwright-install-deps.log
+      - name: Install Playwright browser with evidence log
+        shell: bash
+        timeout-minutes: 10
+        run: |
+          mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
+          printf 'Playwright browser install started: timeout 8m npx playwright install chromium\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
+          set +e
+          timeout 8m npx playwright install chromium >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log" 2>&1
+          status=$?
+          if [ "$status" -eq 124 ]; then
+            printf '\nPlaywright browser install attempt 1 timed out after 8 minutes.\n' >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
+          fi
+          if [ "$status" -ne 0 ]; then
+            printf '\nPlaywright browser install attempt 1 failed with status %s; retrying once after 15 seconds.\n' "$status" >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
+            sleep 15
+            timeout 8m npx playwright install chromium >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log" 2>&1
+            status=$?
+            if [ "$status" -eq 124 ]; then
+              printf '\nPlaywright browser install attempt 2 timed out after 8 minutes.\n' >> "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
+            fi
+          fi
           cat "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
           exit $status
       - name: Upload Playwright install evidence log
@@ -162,6 +212,12 @@ jobs:
         if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         with:
           name: no-browser-lock-evidence-log
+          path: ${{ runner.temp }}/lock-evidence-input/logs
+      - name: Download Playwright install-deps evidence log
+        uses: actions/download-artifact@v6
+        if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
+        with:
+          name: playwright-install-deps-log
           path: ${{ runner.temp }}/lock-evidence-input/logs
       - name: Download Playwright install evidence log
         uses: actions/download-artifact@v6

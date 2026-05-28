@@ -55,8 +55,15 @@ for (const required of [
   'node-version: 24',
   'npm ci --no-audit --no-fund --ignore-scripts',
   'node tests/lockfile-public-registry-check.mjs',
-  'npx playwright install --with-deps chromium',
+  'actions/cache@v6',
+  'path: ~/.cache/ms-playwright',
+  'npx playwright install-deps chromium',
+  'npx playwright install chromium',
+  'timeout 10m npx playwright install-deps chromium',
+  'timeout 8m npx playwright install chromium',
+  'playwright-install-deps.log',
   'playwright-install.log',
+  'name: playwright-install-deps-log',
   'name: playwright-install-log',
   'PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser',
   'name: hosted-demo-evidence',
@@ -82,11 +89,13 @@ for (const forbidden of [
 
 const lockIndex = workflow.indexOf('node tests/lockfile-public-registry-check.mjs');
 const installIndex = workflow.indexOf('npm ci --no-audit --no-fund --ignore-scripts');
-const playwrightIndex = workflow.indexOf('npx playwright install --with-deps chromium');
+const playwrightDepsIndex = workflow.indexOf('npx playwright install-deps chromium');
+const playwrightIndex = workflow.indexOf('npx playwright install chromium');
 const browserIndex = workflow.indexOf('PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser');
 assert.ok(lockIndex >= 0 && lockIndex < installIndex, 'lockfile guard must run before npm ci');
-assert.ok(installIndex < playwrightIndex, 'npm ci must run before Playwright install');
-assert.ok(playwrightIndex < browserIndex, 'Playwright must install once before browser CI skip flag');
+assert.ok(installIndex < playwrightDepsIndex, 'npm ci must run before Playwright dependency install');
+assert.ok(playwrightDepsIndex < playwrightIndex, 'Playwright dependencies must install before browser binaries');
+assert.ok(playwrightIndex < browserIndex, 'Playwright browser binaries must install before browser CI skip flag');
 
 assert.ok(ciBrowser.includes('PLAYWRIGHT_SKIP_INSTALL'), 'ci-browser must support install skip flag');
 assert.ok(ciBrowser.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'ci-browser must preserve hosted demo evidence outside Playwright test-results cleanup');
