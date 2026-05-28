@@ -17,8 +17,8 @@ assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
 assert.equal(registry.release_title, 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence');
 assert.ok(index.includes('v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence') && index.includes('Planning/Preflight Only'), 'index visible badge must show alpha.1 planning/preflight identity');
-assert.ok(index.includes('حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل'), 'Arabic alpha.1 public visible copy missing');
-assert.ok(index.includes('Pack de rejeu dry-run + simulation d’approbation opérateur') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('Pack de rejeu dry-run + simulation d’approbation opérateur'), 'French alpha.1 public visible copy missing');
+assert.ok(index.includes('معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد'), 'Arabic alpha.1 public visible copy missing');
+assert.ok(index.includes('Équivalence mock-vers-live du harnais d’exécution fournisseur') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('Équivalence mock-vers-live du harnais d’exécution fournisseur'), 'French alpha.1 public visible copy missing');
 for (const doc of [current, publicDemo, roadmap, qa]) {
   assert.ok(doc.includes(VERSION), 'release doc must include stable version');
   assert.ok(/no live|No live|لا يوجد|aucune recherche/i.test(doc), 'release doc must preserve no-live boundary');
@@ -34,5 +34,5 @@ assert.equal(registry.oauth_behavior_changed, false);
 assert.equal(registry.backend_behavior_changed, false);
 assert.equal(registry.source_connector_behavior_changed, false);
 assert.equal(registry.storage_behavior_changed, false);
-console.log('Dry-run replay pack + operator approval simulation public-demo checks passed.');
+console.log('Localized release label truth checks passed.');
 process.exit(0);

@@ -234,7 +234,7 @@
   ],
   "public_version_labels": {
     "en": "v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence",
-    "ar": "v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل",
-    "fr": "v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur"
+    "ar": "v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط",
+    "fr": "v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement"
   }
 }

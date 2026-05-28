@@ -67,7 +67,7 @@ const engine = fs.readFileSync('src/research-engine.js','utf8');
 for (const marker of ['modules.operatorCommandPalette','operatorCommandPalette?.installNavigation']) assert.ok(engine.includes(marker), `engine missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
 for (const marker of ['Operator command palette','لوحة أوامر المشغّل','Palette de commandes opérateur','Review navigation shortcuts']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
-for (const marker of ['v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل', 'v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur']) assert.ok(helpers.includes(marker), `localized alpha.1 public label missing ${marker}`);
+for (const marker of ['v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط', 'v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement']) assert.ok(helpers.includes(marker), `localized alpha.1 public label missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
 for (const marker of ['operatorCommandPalettePanel','operatorCommandGrid','reviewNavigationShortcutList','operatorNavPulse']) assert.ok(styles.includes(marker), `styles missing ${marker}`);
 

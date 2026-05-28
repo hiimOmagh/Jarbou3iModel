@@ -7,8 +7,8 @@ for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
 assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence', 'English public version label must identify v1.4.0-alpha.6');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل', 'Arabic public version label must identify v1.4.0-alpha.6');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur', 'French public version label must identify v1.4.0-alpha.6');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط', 'Arabic public version label must identify v1.4.0-alpha.6');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement', 'French public version label must identify v1.4.0-alpha.6');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
@@ -20,6 +20,16 @@ const spec=fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs','utf8')
 for (const token of ['collectVisibleTextSnapshot','visible-text-ar.json','visible-text-fr.json','visible-text-en.json','unexpected_english_residuals','unexpected_non_locale_residuals','MOJIBAKE_MARKERS','has_arabic_unicode','mojibake_markers']) assert.ok(spec.includes(token), token);
 assert.ok(!/\bEVIDENCE_DIR\b/.test(spec), 'hosted evidence spec must use EVIDENCE_ROOT for visible-text snapshot writes');
 assert.ok(spec.includes('path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale])'), 'visible-text snapshots must be written into the hosted evidence artifact root');
+
+for (const staleReleaseLabel of [
+  'Pack de rejeu dry-run',
+  'simulation d’approbation opérateur',
+  'حزمة إعادة تشغيل التجربة الجافة',
+  'محاكاة اعتماد المشغّل'
+]) {
+  assert.ok(spec.includes(staleReleaseLabel), `visible-text stale release-label guard must catch ${staleReleaseLabel}`);
+  assert.equal(renderPublicLabels.includes(staleReleaseLabel), false, `render helpers must not expose stale localized release label: ${staleReleaseLabel}`);
+}
 for (const residual of [
   'scores explain prioritization not truth',
   'Scores explain prioritization, not truth',

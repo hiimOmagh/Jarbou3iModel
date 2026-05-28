@@ -139,7 +139,7 @@ assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/operator-handof
 const renderer = fs.readFileSync('src/research/source-to-brief-operator-renderer.js','utf8');
 for (const marker of ['briefPublicationPackPanel','stable-manual-workflow-release','briefPublicationFiles']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
-for (const marker of ['Provider Execution Harness Mock-to-Live Equivalence','حزمة النشر v4','Pack de rejeu dry-run + simulation d’approbation opérateur']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
+for (const marker of ['Provider Execution Harness Mock-to-Live Equivalence','معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد','Équivalence mock-vers-live du harnais d’exécution fournisseur']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
 for (const marker of ['briefPublicationPackPanel','briefPublicationFiles']) assert.ok(styles.includes(marker), `style missing ${marker}`);
 

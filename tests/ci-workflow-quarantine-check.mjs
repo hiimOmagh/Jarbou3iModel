@@ -24,13 +24,13 @@ assert.ok(workflow.includes(`lock-evidence-bundle_1.4.0-alpha.6_`), 'lock eviden
 assert.equal(registry.release_title, `${RELEASE} — ${TITLE}`, 'CI registry release title must identify v1.4.0-alpha.6 controlled provider/source execution preparation release');
 assert.equal(evidenceMatrix.internal_build_version, '1.4.0-alpha.6', 'evidence matrix internal version must identify v1.4.0-alpha.6');
 assert.equal(evidenceMatrix.public_version_label, `${RELEASE} ${TITLE}`, 'English public label must identify v1.4.0-alpha.6 controlled provider/source execution preparation release');
-assert.equal(evidenceMatrix.public_version_labels.ar, `${RELEASE} حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل`, 'Arabic public label must identify v1.4.0-alpha.6 controlled provider/source execution preparation release');
-assert.equal(evidenceMatrix.public_version_labels.fr, `${RELEASE} Pack de rejeu dry-run + simulation d’approbation opérateur`, 'French public label must identify v1.4.0-alpha.6 controlled provider/source execution preparation release');
+assert.equal(evidenceMatrix.public_version_labels.ar, `${RELEASE} معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط`, 'Arabic public label must identify v1.4.0-alpha.6 controlled provider/source execution preparation release');
+assert.equal(evidenceMatrix.public_version_labels.fr, `${RELEASE} Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement`, 'French public label must identify v1.4.0-alpha.6 controlled provider/source execution preparation release');
 
 for (const marker of [
   `${RELEASE} ${TITLE}`,
-  `${RELEASE} حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل`,
-  `${RELEASE} Pack de rejeu dry-run + simulation d’approbation opérateur`
+  `${RELEASE} معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط`,
+  `${RELEASE} Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement`
 ]) {
   assert.ok(renderHelpers.includes(marker), `render helpers missing localized alpha.1 release marker: ${marker}`);
 }

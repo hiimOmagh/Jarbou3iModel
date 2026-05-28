@@ -42,12 +42,23 @@ const MOJIBAKE_MARKERS = Object.freeze([
 ]);
 const ARABIC_UNICODE_RE = /[\u0600-\u06FF]/;
 
+const STALE_RELEASE_TITLE_TOKENS = Object.freeze([
+  'dry-run replay pack',
+  'operator approval simulation',
+  'Pack de rejeu dry-run',
+  'simulation d’approbation opérateur',
+  'حزمة إعادة تشغيل التجربة الجافة',
+  'محاكاة اعتماد المشغّل'
+]);
+
 function ensureEvidenceRoot(){ fs.mkdirSync(EVIDENCE_ROOT, { recursive:true }); }
 function ensureDir(dir){ fs.mkdirSync(dir, { recursive:true }); }
 function pngDimensions(buffer){ if(!Buffer.isBuffer(buffer) || buffer.length < 24 || buffer.toString('ascii', 1, 4) !== 'PNG') return {width:0,height:0}; return {width:buffer.readUInt32BE(16), height:buffer.readUInt32BE(20)}; }
 function slugPath(locale, slug, ext){ return path.join(EVIDENCE_ROOT, locale, `${slug}.${ext}`); }
 function writeJson(file, value){ ensureDir(path.dirname(file)); fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n'); }
 function visibleTextCorpus(snapshot){ return (snapshot.visible_text || []).join(' '); }
+function publicVersionLabelsForLocale(locale){ const configured = MATRIX_CONFIG.public_version_labels?.[locale] || []; const labels = Array.isArray(configured) ? configured : [configured]; return [PUBLIC_VERSION_LABEL, ...labels].filter(Boolean); }
+function staleReleaseTitleMatches(corpus){ return STALE_RELEASE_TITLE_TOKENS.filter((token)=>corpusHasToken(corpus, token)); }
 function findMojibakeMarkers(text){
   const value = String(text || '');
   return MOJIBAKE_MARKERS.filter(({ pattern }) => pattern.test(value)).map(({ label }) => label);
@@ -93,10 +104,11 @@ async function collectVisibleTextSnapshot(page, locale, screenLabel){
   assertNoMojibake(JSON.stringify(expected_locale_markers[locale] || []), `${locale} expected locale markers`);
   const unexpected_english_residuals = locale === 'en' ? [] : VISIBLE_TEXT_FORBIDDEN_ENGLISH_RESIDUALS.filter((phrase)=>corpus.includes(phrase));
   const unexpected_non_locale_residuals = (VISIBLE_TEXT_FORBIDDEN_NON_LOCALE_RESIDUALS[locale] || []).filter((phrase)=>corpus.includes(phrase));
+  const unexpected_stale_release_label_tokens = staleReleaseTitleMatches(corpus);
   const expected_markers_present = (expected_locale_markers[locale] || []).filter((phrase)=>corpus.includes(phrase));
   const has_arabic_unicode = ARABIC_UNICODE_RE.test(corpus);
-  const locale_snapshot_passed = snapshotState.html_lang === locale && expected_markers_present.length >= 1 && unexpected_english_residuals.length === 0 && unexpected_non_locale_residuals.length === 0 && (locale !== 'ar' || has_arabic_unicode);
-  return { locale, screen:screenLabel, html_lang:snapshotState.html_lang, html_dir:snapshotState.html_dir, title:snapshotState.title, visible_text, allowed_latin_tokens:TECHNICAL_TOKEN_ALLOWLIST, expected_locale_markers:expected_locale_markers[locale] || [], expected_markers_present, unexpected_english_residuals, unexpected_non_locale_residuals, mojibake_markers:findMojibakeMarkers(corpus), has_arabic_unicode, locale_snapshot_passed };
+  const locale_snapshot_passed = snapshotState.html_lang === locale && expected_markers_present.length >= 1 && unexpected_english_residuals.length === 0 && unexpected_non_locale_residuals.length === 0 && unexpected_stale_release_label_tokens.length === 0 && (locale !== 'ar' || has_arabic_unicode);
+  return { locale, screen:screenLabel, html_lang:snapshotState.html_lang, html_dir:snapshotState.html_dir, title:snapshotState.title, visible_text, allowed_latin_tokens:TECHNICAL_TOKEN_ALLOWLIST, expected_locale_markers:expected_locale_markers[locale] || [], expected_markers_present, unexpected_english_residuals, unexpected_non_locale_residuals, unexpected_stale_release_label_tokens, mojibake_markers:findMojibakeMarkers(corpus), has_arabic_unicode, locale_snapshot_passed };
 }
 async function switchLocaleForVisibleTextSnapshot(page, locale){ const buttonByLocale={ ar:'#langAr', en:'#langEn', fr:'#langFr' }; const buttonSelector=buttonByLocale[locale]; expect(buttonSelector, `known locale selector for ${locale}`).toBeTruthy(); await page.locator(buttonSelector).click(); await expect(page.locator('html')).toHaveAttribute('lang', locale); await expect(page.locator('html')).toHaveAttribute('dir', locale === 'ar' ? 'rtl' : 'ltr'); await waitForEvidenceStable(page, `visible-text-${locale}`); }
 async function assertHostedDemoReady(page){ await page.waitForLoadState('domcontentloaded'); await expect(page.locator('meta[name="app-version"]')).toHaveAttribute('content', VERSION); await expect(page.locator('#firstRunPanel')).toBeVisible(); await expect(page.locator('#publicDemoReadinessPanel')).toBeVisible(); await expect(page.locator('#hostedDemoVerificationPanel')).toBeVisible(); await expect(page.locator('#hostedDemoEvidenceReviewPanel')).toBeVisible(); }
@@ -109,7 +121,7 @@ async function openSurface(page, surface){ if(!surface.tab) return; const tabSel
 function normalizeForEvidenceText(value){ return String(value || '').normalize('NFKC').toLocaleLowerCase(); }
 function corpusHasToken(corpus, token){ return normalizeForEvidenceText(corpus).includes(normalizeForEvidenceText(token)); }
 function localizedVersionVisible(locale, corpus){
-  const labels = [PUBLIC_VERSION_LABEL, ...(MATRIX_CONFIG.public_version_labels?.[locale] || [])];
+  const labels = publicVersionLabelsForLocale(locale);
   return labels.some((label)=>corpusHasToken(corpus, label));
 }
 function languagePurity(locale, corpus){
@@ -148,7 +160,7 @@ async function captureMatrixRow(page, locale, surface){
   writeJson(domFactsFile, domFacts);
   const corpus = visibleTextCorpus(snapshot);
   const purity = languagePurity(locale, corpus);
-  const staleTokens = ['1.1.0-alpha','1.1.0-rc.0','1.1.0-rc.1','1.1.0-stable-fix.1','alpha.25','RC0','RC1'];
+  const staleTokens = ['1.1.0-alpha','1.1.0-rc.0','1.1.0-rc.1','1.1.0-stable-fix.1','alpha.25','RC0','RC1', ...STALE_RELEASE_TITLE_TOKENS];
   const staleMatches = staleTokens.filter((token)=>corpusHasToken(corpus, token));
   const validation = { matrix_id:rowId, locale, surface:surface.slug, surface_id:surface.id, internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, screenshot:path.relative(EVIDENCE_ROOT, screenshot).replaceAll(path.sep,'/'), visible_text_file:path.relative(EVIDENCE_ROOT, visibleTextFile).replaceAll(path.sep,'/'), dom_facts_file:path.relative(EVIDENCE_ROOT, domFactsFile).replaceAll(path.sep,'/'), required_copy_present:purity.required_present.length >= 1, version_visible:localizedVersionVisible(locale, corpus), language_purity_passed:purity.language_purity_passed, language_required_present:purity.required_present, language_required_missing:purity.required_missing, forbidden_language_tokens_present:purity.forbidden_present, stale_version_residue_detected:staleMatches.length > 0, stale_version_residue_tokens:staleMatches, mojibake_markers:findMojibakeMarkers(corpus), horizontal_overflow_px, capture_settled:settle.settled === true, visual_artifact_guard_passed:artifact_guard.visual_artifact_guard_passed === true, required_state_present:domFacts.required_selector_present === true, required_text_present:domFacts.required_text_present === true, image_width:image.width, image_height:image.height, bytes:buffer.byteLength, pass:false };
   validation.pass = validation.required_copy_present && validation.version_visible && validation.language_purity_passed && !validation.stale_version_residue_detected && validation.mojibake_markers.length === 0 && validation.horizontal_overflow_px <= 2 && validation.capture_settled && validation.visual_artifact_guard_passed && validation.required_state_present && validation.required_text_present && buffer.byteLength > 20_000;
@@ -203,7 +215,7 @@ test.describe('v1.4.0-alpha.6 hosted demo evidence matrix and manifest capture',
     await page.setViewportSize({ width:1440, height:950 }); await page.goto('/'); await assertHostedDemoReady(page); await openProviderHarness(page); captures.push(await capture(page, 'provider-mode'));
     await openQualityExport(page); captures.push(await capture(page, 'quality-export'));
     for(const locale of LOCALIZATION_SNAPSHOT_LOCALES){ await switchLocaleForVisibleTextSnapshot(page, locale); visibleTextSnapshots[locale] = await collectVisibleTextSnapshot(page, locale, 'hosted-demo-visible-text'); await fs.promises.writeFile(path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale]), JSON.stringify(visibleTextSnapshots[locale], null, 2)); }
-    expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.en.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.ar).toMatchObject({ html_lang: 'ar', html_dir: 'rtl', has_arabic_unicode: true, mojibake_markers: [], locale_snapshot_passed: true }); expect(visibleTextSnapshots.fr).toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true }); expect(visibleTextSnapshots.en).toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true });
+    expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.en.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.ar).toMatchObject({ html_lang: 'ar', html_dir: 'rtl', has_arabic_unicode: true, mojibake_markers: [], locale_snapshot_passed: true }); expect(visibleTextSnapshots.fr).toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true }); expect(visibleTextSnapshots.en).toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true });
     const { matrixSummary } = await generateEvidenceMatrix(page);
     writeExportEvidence(matrixSummary);
     const metadata = await writeMetadata(page, captures, visibleTextSnapshots, matrixSummary);

@@ -26,7 +26,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، تجميعات مصادر، ملفات كيانات، روابط سببية، نقد، وبوابة جودة v3.',
-      alphaBadge:'v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل · تخطيط/فحص مسبق فقط' ,
+      alphaBadge:'v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -46,7 +46,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, clusters de sources, profils d’entités, liens causaux, critique et barrière qualité v3.',
-      alphaBadge:'v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur · planification/préflight uniquement',
+      alphaBadge:'v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -423,7 +423,7 @@
     publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
     localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
     hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
-    hostedDemoVerificationBody:'حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل جاهز لأدلة الإصدار: يبقى خط العمل اليدوي المستقر v1.3.0 مقفولاً كخط أساس، ويجب أن تعلن أدلة الاستضافة داخليًا 1.4.0-alpha.6 مع عرض v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو ادعاء تحقق آلي من المصادر.',
+    hostedDemoVerificationBody:'معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد جاهزة لأدلة الإصدار: يبقى خط العمل اليدوي المستقر v1.3.0 مقفولاً كخط أساس، ويجب أن تعلن أدلة الاستضافة داخليًا 1.4.0-alpha.6 مع عرض v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو ادعاء تحقق آلي من المصادر.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
     evidenceReviewGateBody:'تحافظ أدلة الإصدار المستقر على صف مراجعة الأدلة، بوابة مراجعة النشر، Export Pack v3، المجموعة الذهبية، وحراس الخصوصية. لا تكفي اللقطات أو ملفات ZIP وحدها لاعتماد الإصدار.',
@@ -443,7 +443,7 @@
     publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
     localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
     hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
-    hostedDemoVerificationBody:'La matrice de politique d’exécution fournisseur/source et les contrats UX d’échec est prête pour les preuves de release : le workflow manuel stable v1.3.0 reste verrouillé comme baseline, et les preuves hébergées doivent annoncer 1.4.0-alpha.6 en interne tout en affichant v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live ni vérification automatique des sources.',
+    hostedDemoVerificationBody:'L’équivalence mock-vers-live du harnais d’exécution fournisseur est prête pour les preuves de release : le workflow manuel stable v1.3.0 reste verrouillé comme baseline, et les preuves hébergées doivent annoncer 1.4.0-alpha.6 en interne tout en affichant v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live ni vérification automatique des sources.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
     evidenceReviewGateBody:'Les preuves de release stable conservent la file de revue des preuves, la revue publication, Export Pack v3, le golden workflow et les garde-fous de confidentialité. Captures ou ZIP seuls sont insuffisants pour approuver la release.',
@@ -536,7 +536,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'1.4.0-alpha.6 adds deterministic dry-run replay packaging and operator approval simulation while preserving the locked v1.3.0 manual workflow baseline and all live/provider/OAuth/backend/storage boundaries.',
+    analysisReleaseNote:'1.4.0-alpha.6 adds Provider Execution Harness Mock-to-Live Equivalence while preserving the locked v1.3.0 manual workflow baseline and all live/provider/OAuth/backend/storage boundaries.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -551,7 +551,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'تضيف 1.4.0-alpha.6 حزمة إعادة تشغيل dry-run ومحاكاة اعتماد المشغّل مع الحفاظ على خط العمل اليدوي المستقر v1.3.0 وكل حدود التنفيذ الحي وOAuth والخلفية والتخزين.',
+    analysisReleaseNote:'تضيف 1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد مع الحفاظ على خط العمل اليدوي المستقر v1.3.0 وكل حدود التنفيذ الحي وOAuth والخلفية والتخزين.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -567,7 +567,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'1.4.0-alpha.6 ajoute le pack de rejeu dry-run et la simulation d’approbation opérateur tout en conservant le workflow manuel stable v1.3.0 et les limites live/OAuth/backend/stockage.',
+    analysisReleaseNote:'1.4.0-alpha.6 ajoute l’équivalence mock-vers-live du harnais d’exécution fournisseur tout en conservant le workflow manuel stable v1.3.0 et les limites live/OAuth/backend/stockage.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',
@@ -1324,7 +1324,7 @@
     assemblyVariantQaBoundary:'Assembly Variant QA checks local template coverage only. No automatic source verification is claimed.'
   });
   Object.assign(COPY.ar, {
-    alphaBadge:'v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل · تخطيط/فحص مسبق فقط',
+    alphaBadge:'v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط',
     briefTemplateSystemTitle:'نظام قوالب الموجز',
     assemblyVariantQaTitle:'تدقيق متغيرات التجميع',
     briefTemplateUxPolishTitle:'تحسين تجربة قوالب الموجز',
@@ -1346,7 +1346,7 @@
     assemblyVariantQaBoundary:'تدقيق متغيرات التجميع يفحص تغطية القوالب محلياً فقط ولا يدّعي التحقق التلقائي من المصادر.'
   });
   Object.assign(COPY.fr, {
-    alphaBadge:'v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur · planification/préflight uniquement',
+    alphaBadge:'v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement',
     briefTemplateSystemTitle:'Système de modèles de brief',
     assemblyVariantQaTitle:'QA des variantes d’assemblage',
     briefTemplateUxPolishTitle:'Polish UX des modèles de brief',
@@ -1480,7 +1480,7 @@
     sourceToClaimGapClosureBoundary:'Source-to-claim gap closure is local/manual. It exposes unresolved evidence, contradiction, and falsifier gaps before export but does not fetch, verify, or resolve sources automatically.'
   });
   Object.assign(COPY.ar, {
-    alphaBadge:'v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل',
+    alphaBadge:'v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط',
     sourceToClaimGapClosureTitle:'قائمة إغلاق فجوات المصدر إلى الادعاء',
     openGaps:'فجوات مفتوحة',
     exportBlocking:'تعطيل التصدير',
@@ -1489,7 +1489,7 @@
     sourceToClaimGapClosureBoundary:'إغلاق فجوات المصدر إلى الادعاء محلي/يدوي. يعرض فجوات الأدلة والتناقضات وشروط الإبطال قبل التصدير لكنه لا يجلب المصادر ولا يتحقق منها ولا يحلها تلقائياً.'
   });
   Object.assign(COPY.fr, {
-    alphaBadge:'v1.4.0-alpha.6 Pack de rejeu dry-run + simulation d’approbation opérateur',
+    alphaBadge:'v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement',
     sourceToClaimGapClosureTitle:'File de clôture des écarts source-affirmation',
     openGaps:'écarts ouverts',
     exportBlocking:'blocage export',
@@ -1504,12 +1504,12 @@
     analysisReleaseNote:'1.4.0-alpha.6 prepares Provider Execution Harness Mock-to-Live Equivalence: a final brief plus evidence, contradiction/falsifier, source-gap, and operator signoff/lock-ledger appendices are packaged for manual publication review while live/provider/OAuth/backend/storage boundaries remain unchanged.'
   });
   Object.assign(COPY.ar, {
-    hostedDemoVerificationBody:'حزمة النشر v4 جاهزة لأدلة الإصدار: يتم تجميع المسودة النهائية وملحق الأدلة وملحق التناقضات/شروط الإبطال وملحق فجوات المصادر وملحق توقيع المشغل وسجل القفل في تسليم محلي واحد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.6 مع عرض v1.4.0-alpha.6 حزمة إعادة تشغيل التجربة الجافة + محاكاة اعتماد المشغّل للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو توقيع تلقائي أو قفل تصدير تلقائي أو توقيع تشفيري أو ادعاء إذن نشر أو تحقق آلي من المصادر.',
-    analysisReleaseNote:'تحضّر 1.4.0-alpha.6 تنفيذ المزود/المصدر المضبوط: مسودة نهائية مع ملاحق الأدلة والتناقضات/الإبطال وفجوات المصادر وتوقيع المشغل/سجل القفل للمراجعة اليدوية قبل النشر مع بقاء حدود التنفيذ الحي والمزود وOAuth والخلفية والتخزين دون تغيير.'
+    hostedDemoVerificationBody:'معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد جاهزة لأدلة الإصدار: يتم تجميع المسودة النهائية وملحق الأدلة وملحق التناقضات/شروط الإبطال وملحق فجوات المصادر وملحق توقيع المشغل وسجل القفل في تسليم محلي واحد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.6 مع عرض v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط للمستخدمين. لا يوجد scraping أو OAuth حقيقي أو توسيع خلفية أو تنفيذ مزود حي أو توقيع تلقائي أو قفل تصدير تلقائي أو توقيع تشفيري أو ادعاء إذن نشر أو تحقق آلي من المصادر.',
+    analysisReleaseNote:'تحضّر 1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد: مسودة نهائية مع ملاحق الأدلة والتناقضات/الإبطال وفجوات المصادر وتوقيع المشغل/سجل القفل للمراجعة اليدوية قبل النشر مع بقاء حدود التنفيذ الحي والمزود وOAuth والخلفية والتخزين دون تغيير.'
   });
   Object.assign(COPY.fr, {
-    hostedDemoVerificationBody:'La matrice de politique d’exécution fournisseur/source + contrats UX d’échec est prêt pour les preuves de release : brief final, annexe des preuves, annexe contradictions/falsificateurs, annexe des écarts de sources et annexe visa opérateur/registre de verrouillage sont consolidés en une remise locale. Les preuves hébergées doivent annoncer 1.4.0-alpha.6 en interne tout en affichant v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live, visa automatique, verrouillage automatique, signature cryptographique, permission de publication revendiquée ni vérification automatique des sources n’est activé.',
-    analysisReleaseNote:'1.4.0-alpha.6 prépare Provider Execution Harness Mock-to-Live Equivalence : brief final et annexes preuves, contradictions/falsificateurs, écarts de sources et visa opérateur/registre de verrouillage pour revue manuelle avant publication, sans changer les limites live/fournisseur/OAuth/backend/stockage.'
+    hostedDemoVerificationBody:'L’équivalence mock-vers-live du harnais d’exécution fournisseur est prête pour les preuves de release : brief final, annexe des preuves, annexe contradictions/falsificateurs, annexe des écarts de sources et annexe visa opérateur/registre de verrouillage sont consolidés en une remise locale. Les preuves hébergées doivent annoncer 1.4.0-alpha.6 en interne tout en affichant v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement aux utilisateurs. Aucun scraping, OAuth réel, extension backend, fournisseur live, visa automatique, verrouillage automatique, signature cryptographique, permission de publication revendiquée ni vérification automatique des sources n’est activé.',
+    analysisReleaseNote:'1.4.0-alpha.6 prépare l’équivalence mock-vers-live du harnais d’exécution fournisseur : brief final et annexes preuves, contradictions/falsificateurs, écarts de sources et visa opérateur/registre de verrouillage pour revue manuelle avant publication, sans changer les limites live/fournisseur/OAuth/backend/stockage.'
   });
 
 
@@ -1520,7 +1520,7 @@
     briefPublicationPackBoundary:'Provider Execution Harness Mock-to-Live Equivalence is local/manual. It consolidates the final brief and appendices without publishing, fetching, verifying, or signing cryptographically.'
   });
   Object.assign(COPY.ar, {
-    briefPublicationPackTitle:'حزمة النشر v4',
+    briefPublicationPackTitle:'معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد',
     publicationPackStatus:'حالة النشر',
     publicationReady:'جاهز للنشر',
     briefPublicationPackBoundary:'حزمة النشر v4 محلية/يدوية. تجمع المسودة النهائية والملاحق دون نشر أو جلب أو تحقق أو توقيع تشفيري.'
