@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.9';
-const RELEASE = 'v1.4.0-alpha.9 — Controlled Execution Candidate Gate';
-const PUBLIC_LABEL = 'v1.4.0-alpha.9 Controlled Execution Candidate Gate';
+const VERSION = '1.4.0-alpha.10';
+const RELEASE = 'v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype';
+const PUBLIC_LABEL = 'v1.4.0-alpha.10 Limited Manual Live-Execution Prototype';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
 const MOCK_TO_LIVE_BASELINE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
@@ -38,7 +38,7 @@ for (const token of ['source strategy continuity','release evidence continuity',
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'controlled-execution-candidate-gate');
+assert.equal(manifest.release_type, 'limited-manual-live-execution-prototype');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);
@@ -68,11 +68,11 @@ for (const token of ['manual_source','provider_proposed_source','future_controll
   assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.7 source acquisition continuity token missing: ${token}`);
 }
 
-assert.ok(index.includes('v1.4.0-alpha.9 Controlled Execution Candidate Gate'));
-assert.ok(render.includes('v1.4.0-alpha.9 Controlled Execution Candidate Gate'));
+assert.ok(index.includes('v1.4.0-alpha.10 Limited Manual Live-Execution Prototype'));
+assert.ok(render.includes('v1.4.0-alpha.10 Limited Manual Live-Execution Prototype'));
 assert.ok(render.includes('سطح التحكم في اكتساب المصادر'));
 assert.ok(render.includes('Surface de contrôle d’acquisition des sources'));
-assert.equal(render.includes('v1.4.0-alpha.9 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
+assert.equal(render.includes('v1.4.0-alpha.10 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
 assert.equal(render.includes('حزمة إعادة تشغيل التجربة الجافة'), false, 'stale AR alpha.5 label must not return');
 
 assert.equal(ciRegistry.ci_gate_registry_version, VERSION);
@@ -81,7 +81,7 @@ assert.equal(versionRegistry.version_suite_registry_version, VERSION);
 assert.equal(versionRegistry.release_title, RELEASE);
 
 for (const gate of ['no-browser','current-no-browser','privacy','provider','release']) {
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/controlled-execution-candidate-gate-check.mjs'), `${gate} must run credential boundary runtime drill check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/limited-manual-live-execution-prototype-check.mjs'), `${gate} must run credential boundary runtime drill check`);
 }
 for (const gate of ['no-browser','current-no-browser','source','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/source-acquisition-control-surface-check.mjs'), `${gate} must preserve source acquisition control surface check`);
@@ -89,8 +89,8 @@ for (const gate of ['no-browser','current-no-browser','source','release']) {
 }
 assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/source-acquisition-control-surface.js'), 'syntax matrix must cover source acquisition module');
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/source-acquisition-control-surface-check.mjs'), 'syntax matrix must cover source acquisition check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/controlled-execution-candidate-gate.js'), 'syntax matrix must cover credential boundary module');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/controlled-execution-candidate-gate-check.mjs'), 'syntax matrix must cover credential boundary check');
+assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/limited-manual-live-execution-prototype.js'), 'syntax matrix must cover credential boundary module');
+assert.ok(ciRegistry.syntax_matrix.files.includes('tests/limited-manual-live-execution-prototype-check.mjs'), 'syntax matrix must cover credential boundary check');
 
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','source_connector_behavior_changed']) {
   assert.equal(ciRegistry[key], false, `${key} must remain false in CI registry`);

@@ -1,29 +1,44 @@
 # QA Matrix
 
-Current release candidate: v1.4.0-alpha.9 — Controlled Execution Candidate Gate
+Current release candidate: v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype
 
-Required gates:
-- No-browser CI
-- Browser CI
-- Hosted-demo evidence capture
-- Visible-text snapshots AR/EN/FR
-- Golden workflow regression lock
-- Export Pack v3 consistency lock
-- Credential boundary runtime drill check
-- Source acquisition control surface check
-- Source-to-brief workflow structure, claim/evidence linkage, support levels, contradiction grouping, gap warnings, confidence metadata, and export integrity
-- No secret-like values in sanitized drill outputs
-- No automatic source verification claims
-- No provider-suggested source bypass
-- Release candidate hygiene / stale-copy sweep
-- Repo/package hygiene verification
+Required focused checks:
 
-Node 24 CI compatibility is preserved for v1.4.0-alpha.9.
+- `tests/limited-manual-live-execution-prototype-check.mjs`
+- `tests/controlled-execution-candidate-gate-check.mjs`
+- `tests/credential-boundary-runtime-drill-check.mjs`
+- `tests/source-acquisition-control-surface-check.mjs`
+- `tests/provider-execution-mock-to-live-equivalence-check.mjs`
+- `tests/provider-source-dry-run-replay-pack-check.mjs`
+- `tests/provider-source-operator-approval-simulation-check.mjs`
+- `tests/canonical-lock-evidence-bundle-check.mjs`
+- `tests/evidence-matrix-canonical-bundle-check.mjs`
 
-No real OAuth, no real API keys, no real token storage, no live scraping, no live connector expansion, no hidden background fetching, no live provider execution expansion, no production OAuth or backend expansion, no automatic source verification claims, and no cryptographic signature claim.
+Required CI:
 
-Screenshots alone are insufficient. ZIP existence alone is insufficient. A ZIP archive alone is insufficient. A local ZIP archive alone is insufficient.
+- `npm run test:ci:no-browser`
+- `npm run test:ci:browser`
 
-Continuity: locked v1.3.0 — Stable Manual Workflow Release, locked v1.4.0-alpha.7 — Source Acquisition Control Surface, locked v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence, Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+Node 24 CI compatibility is preserved for v1.4.0-alpha.10.
 
-Public Demo evidence, hosted-demo review, and source-to-brief export review remain required for lock.
+Boundary assertions:
+
+- No default live execution.
+- No hidden network calls.
+- No real OAuth/API keys/token storage.
+- No credential persistence.
+- No live scraping/source fetching.
+- No automatic source fetching.
+- No backend/storage expansion.
+- No automatic source verification.
+- No automatic signoff/export lock.
+- No cryptographic signature claim.
+- No publication permission claim.
+
+Locked baseline: `v1.3.0 — Stable Manual Workflow Release` remains unchanged.
+Locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface` remains unchanged.
+Locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence` remains unchanged.
+No live scraping. No production OAuth. No real API keys. No cryptographic signature claim. No automatic source verification.
+Screenshots alone are insufficient. ZIP archive alone is insufficient. ZIP existence alone is insufficient.
+Continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+Public Demo evidence remains required before release lock.

@@ -18,7 +18,7 @@ vm.createContext(context);
 vm.runInContext(releaseModule, context, { filename: 'src/research/release-candidate.js' });
 const release = context.Jarbou3iResearchModules.releaseCandidate;
 
-assert.equal(pkg.version, '1.4.0-alpha.9');
+assert.equal(pkg.version, '1.4.0-alpha.10');
 assert.equal(release.RELEASE_VERSION, '1.3.0');
 assert.equal(typeof release.releaseCandidatePolicy, 'function');
 assert.equal(typeof release.buildReleaseCandidateReport, 'function');

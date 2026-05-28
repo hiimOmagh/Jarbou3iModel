@@ -31,7 +31,7 @@ const dryRunReplayPack = read('src/research/provider-source-dry-run-replay-pack.
 const operatorApprovalSimulation = read('src/research/provider-source-operator-approval-simulation.js');
 const mockToLiveEquivalence = read('src/research/provider-execution-mock-to-live-equivalence.js');
 const sourceAcquisitionControlSurface = read('src/research/source-acquisition-control-surface.js');
-const controlledExecutionCandidateGate = read('src/research/controlled-execution-candidate-gate.js');
+const controlledExecutionCandidateGate = read('src/research/limited-manual-live-execution-prototype.js');
 const css = read('src/styles.css');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 const pkg = JSON.parse(read('package.json'));
@@ -58,7 +58,7 @@ try {
   new vm.Script(operatorApprovalSimulation, { filename: 'src/research/provider-source-operator-approval-simulation.js' });
   new vm.Script(mockToLiveEquivalence, { filename: 'src/research/provider-execution-mock-to-live-equivalence.js' });
   new vm.Script(sourceAcquisitionControlSurface, { filename: 'src/research/source-acquisition-control-surface.js' });
-  new vm.Script(controlledExecutionCandidateGate, { filename: 'src/research/controlled-execution-candidate-gate.js' });
+  new vm.Script(controlledExecutionCandidateGate, { filename: 'src/research/limited-manual-live-execution-prototype.js' });
 } catch (error) {
   fail(`JavaScript syntax error: ${error.message}`);
 }
@@ -160,7 +160,7 @@ if (!operatorApprovalSimulation.includes('providerSourceOperatorApprovalSimulati
 if (!mockToLiveEquivalence.includes('providerExecutionMockToLiveEquivalence') || !mockToLiveEquivalence.includes('buildMockToLiveEquivalenceReport')) fail('mock-to-live equivalence module missing required contracts');
 if (!sourceAcquisitionControlSurface.includes('sourceAcquisitionControlSurface') || !sourceAcquisitionControlSurface.includes('buildSourceAcquisitionControlSurface')) fail('source acquisition control surface module missing required contracts');
 if (!controlledExecutionCandidateGate.includes('controlledExecutionCandidateGate') || !controlledExecutionCandidateGate.includes('runCredentialBoundaryRuntimeDrill')) fail('credential boundary runtime drill module missing required contracts');
-if (!index.includes('src="src/research/controlled-execution-candidate-gate.js" defer')) fail('credential boundary runtime drill module missing from index');
+if (!index.includes('src="src/research/limited-manual-live-execution-prototype.js" defer')) fail('credential boundary runtime drill module missing from index');
 if (!index.includes('src="src/research/evidence-scorer.js" defer')) fail('evidence scorer module missing from index');
 if (!evidenceScorer.includes('SCORING_VERSION') || !evidenceScorer.includes('attention_signal_is_not_evidence_reliability')) fail('evidence scorer must separate attention from reliability');
 if (!index.includes('src="src/research/source-import-adapter.js" defer')) fail('source import adapter module missing from index');
@@ -184,8 +184,8 @@ if (!app.includes('schema_version')) fail('schema_version support is missing');
 if (!app.includes('modeResearch')) fail('research prompt mode is missing');
 if (!app.includes('qualityGateHtml')) fail('quality gate UI is missing');
 if (!app.includes('actorPowerScore')) fail('computed API scoring is missing');
-if (pkg.version !== '1.4.0-alpha.9') fail('package version must be 1.4.0-alpha.9');
-if (!index.includes('name="app-version" content="1.4.0-alpha.9"')) fail('app version metadata missing');
+if (pkg.version !== '1.4.0-alpha.10') fail('package version must be 1.4.0-alpha.10');
+if (!index.includes('name="app-version" content="1.4.0-alpha.10"')) fail('app version metadata missing');
 
 console.log('Static checks passed.');
 process.exit(0);

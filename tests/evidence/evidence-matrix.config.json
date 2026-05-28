@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.9",
-  "internal_build_version": "1.4.0-alpha.9",
-  "public_version_label": "v1.4.0-alpha.9 Controlled Execution Candidate Gate",
+  "evidence_matrix_config_version": "1.4.0-alpha.10",
+  "internal_build_version": "1.4.0-alpha.10",
+  "public_version_label": "v1.4.0-alpha.10 Limited Manual Live-Execution Prototype",
   "locales": [
     "en",
     "ar",
@@ -17,7 +17,7 @@
         "Signed Export Handoff Pack",
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
-        "Controlled Execution Candidate Gate"
+        "Limited Manual Live-Execution Prototype"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -37,7 +37,7 @@
         "سطح مراجعة سجل قفل التصدير",
         "سطح التحكم في اكتساب المصادر",
         "حدود بيانات الاعتماد",
-        "بوابة مرشح التنفيذ المضبوط"
+        "نموذج أولي محدود للتنفيذ الحي اليدوي"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -55,7 +55,7 @@
         "Surface de revue du registre de verrouillage",
         "Surface de contrôle d’acquisition des sources",
         "frontière des identifiants",
-        "Porte de candidature d’exécution contrôlée"
+        "Prototype limité d’exécution live manuelle"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -241,8 +241,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.9 Controlled Execution Candidate Gate",
-    "ar": "v1.4.0-alpha.9 بوابة مرشح التنفيذ المضبوط · مرشح بلا تنفيذ فقط",
-    "fr": "v1.4.0-alpha.9 Porte de candidature d’exécution contrôlée · candidat sans exécution uniquement"
+    "en": "v1.4.0-alpha.10 Limited Manual Live-Execution Prototype",
+    "ar": "v1.4.0-alpha.10 نموذج أولي محدود للتنفيذ الحي اليدوي · هيكل اشتراك يدوي فقط",
+    "fr": "v1.4.0-alpha.10 Prototype limité d’exécution live manuelle · shell opt-in manuel uniquement"
   }
 }

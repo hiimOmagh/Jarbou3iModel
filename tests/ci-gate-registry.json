@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.9",
-  "release_title": "v1.4.0-alpha.9 — Controlled Execution Candidate Gate",
+  "ci_gate_registry_version": "1.4.0-alpha.10",
+  "release_title": "v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -127,6 +127,7 @@
         "tests/source-acquisition-control-surface-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
+        "tests/limited-manual-live-execution-prototype-check.mjs",
         "tests/evidence-pack-v3-brief-traceability-check.mjs",
         "tests/publication-review-gate-check.mjs",
         "tests/golden-workflow-corpus-check.mjs",
@@ -241,7 +242,8 @@
         "tests/provider-execution-mock-to-live-equivalence-check.mjs",
         "tests/source-acquisition-control-surface-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
-        "tests/controlled-execution-candidate-gate-check.mjs"
+        "tests/controlled-execution-candidate-gate-check.mjs",
+        "tests/limited-manual-live-execution-prototype-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -269,7 +271,8 @@
         "tests/provider-source-dry-run-replay-pack-check.mjs",
         "tests/provider-source-operator-approval-simulation-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
-        "tests/controlled-execution-candidate-gate-check.mjs"
+        "tests/controlled-execution-candidate-gate-check.mjs",
+        "tests/limited-manual-live-execution-prototype-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -337,7 +340,8 @@
         "tests/provider-source-operator-approval-simulation-check.mjs",
         "tests/provider-execution-mock-to-live-equivalence-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
-        "tests/controlled-execution-candidate-gate-check.mjs"
+        "tests/controlled-execution-candidate-gate-check.mjs",
+        "tests/limited-manual-live-execution-prototype-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -359,7 +363,8 @@
         "tests/provider-source-operator-approval-simulation-check.mjs",
         "tests/provider-execution-mock-to-live-equivalence-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
-        "tests/controlled-execution-candidate-gate-check.mjs"
+        "tests/controlled-execution-candidate-gate-check.mjs",
+        "tests/limited-manual-live-execution-prototype-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -424,6 +429,7 @@
         "tests/source-acquisition-control-surface-check.mjs",
         "tests/credential-boundary-runtime-drill-check.mjs",
         "tests/controlled-execution-candidate-gate-check.mjs",
+        "tests/limited-manual-live-execution-prototype-check.mjs",
         "tests/module-type-warning-fix-check.mjs",
         "tests/onboarding-first-run-check.mjs",
         "tests/browser-qa-hardening-check.mjs",
@@ -522,9 +528,9 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.9",
-    "scope": "controlled_execution_candidate_gate",
-    "optimization_scope": "controlled_execution_candidate_gate",
+    "version": "1.4.0-alpha.10",
+    "scope": "limited_manual_live_execution_prototype",
+    "optimization_scope": "limited_manual_live_execution_prototype",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -536,7 +542,7 @@
     "previous_serial_no_browser_syntax_checks": 100
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.9",
+    "version": "1.4.0-alpha.10",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -693,6 +699,8 @@
       "tests/source-acquisition-control-surface-check.mjs",
       "src/research/credential-boundary-runtime-drill.js",
       "tests/credential-boundary-runtime-drill-check.mjs",
+      "src/research/limited-manual-live-execution-prototype.js",
+      "tests/limited-manual-live-execution-prototype-check.mjs",
       "src/research/controlled-execution-candidate-gate.js",
       "tests/controlled-execution-candidate-gate-check.mjs"
     ],
@@ -700,7 +708,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.9",
+    "version": "1.4.0-alpha.10",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -720,7 +728,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.4.0-alpha.9",
+    "version": "1.4.0-alpha.10",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

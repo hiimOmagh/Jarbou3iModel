@@ -1,12 +1,12 @@
 # Changelog
 
-## v1.4.0-alpha.9 — Controlled Execution Candidate Gate
+## v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype
 
 - Added deterministic credential boundary runtime drill.
 - Added fake secret injection, export leak, log leak, browser-visible text leak, fixture leak, provider payload secret-boundary, and release bundle secret-boundary drills.
 - Added redaction reports and safe metadata-only outputs.
 - Added ADR-014 for credential boundary runtime drills.
-- Added targeted check `tests/controlled-execution-candidate-gate-check.mjs` and CI registry integration.
+- Added targeted check `tests/limited-manual-live-execution-prototype-check.mjs` and CI registry integration.
 - Preserved locked v1.4.0-alpha.7 source acquisition baseline, locked v1.4.0-alpha.6 mock-to-live equivalence baseline, locked v1.4.0-alpha.5 replay/approval baseline, locked v1.4.0-alpha.4 trace/readiness baseline, and locked v1.3.0 stable manual workflow baseline.
 - No real OAuth, no real API keys, no real token storage, live scraping, live source fetching, hidden background fetching, provider execution expansion, no production OAuth, backend expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
 
