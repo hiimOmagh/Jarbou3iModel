@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.3';
-const RELEASE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
-const PUBLIC_LABEL = 'v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator';
+const VERSION = '1.4.0-alpha.4';
+const RELEASE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
+const PUBLIC_LABEL = 'v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_RC_BASELINE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
 const MANUAL_BASELINE = 'v1.3.0-alpha.10 — Brief Publication Pack v4';
@@ -19,13 +19,13 @@ const publicDemo = read('PUBLIC_DEMO.md');
 const workflow = read('.github/workflows/ci.yml');
 
 assert.equal(pkg.version, VERSION);
-assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.3 public label');
+assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.4 public label');
 assert.ok(pkg.description.includes(STABLE_BASELINE), 'package description must preserve locked stable baseline identity');
 assert.ok(pkg.description.includes(MANUAL_BASELINE), 'package description must preserve alpha.10 manual workflow baseline identity');
 
 assert.equal(manifest.version, VERSION);
-assert.equal(manifest.release_title, 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator');
-assert.equal(manifest.release_type, 'provider-source-dry-run-policy-simulator');
+assert.equal(manifest.release_title, 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report');
+assert.equal(manifest.release_type, 'provider-source-trace-inspector-readiness-report');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 assert.ok(manifest.release_scope.includes('Planning/control-plane milestone') || manifest.release_scope.includes('Planning/preflight milestone'));
 assert.ok(manifest.release_scope.includes(STABLE_BASELINE));
@@ -44,10 +44,10 @@ for (const text of [current, roadmap, changelog, publicDemo]) {
 assert.ok(current.includes('Status: built locally. Lock is pending green no-browser CI, green browser CI'), 'current release must remain pre-lock until CI evidence is uploaded');
 assert.ok(current.includes(`Last locked stable baseline: \`${STABLE_BASELINE}\``), 'current release must mark v1.3.0 as last locked stable baseline');
 assert.ok(roadmap.includes(RELEASE));
-assert.ok(roadmap.includes('v1.4.0-alpha.3'));
+assert.ok(roadmap.includes('v1.4.0-alpha.4'));
 
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.3_${{ github.run_id }}'), 'CI workflow must upload alpha.2 lock bundle');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.3'"), 'CI workflow must assert alpha.2 evidence matrix version');
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.4_${{ github.run_id }}'), 'CI workflow must upload alpha.4 lock bundle');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.4'"), 'CI workflow must assert alpha.4 evidence matrix version');
 
 for (const gate of ['no-browser', 'current-no-browser', 'release']) {
   assert.ok(registry.gates[gate].node_checks.includes('tests/stable-manual-workflow-release-check.mjs'), `${gate} must run baseline continuity check`);

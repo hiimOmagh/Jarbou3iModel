@@ -1,7 +1,7 @@
 # ADR-003: Credential Boundary
 
-**Status:** Proposed — planning-gate only (v1.4.0-alpha.3)
-**Milestone:** v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator
+**Status:** Proposed — planning-gate only (v1.4.0-alpha.4)
+**Milestone:** v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
 **Date:** 2026-05-25
 **Boundary:** No credential handling added by this ADR. This records the constraint contract that future implementation must satisfy.
 

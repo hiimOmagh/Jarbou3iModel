@@ -1,12 +1,12 @@
-/* Jarbou3i Research Engine provider execution threat model v1.4.0-alpha.3. */
+/* Jarbou3i Research Engine provider execution threat model v1.4.0-alpha.4. */
 /* Planning gate only. No live execution enabled. See ADR-001, ADR-003. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.3';
+  const VERSION = '1.4.0-alpha.4';
   const STABLE_BASELINE = '1.3.0';
-  const MILESTONE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
+  const MILESTONE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
   const MODEL = 'provider_execution_threat_model.v1';
 
   const THREAT_CATEGORIES = Object.freeze([
@@ -164,7 +164,7 @@
           return acc;
         }, {})
       ),
-      boundary_statement: 'This threat model is planning-gate only. No live provider execution is enabled in v1.4.0-alpha.3. All mitigations listed are implementation requirements for future milestones.'
+      boundary_statement: 'This threat model is planning-gate only. No live provider execution is enabled in v1.4.0-alpha.4. All mitigations listed are implementation requirements for future milestones.'
     });
   }
 

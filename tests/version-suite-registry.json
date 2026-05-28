@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.3",
-  "release_title": "v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator",
+  "version_suite_registry_version": "1.4.0-alpha.4",
+  "release_title": "v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report",
   "generated_from": "1.1.0-alpha.4",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1843,7 +1843,7 @@
         "tests/provider-source-policy-simulator-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.3 provider/source dry-run execution harness and policy simulator checks passed."
+      "former_console_message": "v1.4.0-alpha.4 provider/source dry-run execution harness and policy simulator checks passed."
     }
   ]
 }

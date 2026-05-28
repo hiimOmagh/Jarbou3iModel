@@ -1,13 +1,13 @@
-/* Jarbou3i Research Engine provider/source execution policy matrix v1.4.0-alpha.3. */
+/* Jarbou3i Research Engine provider/source execution policy matrix v1.4.0-alpha.4. */
 /* Planning/control-plane only. No live execution enabled. See ADR-001 through ADR-005. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.3';
+  const VERSION = '1.4.0-alpha.4';
   const STABLE_BASELINE = '1.3.0';
   const CONTROL_BASELINE = '1.4.0-alpha.1';
-  const MILESTONE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
+  const MILESTONE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
   const MODEL = 'provider_source_execution_policy_matrix.v1';
 
   const POLICY_STATES = Object.freeze({
@@ -195,7 +195,7 @@
       allowed_policy_ids: allowed.map(row => row.id),
       all_live_network_disabled: rows.every(row => row.live_network_allowed === false),
       all_blocked_have_unlock_requirements: blocked.every(row => Array.isArray(row.unlock_requires) && row.unlock_requires.length >= 3),
-      boundary_statement: 'Policy matrix is a planning/control-plane artifact. v1.4.0-alpha.3 does not enable live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
+      boundary_statement: 'Policy matrix is a planning/control-plane artifact. v1.4.0-alpha.4 does not enable live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
     });
   }
 

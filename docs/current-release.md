@@ -1,12 +1,13 @@
 # Current Release
 
-## v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator
+## v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
 
 Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle upload.
 
-Public release label: v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator.
+Public release label: v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report.
 
-Last locked control baseline: `v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts`.
+Last locked dry-run baseline: `v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator`.
+Last locked policy/failure UX baseline: `v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts`.
 Locked preparation baseline: `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`.
 Last locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
 Last locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`.
@@ -16,10 +17,12 @@ Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`. Do no
 
 Planning/preflight only. Deterministic planning/control-plane only:
 
-- Provider/source dry-run execution harness.
-- Provider/source policy simulator.
-- ADR-006 provider/source dry-run execution harness.
-- ADR-007 provider/source policy simulator.
+- Provider/source dry-run trace inspector.
+- Provider/source execution readiness report.
+- ADR-008 provider/source dry-run trace inspector.
+- ADR-009 provider/source execution readiness report.
+- Provider/source dry-run execution harness from alpha.3 remains preserved.
+- Provider/source policy simulator from alpha.3 remains preserved.
 - Provider/source execution policy matrix from alpha.2 remains preserved.
 - Provider/source failure UX contracts from alpha.2 remain preserved.
 - Provider execution threat model from alpha.1 remains preserved.
@@ -50,8 +53,8 @@ Screenshots alone are insufficient. A ZIP archive alone is insufficient.
 
 ## Validation
 
-- Version: `1.4.0-alpha.3`
-- Required targeted checks: `tests/provider-execution-threat-model-check.mjs`, `tests/provider-execution-preflight-check.mjs`, `tests/provider-source-execution-policy-matrix-check.mjs`, `tests/provider-source-failure-ux-contracts-check.mjs`, `tests/provider-source-dry-run-execution-harness-check.mjs`, `tests/provider-source-policy-simulator-check.mjs`.
+- Version: `1.4.0-alpha.4`
+- Required targeted checks: `tests/provider-execution-threat-model-check.mjs`, `tests/provider-execution-preflight-check.mjs`, `tests/provider-source-execution-policy-matrix-check.mjs`, `tests/provider-source-failure-ux-contracts-check.mjs`, `tests/provider-source-dry-run-execution-harness-check.mjs`, `tests/provider-source-policy-simulator-check.mjs`, `tests/provider-source-dry-run-trace-inspector-check.mjs`, `tests/provider-source-execution-readiness-report-check.mjs`.
 - Required CI: `npm run test:ci:no-browser`, `npm run test:ci:browser`.
 
 Feature surface is frozen except deterministic planning/control-plane artifacts; no live execution is enabled.
@@ -59,14 +62,14 @@ Feature surface is frozen except deterministic planning/control-plane artifacts;
 ## Release Manifest Compatibility
 
 Package: `jarbou3i-research-engine`
-Version: `1.4.0-alpha.3`
+Version: `1.4.0-alpha.4`
 Runtime capability change: no
 Required browser gates before publishing: `npm run test:ci:browser`
 Release archive exclusions: `node_modules/`, `playwright-report/`, `test-results/`, `*.zip`, `backend/.dev.vars`
 Required cleanup commands: remove generated Playwright/test output before packaging.
 
-Machine tokens: runtime_capability_change=false; release_type=provider-source-dry-run-policy-simulator; release_scope=deterministic-planning-control-plane-only; test:ci:browser required.
+Machine tokens: runtime_capability_change=false; release_type=provider-source-trace-inspector-readiness-report; release_scope=deterministic-planning-control-plane-only; test:ci:browser required.
 Node 24 CI compatibility preserved.
 Release lock requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 Planning gate continuity: apply integrity, changed-files-only patching, Package Script Compression, Version Suite Registry, Fixture Registry, and test organization checks remain active.
-Public Demo boundary: v1.4.0-alpha.3 keeps the locked public demo/manual workflow behavior unchanged while defining deterministic dry-run harness and policy simulator.
+Public Demo boundary: v1.4.0-alpha.4 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic trace inspection and readiness reporting only.

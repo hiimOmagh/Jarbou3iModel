@@ -10,8 +10,8 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const CURRENT_VERSION = '1.4.0-alpha.3';
-const CURRENT_TITLE = 'Provider/Source Dry-Run Execution Harness + Policy Simulator';
+const CURRENT_VERSION = '1.4.0-alpha.4';
+const CURRENT_TITLE = 'Dry-Run Trace Inspector + Execution Readiness Report';
 const VERSION = '1.3.0';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Stable Manual Workflow Release';
@@ -30,8 +30,8 @@ const ciNoBrowser = read('scripts/ci-no-browser.sh');
 const releaseDoc = readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md');
 
 assert.equal(pkg.version, CURRENT_VERSION, 'package version must be v1.1.0');
-assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must be v1.4.0-alpha.3');
-assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package version must be v1.4.0-alpha.3');
+assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must be v1.4.0-alpha.4');
+assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package version must be v1.4.0-alpha.4');
 assert.ok(index.includes('v1.3.0 · Stable Manual Workflow Release'), 'index badge must expose v1.1.0 visual-freeze identity');
 
 assert.ok(styles.includes('.brand > div:not(.logo)'), 'mobile overflow hardening must exclude the logo wrapper from full-width div rules');

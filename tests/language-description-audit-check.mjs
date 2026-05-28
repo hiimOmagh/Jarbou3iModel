@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.3';
-const CURRENT_TITLE = 'Provider/Source Dry-Run Execution Harness + Policy Simulator';
+const CURRENT_VERSION = '1.4.0-alpha.4';
+const CURRENT_TITLE = 'Dry-Run Trace Inspector + Execution Readiness Report';
 const VERSION = '1.3.0';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');

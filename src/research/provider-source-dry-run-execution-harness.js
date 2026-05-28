@@ -1,13 +1,13 @@
-/* Jarbou3i Research Engine provider/source dry-run execution harness v1.4.0-alpha.3. */
+/* Jarbou3i Research Engine provider/source dry-run execution harness v1.4.0-alpha.4. */
 /* Deterministic control-plane simulation only. No live execution enabled. See ADR-006. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.3';
+  const VERSION = '1.4.0-alpha.4';
   const STABLE_BASELINE = '1.3.0';
-  const CONTROL_BASELINE = '1.4.0-alpha.3';
-  const MILESTONE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
+  const CONTROL_BASELINE = '1.4.0-alpha.4';
+  const MILESTONE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
   const MODEL = 'provider_source_dry_run_execution_harness.v1';
 
   const EXECUTION_OUTCOMES = Object.freeze({
@@ -218,7 +218,7 @@
       no_credential_read_attempted: traces.every(trace => trace.credential_read_attempted === false),
       all_blocked_have_operator_message: blocked.every(trace => typeof trace.operator_message === 'string' && trace.operator_message.length > 20),
       all_blocked_have_failure_contract: blocked.every(trace => typeof trace.failure_contract_id === 'string' && trace.failure_contract_id.length > 5),
-      boundary_statement: 'Dry-run harness executes deterministic fixtures only. v1.4.0-alpha.3 does not perform live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
+      boundary_statement: 'Dry-run harness executes deterministic fixtures only. v1.4.0-alpha.4 does not perform live provider execution, live source fetching, production OAuth, backend expansion, or storage expansion.'
     });
   }
 

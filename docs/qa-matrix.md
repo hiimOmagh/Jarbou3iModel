@@ -1,8 +1,8 @@
-Current release reference: v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release.
+Current release reference: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release.
 
 # QA Matrix
 
-Current release candidate: v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator
+Current release candidate: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
 
 Required gates:
 - No-browser CI

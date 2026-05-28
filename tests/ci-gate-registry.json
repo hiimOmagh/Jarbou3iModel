@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.3",
-  "release_title": "v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator",
+  "ci_gate_registry_version": "1.4.0-alpha.4",
+  "release_title": "v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -162,7 +162,9 @@
         "tests/provider-source-failure-ux-contracts-check.mjs",
         "tests/provider-source-execution-policy-matrix-check.mjs",
         "tests/provider-source-dry-run-execution-harness-check.mjs",
-        "tests/provider-source-policy-simulator-check.mjs"
+        "tests/provider-source-policy-simulator-check.mjs",
+        "tests/provider-source-dry-run-trace-inspector-check.mjs",
+        "tests/provider-source-execution-readiness-report-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -225,7 +227,9 @@
         "tests/provider-source-failure-ux-contracts-check.mjs",
         "tests/provider-source-execution-policy-matrix-check.mjs",
         "tests/provider-source-dry-run-execution-harness-check.mjs",
-        "tests/provider-source-policy-simulator-check.mjs"
+        "tests/provider-source-policy-simulator-check.mjs",
+        "tests/provider-source-dry-run-trace-inspector-check.mjs",
+        "tests/provider-source-execution-readiness-report-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -309,7 +313,9 @@
         "tests/provider-source-failure-ux-contracts-check.mjs",
         "tests/provider-source-execution-policy-matrix-check.mjs",
         "tests/provider-source-dry-run-execution-harness-check.mjs",
-        "tests/provider-source-policy-simulator-check.mjs"
+        "tests/provider-source-policy-simulator-check.mjs",
+        "tests/provider-source-dry-run-trace-inspector-check.mjs",
+        "tests/provider-source-execution-readiness-report-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -446,7 +452,9 @@
         "tests/provider-source-failure-ux-contracts-check.mjs",
         "tests/provider-source-execution-policy-matrix-check.mjs",
         "tests/provider-source-dry-run-execution-harness-check.mjs",
-        "tests/provider-source-policy-simulator-check.mjs"
+        "tests/provider-source-policy-simulator-check.mjs",
+        "tests/provider-source-dry-run-trace-inspector-check.mjs",
+        "tests/provider-source-execution-readiness-report-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -474,7 +482,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.3",
+    "version": "1.4.0-alpha.4",
     "optimization_scope": "provider_source_dry_run_policy_simulator",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
@@ -486,10 +494,10 @@
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 1,
     "profile": "provider_source_dry_run_policy_simulator",
-    "title": "Provider/Source Dry-Run Execution Harness + Policy Simulator"
+    "title": "Dry-Run Trace Inspector + Execution Readiness Report"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.3",
+    "version": "1.4.0-alpha.4",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -631,13 +639,17 @@
       "src/research/provider-source-dry-run-execution-harness.js",
       "src/research/provider-source-policy-simulator.js",
       "tests/provider-source-dry-run-execution-harness-check.mjs",
-      "tests/provider-source-policy-simulator-check.mjs"
+      "tests/provider-source-policy-simulator-check.mjs",
+      "src/research/provider-source-dry-run-trace-inspector.js",
+      "src/research/provider-source-execution-readiness-report.js",
+      "tests/provider-source-dry-run-trace-inspector-check.mjs",
+      "tests/provider-source-execution-readiness-report-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.3",
+    "version": "1.4.0-alpha.4",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -657,7 +669,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.4.0-alpha.3",
+    "version": "1.4.0-alpha.4",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,

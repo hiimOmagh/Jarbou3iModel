@@ -1,9 +1,9 @@
 # ADR-007 — Provider/Source Policy Simulator
 
-**Status:** Proposed — deterministic control-plane only (v1.4.0-alpha.3)  
-**Milestone:** v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator  
+**Status:** Proposed — deterministic control-plane only (v1.4.0-alpha.4)  
+**Milestone:** v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report  
 **Stable baseline:** v1.3.0 — Stable Manual Workflow Release  
-**Control baseline:** v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator
+**Control baseline:** v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
 
 ## Decision
 

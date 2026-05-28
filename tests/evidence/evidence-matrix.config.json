@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.3",
-  "internal_build_version": "1.4.0-alpha.3",
-  "public_version_label": "v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator",
+  "evidence_matrix_config_version": "1.4.0-alpha.4",
+  "internal_build_version": "1.4.0-alpha.4",
+  "public_version_label": "v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report",
   "locales": [
     "en",
     "ar",
@@ -233,8 +233,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator",
-    "ar": "v1.4.0-alpha.3 مصفوفة سياسة تنفيذ المزود/المصدر + عقود تجربة الفشل",
-    "fr": "v1.4.0-alpha.3 Matrice de politique d’exécution fournisseur/source + contrats UX d’échec"
+    "en": "v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report",
+    "ar": "v1.4.0-alpha.4 عارض أثر التشغيل الجاف + تقرير جاهزية التنفيذ",
+    "fr": "v1.4.0-alpha.4 Inspecteur de traces dry-run + rapport de préparation à l’exécution"
   }
 }

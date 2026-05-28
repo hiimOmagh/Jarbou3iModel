@@ -1,22 +1,21 @@
-# Public Demo — v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator
+# Public Demo — v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report
 
-The public demo remains a static/manual workflow surface. v1.4.0-alpha.3 adds planning/control-plane artifacts for provider/source dry-run traces and policy decisions only.
+The public demo remains a static/manual workflow surface. v1.4.0-alpha.4 adds deterministic dry-run trace inspection and execution readiness reporting only.
 
-Public release label: v1.4.0-alpha.3 Provider/Source Dry-Run Execution Harness + Policy Simulator.
+Public release label: v1.4.0-alpha.4 Dry-Run Trace Inspector + Execution Readiness Report.
 
-Locked baselines preserved:
+## Boundary
 
-- v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
-- v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
-- v1.3.0 — Stable Manual Workflow Release
-- v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization
-- v1.3.0-alpha.10 — Brief Publication Pack v4
+No live scraping. No live source fetching. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
 
-No live scraping. No live source fetching. No live provider execution. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim is enabled.
+## Evidence requirement
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.3.
+Screenshots alone are insufficient. A ZIP archive alone is insufficient. Lock requires green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
 
-Hosted demo metadata and hosted evidence must report v1.4.0-alpha.3 before lock.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.4.
 
-Screenshots alone are insufficient for release approval.
-ZIP archive alone is insufficient for release approval.
+Hosted demo metadata and hosted evidence must report v1.4.0-alpha.4 before lock.
+
+Locked stable baseline: v1.3.0 — Stable Manual Workflow Release.
+Last locked RC baseline: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization.
+Manual workflow baseline: v1.3.0-alpha.10 — Brief Publication Pack v4.

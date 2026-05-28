@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.3';
-const CURRENT_TITLE = 'Provider/Source Dry-Run Execution Harness + Policy Simulator';
+const CURRENT_VERSION = '1.4.0-alpha.4';
+const CURRENT_TITLE = 'Dry-Run Trace Inspector + Execution Readiness Report';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');
