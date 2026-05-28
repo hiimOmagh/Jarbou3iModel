@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.6",
-  "internal_build_version": "1.4.0-alpha.6",
-  "public_version_label": "v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence",
+  "evidence_matrix_config_version": "1.4.0-alpha.7",
+  "internal_build_version": "1.4.0-alpha.7",
+  "public_version_label": "v1.4.0-alpha.7 Source Acquisition Control Surface",
   "locales": [
     "en",
     "ar",
@@ -15,7 +15,8 @@
         "Brief Template UX Polish",
         "Export Pack v3",
         "Signed Export Handoff Pack",
-        "Lock Ledger Review Surface"
+        "Lock Ledger Review Surface",
+        "Source Acquisition Control Surface"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -32,7 +33,8 @@
         "اعتماد مراجعة التصدير",
         "تصدير",
         "حزمة تسليم التصدير المعتمدة",
-        "سطح مراجعة سجل قفل التصدير"
+        "سطح مراجعة سجل قفل التصدير",
+        "سطح التحكم في اكتساب المصادر"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -47,7 +49,8 @@
         "visa de revue export",
         "Export Pack v3",
         "Pack de remise export signé",
-        "Surface de revue du registre de verrouillage"
+        "Surface de revue du registre de verrouillage",
+        "Surface de contrôle d’acquisition des sources"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -233,8 +236,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence",
-    "ar": "v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط",
-    "fr": "v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement"
+    "en": "v1.4.0-alpha.7 Source Acquisition Control Surface",
+    "ar": "v1.4.0-alpha.7 سطح التحكم في اكتساب المصادر · تحكم بأنماط المصادر فقط",
+    "fr": "v1.4.0-alpha.7 Surface de contrôle d’acquisition des sources · contrôle des modes source uniquement"
   }
 }

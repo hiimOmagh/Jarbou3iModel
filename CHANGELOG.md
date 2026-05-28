@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.4.0-alpha.7 — Source Acquisition Control Surface
+
+- Added deterministic source acquisition control surface.
+- Added source modes: `manual_source`, `imported_evidence`, `fixture_source`, `provider_proposed_source`, `blocked_source`, and `future_controlled_fetch`.
+- Added permission/provenance/risk labels, review queue routing, source-to-claim linkage preservation, and source-gap warnings.
+- Added ADR-013 for source acquisition controls.
+- Added targeted check `tests/source-acquisition-control-surface-check.mjs` and CI registry integration.
+- Preserved locked v1.4.0-alpha.6 mock-to-live equivalence baseline, locked v1.4.0-alpha.5 replay/approval baseline, locked v1.4.0-alpha.4 trace/readiness baseline, and locked v1.3.0 stable manual workflow baseline.
+- No live scraping, live source fetching, hidden background fetching, provider execution expansion, production OAuth, backend expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+
 ## v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence
 
 - Added deterministic provider execution mock-to-live equivalence report.

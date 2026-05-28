@@ -1,37 +1,36 @@
 # Jarbou3i Research Engine
 
-`v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`
+`v1.4.0-alpha.7 — Source Acquisition Control Surface`
 
-A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds deterministic dry-run replay packaging and local operator approval simulation only.
+A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds deterministic source acquisition mode control only.
 
 ## Current boundary
 
-- Current package version: `1.4.0-alpha.6`.
-- Current release: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
+- Current package version: `1.4.0-alpha.7`.
+- Current release: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
 - Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
-- Locked trace/readiness baseline: `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`.
+- Locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
 - No live scraping.
 - No live source fetching.
+- No hidden background fetching.
 - No live provider execution.
 - No production OAuth.
 - No backend behavior expansion.
 - No storage expansion.
 - No automatic source verification.
+- No provider-suggested source bypass.
 - No automatic signoff.
 - No automatic export lock.
 - No cryptographic signature claim.
 - No publication permission claim.
 
-## Alpha.5 additions
+## Alpha.7 additions
 
-- `src/research/provider-source-dry-run-replay-pack.js`
-- `src/research/provider-source-operator-approval-simulation.js`
-- `tests/provider-source-dry-run-replay-pack-check.mjs`
-- `tests/provider-source-operator-approval-simulation-check.mjs`
-- `docs/adr/ADR-010-provider-source-dry-run-replay-pack.md`
-- `docs/adr/ADR-011-provider-source-operator-approval-simulation.md`
+- `src/research/source-acquisition-control-surface.js`
+- `tests/source-acquisition-control-surface-check.mjs`
+- `docs/adr/ADR-013-source-acquisition-control-surface.md`
 
-The replay pack packages deterministic dry-run traces, trace inspection summaries, readiness blockers, replay items, and non-cryptographic integrity checks for local review. The approval simulation classifies replay items as simulated-approved for replay review, held for operator review, or rejected for live execution. It never grants real live-execution authorization.
+The source acquisition control surface classifies source candidates as `manual_source`, `imported_evidence`, `fixture_source`, `provider_proposed_source`, `blocked_source`, or `future_controlled_fetch`. It adds permission/provenance/risk labels, review queue routing, source-to-claim linkage preservation, and source-gap warnings. It never fetches, scrapes, verifies, auto-accepts, or authorizes provider-suggested sources.
 
 ## Validation
 
@@ -41,20 +40,16 @@ npm run test:ci:no-browser
 npm run test:ci:browser
 ```
 
-Targeted alpha.5 checks:
+Targeted alpha.7 check:
 
 ```bash
-node tests/provider-source-dry-run-replay-pack-check.mjs
-node tests/provider-source-operator-approval-simulation-check.mjs
+node tests/source-acquisition-control-surface-check.mjs
 ```
 
-Public version label: v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence.
+Public version label: v1.4.0-alpha.7 Source Acquisition Control Surface.
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.6.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.7.
 
-Public Demo boundary: v1.4.0-alpha.6 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic mock-to-live equivalence validation only.
-
-Locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`.
-Manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`.
+Public Demo boundary: v1.4.0-alpha.7 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic source acquisition control only.
 
 Screenshots alone are insufficient. ZIP archive alone is insufficient; local ZIP existence must be paired with green CI, reviewed hosted evidence, and canonical lock evidence.

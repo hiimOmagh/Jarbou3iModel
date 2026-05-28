@@ -1,4 +1,4 @@
-Current release reference: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Planning/preflight only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
+Current release reference: v1.4.0-alpha.7 — Source Acquisition Control Surface. Source-mode control only; no live/provider/OAuth/backend/source/storage expansion. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked mock-to-live baseline: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
 
 # Release and Evidence Policy
 
@@ -7,9 +7,9 @@ This document consolidates release and evidence policy previously scattered acro
 ## Current release
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.3.0`
-- Release: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`
-- Release type: controlled local/manual source-to-brief alpha
+- Version: `1.4.0-alpha.7`
+- Release: `v1.4.0-alpha.7 — Source Acquisition Control Surface`
+- Release type: source acquisition control surface alpha
 - Runtime capability change: no
 - Provider behavior change: no
 - OAuth behavior change: no
@@ -38,16 +38,16 @@ ci-artifacts/hosted-demo-evidence
 Local static mode:
 
 ```bash
-npm run test:browser:evidence
+PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
 Hosted URL mode:
 
 ```bash
-HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" npm run test:browser:evidence
+HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.3.0` and the evidence-review panel present.
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.4.0-alpha.7` and the evidence-review panel present.
 
 The hosted-demo evidence artifact must contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, full-page status, and horizontal-overflow sanity. Partial per-test metadata overwrites remain blocked by no-browser gates.
 

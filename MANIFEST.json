@@ -1,8 +1,8 @@
 {
-  "version": "1.4.0-alpha.6",
-  "release_title": "v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence",
+  "version": "1.4.0-alpha.7",
+  "release_title": "v1.4.0-alpha.7 — Source Acquisition Control Surface",
   "package": "jarbou3i-research-engine",
-  "release_type": "provider-execution-harness-mock-to-live-equivalence",
+  "release_type": "source-acquisition-control-surface",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
   "oauth_behavior_changed": false,
@@ -44,9 +44,9 @@
     "npm run test:ci:no-browser",
     "PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser"
   ],
-  "release_scope": "Planning/control-plane milestone: deterministic provider execution harness mock-to-live equivalence validation after locked v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation, locked v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report, and locked v1.3.0 — Stable Manual Workflow Release. Adds provider execution mock-to-live equivalence report, planned future-live envelope shape validation, payload-shape comparison, policy-boundary preservation, failure-contract mapping, readiness-blocker preservation, operator-approval boundary preservation, and ADR-012. It does not enable live provider execution, live source fetching, production OAuth, backend behavior, storage expansion, automatic source verification, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.",
+  "release_scope": "Planning/control-plane milestone: deterministic source acquisition control surface after locked v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence, locked v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation, locked v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report, and locked v1.3.0 — Stable Manual Workflow Release. Adds source acquisition mode selector semantics for manual_source, imported_evidence, fixture_source, provider_proposed_source, blocked_source, and future_controlled_fetch; permission/provenance/risk labels; review queue compatibility; source-to-claim linkage preservation; and source gap warnings. It does not enable live scraping, live source fetching, hidden background fetching, production OAuth, backend behavior, storage expansion, provider-suggested source bypass, automatic source verification, automatic signoff, automatic export lock, cryptographic signing, or publication permission claims.",
   "node_runtime": "Node 24 CI compatibility preserved",
-  "release_manifest_text": "v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence. Deterministic planning/control-plane only after locked v1.4.0-alpha.5, locked v1.4.0-alpha.4, and locked v1.3.0; no live/provider/OAuth/backend/storage/source expansion and no automatic verification/signoff/lock/publish claims.",
-  "node_runtime_note": "Node 24 CI compatibility preserved for 1.4.0-alpha.6.",
-  "baseline_continuity_note": "Locked v1.4.0-alpha.5 replay-pack/operator-approval baseline, locked v1.4.0-alpha.4 trace-inspector/readiness-report baseline, locked v1.4.0-alpha.3 dry-run harness and policy simulator baseline, locked v1.4.0-alpha.2 provider/source policy and failure UX control baseline, locked v1.4.0-alpha.1 controlled provider/source execution preparation baseline, locked v1.3.0 stable manual workflow baseline, v1.3.0-rc.2 RC evidence baseline, and v1.3.0-alpha.10 manual publication-pack baseline continuity preserved."
+  "release_manifest_text": "v1.4.0-alpha.7 Source Acquisition Control Surface. Deterministic source-mode control only after locked v1.4.0-alpha.6, locked v1.4.0-alpha.5, locked v1.4.0-alpha.4, and locked v1.3.0; no live/source/provider/OAuth/backend/storage expansion and no automatic verification/signoff/lock/publish claims.",
+  "node_runtime_note": "Node 24 CI compatibility preserved for 1.4.0-alpha.7.",
+  "baseline_continuity_note": "Locked v1.4.0-alpha.6 mock-to-live equivalence baseline, locked v1.4.0-alpha.5 replay-pack/operator-approval baseline, locked v1.4.0-alpha.4 trace-inspector/readiness-report baseline, locked v1.4.0-alpha.3 dry-run harness and policy simulator baseline, locked v1.4.0-alpha.2 provider/source policy and failure UX control baseline, locked v1.4.0-alpha.1 controlled provider/source execution preparation baseline, locked v1.3.0 stable manual workflow baseline, v1.3.0-rc.2 RC evidence baseline, and v1.3.0-alpha.10 manual publication-pack baseline continuity preserved."
 }

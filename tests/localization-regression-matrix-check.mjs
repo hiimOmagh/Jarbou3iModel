@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence', 'English public version label must identify v1.4.0-alpha.6');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.6 معادلة مسار التنفيذ الوهمي مع مسار التنفيذ الحي للمزوّد · تخطيط وفحص قبلي فقط', 'Arabic public version label must identify v1.4.0-alpha.6');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.6 Équivalence mock-vers-live du harnais d’exécution fournisseur · planification/prévol uniquement', 'French public version label must identify v1.4.0-alpha.6');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.7 Source Acquisition Control Surface', 'English public version label must identify v1.4.0-alpha.7');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.7 سطح التحكم في اكتساب المصادر · تحكم بأنماط المصادر فقط', 'Arabic public version label must identify v1.4.0-alpha.7');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.7 Surface de contrôle d’acquisition des sources · contrôle des modes source uniquement', 'French public version label must identify v1.4.0-alpha.7');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');

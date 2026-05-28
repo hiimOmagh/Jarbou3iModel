@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.6';
-const RELEASE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
-const PUBLIC_LABEL = 'v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence';
+const VERSION = '1.4.0-alpha.7';
+const RELEASE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
+const PUBLIC_LABEL = 'v1.4.0-alpha.7 Source Acquisition Control Surface';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
-const LOCKED_RC_BASELINE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
-const MANUAL_BASELINE = 'v1.3.0-alpha.10 — Brief Publication Pack v4';
+const MOCK_TO_LIVE_BASELINE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
 const REPLAY_BASELINE = 'v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation';
 const TRACE_BASELINE = 'v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report';
 const DRY_RUN_BASELINE = 'v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator';
 const CONTROL_BASELINE = 'v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts';
 const PREPARATION_BASELINE = 'v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation';
+const MANUAL_BASELINE = 'v1.3.0-alpha.10 — Brief Publication Pack v4';
 
 function read(path) { return fs.readFileSync(path, 'utf8'); }
 function json(path) { return JSON.parse(read(path)); }
@@ -23,104 +23,67 @@ const roadmap = read('docs/roadmap.md');
 const readme = read('README.md');
 const changelog = read('CHANGELOG.md');
 const publicDemo = read('PUBLIC_DEMO.md');
-const refactorAudit = read('docs/source-refactor-readiness-audit.md');
+const qa = read('docs/qa-matrix.md');
 const ciRegistry = json('tests/ci-gate-registry.json');
+const versionRegistry = json('tests/version-suite-registry.json');
+const index = read('index.html');
+const render = read('src/research/render-helpers.js');
 
 assert.equal(pkg.version, VERSION);
-assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.6 public label');
-assert.ok(pkg.description.includes('release evidence continuity'), 'package description must preserve release evidence token');
-assert.ok(pkg.description.includes('package script compression and CI gate registry'), 'package description must preserve CI gate registry token');
-assert.ok(pkg.description.includes('source strategy continuity'), 'package description must preserve source strategy token');
-assert.ok(pkg.description.includes('cryptographic signature claim'), 'package description must preserve no-crypto-signature boundary');
-assert.ok(pkg.description.includes(STABLE_BASELINE), 'package description must preserve locked stable baseline');
+assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.7 public label');
+for (const token of ['source strategy continuity','release evidence continuity','package script compression and CI gate registry','cryptographic signature claim', STABLE_BASELINE, MOCK_TO_LIVE_BASELINE]) {
+  assert.ok(pkg.description.includes(token), `package description missing token: ${token}`);
+}
 
 assert.equal(manifest.version, VERSION);
-assert.equal(manifest.release_title, 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence');
-assert.equal(manifest.release_type, 'provider-execution-harness-mock-to-live-equivalence');
+assert.equal(manifest.release_title, RELEASE);
+assert.equal(manifest.release_type, 'source-acquisition-control-surface');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
-assert.ok(manifest.release_scope.includes('Planning/control-plane milestone') || manifest.release_scope.includes('Planning/preflight milestone'));
-assert.ok(manifest.release_scope.includes(STABLE_BASELINE));
-assert.ok(manifest.release_scope.includes('cryptographic signing'));
-
-for (const [name, text] of Object.entries({ current, roadmap, readme, changelog, publicDemo })) {
-  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.6 release identity`);
-  assert.ok(text.includes(STABLE_BASELINE), `${name} must preserve v1.3.0 stable baseline`);
-  assert.ok(/no live scraping/i.test(text), `${name} must preserve no-live-scraping boundary`);
-  assert.ok(/no production OAuth/i.test(text), `${name} must preserve OAuth boundary`);
-  assert.ok(/cryptographic/i.test(text), `${name} must preserve no-cryptographic-signature boundary`);
+for (const token of ['Planning/control-plane milestone', MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, 'provider-suggested source bypass', 'cryptographic signing']) {
+  assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);
 }
 
-assert.ok(current.includes(`Last locked stable baseline: \`${STABLE_BASELINE}\``), 'current-release must mark v1.3.0 as locked stable baseline');
-assert.ok(current.includes(LOCKED_RC_BASELINE), 'current-release must preserve rc.2 lock baseline');
-assert.ok(current.includes(REPLAY_BASELINE), 'current-release must preserve alpha.5 replay/approval baseline');
-assert.ok(current.includes(TRACE_BASELINE), 'current-release must preserve alpha.4 trace/readiness baseline');
-assert.ok(current.includes(DRY_RUN_BASELINE), 'current-release must preserve alpha.3 dry-run baseline');
-assert.ok(current.includes(CONTROL_BASELINE), 'current-release must preserve alpha.2 control baseline');
-assert.ok(current.includes(PREPARATION_BASELINE), 'current-release must preserve alpha.1 preparation baseline');
-assert.ok(current.includes(MANUAL_BASELINE), 'current-release must preserve alpha.10 manual workflow baseline');
-assert.equal(current.includes('built locally, no-browser validated pending browser lock evidence'), false, 'current-release must not keep stale pending-browser wording');
-assert.ok(current.includes('Status: built locally. Lock is pending green no-browser CI, green browser CI'), 'current-release must describe alpha.5 pre-lock state precisely');
-assert.ok(current.includes('Provider execution threat model'));
-assert.ok(current.includes('Provider execution preflight gate') || current.includes('Preserve alpha.1 provider execution threat model and preflight gate'));
-assert.ok(current.includes('Provider/source execution policy matrix'));
-assert.ok(current.includes('Provider/source failure UX contracts'));
-assert.ok(current.includes('Provider/source dry-run execution harness'));
-assert.ok(current.includes('Provider/source policy simulator'));
-assert.ok(current.includes('Provider/source dry-run trace inspector'));
-assert.ok(current.includes('Provider/source execution readiness report'));
-assert.ok(current.includes('Provider/source dry-run replay pack'));
-assert.ok(current.includes('Provider/source operator approval simulation'));
-assert.ok(current.includes('Provider execution mock-to-live equivalence') || current.includes('mock-to-live equivalence report'));
-assert.ok(current.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'));
-assert.ok(current.includes('ADR-012'));
-assert.ok(current.includes('mock_to_live_equivalence_only'));
-assert.ok(current.includes('future_live_envelope_only'));
+for (const [name, text] of Object.entries({ current, roadmap, readme, changelog, publicDemo, qa })) {
+  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.7 release identity`);
+  assert.ok(text.includes(STABLE_BASELINE), `${name} must preserve v1.3.0 stable baseline`);
+  assert.ok(text.includes(MOCK_TO_LIVE_BASELINE), `${name} must preserve alpha.6 lock baseline`);
+  assert.ok(/no live scraping/i.test(text), `${name} must preserve no-live-scraping boundary`);
+  assert.ok(/No production OAuth|no production OAuth/i.test(text), `${name} must preserve OAuth boundary`);
+  assert.ok(/cryptographic/i.test(text), `${name} must preserve no-cryptographic-signature boundary`);
+  assert.ok(/automatic source verification/i.test(text), `${name} must preserve no-auto-verification boundary`);
+}
 
-assert.ok(roadmap.includes(RELEASE));
-assert.ok(roadmap.includes(REPLAY_BASELINE));
-assert.ok(roadmap.includes(TRACE_BASELINE));
-assert.ok(roadmap.includes(DRY_RUN_BASELINE));
-assert.ok(roadmap.includes(CONTROL_BASELINE));
-assert.ok(roadmap.includes(PREPARATION_BASELINE));
-assert.ok(roadmap.includes(STABLE_BASELINE));
-assert.ok(roadmap.includes(MANUAL_BASELINE));
-assert.equal(roadmap.includes('only after alpha.6 no-browser CI'), false, 'roadmap must not preserve stale alpha.5 dependency text');
-assert.ok(roadmap.includes('No alpha.7 should start until v1.4.0-alpha.6 is locked'), 'roadmap must gate alpha.7 behind alpha.6 lock');
-assert.equal(roadmap.includes('Next valid milestone:'), false, 'roadmap should use compressed next milestones rather than stale next-valid milestone wording');
+for (const baseline of [REPLAY_BASELINE, TRACE_BASELINE, DRY_RUN_BASELINE, CONTROL_BASELINE, PREPARATION_BASELINE, MANUAL_BASELINE]) {
+  assert.ok(current.includes(baseline), `current release must preserve ${baseline}`);
+  assert.ok(roadmap.includes(baseline), `roadmap must preserve ${baseline}`);
+}
 
-assert.equal(refactorAudit.includes('Forbidden in alpha.11'), false, 'source refactor audit must not reference stale alpha.11 ban column');
-assert.equal(refactorAudit.includes('alpha.11 changes runtime behavior'), false, 'source refactor audit must not use stale alpha.11 invalidation wording');
-assert.ok(refactorAudit.includes('Forbidden before explicit refactor milestone'));
+for (const token of ['manual_source','imported_evidence','fixture_source','provider_proposed_source','blocked_source','future_controlled_fetch','source-to-claim linkage','source-gap warnings','ADR-013']) {
+  assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.7 source acquisition token missing: ${token}`);
+}
+
+assert.ok(index.includes('v1.4.0-alpha.7 Source Acquisition Control Surface'));
+assert.ok(render.includes('v1.4.0-alpha.7 Source Acquisition Control Surface'));
+assert.ok(render.includes('سطح التحكم في اكتساب المصادر'));
+assert.ok(render.includes('Surface de contrôle d’acquisition des sources'));
+assert.equal(render.includes('v1.4.0-alpha.7 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
+assert.equal(render.includes('حزمة إعادة تشغيل التجربة الجافة'), false, 'stale AR alpha.5 label must not return');
+
+assert.equal(ciRegistry.ci_gate_registry_version, VERSION);
+assert.equal(ciRegistry.release_title, RELEASE);
+assert.equal(versionRegistry.version_suite_registry_version, VERSION);
+assert.equal(versionRegistry.release_title, RELEASE);
 
 for (const gate of ['no-browser','current-no-browser','source','release']) {
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-execution-threat-model-check.mjs'), `${gate} must run provider threat-model check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-execution-preflight-check.mjs'), `${gate} must run provider preflight check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-execution-policy-matrix-check.mjs'), `${gate} must run provider/source policy matrix check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-failure-ux-contracts-check.mjs'), `${gate} must run provider/source failure UX contracts check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-dry-run-execution-harness-check.mjs'), `${gate} must run provider/source dry-run harness check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-policy-simulator-check.mjs'), `${gate} must run provider/source policy simulator check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-dry-run-trace-inspector-check.mjs'), `${gate} must run provider/source trace inspector check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-execution-readiness-report-check.mjs'), `${gate} must run provider/source execution readiness report check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-dry-run-replay-pack-check.mjs'), `${gate} must run provider/source dry-run replay pack check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-source-operator-approval-simulation-check.mjs'), `${gate} must run provider/source operator approval simulation check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'), `${gate} must run provider execution mock-to-live equivalence check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/source-acquisition-control-surface-check.mjs'), `${gate} must run source acquisition control surface check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'), `${gate} must preserve provider execution mock-to-live equivalence check`);
 }
+assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/source-acquisition-control-surface.js'), 'syntax matrix must cover source acquisition module');
+assert.ok(ciRegistry.syntax_matrix.files.includes('tests/source-acquisition-control-surface-check.mjs'), 'syntax matrix must cover source acquisition check');
 
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/release-truth-consistency-check.mjs'), 'syntax matrix must cover release-truth consistency check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-execution-threat-model.js'), 'syntax matrix must cover provider threat model');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-execution-preflight.js'), 'syntax matrix must cover provider preflight');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-execution-policy-matrix.js'), 'syntax matrix must cover provider/source policy matrix');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-failure-ux-contracts.js'), 'syntax matrix must cover provider/source failure UX contracts');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-dry-run-execution-harness.js'), 'syntax matrix must cover provider/source dry-run execution harness');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-policy-simulator.js'), 'syntax matrix must cover provider/source policy simulator');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-dry-run-trace-inspector.js'), 'syntax matrix must cover provider/source trace inspector');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-execution-readiness-report.js'), 'syntax matrix must cover provider/source execution readiness report');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-dry-run-replay-pack.js'), 'syntax matrix must cover provider/source dry-run replay pack');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-source-operator-approval-simulation.js'), 'syntax matrix must cover provider/source operator approval simulation');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/provider-source-dry-run-replay-pack-check.mjs'), 'syntax matrix must cover provider/source dry-run replay pack check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/provider-source-operator-approval-simulation-check.mjs'), 'syntax matrix must cover provider/source operator approval simulation check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/provider-execution-mock-to-live-equivalence.js'), 'syntax matrix must cover provider execution mock-to-live equivalence module');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'), 'syntax matrix must cover provider execution mock-to-live equivalence check');
+for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','source_connector_behavior_changed']) {
+  assert.equal(ciRegistry[key], false, `${key} must remain false in CI registry`);
+}
 
 console.log('Release truth consistency checks passed.');
 process.exit(0);

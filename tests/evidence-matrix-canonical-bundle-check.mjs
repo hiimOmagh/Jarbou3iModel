@@ -4,9 +4,9 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.4.0-alpha.6';
-const TITLE = 'Provider Execution Harness Mock-to-Live Equivalence';
-const PUBLIC_LABEL = 'v1.4.0-alpha.6 Provider Execution Harness Mock-to-Live Equivalence';
+const VERSION = '1.4.0-alpha.7';
+const TITLE = 'Source Acquisition Control Surface';
+const PUBLIC_LABEL = 'v1.4.0-alpha.7 Source Acquisition Control Surface';
 const config = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
 const spec = fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs', 'utf8');
 const script = fs.readFileSync('scripts/build-lock-evidence-bundle.mjs', 'utf8');
@@ -63,7 +63,7 @@ assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false);
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false);
 
 for (const token of [
-  'lock-evidence-bundle_1.4.0-alpha.6_${{ github.run_id }}',
+  'lock-evidence-bundle_1.4.0-alpha.7_${{ github.run_id }}',
   'lock-evidence-bundle-decision',
   'playwright-install-log',
   '${{ runner.temp }}/lock-evidence-input/logs',
@@ -83,7 +83,7 @@ assert.ok(workflow.includes('Browser gate pending: Playwright install has not co
 assert.ok(workflow.includes('Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser'), 'browser job must stamp browser.log when the browser gate starts');
 assert.ok(workflow.includes('Download Playwright install evidence log'), 'canonical bundle must download playwright install evidence log');
 assert.ok(workflow.includes('canonical bundle policy: upload only when no-browser and browser both pass'), 'canonical bundle skip path must emit an explicit decision');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.6'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.7'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
 

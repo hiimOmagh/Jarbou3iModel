@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.6';
-const CURRENT_TITLE = 'Provider Execution Harness Mock-to-Live Equivalence';
+const CURRENT_VERSION = '1.4.0-alpha.7';
+const CURRENT_TITLE = 'Source Acquisition Control Surface';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

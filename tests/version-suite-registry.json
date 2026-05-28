@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.6",
-  "release_title": "v1.4.0-alpha.6 \u2014 Provider Execution Harness Mock-to-Live Equivalence",
+  "version_suite_registry_version": "1.4.0-alpha.7",
+  "release_title": "v1.4.0-alpha.7 — Source Acquisition Control Surface",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1843,7 +1843,7 @@
         "tests/provider-source-policy-simulator-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.6 provider/source dry-run execution harness and policy simulator checks passed."
+      "former_console_message": "v1.4.0-alpha.7 provider/source dry-run execution harness and policy simulator checks passed."
     }
   ]
 }
