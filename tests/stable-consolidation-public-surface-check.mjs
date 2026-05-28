@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.8';
-const CURRENT_TITLE = 'Credential Boundary Runtime Drill';
+const CURRENT_VERSION = '1.4.0-alpha.9';
+const CURRENT_TITLE = 'Controlled Execution Candidate Gate';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
-const CURRENT_PUBLIC = 'v1.4.0-alpha.8 Credential Boundary Runtime Drill';
+const CURRENT_PUBLIC = 'v1.4.0-alpha.9 Controlled Execution Candidate Gate';
 const STABLE_PUBLIC = 'v1.3.0 Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -17,8 +17,8 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 
 assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
-assert.equal(registry.release_title, 'v1.4.0-alpha.8 — Credential Boundary Runtime Drill');
-assert.ok(index.includes('content="1.4.0-alpha.8"'), 'hosted metadata must report the alpha.1 internal version');
+assert.equal(registry.release_title, 'v1.4.0-alpha.9 — Controlled Execution Candidate Gate');
+assert.ok(index.includes('content="1.4.0-alpha.9"'), 'hosted metadata must report the alpha.1 internal version');
 assert.ok(index.includes(CURRENT_PUBLIC), 'public surface should expose alpha.1 planning identity');
 assert.ok(helpers.includes(CURRENT_PUBLIC), 'localized copy must expose alpha.1 planning identity');
 assert.ok(current.includes(CURRENT_PUBLIC));

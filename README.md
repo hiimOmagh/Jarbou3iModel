@@ -1,13 +1,13 @@
 # Jarbou3i Research Engine
 
-`v1.4.0-alpha.8 — Credential Boundary Runtime Drill`
+`v1.4.0-alpha.9 — Controlled Execution Candidate Gate`
 
-A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds deterministic credential-boundary runtime drills only.
+A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds a no-execution controlled execution candidate gate only.
 
 ## Current boundary
 
-- Current package version: `1.4.0-alpha.8`.
-- Current release: `v1.4.0-alpha.8 — Credential Boundary Runtime Drill`.
+- Current package version: `1.4.0-alpha.9`.
+- Current release: `v1.4.0-alpha.9 — Controlled Execution Candidate Gate`.
 - Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
 - Locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
 - Locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
@@ -28,13 +28,13 @@ A dark editorial intelligence workspace that turns messy AI output into structur
 - No cryptographic signature claim.
 - No publication permission claim.
 
-## Alpha.8 additions
+## Alpha.9 additions
 
-- `src/research/credential-boundary-runtime-drill.js`
-- `tests/credential-boundary-runtime-drill-check.mjs`
-- `docs/adr/ADR-014-credential-boundary-runtime-drill.md`
+- `src/research/controlled-execution-candidate-gate.js`
+- `tests/controlled-execution-candidate-gate-check.mjs`
+- `docs/adr/ADR-015-controlled-execution-candidate-gate.md`
 
-The credential boundary runtime drill runs deterministic fake-secret test vectors across fake secret injection, export leak, log leak, browser-visible text leak, fixture leak, provider payload secret-boundary, and release bundle secret-boundary surfaces. It produces redaction reports and safe metadata-only outputs. It never uses or stores real credentials.
+The controlled execution candidate gate assembles locked credential, source, policy, readiness, replay, and approval evidence into a no-execution dry candidate report. It records manual operator preconditions and failure-to-enable reasons without authorizing live execution.
 
 ## Validation
 
@@ -44,16 +44,16 @@ npm run test:ci:no-browser
 npm run test:ci:browser
 ```
 
-Targeted alpha.8 check:
+Targeted alpha.9 check:
 
 ```bash
-node tests/credential-boundary-runtime-drill-check.mjs
+node tests/controlled-execution-candidate-gate-check.mjs
 ```
 
-Public version label: v1.4.0-alpha.8 Credential Boundary Runtime Drill.
+Public version label: v1.4.0-alpha.9 Controlled Execution Candidate Gate.
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.8.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.9.
 
-Public Demo boundary: v1.4.0-alpha.8 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic credential boundary drill artifacts only.
+Public Demo boundary: v1.4.0-alpha.9 keeps the locked public demo/manual workflow behavior unchanged while adding no-execution candidate-gate artifacts only.
 
 Screenshots alone are insufficient. ZIP archive alone is insufficient; local ZIP existence must be paired with green CI, reviewed hosted evidence, and canonical lock evidence.

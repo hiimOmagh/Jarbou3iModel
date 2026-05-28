@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.8",
-  "internal_build_version": "1.4.0-alpha.8",
-  "public_version_label": "v1.4.0-alpha.8 Credential Boundary Runtime Drill",
+  "evidence_matrix_config_version": "1.4.0-alpha.9",
+  "internal_build_version": "1.4.0-alpha.9",
+  "public_version_label": "v1.4.0-alpha.9 Controlled Execution Candidate Gate",
   "locales": [
     "en",
     "ar",
@@ -17,7 +17,7 @@
         "Signed Export Handoff Pack",
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
-        "Credential Boundary Runtime Drill"
+        "Controlled Execution Candidate Gate"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -36,7 +36,8 @@
         "حزمة تسليم التصدير المعتمدة",
         "سطح مراجعة سجل قفل التصدير",
         "سطح التحكم في اكتساب المصادر",
-        "حدود بيانات الاعتماد"
+        "حدود بيانات الاعتماد",
+        "بوابة مرشح التنفيذ المضبوط"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -53,7 +54,8 @@
         "Pack de remise export signé",
         "Surface de revue du registre de verrouillage",
         "Surface de contrôle d’acquisition des sources",
-        "frontière des identifiants"
+        "frontière des identifiants",
+        "Porte de candidature d’exécution contrôlée"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -239,8 +241,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.8 Credential Boundary Runtime Drill",
-    "ar": "v1.4.0-alpha.8 تدريب حدود بيانات الاعتماد وقت التشغيل · أسرار وهمية فقط",
-    "fr": "v1.4.0-alpha.8 Drill runtime de frontière des identifiants · faux secrets uniquement"
+    "en": "v1.4.0-alpha.9 Controlled Execution Candidate Gate",
+    "ar": "v1.4.0-alpha.9 بوابة مرشح التنفيذ المضبوط · مرشح بلا تنفيذ فقط",
+    "fr": "v1.4.0-alpha.9 Porte de candidature d’exécution contrôlée · candidat sans exécution uniquement"
   }
 }

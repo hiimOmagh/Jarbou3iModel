@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.8';
-const RELEASE = 'v1.4.0-alpha.8 — Credential Boundary Runtime Drill';
-const PUBLIC_LABEL = 'v1.4.0-alpha.8 Credential Boundary Runtime Drill';
+const VERSION = '1.4.0-alpha.9';
+const RELEASE = 'v1.4.0-alpha.9 — Controlled Execution Candidate Gate';
+const PUBLIC_LABEL = 'v1.4.0-alpha.9 Controlled Execution Candidate Gate';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_RC_BASELINE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
 const MANUAL_BASELINE = 'v1.3.0-alpha.10 — Brief Publication Pack v4';
@@ -24,8 +24,8 @@ assert.ok(pkg.description.includes(STABLE_BASELINE), 'package description must p
 assert.ok(pkg.description.includes(MANUAL_BASELINE), 'package description must preserve alpha.10 manual workflow baseline identity');
 
 assert.equal(manifest.version, VERSION);
-assert.equal(manifest.release_title, 'v1.4.0-alpha.8 — Credential Boundary Runtime Drill');
-assert.equal(manifest.release_type, 'credential-boundary-runtime-drill');
+assert.equal(manifest.release_title, 'v1.4.0-alpha.9 — Controlled Execution Candidate Gate');
+assert.equal(manifest.release_type, 'controlled-execution-candidate-gate');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 assert.ok(manifest.release_scope.includes('Planning/control-plane milestone') || manifest.release_scope.includes('Planning/preflight milestone'));
 assert.ok(manifest.release_scope.includes(STABLE_BASELINE));
@@ -44,10 +44,10 @@ for (const text of [current, roadmap, changelog, publicDemo]) {
 assert.ok(current.includes('Status: built locally. Lock is pending green no-browser CI, green browser CI'), 'current release must remain pre-lock until CI evidence is uploaded');
 assert.ok(current.includes(`Last locked stable baseline: \`${STABLE_BASELINE}\``), 'current release must mark v1.3.0 as last locked stable baseline');
 assert.ok(roadmap.includes(RELEASE));
-assert.ok(roadmap.includes('v1.4.0-alpha.8'));
+assert.ok(roadmap.includes('v1.4.0-alpha.9'));
 
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.8_${{ github.run_id }}'), 'CI workflow must upload alpha.8 lock bundle');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.8'"), 'CI workflow must assert alpha.8 evidence matrix version');
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.9_${{ github.run_id }}'), 'CI workflow must upload alpha.8 lock bundle');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.9'"), 'CI workflow must assert alpha.8 evidence matrix version');
 
 for (const gate of ['no-browser', 'current-no-browser', 'release']) {
   assert.ok(registry.gates[gate].node_checks.includes('tests/stable-manual-workflow-release-check.mjs'), `${gate} must run baseline continuity check`);

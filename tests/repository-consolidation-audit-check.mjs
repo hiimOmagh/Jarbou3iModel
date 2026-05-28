@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.8';
-const CURRENT_TITLE = 'Credential Boundary Runtime Drill';
+const CURRENT_VERSION = '1.4.0-alpha.9';
+const CURRENT_TITLE = 'Controlled Execution Candidate Gate';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

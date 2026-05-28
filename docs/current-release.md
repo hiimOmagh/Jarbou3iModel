@@ -1,10 +1,10 @@
 # Current Release
 
-## v1.4.0-alpha.8 — Credential Boundary Runtime Drill
+## v1.4.0-alpha.9 — Controlled Execution Candidate Gate
 
 Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle upload.
 
-Public release label: v1.4.0-alpha.8 Credential Boundary Runtime Drill.
+Public release label: v1.4.0-alpha.9 Controlled Execution Candidate Gate.
 
 Last locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
 Last locked mock-to-live baseline: `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
@@ -77,8 +77,8 @@ Screenshots alone are insufficient. A ZIP archive alone is insufficient.
 
 ## Validation
 
-- Version: `1.4.0-alpha.8`
-- Required targeted checks: `tests/credential-boundary-runtime-drill-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`, `tests/provider-source-dry-run-replay-pack-check.mjs`, `tests/provider-source-operator-approval-simulation-check.mjs`.
+- Version: `1.4.0-alpha.9`
+- Required targeted checks: `tests/controlled-execution-candidate-gate-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`, `tests/provider-source-dry-run-replay-pack-check.mjs`, `tests/provider-source-operator-approval-simulation-check.mjs`.
 - Required CI: `npm run test:ci:no-browser`, `npm run test:ci:browser`.
 
 Feature surface is frozen except deterministic credential-boundary drill artifacts; no live execution, live fetching, or real credential handling is enabled.
@@ -86,14 +86,14 @@ Feature surface is frozen except deterministic credential-boundary drill artifac
 ## Release Manifest Compatibility
 
 Package: `jarbou3i-research-engine`
-Version: `1.4.0-alpha.8`
+Version: `1.4.0-alpha.9`
 Runtime capability change: no
 Required browser gates before publishing: `npm run test:ci:browser`
 Release archive exclusions: `node_modules/`, `playwright-report/`, `test-results/`, `*.zip`, `backend/.dev.vars`
 Required cleanup commands: remove generated Playwright/test output before packaging.
 
-Machine tokens: runtime_capability_change=false; release_type=credential-boundary-runtime-drill; release_scope=fake-secret-boundary-drill-only; test:ci:browser required.
+Machine tokens: runtime_capability_change=false; release_type=controlled-execution-candidate-gate; release_scope=no-execution-boundary-drill-only; test:ci:browser required.
 Node 24 CI compatibility preserved.
 Release lock requires green no-browser CI, green browser CI, and reviewed hosted-demo evidence.
 Planning gate continuity: apply integrity, changed-files-only patching, Package Script Compression, Version Suite Registry, Fixture Registry, and test organization checks remain active.
-Public Demo boundary: v1.4.0-alpha.8 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic credential-boundary drill artifacts only.
+Public Demo boundary: v1.4.0-alpha.9 keeps the locked public demo/manual workflow behavior unchanged while adding deterministic controlled execution candidate-gate artifacts only.

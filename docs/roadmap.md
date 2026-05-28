@@ -1,8 +1,8 @@
 # Roadmap
 
-Current milestone: `v1.4.0-alpha.8 — Credential Boundary Runtime Drill`
+Current milestone: `v1.4.0-alpha.9 — Controlled Execution Candidate Gate`
 
-Purpose: prove the credential boundary with deterministic fake-secret drills across exports, logs, browser-visible text, fixtures, provider payloads, and release bundles without introducing real OAuth, API keys, token storage, live provider execution, or live source fetching.
+Purpose: assemble a no-execution controlled execution candidate report from locked credential, source, policy, readiness, replay, and approval evidence without enabling live provider execution, source fetching, real OAuth/API keys, token storage, backend/storage expansion, automatic verification, signoff, export lock, signatures, or publication permission.
 
 Locked baselines:
 
@@ -19,16 +19,17 @@ Locked baselines:
 
 Compressed next milestones:
 
-1. `v1.4.0-alpha.8 — Credential Boundary Runtime Drill` — fake-token leak tests and redaction drills.
-2. `v1.4.0-alpha.9 — Controlled Execution Candidate Gate` — decide whether a limited execution candidate is safe enough to design.
-3. `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype` — only if all prior control gates pass.
+1. `v1.4.0-alpha.9 — Controlled Execution Candidate Gate` — no-execution candidate report, manual preconditions, dependency checklist, and failure-to-enable reasons.
+2. `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype` — only if all prior control gates pass and a separate approval milestone explicitly authorizes the prototype design.
 
 Forbidden until explicit later approval: no real OAuth, no real API keys, no real token storage, live scraping, live source fetching, hidden background fetching, provider execution expansion, backend behavior expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, publication permission claim.
 
-No alpha.9 should start until v1.4.0-alpha.8 is locked with green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
+No alpha.10 should start until v1.4.0-alpha.9 is locked with green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
 
-Boundary shorthand: no real credentials; no live scraping; no hidden background fetch; no production OAuth; no backend behavior expansion; no provider execution expansion; no cryptographic signature claim.
+Boundary shorthand: no execution authorization; no real credentials; no live scraping; no hidden background fetch; no production OAuth; no backend/storage expansion; no provider execution expansion; no cryptographic signature or publication claim.
 
-Node 24 CI compatibility remains mandatory for v1.4.0-alpha.8 and later.
+Node 24 CI compatibility remains mandatory for v1.4.0-alpha.9 and later.
 
 Planning gate continuity: apply integrity and changed-files-only discipline remain required before any provider/source execution expansion.
+
+Boundary wording: no backend behavior expansion; no provider execution expansion; no production OAuth.

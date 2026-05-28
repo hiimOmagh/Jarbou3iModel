@@ -139,7 +139,7 @@ assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/operator-handof
 const renderer = fs.readFileSync('src/research/source-to-brief-operator-renderer.js','utf8');
 for (const marker of ['briefPublicationPackPanel','stable-manual-workflow-release','briefPublicationFiles']) assert.ok(renderer.includes(marker), `renderer missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
-for (const marker of ['Credential Boundary Runtime Drill','سطح التحكم في اكتساب المصادر','Surface de contrôle d’acquisition des sources']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
+for (const marker of ['Controlled Execution Candidate Gate','سطح التحكم في اكتساب المصادر','Surface de contrôle d’acquisition des sources']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
 for (const marker of ['briefPublicationPackPanel','briefPublicationFiles']) assert.ok(styles.includes(marker), `style missing ${marker}`);
 

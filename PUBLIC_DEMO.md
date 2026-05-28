@@ -1,8 +1,8 @@
-# Public Demo — v1.4.0-alpha.8 Credential Boundary Runtime Drill
+# Public Demo — v1.4.0-alpha.9 Controlled Execution Candidate Gate
 
-The public demo remains a static/manual workflow surface. v1.4.0-alpha.8 adds deterministic credential-boundary runtime drills only.
+The public demo remains a static/manual workflow surface. v1.4.0-alpha.9 adds a no-execution controlled execution candidate gate only.
 
-Public release label: v1.4.0-alpha.8 Credential Boundary Runtime Drill.
+Public release label: v1.4.0-alpha.9 Controlled Execution Candidate Gate.
 
 Locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
 Locked source acquisition baseline: `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
@@ -11,9 +11,9 @@ Locked trace/readiness baseline: `v1.4.0-alpha.4 — Dry-Run Trace Inspector + E
 
 No real OAuth. No real API keys. No real token storage. No live scraping. No live source fetching. No hidden background fetching. No live provider execution. No provider execution expansion. No production OAuth. No backend behavior expansion. No storage expansion. No automatic source verification. No provider-suggested source bypass. No automatic signoff. No automatic export lock. No cryptographic signature claim. No publication permission claim.
 
-Hosted demo metadata and hosted evidence must report v1.4.0-alpha.8 before lock.
+Hosted demo metadata and hosted evidence must report v1.4.0-alpha.9 before lock.
 
-Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.8.
+Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, and Package Script checks remain active for v1.4.0-alpha.9.
 
 Screenshots alone are insufficient. ZIP archive alone is insufficient; local ZIP existence must be paired with green CI, reviewed hosted evidence, and canonical lock evidence.
 

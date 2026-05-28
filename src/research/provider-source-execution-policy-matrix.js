@@ -67,7 +67,7 @@
       failure_contract_required: true,
       unlock_requires: [
         'provider_execution_preflight_passed',
-        'credential_boundary_runtime_drill_passed',
+        'controlled_execution_candidate_gate_passed',
         'cost_timeout_controls_enforced',
         'failure_ux_contracts_implemented',
         'mock_to_live_equivalence_passed',

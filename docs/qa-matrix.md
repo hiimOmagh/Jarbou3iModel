@@ -1,6 +1,6 @@
 # QA Matrix
 
-Current release candidate: v1.4.0-alpha.8 — Credential Boundary Runtime Drill
+Current release candidate: v1.4.0-alpha.9 — Controlled Execution Candidate Gate
 
 Required gates:
 - No-browser CI
@@ -18,7 +18,7 @@ Required gates:
 - Release candidate hygiene / stale-copy sweep
 - Repo/package hygiene verification
 
-Node 24 CI compatibility is preserved for v1.4.0-alpha.8.
+Node 24 CI compatibility is preserved for v1.4.0-alpha.9.
 
 No real OAuth, no real API keys, no real token storage, no live scraping, no live connector expansion, no hidden background fetching, no live provider execution expansion, no production OAuth or backend expansion, no automatic source verification claims, and no cryptographic signature claim.
 

@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.8 Credential Boundary Runtime Drill', 'English public version label must identify v1.4.0-alpha.8');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.8 تدريب حدود بيانات الاعتماد وقت التشغيل · أسرار وهمية فقط', 'Arabic public version label must identify v1.4.0-alpha.8');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.8 Drill runtime de frontière des identifiants · faux secrets uniquement', 'French public version label must identify v1.4.0-alpha.8');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.9 Controlled Execution Candidate Gate', 'English public version label must identify v1.4.0-alpha.9');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.9 بوابة مرشح التنفيذ المضبوط · مرشح بلا تنفيذ فقط', 'Arabic public version label must identify v1.4.0-alpha.9');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.9 Porte de candidature d’exécution contrôlée · candidat sans exécution uniquement', 'French public version label must identify v1.4.0-alpha.9');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');

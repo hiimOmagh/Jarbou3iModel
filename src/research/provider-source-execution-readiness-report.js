@@ -153,7 +153,7 @@
         no_source_fetch_performed: traceInspection ? traceInspection.no_source_fetch_performed : true,
         no_credential_read_attempted: traceInspection ? traceInspection.no_credential_read_attempted : true
       }),
-      recommended_next_gate: 'credential_boundary_runtime_drill_and_mock_to_live_equivalence_plan',
+      recommended_next_gate: 'controlled_execution_candidate_gate_and_mock_to_live_equivalence_plan',
       release_gate: 'review_required',
       verification_claimed: false,
       automatic_source_verification_claimed: false,
