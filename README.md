@@ -1,18 +1,18 @@
 # Jarbou3i Research Engine
 
-## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
+## v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression
 
 Adds deterministic provider adapter fixtures, request/response envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, cross-provider capability matrix, and a safe metadata-only replay ledger. It remains disabled by default and enables no real provider calls, no hidden network calls, no live source fetching, no real OAuth/token lifecycle, no credential persistence, no backend/storage expansion, no automatic source verification, no automatic signoff/export lock, and no publication permission claim. Requires hosted evidence and canonical lock evidence bundle before lock.
 
 
-`v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix`
+`v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`
 
 A dark editorial intelligence workspace that turns messy AI output into structured strategic briefs. The locked public-demo/manual workflow remains first-class. This milestone adds a no-network manual provider adapter sandbox with an ephemeral invocation contract, request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe metadata-only invocation ledger.
 
 ## Current boundary
 
 - Current package version: `1.4.0-alpha.14`.
-- Current release: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix`.
+- Current release: `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`.
 - Locked safety cockpit baseline: `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`.
 - Locked manual opt-in shell baseline: `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype`.
 - Locked controlled execution candidate baseline: `v1.4.0-alpha.9 — Controlled Execution Candidate Gate`.
@@ -46,7 +46,7 @@ A dark editorial intelligence workspace that turns messy AI output into structur
 
 The adapter sandbox exposes a no-network dry invocation contract: ephemeral credential handoff without persistence, provider request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe request/response metadata ledger. It performs no provider call, source fetch, OAuth/token lifecycle, credential storage, backend/storage expansion, automatic verification, signoff, export lock, cryptographic signature, or publication permission action.
 
-Public version label: v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix.
+Public version label: v1.4.0-alpha.15 Manual Provider Adapter UX Compression.
 Internal evidence metadata must report `1.4.0-alpha.14`.
 Release provenance continuity: changed-files-only discipline, provenance ledger, CI Gate Registry, Package Script checks, Playwright cache/fail-fast setup, and canonical lock-evidence bundle checks remain active for v1.4.0-alpha.14.
 Public Demo boundary: v1.4.0-alpha.14 keeps the locked public demo/manual workflow behavior unchanged while adding no-network adapter contract replay QA artifacts only.
@@ -63,3 +63,7 @@ npm run test:ci:browser
 Lock only after green no-browser CI, green browser CI, reviewed hosted-demo evidence, and the canonical lock evidence bundle.
 
 Screenshots alone are insufficient. ZIP archive alone is insufficient.
+
+Locked baseline preserved: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` is locked with run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, canonical lock bundle, and artifact identity guard.
+
+Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.15; locked_baseline: 1.4.0-alpha.14; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.

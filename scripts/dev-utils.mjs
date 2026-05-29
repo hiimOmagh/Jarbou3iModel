@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.4.0-alpha.14';
-export const RELEASE_TITLE = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
+export const VERSION = '1.4.0-alpha.15';
+export const RELEASE_TITLE = 'v1.4.0-alpha.15 — Manual Provider Adapter UX Compression';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

@@ -67,7 +67,7 @@ const engine = fs.readFileSync('src/research-engine.js','utf8');
 for (const marker of ['modules.operatorCommandPalette','operatorCommandPalette?.installNavigation']) assert.ok(engine.includes(marker), `engine missing ${marker}`);
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
 for (const marker of ['Operator command palette','لوحة أوامر المشغّل','Palette de commandes opérateur','Review navigation shortcuts']) assert.ok(helpers.includes(marker), `localized copy missing ${marker}`);
-for (const marker of ['v1.4.0-alpha.14 مجموعة فيكستشرات إعادة تشغيل المحوّل + مصفوفة التغطية · مصفوفة تغطية فقط', 'v1.4.0-alpha.14 Corpus de fixtures de rejeu d’adaptateur + matrice de couverture · Matrice de couverture uniquement']) assert.ok(helpers.includes(marker), `localized alpha.1 public label missing ${marker}`);
+for (const marker of ['v1.4.0-alpha.15 ضغط تجربة محوّل المزوّد اليدوي · حارس ميزانية وقت التشغيل فقط', 'v1.4.0-alpha.15 Compression UX de l’adaptateur fournisseur manuel · Garde budget runtime uniquement']) assert.ok(helpers.includes(marker), `localized alpha.1 public label missing ${marker}`);
 const styles = fs.readFileSync('src/styles.css','utf8');
 for (const marker of ['operatorCommandPalettePanel','operatorCommandGrid','reviewNavigationShortcutList','operatorNavPulse']) assert.ok(styles.includes(marker), `styles missing ${marker}`);
 

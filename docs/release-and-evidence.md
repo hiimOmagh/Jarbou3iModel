@@ -1,4 +1,4 @@
-Current release reference: v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix. No-network replay QA only; no default live execution, hidden network calls, real credentials, live/provider/OAuth/backend/source/storage expansion, credential persistence, or automatic source fetching. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked mock-to-live baseline: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
+Current release reference: v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression. No-network replay QA only; no default live execution, hidden network calls, real credentials, live/provider/OAuth/backend/source/storage expansion, credential persistence, or automatic source fetching. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked mock-to-live baseline: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
 
 # Release and Evidence Policy
 
@@ -8,7 +8,7 @@ This document consolidates release and evidence policy previously scattered acro
 
 - Package: `jarbou3i-research-engine`
 - Version: `1.4.0-alpha.14`
-- Release: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix`
+- Release: `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`
 - Release type: manual execution safety cockpit + session ledger alpha
 - Runtime capability change: no
 - Provider behavior change: no
@@ -182,3 +182,7 @@ Release continuity note: Root Manifest, Release Artifact Consolidation, Version 
 Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
 
 No live scraping. No real OAuth or production OAuth is enabled. Screenshots alone, ZIP existence alone, and a ZIP archive alone are insufficient for release approval.
+
+Locked baseline preserved: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` is locked with run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, canonical lock bundle, and artifact identity guard.
+
+Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.15; locked_baseline: 1.4.0-alpha.14; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.

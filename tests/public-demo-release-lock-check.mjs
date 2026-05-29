@@ -7,8 +7,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.14';
-const CURRENT_TITLE = 'Adapter Replay Fixture Corpus + Coverage Matrix';
+const CURRENT_VERSION = '1.4.0-alpha.15';
+const CURRENT_TITLE = 'Manual Provider Adapter UX Compression';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -44,8 +44,8 @@ const privacyAudit = read('docs/privacy-audit.md');
 const releaseDoc = `${readReleaseDoc('docs/v1.0.25-public-demo-release-lock.md')}\n${readReleaseDoc('docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md')}`;
 
 assert.equal(pkg.version, CURRENT_VERSION, 'package.json must identify v1.1.0');
-assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify v1.4.0-alpha.14');
-assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify v1.4.0-alpha.14');
+assert.equal(lock.version, CURRENT_VERSION, 'package-lock root version must identify v1.4.0-alpha.15');
+assert.equal(lock.packages[''].version, CURRENT_VERSION, 'package-lock package root must identify v1.4.0-alpha.15');
 assert.equal(schema.properties.workflow_version.const, VERSION, 'workflow schema target must identify v1.1.0');
 assert.equal(sample.workflow_version, VERSION, 'sample workflow must identify v1.1.0');
 assert.equal(migrationFixture.workflow_version, VERSION, 'migration fixture must identify v1.1.0');

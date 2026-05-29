@@ -42,7 +42,7 @@ const templates = context.window.Jarbou3iResearchModules.sourcePacketTemplates;
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const roundtrip = context.window.Jarbou3iResearchModules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.4.0-alpha.14');
+assert.equal(pkg.version, '1.4.0-alpha.15');
 assert.equal(templates.VERSION, '1.3.0');
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.3.0');

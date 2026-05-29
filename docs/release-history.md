@@ -1,6 +1,6 @@
 # Release History
 
-## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
+## v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression
 
 Adds metadata-only replay fixture coverage on locked alpha.13. No provider execution, network calls, OAuth/token lifecycle, credential persistence, backend/storage expansion, automatic signoff/export lock, or publication permission claim.
 
@@ -3428,12 +3428,6 @@ Current post-stable continuity note: v1.3.0-alpha.10 — Brief Publication Pack 
 Hosted evidence continuity note: waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed remain required for hosted-demo evidence capture. No runtime behavior change.
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
 
-Public boundary: no live scraping, No real OAuth/production OAuth, and screenshots alone or ZIP existence alone are insufficient for approval.
-
-Release continuity note: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only safeguards remain active.
-
-Provenance ledger, changed-files-only, CI Gate Registry, Package Script Compression, Fixture Registry payload compression, visual freeze, and mobile header release safeguards remain active.
-
 
 | `v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md` | v1.1.0 — Public Demo Stable |
 
@@ -3516,3 +3510,4 @@ Stable manual workflow release and release notes finalization after the locked v
 The RC preserves the manual source-to-brief chain: source-to-claim gap closure queue, signed export handoff metadata, lock-ledger review surface, operator signoff state, export lock ledger, final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix. Supporting audit files remain docs/technical-debt-ledger.md and docs/source-refactor-readiness-audit.md. Coverage remains tests/language-description-audit-check.mjs. No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-evidence-pack-export-v3-brief-traceability.md -->
 
+Alpha.15: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` locked; `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression` current candidate.

@@ -1,16 +1,15 @@
 # Roadmap
 
-## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
+## Current candidate
 
-Adds deterministic provider adapter fixtures, request/response envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, cross-provider capability matrix, and a safe metadata-only replay ledger. It remains disabled by default and enables no real provider calls, no hidden network calls, no live source fetching, no real OAuth/token lifecycle, no credential persistence, no backend/storage expansion, no automatic source verification, no automatic signoff/export lock, and no publication permission claim. Requires hosted evidence and canonical lock evidence bundle before lock.
+`v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`
 
+Purpose: mark locked alpha.14 as the completed baseline, make alpha.15 the current candidate, compress the manual provider adapter/replay evidence UX copy, and add a static evidence/runtime budget guard. This is a planning/control-plane milestone only. It changes no provider/backend/OAuth/source/storage behavior.
 
-Current milestone: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix`
+## Locked baselines
 
-Purpose: define a no-network manual provider adapter sandbox before any real provider invocation attempt. The milestone adds ephemeral credential handoff semantics without persistence, request-envelope preview, dry invocation transcript, adapter failure taxonomy, and safe metadata-only invocation ledger.
-
-Locked baselines:
-
+- `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` is locked. Do not patch it further. Evidence: Run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, no-browser 143 checks passed, browser 17 checks passed, hosted-demo evidence passed, AR/FR/EN visible-text snapshots passed, canonical lock bundle accepted, artifact identity guard passed.
+- `v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract` is locked. Do not patch it further.
 - `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger` is locked. Do not patch it further.
 - `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype` is locked. Do not patch it further.
 - `v1.4.0-alpha.9 — Controlled Execution Candidate Gate` is locked. Do not patch it further.
@@ -18,21 +17,30 @@ Locked baselines:
 - `v1.4.0-alpha.7 — Source Acquisition Control Surface` is locked. Do not patch it further.
 - `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence` is locked. Do not patch it further.
 - `v1.3.0 — Stable Manual Workflow Release` is locked. Do not patch it further.
+- `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` and `v1.3.0-alpha.10 — Brief Publication Pack v4` remain protected manual workflow baselines.
 
-Compressed next milestones:
 
-1. `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` — no-network provider adapter sandbox and safe metadata ledger.
-2. `v1.4.0-alpha.14 — Manual Provider Adapter UX Compression + Evidence Capture Runtime Budget` — only after alpha.12 locks; reduce browser evidence time and improve operator review clarity.
+Continuity baselines retained for release-truth checks: `v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation`; `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`; `v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator`; `v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts`; `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`; `v1.3.0-alpha.10 — Brief Publication Pack v4`.
 
-Forbidden until explicit later approval: no default live execution, no hidden network calls, no real OAuth, no real API keys, no real token storage, no credential persistence, live scraping, live source fetching, automatic source fetching, hidden background fetching, provider execution expansion, backend behavior expansion, storage expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, publication permission claim.
+## v1.4.0-alpha.15 acceptance
 
-No alpha.14 should start until v1.4.0-alpha.14 is locked with green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
+- Current release/docs no longer describe the locked baseline as awaiting lock.
+- Alpha.14 remains recorded as a locked baseline.
+- Browser evidence remains bounded: max 20 browser checks, 3 hosted languages, max 13 hosted surfaces, max 39 visible snapshot rows.
+- Adapter replay fixture corpus and coverage matrix remain present and safety-bounded.
+- AR/FR/EN visible copy remains aligned.
+- No live provider calls, hidden network calls, real OAuth/token lifecycle, real API keys, token storage, credential persistence, backend/storage/source expansion, uncontrolled scraping, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
 
-Node 24 CI compatibility remains mandatory for v1.4.0-alpha.14 and later.
-Planning gate continuity: apply integrity and changed-files-only discipline remain required before any provider/source execution expansion.
+## Compressed next milestones
 
-Boundary repetition for release-truth checks: no live scraping; no production OAuth; no real API keys; no automatic source verification; no cryptographic signature claim.
+1. `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression` — current candidate.
+2. `v1.4.0-alpha.16 — Evidence Surface Budget Enforcement + Browser Capture Slimming` — only after alpha.15 locks; convert the alpha.15 static budget into tighter evidence capture rules without reducing required AR/FR/EN lock evidence.
+3. `v1.4.0-alpha.17 — Adapter Replay Gap Triage + Operator Review Shortcuts` — only after alpha.16 locks; improve review workflow while preserving no-network replay boundaries.
 
-Full baseline repetition for release-truth checks: v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation; v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report; v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator; v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts; v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation; v1.3.0-alpha.10 — Brief Publication Pack v4.
+Forbidden until explicit later approval: no default live execution, no hidden network calls, no live scraping, no real OAuth, no real API keys, no real token storage, no credential persistence, live scraping, live source fetching, automatic source fetching, hidden background fetching, provider execution expansion, backend behavior expansion, storage expansion, source behavior expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, publication permission claim.
 
-Stable baseline repetition: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization; v1.3.0-alpha.10 — Brief Publication Pack v4. No backend behavior expansion. No provider execution expansion.
+Node 24 CI compatibility remains mandatory for v1.4.0-alpha.15 and later.
+
+Boundary repetition: no backend behavior expansion; no provider execution expansion; no production OAuth; no real OAuth; no real API keys; no live scraping; no automatic source verification; no cryptographic signature claim.
+
+Stable continuity: v1.3.0 — Stable Manual Workflow Release. Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.

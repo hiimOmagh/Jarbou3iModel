@@ -10,8 +10,8 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const CURRENT_VERSION = '1.4.0-alpha.14';
-const CURRENT_TITLE = 'Adapter Replay Fixture Corpus + Coverage Matrix';
+const CURRENT_VERSION = '1.4.0-alpha.15';
+const CURRENT_TITLE = 'Manual Provider Adapter UX Compression';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.1';
 const FREEZE_BASELINE = '1.0.30';

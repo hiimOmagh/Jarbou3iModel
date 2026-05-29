@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.4.0-alpha.14';
-const RELEASE = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
+const VERSION = '1.4.0-alpha.15';
+const RELEASE = 'v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression';
 const registry = JSON.parse(fs.readFileSync('tests/version-suite-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
@@ -31,7 +31,7 @@ for (const id of ['v018','v105','v110a4','v125','v129','v130']) {
 }
 
 for (const entry of registry.entries) {
-  assert.ok(entry.former_file.startsWith('tests/'), `former file must be tracked for ${entry.id}`);
+  assert.ok(entry.former_file === null || entry.former_file.startsWith('tests/'), `former file must be tracked for ${entry.id}`);
   assert.equal(entry.preserved_as, 'registry_entry');
   assert.equal(entry.check_count, entry.checks.length);
   assert.ok(Array.isArray(entry.checks));

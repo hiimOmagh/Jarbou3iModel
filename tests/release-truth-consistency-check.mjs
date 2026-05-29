@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.14';
-const RELEASE = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
-const PUBLIC_LABEL = 'v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix';
+const VERSION = '1.4.0-alpha.15';
+const RELEASE = 'v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression';
+const PUBLIC_LABEL = 'v1.4.0-alpha.15 Manual Provider Adapter UX Compression';
+const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
 const MOCK_TO_LIVE_BASELINE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
@@ -31,21 +32,22 @@ const index = read('index.html');
 const render = read('src/research/render-helpers.js');
 
 assert.equal(pkg.version, VERSION);
-assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.12 public label');
-for (const token of ['source strategy continuity','release evidence continuity','package script compression and CI gate registry','cryptographic signature claim', STABLE_BASELINE, MOCK_TO_LIVE_BASELINE]) {
+assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.15 public label');
+for (const token of ['source strategy continuity','release evidence continuity','package script compression and CI gate registry','cryptographic signature claim', STABLE_BASELINE, MOCK_TO_LIVE_BASELINE, LOCKED_ALPHA14]) {
   assert.ok(pkg.description.includes(token), `package description missing token: ${token}`);
 }
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'adapter-replay-fixture-corpus-coverage-matrix');
+assert.equal(manifest.release_type, 'roadmap-lock-completion-manual-provider-adapter-ux-compression');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
-for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, 'real API keys', 'cryptographic signing']) {
+for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, LOCKED_ALPHA14, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);
 }
 
 for (const [name, text] of Object.entries({ current, roadmap, readme, changelog, publicDemo, qa })) {
-  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.11 release identity`);
+  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.15 release identity`);
+  assert.ok(text.includes(LOCKED_ALPHA14), `${name} must record locked alpha.14 baseline`);
   assert.ok(text.includes(STABLE_BASELINE), `${name} must preserve v1.3.0 stable baseline`);
   assert.ok(text.includes(SOURCE_ACQUISITION_BASELINE), `${name} must preserve alpha.7 lock baseline`);
   assert.ok(text.includes(MOCK_TO_LIVE_BASELINE), `${name} must preserve alpha.6 lock baseline`);
@@ -56,11 +58,17 @@ for (const [name, text] of Object.entries({ current, roadmap, readme, changelog,
   assert.ok(/automatic source verification/i.test(text), `${name} must preserve no-auto-verification boundary`);
 }
 
+assert.equal(/Status: built locally\. Lock is pending/.test(current), false, 'current release must not preserve stale alpha.14 pre-lock wording');
+assert.equal(/No alpha\.14 should start/.test(roadmap), false, 'roadmap must not repeat stale alpha.14 start blocker');
+
 for (const baseline of [SOURCE_ACQUISITION_BASELINE, REPLAY_BASELINE, TRACE_BASELINE, DRY_RUN_BASELINE, CONTROL_BASELINE, PREPARATION_BASELINE, MANUAL_BASELINE]) {
   assert.ok(current.includes(baseline), `current release must preserve ${baseline}`);
   assert.ok(roadmap.includes(baseline), `roadmap must preserve ${baseline}`);
 }
 
+for (const token of ['adapter replay fixture corpus','coverage matrix','no-network replay QA']) {
+  assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.14 continuity token missing: ${token}`);
+}
 for (const token of ['ephemeral credential handoff','provider request-envelope preview','no-network dry invocation transcript','adapter failure taxonomy','safe request/response metadata ledger','ADR-018']) {
   assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.12 adapter sandbox token missing: ${token}`);
 }
@@ -71,8 +79,10 @@ for (const token of ['manual_source','provider_proposed_source','future_controll
   assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.7 source acquisition continuity token missing: ${token}`);
 }
 
-assert.ok(index.includes('v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix'));
-assert.ok(render.includes('v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix'));
+assert.ok(index.includes(PUBLIC_LABEL));
+assert.ok(index.includes('v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix'), 'index must preserve visible alpha.14 regression baseline token');
+assert.ok(index.includes('src/research/manual-provider-adapter-ux-compression-evidence-runtime-budget.js'));
+assert.ok(render.includes(PUBLIC_LABEL));
 assert.ok(render.includes('سطح التحكم في اكتساب المصادر'));
 assert.ok(render.includes('Surface de contrôle d’acquisition des sources'));
 assert.equal(render.includes('v1.4.0-alpha.14 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
@@ -86,20 +96,29 @@ assert.equal(versionRegistry.release_title, RELEASE);
 for (const gate of ['no-browser','current-no-browser','privacy','provider','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/limited-manual-live-execution-prototype-check.mjs'), `${gate} must preserve limited manual live-execution prototype check`);
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'), `${gate} must preserve manual execution safety cockpit check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs'), `${gate} must run manual provider adapter sandbox check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs'), `${gate} must preserve alpha.14 replay corpus check`);
+}
+for (const gate of ['no-browser','current-no-browser','provider','release']) {
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs'), `${gate} must run alpha.15 UX/runtime budget check`);
 }
 for (const gate of ['no-browser','current-no-browser','source','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/source-acquisition-control-surface-check.mjs'), `${gate} must preserve source acquisition control surface check`);
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/provider-execution-mock-to-live-equivalence-check.mjs'), `${gate} must preserve provider execution mock-to-live equivalence check`);
 }
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/source-acquisition-control-surface.js'), 'syntax matrix must cover source acquisition module');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/source-acquisition-control-surface-check.mjs'), 'syntax matrix must cover source acquisition check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/limited-manual-live-execution-prototype.js'), 'syntax matrix must cover alpha.10 module');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/limited-manual-live-execution-prototype-check.mjs'), 'syntax matrix must cover alpha.10 check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/manual-execution-safety-cockpit-session-ledger.js'), 'syntax matrix must cover alpha.11 module');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'), 'syntax matrix must cover alpha.11 check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/adapter-replay-fixture-corpus-coverage-matrix.js'), 'syntax matrix must cover alpha.12 module');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs'), 'syntax matrix must cover alpha.12 check');
+for (const file of [
+  'src/research/source-acquisition-control-surface.js',
+  'tests/source-acquisition-control-surface-check.mjs',
+  'src/research/limited-manual-live-execution-prototype.js',
+  'tests/limited-manual-live-execution-prototype-check.mjs',
+  'src/research/manual-execution-safety-cockpit-session-ledger.js',
+  'tests/manual-execution-safety-cockpit-session-ledger-check.mjs',
+  'src/research/adapter-replay-fixture-corpus-coverage-matrix.js',
+  'tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs',
+  'src/research/manual-provider-adapter-ux-compression-evidence-runtime-budget.js',
+  'tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs'
+]) {
+  assert.ok(ciRegistry.syntax_matrix.files.includes(file), `syntax matrix must cover ${file}`);
+}
 
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','source_connector_behavior_changed']) {
   assert.equal(ciRegistry[key], false, `${key} must remain false in CI registry`);

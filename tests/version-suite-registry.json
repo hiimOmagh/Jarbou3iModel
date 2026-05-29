@@ -1,10 +1,10 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.14",
-  "release_title": "v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix",
+  "version_suite_registry_version": "1.4.0-alpha.15",
+  "release_title": "v1.4.0-alpha.15 \u2014 Roadmap Lock Completion + Manual Provider Adapter UX Compression",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
-  "entry_count": 48,
+  "entry_count": 49,
   "wrapper_files_removed": true,
   "package_script_compression": true,
   "runtime_capability_change": false,
@@ -1844,6 +1844,18 @@
       ],
       "preserved_as": "registry_entry",
       "former_console_message": "v1.4.0-alpha.7 provider/source dry-run execution harness and policy simulator checks passed."
+    },
+    {
+      "id": "v140-alpha15",
+      "former_file": null,
+      "check_count": 3,
+      "checks": [
+        "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs",
+        "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
+        "tests/release-truth-consistency-check.mjs"
+      ],
+      "preserved_as": "registry_entry",
+      "former_console_message": "v1.4.0-alpha.15 roadmap lock completion and manual provider adapter UX compression gate passed."
     }
   ]
 }

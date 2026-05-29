@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix', 'English public version label must identify v1.4.0-alpha.14');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.14 مجموعة فيكستشرات إعادة تشغيل المحوّل + مصفوفة التغطية · مصفوفة تغطية فقط', 'Arabic public version label must identify v1.4.0-alpha.14');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.14 Corpus de fixtures de rejeu d’adaptateur + matrice de couverture · Matrice de couverture uniquement', 'French public version label must identify v1.4.0-alpha.14');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.15 Manual Provider Adapter UX Compression', 'English public version label must identify v1.4.0-alpha.15');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.15 ضغط تجربة محوّل المزوّد اليدوي · حارس ميزانية وقت التشغيل فقط', 'Arabic public version label must identify v1.4.0-alpha.15');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.15 Compression UX de l’adaptateur fournisseur manuel · Garde budget runtime uniquement', 'French public version label must identify v1.4.0-alpha.15');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
@@ -42,7 +42,7 @@ const hostedDemoBodies = [...renderPublicLabels.matchAll(/hostedDemoVerification
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('مجموعة فيكستشرات إعادة تشغيل المحوّل + مصفوفة التغطية جاهزة لأدلة الإصدار'), 'Arabic current-release description must identify alpha.13 adapter contract test bench');
+  assert.ok(body.includes('ضغط تجربة محوّل المزوّد اليدوي جاهز لأدلة الإصدار'), 'Arabic current-release description must identify alpha.15 manual provider adapter UX compression');
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
     'نموذج أولي محدود للتنفيذ الحي اليدوي',

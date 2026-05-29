@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.14",
-  "internal_build_version": "1.4.0-alpha.14",
-  "public_version_label": "v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix",
+  "evidence_matrix_config_version": "1.4.0-alpha.15",
+  "internal_build_version": "1.4.0-alpha.15",
+  "public_version_label": "v1.4.0-alpha.15 Manual Provider Adapter UX Compression",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Adapter Replay Fixture Corpus + Coverage Matrix"
+        "Manual Provider Adapter UX Compression"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -40,7 +40,7 @@
         "حدود بيانات الاعتماد",
         "قمرة أمان التنفيذ اليدوي + سجل الجلسة",
         "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر",
-        "مجموعة فيكستشرات إعادة تشغيل المحوّل + مصفوفة التغطية"
+        "ضغط تجربة محوّل المزوّد اليدوي"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -60,7 +60,7 @@
         "frontière des identifiants",
         "Cockpit de sécurité d’exécution manuelle + registre de session",
         "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère",
-        "Corpus de fixtures de rejeu d’adaptateur + matrice de couverture"
+        "Compression UX de l’adaptateur fournisseur manuel"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -246,8 +246,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix",
-    "ar": "v1.4.0-alpha.14 مجموعة فيكستشرات إعادة تشغيل المحوّل + مصفوفة التغطية · مصفوفة تغطية فقط",
-    "fr": "v1.4.0-alpha.14 Corpus de fixtures de rejeu d’adaptateur + matrice de couverture · Matrice de couverture uniquement"
+    "en": "v1.4.0-alpha.15 Manual Provider Adapter UX Compression",
+    "ar": "v1.4.0-alpha.15 ضغط تجربة محوّل المزوّد اليدوي · حارس ميزانية وقت التشغيل فقط",
+    "fr": "v1.4.0-alpha.15 Compression UX de l’adaptateur fournisseur manuel · Garde budget runtime uniquement"
   }
 }
