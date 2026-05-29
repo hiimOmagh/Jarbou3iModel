@@ -6,8 +6,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.15';
-const CURRENT_TITLE = 'Manual Provider Adapter UX Compression';
+const CURRENT_VERSION = '1.4.0-alpha.16';
+const CURRENT_TITLE = 'Evidence Surface Budget Enforcement';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
@@ -56,7 +56,7 @@ for (const packet of [sample, migrationFixture, privacyFixture]) {
 }
 
 for (const required of [
-  "const VERSION = '1.4.0-alpha.15'",
+  "const VERSION = '1.4.0-alpha.16'",
   'EXPECTED_CAPTURE_NAMES',
   'single_final_metadata_with_all_required_captures',
   'all_required_captures_present',

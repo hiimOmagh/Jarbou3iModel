@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.15';
-const CURRENT_TITLE = 'Roadmap Lock Completion + Manual Provider Adapter UX Compression';
+const CURRENT_VERSION = '1.4.0-alpha.16';
+const CURRENT_TITLE = 'Alpha.15 Lock Completion + Evidence Surface Budget Enforcement';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const read = (file) => fs.readFileSync(file, 'utf8');

@@ -1,13 +1,20 @@
 # Release History
 
+## v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement
+
+Marks locked alpha.15 as the completed baseline, cleans CHANGELOG/release-history truth drift, and enforces static evidence-surface budgets without runtime/provider/OAuth/backend/source/storage expansion.
+
 ## v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression
 
-Adds metadata-only replay fixture coverage on locked alpha.13. No provider execution, network calls, OAuth/token lifecycle, credential persistence, backend/storage expansion, automatic signoff/export lock, or publication permission claim.
+Locked with Run ID `26643746981`, commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, evidence matrix 39/39, canonical lock bundle, and artifact identity guard. Scope: roadmap lock completion, manual provider adapter UX compression, and static evidence/runtime budget guard only.
 
-## v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA
+## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
 
-Adds deterministic adapter fixtures, envelope diffing, no-network replay, failure UX rehearsal, safe transcript comparison, cross-provider matrix, and safe metadata-only replay ledger. Disabled by default; requires hosted evidence and canonical lock bundle before lock.
+Locked with Run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, canonical lock bundle, and artifact identity guard.
 
+
+
+<!-- preserved-historical-body -->
 
 Consolidated historical release documentation. This file replaces per-release `docs/v*.md` files and the old repository cleanup audit note while preserving release provenance for CI checks.
 
@@ -3510,4 +3517,4 @@ Stable manual workflow release and release notes finalization after the locked v
 The RC preserves the manual source-to-brief chain: source-to-claim gap closure queue, signed export handoff metadata, lock-ledger review surface, operator signoff state, export lock ledger, final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix. Supporting audit files remain docs/technical-debt-ledger.md and docs/source-refactor-readiness-audit.md. Coverage remains tests/language-description-audit-check.mjs. No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-evidence-pack-export-v3-brief-traceability.md -->
 
-Alpha.15: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` locked; `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression` current candidate.
+Alpha.15: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` locked; `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement` current candidate.

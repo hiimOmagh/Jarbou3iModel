@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.15';
-const CURRENT_TITLE = 'Manual Provider Adapter UX Compression';
+const CURRENT_VERSION = '1.4.0-alpha.16';
+const CURRENT_TITLE = 'Evidence Surface Budget Enforcement';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

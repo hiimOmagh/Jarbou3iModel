@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.15';
-const CURRENT_TITLE = 'Manual Provider Adapter UX Compression';
+const CURRENT_VERSION = '1.4.0-alpha.16';
+const CURRENT_TITLE = 'Evidence Surface Budget Enforcement';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
-const CURRENT_PUBLIC = 'v1.4.0-alpha.15 Manual Provider Adapter UX Compression';
+const CURRENT_PUBLIC = 'v1.4.0-alpha.16 Evidence Surface Budget Enforcement';
 const STABLE_PUBLIC = 'v1.3.0 Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -18,8 +18,8 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 
 assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
-assert.equal(registry.release_title, 'v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression');
-assert.ok(index.includes('content="1.4.0-alpha.15"'), 'hosted metadata must report the alpha.15 internal version');
+assert.equal(registry.release_title, 'v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement');
+assert.ok(index.includes('content="1.4.0-alpha.16"'), 'hosted metadata must report the alpha.15 internal version');
 assert.ok(index.includes(CURRENT_PUBLIC), 'public surface should expose alpha.15 planning identity');
 assert.ok(helpers.includes(CURRENT_PUBLIC), 'localized copy must expose alpha.15 planning identity');
 assert.ok(current.includes(CURRENT_PUBLIC));

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.15';
-const RELEASE = 'v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression';
-const PUBLIC_LABEL = 'v1.4.0-alpha.15 Manual Provider Adapter UX Compression';
+const VERSION = '1.4.0-alpha.16';
+const RELEASE = 'v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement';
+const PUBLIC_LABEL = 'v1.4.0-alpha.16 Evidence Surface Budget Enforcement';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_RC_BASELINE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
@@ -27,7 +27,7 @@ assert.ok(pkg.description.includes(MANUAL_BASELINE), 'package description must p
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'roadmap-lock-completion-manual-provider-adapter-ux-compression');
+assert.equal(manifest.release_type, 'roadmap-lock-completion-evidence-surface-budget-enforcement');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 assert.ok(manifest.release_scope.includes('Planning/control-plane milestone'));
 assert.ok(manifest.release_scope.includes(STABLE_BASELINE));
@@ -53,8 +53,8 @@ assert.ok(roadmap.includes(RELEASE));
 assert.ok(roadmap.includes(LOCKED_ALPHA14));
 assert.ok(!roadmap.includes('No alpha.14 should start'), 'roadmap must not retain alpha.14 blocker after lock');
 
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.15_${{ github.run_id }}'), 'CI workflow must upload alpha.15 lock bundle');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.15'"), 'CI workflow must assert alpha.15 evidence matrix version');
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.16_${{ github.run_id }}'), 'CI workflow must upload alpha.15 lock bundle');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.16'"), 'CI workflow must assert alpha.15 evidence matrix version');
 
 for (const gate of ['no-browser', 'current-no-browser', 'release']) {
   assert.ok(registry.gates[gate].node_checks.includes('tests/stable-manual-workflow-release-check.mjs'), `${gate} must run baseline continuity check`);

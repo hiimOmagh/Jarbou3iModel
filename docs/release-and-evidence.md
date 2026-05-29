@@ -1,4 +1,21 @@
-Current release reference: v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression. No-network replay QA only; no default live execution, hidden network calls, real credentials, live/provider/OAuth/backend/source/storage expansion, credential persistence, or automatic source fetching. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked mock-to-live baseline: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
+# Release and Evidence
+
+## v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement
+
+Current candidate. Lock requires green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, canonical lock evidence bundle, and artifact identity guard.
+
+Locked alpha.15 evidence: Run ID `26643746981`; commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`; no-browser 144; browser 17; hosted-demo evidence passed; visible-text AR/FR/EN passed; evidence matrix 39/39 passed; lock bundle validation passed; artifact identity guard passed.
+
+Locked alpha.14 evidence: Run ID `26640076472`; commit `476b97423d18842177ae47074967afa45e5962bb`; no-browser 143; browser 17; hosted-demo evidence passed; visible-text AR/FR/EN passed; lock bundle validation passed; artifact identity guard passed.
+
+Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.16; locked_baseline: 1.4.0-alpha.14; locked_alpha15_baseline: 1.4.0-alpha.15; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.
+
+No live provider calls. No hidden network calls. No real OAuth/token lifecycle. No credential persistence. No backend/storage/source expansion. No automatic source verification. No automatic signoff/export lock. No publication permission claim.
+
+
+<!-- preserved-historical-body -->
+
+Current release reference: v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement. No-network replay QA only; no default live execution, hidden network calls, real credentials, live/provider/OAuth/backend/source/storage expansion, credential persistence, or automatic source fetching. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked mock-to-live baseline: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
 
 # Release and Evidence Policy
 
@@ -8,7 +25,7 @@ This document consolidates release and evidence policy previously scattered acro
 
 - Package: `jarbou3i-research-engine`
 - Version: `1.4.0-alpha.14`
-- Release: `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`
+- Release: `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement`
 - Release type: manual execution safety cockpit + session ledger alpha
 - Runtime capability change: no
 - Provider behavior change: no
@@ -185,4 +202,8 @@ No live scraping. No real OAuth or production OAuth is enabled. Screenshots alon
 
 Locked baseline preserved: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` is locked with run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, canonical lock bundle, and artifact identity guard.
 
-Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.15; locked_baseline: 1.4.0-alpha.14; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.
+Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.16; locked_baseline: 1.4.0-alpha.14; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.
+
+Baseline repetition for release-truth checks: v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization; v1.3.0-alpha.10 — Brief Publication Pack v4.
+
+Locked alpha.15 baseline: `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`; Run ID `26643746981`; commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`.
