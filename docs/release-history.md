@@ -1,9 +1,12 @@
 # Release History
 
-## v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability
+## v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger
 
-- Locked alpha.17 baseline: `v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard`; Run ID `26655823066`; commit `fef004abd43511cca247debc417917a4c8fb1c27`; no-browser 146; browser 17; hosted evidence passed; AR/FR/EN passed; evidence matrix 39/39; artifact guard passed; bundle passed.
-Actionability statuses: pass, warn, fail, and review-required. - Boundaries unchanged: no live calls, fetching, credential persistence, backend/storage/source expansion, auto-verification, signoff/export lock, or publication permission claim.
+Locked alpha.18 baseline: `v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability`; Run ID `26660959763`; commit `4e2c852fa0568fcc12881d7565ba9fd50844e0c4`; no-browser 147; browser 17; evidence matrix 39/39. Decision ledger added; no runtime/provider/backend/source/storage expansion.
+
+## v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard
+
+Locked: Run ID `26655823066`, commit `fef004abd43511cca247debc417917a4c8fb1c27`; no-browser 146; browser 17; evidence matrix 39/39.
 
 ## v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression
 
@@ -12,7 +15,6 @@ Locked: Run ID `26643746981`, commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`;
 ## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
 
 Locked: Run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`; no-browser/browser/hosted evidence/AR-FR-EN/artifact guard passed.
-
 
 <!-- preserved-historical-body -->
 

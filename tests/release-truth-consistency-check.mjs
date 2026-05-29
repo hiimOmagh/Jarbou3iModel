@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.18';
-const RELEASE = 'v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability';
-const PUBLIC_LABEL = 'v1.4.0-alpha.18 Evidence Budget Dashboard Actionability';
+const VERSION = '1.4.0-alpha.19';
+const RELEASE = 'v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger';
+const PUBLIC_LABEL = 'v1.4.0-alpha.19 Evidence Dashboard Decision Ledger';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
@@ -39,7 +39,7 @@ for (const token of ['source strategy continuity','release evidence continuity',
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'alpha17-lock-completion-evidence-budget-dashboard-actionability');
+assert.equal(manifest.release_type, 'alpha18-lock-completion-evidence-dashboard-decision-ledger');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, LOCKED_ALPHA14, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);

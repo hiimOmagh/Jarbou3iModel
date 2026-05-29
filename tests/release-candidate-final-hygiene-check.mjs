@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.18';
-const CURRENT_TITLE = 'Evidence Budget Dashboard Actionability';
+const CURRENT_VERSION = '1.4.0-alpha.19';
+const CURRENT_TITLE = 'Evidence Dashboard Decision Ledger';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/release-candidate-hygiene.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.18",
-  "internal_build_version": "1.4.0-alpha.18",
-  "public_version_label": "v1.4.0-alpha.18 Evidence Budget Dashboard Actionability",
+  "evidence_matrix_config_version": "1.4.0-alpha.19",
+  "internal_build_version": "1.4.0-alpha.19",
+  "public_version_label": "v1.4.0-alpha.19 Evidence Dashboard Decision Ledger",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Evidence Budget Dashboard Actionability"
+        "Evidence Dashboard Decision Ledger"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -41,7 +41,8 @@
         "قمرة أمان التنفيذ اليدوي + سجل الجلسة",
         "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر",
         "ضغط تجربة محوّل المزوّد اليدوي",
-        "قابلية عمل لوحة ميزانية الأدلة"
+        "قابلية عمل لوحة ميزانية الأدلة",
+        "سجل قرارات لوحة الأدلة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -62,7 +63,8 @@
         "Cockpit de sécurité d’exécution manuelle + registre de session",
         "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère",
         "Compression UX de l’adaptateur fournisseur manuel",
-        "Actionnabilité du tableau budget preuves"
+        "Actionnabilité du tableau budget preuves",
+        "Registre de décision du tableau preuves"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -248,8 +250,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.18 Evidence Budget Dashboard Actionability",
-    "ar": "v1.4.0-alpha.18 قابلية عمل لوحة ميزانية الأدلة · إجراءات المشغّل",
-    "fr": "v1.4.0-alpha.18 Actionnabilité du tableau budget preuves · actions opérateur"
+    "en": "v1.4.0-alpha.19 Evidence Dashboard Decision Ledger",
+    "ar": "v1.4.0-alpha.19 سجل قرارات لوحة الأدلة",
+    "fr": "v1.4.0-alpha.19 Registre de décision du tableau preuves"
   }
 }

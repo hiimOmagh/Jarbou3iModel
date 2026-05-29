@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.18';
-const CURRENT_TITLE = 'Evidence Budget Dashboard Actionability';
+const CURRENT_VERSION = '1.4.0-alpha.19';
+const CURRENT_TITLE = 'Evidence Dashboard Decision Ledger';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
-const CURRENT_PUBLIC = 'v1.4.0-alpha.18 Evidence Budget Dashboard Actionability';
+const CURRENT_PUBLIC = 'v1.4.0-alpha.19 Evidence Dashboard Decision Ledger';
 const STABLE_PUBLIC = 'v1.3.0 Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -18,8 +18,8 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 
 assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
-assert.equal(registry.release_title, 'v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability');
-assert.ok(index.includes('content="1.4.0-alpha.18"'), 'hosted metadata must report the alpha.15 internal version');
+assert.equal(registry.release_title, 'v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger');
+assert.ok(index.includes('content="1.4.0-alpha.19"'), 'hosted metadata must report the alpha.15 internal version');
 assert.ok(index.includes(CURRENT_PUBLIC), 'public surface should expose alpha.15 planning identity');
 assert.ok(helpers.includes(CURRENT_PUBLIC), 'localized copy must expose alpha.15 planning identity');
 assert.ok(current.includes(CURRENT_PUBLIC));

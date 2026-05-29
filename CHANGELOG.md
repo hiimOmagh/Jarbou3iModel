@@ -1,14 +1,13 @@
 # Changelog
 
-## v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability
+## v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger
 
-- Marked `v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard` as locked with Run ID `26655823066` and commit `fef004abd43511cca247debc417917a4c8fb1c27`.
-- Added evidence-budget dashboard actionability with pass, warn, fail, and review-required operator actions.
-- Added static action recommendations: lock_review_ready, review_budget_pressure_before_lock, block_lock_until_evidence_budget_regression_fixed, and capture_current_evidence_before_lock.
-- Preserved alpha.14 replay corpus, alpha.15 UX/runtime budget guard, alpha.16 budget enforcement, and alpha.17 regression dashboard boundaries.
+- Marked `v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability` as locked with Run ID `26660959763` and commit `4e2c852fa0568fcc12881d7565ba9fd50844e0c4`.
+- Added a static evidence dashboard decision ledger that maps pass, warn, fail, and review-required dashboard states into operator lock-review decisions.
+- Preserved alpha.14 replay corpus, alpha.15 UX/runtime budget guard, alpha.16 budget enforcement, alpha.17 regression dashboard, and alpha.18 actionability layer.
 - No live provider calls, hidden network calls, live source fetching, real OAuth/token lifecycle, credential persistence, backend/storage/source expansion, automatic source verification, automatic signoff/export lock, cryptographic signature claim, or publication permission claim.
 
-## v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability
+## v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger
 
 - Marked `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement` as locked with Run ID `26646993357` and commit `d40d2054060c14326c5871ec86bd7ef5d9aab2ed`.
 - Cleaned release-history and changelog truth drift.
@@ -91,13 +90,15 @@ Stable baseline repetition: v1.3.0-rc.2 — RC Evidence Tightening + Release Not
 Screenshots alone are insufficient. A ZIP archive alone is insufficient.
 Planning gate continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, apply integrity, and changed-files-only discipline remain preserved.
 
-Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with v1.4.0-alpha.18.
+Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with v1.4.0-alpha.19.
 
 Locked alpha.15 baseline: `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression` is locked with run ID `26643746981`, commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, evidence matrix 39/39, canonical lock bundle, and artifact identity guard.
 Locked alpha.14 baseline: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` is locked with run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, canonical lock bundle, and artifact identity guard.
 
-Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.18; locked_baseline: 1.4.0-alpha.14; locked_alpha15_baseline: 1.4.0-alpha.15; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.
+Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.19; locked_baseline: 1.4.0-alpha.14; locked_alpha15_baseline: 1.4.0-alpha.15; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.
 
 Locked alpha.16 baseline: `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement` is locked with run ID `26646993357`, commit `d40d2054060c14326c5871ec86bd7ef5d9aab2ed`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, evidence matrix 39/39, canonical lock bundle, and artifact identity guard.
 
 Release-truth continuity block: v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation; v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report; v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator; v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts; v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation; v1.3.0-alpha.10 — Brief Publication Pack v4. No live scraping. No production OAuth. No real OAuth. No real API keys. No automatic source verification. No cryptographic signature claim. No publication permission claim.
+
+Locked alpha.18 evidence: Run ID `26660959763`; commit `4e2c852fa0568fcc12881d7565ba9fd50844e0c4`; no-browser 147; browser 17; evidence matrix 39/39.
