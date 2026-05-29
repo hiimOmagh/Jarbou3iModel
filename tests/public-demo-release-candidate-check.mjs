@@ -22,7 +22,7 @@ assert.ok(index.includes('سطح التحكم في اكتساب المصادر')
 assert.ok(index.includes('Surface de contrôle d’acquisition des sources') || renderHelpers.includes('Surface de contrôle d’acquisition des sources'), 'French alpha.1 public visible copy missing');
 const hostedDemoBodies = [...renderHelpers.matchAll(/hostedDemoVerificationBody:'([^']+)'/g)].map((match)=>match[1]);
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
-assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('سجل قرارات لوحة الأدلة جاهزة لأدلة الإصدار')), 'Arabic current-release description must identify alpha.18 evidence dashboard decision ledger');
+assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('سجل قرارات لوحة الأدلة جاهز لأدلة الإصدار')), 'Arabic current-release description must identify alpha.18 evidence dashboard decision ledger');
 for (const body of arabicHostedDemoBodies) {
   for (const stale of ['النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار', 'نموذج أولي محدود للتنفيذ الحي اليدوي', 'هيكل اشتراك يدوي فقط', 'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار']) {
     assert.equal(body.includes(stale), false, `Arabic current-release description must not carry stale alpha.10/alpha.11 wording: ${stale}`);

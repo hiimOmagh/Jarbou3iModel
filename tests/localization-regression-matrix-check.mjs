@@ -42,7 +42,7 @@ const hostedDemoBodies = [...renderPublicLabels.matchAll(/hostedDemoVerification
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('سجل قرارات لوحة الأدلة جاهزة لأدلة الإصدار'), 'Arabic current-release description must identify alpha.18 evidence dashboard decision ledger');
+  assert.ok(body.includes('سجل قرارات لوحة الأدلة جاهز لأدلة الإصدار'), 'Arabic current-release description must identify alpha.18 evidence dashboard decision ledger');
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
     'نموذج أولي محدود للتنفيذ الحي اليدوي',
