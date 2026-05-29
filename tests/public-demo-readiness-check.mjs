@@ -28,7 +28,7 @@ vm.createContext(sandbox);
 vm.runInContext(read('src/research/public-demo-readiness.js'), sandbox, { filename:'src/research/public-demo-readiness.js' });
 const publicDemo = sandbox.window.Jarbou3iResearchModules.publicDemoReadiness;
 
-assert.equal(pkg.version, '1.4.0-alpha.17');
+assert.equal(pkg.version, '1.4.0-alpha.18');
 assert.equal(publicDemo.VERSION, '1.3.0');
 assert.ok(index.includes('id="publicDemoReadinessPanel"'), 'public demo panel missing');
 assert.ok(index.includes('src="src/research/public-demo-readiness.js" defer'), 'public demo module missing from index');

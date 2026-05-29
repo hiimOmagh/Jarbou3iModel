@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.17",
-  "internal_build_version": "1.4.0-alpha.17",
-  "public_version_label": "v1.4.0-alpha.17 Evidence Budget Regression Dashboard",
+  "evidence_matrix_config_version": "1.4.0-alpha.18",
+  "internal_build_version": "1.4.0-alpha.18",
+  "public_version_label": "v1.4.0-alpha.18 Evidence Budget Dashboard Actionability",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Evidence Budget Regression Dashboard"
+        "Evidence Budget Dashboard Actionability"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -40,7 +40,8 @@
         "حدود بيانات الاعتماد",
         "قمرة أمان التنفيذ اليدوي + سجل الجلسة",
         "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر",
-        "ضغط تجربة محوّل المزوّد اليدوي"
+        "ضغط تجربة محوّل المزوّد اليدوي",
+        "قابلية عمل لوحة ميزانية الأدلة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -60,7 +61,8 @@
         "frontière des identifiants",
         "Cockpit de sécurité d’exécution manuelle + registre de session",
         "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère",
-        "Compression UX de l’adaptateur fournisseur manuel"
+        "Compression UX de l’adaptateur fournisseur manuel",
+        "Actionnabilité du tableau budget preuves"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -246,8 +248,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.17 Evidence Budget Regression Dashboard",
-    "ar": "v1.4.0-alpha.17 ضغط تجربة محوّل المزوّد اليدوي · حارس ميزانية وقت التشغيل فقط",
-    "fr": "v1.4.0-alpha.17 Compression UX de l’adaptateur fournisseur manuel · Garde budget runtime uniquement"
+    "en": "v1.4.0-alpha.18 Evidence Budget Dashboard Actionability",
+    "ar": "v1.4.0-alpha.18 قابلية عمل لوحة ميزانية الأدلة · إجراءات المشغّل",
+    "fr": "v1.4.0-alpha.18 Actionnabilité du tableau budget preuves · actions opérateur"
   }
 }

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.4.0-alpha.17';
-export const RELEASE_TITLE = 'v1.4.0-alpha.17 — Evidence Budget Regression Dashboard';
+export const VERSION = '1.4.0-alpha.18';
+export const RELEASE_TITLE = 'v1.4.0-alpha.18 — Evidence Budget Dashboard Actionability';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

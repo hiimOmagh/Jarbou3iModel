@@ -1,8 +1,9 @@
 # Release History
 
-## v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard
+## v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability
 
-Marks locked alpha.16 as baseline and adds the evidence budget regression dashboard without runtime/provider/OAuth/backend/source/storage expansion.
+- Locked alpha.17 baseline: `v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard`; Run ID `26655823066`; commit `fef004abd43511cca247debc417917a4c8fb1c27`; no-browser 146; browser 17; hosted evidence passed; AR/FR/EN passed; evidence matrix 39/39; artifact guard passed; bundle passed.
+Actionability statuses: pass, warn, fail, and review-required. - Boundaries unchanged: no live calls, fetching, credential persistence, backend/storage/source expansion, auto-verification, signoff/export lock, or publication permission claim.
 
 ## v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression
 
@@ -3449,6 +3450,4 @@ Stable manual workflow release and release notes finalization after the locked v
 The RC preserves the manual source-to-brief chain: source-to-claim gap closure queue, signed export handoff metadata, lock-ledger review surface, operator signoff state, export lock ledger, final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix. Supporting audit files remain docs/technical-debt-ledger.md and docs/source-refactor-readiness-audit.md. Coverage remains tests/language-description-audit-check.mjs. No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-evidence-pack-export-v3-brief-traceability.md -->
 
-Alpha.15: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` locked; `v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard` current candidate.
 
-Locked alpha.16 baseline: `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement`; Run ID `26646993357`; commit `d40d2054060c14326c5871ec86bd7ef5d9aab2ed`; no-browser 146; browser 17; hosted-demo evidence passed; AR/FR/EN visible-text snapshots passed; evidence matrix 39/39; artifact identity guard passed.

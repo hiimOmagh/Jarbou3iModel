@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.17';
-const RELEASE = 'v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard';
-const PUBLIC_LABEL = 'v1.4.0-alpha.17 Evidence Budget Regression Dashboard';
+const VERSION = '1.4.0-alpha.18';
+const RELEASE = 'v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability';
+const PUBLIC_LABEL = 'v1.4.0-alpha.18 Evidence Budget Dashboard Actionability';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const TARGET_MODULE = 'src/research/evidence-budget-regression-dashboard-evidence-runtime-budget.js';
 const TARGET_CHECK = 'tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs';
@@ -57,10 +57,10 @@ assert.ok(current.includes('Alpha.14 lock evidence: Run ID `26640076472`'), 'cur
 assert.equal(/Status: built locally\. Lock is pending/.test(current), false, 'stale alpha.14 lock-pending wording must be removed');
 assert.equal(/No alpha\.14 should start/.test(roadmap), false, 'roadmap must not list alpha.14 as blocked/current-next confusion');
 assert.equal((roadmap.match(/Current candidate/g) || []).length, 1, 'roadmap must have one current-candidate section');
-assert.ok(!roadmap.includes('v1.4.0-alpha.14 — Evidence Budget Regression Dashboard'), 'roadmap must not reuse alpha.14 for the next UX milestone');
+assert.ok(!roadmap.includes('v1.4.0-alpha.14 — Evidence Budget Dashboard Actionability'), 'roadmap must not reuse alpha.14 for the next UX milestone');
 
 for (const token of [
-  'evidence_surface_budget_version: 1.4.0-alpha.17',
+  'evidence_surface_budget_version: 1.4.0-alpha.18',
   'locked_baseline: 1.4.0-alpha.14',
   'browser_check_budget_max: 20',
   'hosted_language_count_expected: 3',
@@ -73,9 +73,9 @@ for (const token of [
   'credential_persistence_allowed: false'
 ]) assert.ok(current.includes(token) || readme.includes(token) || releaseEvidence.includes(token) || qa.includes(token), `budget token missing: ${token}`);
 
-assert.ok(index.includes('content="1.4.0-alpha.17"'));
+assert.ok(index.includes('content="1.4.0-alpha.18"'));
 assert.ok(index.includes(PUBLIC_LABEL));
-assert.ok(index.includes('Evidence Budget Regression Dashboard'));
+assert.ok(index.includes('Evidence Budget Dashboard Actionability'));
 assert.ok(index.includes('src/research/evidence-budget-regression-dashboard-evidence-runtime-budget.js'));
 assert.ok(index.includes('v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix'), 'alpha.14 browser QA baseline token must remain visible for regression');
 assert.ok(helpers.includes(PUBLIC_LABEL));
@@ -130,8 +130,8 @@ for (const gate of ['no-browser','current-no-browser','provider','release']) {
 }
 assert.ok(ciRegistry.syntax_matrix.files.includes(TARGET_CHECK));
 assert.ok(ciRegistry.syntax_matrix.files.includes(TARGET_MODULE));
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.17_${{ github.run_id }}'));
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.17'"));
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.18_${{ github.run_id }}'));
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.18'"));
 
 const scanTargets = { targetSource, index, helpers };
 const forbiddenNetwork = ['fetch(', 'XMLHttpRequest', 'WebSocket', 'navigator.sendBeacon'];

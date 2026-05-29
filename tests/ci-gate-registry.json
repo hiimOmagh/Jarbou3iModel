@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.17",
-  "release_title": "v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard",
+  "ci_gate_registry_version": "1.4.0-alpha.18",
+  "release_title": "v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -179,6 +179,7 @@
         "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs",
         "tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs",
         "tests/evidence-budget-regression-dashboard-lock-completion-check.mjs",
+        "tests/evidence-budget-dashboard-actionability-lock-completion-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs"
       ],
       "syntax_checks": [],
@@ -259,6 +260,7 @@
         "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs",
         "tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs",
         "tests/evidence-budget-regression-dashboard-lock-completion-check.mjs",
+        "tests/evidence-budget-dashboard-actionability-lock-completion-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs"
       ],
       "syntax_checks": [
@@ -536,6 +538,7 @@
         "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs",
         "tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs",
         "tests/evidence-budget-regression-dashboard-lock-completion-check.mjs",
+        "tests/evidence-budget-dashboard-actionability-lock-completion-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs"
       ],
       "syntax_checks": [],
@@ -568,7 +571,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.17",
+    "version": "1.4.0-alpha.18",
     "scope": "manual_provider_adapter_ux_compression_evidence_runtime_budget",
     "optimization_scope": "manual_provider_adapter_ux_compression_evidence_runtime_budget",
     "syntax_matrix_parallelization_enabled": true,
@@ -580,10 +583,10 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 100,
-    "current_candidate": "1.4.0-alpha.17"
+    "current_candidate": "1.4.0-alpha.18"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.17",
+    "version": "1.4.0-alpha.18",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -757,13 +760,15 @@
       "src/research/evidence-budget-regression-dashboard-evidence-runtime-budget.js",
       "tests/evidence-budget-regression-dashboard-lock-completion-check.mjs",
       "src/research/manual-provider-adapter-ux-compression-evidence-runtime-budget.js",
-      "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs"
+      "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs",
+      "tests/evidence-budget-dashboard-actionability-lock-completion-check.mjs",
+      "src/research/evidence-budget-dashboard-actionability.js"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.17",
+    "version": "1.4.0-alpha.18",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

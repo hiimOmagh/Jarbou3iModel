@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.17",
-  "release_title": "v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard",
+  "version_suite_registry_version": "1.4.0-alpha.18",
+  "release_title": "v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1855,11 +1855,11 @@
         "tests/release-truth-consistency-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.17 roadmap lock completion and evidence budget regression dashboard gate passed."
+      "former_console_message": "v1.4.0-alpha.18 roadmap lock completion and evidence budget regression dashboard gate passed."
     },
     {
       "id": "v140-alpha16",
-      "title": "v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard",
+      "title": "v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability",
       "former_file": null,
       "preserved_as": "registry_entry",
       "checks": [
@@ -1869,7 +1869,7 @@
         "tests/release-truth-consistency-check.mjs"
       ],
       "check_count": 4,
-      "former_console_message": "v1.4.0-alpha.17 evidence budget regression dashboard and alpha.16 lock completion gate passed."
+      "former_console_message": "v1.4.0-alpha.18 evidence budget regression dashboard and alpha.16 lock completion gate passed."
     }
   ]
 }
