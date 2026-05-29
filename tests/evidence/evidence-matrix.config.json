@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.16",
-  "internal_build_version": "1.4.0-alpha.16",
-  "public_version_label": "v1.4.0-alpha.16 Evidence Surface Budget Enforcement",
+  "evidence_matrix_config_version": "1.4.0-alpha.17",
+  "internal_build_version": "1.4.0-alpha.17",
+  "public_version_label": "v1.4.0-alpha.17 Evidence Budget Regression Dashboard",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Evidence Surface Budget Enforcement"
+        "Evidence Budget Regression Dashboard"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -246,8 +246,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.16 Evidence Surface Budget Enforcement",
-    "ar": "v1.4.0-alpha.16 ضغط تجربة محوّل المزوّد اليدوي · حارس ميزانية وقت التشغيل فقط",
-    "fr": "v1.4.0-alpha.16 Compression UX de l’adaptateur fournisseur manuel · Garde budget runtime uniquement"
+    "en": "v1.4.0-alpha.17 Evidence Budget Regression Dashboard",
+    "ar": "v1.4.0-alpha.17 ضغط تجربة محوّل المزوّد اليدوي · حارس ميزانية وقت التشغيل فقط",
+    "fr": "v1.4.0-alpha.17 Compression UX de l’adaptateur fournisseur manuel · Garde budget runtime uniquement"
   }
 }

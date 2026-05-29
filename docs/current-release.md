@@ -1,12 +1,15 @@
 # Current Release
 
-## v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement
+## v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard
 
 Status: current candidate. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle upload.
 
-Public release label: v1.4.0-alpha.16 Evidence Surface Budget Enforcement.
+Public release label: v1.4.0-alpha.17 Evidence Budget Regression Dashboard.
 
-Locked baseline completed immediately before this candidate: `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`.
+Locked baseline completed immediately before this candidate: `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement`.
+Alpha.16 lock evidence: Run ID `26646993357`; commit `d40d2054060c14326c5871ec86bd7ef5d9aab2ed`; no-browser passed with 146 checks; browser passed with 17 checks; hosted-demo evidence passed; AR/FR/EN visible-text snapshots passed; evidence matrix passed 39/39; lock bundle validation passed; artifact identity guard passed.
+
+Previous locked UX/runtime budget baseline: `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression`.
 Alpha.15 lock evidence: Run ID `26643746981`; commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`; no-browser passed with 144 checks; browser passed with 17 checks; hosted-demo evidence passed; AR/FR/EN visible-text snapshots passed; evidence matrix passed 39/39; lock bundle validation passed; artifact identity guard passed.
 
 Previous locked adapter replay baseline: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix`.
@@ -25,26 +28,26 @@ Locked manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`
 
 ## Scope
 
-Planning/control-plane only. Alpha.15 lock completion + evidence-surface budget enforcement:
+Planning/control-plane only. Alpha.16 lock completion + evidence budget regression dashboard:
 
-- Mark alpha.15 as locked across release truth, roadmap, QA, and release-evidence docs.
-- Make alpha.16 the current candidate.
-- Remove obsolete alpha.15 lock-pending wording from current release docs.
-- Clean duplicated/stale CHANGELOG and release-history entries.
+- Mark alpha.16 as locked across release truth, roadmap, QA, and release-evidence docs.
+- Make alpha.17 the current candidate.
+- Remove obsolete alpha.16 lock-pending wording from current release docs.
+- Expose a compact evidence budget regression dashboard that records budget limits, alpha.16 observed lock metrics, and over-budget status.
 - Preserve alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix unchanged as locked baseline evidence.
-- Preserve alpha.15 UX/runtime-budget safety boundaries.
-- Enforce static evidence-surface budgets: browser check budget max 20, hosted languages expected 3, hosted surfaces max 13, visible snapshot rows max 39.
-- Keep browser evidence bounded without adding live timing instrumentation or hidden execution.
+- Preserve alpha.15 UX/runtime-budget and alpha.16 static evidence-budget safety boundaries.
+- Keep browser evidence bounded: browser check budget max 20, hosted languages expected 3, hosted surfaces max 13, visible snapshot rows max 39.
+- Keep dashboard static and metadata-only; no live timing instrumentation, hidden execution, or network expansion.
 
 ## Boundary flags
 
 ```text
-alpha15_lock_completion_only: true
-evidence_surface_budget_enforcement_only: true
-changelog_truth_cleanup_only: true
+alpha16_lock_completion_only: true
+evidence_budget_regression_dashboard_only: true
 static_metadata_only: true
 adapter_replay_corpus_preserved: true
 alpha15_ux_budget_boundaries_preserved: true
+alpha16_evidence_budget_boundaries_preserved: true
 runtime_budget_policy: guardrail_only
 runtime_budget_enforced_without_network: true
 safe_metadata_only: true
@@ -75,9 +78,11 @@ No real OAuth. No production OAuth. No real API keys. No real token storage. No 
 ## Evidence/runtime budget metadata
 
 ```text
-evidence_surface_budget_version: 1.4.0-alpha.16
-locked_baseline: 1.4.0-alpha.14
+evidence_surface_budget_version: 1.4.0-alpha.17
+locked_baseline: 1.4.0-alpha.16
+locked_alpha16_baseline: 1.4.0-alpha.16
 locked_alpha15_baseline: 1.4.0-alpha.15
+locked_alpha14_baseline: 1.4.0-alpha.14
 browser_check_budget_max: 20
 hosted_language_count_expected: 3
 hosted_surface_count_expected_max: 13
@@ -89,22 +94,40 @@ live_fetching_performed: false
 credential_persistence_allowed: false
 ```
 
+## Regression dashboard metadata
+
+```text
+evidence_budget_regression_dashboard_version: 1.4.0-alpha.17
+locked_alpha16_run_id: 26646993357
+locked_alpha16_commit: d40d2054060c14326c5871ec86bd7ef5d9aab2ed
+locked_alpha16_no_browser_checks: 146
+locked_alpha16_browser_checks: 17
+locked_alpha16_hosted_languages: 3
+locked_alpha16_hosted_surfaces: 13
+locked_alpha16_visible_snapshot_rows: 39
+browser_checks_over_budget: false
+hosted_languages_match_budget: true
+hosted_surfaces_over_budget: false
+visible_snapshot_rows_over_budget: false
+```
+
 ## Validation
 
-- Version: `1.4.0-alpha.16`
-- Required targeted checks: `tests/evidence-surface-budget-enforcement-lock-completion-check.mjs`, `tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs`, `tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs`, `tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs`, `tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs`, `tests/manual-execution-safety-cockpit-session-ledger-check.mjs`, `tests/limited-manual-live-execution-prototype-check.mjs`, `tests/controlled-execution-candidate-gate-check.mjs`, `tests/credential-boundary-runtime-drill-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`.
+- Version: `1.4.0-alpha.17`
+- Required targeted checks: `tests/evidence-budget-regression-dashboard-lock-completion-check.mjs`, `tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs`, `tests/evidence-surface-budget-enforcement-lock-completion-check.mjs`, `tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs`, `tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs`.
 - Required CI: `npm run test:ci:no-browser`, `npm run test:ci:browser`.
 
-Feature surface is frozen except static evidence-surface budget enforcement and release-truth cleanup; no live execution, live fetching, real credential handling, backend/storage expansion, or source behavior expansion is enabled.
+Feature surface is frozen except static evidence budget regression dashboard and release-truth cleanup; no live execution, live fetching, real credential handling, backend/storage expansion, or source behavior expansion is enabled.
 
-Machine tokens: runtime_capability_change=false; release_type=alpha15-lock-completion-evidence-surface-budget-enforcement; release_scope=evidence-surface-budget-enforcement-lock-completion-only; test:ci:browser required.
+Machine tokens: runtime_capability_change=false; release_type=alpha16-lock-completion-evidence-budget-regression-dashboard; release_scope=evidence-budget-regression-dashboard-lock-completion-only; test:ci:browser required.
 Node 24 CI compatibility preserved.
 Release lock requires green no-browser CI, green browser CI, hosted-demo evidence, and canonical lock evidence bundle.
 
-Full baseline repetition for release-truth checks: v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract; v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger; v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype; v1.4.0-alpha.9 — Controlled Execution Candidate Gate; v1.4.0-alpha.8 — Credential Boundary Runtime Drill; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation; v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report; v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator; v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts; v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation; v1.3.0-alpha.10 — Brief Publication Pack v4.
+Full baseline repetition for release-truth checks: v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement; v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract; v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger; v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype; v1.4.0-alpha.9 — Controlled Execution Candidate Gate; v1.4.0-alpha.8 — Credential Boundary Runtime Drill; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation; v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report; v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator; v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts; v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation; v1.3.0-alpha.10 — Brief Publication Pack v4.
 A ZIP archive alone is insufficient.
 Screenshots alone are insufficient.
 
+Alpha.16 continuity repetition: evidence surface budget enforcement; static evidence-surface budgets; browser check budget max 20; hosted languages expected 3; hosted surfaces max 13; visible snapshot rows max 39; evidence matrix 39/39.
 Alpha.15 continuity repetition: roadmap lock completion; manual provider adapter UX compression; static evidence/runtime budget guard; browser check budget max 20; hosted languages expected 3; hosted surfaces max 13; visible snapshot rows max 39.
 Alpha.14 continuity repetition: adapter replay fixture corpus; coverage matrix; deterministic replay fixtures; provider-family coverage rows; scenario-class coverage columns; coverage gap warnings; no-network replay QA.
 Alpha.12 continuity repetition: ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018.
@@ -122,11 +145,12 @@ Stable baseline repetition: v1.3.0-rc.2 — RC Evidence Tightening + Release Not
 
 Release manifest tokens for packaging checks:
 package=jarbou3i-research-engine
-version=1.4.0-alpha.16
+version=1.4.0-alpha.17
 runtime_capability_change=false
-release_type=alpha15-lock-completion-evidence-surface-budget-enforcement
-release_scope=evidence-surface-budget-enforcement-lock-completion-only
+release_type=alpha16-lock-completion-evidence-budget-regression-dashboard
+release_scope=evidence-budget-regression-dashboard-lock-completion-only
 test:ci:browser required
 Planning gate continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, apply integrity, and changed-files-only discipline remain preserved.
 
-Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with v1.4.0-alpha.16.
+Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with 1.4.0-alpha.17.
+Node 24 CI compatibility preserved.

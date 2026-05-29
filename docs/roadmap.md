@@ -2,47 +2,90 @@
 
 ## Current candidate
 
-`v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement`
+`v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard`
 
-Purpose: mark locked alpha.15 as the completed baseline, make alpha.16 the current candidate, clean release-history/changelog truth drift, and enforce static evidence-surface budgets. This is a planning/control-plane milestone only. It changes no provider/backend/OAuth/source/storage behavior.
+Purpose: mark locked alpha.16 as the completed baseline, make alpha.17 the current candidate, and expose a compact evidence budget regression dashboard so future releases cannot silently grow browser evidence checks, hosted surfaces, hosted languages, or visible snapshot rows.
 
-## Locked baselines
+Status: current candidate. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock bundle.
 
-- `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression` is locked. Do not patch it further. Evidence: Run ID `26643746981`, commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`, no-browser 144 checks passed, browser 17 checks passed, hosted-demo evidence passed, AR/FR/EN visible-text snapshots passed, evidence matrix 39/39 passed, canonical lock bundle accepted, artifact identity guard passed.
-- `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` is locked. Do not patch it further. Evidence: Run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, no-browser 143 checks passed, browser 17 checks passed, hosted-demo evidence passed, AR/FR/EN visible-text snapshots passed, canonical lock bundle accepted, artifact identity guard passed.
-- `v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract` is locked. Do not patch it further.
-- `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger` is locked. Do not patch it further.
-- `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype` is locked. Do not patch it further.
-- `v1.4.0-alpha.9 — Controlled Execution Candidate Gate` is locked. Do not patch it further.
-- `v1.4.0-alpha.8 — Credential Boundary Runtime Drill` is locked. Do not patch it further.
-- `v1.4.0-alpha.7 — Source Acquisition Control Surface` is locked. Do not patch it further.
-- `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence` is locked. Do not patch it further.
-- `v1.3.0 — Stable Manual Workflow Release` is locked. Do not patch it further.
-- `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization` and `v1.3.0-alpha.10 — Brief Publication Pack v4` remain protected manual workflow baselines.
+## Locked baseline
 
-Continuity baselines retained for release-truth checks: `v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation`; `v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report`; `v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator`; `v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts`; `v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation`; `v1.3.0-alpha.10 — Brief Publication Pack v4`.
+`v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement` is locked.
 
-## v1.4.0-alpha.16 acceptance
+- Run ID: `26646993357`
+- Commit: `d40d2054060c14326c5871ec86bd7ef5d9aab2ed`
+- no-browser: passed with 146 checks
+- browser: passed with 17 checks
+- hosted-demo evidence: passed
+- AR/FR/EN visible-text snapshots: passed
+- evidence matrix: 39/39 passed
+- artifact identity guard: passed
+- bundle validation: passed
 
-- Current release/docs no longer describe alpha.15 as awaiting lock.
-- Alpha.15 is recorded as locked baseline with Run ID `26643746981` and commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`.
-- CHANGELOG has exactly one alpha.15 section and no stale alpha.12/alpha.14 descriptions inside the alpha.15 entry.
-- Browser evidence remains bounded: max 20 browser checks, 3 hosted languages, max 13 hosted surfaces, max 39 visible snapshot rows.
-- Adapter replay fixture corpus and coverage matrix remain present and safety-bounded.
-- Alpha.15 UX/runtime budget safety boundaries remain preserved.
-- AR/FR/EN visible copy remains aligned.
-- No live provider calls, hidden network calls, real OAuth/token lifecycle, real API keys, token storage, credential persistence, backend/storage/source expansion, uncontrolled scraping, automatic source verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission claim.
+Previous locked baselines:
 
-## Compressed next milestones
+- `v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression` — Run ID `26643746981`, commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`.
+- `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` — Run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`.
+- `v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract`.
+- `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`.
+- `v1.4.0-alpha.10 — Limited Manual Live-Execution Prototype`.
+- `v1.4.0-alpha.9 — Controlled Execution Candidate Gate`.
+- `v1.4.0-alpha.8 — Credential Boundary Runtime Drill`.
+- `v1.4.0-alpha.7 — Source Acquisition Control Surface`.
+- `v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence`.
+- `v1.3.0 — Stable Manual Workflow Release`.
 
-1. `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement` — current candidate.
-2. `v1.4.0-alpha.17 — Adapter Replay Gap Triage + Operator Review Shortcuts` — only after alpha.16 locks; improve review workflow while preserving no-network replay boundaries.
-3. `v1.4.0-alpha.18 — Evidence Pack Slimming + Hosted Capture Review Ergonomics` — only after alpha.17 locks; continue evidence-size control without reducing AR/FR/EN lock evidence.
+## Alpha.17 scope
 
-Forbidden until explicit later approval: no default live execution, no hidden network calls, no live scraping, no real OAuth, no real API keys, no real token storage, no credential persistence, live source fetching, automatic source fetching, hidden background fetching, provider execution expansion, backend behavior expansion, storage expansion, source behavior expansion, automatic source verification, provider-suggested source bypass, automatic signoff, automatic export lock, cryptographic signature claim, publication permission claim.
+Allowed:
 
-Node 24 CI compatibility remains mandatory for v1.4.0-alpha.16 and later.
+- Record alpha.16 lock evidence across release truth surfaces.
+- Add static evidence budget regression dashboard metadata.
+- Add targeted regression dashboard QA.
+- Preserve alpha.14 replay corpus, alpha.15 UX/runtime budget, and alpha.16 evidence budget boundaries.
+- Keep browser-evidence scope bounded at max 20 browser checks, 3 hosted languages, max 13 hosted surfaces, and max 39 visible snapshot rows.
 
-Boundary repetition: no backend behavior expansion; no provider execution expansion; no production OAuth; no real OAuth; no real API keys; no live scraping; no automatic source verification; no cryptographic signature claim.
+Forbidden:
 
-Stable continuity: v1.3.0 — Stable Manual Workflow Release. Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only discipline remain preserved.
+- No live provider calls.
+- No hidden network calls.
+- No live source fetching.
+- No OAuth/token lifecycle expansion.
+- No credential persistence.
+- No backend/storage/source behavior expansion.
+- No automatic source verification.
+- No automatic signoff.
+- No automatic export lock.
+- No publication permission claim.
+
+## Evidence budget dashboard limits
+
+```text
+evidence_surface_budget_version: 1.4.0-alpha.17
+locked_baseline: 1.4.0-alpha.16
+locked_alpha16_baseline: 1.4.0-alpha.16
+locked_alpha15_baseline: 1.4.0-alpha.15
+locked_alpha14_baseline: 1.4.0-alpha.14
+browser_check_budget_max: 20
+hosted_language_count_expected: 3
+hosted_surface_count_expected_max: 13
+visible_snapshot_rows_expected_max: 39
+runtime_budget_policy: guardrail_only
+runtime_budget_enforced_without_network: true
+provider_execution_performed: false
+live_fetching_performed: false
+credential_persistence_allowed: false
+```
+
+## Next candidate after lock
+
+Do not start the next milestone until alpha.17 has green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle.
+
+## Continuity and boundary repetition for release-truth gates
+
+No live scraping. No production OAuth. No real OAuth. No real API keys. No automatic source verification. No cryptographic signature claim. No publication permission claim. No backend behavior expansion. No provider execution expansion. No source behavior expansion. No storage behavior expansion.
+
+Baseline repetition: v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation; v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report; v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator; v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts; v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation; v1.3.0-alpha.10 — Brief Publication Pack v4.
+Locked RC baseline repetition: v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization.
+Node 24 CI compatibility preserved.
+Planning gate continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, apply integrity, and changed-files-only discipline remain preserved.

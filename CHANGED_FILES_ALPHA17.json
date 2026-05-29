@@ -1,0 +1,497 @@
+{
+  "version": "1.4.0-alpha.17",
+  "milestone": "v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard",
+  "locked_baseline": "v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement",
+  "locked_baseline_evidence": {
+    "run_id": "26646993357",
+    "commit": "d40d2054060c14326c5871ec86bd7ef5d9aab2ed",
+    "no_browser_checks": 146,
+    "browser_checks": 17,
+    "hosted_demo_evidence": "passed",
+    "visible_text_snapshots": "ar/fr/en passed",
+    "evidence_matrix": "39/39 passed",
+    "artifact_identity_guard": "passed",
+    "bundle_validation": "passed"
+  },
+  "changed_file_count": 96,
+  "changed_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "status": "modified",
+      "sha256": "81cbae9992a786521e9d539d8c660201b6ee59f9b0abb4622ca5800622a66f0d"
+    },
+    {
+      "path": "CHANGED_FILES_ALPHA17.json",
+      "status": "added"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "status": "modified",
+      "sha256": "2a6d653e32e94fb05fe734d4d37459ad7bc22a3e57ea2e480dac712c85f34f87"
+    },
+    {
+      "path": "MANIFEST.json",
+      "status": "modified",
+      "sha256": "130f459726d7cbcb4bc0a2df339d8adc3a3d535b9dd4abec0dfa128e315d346f"
+    },
+    {
+      "path": "PUBLIC_DEMO.md",
+      "status": "modified",
+      "sha256": "09ad4c1966477ff45781c7273cd9f2916d37f06e2701a21618bf3bed3344aba1"
+    },
+    {
+      "path": "README.md",
+      "status": "modified",
+      "sha256": "4c61cb9c9b16ee47696d8215a7cc29baa9b96f1692e6751e76a854dc3c140600"
+    },
+    {
+      "path": "docs/current-release.md",
+      "status": "modified",
+      "sha256": "62a656718d6c5a579cdac54437c3e71b7351df200b0abc215de927e365292257"
+    },
+    {
+      "path": "docs/qa-matrix.md",
+      "status": "modified",
+      "sha256": "4bf359e42b914a6d4241c4e2f11e98c9b94676d621053faca8a5cf3164573240"
+    },
+    {
+      "path": "docs/release-and-evidence.md",
+      "status": "modified",
+      "sha256": "b20762ecd5ffc98c4b945c15f4953805f445d9ffa3148f86b79d639022d85920"
+    },
+    {
+      "path": "docs/release-history.md",
+      "status": "modified",
+      "sha256": "68b2533d9df1d5b227774e46e17bf09050ba111943633903021bd541b0220236"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "status": "modified",
+      "sha256": "88dab26309c7156437562cc7d97ccd6a91ded795afa951709969c15900feed57"
+    },
+    {
+      "path": "index.html",
+      "status": "modified",
+      "sha256": "328f2b2e2939389d9c7fca4eb55716aff9f9fe636520f7547f06c7d348833e19"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "modified",
+      "sha256": "746532ad263cc2ed9b1a3e028e26ecc7e92f257488126b8cd274fc1f36fe6997"
+    },
+    {
+      "path": "package.json",
+      "status": "modified",
+      "sha256": "929bdc165c458fdd7aed5f220ac4389bb51e805e53a02f16fbdb2fed151f2e13"
+    },
+    {
+      "path": "scripts/build-lock-evidence-bundle.mjs",
+      "status": "modified",
+      "sha256": "9470261894bc13a52c665cd2e96cb415ba4fef73cb4486d991ee9a4a3b68700e"
+    },
+    {
+      "path": "scripts/dev-utils.mjs",
+      "status": "modified",
+      "sha256": "4df3f5023fc253fad418d3430ba1d3c60484afe64f03b9e840a347f71c1bccb0"
+    },
+    {
+      "path": "src/research/evidence-budget-regression-dashboard-evidence-runtime-budget.js",
+      "status": "added",
+      "sha256": "e1177518340fa7f7ea741f83b850d559883dbb87fdd9f3834070ce30214df1d9"
+    },
+    {
+      "path": "src/research/render-helpers.js",
+      "status": "modified",
+      "sha256": "fd03723d029aa5e3e1dd2f75650afeabe5cfcb6e70c5d88ece42d751867c5e7c"
+    },
+    {
+      "path": "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
+      "status": "modified",
+      "sha256": "3407d51ee370912c10897f7304e6b7b0b1990fb8e60de723f5af0b2da7cf28a3"
+    },
+    {
+      "path": "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
+      "status": "modified",
+      "sha256": "80cadad1b50e967c138edf1d8375b3d9984d19ba2d10068ea4cedb7dd5d0ee22"
+    },
+    {
+      "path": "tests/backend-hardening-check.mjs",
+      "status": "modified",
+      "sha256": "2d467d9944fef06ed518f2444ef11857da0fb3df79f019e551216755b0458b7d"
+    },
+    {
+      "path": "tests/browser-qa-hardening-check.mjs",
+      "status": "modified",
+      "sha256": "17c052ed53529a69233f7d03a27e3d66a91454c131a339071cc4623cf8274b00"
+    },
+    {
+      "path": "tests/browser-visual-project-scope-check.mjs",
+      "status": "modified",
+      "sha256": "99848c4458c2055f308f03123c4b40e51110dc68a4f71122c3973583e8ec9647"
+    },
+    {
+      "path": "tests/canonical-lock-evidence-bundle-check.mjs",
+      "status": "modified",
+      "sha256": "dfd8dd53ea88f97a562d95156d30d81cf7c4ac681092b1eaf1373bf27ddd524f"
+    },
+    {
+      "path": "tests/ci-gate-registry-check.mjs",
+      "status": "modified",
+      "sha256": "51b3cc5265589b370c37eba81788dd61db93a70c59ba445140b8fa9b5de78f63"
+    },
+    {
+      "path": "tests/ci-gate-registry.json",
+      "status": "modified",
+      "sha256": "b619e7758d7fc68c0c0fd1f6fae757bb3dafa44d92eb82c41ed36f7eba166d93"
+    },
+    {
+      "path": "tests/ci-result-review-browser-evidence-audit-check.mjs",
+      "status": "modified",
+      "sha256": "0b3399a0b3868ddaa3a1f2a9155d7c4b2b58e9e6e686320dfa2721b76956e6fd"
+    },
+    {
+      "path": "tests/ci-workflow-quarantine-check.mjs",
+      "status": "modified",
+      "sha256": "3c5e2129a07587babdd9ed953f2cb165e60d1da85d2a3eeb9180a376c75fa412"
+    },
+    {
+      "path": "tests/dev-productivity-command-center-check.mjs",
+      "status": "modified",
+      "sha256": "813d292b0c74f5d9bb35aa71bad5098c64ea06b3889c4adae44d1c476853dc39"
+    },
+    {
+      "path": "tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs",
+      "status": "added",
+      "sha256": "58521b4abaf44f7cf60701bbbf950ecf41fd0df002db3913bfcac327a0300840"
+    },
+    {
+      "path": "tests/evidence-budget-regression-dashboard-lock-completion-check.mjs",
+      "status": "added",
+      "sha256": "132c55dca33ac165471de0f55eec77986e0da994ece2ebe3bd85f4b4b85ac414"
+    },
+    {
+      "path": "tests/evidence-matrix-canonical-bundle-check.mjs",
+      "status": "modified",
+      "sha256": "a36664b2ff136e7302361e9e01d6f373bf760407953f3e0a46b02ecdae521759"
+    },
+    {
+      "path": "tests/evidence-scoring-calibration-check.mjs",
+      "status": "modified",
+      "sha256": "ae29ef6eac176885a9ae48b50a270e11645cdd858038b0933c0c4eae29b8f7be"
+    },
+    {
+      "path": "tests/evidence-scoring-check.mjs",
+      "status": "modified",
+      "sha256": "61aa85f5e17a5339571c4dc47f09fdb9a6e463f7d642e75676b245d7d6325945"
+    },
+    {
+      "path": "tests/evidence-surface-budget-enforcement-evidence-runtime-budget-check.mjs",
+      "status": "deleted"
+    },
+    {
+      "path": "tests/evidence-surface-budget-enforcement-lock-completion-check.mjs",
+      "status": "deleted"
+    },
+    {
+      "path": "tests/evidence-workspace-ux-throughput-check.mjs",
+      "status": "modified",
+      "sha256": "5a55db856990059e719e074ca2b7fae422cf4b8d202e61037d6e7e161087442c"
+    },
+    {
+      "path": "tests/evidence/evidence-matrix.config.json",
+      "status": "modified",
+      "sha256": "61ad09d2d470f82182383216e983091efa5ae859961f2173e12982f0382304fe"
+    },
+    {
+      "path": "tests/expansion-lane-acceptance-matrix-check.mjs",
+      "status": "modified",
+      "sha256": "c8c14cd23a032676fcc7770940382de38cf4e30d88406ba0f93fc282444e41a5"
+    },
+    {
+      "path": "tests/final-public-demo-freeze-audit-check.mjs",
+      "status": "modified",
+      "sha256": "891775461e2d48555ca0d06faf4f01d6e6eb3a89959c13a1b6dca6f76b00f623"
+    },
+    {
+      "path": "tests/fixture-registry-consolidation-check.mjs",
+      "status": "modified",
+      "sha256": "aef606fbc1b07eef4e33feb3567762cb0570c9047ae7aed3f27c1a01d9da8367"
+    },
+    {
+      "path": "tests/fixture-test-debt-ledger-check.mjs",
+      "status": "modified",
+      "sha256": "395352965499c53a7ebb1b97653a832f94ced0fe940c4f7f03d8408493dd3803"
+    },
+    {
+      "path": "tests/golden-workflow-corpus-check.mjs",
+      "status": "modified",
+      "sha256": "9b583f2bc0537d4f83d90463fe87f5c2da699dcc79e61c4a740d9b21b517257e"
+    },
+    {
+      "path": "tests/hosted-demo-browser-evidence.spec.mjs",
+      "status": "modified",
+      "sha256": "a3046f6f02f45e08485ea94ed3662393ce8bff3e57f2a38aa743aaac3f1ee082"
+    },
+    {
+      "path": "tests/hosted-demo-deployment-check.mjs",
+      "status": "modified",
+      "sha256": "b97020751b3c22e4b8c1c212f52177390177c7da8d491adb24aa0356243292e0"
+    },
+    {
+      "path": "tests/hosted-demo-evidence-manifest-check.mjs",
+      "status": "modified",
+      "sha256": "2073f1c3eed324ede3f974700ed011aecdd08ed11fe20444f5e4cbf86942cb3b"
+    },
+    {
+      "path": "tests/hosted-demo-evidence-review-check.mjs",
+      "status": "modified",
+      "sha256": "baebbdef25d984b3e34b9b1cb1f8923778a268c8c7d797c44b4505fc75fcf763"
+    },
+    {
+      "path": "tests/hosted-evidence-capture-polish-check.mjs",
+      "status": "modified",
+      "sha256": "6729a304f0d5daae58ee864e7bf2dffee57c16b92f9571b41e63125a1e39fcfa"
+    },
+    {
+      "path": "tests/language-description-audit-check.mjs",
+      "status": "modified",
+      "sha256": "c164f63d0b44bde014ce882fa86b4f5697e080178b0ca937f54d9a23baf69886"
+    },
+    {
+      "path": "tests/limited-manual-live-execution-prototype-check.mjs",
+      "status": "modified",
+      "sha256": "c57d53db8e6887c4788ba3e801e428b650bd29cc9d26b1f22498f4d2666a9acd"
+    },
+    {
+      "path": "tests/localization-regression-matrix-check.mjs",
+      "status": "modified",
+      "sha256": "f7d586663e2ab6e03ae157afba4f965ffbfb21bbb73db7ba2cb4dd71b24393a6"
+    },
+    {
+      "path": "tests/lock-evidence-artifact-identity-guard-check.mjs",
+      "status": "modified",
+      "sha256": "27e53f90937f4fb892ccdfa51b524536fff7047c5f9a38911db7e8ca62bbfbeb"
+    },
+    {
+      "path": "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
+      "status": "modified",
+      "sha256": "50f4ff01940af7b7cc51acbb14c2f87adcc676bb0e73fb415d0264afa87e275a"
+    },
+    {
+      "path": "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
+      "status": "modified",
+      "sha256": "b8326d450a95f3f24d9b7218158202226bf16767dec19d89fc30a8efae637e92"
+    },
+    {
+      "path": "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs",
+      "status": "modified",
+      "sha256": "58521b4abaf44f7cf60701bbbf950ecf41fd0df002db3913bfcac327a0300840"
+    },
+    {
+      "path": "tests/mobile-header-logo-geometry-check.mjs",
+      "status": "modified",
+      "sha256": "e75dfb84de5aefdc3e6e79812328e1822b1dc65f4f5bbb23e9a708988628f285"
+    },
+    {
+      "path": "tests/module-type-warning-fix-check.mjs",
+      "status": "modified",
+      "sha256": "bb131c3f7e2498afe75674bde85e21428c18b4f428b2628d937605b8d5efbec7"
+    },
+    {
+      "path": "tests/node24-ci-compat-check.mjs",
+      "status": "modified",
+      "sha256": "9c2c4798932fce440ddfae45d9e01e9b0ccf96c89432ec9251ec56049cd57223"
+    },
+    {
+      "path": "tests/onboarding-first-run-check.mjs",
+      "status": "modified",
+      "sha256": "e75d8b6fd6e1fa502625c844c590869509cc93f9d627c9ef9aeee6df94d4b419"
+    },
+    {
+      "path": "tests/patch-stabilization-check.mjs",
+      "status": "modified",
+      "sha256": "e8e00b0195b798885023c52b21e65cc24c4632521bb39fad5c84a0eba30762b3"
+    },
+    {
+      "path": "tests/post-freeze-planning-gate-check.mjs",
+      "status": "modified",
+      "sha256": "b5191096567f1dec50dcb845409d2b4cb336ec19b6fc8a454df0a32e839bead4"
+    },
+    {
+      "path": "tests/post-stable-capability-roadmap-check.mjs",
+      "status": "modified",
+      "sha256": "d629bf61dac5fda78b98d3563c83b2f4632d75769b81dafabd61282cc64cd735"
+    },
+    {
+      "path": "tests/public-demo-readiness-check.mjs",
+      "status": "modified",
+      "sha256": "3bcacc657be596b00e169e3651608672cd30f2733549ff9da7ef38d704be9edb"
+    },
+    {
+      "path": "tests/public-demo-release-candidate-check.mjs",
+      "status": "modified",
+      "sha256": "3d567d8670dc70a18d3267985b5be07b7f7aa731192d9ce3e4482f0b5f82786c"
+    },
+    {
+      "path": "tests/public-demo-release-lock-check.mjs",
+      "status": "modified",
+      "sha256": "5fc41b11ee671c27b95b6daf2498d54d83c6e5d624463cc73a4b9b42a9719551"
+    },
+    {
+      "path": "tests/qa-check.mjs",
+      "status": "modified",
+      "sha256": "4eb69ce00c95dcfed496a80fd4a9c7988b02fb4d9f35c2a0d8c296ad1157531c"
+    },
+    {
+      "path": "tests/release-apply-integrity-check.mjs",
+      "status": "modified",
+      "sha256": "9bf6209b10256b280cfc8b8b9d360c82471630427c62a6df8fba516f62daef72"
+    },
+    {
+      "path": "tests/release-candidate-final-hygiene-check.mjs",
+      "status": "modified",
+      "sha256": "58be7681fd3a7ffe016bed2e73a42233f96040ba34e421d6366de0010ba1e68d"
+    },
+    {
+      "path": "tests/release-evidence-repo-hygiene-check.mjs",
+      "status": "modified",
+      "sha256": "37222ac9db509b71bda5b1a6d773352a68a5b0ba81b4e98a8ac23df5e6d00f41"
+    },
+    {
+      "path": "tests/release-packaging-cleanup-check.mjs",
+      "status": "modified",
+      "sha256": "dabc82e11701354c604e09e3fd7d64e71426352c143bebd7a7ac6fea60c66ac1"
+    },
+    {
+      "path": "tests/release-provenance-ledger-check.mjs",
+      "status": "modified",
+      "sha256": "3003080ecc5a3c90ed253d6067dce78f20f385163b52c3b3ba53cdf25a7d2d2a"
+    },
+    {
+      "path": "tests/release-truth-consistency-check.mjs",
+      "status": "modified",
+      "sha256": "7bd0b862e32c3aa5e47f4b0fcd810a253e1fdc4ec090b12a62d1cc3698035dd5"
+    },
+    {
+      "path": "tests/repo-hygiene-execution-stale-docs-check.mjs",
+      "status": "modified",
+      "sha256": "b6d3a541ac9e1b3fd424e43401b3f7e07216c827bc3a6aee7c13ffa38f93da88"
+    },
+    {
+      "path": "tests/repository-consolidation-audit-check.mjs",
+      "status": "modified",
+      "sha256": "71bbd28b2f86ded31eeedd1b2546d3b99d8529682128295c31f8fcb1a39cc195"
+    },
+    {
+      "path": "tests/repository-hygiene-cleanup-check.mjs",
+      "status": "modified",
+      "sha256": "82fc583056d0e0834f75361830e0d76c77dfb2011b56c9bee39e6e3fa4a02970"
+    },
+    {
+      "path": "tests/root-release-artifact-consolidation-check.mjs",
+      "status": "modified",
+      "sha256": "e1b95b8d2698ca6806c15d71200e9afcd59f4e5bb9a1ea610c5475e040c475e8"
+    },
+    {
+      "path": "tests/screen-discipline-patch-check.mjs",
+      "status": "modified",
+      "sha256": "0b98be90902a30aca8cf1454da2522de5f046a0585d7e758f2c4820901bf298e"
+    },
+    {
+      "path": "tests/source-capability-registry-check.mjs",
+      "status": "modified",
+      "sha256": "3a541bb93d9ba284670de5c3973c6170be9be1bcf2f3ebf9501a2208b5211bab"
+    },
+    {
+      "path": "tests/source-packet-builder-browser-qa-check.mjs",
+      "status": "modified",
+      "sha256": "a376181ab23231033fbb9dd4c1e6fe22cc387d2e08f0426cf29ecac1586762c2"
+    },
+    {
+      "path": "tests/source-packet-builder-check.mjs",
+      "status": "modified",
+      "sha256": "581d2feae4788717648da516afbd234c0d56776fe25f6cc8110d948bbcc9bd11"
+    },
+    {
+      "path": "tests/source-packet-roundtrip-check.mjs",
+      "status": "modified",
+      "sha256": "033f23f91725234bb5b10f0f2866a5c48325737bb71fd83989b387ccef53b34e"
+    },
+    {
+      "path": "tests/source-packet-template-browser-qa-check.mjs",
+      "status": "modified",
+      "sha256": "892cb5adfcb4c06cf140816fdc78bc059396f661fc1af61506090fbcd9a89849"
+    },
+    {
+      "path": "tests/source-packet-template-presets-check.mjs",
+      "status": "modified",
+      "sha256": "42c753908fffd6add7a100564c19d7cc20f0b52a879a7cae35f1fdae1c04e4cb"
+    },
+    {
+      "path": "tests/source-refactor-readiness-audit-check.mjs",
+      "status": "modified",
+      "sha256": "39d4bface2fd4c86045db5127bec02196854cda629fad5c67ddff3ee00ed9625"
+    },
+    {
+      "path": "tests/source-to-brief-brief-template-ux-polish-check.mjs",
+      "status": "modified",
+      "sha256": "bf4897de4d280e1a842b158e65770b725ae05ab06af66b0f110847906eb97f58"
+    },
+    {
+      "path": "tests/source-to-brief-command-palette-check.mjs",
+      "status": "modified",
+      "sha256": "bd4732c44541f85a46c74b255d911c9e56e36f8c9fe2f53071c870eccecdc38f"
+    },
+    {
+      "path": "tests/stable-consolidation-public-surface-check.mjs",
+      "status": "modified",
+      "sha256": "b3fe3cb06b81597ab6b1536cad874e2efae493ecc56fcdb935e65cc322cb5fc3"
+    },
+    {
+      "path": "tests/stable-manual-workflow-release-check.mjs",
+      "status": "modified",
+      "sha256": "0fcabcd4c030f5d3f80e2ef05fea9a0e82155cb17948cc1413279daf13a202b7"
+    },
+    {
+      "path": "tests/stable-release-check.mjs",
+      "status": "modified",
+      "sha256": "d859117b0cf36630bd0b09ea769b9e209286400549cc2c822f5748777bfa2d84"
+    },
+    {
+      "path": "tests/static-check.mjs",
+      "status": "modified",
+      "sha256": "ccc882e24e9693c29c55f47e2f13bd375be14f9b12cc467e6505060e55c32a0d"
+    },
+    {
+      "path": "tests/syntax-matrix-check.mjs",
+      "status": "modified",
+      "sha256": "c4cbf942ef7f5cf815a1d0d84e85c256031baadd78f2fb27a17218bf84cb9baa"
+    },
+    {
+      "path": "tests/test-matrix-runtime-optimization-check.mjs",
+      "status": "modified",
+      "sha256": "cb9571370bf99c6e04428952bef70519e7b1c56fa8d54b26abc964ac3c37555a"
+    },
+    {
+      "path": "tests/test-organization-audit-check.mjs",
+      "status": "modified",
+      "sha256": "c510329fe1083748dd18450a7c0aba3dea18fa8a27379baf64d42aa003cf47a5"
+    },
+    {
+      "path": "tests/ux-stabilization-patch-check.mjs",
+      "status": "modified",
+      "sha256": "da892b8ddca8373df386e2c9ad9da0d8b1b5e12c25a71787ee6c0e3100a33c7e"
+    },
+    {
+      "path": "tests/version-suite-registry-check.mjs",
+      "status": "modified",
+      "sha256": "65c916256ec2f61b7f0128cf310af03a8cb84a768ef5f569819bf35117578e46"
+    },
+    {
+      "path": "tests/version-suite-registry.json",
+      "status": "modified",
+      "sha256": "dcbbb02f1c5d89fe1fb01caefe5f9fb4d1be6c557041fa135308e1adf43ce3a9"
+    }
+  ],
+  "note": "Changed-files-only patch against locked v1.4.0-alpha.16. Alpha.16 remains locked; alpha.17 is the next candidate."
+}

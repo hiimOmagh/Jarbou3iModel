@@ -1,17 +1,16 @@
 # Release History
 
-## v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement
+## v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard
 
-Marks locked alpha.15 as the completed baseline, cleans CHANGELOG/release-history truth drift, and enforces static evidence-surface budgets without runtime/provider/OAuth/backend/source/storage expansion.
+Marks locked alpha.16 as baseline and adds the evidence budget regression dashboard without runtime/provider/OAuth/backend/source/storage expansion.
 
 ## v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression
 
-Locked with Run ID `26643746981`, commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, evidence matrix 39/39, canonical lock bundle, and artifact identity guard. Scope: roadmap lock completion, manual provider adapter UX compression, and static evidence/runtime budget guard only.
+Locked: Run ID `26643746981`, commit `4ba0f9db8020a9d0158ec95854ef10fbfe47694c`; no-browser/browser/hosted evidence/AR-FR-EN/evidence matrix 39/39/artifact guard passed.
 
 ## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
 
-Locked with Run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`, green no-browser CI, green browser CI, hosted-demo evidence, AR/FR/EN visible-text snapshots, canonical lock bundle, and artifact identity guard.
-
+Locked: Run ID `26640076472`, commit `476b97423d18842177ae47074967afa45e5962bb`; no-browser/browser/hosted evidence/AR-FR-EN/artifact guard passed.
 
 
 <!-- preserved-historical-body -->
@@ -84,7 +83,6 @@ timeline_pruning_policy: keep canonical release-file anchors for CI lookup, keep
 | `v1.3.0-alpha.8-evidence-pack-export-v3-brief-traceability.md` | v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface |
 | `v1.3.0-alpha.10-evidence-pack-export-v3-brief-traceability.md` | v1.3.0-alpha.10 — Brief Publication Pack v4 |
 | `v1.3.0-evidence-pack-export-v3-brief-traceability.md` | v1.3.0 — Stable Manual Workflow Release |
-
 
 <!-- release-file:repo-cleanup-audit-v1.0.6.md -->
 
@@ -190,7 +188,6 @@ If CI still fails at `release-packaging-cleanup-check.mjs`, the repository still
 
 <!-- /release-file:repo-cleanup-audit-v1.0.6.md -->
 
-
 <!-- release-file:v0.16.0-beta-provider-browser-privacy-qa.md -->
 
 # v0.16.0-beta — Provider Mode Browser QA + Privacy Export Tests
@@ -246,7 +243,6 @@ This release does not implement real OAuth, real BrainLink/OpenRouter integratio
 
 <!-- /release-file:v0.16.0-beta-provider-browser-privacy-qa.md -->
 
-
 <!-- release-file:v0.17.0-beta-state-migration.md -->
 
 # v0.17.0-beta — State Migration + Version Compatibility Layer
@@ -288,7 +284,6 @@ Migration is also a security boundary. Sensitive provider fields such as API key
 This release is a stability layer, not a feature expansion.
 
 <!-- /release-file:v0.17.0-beta-state-migration.md -->
-
 
 <!-- release-file:v0.18.0-beta-module-split.md -->
 
@@ -373,7 +368,6 @@ npm run test:browser:provider
 
 <!-- /release-file:v0.18.0-beta-module-split.md -->
 
-
 <!-- release-file:v0.19.0-beta-privacy-audit-hardening.md -->
 
 # v0.19.0-beta — Privacy Audit Hardening
@@ -410,7 +404,6 @@ The final pass removes sensitive keys and redacts secret-shaped text. The report
 - `privacy_export.post_redaction_issue_count` must be `0`.
 
 <!-- /release-file:v0.19.0-beta-privacy-audit-hardening.md -->
-
 
 <!-- release-file:v0.20.0-beta-ux-reliability-pass.md -->
 
@@ -520,7 +513,6 @@ This reduces ambiguity around auth, billing, privacy, and production status.
 
 <!-- /release-file:v0.20.0-beta-ux-reliability-pass.md -->
 
-
 <!-- release-file:v0.21.0-beta-project-workspace.md -->
 
 # v0.21.0-beta — Project Workspace + Local Storage Management
@@ -557,7 +549,6 @@ This release adds a local-only project workspace for managing multiple research 
 - Manual/private mode remains first-class.
 
 <!-- /release-file:v0.21.0-beta-project-workspace.md -->
-
 
 <!-- release-file:v0.22.0-beta-analysis-template-system.md -->
 
@@ -643,7 +634,6 @@ npm run test:browser:provider
 
 <!-- /release-file:v0.22.0-beta-analysis-template-system.md -->
 
-
 <!-- release-file:v0.23.0-beta-advanced-quality-gate-v3.md -->
 
 # v0.23.0-beta — Advanced Quality Gate v3
@@ -701,7 +691,6 @@ Quality Gate v3 scores:
 - Privacy/migration/provider/source tests continue to pass.
 
 <!-- /release-file:v0.23.0-beta-advanced-quality-gate-v3.md -->
-
 
 <!-- release-file:v0.24.0-beta-export-pack-v2.md -->
 
@@ -812,7 +801,6 @@ npm run test:browser:provider
 
 <!-- /release-file:v0.24.0-beta-export-pack-v2.md -->
 
-
 <!-- release-file:v0.25.0-beta-real-backend-provider-hardening.md -->
 
 # v0.25.0-beta — Real Backend Provider Hardening
@@ -868,7 +856,6 @@ AUDIT_LOGS_ENABLED         true enables metadata-only audit logs
 ```
 
 <!-- /release-file:v0.25.0-beta-real-backend-provider-hardening.md -->
-
 
 <!-- release-file:v0.26.0-beta-real-source-connector-prototype.md -->
 
@@ -946,7 +933,6 @@ npm run test:v026:no-browser
 ```
 
 <!-- /release-file:v0.26.0-beta-real-source-connector-prototype.md -->
-
 
 <!-- release-file:v0.27.0-beta-web-search-provider-abstraction.md -->
 
@@ -1048,7 +1034,6 @@ npm run test:v027
 
 <!-- /release-file:v0.27.0-beta-web-search-provider-abstraction.md -->
 
-
 <!-- release-file:v0.28.0-beta-real-portable-oauth-spike.md -->
 
 # v0.28.0-beta — Real Portable OAuth Spike
@@ -1142,7 +1127,6 @@ authorization header
 
 <!-- /release-file:v0.28.0-beta-real-portable-oauth-spike.md -->
 
-
 <!-- release-file:v0.29.0-rc.1-release-candidate-freeze.md -->
 
 # v0.29.0-rc.1 — Release Candidate Freeze
@@ -1231,7 +1215,6 @@ npm run test:browser:provider
 
 <!-- /release-file:v0.29.0-rc.1-release-candidate-freeze.md -->
 
-
 <!-- release-file:v1.0.0-ci-browser-validation.md -->
 
 # v1.0.0 CI / Browser Validation Status
@@ -1293,7 +1276,6 @@ v1.0.0 must not be promoted until both CI jobs are green.
 
 <!-- /release-file:v1.0.0-ci-browser-validation.md -->
 
-
 <!-- release-file:v1.0.0-public-beta-stable-research-engine.md -->
 
 # v1.0.0 — Public Beta / Stable Research Engine
@@ -1344,7 +1326,6 @@ npm run test:ci:browser
 The user reported the new CI succeeded before this promotion package was created.
 
 <!-- /release-file:v1.0.0-public-beta-stable-research-engine.md -->
-
 
 <!-- release-file:v1.0.1-patch-only-stabilization.md -->
 
@@ -1399,7 +1380,6 @@ npm run test:ci:no-browser
 ```
 
 <!-- /release-file:v1.0.1-patch-only-stabilization.md -->
-
 
 <!-- release-file:v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md -->
 
@@ -1467,7 +1447,6 @@ The evidence review gate remains active for hosted demo publication.
 
 <!-- /release-file:v1.0.10-hosted-url-ci-artifact-review-module-type-warning-fix.md -->
 
-
 <!-- release-file:v1.0.11-repository-hygiene-stale-artifact-cleanup.md -->
 
 # v1.0.11 — Repository Hygiene + Stale Artifact Cleanup
@@ -1520,7 +1499,6 @@ No historical release documents were deleted. They remain useful as an auditable
 
 <!-- /release-file:v1.0.11-repository-hygiene-stale-artifact-cleanup.md -->
 
-
 <!-- release-file:v1.0.12-research-source-strategy-blueprint.md -->
 
 # v1.0.12 — Research Source Strategy Blueprint
@@ -1556,7 +1534,6 @@ Engagement is not truth. Public signal strength must stay separate from evidence
 `source_strategy_blueprint_checked`
 
 <!-- /release-file:v1.0.12-research-source-strategy-blueprint.md -->
-
 
 <!-- release-file:v1.0.13-manual-source-packet-import.md -->
 
@@ -1596,7 +1573,6 @@ Imported packets are explicitly marked as unverified manual imports and remain r
 - Schema, fixtures, migration, privacy, source import, and source capability checks pass.
 
 <!-- /release-file:v1.0.13-manual-source-packet-import.md -->
-
 
 <!-- release-file:v1.0.14-evidence-scoring-v1.md -->
 
@@ -1660,7 +1636,6 @@ Browser validation remains required before public release merge.
 
 <!-- /release-file:v1.0.14-evidence-scoring-v1.md -->
 
-
 <!-- release-file:v1.0.15-evidence-scoring-ui-calibration.md -->
 
 # v1.0.15 — Evidence Scoring UI Explanation + Calibration Pass
@@ -1702,7 +1677,6 @@ npm run test:ci:no-browser
 
 <!-- /release-file:v1.0.15-evidence-scoring-ui-calibration.md -->
 
-
 <!-- release-file:v1.0.16-source-packet-builder-ui-scoring-review-controls.md -->
 
 # v1.0.16 — Source Packet Builder UI + Scoring Review Controls
@@ -1742,7 +1716,6 @@ npm run test:ci:browser
 ```
 
 <!-- /release-file:v1.0.16-source-packet-builder-ui-scoring-review-controls.md -->
-
 
 <!-- release-file:v1.0.17-source-packet-builder-browser-qa-ux-tightening.md -->
 
@@ -1795,7 +1768,6 @@ npm run test:ci:browser
 
 <!-- /release-file:v1.0.17-source-packet-builder-browser-qa-ux-tightening.md -->
 
-
 <!-- release-file:v1.0.18-source-packet-builder-export-roundtrip-qa.md -->
 
 # v1.0.18 — Source Packet Builder Export Roundtrip QA
@@ -1838,7 +1810,6 @@ npm run test:ci:no-browser
 
 <!-- /release-file:v1.0.18-source-packet-builder-export-roundtrip-qa.md -->
 
-
 <!-- release-file:v1.0.19-source-packet-template-presets.md -->
 
 # v1.0.19 — Source Packet Template Presets
@@ -1877,7 +1848,6 @@ v1.0.19 adds local/manual Source Packet Template Presets for common source types
 No provider, OAuth, backend, source connector, or storage behavior changed.
 
 <!-- /release-file:v1.0.19-source-packet-template-presets.md -->
-
 
 <!-- release-file:v1.0.2-ux-stabilization-patch.md -->
 
@@ -1932,7 +1902,6 @@ npm run test:v102:no-browser
 ```
 
 <!-- /release-file:v1.0.2-ux-stabilization-patch.md -->
-
 
 <!-- release-file:v1.0.20-source-packet-template-browser-qa-copy-safety.md -->
 
@@ -1994,7 +1963,6 @@ The hosted-demo evidence capture now opens the advanced Provider Harness accordi
 The quality/export evidence capture now asserts visible controls that belong to the Quality & Export tab: `#researchQualityOutput` and `#exportSourcePacketBuilderBtn`. It no longer checks `#exportWorkflowBtn` from the Evidence tab while the Quality & Export tab is active.
 
 <!-- /release-file:v1.0.20-source-packet-template-browser-qa-copy-safety.md -->
-
 
 <!-- release-file:v1.0.21-node-24-ci-compatibility.md -->
 
@@ -2061,7 +2029,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- /release-file:v1.0.21-node-24-ci-compatibility.md -->
 
-
 <!-- release-file:v1.0.22-release-evidence-repo-hygiene-verification.md -->
 
 # v1.0.22 — Release Evidence + Repo Hygiene Verification
@@ -2103,7 +2070,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 This patch is verification-only. It must not alter provider behavior, OAuth behavior, backend endpoint behavior, source connector behavior, storage behavior, or user-visible product capability.
 
 <!-- /release-file:v1.0.22-release-evidence-repo-hygiene-verification.md -->
-
 
 <!-- release-file:v1.0.23-ci-result-review-browser-evidence-artifact-audit.md -->
 
@@ -2170,7 +2136,6 @@ This patch is audit-only. It must not alter provider behavior, OAuth behavior, b
 
 <!-- /release-file:v1.0.23-ci-result-review-browser-evidence-artifact-audit.md -->
 
-
 <!-- release-file:v1.0.24-repo-hygiene-execution-stale-documentation-correction.md -->
 
 # v1.0.24 — Repo Hygiene Execution + Stale Documentation Correction
@@ -2230,7 +2195,6 @@ This patch is release-hygiene only. It must not alter provider behavior, OAuth b
 
 <!-- /release-file:v1.0.24-repo-hygiene-execution-stale-documentation-correction.md -->
 
-
 <!-- release-file:v1.0.25-public-demo-release-lock.md -->
 
 # v1.0.25 — Public Demo Release Lock
@@ -2272,7 +2236,6 @@ Do not publish the public demo if the intended release commit lacks green no-bro
 
 <!-- /release-file:v1.0.25-public-demo-release-lock.md -->
 
-
 <!-- release-file:v1.0.26-release-apply-integrity-gate.md -->
 
 # v1.0.26 — Release Apply Integrity Gate
@@ -2304,7 +2267,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
 <!-- /release-file:v1.0.26-release-apply-integrity-gate.md -->
-
 
 <!-- release-file:v1.0.27-release-provenance-ledger-gate.md -->
 
@@ -2341,7 +2303,6 @@ A named artifact is not sufficient provenance by itself. The changed-files manif
 
 <!-- /release-file:v1.0.27-release-provenance-ledger-gate.md -->
 
-
 <!-- release-file:v1.0.28-hosted-demo-evidence-manifest-gate.md -->
 
 # v1.0.28 — Hosted Demo Evidence Manifest Gate
@@ -2373,7 +2334,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
 <!-- /release-file:v1.0.28-hosted-demo-evidence-manifest-gate.md -->
-
 
 <!-- release-file:v1.0.29-final-public-demo-hardening-release-freeze-audit.md -->
 
@@ -2433,7 +2393,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- /release-file:v1.0.29-final-public-demo-hardening-release-freeze-audit.md -->
 
-
 <!-- release-file:v1.0.3-screen-discipline-patch.md -->
 
 # v1.0.3 — Screen Discipline Patch
@@ -2483,7 +2442,6 @@ npm run test:v103:no-browser
 ```
 
 <!-- /release-file:v1.0.3-screen-discipline-patch.md -->
-
 
 <!-- release-file:v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md -->
 
@@ -2543,7 +2501,6 @@ PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 
 <!-- /release-file:v1.0.30-mobile-header-geometry-lock-final-public-demo-visual-freeze.md -->
 
-
 <!-- release-file:v1.0.4-browser-qa-visual-regression-hardening.md -->
 
 # v1.0.4 — Browser QA + Visual Regression Hardening
@@ -2591,7 +2548,6 @@ Default visual mode captures and attaches screenshots. Strict mode uses Playwrig
 
 <!-- /release-file:v1.0.4-browser-qa-visual-regression-hardening.md -->
 
-
 <!-- release-file:v1.0.5-onboarding-first-run-success.md -->
 
 # v1.0.5 — Onboarding + First-Run Success
@@ -2628,7 +2584,6 @@ Topic → Plan → Evidence → Review queue → Quality gate → Safe export
 - Existing patch gates, browser QA hardening, privacy export checks, migration checks, and source/provider boundaries continue to pass.
 
 <!-- /release-file:v1.0.5-onboarding-first-run-success.md -->
-
 
 <!-- release-file:v1.0.6-documentation-release-packaging-cleanup.md -->
 
@@ -2675,7 +2630,6 @@ npm run test:ci:browser
 ```
 
 <!-- /release-file:v1.0.6-documentation-release-packaging-cleanup.md -->
-
 
 <!-- release-file:v1.0.7-public-demo-readiness-release-notes.md -->
 
@@ -2724,7 +2678,6 @@ Browser tests remain required before publishing a hosted public demo.
 
 <!-- /release-file:v1.0.7-public-demo-readiness-release-notes.md -->
 
-
 <!-- release-file:v1.0.8-hosted-demo-deployment-browser-evidence.md -->
 
 # v1.0.8 — Hosted Demo Deployment Verification + Browser Evidence Capture
@@ -2754,7 +2707,6 @@ v1.0.8 adds hosted-demo deployment verification and browser evidence capture to 
 Run no-browser CI first, then browser CI with evidence capture. A hosted deployment should not be treated as publish-ready until the evidence artifacts are attached or reviewed.
 
 <!-- /release-file:v1.0.8-hosted-demo-deployment-browser-evidence.md -->
-
 
 <!-- release-file:v1.0.9-hosted-demo-smoke-fixes-evidence-review.md -->
 
@@ -2814,7 +2766,6 @@ Before publishing the hosted demo, review:
 The evidence review release gate is `evidence_review_complete` only when all required review items are present.
 
 <!-- /release-file:v1.0.9-hosted-demo-smoke-fixes-evidence-review.md -->
-
 
 <!-- release-file:v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md -->
 
@@ -2880,7 +2831,6 @@ Do not claim any of the following in public demo material:
 This release is invalid if it enables any new runtime capability, exposes a planned lane as a usable feature, removes the v1.0.30 freeze baseline, or weakens provider/OAuth/source/privacy/export boundaries.
 
 <!-- /release-file:v1.1.0-alpha.1-post-freeze-product-expansion-planning-gate.md -->
-
 
 <!-- release-file:v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md -->
 
@@ -2962,7 +2912,6 @@ This release is invalid if it enables any runtime capability, exposes a planned 
 
 <!-- /release-file:v1.1.0-alpha.2-expansion-lane-acceptance-criteria-matrix.md -->
 
-
 <!-- release-file:v1.1.0-alpha.5-migration-privacy-fixture-registry-consolidation.md -->
 
 # v1.1.0-alpha.7 — Package Script Compression + CI Gate Registry
@@ -3016,7 +2965,6 @@ Mobile Header Geometry Lock remains preserved from the v1.0.30 visual-freeze bas
 MERGE_TO_REGISTRY is now executed for migration and privacy fixtures. No files are deleted beyond registry-consolidated fixture shards and the unused oversized asset.
 
 <!-- /release-file:v1.1.0-alpha.5-migration-privacy-fixture-registry-consolidation.md -->
-
 
 <!-- release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
 
@@ -3082,7 +3030,6 @@ This release is invalid if:
 
 That release may merge version-specific documentation into timeline-style documents after doc hygiene gates are remapped.
 
-
 Evidence manifest gate continuity: this structural cleanup preserves the single final metadata capture manifest, visual freeze baseline, mobile header geometry lock, and public-demo evidence review discipline.
 
 Public-demo boundary continuity: No live scraping, No real OAuth, and screenshots alone or ZIP archive alone are not sufficient for approval.
@@ -3097,7 +3044,6 @@ No files are deleted from runtime behavior; historical documents are merged into
 
 Retention class continuity: MERGE_TO_REGISTRY remains the policy for historical wrappers, release docs, migration fixtures, and privacy fixtures.
 <!-- /release-file:v1.1.0-alpha.7-package-script-compression-ci-gate-registry.md -->
-
 
 <!-- release-file:visual-qa.md -->
 
@@ -3244,7 +3190,6 @@ Cleanup-only CI and documentation gate. Compresses the expensive no-browser synt
 This release is invalid if the syntax matrix drops previous syntax coverage, if the no-browser gate reverts to a long serialized syntax tail, if release-history anchors become unreadable by `tests/release-docs-loader.mjs`, or if runtime/provider/OAuth/backend/source/storage behavior changes.
 <!-- /release-file:v1.1.0-alpha.9-test-matrix-runtime-optimization-release-doc-timeline-pruning.md -->
 
-
 <!-- release-file:v1.1.0-alpha.10-hosted-evidence-capture-polish-visual-artifact-guard.md -->
 # v1.1.0-alpha.10 — Hosted Evidence Capture Polish + Visual Artifact Guard
 
@@ -3311,7 +3256,6 @@ Adds a local-only entity intelligence layer over reviewed evidence and source cl
 - No storage expansion.
 - No runtime behavior change.
 
-
 Continuity discipline: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, planning gate, apply integrity, and changed-files-only release discipline remain preserved.
 
 ## Release-lock guard
@@ -3333,11 +3277,9 @@ Release-lock reminder: screenshots alone are insufficient; ZIP archive alone is 
 
 No live scraping and No real OAuth remain enforced.
 
-
 ## v1.1.0-alpha.18 — Controlled Connector Architecture MVP
 
 Adds the Controlled Connector Architecture MVP: interface contracts, dry-run execution, URL-list/manual transcript/source-list import, review-queue normalization, connector safety reports, and connector export continuity without live search, uncontrolled scraping, OAuth/backend expansion, provider execution, or automatic verification claims.
-
 
 <!-- release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
 # v1.1.0-alpha.18 — Controlled Connector Architecture MVP
@@ -3373,7 +3315,6 @@ Boundary phrase: No real OAuth is enabled.
 Registry policy: MERGE_TO_REGISTRY remains the fixture handling mode. No files are deleted.
 <!-- /release-file:v1.1.0-alpha.18-controlled-connector-architecture-mvp.md -->
 
-
 ## v1.1.0 — Public Demo Stable
 
 Adds a local Strategic Evidence Graph model, graph quality diagnostics, and Gephi/Kumu/Neo4J export continuity without live scraping, live search execution, provider execution, OAuth/backend expansion, external graph service dependency, or automatic source verification claims.
@@ -3387,9 +3328,7 @@ Boundary: no live scraping, no live web search by default, no provider execution
 
 Validation target: v1.1.0.
 
-
 Governance continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization, planning gate, apply integrity, and changed-files-only discipline are preserved.
-
 
 Boundary continuity: No live scraping and No real OAuth are enabled; graph export remains local/manual and review-gated.
 
@@ -3404,9 +3343,7 @@ Hosted evidence capture continuity:
 
 Evidence manifest continuity: hosted-demo review still requires a single final metadata capture manifest with desktop, mobile, provider-mode, and quality/export evidence.
 
-
 Mobile Header Geometry Lock continuity: the existing mobile header/logo geometry guard remains in scope and unchanged for alpha.19.
-
 
 
 Registry policy continuity: MERGE_TO_REGISTRY remains the fixture handling mode. No files are deleted.
@@ -3429,12 +3366,10 @@ Post-stable continuity note: v1.2.0-alpha.1 Post-Stable Capability Roadmap + Exp
 
 Current post-stable continuity note: v1.3.0-alpha.10 — Brief Publication Pack v4 preserves the v1.1.0 stable public-demo baseline while adding only local/manual before-export gap diagnostics.
 
-
 # v1.3.0-alpha.8 — Signed Export Handoff Pack + Lock Ledger Review Surface
 
 Hosted evidence continuity note: waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed remain required for hosted-demo evidence capture. No runtime behavior change.
 <!-- /release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
-
 
 | `v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md` | v1.1.0 — Public Demo Stable |
 
@@ -3445,7 +3380,6 @@ Public Demo Stable. Feature surface frozen; final public-demo docs, golden workf
 
 No new major feature surface. No live connector expansion. No provider execution expansion. No OAuth/backend expansion. No broad UI redesign.
 <!-- /release-file:v1.1.0-canonical-lock-evidence-bundle-final-stable-handoff.md -->
-
 
 <!-- release-file:v1.1.0-evidence-pack-export-v3-brief-traceability.md -->
 # v1.1.0 — Public Demo Stable
@@ -3483,7 +3417,6 @@ Controlled local/manual source-to-brief workbench. It connects research plans, e
 
 Evidence continuity: changed-files-only release apply integrity, provenance ledger, fixture registry consolidation, package script compression and CI gate registry, hosted evidence capture polish, browser evidence baselines, and privacy/export gates remain required. Hosted evidence continuity preserves waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 
-
 Readiness artifacts:
 - docs/technical-debt-ledger.md
 - docs/source-refactor-readiness-audit.md
@@ -3491,7 +3424,6 @@ Readiness artifacts:
 
 No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-alpha.8-evidence-pack-export-v3-brief-traceability.md -->
-
 
 <!-- release-file:v1.3.0-alpha.10-evidence-pack-export-v3-brief-traceability.md -->
 # v1.3.0-alpha.10 — Brief Publication Pack v4
@@ -3517,4 +3449,6 @@ Stable manual workflow release and release notes finalization after the locked v
 The RC preserves the manual source-to-brief chain: source-to-claim gap closure queue, signed export handoff metadata, lock-ledger review surface, operator signoff state, export lock ledger, final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix. Supporting audit files remain docs/technical-debt-ledger.md and docs/source-refactor-readiness-audit.md. Coverage remains tests/language-description-audit-check.mjs. No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-evidence-pack-export-v3-brief-traceability.md -->
 
-Alpha.15: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` locked; `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement` current candidate.
+Alpha.15: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix` locked; `v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard` current candidate.
+
+Locked alpha.16 baseline: `v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement`; Run ID `26646993357`; commit `d40d2054060c14326c5871ec86bd7ef5d9aab2ed`; no-browser 146; browser 17; hosted-demo evidence passed; AR/FR/EN visible-text snapshots passed; evidence matrix 39/39; artifact identity guard passed.

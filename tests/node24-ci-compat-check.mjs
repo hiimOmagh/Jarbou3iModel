@@ -18,9 +18,9 @@ const roadmap = read('docs/roadmap.md');
 const qaMatrix = read('docs/qa-matrix.md');
 const node24Doc = readReleaseDoc('docs/v1.0.21-node-24-ci-compatibility.md');
 
-assert.equal(pkg.version, '1.4.0-alpha.16', 'package.json must identify v1.4.0-alpha.16');
-assert.equal(lock.version, '1.4.0-alpha.16', 'package-lock root version must identify v1.4.0-alpha.16');
-assert.equal(lock.packages[''].version, '1.4.0-alpha.16', 'package-lock package root must identify v1.4.0-alpha.16');
+assert.equal(pkg.version, '1.4.0-alpha.17', 'package.json must identify v1.4.0-alpha.17');
+assert.equal(lock.version, '1.4.0-alpha.17', 'package-lock root version must identify v1.4.0-alpha.17');
+assert.equal(lock.packages[''].version, '1.4.0-alpha.17', 'package-lock package root must identify v1.4.0-alpha.17');
 
 for (const forbidden of [
   'actions/checkout@v4',
@@ -68,7 +68,7 @@ assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI 
 assert.ok(ciNoBrowser.includes('ci-gate-runner.mjs no-browser'), 'no-browser CI must delegate to registry runner');
 
 for (const text of [releaseNotes, changelog, manifest, roadmap, qaMatrix]) {
-  assert.ok(text.includes('v1.4.0-alpha.16') || text.includes('v1.3.0'), 'release documentation must mention current alpha.1 or stable baseline');
+  assert.ok(text.includes('v1.4.0-alpha.17') || text.includes('v1.3.0'), 'release documentation must mention current alpha.1 or stable baseline');
   assert.ok(text.includes('Node 24'), 'release documentation must mention Node 24');
 }
 assert.ok(node24Doc.includes('v1.0.21'), 'retained Node 24 compatibility doc must keep its original release identity');
