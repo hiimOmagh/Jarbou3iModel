@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.13",
-  "internal_build_version": "1.4.0-alpha.13",
-  "public_version_label": "v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA",
+  "evidence_matrix_config_version": "1.4.0-alpha.14",
+  "internal_build_version": "1.4.0-alpha.14",
+  "public_version_label": "v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Adapter Contract Test Bench + No-Network Invocation Replay QA"
+        "Adapter Replay Fixture Corpus + Coverage Matrix"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -40,7 +40,7 @@
         "حدود بيانات الاعتماد",
         "قمرة أمان التنفيذ اليدوي + سجل الجلسة",
         "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر",
-        "منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة"
+        "مجموعة فيكستشرات إعادة تشغيل المحوّل + مصفوفة التغطية"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -60,7 +60,7 @@
         "frontière des identifiants",
         "Cockpit de sécurité d’exécution manuelle + registre de session",
         "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère",
-        "Banc de test de contrat d’adaptateur + QA de rejeu d’invocation sans réseau"
+        "Corpus de fixtures de rejeu d’adaptateur + matrice de couverture"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -246,8 +246,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA",
-    "ar": "v1.4.0-alpha.13 منضدة اختبار عقد المحوّل + ضمان جودة إعادة تشغيل الاستدعاء بلا شبكة · ضمان جودة إعادة تشغيل بلا شبكة فقط",
-    "fr": "v1.4.0-alpha.13 Banc de test de contrat d’adaptateur + QA de rejeu d’invocation sans réseau · QA de rejeu sans réseau uniquement"
+    "en": "v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix",
+    "ar": "v1.4.0-alpha.14 مجموعة فيكستشرات إعادة تشغيل المحوّل + مصفوفة التغطية · مصفوفة تغطية فقط",
+    "fr": "v1.4.0-alpha.14 Corpus de fixtures de rejeu d’adaptateur + matrice de couverture · Matrice de couverture uniquement"
   }
 }

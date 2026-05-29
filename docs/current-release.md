@@ -1,10 +1,10 @@
 # Current Release
 
-## v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA
+## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
 
 Status: built locally. Lock is pending green no-browser CI, green browser CI, hosted evidence, and canonical lock evidence bundle upload.
 
-Public release label: v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA.
+Public release label: v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix.
 
 Last locked adapter sandbox baseline: `v1.4.0-alpha.12 — Manual Provider Adapter Sandbox + Ephemeral Invocation Contract`.
 Last locked safety cockpit baseline: `v1.4.0-alpha.11 — Manual Execution Safety Cockpit + Session Ledger`.
@@ -58,13 +58,13 @@ No real OAuth. No production OAuth. No real API keys. No real token storage. No 
 
 ## Validation
 
-- Version: `1.4.0-alpha.13`
-- Required targeted checks: `tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs`, `tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs`, `tests/manual-execution-safety-cockpit-session-ledger-check.mjs`, `tests/limited-manual-live-execution-prototype-check.mjs`, `tests/controlled-execution-candidate-gate-check.mjs`, `tests/credential-boundary-runtime-drill-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`.
+- Version: `1.4.0-alpha.14`
+- Required targeted checks: `tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs`, `tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs`, `tests/manual-execution-safety-cockpit-session-ledger-check.mjs`, `tests/limited-manual-live-execution-prototype-check.mjs`, `tests/controlled-execution-candidate-gate-check.mjs`, `tests/credential-boundary-runtime-drill-check.mjs`, `tests/source-acquisition-control-surface-check.mjs`, `tests/provider-execution-mock-to-live-equivalence-check.mjs`.
 - Required CI: `npm run test:ci:no-browser`, `npm run test:ci:browser`.
 
 Feature surface is frozen except deterministic no-network adapter contract replay QA artifacts; no live execution, live fetching, or real credential handling is enabled.
 
-Machine tokens: runtime_capability_change=false; release_type=adapter-contract-test-bench-no-network-invocation-replay-qa; release_scope=no-network-adapter-contract-replay-qa-only; test:ci:browser required.
+Machine tokens: runtime_capability_change=false; release_type=adapter-replay-fixture-corpus-coverage-matrix; release_scope=adapter-replay-fixture-corpus-coverage-matrix-only; test:ci:browser required.
 Node 24 CI compatibility preserved.
 Release lock requires green no-browser CI, green browser CI, hosted-demo evidence, and canonical lock evidence bundle.
 
@@ -87,11 +87,11 @@ Stable baseline repetition: v1.3.0-rc.2 — RC Evidence Tightening + Release Not
 
 Release manifest tokens for packaging checks:
 package=jarbou3i-research-engine
-version=1.4.0-alpha.13
+version=1.4.0-alpha.14
 runtime_capability_change=false
-release_type=adapter-contract-test-bench-no-network-invocation-replay-qa
-release_scope=no-network-adapter-contract-replay-qa-only
+release_type=adapter-replay-fixture-corpus-coverage-matrix
+release_scope=adapter-replay-fixture-corpus-coverage-matrix-only
 test:ci:browser required
 Planning gate continuity: Root Manifest, Release Artifact Consolidation, Version Suite Registry, Package Script Compression, Fixture Registry payload compression, test organization audit, apply integrity, and changed-files-only discipline remain preserved.
 
-Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with v1.4.0-alpha.13.
+Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with v1.4.0-alpha.14.

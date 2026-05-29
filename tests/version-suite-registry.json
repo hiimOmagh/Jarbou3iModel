@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.13",
-  "release_title": "v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA",
+  "version_suite_registry_version": "1.4.0-alpha.14",
+  "release_title": "v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

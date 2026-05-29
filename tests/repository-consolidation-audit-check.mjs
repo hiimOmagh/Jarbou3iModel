@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.13';
-const CURRENT_TITLE = 'Adapter Contract Test Bench + No-Network Invocation Replay QA';
+const CURRENT_VERSION = '1.4.0-alpha.14';
+const CURRENT_TITLE = 'Adapter Replay Fixture Corpus + Coverage Matrix';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.13';
-const RELEASE = 'v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA';
-const PUBLIC_LABEL = 'v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA';
+const VERSION = '1.4.0-alpha.14';
+const RELEASE = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
+const PUBLIC_LABEL = 'v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
 const MOCK_TO_LIVE_BASELINE = 'v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence';
@@ -38,7 +38,7 @@ for (const token of ['source strategy continuity','release evidence continuity',
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'adapter-contract-test-bench-no-network-invocation-replay-qa');
+assert.equal(manifest.release_type, 'adapter-replay-fixture-corpus-coverage-matrix');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);
@@ -71,11 +71,11 @@ for (const token of ['manual_source','provider_proposed_source','future_controll
   assert.ok(current.includes(token) || readme.includes(token) || changelog.includes(token), `alpha.7 source acquisition continuity token missing: ${token}`);
 }
 
-assert.ok(index.includes('v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA'));
-assert.ok(render.includes('v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA'));
+assert.ok(index.includes('v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix'));
+assert.ok(render.includes('v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix'));
 assert.ok(render.includes('سطح التحكم في اكتساب المصادر'));
 assert.ok(render.includes('Surface de contrôle d’acquisition des sources'));
-assert.equal(render.includes('v1.4.0-alpha.13 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
+assert.equal(render.includes('v1.4.0-alpha.14 Pack de rejeu dry-run'), false, 'stale FR alpha.5 label must not return');
 assert.equal(render.includes('حزمة إعادة تشغيل التجربة الجافة'), false, 'stale AR alpha.5 label must not return');
 
 assert.equal(ciRegistry.ci_gate_registry_version, VERSION);
@@ -86,7 +86,7 @@ assert.equal(versionRegistry.release_title, RELEASE);
 for (const gate of ['no-browser','current-no-browser','privacy','provider','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/limited-manual-live-execution-prototype-check.mjs'), `${gate} must preserve limited manual live-execution prototype check`);
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'), `${gate} must preserve manual execution safety cockpit check`);
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs'), `${gate} must run manual provider adapter sandbox check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs'), `${gate} must run manual provider adapter sandbox check`);
 }
 for (const gate of ['no-browser','current-no-browser','source','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/source-acquisition-control-surface-check.mjs'), `${gate} must preserve source acquisition control surface check`);
@@ -98,8 +98,8 @@ assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/limited-manual-l
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/limited-manual-live-execution-prototype-check.mjs'), 'syntax matrix must cover alpha.10 check');
 assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/manual-execution-safety-cockpit-session-ledger.js'), 'syntax matrix must cover alpha.11 module');
 assert.ok(ciRegistry.syntax_matrix.files.includes('tests/manual-execution-safety-cockpit-session-ledger-check.mjs'), 'syntax matrix must cover alpha.11 check');
-assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/adapter-contract-test-bench-no-network-invocation-replay-qa.js'), 'syntax matrix must cover alpha.12 module');
-assert.ok(ciRegistry.syntax_matrix.files.includes('tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs'), 'syntax matrix must cover alpha.12 check');
+assert.ok(ciRegistry.syntax_matrix.files.includes('src/research/adapter-replay-fixture-corpus-coverage-matrix.js'), 'syntax matrix must cover alpha.12 module');
+assert.ok(ciRegistry.syntax_matrix.files.includes('tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs'), 'syntax matrix must cover alpha.12 check');
 
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','source_connector_behavior_changed']) {
   assert.equal(ciRegistry[key], false, `${key} must remain false in CI registry`);

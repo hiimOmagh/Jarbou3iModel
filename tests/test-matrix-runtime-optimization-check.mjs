@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.13';
-const TITLE = 'Adapter Contract Test Bench + No-Network Invocation Replay QA';
+const VERSION = '1.4.0-alpha.14';
+const TITLE = 'Adapter Replay Fixture Corpus + Coverage Matrix';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');

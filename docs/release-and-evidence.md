@@ -1,4 +1,4 @@
-Current release reference: v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA. No-network replay QA only; no default live execution, hidden network calls, real credentials, live/provider/OAuth/backend/source/storage expansion, credential persistence, or automatic source fetching. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked mock-to-live baseline: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
+Current release reference: v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix. No-network replay QA only; no default live execution, hidden network calls, real credentials, live/provider/OAuth/backend/source/storage expansion, credential persistence, or automatic source fetching. Locked stable baseline: v1.3.0 — Stable Manual Workflow Release. Locked mock-to-live baseline: v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence. Locked trace/readiness baseline: v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report.
 
 # Release and Evidence Policy
 
@@ -7,8 +7,8 @@ This document consolidates release and evidence policy previously scattered acro
 ## Current release
 
 - Package: `jarbou3i-research-engine`
-- Version: `1.4.0-alpha.13`
-- Release: `v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA`
+- Version: `1.4.0-alpha.14`
+- Release: `v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix`
 - Release type: manual execution safety cockpit + session ledger alpha
 - Runtime capability change: no
 - Provider behavior change: no
@@ -47,7 +47,7 @@ Hosted URL mode:
 HOSTED_DEMO_URL="https://example.github.io/jarbou3i-research-engine" PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser
 ```
 
-The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.4.0-alpha.13` and the evidence-review panel present.
+The screenshots must show no horizontal overflow, visible first-run/public-demo/hosted-demo/evidence-review panels, reachable provider/export states, and a metadata snapshot with app version `1.4.0-alpha.14` and the evidence-review panel present.
 
 The hosted-demo evidence artifact must contain one final `hosted-demo-metadata.json` with all four required captures, viewport dimensions, screenshot dimensions, byte counts, full-page status, and horizontal-overflow sanity. Partial per-test metadata overwrites remain blocked by no-browser gates.
 

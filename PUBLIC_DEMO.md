@@ -1,14 +1,14 @@
-# Public Demo — v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA
+# Public Demo — v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix
 
-## v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA
+## v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
 
 Adds deterministic provider adapter fixtures, request/response envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, cross-provider capability matrix, and a safe metadata-only replay ledger. It remains disabled by default and enables no real provider calls, no hidden network calls, no live source fetching, no real OAuth/token lifecycle, no credential persistence, no backend/storage expansion, no automatic source verification, no automatic signoff/export lock, and no publication permission claim. Requires hosted evidence and canonical lock evidence bundle before lock.
 
 
-The public demo remains a static/manual workflow surface. v1.4.0-alpha.13 adds an adapter contract test bench with deterministic fixtures, envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, and safe metadata-only replay ledger.
+The public demo remains a static/manual workflow surface. v1.4.0-alpha.14 adds an adapter contract test bench with deterministic fixtures, envelope diffing, no-network invocation replay, adapter failure UX rehearsal, safe transcript comparison, and safe metadata-only replay ledger.
 
-Public release label: v1.4.0-alpha.13 Adapter Contract Test Bench + No-Network Invocation Replay QA.
-Hosted demo metadata and hosted evidence must report v1.4.0-alpha.13 before lock.
+Public release label: v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix.
+Hosted demo metadata and hosted evidence must report v1.4.0-alpha.14 before lock.
 
 ## Demo boundary
 

@@ -17,7 +17,7 @@ vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync('src/research/onboarding.js', 'utf8'), sandbox);
 const onboarding = sandbox.window.Jarbou3iResearchModules.onboarding;
 
-assert.equal(pkg.version, '1.4.0-alpha.13');
+assert.equal(pkg.version, '1.4.0-alpha.14');
 assert.equal(onboarding.VERSION, '1.3.0');
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.ok(schema.required.includes('onboarding'), 'schema must require onboarding metadata');
