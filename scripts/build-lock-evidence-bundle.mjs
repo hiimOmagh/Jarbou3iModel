@@ -34,6 +34,22 @@ function maybeCopy(src, dst){ if(fs.existsSync(src)) copyFile(src,dst); }
 function fail(message){ console.error(`lock-evidence-bundle failed: ${message}`); process.exit(1); }
 function textIncludes(file, token){ return fs.existsSync(file) && fs.readFileSync(file,'utf8').includes(token); }
 function maxOverflow(rows){ return Math.max(0, ...rows.map((row)=>Number(row.horizontal_overflow_px || row.horizontal_overflow_max_px || 0))); }
+
+function validateArtifactIdentity({artifactKind, jobName, file}){
+  if(!fs.existsSync(file)) fail(`missing artifact identity ${artifactKind}: ${file}`);
+  const identity = readJson(file);
+  const expected = {
+    app_version: version,
+    run_id: runId,
+    git_sha: commitSha,
+    job_name: jobName,
+    artifact_kind: artifactKind
+  };
+  for(const [key, value] of Object.entries(expected)){
+    if(identity[key] !== value) fail(`${artifactKind} identity ${key} ${identity[key]} does not match ${value}`);
+  }
+  return identity;
+}
 function normalizeCaptureSanity(metadata){
   if(Array.isArray(metadata?.evidence_matrix?.captures)) return metadata.evidence_matrix.captures.map((row)=>({
     name: row.matrix_id || `${row.surface || 'surface'}-${row.locale || 'locale'}`,
@@ -134,6 +150,20 @@ const noBrowserLog=path.join(inputDir,'logs','no-browser.log');
 const playwrightInstallDepsLog=path.join(inputDir,'logs','playwright-install-deps.log');
 const playwrightInstallLog=path.join(inputDir,'logs','playwright-install.log');
 const browserLog=path.join(inputDir,'logs','browser.log');
+const expectedArtifactIdentities = [
+  {artifactKind:'no-browser-lock-evidence-log', jobName:'no-browser', file:path.join(inputDir,'logs','no-browser-lock-evidence-log.identity.json')},
+  {artifactKind:'playwright-install-deps-log', jobName:'browser', file:path.join(inputDir,'logs','playwright-install-deps-log.identity.json')},
+  {artifactKind:'playwright-install-log', jobName:'browser', file:path.join(inputDir,'logs','playwright-install-log.identity.json')},
+  {artifactKind:'browser-lock-evidence-log', jobName:'browser', file:path.join(inputDir,'logs','browser-lock-evidence-log.identity.json')},
+  {artifactKind:'hosted-demo-evidence', jobName:'browser', file:path.join(evidenceDir,'hosted-demo-evidence.identity.json')}
+];
+const artifactIdentities = expectedArtifactIdentities.map(validateArtifactIdentity);
+for (const identity of artifactIdentities) {
+  copyFile(
+    expectedArtifactIdentities.find((item)=>item.artifactKind === identity.artifact_kind).file,
+    path.join(bundleDir, 'ci', 'artifact-identities', `${identity.artifact_kind}.identity.json`)
+  );
+}
 for (const [name, file] of [
   ['no-browser.log', noBrowserLog],
   ['playwright-install-deps.log', playwrightInstallDepsLog],
@@ -155,7 +185,9 @@ if(!textIncludes(browserLog,'CI gate passed: browser')) fail('browser.log does n
 copyFile(path.join(root,'tests','ci-gate-registry.json'), path.join(bundleDir,'ci','ci-gate-registry-snapshot.json'));
 writeJson(path.join(bundleDir,'ci','package-version.json'), {name:pkg.name, version, release, public_version_label:publicVersionLabel, private:pkg.private === true});
 writeJson(path.join(bundleDir,'ci','workflow-run.json'), {run_id:runId, run_attempt:runAttempt, commit_sha:commitSha, branch});
-writeJson(path.join(bundleDir,'ci','test-summary.json'), {no_browser_log_present:true, playwright_install_deps_log_present:true, playwright_install_log_present:true, browser_log_present:true, matrix_rows:matrixSummary.actual_rows, normalized_capture_count:normalizedCaptures.length});
+writeJson(path.join(bundleDir,'ci','test-summary.json'), {no_browser_log_present:true, playwright_install_deps_log_present:true, playwright_install_log_present:true, artifact_identity_guard_present:true, artifact_identity_count:artifactIdentities.length, browser_log_present:true, matrix_rows:matrixSummary.actual_rows, normalized_capture_count:normalizedCaptures.length});
+const bundleIdentity = {app_version:version, run_id:runId, git_sha:commitSha, job_name:'lock-evidence-bundle', artifact_kind:'canonical-lock-evidence-bundle', run_attempt:runAttempt, ref_name:branch};
+writeJson(path.join(bundleDir,'lock-evidence-bundle.identity.json'), bundleIdentity);
 
 const manifest={
   evidence_manifest_version: version,
@@ -168,6 +200,7 @@ const manifest={
   commit_sha: commitSha,
   branch,
   bundle_name: bundleName,
+  artifact_identity_guard:{ status:'passed', required_identity_count:expectedArtifactIdentities.length, verified_identity_count:artifactIdentities.length, artifact_kinds:artifactIdentities.map((identity)=>identity.artifact_kind), bundle_identity_file:'lock-evidence-bundle.identity.json', identity_dir:'ci/artifact-identities' },
   no_browser:{ status:'passed', log_file:'logs/no-browser.log' },
   browser:{ status:'passed', playwright_install_deps_log_file:'logs/playwright-install-deps.log', playwright_install_log_file:'logs/playwright-install.log', log_file:'logs/browser.log' },
   hosted_demo:{ evidence_review_version:metadata.evidence_review_version, capture_polish_version:metadata.capture_polish_version, page_app_version:pageVersion, capture_count:metadata.capture_count, all_required_captures_present:metadata.all_required_captures_present, visual_artifact_guard_required:metadata.visual_artifact_guard_required, capture_settle_required:metadata.capture_settle_required, max_horizontal_overflow_px:maxOverflow(normalizedCaptures), all_visual_artifact_guards_passed:normalizedCaptures.every((capture)=>capture.visual_artifact_guard_passed === true), files:requiredHostedFiles },

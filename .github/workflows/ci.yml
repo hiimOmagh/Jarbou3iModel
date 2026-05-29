@@ -39,6 +39,17 @@ jobs:
           rm -rf "$RUNNER_TEMP/lock-evidence-input" "$RUNNER_TEMP/lock-evidence-bundle"
           rm -rf "$GITHUB_WORKSPACE/ci-artifacts"
           mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs"
+          cat > "$RUNNER_TEMP/lock-evidence-input/logs/no-browser-lock-evidence-log.identity.json" <<EOF
+          {
+            "app_version": "1.4.0-alpha.13",
+            "run_id": "${GITHUB_RUN_ID}",
+            "git_sha": "${GITHUB_SHA}",
+            "job_name": "no-browser",
+            "artifact_kind": "no-browser-lock-evidence-log",
+            "run_attempt": "${GITHUB_RUN_ATTEMPT}",
+            "ref_name": "${GITHUB_REF_NAME}"
+          }
+          EOF
           set +e
           npm run test:ci:no-browser > "$RUNNER_TEMP/lock-evidence-input/logs/no-browser.log" 2>&1
           status=$?
@@ -49,7 +60,9 @@ jobs:
         if: always()
         with:
           name: no-browser-lock-evidence-log
-          path: ${{ runner.temp }}/lock-evidence-input/logs/no-browser.log
+          path: |
+            ${{ runner.temp }}/lock-evidence-input/logs/no-browser.log
+            ${{ runner.temp }}/lock-evidence-input/logs/no-browser-lock-evidence-log.identity.json
 
   browser:
     runs-on: ubuntu-latest
@@ -72,6 +85,35 @@ jobs:
           rm -rf "$GITHUB_WORKSPACE/ci-artifacts"
           rm -rf "$GITHUB_WORKSPACE/test-results/hosted-demo-evidence"
           mkdir -p "$RUNNER_TEMP/lock-evidence-input/logs" "$RUNNER_TEMP/hosted-demo-evidence"
+          for artifact_kind in playwright-install-deps-log playwright-install-log browser-lock-evidence-log; do
+            case "$artifact_kind" in
+              playwright-install-deps-log) job_name="browser" ;;
+              playwright-install-log) job_name="browser" ;;
+              browser-lock-evidence-log) job_name="browser" ;;
+            esac
+            cat > "$RUNNER_TEMP/lock-evidence-input/logs/${artifact_kind}.identity.json" <<EOF
+          {
+            "app_version": "1.4.0-alpha.13",
+            "run_id": "${GITHUB_RUN_ID}",
+            "git_sha": "${GITHUB_SHA}",
+            "job_name": "${job_name}",
+            "artifact_kind": "${artifact_kind}",
+            "run_attempt": "${GITHUB_RUN_ATTEMPT}",
+            "ref_name": "${GITHUB_REF_NAME}"
+          }
+          EOF
+          done
+          cat > "$RUNNER_TEMP/hosted-demo-evidence/hosted-demo-evidence.identity.json" <<EOF
+          {
+            "app_version": "1.4.0-alpha.13",
+            "run_id": "${GITHUB_RUN_ID}",
+            "git_sha": "${GITHUB_SHA}",
+            "job_name": "browser",
+            "artifact_kind": "hosted-demo-evidence",
+            "run_attempt": "${GITHUB_RUN_ATTEMPT}",
+            "ref_name": "${GITHUB_REF_NAME}"
+          }
+          EOF
           printf 'Browser gate pending: Playwright install has not completed yet.\n' > "$RUNNER_TEMP/lock-evidence-input/logs/browser.log"
           printf 'Playwright system dependency install pending.\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install-deps.log"
           printf 'Playwright browser binary install pending.\n' > "$RUNNER_TEMP/lock-evidence-input/logs/playwright-install.log"
@@ -109,7 +151,9 @@ jobs:
         if: always()
         with:
           name: playwright-install-deps-log
-          path: ${{ runner.temp }}/lock-evidence-input/logs/playwright-install-deps.log
+          path: |
+            ${{ runner.temp }}/lock-evidence-input/logs/playwright-install-deps.log
+            ${{ runner.temp }}/lock-evidence-input/logs/playwright-install-deps-log.identity.json
       - name: Install Playwright browser with evidence log
         shell: bash
         timeout-minutes: 10
@@ -138,7 +182,9 @@ jobs:
         if: always()
         with:
           name: playwright-install-log
-          path: ${{ runner.temp }}/lock-evidence-input/logs/playwright-install.log
+          path: |
+            ${{ runner.temp }}/lock-evidence-input/logs/playwright-install.log
+            ${{ runner.temp }}/lock-evidence-input/logs/playwright-install-log.identity.json
       - name: Run browser gate with lock-evidence log
         shell: bash
         run: |
@@ -171,7 +217,9 @@ jobs:
         if: always()
         with:
           name: browser-lock-evidence-log
-          path: ${{ runner.temp }}/lock-evidence-input/logs/browser.log
+          path: |
+            ${{ runner.temp }}/lock-evidence-input/logs/browser.log
+            ${{ runner.temp }}/lock-evidence-input/logs/browser-lock-evidence-log.identity.json
 
   lock-evidence-bundle:
     runs-on: ubuntu-latest
@@ -183,6 +231,17 @@ jobs:
         shell: bash
         run: |
           mkdir -p "$RUNNER_TEMP/lock-evidence-bundle-diagnostic"
+          cat > "$RUNNER_TEMP/lock-evidence-bundle-diagnostic/lock-evidence-bundle-decision.identity.json" <<EOF
+          {
+            "app_version": "1.4.0-alpha.13",
+            "run_id": "${GITHUB_RUN_ID}",
+            "git_sha": "${GITHUB_SHA}",
+            "job_name": "lock-evidence-bundle",
+            "artifact_kind": "lock-evidence-bundle-decision",
+            "run_attempt": "${GITHUB_RUN_ATTEMPT}",
+            "ref_name": "${GITHUB_REF_NAME}"
+          }
+          EOF
           {
             echo "lock-evidence-bundle decision"
             echo "no-browser result: ${{ needs.no-browser.result }}"
@@ -196,7 +255,7 @@ jobs:
         if: always()
         with:
           name: lock-evidence-bundle-decision
-          path: ${{ runner.temp }}/lock-evidence-bundle-diagnostic/lock-evidence-bundle-decision.txt
+          path: ${{ runner.temp }}/lock-evidence-bundle-diagnostic
       - uses: actions/checkout@v6
         if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
       - uses: actions/setup-node@v6

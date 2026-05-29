@@ -50,7 +50,7 @@ for (const token of [
   '${{ runner.temp }}/lock-evidence-input/logs',
   '${{ runner.temp }}/hosted-demo-evidence',
   '${{ runner.temp }}/lock-evidence-bundle',
-  '${{ runner.temp }}/lock-evidence-bundle-diagnostic/lock-evidence-bundle-decision.txt',
+  '${{ runner.temp }}/lock-evidence-bundle-diagnostic',
   'LOCK_EVIDENCE_INPUT_DIR: ${{ runner.temp }}/lock-evidence-input',
   'HOSTED_DEMO_EVIDENCE_DIR: ${{ runner.temp }}/hosted-demo-evidence',
   'LOCK_EVIDENCE_BUNDLE_DIR: ${{ runner.temp }}/lock-evidence-bundle'
@@ -112,10 +112,26 @@ const logs = path.join(tmp, 'lock-evidence-input', 'logs');
 const out = path.join(tmp, 'bundle-output');
 fs.mkdirSync(hosted, {recursive:true});
 fs.mkdirSync(logs, {recursive:true});
+function writeIdentity(file, artifactKind, jobName){
+  fs.writeFileSync(file, JSON.stringify({
+    app_version: VERSION,
+    run_id: '123456',
+    git_sha: 'abc123',
+    job_name: jobName,
+    artifact_kind: artifactKind,
+    run_attempt: '1',
+    ref_name: 'rc2-check'
+  }, null, 2) + '\n');
+}
 fs.writeFileSync(path.join(logs, 'no-browser.log'), `Registry: ${RELEASE}\nCI gate passed: no-browser\nchecks=101\n`);
 fs.writeFileSync(path.join(logs, 'playwright-install-deps.log'), 'Playwright install-deps started: timeout 10m npx playwright install-deps chromium\n');
 fs.writeFileSync(path.join(logs, 'playwright-install.log'), 'Playwright browser install started: timeout 8m npx playwright install chromium\n');
 fs.writeFileSync(path.join(logs, 'browser.log'), `Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser\nRegistry: ${RELEASE}\nCI gate passed: browser\nchecks=13\n`);
+writeIdentity(path.join(logs, 'no-browser-lock-evidence-log.identity.json'), 'no-browser-lock-evidence-log', 'no-browser');
+writeIdentity(path.join(logs, 'playwright-install-deps-log.identity.json'), 'playwright-install-deps-log', 'browser');
+writeIdentity(path.join(logs, 'playwright-install-log.identity.json'), 'playwright-install-log', 'browser');
+writeIdentity(path.join(logs, 'browser-lock-evidence-log.identity.json'), 'browser-lock-evidence-log', 'browser');
+writeIdentity(path.join(hosted, 'hosted-demo-evidence.identity.json'), 'hosted-demo-evidence', 'browser');
 const matrixRows = [];
 for (const locale of matrixConfig.locales) {
   fs.mkdirSync(path.join(hosted, locale), {recursive:true});

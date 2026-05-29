@@ -67,6 +67,7 @@
         "tests/node24-ci-compat-check.mjs",
         "tests/release-evidence-repo-hygiene-check.mjs",
         "tests/ci-result-review-browser-evidence-audit-check.mjs",
+        "tests/lock-evidence-artifact-identity-guard-check.mjs",
         "tests/repo-hygiene-execution-stale-docs-check.mjs",
         "tests/public-demo-release-lock-check.mjs",
         "tests/release-apply-integrity-check.mjs",
@@ -207,6 +208,7 @@
         "tests/public-demo-release-candidate-check.mjs",
         "tests/stable-consolidation-public-surface-check.mjs",
         "tests/canonical-lock-evidence-bundle-check.mjs",
+        "tests/lock-evidence-artifact-identity-guard-check.mjs",
         "tests/evidence-matrix-canonical-bundle-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
@@ -457,6 +459,7 @@
         "tests/node24-ci-compat-check.mjs",
         "tests/release-evidence-repo-hygiene-check.mjs",
         "tests/ci-result-review-browser-evidence-audit-check.mjs",
+        "tests/lock-evidence-artifact-identity-guard-check.mjs",
         "tests/repo-hygiene-execution-stale-docs-check.mjs",
         "tests/public-demo-release-lock-check.mjs",
         "tests/release-apply-integrity-check.mjs",
@@ -727,7 +730,8 @@
       "src/research/manual-provider-adapter-sandbox-ephemeral-invocation-contract.js",
       "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
       "src/research/adapter-contract-test-bench-no-network-invocation-replay-qa.js",
-      "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs"
+      "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
+      "tests/lock-evidence-artifact-identity-guard-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"

@@ -108,10 +108,26 @@ const logs = path.join(tmp, 'lock-evidence-input', 'logs');
 const out = path.join(tmp, 'bundle-output');
 fs.mkdirSync(hosted, {recursive:true});
 fs.mkdirSync(logs, {recursive:true});
+function writeIdentity(file, artifactKind, jobName){
+  fs.writeFileSync(file, JSON.stringify({
+    app_version: VERSION,
+    run_id: '654321',
+    git_sha: 'abc123',
+    job_name: jobName,
+    artifact_kind: artifactKind,
+    run_attempt: '1',
+    ref_name: 'rc2-fix2'
+  }, null, 2) + '\n');
+}
 fs.writeFileSync(path.join(logs, 'no-browser.log'), `Registry: v${VERSION} — ${TITLE}\nCI gate passed: no-browser\nchecks=101\n`);
 fs.writeFileSync(path.join(logs, 'playwright-install-deps.log'), 'Playwright install-deps started: timeout 10m npx playwright install-deps chromium\n');
 fs.writeFileSync(path.join(logs, 'playwright-install.log'), 'Playwright browser install started: timeout 8m npx playwright install chromium\n');
 fs.writeFileSync(path.join(logs, 'browser.log'), `Browser gate started: HOSTED_DEMO_EVIDENCE_DIR with PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser\nRegistry: v${VERSION} — ${TITLE}\nCI gate passed: browser\nchecks=13\n`);
+writeIdentity(path.join(logs, 'no-browser-lock-evidence-log.identity.json'), 'no-browser-lock-evidence-log', 'no-browser');
+writeIdentity(path.join(logs, 'playwright-install-deps-log.identity.json'), 'playwright-install-deps-log', 'browser');
+writeIdentity(path.join(logs, 'playwright-install-log.identity.json'), 'playwright-install-log', 'browser');
+writeIdentity(path.join(logs, 'browser-lock-evidence-log.identity.json'), 'browser-lock-evidence-log', 'browser');
+writeIdentity(path.join(hosted, 'hosted-demo-evidence.identity.json'), 'hosted-demo-evidence', 'browser');
 const rows = [];
 for (const locale of config.locales) {
   fs.mkdirSync(path.join(hosted, locale), {recursive:true});
@@ -149,6 +165,14 @@ assert.equal(manifest.evidence_matrix.language_purity_passed, true);
 assert.equal(manifest.evidence_matrix.horizontal_overflow_max_px, 0);
 assert.equal(manifest.exports.export_pack_v3_valid, true);
 assert.equal(manifest.bundle_validation.lockable, true);
+assert.equal(manifest.artifact_identity_guard.status, 'passed');
+assert.equal(manifest.artifact_identity_guard.required_identity_count, 5);
+assert.equal(manifest.artifact_identity_guard.verified_identity_count, 5);
+assert.ok(manifest.artifact_identity_guard.artifact_kinds.includes('hosted-demo-evidence'));
+assert.ok(fs.existsSync(path.join(bundleDir, 'lock-evidence-bundle.identity.json')));
+assert.ok(fs.existsSync(path.join(bundleDir, 'ci', 'artifact-identities', 'no-browser-lock-evidence-log.identity.json')));
+assert.ok(fs.existsSync(path.join(bundleDir, 'ci', 'artifact-identities', 'browser-lock-evidence-log.identity.json')));
+assert.ok(fs.existsSync(path.join(bundleDir, 'ci', 'artifact-identities', 'hosted-demo-evidence.identity.json')));
 assert.equal(manifest.browser.playwright_install_deps_log_file, 'logs/playwright-install-deps.log');
 assert.equal(manifest.browser.playwright_install_log_file, 'logs/playwright-install.log');
 assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'playwright-install-deps.log')));
