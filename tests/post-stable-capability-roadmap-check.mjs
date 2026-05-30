@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.26';
-const CURRENT_TITLE = 'Adapter Replay Insight UX + Operator Decision Surface';
+const CURRENT_VERSION = '1.4.0-alpha.27';
+const CURRENT_TITLE = 'Adapter Replay Decision Drilldown + Evidence Trace Links';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const read = (file) => fs.readFileSync(file, 'utf8');

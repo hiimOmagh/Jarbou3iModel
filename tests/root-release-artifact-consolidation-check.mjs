@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
 
-const VERSION = '1.4.0-alpha.26';
-const TITLE = 'Adapter Replay Insight UX + Operator Decision Surface';
+const VERSION = '1.4.0-alpha.27';
+const TITLE = 'Adapter Replay Decision Drilldown + Evidence Trace Links';
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

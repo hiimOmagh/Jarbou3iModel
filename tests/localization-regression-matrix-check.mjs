@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface', 'English public version label must identify v1.4.0-alpha.26');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.26 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل', 'Arabic public version label must identify v1.4.0-alpha.26');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.26 Insights de rejeu adaptateur + surface de décision opérateur', 'French public version label must identify v1.4.0-alpha.26');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links', 'English public version label must identify v1.4.0-alpha.27');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.27 تفصيل قرار إعادة التشغيل وروابط تتبع الأدلة', 'Arabic public version label must identify v1.4.0-alpha.27');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.27 Drilldown de décision de rejeu + liens de trace preuve', 'French public version label must identify v1.4.0-alpha.27');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
@@ -49,7 +49,7 @@ const hostedDemoBodies = [...renderPublicLabels.matchAll(/hostedDemoVerification
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل جاهزة لأدلة الإصدار'), 'Arabic current-release description must identify alpha.26 adapter replay insight release');
+  assert.ok(body.includes('تفصيل قرار إعادة التشغيل وروابط تتبع الأدلة جاهز لأدلة الإصدار'), 'Arabic current-release description must identify alpha.27 adapter replay decision drilldown release');
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
     'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',

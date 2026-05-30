@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.26",
-  "internal_build_version": "1.4.0-alpha.26",
-  "public_version_label": "v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface",
+  "evidence_matrix_config_version": "1.4.0-alpha.27",
+  "internal_build_version": "1.4.0-alpha.27",
+  "public_version_label": "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Adapter Replay Insight UX + Operator Decision Surface"
+        "Adapter Replay Decision Drilldown + Evidence Trace Links"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -254,8 +254,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface",
-    "ar": "v1.4.0-alpha.26 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل",
-    "fr": "v1.4.0-alpha.26 Insights de rejeu adaptateur + surface de décision opérateur"
+    "en": "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
+    "ar": "v1.4.0-alpha.27 تفصيل قرار إعادة التشغيل وروابط تتبع الأدلة",
+    "fr": "v1.4.0-alpha.27 Drilldown de décision de rejeu + liens de trace preuve"
   }
 }

@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.26';
-const CURRENT_TITLE = 'Adapter Replay Insight UX + Operator Decision Surface';
+const CURRENT_VERSION = '1.4.0-alpha.27';
+const CURRENT_TITLE = 'Adapter Replay Decision Drilldown + Evidence Trace Links';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

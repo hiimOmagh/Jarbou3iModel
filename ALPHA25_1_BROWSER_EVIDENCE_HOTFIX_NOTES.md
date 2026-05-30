@@ -1,4 +1,4 @@
-# v1.4.0-alpha.26.1 — Browser Evidence Contract Hotfix
+# v1.4.0-alpha.27.1 — Browser Evidence Contract Hotfix
 
 This hotfix removes a stale, manually duplicated Arabic expected-token list from `tests/hosted-demo-browser-evidence.spec.mjs`.
 
