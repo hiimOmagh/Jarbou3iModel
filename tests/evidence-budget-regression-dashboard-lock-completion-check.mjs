@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.19';
-const RELEASE = 'v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger';
-const PUBLIC_LABEL = 'v1.4.0-alpha.19 Evidence Dashboard Decision Ledger';
+const VERSION = '1.4.0-alpha.20';
+const RELEASE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
+const PUBLIC_LABEL = 'v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit';
 const LOCKED_ALPHA16 = 'v1.4.0-alpha.16 — Alpha.15 Lock Completion + Evidence Surface Budget Enforcement';
 const LOCKED_ALPHA15 = 'v1.4.0-alpha.15 — Roadmap Lock Completion + Manual Provider Adapter UX Compression';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
@@ -83,7 +83,7 @@ assert.equal(/alpha\.16[^\n.]*Lock is pending/i.test(current), false, 'current r
 assert.equal(/alpha\.15[^\n.]*lock pending/i.test(current), false, 'current release must not contain alpha.15 lock pending wording');
 assert.equal(/Status: built locally\. Lock is pending/.test(current), false, 'stale local-build lock wording must not remain');
 assert.equal((roadmap.match(/Current candidate/g) || []).length, 1, 'roadmap must have exactly one current candidate section');
-assert.ok(!roadmap.includes('v1.4.0-alpha.16 — Evidence Dashboard Decision Ledger'), 'roadmap must not reuse alpha.16 as current candidate');
+assert.ok(!roadmap.includes('v1.4.0-alpha.16 — Evidence Decision Ledger Handoff Audit'), 'roadmap must not reuse alpha.16 as current candidate');
 
 const alpha15Sections = [...changelog.matchAll(/^## v1\.4\.0-alpha\.15 —/gm)];
 assert.equal(alpha15Sections.length, 1, 'CHANGELOG must have exactly one alpha.15 section');
@@ -134,7 +134,7 @@ assert.equal(budget.credential_persistence_allowed, false);
 
 assert.ok(index.includes(PUBLIC_LABEL));
 assert.ok(helpers.includes(PUBLIC_LABEL));
-assert.ok(index.includes('content="1.4.0-alpha.19"'));
+assert.ok(index.includes('content="1.4.0-alpha.20"'));
 assert.ok(index.includes('src="src/research/evidence-budget-regression-dashboard-evidence-runtime-budget.js" defer'));
 assert.ok(index.includes('v1.4.0-alpha.14 Adapter Replay Fixture Corpus + Coverage Matrix'));
 
@@ -147,8 +147,8 @@ for (const gate of ['no-browser','current-no-browser','provider','release']) {
 assert.ok(ciRegistry.syntax_matrix.files.includes(TARGET_CHECK));
 assert.ok(ciRegistry.syntax_matrix.files.includes(TARGET_MODULE));
 assert.ok(ciRegistry.syntax_matrix.files.includes(LEGACY_BUDGET_MODULE));
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.19_${{ github.run_id }}'));
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.19'"));
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.20_${{ github.run_id }}'));
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.20'"));
 
 const forbidden = [
   'fetch(', 'XMLHttpRequest', 'WebSocket', 'navigator.sendBeacon',

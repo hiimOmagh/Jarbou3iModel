@@ -1,8 +1,8 @@
+## v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit
+
+Status: current candidate. Lock pending CI/evidence/bundle review. Public label: v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit. Locked baseline: v1.4.0-alpha.19 — Evidence Dashboard Decision Ledger. Alpha.19 evidence: Run ID 26668213509; commit 2b3665b66861d631e779e9133d77399d0560d827; no-browser 148; browser 17; matrix 39/39; AR/FR/EN/artifact/bundle passed. Scope: static handoff audit only; states cover ready/warn/blocked/evidence-required. Runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.
+
 # Release History
-
-## v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger
-
-Locked alpha.18 baseline: `v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability`; Run ID `26660959763`; commit `4e2c852fa0568fcc12881d7565ba9fd50844e0c4`; no-browser 147; browser 17; evidence matrix 39/39. Decision ledger added; no runtime/provider/backend/source/storage expansion.
 
 ## v1.4.0-alpha.17 — Alpha.16 Lock Completion + Evidence Budget Regression Dashboard
 
@@ -3451,5 +3451,3 @@ Stable manual workflow release and release notes finalization after the locked v
 
 The RC preserves the manual source-to-brief chain: source-to-claim gap closure queue, signed export handoff metadata, lock-ledger review surface, operator signoff state, export lock ledger, final brief, evidence appendix, contradiction/falsifier appendix, source-gap appendix, and operator signoff/lock-ledger appendix. Supporting audit files remain docs/technical-debt-ledger.md and docs/source-refactor-readiness-audit.md. Coverage remains tests/language-description-audit-check.mjs. No source-file refactor yet. No runtime behavior change. Hosted evidence capture retains waitForEvidenceStable, assertNoTransientArtifacts, capture_settled, and visual_artifact_guard_passed.
 <!-- /release-file:v1.3.0-evidence-pack-export-v3-brief-traceability.md -->
-
-

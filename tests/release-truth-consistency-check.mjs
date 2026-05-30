@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.19';
-const RELEASE = 'v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger';
-const PUBLIC_LABEL = 'v1.4.0-alpha.19 Evidence Dashboard Decision Ledger';
+const VERSION = '1.4.0-alpha.20';
+const RELEASE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
+const PUBLIC_LABEL = 'v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';

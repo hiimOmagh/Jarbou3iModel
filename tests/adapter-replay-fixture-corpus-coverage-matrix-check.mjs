@@ -162,7 +162,7 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 assert.ok(registry.syntax_matrix.files.includes(NEW_MODULE), 'syntax matrix must cover alpha.14 module');
 assert.ok(registry.syntax_matrix.files.includes(NEW_CHECK), 'syntax matrix must cover alpha.14 check');
 assert.ok(['adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget'].includes(registry.runtime_optimization.optimization_scope));
-assert.ok([VERSION,'1.4.0-alpha.19'].includes(registry.runtime_optimization.version));
+assert.ok([VERSION,'1.4.0-alpha.20'].includes(registry.runtime_optimization.version));
 
 console.log('Adapter replay fixture corpus + coverage matrix checks passed.');
 process.exit(0);

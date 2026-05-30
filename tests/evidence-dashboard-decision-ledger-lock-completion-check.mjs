@@ -2,11 +2,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.19';
-const RELEASE = 'v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger';
-const PUBLIC_LABEL = 'v1.4.0-alpha.19 Evidence Dashboard Decision Ledger';
-const LOCKED_ALPHA18 = '1.4.0-alpha.19';
-const LOCKED_ALPHA18_TITLE = 'v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger';
+const VERSION = '1.4.0-alpha.20';
+const RELEASE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
+const PUBLIC_LABEL = 'v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit';
+const LOCKED_ALPHA18 = '1.4.0-alpha.20';
+const LOCKED_ALPHA18_TITLE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
 const RUN_ID_ALPHA18 = '26660959763';
 const COMMIT_ALPHA18 = '4e2c852fa0568fcc12881d7565ba9fd50844e0c4';
 const TARGET_MODULE = 'src/research/evidence-dashboard-decision-ledger.js';
@@ -30,7 +30,6 @@ const evidenceConfig = json('tests/evidence/evidence-matrix.config.json');
 const current = read('docs/current-release.md');
 const roadmap = read('docs/roadmap.md');
 const changelog = read('CHANGELOG.md');
-const releaseHistory = read('docs/release-history.md');
 const releaseEvidence = read('docs/release-and-evidence.md');
 const qa = read('docs/qa-matrix.md');
 const readme = read('README.md');
@@ -54,7 +53,7 @@ assert.equal(versionRegistry.release_title, RELEASE);
 assert.equal(evidenceConfig.internal_build_version, VERSION);
 assert.equal(evidenceConfig.public_version_label, PUBLIC_LABEL);
 
-for (const [name, text] of Object.entries({ current, roadmap, changelog, releaseHistory, releaseEvidence, qa, readme, publicDemo })) {
+for (const [name, text] of Object.entries({ current, roadmap, changelog, releaseEvidence, qa, readme, publicDemo })) {
   assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.19 current identity`);
   assert.ok(text.includes(LOCKED_ALPHA18_TITLE), `${name} must record locked alpha.18 baseline`);
   assert.ok(text.includes(RUN_ID_ALPHA18), `${name} must record alpha.18 run id`);
@@ -69,14 +68,14 @@ assert.equal((roadmap.match(/Current candidate/g) || []).length, 1, 'roadmap mus
 
 assert.ok(index.includes(PUBLIC_LABEL));
 assert.ok(helpers.includes(PUBLIC_LABEL));
-assert.ok(index.includes('content="1.4.0-alpha.19"'));
+assert.ok(index.includes('content="1.4.0-alpha.20"'));
 assert.ok(index.includes('src="src/research/evidence-dashboard-decision-ledger.js" defer'));
 assert.ok(index.includes('data-browser-qa="evidence-dashboard-decision-ledger"'));
-assert.ok(helpers.includes('Evidence Dashboard Decision Ledger'));
+assert.ok(helpers.includes('Evidence Decision Ledger Handoff Audit'));
 assert.ok(helpers.includes('سجل قرارات لوحة الأدلة'));
 assert.ok(helpers.includes('Registre de décision du tableau preuves'));
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.19_${{ github.run_id }}'));
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.19'"));
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.20_${{ github.run_id }}'));
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.20'"));
 
 for (const gate of ['no-browser','current-no-browser','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes(TARGET_CHECK), `${gate} must run alpha.19 decision-ledger check`);

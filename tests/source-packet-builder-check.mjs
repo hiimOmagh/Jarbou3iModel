@@ -26,7 +26,7 @@ vm.runInContext(builderSource, context, {filename:'src/research/source-packet-bu
 const scorer = context.window.Jarbou3iResearchModules.evidenceScorer;
 const builder = context.window.Jarbou3iResearchModules.sourcePacketBuilder;
 
-assert.equal(pkg.version, '1.4.0-alpha.19');
+assert.equal(pkg.version, '1.4.0-alpha.20');
 assert.equal(builder.VERSION, '1.3.0');
 assert.equal(builder.BUILDER_VERSION, 'source_packet_builder.v1');
 assert.equal(builder.PACKET_SCHEMA, 'manual_source_packet.v1');

@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.19",
-  "milestone": "v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger",
+  "version": "1.4.0-alpha.20",
+  "milestone": "v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit",
   "changed_files": [
     ".github/workflows/ci.yml",
     "package.json",

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.19';
-const RELEASE = 'v1.4.0-alpha.19 — Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger';
-const PUBLIC_LABEL = 'v1.4.0-alpha.19 Evidence Dashboard Decision Ledger';
+const VERSION = '1.4.0-alpha.20';
+const RELEASE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
+const PUBLIC_LABEL = 'v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_RC_BASELINE = 'v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization';
@@ -53,8 +53,8 @@ assert.ok(roadmap.includes(RELEASE));
 assert.ok(roadmap.includes(LOCKED_ALPHA14));
 assert.ok(!roadmap.includes('No alpha.14 should start'), 'roadmap must not retain alpha.14 blocker after lock');
 
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.19_${{ github.run_id }}'), 'CI workflow must upload alpha.15 lock bundle');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.19'"), 'CI workflow must assert alpha.15 evidence matrix version');
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.20_${{ github.run_id }}'), 'CI workflow must upload alpha.15 lock bundle');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.20'"), 'CI workflow must assert alpha.15 evidence matrix version');
 
 for (const gate of ['no-browser', 'current-no-browser', 'release']) {
   assert.ok(registry.gates[gate].node_checks.includes('tests/stable-manual-workflow-release-check.mjs'), `${gate} must run baseline continuity check`);

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.19",
-  "internal_build_version": "1.4.0-alpha.19",
-  "public_version_label": "v1.4.0-alpha.19 Evidence Dashboard Decision Ledger",
+  "evidence_matrix_config_version": "1.4.0-alpha.20",
+  "internal_build_version": "1.4.0-alpha.20",
+  "public_version_label": "v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Evidence Dashboard Decision Ledger"
+        "Evidence Decision Ledger Handoff Audit"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -42,7 +42,8 @@
         "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر",
         "ضغط تجربة محوّل المزوّد اليدوي",
         "قابلية عمل لوحة ميزانية الأدلة",
-        "سجل قرارات لوحة الأدلة"
+        "سجل قرارات لوحة الأدلة",
+        "تدقيق تسليم سجل قرارات الأدلة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -64,7 +65,8 @@
         "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère",
         "Compression UX de l’adaptateur fournisseur manuel",
         "Actionnabilité du tableau budget preuves",
-        "Registre de décision du tableau preuves"
+        "Registre de décision du tableau preuves",
+        "Audit de remise du registre de décision preuves"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -250,8 +252,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.19 Evidence Dashboard Decision Ledger",
-    "ar": "v1.4.0-alpha.19 سجل قرارات لوحة الأدلة",
-    "fr": "v1.4.0-alpha.19 Registre de décision du tableau preuves"
+    "en": "v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit",
+    "ar": "v1.4.0-alpha.20 تدقيق تسليم سجل قرارات الأدلة",
+    "fr": "v1.4.0-alpha.20 Audit de remise du registre de décision preuves"
   }
 }

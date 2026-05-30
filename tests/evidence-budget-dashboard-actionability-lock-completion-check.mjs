@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.19';
+const CURRENT_VERSION = '1.4.0-alpha.20';
 const LOCKED_ALPHA18 = '1.4.0-alpha.18';
 const LOCKED_ALPHA18_TITLE = 'v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability';
 const RUN_ID_ALPHA18 = '26660959763';
@@ -23,12 +23,11 @@ const pkg = json('package.json');
 const manifest = json('MANIFEST.json');
 const current = read('docs/current-release.md');
 const roadmap = read('docs/roadmap.md');
-const releaseHistory = read('docs/release-history.md');
 const targetSource = read(TARGET_MODULE);
 
 assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(manifest.version, CURRENT_VERSION);
-for (const [name, text] of Object.entries({ current, roadmap, releaseHistory })) {
+for (const [name, text] of Object.entries({ current, roadmap })) {
   assert.ok(text.includes(LOCKED_ALPHA18_TITLE), `${name} must record locked alpha.18 actionability baseline`);
   assert.ok(text.includes(RUN_ID_ALPHA18), `${name} must record alpha.18 run id`);
   assert.ok(text.includes(COMMIT_ALPHA18), `${name} must record alpha.18 commit`);

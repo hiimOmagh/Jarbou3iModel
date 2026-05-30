@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.19",
-  "release_title": "v1.4.0-alpha.19 \u2014 Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger",
+  "version_suite_registry_version": "1.4.0-alpha.20",
+  "release_title": "v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1855,11 +1855,11 @@
         "tests/release-truth-consistency-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.19 roadmap lock completion and evidence budget regression dashboard gate passed."
+      "former_console_message": "v1.4.0-alpha.20 roadmap lock completion and evidence budget regression dashboard gate passed."
     },
     {
       "id": "v140-alpha16",
-      "title": "v1.4.0-alpha.19 \u2014 Alpha.18 Lock Completion + Evidence Dashboard Decision Ledger",
+      "title": "v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit",
       "former_file": null,
       "preserved_as": "registry_entry",
       "checks": [
@@ -1869,7 +1869,7 @@
         "tests/release-truth-consistency-check.mjs"
       ],
       "check_count": 4,
-      "former_console_message": "v1.4.0-alpha.19 evidence budget regression dashboard and alpha.16 lock completion gate passed."
+      "former_console_message": "v1.4.0-alpha.20 evidence budget regression dashboard and alpha.16 lock completion gate passed."
     }
   ]
 }

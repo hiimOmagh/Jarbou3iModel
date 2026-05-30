@@ -1,19 +1,21 @@
-/* Jarbou3i Research Engine evidence dashboard decision ledger v1.4.0-alpha.20. */
-/* Static metadata-only review ledger. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
+/* Jarbou3i Research Engine evidence decision ledger handoff audit v1.4.0-alpha.20. */
+/* Static metadata-only handoff audit. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
   const VERSION = '1.4.0-alpha.20';
   const MILESTONE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
-  const LOCKED_BASELINE = '1.4.0-alpha.20';
-  const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
-  const LOCKED_BASELINE_RUN_ID = '26660959763';
-  const LOCKED_BASELINE_COMMIT = '4e2c852fa0568fcc12881d7565ba9fd50844e0c4';
-  const ACTIONABILITY_BASELINE = '1.4.0-alpha.20';
+  const LOCKED_BASELINE = '1.4.0-alpha.19';
+  const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.19 — Evidence Dashboard Decision Ledger';
+  const LOCKED_BASELINE_RUN_ID = '26668213509';
+  const LOCKED_BASELINE_COMMIT = '2b3665b66861d631e779e9133d77399d0560d827';
+  const LOCKED_BASELINE_BUNDLE_SHA256 = '5c44a5e37a9abeab16c8514103e32d046276956f11ec4500bd802415d502ec79';
+  const DECISION_LEDGER_BASELINE = '1.4.0-alpha.19';
+  const ACTIONABILITY_BASELINE = '1.4.0-alpha.18';
   const REGRESSION_DASHBOARD_BASELINE = '1.4.0-alpha.17';
   const EVIDENCE_BUDGET_BASELINE = '1.4.0-alpha.16';
-  const MODEL = 'evidence_dashboard_decision_ledger.v1';
+  const MODEL = 'evidence_decision_ledger_handoff_audit.v1';
 
   const STATUS = Object.freeze({
     pass: 'pass',
@@ -22,17 +24,18 @@
     review_required: 'review_required'
   });
 
-  const DECISION_STATE = Object.freeze({
-    lock_review_ready: 'lock_review_ready',
-    review_budget_pressure_before_lock: 'review_budget_pressure_before_lock',
-    block_lock_until_evidence_budget_regression_fixed: 'block_lock_until_evidence_budget_regression_fixed',
-    capture_current_evidence_before_lock: 'capture_current_evidence_before_lock'
+  const HANDOFF_STATE = Object.freeze({
+    handoff_ready_for_operator_review: 'handoff_ready_for_operator_review',
+    handoff_ready_with_budget_pressure_review: 'handoff_ready_with_budget_pressure_review',
+    handoff_blocked_until_decision_ledger_repaired: 'handoff_blocked_until_decision_ledger_repaired',
+    handoff_requires_current_evidence_capture: 'handoff_requires_current_evidence_capture'
   });
 
-  const LOCKED_ALPHA18_OBSERVED = Object.freeze({
+  const LOCKED_ALPHA19_OBSERVED = Object.freeze({
     run_id: LOCKED_BASELINE_RUN_ID,
     commit: LOCKED_BASELINE_COMMIT,
-    no_browser_checks: 147,
+    bundle_sha256: LOCKED_BASELINE_BUNDLE_SHA256,
+    no_browser_checks: 148,
     browser_checks: 17,
     hosted_language_count: 3,
     hosted_surface_count: 13,
@@ -49,9 +52,10 @@
   });
 
   const SAFETY_BOUNDARY_FLAGS = Object.freeze({
-    decision_ledger_only: true,
+    handoff_audit_only: true,
     static_metadata_only: true,
-    actionability_interpretation_only: true,
+    decision_ledger_interpretation_only: true,
+    operator_handoff_required: true,
     runtime_budget_policy: 'guardrail_only',
     no_dynamic_browser_timing_collection_added: true,
     network_invocation_allowed: false,
@@ -112,84 +116,75 @@
     return `fnv1a32:${hash.toString(16).padStart(8, '0')}`;
   }
 
-  function normalizeStatus(input) {
-    const status = input && typeof input === 'object'
-      ? (input.overall_dashboard_status || input.overall_status || input.status_summary?.overall_dashboard_status || input.status)
+  function normalizeLedgerDecision(input) {
+    const value = input && typeof input === 'object'
+      ? (input.decision_state || input.operator_action || input.status_summary?.decision_state || input.decision_summary?.decision_state || input.overall_dashboard_status || input.status)
       : input;
-    if (Object.values(STATUS).includes(status)) return status;
+    if (value === 'lock_review_ready' || value === STATUS.pass || value === HANDOFF_STATE.handoff_ready_for_operator_review) return STATUS.pass;
+    if (value === 'review_budget_pressure_before_lock' || value === STATUS.warn || value === HANDOFF_STATE.handoff_ready_with_budget_pressure_review) return STATUS.warn;
+    if (value === 'block_lock_until_evidence_budget_regression_fixed' || value === STATUS.fail || value === HANDOFF_STATE.handoff_blocked_until_decision_ledger_repaired) return STATUS.fail;
     return STATUS.review_required;
   }
 
-  function decisionStateForStatus(status) {
-    if (status === STATUS.pass) return DECISION_STATE.lock_review_ready;
-    if (status === STATUS.warn) return DECISION_STATE.review_budget_pressure_before_lock;
-    if (status === STATUS.fail) return DECISION_STATE.block_lock_until_evidence_budget_regression_fixed;
-    return DECISION_STATE.capture_current_evidence_before_lock;
+  function handoffStateForStatus(status) {
+    if (status === STATUS.pass) return HANDOFF_STATE.handoff_ready_for_operator_review;
+    if (status === STATUS.warn) return HANDOFF_STATE.handoff_ready_with_budget_pressure_review;
+    if (status === STATUS.fail) return HANDOFF_STATE.handoff_blocked_until_decision_ledger_repaired;
+    return HANDOFF_STATE.handoff_requires_current_evidence_capture;
   }
 
-  function buildLedgerEntries(status, action) {
-    const base = [
+  function buildHandoffChecklist(status, state) {
+    const items = [
       {
-        entry_id: 'ledger_001_capture_evidence_snapshot',
-        phase: 'evidence_snapshot',
-        status: status === STATUS.review_required ? STATUS.review_required : STATUS.pass,
-        operator_action: status === STATUS.review_required ? DECISION_STATE.capture_current_evidence_before_lock : 'evidence_snapshot_available',
-        operator_decision_required: status === STATUS.review_required,
-        automatic_transition_allowed: false
+        item_id: 'handoff_001_confirm_locked_alpha19_identity',
+        label: 'Confirm locked alpha.19 evidence identity',
+        status: STATUS.pass,
+        required_for_lock: true,
+        operator_review_required: true
       },
       {
-        entry_id: 'ledger_002_interpret_dashboard_status',
-        phase: 'dashboard_interpretation',
+        item_id: 'handoff_002_review_decision_ledger_state',
+        label: 'Review decision-ledger status before lock handoff',
         status,
-        operator_action: action,
-        operator_decision_required: true,
-        automatic_transition_allowed: false
+        required_for_lock: true,
+        operator_review_required: true
       },
       {
-        entry_id: 'ledger_003_confirm_boundaries',
-        phase: 'boundary_confirmation',
+        item_id: 'handoff_003_confirm_no_behavior_expansion',
+        label: 'Confirm no runtime/provider/backend/source/storage expansion',
         status: status === STATUS.fail ? STATUS.fail : STATUS.pass,
-        operator_action: status === STATUS.fail ? DECISION_STATE.block_lock_until_evidence_budget_regression_fixed : 'confirm_no_behavior_expansion',
-        operator_decision_required: true,
-        automatic_transition_allowed: false
+        required_for_lock: true,
+        operator_review_required: true
       },
       {
-        entry_id: 'ledger_004_lock_handoff_decision',
-        phase: 'lock_handoff',
+        item_id: 'handoff_004_prepare_canonical_bundle_review',
+        label: 'Prepare canonical lock-bundle review handoff',
         status,
-        operator_action: action,
-        operator_decision_required: true,
-        automatic_transition_allowed: false
+        required_for_lock: true,
+        operator_review_required: true
       }
     ];
-    return Object.freeze(base.map((entry) => Object.freeze(Object.assign({}, entry, {
+    return Object.freeze(items.map((item) => Object.freeze(Object.assign({}, item, {
+      handoff_state: state,
+      automatic_transition_allowed: false,
       automatic_signoff_performed: false,
       automatic_export_lock_performed: false,
       publication_permission_claimed: false,
       checksum: deterministicChecksum({
-        entry_id: entry.entry_id,
-        phase: entry.phase,
-        status: entry.status,
-        operator_action: entry.operator_action,
-        operator_decision_required: entry.operator_decision_required,
-        automatic_transition_allowed: entry.automatic_transition_allowed
+        item_id: item.item_id,
+        status: item.status,
+        required_for_lock: item.required_for_lock,
+        operator_review_required: item.operator_review_required,
+        handoff_state: state
       })
     }))));
   }
 
-  function buildDecisionSummary(status, action) {
-    return Object.freeze({
-      dashboard_status: status,
-      decision_state: action,
-      operator_review_required: true,
-      lock_review_ready: action === DECISION_STATE.lock_review_ready,
-      budget_pressure_requires_review: action === DECISION_STATE.review_budget_pressure_before_lock,
-      lock_blocked: action === DECISION_STATE.block_lock_until_evidence_budget_regression_fixed,
-      evidence_capture_required: action === DECISION_STATE.capture_current_evidence_before_lock,
-      automatic_signoff_performed: false,
-      automatic_export_lock_performed: false,
-      publication_permission_claimed: false
-    });
+  function buildHandoffActions(status, state) {
+    if (status === STATUS.pass) return Object.freeze(['handoff_ready_for_operator_review', 'review_canonical_lock_bundle_before_lock']);
+    if (status === STATUS.warn) return Object.freeze(['handoff_ready_with_budget_pressure_review', 'review_budget_pressure_before_lock']);
+    if (status === STATUS.fail) return Object.freeze(['handoff_blocked_until_decision_ledger_repaired', 'block_lock_until_evidence_budget_regression_fixed']);
+    return Object.freeze(['handoff_requires_current_evidence_capture', 'capture_current_evidence_before_lock']);
   }
 
   function walkForbiddenFields(value, path, findings) {
@@ -202,7 +197,7 @@
     }
   }
 
-  function validateDashboardDecisionLedgerSafety(report) {
+  function validateHandoffAuditSafety(report) {
     const forbiddenPresent = [];
     walkForbiddenFields(report, '', forbiddenPresent);
     const flags = report && report.safety_boundary_flags ? report.safety_boundary_flags : {};
@@ -234,30 +229,32 @@
     return Object.freeze({ ok: forbiddenPresent.length === 0 && unsafeFlags.length === 0, forbidden_present: forbiddenPresent, unsafe_flags: unsafeFlags });
   }
 
-  function buildEvidenceDashboardDecisionLedger(options = {}) {
-    const generatedAt = options.generated_at || '2026-05-29T00:00:00.000Z';
-    const dashboardInput = options.actionability_report || options.status_summary || options.dashboard_status || null;
-    const status = normalizeStatus(dashboardInput);
-    const action = decisionStateForStatus(status);
-    const ledgerEntries = buildLedgerEntries(status, action);
-    const decisionSummary = buildDecisionSummary(status, action);
+  function buildEvidenceDecisionLedgerHandoffAudit(options = {}) {
+    const generatedAt = options.generated_at || '2026-05-30T00:00:00.000Z';
+    const decisionInput = options.decision_ledger_report || options.decision_state || options.status_summary || null;
+    const status = normalizeLedgerDecision(decisionInput);
+    const handoffState = handoffStateForStatus(status);
+    const handoffChecklist = buildHandoffChecklist(status, handoffState);
+    const recommendedOperatorActions = buildHandoffActions(status, handoffState);
     const report = {
-      evidence_dashboard_decision_ledger_version: VERSION,
+      evidence_decision_ledger_handoff_audit_version: VERSION,
       generated_at: generatedAt,
       milestone: MILESTONE,
       locked_baseline: LOCKED_BASELINE,
       locked_baseline_title: LOCKED_BASELINE_TITLE,
       locked_baseline_run_id: LOCKED_BASELINE_RUN_ID,
       locked_baseline_commit: LOCKED_BASELINE_COMMIT,
+      locked_baseline_bundle_sha256: LOCKED_BASELINE_BUNDLE_SHA256,
+      decision_ledger_baseline: DECISION_LEDGER_BASELINE,
       actionability_baseline: ACTIONABILITY_BASELINE,
       regression_dashboard_baseline: REGRESSION_DASHBOARD_BASELINE,
       evidence_budget_baseline: EVIDENCE_BUDGET_BASELINE,
       model: MODEL,
-      locked_alpha18_observed: LOCKED_ALPHA18_OBSERVED,
-      actionability_input_status: status,
-      decision_summary: decisionSummary,
-      decision_ledger_entries: ledgerEntries,
-      recommended_operator_actions: Object.freeze([action]),
+      locked_alpha19_observed: LOCKED_ALPHA19_OBSERVED,
+      input_decision_status: status,
+      handoff_state: handoffState,
+      handoff_checklist: handoffChecklist,
+      recommended_operator_actions: recommendedOperatorActions,
       safety_boundary_flags: SAFETY_BOUNDARY_FLAGS,
       safe_metadata_only: true,
       can_execute_now: false,
@@ -274,27 +271,29 @@
     return Object.freeze(report);
   }
 
-  root.evidenceDashboardDecisionLedger = Object.freeze({
+  root.evidenceDecisionLedgerHandoffAudit = Object.freeze({
     VERSION,
     MILESTONE,
     LOCKED_BASELINE,
     LOCKED_BASELINE_TITLE,
     LOCKED_BASELINE_RUN_ID,
     LOCKED_BASELINE_COMMIT,
+    LOCKED_BASELINE_BUNDLE_SHA256,
+    DECISION_LEDGER_BASELINE,
     ACTIONABILITY_BASELINE,
     REGRESSION_DASHBOARD_BASELINE,
     EVIDENCE_BUDGET_BASELINE,
     MODEL,
     STATUS,
-    DECISION_STATE,
-    LOCKED_ALPHA18_OBSERVED,
+    HANDOFF_STATE,
+    LOCKED_ALPHA19_OBSERVED,
     SAFETY_BOUNDARY_FLAGS,
     deterministicChecksum,
-    normalizeStatus,
-    decisionStateForStatus,
-    buildLedgerEntries,
-    buildDecisionSummary,
-    buildEvidenceDashboardDecisionLedger,
-    validateDashboardDecisionLedgerSafety
+    normalizeLedgerDecision,
+    handoffStateForStatus,
+    buildHandoffChecklist,
+    buildHandoffActions,
+    buildEvidenceDecisionLedgerHandoffAudit,
+    validateHandoffAuditSafety
   });
 })(typeof window !== 'undefined' ? window : globalThis);
