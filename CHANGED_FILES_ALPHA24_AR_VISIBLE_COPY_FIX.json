@@ -1,0 +1,11 @@
+{
+  "version": "1.4.0-alpha.24",
+  "patch": "alpha24-browser-arabic-visible-copy-token-fix",
+  "changed_files": [
+    "src/research/render-helpers.js",
+    "CHANGED_FILES_ALPHA24_AR_VISIBLE_COPY_FIX.json"
+  ],
+  "deleted_files": [],
+  "cleanup_script_required": false,
+  "note": "Changed-files-only patch. Adds missing Arabic hosted-demo current-release tokens expected by the alpha.24 browser evidence snapshot."
+}

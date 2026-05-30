@@ -1,0 +1,11 @@
+{
+  "version": "1.4.0-alpha.24",
+  "patch_name": "alpha24-windows-ci-runner-and-local-artifact-cleanup",
+  "changed_files": [
+    "tests/ci-gate-runner.mjs",
+    "scripts/cleanup-alpha24-local-release-artifacts.ps1",
+    "CHANGED_FILES_ALPHA24_WINDOWS_CI_FIX.json"
+  ],
+  "deleted_files": [],
+  "note": "Changed-files-only corrective patch. It makes the browser CI runner invoke Playwright through the local Node CLI on Windows and adds a self-removing cleanup script for local .log/.zip/.tmp artifacts."
+}

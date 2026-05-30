@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
@@ -15,7 +16,26 @@ if (!gate) {
 const timeoutSeconds = Number.parseInt(process.env.CI_NODE_TEST_TIMEOUT_SECONDS || '60', 10);
 const timeoutMs = Number.isFinite(timeoutSeconds) && timeoutSeconds > 0 ? timeoutSeconds * 1000 : 60000;
 const timings = [];
-const playwrightCommand = process.platform === 'win32' ? 'playwright.cmd' : './node_modules/.bin/playwright';
+function buildPlaywrightInvocation() {
+  const localCli = path.join('node_modules', 'playwright', 'cli.js');
+  if (fs.existsSync(localCli)) {
+    return {
+      command: process.execPath,
+      argsPrefix: [localCli]
+    };
+  }
+
+  const localBinary = process.platform === 'win32'
+    ? path.join('node_modules', '.bin', 'playwright.cmd')
+    : './node_modules/.bin/playwright';
+
+  return {
+    command: localBinary,
+    argsPrefix: []
+  };
+}
+
+const playwrightInvocation = buildPlaywrightInvocation();
 
 function run(command, args, options = {}) {
   const rendered = [command, ...args].join(' ');
@@ -64,7 +84,7 @@ for (const file of gate.syntax_checks || []) {
 }
 
 for (const spec of gate.playwright_specs || []) {
-  run(playwrightCommand, ['test', spec], { timeout: 0 });
+  run(playwrightInvocation.command, [...playwrightInvocation.argsPrefix, 'test', spec], { timeout: 0 });
 }
 
 printTimingSummary();
