@@ -1,39 +1,40 @@
 (function(global){
   'use strict';
   global.Jarbou3iResearchReleaseCopyContract = Object.freeze({
-    version: '1.4.0-alpha.25',
+    version: '1.4.0-alpha.26',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard',
-      ar: 'v1.4.0-alpha.25 توحيد نظام الإصدار وحارس الفرق الفعلي',
-      fr: 'v1.4.0-alpha.25 Consolidation du système de release + garde de diff effectif'
+      en: 'v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface',
+      ar: 'v1.4.0-alpha.26 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل',
+      fr: 'v1.4.0-alpha.26 Insights de rejeu adaptateur + surface de décision opérateur'
     }),
     requiredVisibleText: Object.freeze({
       en: Object.freeze([
-        'Release System Consolidation + Effective Diff Guard',
-        'current-release contract',
-        'effective diff guard',
-        'one release copy contract',
+        'Adapter Replay Insight UX + Operator Decision Surface',
+        'replay coverage',
+        'operator readiness',
+        'coverage gaps',
         'no live provider calls'
       ]),
       ar: Object.freeze([
-        'توحيد نظام الإصدار وحارس الفرق الفعلي',
-        'عقد الإصدار الحالي',
-        'حارس الفرق الفعلي',
-        'عقد نسخ واحد',
+        'رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل',
+        'تغطية إعادة التشغيل',
+        'جاهزية قرار المشغّل',
+        'فجوات التغطية',
         'دون نداءات مزوّد حية'
       ]),
       fr: Object.freeze([
-        'Consolidation du système de release + garde de diff effectif',
-        'contrat de release courant',
-        'garde de diff effectif',
-        'contrat de copie unique',
+        'Insights de rejeu adaptateur + surface de décision opérateur',
+        'couverture de rejeu',
+        'préparation opérateur',
+        'lacunes de couverture',
         'aucun appel fournisseur réel'
       ])
     }),
     staleVisibleText: Object.freeze([
+      'v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard',
+      'v1.4.0-alpha.25 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل',
+      'v1.4.0-alpha.25 Insights de rejeu adaptateur + surface de décision opérateur',
       'v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard',
-      'v1.4.0-alpha.24 توحيد نظام الإصدار وحارس الفرق الفعلي',
-      'v1.4.0-alpha.24 Consolidation du système de release + garde de diff effectif',
       'Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard',
       'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
       'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
@@ -41,28 +42,28 @@
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard · Control-Plane Compression Only',
-        hostedDemoVerificationBody: 'Release System Consolidation + Effective Diff Guard is ready for release evidence: it replaces version-specific lock-completion checks with a current-release contract, adds a cross-platform effective diff guard, routes visible-text evidence through one release copy contract, and preserves the Windows-safe Playwright runner without expanding product scope. Hosted evidence must report 1.4.0-alpha.25 internally while showing v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard to users. Consolidation layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.25 compresses release-system checks into a current-release contract and effective diff guard without product/runtime expansion.',
-        adapterContractTestBenchTitle: 'Release System Consolidation + Effective Diff Guard',
-        adapterContractTestBenchSubtitle: 'Compresses release-control checks into a generic current-release contract and hard effective-diff guard.',
-        adapterContractTestBenchPolicyNote: 'Consolidation layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface · No-Network Replay Insight',
+        hostedDemoVerificationBody: 'Adapter Replay Insight UX + Operator Decision Surface is ready for release evidence: it turns the adapter replay coverage matrix into an operator-facing decision surface with replay coverage, coverage gaps, failure reason groups, evidence links, and operator readiness without changing provider execution. Hosted evidence must report 1.4.0-alpha.26 internally while showing v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface to users. No-network replay insight layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.26 turns the adapter replay corpus into an operator decision surface for coverage, gaps, failure groups, and no-network readiness.',
+        adapterReplayInsightTitle: 'Adapter Replay Insight UX + Operator Decision Surface',
+        adapterReplayInsightSubtitle: 'Summarize replay coverage, gap groups, review-required cells, and operator readiness from the deterministic adapter replay corpus.',
+        adapterReplayInsightPolicyNote: 'No-network insight layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, automatic verification, signoff, export lock, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.25 توحيد نظام الإصدار وحارس الفرق الفعلي · ضغط طبقة التحكم فقط',
-        hostedDemoVerificationBody: 'توحيد نظام الإصدار وحارس الفرق الفعلي جاهز لأدلة الإصدار: يستبدل اختبارات إكمال القفل الخاصة بكل إصدار بعقد الإصدار الحالي، ويضيف حارس الفرق الفعلي العابر للمنصات، ويمرّر أدلة النص المرئي عبر عقد نسخ واحد، ويحافظ على مشغّل Playwright الآمن على ويندوز دون توسيع نطاق المنتج. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.25 مع عرض v1.4.0-alpha.25 توحيد نظام الإصدار وحارس الفرق الفعلي للمستخدمين. طبقة توحيد فقط: دون نداءات مزوّد حية، دون نداءات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
-        analysisReleaseNote: 'يضغط 1.4.0-alpha.25 فحوص الإصدار داخل عقد الإصدار الحالي وحارس الفرق الفعلي دون توسيع المنتج أو وقت التشغيل.',
-        adapterContractTestBenchTitle: 'توحيد نظام الإصدار وحارس الفرق الفعلي',
-        adapterContractTestBenchSubtitle: 'يضغط فحوص طبقة التحكم في عقد إصدار حالي عام وحارس فرق فعلي صارم.',
-        adapterContractTestBenchPolicyNote: 'طبقة توحيد فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر حي ولا تحقق أو توقيع أو قفل تصدير أو إذن نشر آلي.'
+        alphaBadge: 'v1.4.0-alpha.26 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل · رؤى بلا شبكة',
+        hostedDemoVerificationBody: 'رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل جاهزة لأدلة الإصدار: تحوّل مصفوفة تغطية إعادة التشغيل إلى سطح قرار موجّه للمشغّل مع تغطية إعادة التشغيل، فجوات التغطية، مجموعات أسباب الفشل، روابط الأدلة، وجاهزية قرار المشغّل دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.26 مع عرض v1.4.0-alpha.26 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل للمستخدمين. طبقة رؤى بلا شبكة فقط: دون نداءات مزوّد حية، دون نداءات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
+        analysisReleaseNote: 'يحوّل 1.4.0-alpha.26 corpus إعادة تشغيل المحوّل إلى سطح قرار للمشغّل للتغطية والفجوات ومجموعات الفشل والجاهزية بلا شبكة.',
+        adapterReplayInsightTitle: 'رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل',
+        adapterReplayInsightSubtitle: 'تلخّص تغطية إعادة التشغيل، فجوات التغطية، الخلايا التي تحتاج مراجعة، وجاهزية قرار المشغّل من corpus محلي حتمي.',
+        adapterReplayInsightPolicyNote: 'طبقة رؤى بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا تحقق أو توقيع أو قفل أو نشر آلي.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.25 Consolidation du système de release + garde de diff effectif · compression plan de contrôle',
-        hostedDemoVerificationBody: 'La consolidation du système de release + garde de diff effectif est prête pour les preuves de release : elle remplace les contrôles de verrouillage propres à une version par un contrat de release courant, ajoute un garde de diff effectif multiplateforme, fait passer les preuves de texte visible par un contrat de copie unique, et conserve le runner Playwright compatible Windows sans élargir la portée produit. Les preuves hébergées doivent annoncer 1.4.0-alpha.25 en interne tout en affichant v1.4.0-alpha.25 Consolidation du système de release + garde de diff effectif aux utilisateurs. Couche de consolidation uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
-        analysisReleaseNote: '1.4.0-alpha.25 compresse les contrôles de release dans un contrat courant et un garde de diff effectif sans extension produit/runtime.',
-        adapterContractTestBenchTitle: 'Consolidation du système de release + garde de diff effectif',
-        adapterContractTestBenchSubtitle: 'Compresse les contrôles du plan de release dans un contrat courant générique et un garde de diff effectif.',
-        adapterContractTestBenchPolicyNote: 'Couche de consolidation uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.'
+        alphaBadge: 'v1.4.0-alpha.26 Insights de rejeu adaptateur + surface de décision opérateur · insight sans réseau',
+        hostedDemoVerificationBody: 'Insights de rejeu adaptateur + surface de décision opérateur est prêt pour les preuves de release : il transforme la matrice de couverture de rejeu en surface de décision opérateur avec couverture de rejeu, lacunes de couverture, groupes de raisons d’échec, liens de preuve et préparation opérateur sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.26 en interne tout en affichant v1.4.0-alpha.26 Insights de rejeu adaptateur + surface de décision opérateur aux utilisateurs. Couche d’insight sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
+        analysisReleaseNote: '1.4.0-alpha.26 transforme le corpus de rejeu adaptateur en surface de décision opérateur pour couverture, lacunes, groupes d’échec et préparation sans réseau.',
+        adapterReplayInsightTitle: 'Insights de rejeu adaptateur + surface de décision opérateur',
+        adapterReplayInsightSubtitle: 'Résume couverture de rejeu, groupes de lacunes, cellules à revoir et préparation opérateur depuis le corpus déterministe.',
+        adapterReplayInsightPolicyNote: 'Couche d’insight sans réseau uniquement : aucun appel fournisseur live, appel réseau caché, OAuth/cycle token, persistance d’identifiants, fetch source, vérification, visa, verrou ou publication automatique.'
       })
     })
   });

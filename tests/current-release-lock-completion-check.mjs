@@ -43,7 +43,7 @@ function parseReleaseCopyContract() {
   return releaseCopy;
 }
 
-assert.equal(contract.release_type, 'consolidation', 'alpha.25 must be a consolidation release');
+assert.ok(['consolidation', 'product-facing'].includes(contract.release_type), 'current release type must be recognized');
 assert.ok(Array.isArray(contract.allowed_scope) && contract.allowed_scope.length > 0, 'allowed_scope must be populated');
 assert.ok(Array.isArray(contract.forbidden_scope) && contract.forbidden_scope.length > 0, 'forbidden_scope must be populated');
 

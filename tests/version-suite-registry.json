@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.25",
-  "release_title": "v1.4.0-alpha.25 — Release System Consolidation + Effective Diff Guard",
+  "version_suite_registry_version": "1.4.0-alpha.26",
+  "release_title": "v1.4.0-alpha.26 — Adapter Replay Insight UX + Operator Decision Surface",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

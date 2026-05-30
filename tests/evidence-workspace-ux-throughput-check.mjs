@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.25';
-const CURRENT_TITLE = 'Release System Consolidation + Effective Diff Guard';
+const CURRENT_VERSION = '1.4.0-alpha.26';
+const CURRENT_TITLE = 'Adapter Replay Insight UX + Operator Decision Surface';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/evidence-workspace-ux.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');

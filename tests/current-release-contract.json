@@ -1,21 +1,21 @@
 {
-  "version": "1.4.0-alpha.25",
-  "milestone_name": "Release System Consolidation + Effective Diff Guard",
-  "release_type": "consolidation",
+  "version": "1.4.0-alpha.26",
+  "milestone_name": "Adapter Replay Insight UX + Operator Decision Surface",
+  "release_type": "product-facing",
   "allowed_scope": [
-    "generic current-release contract and completion check",
-    "cross-platform effective diff validation",
-    "single release visible-text copy contract consumed by UI and browser evidence",
-    "Windows-safe Playwright Node CLI invocation",
-    "stale alpha-specific release-control cleanup"
+    "operator-facing adapter replay insight surface",
+    "coverage summary and provider readiness grouping",
+    "gap and failure-reason grouping from deterministic replay metadata",
+    "evidence links from replay rows to fixture/policy references",
+    "no-network replay review only"
   ],
   "forbidden_scope": [
-    "product feature expansion",
     "live provider calls",
     "OAuth/token lifecycle changes",
     "backend/storage behavior changes",
     "source-fetching or scraping behavior changes",
-    "broad UI redesign",
+    "automatic source verification",
+    "automatic signoff or export lock",
     "new alpha-specific lock-completion test filenames"
   ],
   "required_docs": [
@@ -31,6 +31,7 @@
   "required_tests": [
     "tests/current-release-lock-completion-check.mjs",
     "tests/effective-diff-check.mjs",
+    "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
     "tests/hosted-demo-browser-evidence.spec.mjs"
   ],
   "required_browser_evidence_files": [
@@ -56,21 +57,29 @@
     "package-lock.json",
     "MANIFEST.json",
     "index.html",
-    "scripts/ci-browser.sh",
-    "src/research/render-helpers.js",
     "src/research/release-copy-contract.js",
+    "src/research/render-helpers.js",
+    "src/research/adapter-replay-insight-ux-operator-decision-surface.js",
+    "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
     "tests/current-release-contract.json",
     "tests/current-release-lock-completion-check.mjs",
-    "tests/effective-diff-check.mjs",
-    "tests/hosted-demo-browser-evidence.spec.mjs",
+    "tests/release-truth-consistency-check.mjs",
     "tests/ci-gate-registry.json",
+    "tests/version-suite-registry.json",
     "tests/evidence/evidence-matrix.config.json",
-    "cleanup-alpha25-release-control-plane.ps1"
+    "README.md",
+    "CHANGELOG.md",
+    "PUBLIC_DEMO.md",
+    "docs/current-release.md",
+    "docs/release-history.md",
+    "docs/release-and-evidence.md",
+    "docs/qa-matrix.md",
+    "docs/roadmap.md"
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.25",
-    "public labels must expose v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard"
+    "hosted evidence must report internal_build_version 1.4.0-alpha.26",
+    "public labels must expose v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -78,14 +87,14 @@
   ],
   "effective_diff_rules": [
     "zero_effect_patch_rejected",
-    "expected_changed_files_must_change",
     "expected_deleted_files_must_be_absent",
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
+    "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard",
+    "v1.4.0-alpha.25 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل",
+    "v1.4.0-alpha.25 Insights de rejeu adaptateur + surface de décision opérateur",
     "v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard",
-    "v1.4.0-alpha.24 توحيد نظام الإصدار وحارس الفرق الفعلي",
-    "v1.4.0-alpha.24 Consolidation du système de release + garde de diff effectif",
     "Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard"
   ]
 }

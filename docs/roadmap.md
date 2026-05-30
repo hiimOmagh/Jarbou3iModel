@@ -1,10 +1,10 @@
-## v1.4.0-alpha.25 — Release System Consolidation + Effective Diff Guard
+## v1.4.0-alpha.26 — Adapter Replay Insight UX + Operator Decision Surface
 
 - Status: current candidate. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence, artifact identity guard, and canonical lock bundle review.
-- Public release label: v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard.
+- Public release label: v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface.
 - Locked alpha.23 baseline: `v1.4.0-alpha.23 — Handoff Productivity Runbook Gate`. Alpha.23 lock evidence: Run ID `26684865061`; commit `4675e12940112f734e0434421bf4553906093ff8`; bundle SHA256 `441c4fb891effea54a8e4492730b2c851baec838a5e45b451ec3a501343356c6`; no-browser 144 checks passed; browser 17 checks passed; hosted-demo evidence passed; evidence matrix 39/39 passed; AR/FR/EN visible-text snapshots passed; artifact identity guard passed; bundle validation passed; lockable true.
-- Scope: static changed-files patch hygiene guard only. It verifies changed-files-only packages, manifest alignment, effective patch delta, self-removing cleanup scripts for deleted files, stale-test removal hygiene, and zero-effect patch rejection before operator lock review.
-- Patch hygiene outcomes: apply_changed_files_patch; run_cleanup_script_before_validation; block_zero_effect_patch; capture_missing_patch_manifest.
+- Scope: adapter replay insight UX only. It turns the deterministic replay corpus and coverage matrix into an operator-facing decision surface with coverage summaries, gap groups, failure reason groups, evidence links, and readiness verdicts without enabling live execution.
+- Operator decision outcomes: review_replay_coverage; inspect_gap_groups; group_failure_reasons; trace_evidence_links; confirm_no_network_readiness.
 - Safety: no live provider calls, hidden network calls, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission.
 - Runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.
 
@@ -21,7 +21,7 @@ Last locked stable baseline: `v1.3.0 — Stable Manual Workflow Release`.
 Locked RC baseline: `v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization`.
 Locked manual workflow baseline: `v1.3.0-alpha.10 — Brief Publication Pack v4`.
 
-Planning/control-plane only. Scope: alpha.20 lock completion plus an handoff productivity command center. The checklist turns handoff audit evidence into pass, warn, fail, and review-required operator handoff outcomes without expanding browser scope.
+Product-facing no-network replay insight only. Scope: alpha.26 converts adapter replay coverage evidence into operator-readable readiness, gap, and failure-reason decisions without expanding provider/source execution.
 
 Evidence/runtime budget guard: evidence_surface_budget_version: 1.4.0-alpha.22; locked_baseline: 1.4.0-alpha.20; browser_check_budget_max: 20; hosted_language_count_expected: 3; hosted_surface_count_expected_max: 13; visible_snapshot_rows_expected_max: 39; runtime_budget_policy: guardrail_only; runtime_budget_enforced_without_network: true; provider_execution_performed: false; live_fetching_performed: false; credential_persistence_allowed: false.
 
@@ -30,16 +30,16 @@ No live scraping. No production OAuth. No real OAuth. No real API keys. No real 
 Release continuity guard: v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation; v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts; v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator; v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report; v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; v1.3.0-alpha.10 — Brief Publication Pack v4; v1.3.0-rc.2 — RC Evidence Tightening + Release Notes Finalization.
 Adapter continuity: adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013.
 
-Screenshots alone are insufficient. A ZIP archive alone is insufficient. Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with 1.4.0-alpha.25.
+Screenshots alone are insufficient. A ZIP archive alone is insufficient. Public Demo evidence remains required for lock: hosted evidence, visible-label snapshots, browser log, Playwright setup logs, and canonical lock bundle must all remain aligned with 1.4.0-alpha.26.
 
-Release manifest tokens for packaging checks: package=jarbou3i-research-engine; version=1.4.0-alpha.25; runtime_capability_change=false; release_type=release-system-consolidation-effective-diff-guard; release_scope=release-system-consolidation-effective-diff-guard-only; test:ci:browser required.
+Release manifest tokens for packaging checks: package=jarbou3i-research-engine; version=1.4.0-alpha.26; runtime_capability_change=false; release_type=adapter-replay-insight-ux-operator-decision-surface; release_scope=adapter-replay-insight-ux-operator-decision-surface-only; test:ci:browser required.
 Node 24 CI compatibility preserved.
-Feature surface is frozen; no live execution is enabled.
+Feature surface is limited to no-network adapter replay insight; no live execution is enabled.
 
 
 ## Current candidate
 
-Single active release lane: v1.4.0-alpha.25 — Release System Consolidation + Effective Diff Guard
+Single active release lane: v1.4.0-alpha.26 — Adapter Replay Insight UX + Operator Decision Surface
 
 Legacy locked alpha.19 baseline: v1.4.0-alpha.19 — Evidence Dashboard Decision Ledger; Run ID 26668213509; commit 2b3665b66861d631e779e9133d77399d0560d827. Handoff audit continuity preserved: تدقيق تسليم; audit de remise.
 
