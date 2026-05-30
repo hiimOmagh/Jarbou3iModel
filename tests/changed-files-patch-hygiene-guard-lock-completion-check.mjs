@@ -30,6 +30,7 @@ const manifest = json('MANIFEST.json');
 const ciRegistry = json('tests/ci-gate-registry.json');
 const versionRegistry = json('tests/version-suite-registry.json');
 const evidenceConfig = json('tests/evidence/evidence-matrix.config.json');
+const changedFiles = json('CHANGED_FILES_ALPHA24.json');
 const current = read('docs/current-release.md');
 const roadmap = read('docs/roadmap.md');
 const changelog = read('CHANGELOG.md');
@@ -42,7 +43,8 @@ const index = read('index.html');
 const helpers = read('src/research/render-helpers.js');
 const workflow = read('.github/workflows/ci.yml');
 const source = read(TARGET_MODULE);
-const cleanupScript = read(CLEANUP_SCRIPT);
+const cleanupScriptExists = fs.existsSync(CLEANUP_SCRIPT);
+const cleanupScript = cleanupScriptExists ? read(CLEANUP_SCRIPT) : '';
 
 assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes(PUBLIC_LABEL));
@@ -74,10 +76,16 @@ assert.ok(current.includes('Status: current candidate. Lock is pending green no-
 assert.equal(/alpha\.23[^\n.]*lock pending/i.test(current), false, 'current release must not contain alpha.23 lock pending wording');
 assert.equal((roadmap.match(/Current candidate/g) || []).length <= 1, true, 'roadmap must not expose multiple current candidate sections');
 assert.equal(fs.existsSync(STALE_ALPHA23_CHECK), false, 'stale alpha.23 lock-completion check must be removed');
-assert.ok(fs.existsSync(CLEANUP_SCRIPT), 'cleanup script must be included for stale alpha.23 test removal');
-assert.ok(cleanupScript.includes(STALE_ALPHA23_CHECK), 'cleanup script must remove stale alpha.23 check');
-assert.ok(/Remove-Item\s+-Force/.test(cleanupScript), 'cleanup script must use PowerShell Remove-Item -Force');
-assert.ok(cleanupScript.includes('$MyInvocation.MyCommand.Path'), 'cleanup script must self-remove');
+assert.equal(changedFiles.cleanup_script, CLEANUP_SCRIPT, 'changed-files manifest must record the cleanup script path');
+assert.ok(changedFiles.deleted_files.includes(STALE_ALPHA23_CHECK), 'changed-files manifest must record stale alpha.23 test deletion');
+assert.ok(changedFiles.added_files.includes(CLEANUP_SCRIPT) || cleanupScriptExists === false, 'cleanup script must either be shipped in the patch or already self-removed after cleanup');
+if (cleanupScriptExists) {
+  assert.ok(cleanupScript.includes(STALE_ALPHA23_CHECK), 'cleanup script must remove stale alpha.23 check');
+  assert.ok(/Remove-Item\s+-Force/.test(cleanupScript), 'cleanup script must use PowerShell Remove-Item -Force');
+  assert.ok(cleanupScript.includes('$MyInvocation.MyCommand.Path'), 'cleanup script must self-remove');
+} else {
+  assert.equal(fs.existsSync(STALE_ALPHA23_CHECK), false, 'self-removed cleanup script is valid only after stale alpha.23 check is absent');
+}
 
 assert.ok(index.includes(PUBLIC_LABEL));
 assert.ok(helpers.includes(PUBLIC_LABEL));
