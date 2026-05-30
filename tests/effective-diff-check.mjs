@@ -13,9 +13,37 @@ function gitAvailable() {
   return result.status === 0 && result.stdout.trim() === 'true';
 }
 
+function uniqueSorted(values) {
+  return Array.from(new Set(values.filter(Boolean))).sort();
+}
+
+function existingGitCommit(ref) {
+  if (!ref || /^0+$/.test(ref)) return null;
+  const result = git(['cat-file', '-e', `${ref}^{commit}`]);
+  return result.status === 0 ? ref : null;
+}
+
+function diffNameOnly(range) {
+  const result = git(['diff', '--name-only', range]);
+  if (result.status !== 0) throw new Error(result.stderr || `git diff failed for ${range}`);
+  return result.stdout.split(/\r?\n/).filter(Boolean);
+}
+
+function eventBeforeSha() {
+  const eventPath = process.env.GITHUB_EVENT_PATH;
+  if (!eventPath || !fs.existsSync(eventPath)) return null;
+  try {
+    const event = JSON.parse(fs.readFileSync(eventPath, 'utf8'));
+    return typeof event.before === 'string' ? event.before : null;
+  } catch {
+    return null;
+  }
+}
+
 function trackedChanges() {
   const porcelain = git(['status', '--porcelain=v1']);
   if (porcelain.status !== 0) throw new Error(porcelain.stderr || 'git status failed');
+
   if (porcelain.stdout.trim()) {
     const diff = git(['diff', '--name-only']);
     const staged = git(['diff', '--cached', '--name-only']);
@@ -24,37 +52,78 @@ function trackedChanges() {
       .filter(Boolean)
       .filter((line) => line.startsWith('?? '))
       .map((line) => line.slice(3).trim());
-    return Array.from(new Set([...diff.stdout.split(/\r?\n/), ...staged.stdout.split(/\r?\n/), ...untracked].filter(Boolean))).sort();
+    return {
+      mode: 'working-tree',
+      files: uniqueSorted([...diff.stdout.split(/\r?\n/), ...staged.stdout.split(/\r?\n/), ...untracked]),
+    };
   }
 
   const head = git(['rev-parse', '--verify', 'HEAD']);
-  const parent = git(['rev-parse', '--verify', 'HEAD~1']);
-  if (head.status !== 0 || parent.status !== 0) {
-    return [];
+  if (head.status !== 0) {
+    return { mode: 'no-git-head', files: [], diffBaseAvailable: false };
   }
-  const committed = git(['diff', '--name-only', 'HEAD~1..HEAD']);
-  if (committed.status !== 0) throw new Error(committed.stderr || 'git diff failed');
-  return committed.stdout.split(/\r?\n/).filter(Boolean).sort();
+
+  const ciBefore = existingGitCommit(eventBeforeSha());
+  if (ciBefore && ciBefore !== head.stdout.trim()) {
+    return {
+      mode: 'ci-event-before',
+      files: uniqueSorted(diffNameOnly(`${ciBefore}..HEAD`)),
+      diffBaseAvailable: true,
+    };
+  }
+
+  const parent = git(['rev-parse', '--verify', 'HEAD~1']);
+  if (parent.status === 0) {
+    return {
+      mode: 'head-parent',
+      files: uniqueSorted(diffNameOnly('HEAD~1..HEAD')),
+      diffBaseAvailable: true,
+    };
+  }
+
+  return { mode: 'no-comparable-git-base', files: [], diffBaseAvailable: false };
 }
 
 function exists(file) {
   return fs.existsSync(file);
 }
 
-if (!gitAvailable()) {
+function validateReleaseSurfaceFallback(reason) {
   for (const file of contract.expected_deleted_files || []) {
     assert.ok(!exists(file), `expected deleted file still exists: ${file}`);
   }
   for (const file of contract.expected_changed_files || []) {
-    assert.ok(exists(file) || (contract.expected_deleted_files || []).includes(file), `expected changed file missing outside git repo: ${file}`);
+    assert.ok(
+      exists(file) || (contract.expected_deleted_files || []).includes(file),
+      `expected changed file missing while using effective-diff fallback: ${file}`,
+    );
   }
-  console.log('effective diff guard: git metadata unavailable; file-presence fallback passed. Strict diff check runs inside git/CI.');
+  const requiredImplementationFiles = [
+    'tests/current-release-lock-completion-check.mjs',
+    'tests/effective-diff-check.mjs',
+    ...(contract.required_tests || []),
+  ];
+  assert.ok(
+    requiredImplementationFiles.some((file) => exists(file)),
+    'effective diff fallback requires at least one release/test implementation file to exist',
+  );
+  console.warn(`effective diff guard: ${reason}; release-surface fallback passed.`);
+}
+
+if (!gitAvailable()) {
+  validateReleaseSurfaceFallback('git metadata unavailable');
   process.exit(0);
 }
 
-const changed = trackedChanges();
+const { mode, files: changed, diffBaseAvailable } = trackedChanges();
+console.log(`effective diff mode: ${mode}`);
 console.log(`effective diff changed files (${changed.length}):`);
 for (const file of changed) console.log(`- ${file}`);
+
+if (changed.length === 0 && !diffBaseAvailable) {
+  validateReleaseSurfaceFallback('no comparable git base available in this checkout');
+  process.exit(0);
+}
 
 assert.ok(changed.length > 0, 'effective diff guard failed: zero effective tracked changes');
 

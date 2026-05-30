@@ -25,6 +25,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -70,6 +72,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -258,6 +262,8 @@ jobs:
           path: ${{ runner.temp }}/lock-evidence-bundle-diagnostic
       - uses: actions/checkout@v6
         if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v6
         if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}
         with:
