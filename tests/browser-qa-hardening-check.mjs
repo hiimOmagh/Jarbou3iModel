@@ -12,7 +12,7 @@ const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const docs = releaseDocExists('docs/v1.0.4-browser-qa-visual-regression-hardening.md') ? readReleaseDoc('docs/v1.0.4-browser-qa-visual-regression-hardening.md') : '';
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
 
-assert.equal(pkg.version, '1.4.0-alpha.24');
+assert.equal(pkg.version, '1.4.0-alpha.25');
 for (const script of ['test:browser:layout','test:browser:visual','test:browser:visual:strict','test:browser:qa','test:version-registry','test:current:no-browser']) {
   assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 }

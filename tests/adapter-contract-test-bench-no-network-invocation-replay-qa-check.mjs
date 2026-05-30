@@ -185,7 +185,7 @@ for (const forbidden of ['sk-', 'ghp_', 'AKIA', 'BEGIN PRIVATE KEY', 'Bearer '])
 const index = fs.readFileSync('index.html', 'utf8');
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 assert.ok(index.includes('src="src/research/adapter-contract-test-bench-no-network-invocation-replay-qa.js" defer'), 'index must load alpha.13 module');
-assert.ok(index.includes('Changed-Files Patch Hygiene Guard') || index.includes('Adapter Contract Test Bench + No-Network Invocation Replay QA'), 'index must expose current adapter replay/contract QA label');
+assert.ok(index.includes('Release System Consolidation + Effective Diff Guard') || index.includes('Adapter Contract Test Bench + No-Network Invocation Replay QA'), 'index must expose current adapter replay/contract QA label');
 assert.ok(index.includes('data-browser-qa="adapter-replay-fixture-corpus-coverage-matrix"') || index.includes('data-browser-qa="adapter-contract-test-bench-no-network-invocation-replay-qa"'), 'index must expose browser QA adapter replay/contract card');
 for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', 'source', 'release']) {
   assert.ok(registry.gates[gate].node_checks.includes('tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs'), `${gate} must run alpha.13 adapter contract check`);
@@ -193,7 +193,7 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 assert.ok(registry.syntax_matrix.files.includes('src/research/adapter-contract-test-bench-no-network-invocation-replay-qa.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs'));
 assert.ok(['adapter_contract_test_bench_no_network_invocation_replay_qa', 'adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
-assert.ok([VERSION, '1.4.0-alpha.24'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
+assert.ok([VERSION, '1.4.0-alpha.25'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
 
 console.log('Adapter contract test bench + no-network invocation replay QA checks passed.');
 process.exit(0);

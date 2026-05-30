@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.24';
-const CURRENT_TITLE = 'Changed-Files Patch Hygiene Guard';
+const CURRENT_VERSION = '1.4.0-alpha.25';
+const CURRENT_TITLE = 'Release System Consolidation + Effective Diff Guard';
 const VERSION = '1.3.0';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');

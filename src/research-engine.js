@@ -478,7 +478,7 @@
   function goldenWorkflowBundle(packet, exportPackResult = null){
     if(!goldenWorkflowCorpus?.buildGoldenWorkflowBundle){
       return {
-        golden_workflow_corpus:{corpus_version:VERSION, corpus_model:'golden_workflow_corpus.v1', corpus_id:'golden-workflow-alpha24', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
+        golden_workflow_corpus:{corpus_version:VERSION, corpus_model:'golden_workflow_corpus.v1', corpus_id:'golden-workflow-alpha25', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
         golden_end_to_end_demo_report:{golden_end_to_end_demo_report_version:VERSION, demo_model:'golden_workflow_corpus.v1', release_gate:'golden_demo_review_required', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
         golden_export_pack_validation_report:{golden_export_pack_validation_report_version:VERSION, validation_model:'golden_workflow_corpus.v1', release_gate:'golden_export_pack_review_required', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
         hosted_demo_scenario_evidence:{hosted_demo_scenario_evidence_version:VERSION, scenario_model:'golden_workflow_corpus.v1', release_gate:'hosted_demo_scenario_evidence_required', live_fetching_performed:false, provider_execution_performed:false, verification_claimed:false},
@@ -517,7 +517,7 @@
         'docs/current-release.md': ''
       }
     };
-    const bundle = releaseCandidateHygiene.buildReleaseCandidateHygieneBundle(packet, corpus, exportPackResult, {version:VERSION, stale_versions:['1.1.0-alpha.24','v1.1.0-alpha.24']});
+    const bundle = releaseCandidateHygiene.buildReleaseCandidateHygieneBundle(packet, corpus, exportPackResult, {version:VERSION, stale_versions:['1.1.0-alpha.25','v1.1.0-alpha.25']});
     state.final_repo_hygiene_report = bundle.final_repo_hygiene_report;
     state.stale_release_copy_sweep = bundle.stale_release_copy_sweep;
     state.golden_workflow_regression_lock = bundle.golden_workflow_regression_lock;

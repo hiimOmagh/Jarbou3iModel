@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.24",
-  "internal_build_version": "1.4.0-alpha.24",
-  "public_version_label": "v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard",
+  "evidence_matrix_config_version": "1.4.0-alpha.25",
+  "internal_build_version": "1.4.0-alpha.25",
+  "public_version_label": "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Changed-Files Patch Hygiene Guard"
+        "Release System Consolidation + Effective Diff Guard"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -44,7 +44,7 @@
         "قابلية عمل لوحة ميزانية الأدلة",
         "سجل قرارات لوحة الأدلة",
         "مركز إنتاجية التسليم",
-        "حارس نظافة حزمة الملفات المعدلة"
+        "توحيد نظام الإصدار وحارس الفرق الفعلي"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -67,7 +67,7 @@
         "Compression UX de l’adaptateur fournisseur manuel",
         "Actionnabilité du tableau budget preuves",
         "Registre de décision du tableau preuves",
-        "Garde d’hygiène des patchs à fichiers modifiés",
+        "Consolidation du système de release + garde de diff effectif",
         "Garde d’hygiène des patchs"
       ],
       "forbidden": [
@@ -254,8 +254,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard",
-    "ar": "v1.4.0-alpha.24 حارس نظافة حزمة الملفات المعدلة",
-    "fr": "v1.4.0-alpha.24 Garde d’hygiène des patchs à fichiers modifiés"
+    "en": "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard",
+    "ar": "v1.4.0-alpha.25 توحيد نظام الإصدار وحارس الفرق الفعلي",
+    "fr": "v1.4.0-alpha.25 Consolidation du système de release + garde de diff effectif"
   }
 }

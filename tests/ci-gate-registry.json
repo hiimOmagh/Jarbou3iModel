@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.24",
-  "release_title": "v1.4.0-alpha.24 — Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard",
+  "ci_gate_registry_version": "1.4.0-alpha.25",
+  "release_title": "v1.4.0-alpha.25 — Release System Consolidation + Effective Diff Guard",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -177,7 +177,8 @@
         "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
         "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
-        "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
+        "tests/current-release-lock-completion-check.mjs",
+        "tests/effective-diff-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -255,7 +256,8 @@
         "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
         "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
-        "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
+        "tests/current-release-lock-completion-check.mjs",
+        "tests/effective-diff-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -527,7 +529,8 @@
         "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
         "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
-        "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
+        "tests/current-release-lock-completion-check.mjs",
+        "tests/effective-diff-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -559,7 +562,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.24",
+    "version": "1.4.0-alpha.25",
     "scope": "handoff_productivity_runbook_gate",
     "optimization_scope": "handoff_productivity_runbook_gate",
     "syntax_matrix_parallelization_enabled": true,
@@ -571,11 +574,11 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 100,
-    "current_candidate": "1.4.0-alpha.24",
+    "current_candidate": "1.4.0-alpha.25",
     "name": "handoff_productivity_runbook_gate"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.24",
+    "version": "1.4.0-alpha.25",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -750,7 +753,7 @@
       "src/research/evidence-dashboard-decision-ledger.js",
       "src/research/evidence-decision-ledger-handoff-audit.js",
       "src/research/handoff-productivity-command-center.js",
-      "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs",
+      "tests/current-release-lock-completion-check.mjs",
       "src/research/handoff-productivity-runbook-gate.js",
       "src/research/changed-files-patch-hygiene-guard.js"
     ],
@@ -758,7 +761,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.24",
+    "version": "1.4.0-alpha.25",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

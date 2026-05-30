@@ -31,7 +31,7 @@
   function includesAny(value, terms){ const hay = text(value).toLowerCase(); return asArray(terms).some((term) => hay.includes(text(term).toLowerCase())); }
   function buildStaleReleaseCopySweep(corpus = {}, options = {}){
     const current = options.version || VERSION;
-    const staleVersions = asArray(options.stale_versions || ['1.1.0-alpha.24','v1.1.0-alpha.24']);
+    const staleVersions = asArray(options.stale_versions || ['1.1.0-alpha.25','v1.1.0-alpha.25']);
     const protectedHistorical = asArray(options.protected_historical_files || ['docs/release-history.md']);
     const checkedFiles = Object.keys(corpus.files || {}).filter((file) => !protectedHistorical.includes(file));
     const staleMatches = [];

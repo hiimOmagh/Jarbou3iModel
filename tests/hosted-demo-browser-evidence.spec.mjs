@@ -17,10 +17,19 @@ const VISIBLE_TEXT_FORBIDDEN_NON_LOCALE_RESIDUALS = {
 
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { test, expect } from '@playwright/test';
 
-const VERSION = '1.4.0-alpha.24';
-const PUBLIC_VERSION_LABEL = 'v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard';
+function loadReleaseCopyContract(){
+  const source = fs.readFileSync('src/research/release-copy-contract.js', 'utf8');
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(source, sandbox, { filename:'src/research/release-copy-contract.js' });
+  return sandbox.Jarbou3iResearchReleaseCopyContract;
+}
+const RELEASE_COPY_CONTRACT = loadReleaseCopyContract();
+const VERSION = RELEASE_COPY_CONTRACT.version;
+const PUBLIC_VERSION_LABEL = RELEASE_COPY_CONTRACT.publicVersionLabels.en;
 const EVIDENCE_ROOT = process.env.HOSTED_DEMO_EVIDENCE_DIR || 'test-results/hosted-demo-evidence';
 const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const MATRIX_CONFIG = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
@@ -50,26 +59,6 @@ const STALE_RELEASE_TITLE_TOKENS = Object.freeze([
   'حزمة إعادة تشغيل التجربة الجافة',
   'محاكاة اعتماد المشغّل'
 ]);
-const STALE_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS = Object.freeze([
-  'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
-  'نموذج أولي محدود للتنفيذ الحي اليدوي',
-  'هيكل اشتراك يدوي فقط',
-  'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
-  'محاكاة قمرة الأمان فقط',
-  'شروط تشغيل يدوية',
-  'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار',
-  'صندوق رمل بلا شبكة فقط'
-]);
-const EXPECTED_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS = Object.freeze([
-  'حارس نظافة حزمة الملفات المعدلة جاهزة لأدلة الإصدار',
-  'يرتب خطوات دليل تشغيل القفل',
-  'يراجع هوية حزمة القفل',
-  'يؤكد حدود المشغّل',
-  'طبقة بوابة دليل التشغيل فقط',
-  'دون نداءات مزوّد حية',
-  'دون نداءات شبكة مخفية'
-]);
-
 function ensureEvidenceRoot(){ fs.mkdirSync(EVIDENCE_ROOT, { recursive:true }); }
 function ensureDir(dir){ fs.mkdirSync(dir, { recursive:true }); }
 function pngDimensions(buffer){ if(!Buffer.isBuffer(buffer) || buffer.length < 24 || buffer.toString('ascii', 1, 4) !== 'PNG') return {width:0,height:0}; return {width:buffer.readUInt32BE(16), height:buffer.readUInt32BE(20)}; }
@@ -78,8 +67,9 @@ function writeJson(file, value){ ensureDir(path.dirname(file)); fs.writeFileSync
 function visibleTextCorpus(snapshot){ return (snapshot.visible_text || []).join(' '); }
 function publicVersionLabelsForLocale(locale){ const configured = MATRIX_CONFIG.public_version_labels?.[locale] || []; const labels = Array.isArray(configured) ? configured : [configured]; return [PUBLIC_VERSION_LABEL, ...labels].filter(Boolean); }
 function staleReleaseTitleMatches(corpus){ return STALE_RELEASE_TITLE_TOKENS.filter((token)=>corpusHasToken(corpus, token)); }
-function staleArabicCurrentReleaseDescriptionMatches(text){ return STALE_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS.filter((token)=>corpusHasToken(text, token)); }
-function expectedArabicCurrentReleaseDescriptionMatches(text){ return EXPECTED_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS.filter((token)=>corpusHasToken(text, token)); }
+function staleCurrentReleaseDescriptionMatches(text){ return (RELEASE_COPY_CONTRACT.staleVisibleText || []).filter((token)=>corpusHasToken(text, token)); }
+function expectedCurrentReleaseDescriptionTokens(locale){ return RELEASE_COPY_CONTRACT.requiredVisibleText?.[locale] || []; }
+function expectedCurrentReleaseDescriptionMatches(locale, text){ return expectedCurrentReleaseDescriptionTokens(locale).filter((token)=>corpusHasToken(text, token)); }
 function findMojibakeMarkers(text){
   const value = String(text || '');
   return MOJIBAKE_MARKERS.filter(({ pattern }) => pattern.test(value)).map(({ label }) => label);
@@ -127,11 +117,12 @@ async function collectVisibleTextSnapshot(page, locale, screenLabel){
   const unexpected_english_residuals = locale === 'en' ? [] : VISIBLE_TEXT_FORBIDDEN_ENGLISH_RESIDUALS.filter((phrase)=>corpus.includes(phrase));
   const unexpected_non_locale_residuals = (VISIBLE_TEXT_FORBIDDEN_NON_LOCALE_RESIDUALS[locale] || []).filter((phrase)=>corpus.includes(phrase));
   const unexpected_stale_release_label_tokens = staleReleaseTitleMatches(corpus);
-  const unexpected_stale_current_release_description_tokens = locale === 'ar' ? staleArabicCurrentReleaseDescriptionMatches(current_release_description) : [];
-  const expected_current_release_description_tokens = locale === 'ar' ? expectedArabicCurrentReleaseDescriptionMatches(current_release_description) : [];
+  const unexpected_stale_current_release_description_tokens = staleCurrentReleaseDescriptionMatches(current_release_description);
+  const expected_current_release_description_tokens = expectedCurrentReleaseDescriptionMatches(locale, current_release_description);
   const expected_markers_present = (expected_locale_markers[locale] || []).filter((phrase)=>corpus.includes(phrase));
   const has_arabic_unicode = ARABIC_UNICODE_RE.test(corpus);
-  const currentReleaseDescriptionPassed = locale !== 'ar' || (unexpected_stale_current_release_description_tokens.length === 0 && expected_current_release_description_tokens.length === EXPECTED_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS.length);
+  const expectedDescriptionTokens = expectedCurrentReleaseDescriptionTokens(locale);
+  const currentReleaseDescriptionPassed = unexpected_stale_current_release_description_tokens.length === 0 && expected_current_release_description_tokens.length === expectedDescriptionTokens.length;
   const locale_snapshot_passed = snapshotState.html_lang === locale && expected_markers_present.length >= 1 && unexpected_english_residuals.length === 0 && unexpected_non_locale_residuals.length === 0 && unexpected_stale_release_label_tokens.length === 0 && currentReleaseDescriptionPassed && (locale !== 'ar' || has_arabic_unicode);
   return { locale, screen:screenLabel, html_lang:snapshotState.html_lang, html_dir:snapshotState.html_dir, title:snapshotState.title, visible_text, current_release_description, allowed_latin_tokens:TECHNICAL_TOKEN_ALLOWLIST, expected_locale_markers:expected_locale_markers[locale] || [], expected_markers_present, unexpected_english_residuals, unexpected_non_locale_residuals, unexpected_stale_release_label_tokens, unexpected_stale_current_release_description_tokens, expected_current_release_description_tokens, mojibake_markers:findMojibakeMarkers(corpus), has_arabic_unicode, locale_snapshot_passed };
 }
@@ -228,7 +219,7 @@ async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, mat
   ensureEvidenceRoot(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
 }
 
-test.describe('v1.4.0-alpha.24 hosted demo evidence matrix and manifest capture', () => {
+test.describe(`${PUBLIC_VERSION_LABEL} hosted demo evidence matrix and manifest capture`, () => {
   test.describe.configure({ mode: 'serial' });
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }, testInfo) => {
     test.setTimeout(HOSTED_EVIDENCE_TEST_TIMEOUT_MS);
@@ -240,7 +231,7 @@ test.describe('v1.4.0-alpha.24 hosted demo evidence matrix and manifest capture'
     await page.setViewportSize({ width:1440, height:950 }); await page.goto('/'); await assertHostedDemoReady(page); await openProviderHarness(page); captures.push(await capture(page, 'provider-mode'));
     await openQualityExport(page); captures.push(await capture(page, 'quality-export'));
     for(const locale of LOCALIZATION_SNAPSHOT_LOCALES){ await switchLocaleForVisibleTextSnapshot(page, locale); visibleTextSnapshots[locale] = await collectVisibleTextSnapshot(page, locale, 'hosted-demo-visible-text'); await fs.promises.writeFile(path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale]), JSON.stringify(visibleTextSnapshots[locale], null, 2)); }
-    expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.en.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.ar.expected_current_release_description_tokens).toEqual([...EXPECTED_AR_CURRENT_RELEASE_DESCRIPTION_TOKENS]); expect(visibleTextSnapshots.ar).toMatchObject({ html_lang: 'ar', html_dir: 'rtl', has_arabic_unicode: true, mojibake_markers: [], locale_snapshot_passed: true }); expect(visibleTextSnapshots.fr).toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true }); expect(visibleTextSnapshots.en).toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true });
+    expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.en.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.ar.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('ar')]); expect(visibleTextSnapshots.fr.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('fr')]); expect(visibleTextSnapshots.en.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('en')]); expect(visibleTextSnapshots.ar).toMatchObject({ html_lang: 'ar', html_dir: 'rtl', has_arabic_unicode: true, mojibake_markers: [], locale_snapshot_passed: true }); expect(visibleTextSnapshots.fr).toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true }); expect(visibleTextSnapshots.en).toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true });
     const { matrixSummary } = await generateEvidenceMatrix(page);
     writeExportEvidence(matrixSummary);
     const metadata = await writeMetadata(page, captures, visibleTextSnapshots, matrixSummary);

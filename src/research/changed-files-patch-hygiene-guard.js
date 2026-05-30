@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine changed-files patch hygiene guard v1.4.0-alpha.24. */
+/* Jarbou3i Research Engine changed-files patch hygiene guard v1.4.0-alpha.25. */
 /* Static metadata-only patch-application hygiene guard. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.24';
-  const MILESTONE = 'v1.4.0-alpha.24 — Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard';
+  const VERSION = '1.4.0-alpha.25';
+  const MILESTONE = 'v1.4.0-alpha.25 — Release System Consolidation + Effective Diff Guard';
   const LOCKED_BASELINE = '1.4.0-alpha.23';
   const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.23 — Handoff Productivity Runbook Gate';
   const LOCKED_BASELINE_RUN_ID = '26684865061';

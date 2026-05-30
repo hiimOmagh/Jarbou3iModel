@@ -5,7 +5,9 @@ const tests = [
   'tests/fixture-registry-consolidation-check.mjs',
   'tests/repository-consolidation-audit-check.mjs',
   'tests/repo-file-hygiene-check.mjs',
-  'tests/migration-check.mjs'
+  'tests/migration-check.mjs',
+  'tests/current-release-lock-completion-check.mjs',
+  'tests/effective-diff-check.mjs'
 ];
 
 for (const file of tests) {
@@ -14,5 +16,5 @@ for (const file of tests) {
   if (result.status !== 0) process.exit(result.status || 1);
 }
 
-console.log('v1.1.0 current no-browser suite passed.');
+console.log('v1.4.0-alpha.25 current no-browser suite passed.');
 process.exit(0);

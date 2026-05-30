@@ -1,0 +1,91 @@
+{
+  "version": "1.4.0-alpha.25",
+  "milestone_name": "Release System Consolidation + Effective Diff Guard",
+  "release_type": "consolidation",
+  "allowed_scope": [
+    "generic current-release contract and completion check",
+    "cross-platform effective diff validation",
+    "single release visible-text copy contract consumed by UI and browser evidence",
+    "Windows-safe Playwright Node CLI invocation",
+    "stale alpha-specific release-control cleanup"
+  ],
+  "forbidden_scope": [
+    "product feature expansion",
+    "live provider calls",
+    "OAuth/token lifecycle changes",
+    "backend/storage behavior changes",
+    "source-fetching or scraping behavior changes",
+    "broad UI redesign",
+    "new alpha-specific lock-completion test filenames"
+  ],
+  "required_docs": [
+    "README.md",
+    "CHANGELOG.md",
+    "PUBLIC_DEMO.md",
+    "docs/current-release.md",
+    "docs/release-history.md",
+    "docs/release-and-evidence.md",
+    "docs/qa-matrix.md",
+    "docs/roadmap.md"
+  ],
+  "required_tests": [
+    "tests/current-release-lock-completion-check.mjs",
+    "tests/effective-diff-check.mjs",
+    "tests/hosted-demo-browser-evidence.spec.mjs"
+  ],
+  "required_browser_evidence_files": [
+    "desktop-first-screen.png",
+    "mobile-first-screen.png",
+    "provider-mode.png",
+    "quality-export.png",
+    "hosted-demo-metadata.json",
+    "visible-text-ar.json",
+    "visible-text-fr.json",
+    "visible-text-en.json"
+  ],
+  "required_locale_snapshots": [
+    "ar",
+    "fr",
+    "en"
+  ],
+  "expected_deleted_files": [
+    "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
+  ],
+  "expected_changed_files": [
+    "package.json",
+    "package-lock.json",
+    "MANIFEST.json",
+    "index.html",
+    "scripts/ci-browser.sh",
+    "src/research/render-helpers.js",
+    "src/research/release-copy-contract.js",
+    "tests/current-release-contract.json",
+    "tests/current-release-lock-completion-check.mjs",
+    "tests/effective-diff-check.mjs",
+    "tests/hosted-demo-browser-evidence.spec.mjs",
+    "tests/ci-gate-registry.json",
+    "tests/evidence/evidence-matrix.config.json",
+    "cleanup-alpha25-release-control-plane.ps1"
+  ],
+  "artifact_identity_rules": [
+    "package/docs/manifest/registry versions must match the current-release contract",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.25",
+    "public labels must expose v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard"
+  ],
+  "windows_portability_rules": [
+    "node \"$PLAYWRIGHT_CLI\" install --with-deps",
+    "node tests/ci-gate-runner.mjs browser"
+  ],
+  "effective_diff_rules": [
+    "zero_effect_patch_rejected",
+    "expected_changed_files_must_change",
+    "expected_deleted_files_must_be_absent",
+    "implementation_or_test_delta_required"
+  ],
+  "stale_current_release_tokens": [
+    "v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard",
+    "v1.4.0-alpha.24 توحيد نظام الإصدار وحارس الفرق الفعلي",
+    "v1.4.0-alpha.24 Consolidation du système de release + garde de diff effectif",
+    "Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard"
+  ]
+}

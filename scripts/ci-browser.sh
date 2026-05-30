@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ ! -x ./node_modules/.bin/playwright ]; then
-  echo "Playwright Node CLI missing. Run npm install before browser CI." >&2
+PLAYWRIGHT_CLI="node_modules/playwright/cli.js"
+
+if [ ! -f "$PLAYWRIGHT_CLI" ]; then
+  echo "Playwright Node CLI missing at $PLAYWRIGHT_CLI. Run npm install before browser CI." >&2
   exit 127
 fi
 
 if [ "${PLAYWRIGHT_SKIP_INSTALL:-0}" != "1" ]; then
-  ./node_modules/.bin/playwright install --with-deps
+  node "$PLAYWRIGHT_CLI" install --with-deps
 else
   echo "Skipping Playwright browser install because PLAYWRIGHT_SKIP_INSTALL=1."
 fi
