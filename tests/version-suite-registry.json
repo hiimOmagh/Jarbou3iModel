@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.21",
-  "release_title": "v1.4.0-alpha.21 \u2014 Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist",
+  "version_suite_registry_version": "1.4.0-alpha.22",
+  "release_title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1855,11 +1855,11 @@
         "tests/release-truth-consistency-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.21 roadmap lock completion and evidence budget regression dashboard gate passed."
+      "former_console_message": "v1.4.0-alpha.22 roadmap lock completion and evidence budget regression dashboard gate passed."
     },
     {
       "id": "v140-alpha16",
-      "title": "v1.4.0-alpha.21 \u2014 Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist",
+      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
       "former_file": null,
       "preserved_as": "registry_entry",
       "checks": [
@@ -1869,18 +1869,18 @@
         "tests/release-truth-consistency-check.mjs"
       ],
       "check_count": 4,
-      "former_console_message": "v1.4.0-alpha.21 evidence budget regression dashboard and alpha.16 lock completion gate passed."
+      "former_console_message": "v1.4.0-alpha.22 evidence budget regression dashboard and alpha.16 lock completion gate passed."
     },
     {
       "id": "v140a21",
       "former_file": null,
       "check_count": 1,
       "checks": [
-        "tests/evidence-handoff-readiness-checklist-lock-completion-check.mjs"
+        "tests/handoff-productivity-command-center-lock-completion-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "title": "v1.4.0-alpha.21 \u2014 Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist",
-      "former_console_message": "v1.4.0-alpha.21 evidence handoff readiness checklist and alpha.20 lock completion gate passed."
+      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
+      "former_console_message": "v1.4.0-alpha.22 handoff productivity command center and alpha.20 lock completion gate passed."
     }
   ]
 }

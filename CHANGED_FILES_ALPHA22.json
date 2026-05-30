@@ -1,0 +1,40 @@
+{
+  "version": "1.4.0-alpha.22",
+  "milestone": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
+  "locked_baseline": {
+    "version": "1.4.0-alpha.21",
+    "run_id": "26681464045",
+    "commit": "81675392a202ff1b175a8de62f6dbcd10962395e",
+    "no_browser_checks": 150,
+    "browser_checks": 17,
+    "evidence_matrix": "39/39"
+  },
+  "changed_files": [
+    ".github/workflows/ci.yml",
+    "CHANGELOG.md",
+    "MANIFEST.json",
+    "PUBLIC_DEMO.md",
+    "README.md",
+    "docs/current-release.md",
+    "docs/qa-matrix.md",
+    "docs/release-and-evidence.md",
+    "docs/release-history.md",
+    "docs/roadmap.md",
+    "index.html",
+    "package-lock.json",
+    "package.json",
+    "src/research/evidence-handoff-readiness-checklist-alpha21-baseline.js",
+    "src/research/handoff-productivity-command-center.js",
+    "src/research/render-helpers.js",
+    "tests/ci-gate-registry.json",
+    "tests/evidence/evidence-matrix.config.json",
+    "tests/handoff-productivity-command-center-lock-completion-check.mjs",
+    "tests/hosted-demo-browser-evidence.spec.mjs",
+    "tests/localization-regression-matrix-check.mjs",
+    "tests/public-demo-release-candidate-check.mjs",
+    "tests/release-truth-consistency-check.mjs",
+    "tests/stable-manual-workflow-release-check.mjs",
+    "tests/version-suite-registry.json"
+  ],
+  "note": "Changed-files-only candidate patch against locked v1.4.0-alpha.21. Adds a static handoff productivity command center without runtime/provider/backend/source/storage expansion."
+}

@@ -1,9 +1,19 @@
+## v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center
+
+- Status: current candidate. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence, artifact identity guard, and canonical lock bundle review.
+- Public release label: v1.4.0-alpha.22 Handoff Productivity Command Center.
+- Locked alpha.21 baseline: `v1.4.0-alpha.21 — Evidence Handoff Readiness Checklist`. Alpha.21 lock evidence: Run ID `26681464045`; commit `81675392a202ff1b175a8de62f6dbcd10962395e`; bundle SHA256 `a0be3068eedf344e25bb9bba0e7864790cb09fb0b0815c42a9edaca9185fcbfe`; no-browser 150 checks passed; browser 17 checks passed; hosted-demo evidence passed; evidence matrix 39/39 passed; AR/FR/EN visible-text snapshots passed; artifact identity guard passed; bundle validation passed; lockable true.
+- Scope: static handoff productivity command center only. It turns handoff readiness, decision-ledger, actionability, evidence-budget, localization, artifact-identity, and operator-review signals into a prioritized operator next-step queue.
+- Productivity outcomes: execute_lock_review_sequence; triage_budget_pressure_first; repair_blocking_handoff_defects_first; capture_missing_handoff_evidence_first.
+- Safety: no live provider calls, hidden network calls, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission.
+- Runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.
+
 # Changelog
 
-## v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist
+## v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center
 
 - Marked `v1.4.0-alpha.20 — Evidence Decision Ledger Handoff Audit` as locked with Run ID `26680024039` and commit `d492d8e7de270f6bab5780a5dad5f821056c74b7`.
-- Added static evidence handoff readiness checklist.
+- Added static handoff productivity command center.
 - Added operator actions: handoff_packet_ready_for_review; review_handoff_warnings_before_lock; block_handoff_until_repaired; capture_handoff_evidence_before_review.
 - Preserved alpha.14 replay corpus, alpha.15 UX/runtime guard, alpha.16 evidence-budget enforcement, alpha.17 regression dashboard, alpha.18 actionability, alpha.19 decision ledger, and alpha.20 handoff audit.
 - No live scraping. No production OAuth. No real OAuth. No real API keys. No real token storage. No credential persistence. No live source fetching. No hidden network calls. No provider execution expansion. No backend behavior expansion. No storage expansion. No source behavior expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signing. No cryptographic signature claim. No publication permission claim.

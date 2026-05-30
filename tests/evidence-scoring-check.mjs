@@ -24,7 +24,7 @@ vm.createContext(context);
 vm.runInContext(scorerSource, context, {filename:'src/research/evidence-scorer.js'});
 const scorer = context.window.Jarbou3iResearchModules.evidenceScorer;
 
-assert.equal(pkg.version, '1.4.0-alpha.21');
+assert.equal(pkg.version, '1.4.0-alpha.22');
 assert.equal(scorer.VERSION, '1.3.0');
 assert.equal(scorer.SCORING_VERSION, 'evidence_scoring.v1');
 assert.equal(typeof scorer.scoreEvidenceItem, 'function');

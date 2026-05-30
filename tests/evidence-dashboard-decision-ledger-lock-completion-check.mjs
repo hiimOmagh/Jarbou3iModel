@@ -2,11 +2,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.21';
-const RELEASE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
-const PUBLIC_LABEL = 'v1.4.0-alpha.21 Evidence Handoff Readiness Checklist';
-const LOCKED_ALPHA18 = '1.4.0-alpha.21';
-const LOCKED_ALPHA18_TITLE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
+const VERSION = '1.4.0-alpha.22';
+const RELEASE = 'v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center';
+const PUBLIC_LABEL = 'v1.4.0-alpha.22 Handoff Productivity Command Center';
+const LOCKED_ALPHA18 = '1.4.0-alpha.22';
+const LOCKED_ALPHA18_TITLE = 'v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center';
 const RUN_ID_ALPHA18 = '26660959763';
 const COMMIT_ALPHA18 = '4e2c852fa0568fcc12881d7565ba9fd50844e0c4';
 const TARGET_MODULE = 'src/research/evidence-dashboard-decision-ledger.js';
@@ -68,14 +68,14 @@ assert.equal((roadmap.match(/Current candidate/g) || []).length, 1, 'roadmap mus
 
 assert.ok(index.includes(PUBLIC_LABEL));
 assert.ok(helpers.includes(PUBLIC_LABEL));
-assert.ok(index.includes('content="1.4.0-alpha.21"'));
+assert.ok(index.includes('content="1.4.0-alpha.22"'));
 assert.ok(index.includes('src="src/research/evidence-dashboard-decision-ledger.js" defer'));
 assert.ok(index.includes('data-browser-qa="evidence-dashboard-decision-ledger"'));
-assert.ok(helpers.includes('Evidence Handoff Readiness Checklist'));
+assert.ok(helpers.includes('Handoff Productivity Command Center'));
 assert.ok(helpers.includes('سجل قرارات لوحة الأدلة'));
 assert.ok(helpers.includes('Registre de décision du tableau preuves'));
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.21_${{ github.run_id }}'));
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.21'"));
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.22_${{ github.run_id }}'));
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.22'"));
 
 for (const gate of ['no-browser','current-no-browser','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes(TARGET_CHECK), `${gate} must run alpha.19 decision-ledger check`);

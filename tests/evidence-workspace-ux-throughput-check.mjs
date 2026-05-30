@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.21';
-const CURRENT_TITLE = 'Evidence Handoff Readiness Checklist';
+const CURRENT_VERSION = '1.4.0-alpha.22';
+const CURRENT_TITLE = 'Handoff Productivity Command Center';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/evidence-workspace-ux.js', 'utf8');
 const index = fs.readFileSync('index.html', 'utf8');

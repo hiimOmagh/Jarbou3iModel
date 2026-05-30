@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.21",
-  "internal_build_version": "1.4.0-alpha.21",
-  "public_version_label": "v1.4.0-alpha.21 Evidence Handoff Readiness Checklist",
+  "evidence_matrix_config_version": "1.4.0-alpha.22",
+  "internal_build_version": "1.4.0-alpha.22",
+  "public_version_label": "v1.4.0-alpha.22 Handoff Productivity Command Center",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Evidence Handoff Readiness Checklist"
+        "Handoff Productivity Command Center"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -43,7 +43,7 @@
         "ضغط تجربة محوّل المزوّد اليدوي",
         "قابلية عمل لوحة ميزانية الأدلة",
         "سجل قرارات لوحة الأدلة",
-        "قائمة جاهزية تسليم الأدلة"
+        "مركز إنتاجية التسليم"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -66,7 +66,7 @@
         "Compression UX de l’adaptateur fournisseur manuel",
         "Actionnabilité du tableau budget preuves",
         "Registre de décision du tableau preuves",
-        "Liste de préparation de remise des preuves"
+        "Centre de productivité de remise"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -252,8 +252,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.21 Evidence Handoff Readiness Checklist",
-    "ar": "v1.4.0-alpha.21 قائمة جاهزية تسليم الأدلة",
-    "fr": "v1.4.0-alpha.21 Liste de préparation de remise des preuves"
+    "en": "v1.4.0-alpha.22 Handoff Productivity Command Center",
+    "ar": "v1.4.0-alpha.22 مركز إنتاجية التسليم",
+    "fr": "v1.4.0-alpha.22 Centre de productivité de remise"
   }
 }

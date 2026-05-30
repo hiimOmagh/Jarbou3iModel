@@ -1,16 +1,16 @@
-/* Jarbou3i Research Engine evidence dashboard decision ledger v1.4.0-alpha.21. */
+/* Jarbou3i Research Engine evidence dashboard decision ledger v1.4.0-alpha.22. */
 /* Static metadata-only review ledger. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.21';
-  const MILESTONE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
-  const LOCKED_BASELINE = '1.4.0-alpha.21';
-  const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
+  const VERSION = '1.4.0-alpha.22';
+  const MILESTONE = 'v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center';
+  const LOCKED_BASELINE = '1.4.0-alpha.22';
+  const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center';
   const LOCKED_BASELINE_RUN_ID = '26660959763';
   const LOCKED_BASELINE_COMMIT = '4e2c852fa0568fcc12881d7565ba9fd50844e0c4';
-  const ACTIONABILITY_BASELINE = '1.4.0-alpha.21';
+  const ACTIONABILITY_BASELINE = '1.4.0-alpha.22';
   const REGRESSION_DASHBOARD_BASELINE = '1.4.0-alpha.17';
   const EVIDENCE_BUDGET_BASELINE = '1.4.0-alpha.16';
   const MODEL = 'evidence_dashboard_decision_ledger.v1';

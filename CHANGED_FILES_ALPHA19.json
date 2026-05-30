@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.21",
-  "milestone": "v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist",
+  "version": "1.4.0-alpha.22",
+  "milestone": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
   "changed_files": [
     ".github/workflows/ci.yml",
     "package.json",
