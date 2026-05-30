@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.22';
-const CURRENT_TITLE = 'Handoff Productivity Command Center';
+const CURRENT_VERSION = '1.4.0-alpha.23';
+const CURRENT_TITLE = 'Handoff Productivity Runbook Gate';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

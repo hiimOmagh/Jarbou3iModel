@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine evidence budget regression dashboard + evidence/runtime budget v1.4.0-alpha.22. */
+/* Jarbou3i Research Engine evidence budget regression dashboard + evidence/runtime budget v1.4.0-alpha.23. */
 /* Static guardrail metadata only. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.22';
-  const MILESTONE = 'v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center';
+  const VERSION = '1.4.0-alpha.23';
+  const MILESTONE = 'v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate';
   const MODEL = 'manual_provider_adapter_ux_compression_evidence_runtime_budget.v1';
   const DASHBOARD_MODEL = 'evidence_budget_regression_dashboard.v1';
   const LOCKED_BASELINE = '1.4.0-alpha.14';

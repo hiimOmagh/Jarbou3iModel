@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.22';
-const CURRENT_TITLE = 'Alpha.21 Lock Completion + Handoff Productivity Command Center';
+const CURRENT_VERSION = '1.4.0-alpha.23';
+const CURRENT_TITLE = 'Alpha.22 Lock Completion + Handoff Productivity Runbook Gate';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const read = (file) => fs.readFileSync(file, 'utf8');

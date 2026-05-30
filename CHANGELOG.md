@@ -1,6 +1,16 @@
-## v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center
+## v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate
 
 - Status: current candidate. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence, artifact identity guard, and canonical lock bundle review.
+- Public release label: v1.4.0-alpha.23 Handoff Productivity Runbook Gate.
+- Locked alpha.22 baseline: `v1.4.0-alpha.22 — Handoff Productivity Command Center`. Alpha.22 lock evidence: Run ID `26683651807`; commit `a86d23efa3df7450c34d151f0dbb30fe3abdabef`; bundle SHA256 `a93d248dbe256fe073f93d977ab7cf432207293e2d59fdef0dbc0652d45f0068`; no-browser 150 checks passed; browser 17 checks passed; hosted-demo evidence passed; evidence matrix 39/39 passed; AR/FR/EN visible-text snapshots passed; artifact identity guard passed; bundle validation passed; lockable true.
+- Scope: static handoff productivity runbook gate only. It verifies current-candidate identity, no-browser/browser gates, hosted evidence matrix, visible-text snapshots, artifact identity guard, operator boundary, and no-automatic-signoff/export-lock runbook steps.
+- Runbook outcomes: execute_operator_lock_runbook; review_budget_pressure_then_continue; repair_blockers_before_runbook; capture_missing_evidence_before_runbook.
+- Safety: no live provider calls, hidden network calls, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission.
+- Runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.
+
+## v1.4.0-alpha.22 — Handoff Productivity Command Center
+
+- Status: locked baseline. Alpha.22 lock evidence: Run ID `26683651807`; commit `a86d23efa3df7450c34d151f0dbb30fe3abdabef`; bundle SHA256 `a93d248dbe256fe073f93d977ab7cf432207293e2d59fdef0dbc0652d45f0068`; no-browser 150 checks passed; browser 17 checks passed; hosted-demo evidence passed; evidence matrix 39/39 passed; AR/FR/EN visible-text snapshots passed; artifact identity guard passed; bundle validation passed; lockable true.
 - Public release label: v1.4.0-alpha.22 Handoff Productivity Command Center.
 - Locked alpha.21 baseline: `v1.4.0-alpha.21 — Evidence Handoff Readiness Checklist`. Alpha.21 lock evidence: Run ID `26681464045`; commit `81675392a202ff1b175a8de62f6dbcd10962395e`; bundle SHA256 `a0be3068eedf344e25bb9bba0e7864790cb09fb0b0815c42a9edaca9185fcbfe`; no-browser 150 checks passed; browser 17 checks passed; hosted-demo evidence passed; evidence matrix 39/39 passed; AR/FR/EN visible-text snapshots passed; artifact identity guard passed; bundle validation passed; lockable true.
 - Scope: static handoff productivity command center only. It turns handoff readiness, decision-ledger, actionability, evidence-budget, localization, artifact-identity, and operator-review signals into a prioritized operator next-step queue.
@@ -52,3 +62,7 @@ Node 24 CI compatibility preserved.
 Provenance gate continuity: provenance ledger, changed-files-only, fixture registry consolidation, visual freeze, mobile header, CI Gate Registry, Package Script, Root Manifest, Release Artifact Consolidation. v1.1.0 and 1.3.0 continuity preserved.
 
 Public Demo readiness continuity preserved.
+
+Arabic release token: بوابة دليل تشغيل إنتاجية التسليم.
+
+French release token: Porte de runbook de productivité de remise.

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.4.0-alpha.22';
-export const RELEASE_TITLE = 'v1.4.0-alpha.22 — Handoff Productivity Command Center';
+export const VERSION = '1.4.0-alpha.23';
+export const RELEASE_TITLE = 'v1.4.0-alpha.23 — Handoff Productivity Runbook Gate';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.22",
-  "internal_build_version": "1.4.0-alpha.22",
-  "public_version_label": "v1.4.0-alpha.22 Handoff Productivity Command Center",
+  "evidence_matrix_config_version": "1.4.0-alpha.23",
+  "internal_build_version": "1.4.0-alpha.23",
+  "public_version_label": "v1.4.0-alpha.23 Handoff Productivity Runbook Gate",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Handoff Productivity Command Center"
+        "Handoff Productivity Runbook Gate"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -66,7 +66,7 @@
         "Compression UX de l’adaptateur fournisseur manuel",
         "Actionnabilité du tableau budget preuves",
         "Registre de décision du tableau preuves",
-        "Centre de productivité de remise"
+        "Porte de runbook de productivité de remise"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -252,8 +252,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.22 Handoff Productivity Command Center",
-    "ar": "v1.4.0-alpha.22 مركز إنتاجية التسليم",
-    "fr": "v1.4.0-alpha.22 Centre de productivité de remise"
+    "en": "v1.4.0-alpha.23 Handoff Productivity Runbook Gate",
+    "ar": "v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم",
+    "fr": "v1.4.0-alpha.23 Porte de runbook de productivité de remise"
   }
 }

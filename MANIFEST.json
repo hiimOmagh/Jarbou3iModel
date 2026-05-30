@@ -1,8 +1,8 @@
 {
-  "version": "1.4.0-alpha.22",
-  "release_title": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
+  "version": "1.4.0-alpha.23",
+  "release_title": "v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate",
   "package": "jarbou3i-research-engine",
-  "release_type": "alpha20-lock-completion-handoff-productivity-command-center",
+  "release_type": "alpha22-lock-completion-handoff-productivity-runbook-gate",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
   "oauth_behavior_changed": false,

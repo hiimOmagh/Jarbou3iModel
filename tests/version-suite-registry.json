@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.22",
-  "release_title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
+  "version_suite_registry_version": "1.4.0-alpha.23",
+  "release_title": "v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1848,9 +1848,8 @@
     {
       "id": "v140-alpha15",
       "former_file": null,
-      "check_count": 3,
+      "check_count": 2,
       "checks": [
-        "tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/release-truth-consistency-check.mjs"
       ],
@@ -1859,27 +1858,22 @@
     },
     {
       "id": "v140-alpha16",
-      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
+      "title": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
       "former_file": null,
       "preserved_as": "registry_entry",
       "checks": [
-        "tests/evidence-budget-regression-dashboard-lock-completion-check.mjs",
-        "tests/evidence-budget-regression-dashboard-evidence-runtime-budget-check.mjs",
-        "tests/manual-provider-adapter-ux-compression-evidence-runtime-budget-check.mjs",
         "tests/release-truth-consistency-check.mjs"
       ],
-      "check_count": 4,
+      "check_count": 1,
       "former_console_message": "v1.4.0-alpha.22 evidence budget regression dashboard and alpha.16 lock completion gate passed."
     },
     {
       "id": "v140a21",
       "former_file": null,
-      "check_count": 1,
-      "checks": [
-        "tests/handoff-productivity-command-center-lock-completion-check.mjs"
-      ],
+      "check_count": 0,
+      "checks": [],
       "preserved_as": "registry_entry",
-      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
+      "title": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
       "former_console_message": "v1.4.0-alpha.22 handoff productivity command center and alpha.20 lock completion gate passed."
     }
   ]

@@ -1,4 +1,4 @@
-/* v1.4.0-alpha.22 · Handoff Productivity Command Center. Runtime-budget guard only; disabled by default. */
+/* v1.4.0-alpha.23 · Handoff Productivity Runbook Gate. Runtime-budget guard only; disabled by default. */
 /* continuity tokens for legacy alpha.15/alpha.17 release gates: ضغط تجربة محوّل المزوّد اليدوي; Compression UX de l’adaptateur fournisseur manuel; bounded runtime surface. */
 (function(global){
   'use strict';
@@ -7,7 +7,7 @@
     en: {
       researchTitle:'Research Workflow Lab',
       researchSubtitle:'Experimental research-to-strategy pipeline. Manual mode remains untouched; this layer builds plan, evidence, source clusters, entity profiles, causal links, mock AI, critique, and Quality Gate v3.',
-      alphaBadge:'v1.4.0-alpha.22 Handoff Productivity Command Center · Runtime-Budget Guard Only',
+      alphaBadge:'v1.4.0-alpha.23 Handoff Productivity Runbook Gate · Runtime-Budget Guard Only',
       planTitle:'Research Plan',
       planSubtitle:'Convert the topic into research questions, source targets, actor targets, counter-evidence targets, and early-warning indicators.',
       planMode:'Research mode',
@@ -27,7 +27,7 @@
     ar: {
       researchTitle:'مختبر سير العمل البحثي',
       researchSubtitle:'طبقة تجريبية تربط البحث بالتحليل الاستراتيجي. النمط اليدوي يبقى كما هو؛ هذه الطبقة تضيف خطة، مصفوفة أدلة، تجميعات مصادر، ملفات كيانات، روابط سببية، نقد، وبوابة جودة v3.',
-      alphaBadge:'v1.4.0-alpha.22 مركز إنتاجية التسليم · مراجعة المشغّل' ,
+      alphaBadge:'v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم · مراجعة المشغّل' ,
       planTitle:'خطة البحث',
       planSubtitle:'حوّل الموضوع إلى أسئلة بحث، مصادر مستهدفة، فاعلين، أدلة مضادة، ومؤشرات إنذار مبكر.',
       planMode:'نمط البحث',
@@ -47,7 +47,7 @@
     fr: {
       researchTitle:'Laboratoire de workflow de recherche',
       researchSubtitle:'Couche expérimentale reliant la recherche à l’analyse stratégique. Le mode manuel reste intact; cette couche ajoute plan, matrice de preuves, clusters de sources, profils d’entités, liens causaux, critique et barrière qualité v3.',
-      alphaBadge:'v1.4.0-alpha.22 Centre de productivité de remise · revue opérateur',
+      alphaBadge:'v1.4.0-alpha.23 Porte de runbook de productivité de remise · revue opérateur',
       planTitle:'Plan de recherche',
       planSubtitle:'Transformer le sujet en questions, sources cibles, acteurs, contre-preuves et signaux précoces.',
       planMode:'Mode de recherche',
@@ -405,7 +405,7 @@
     publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
     localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
     hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
-    hostedDemoVerificationBody:'Handoff Productivity Command Center is ready for release evidence: it maps dashboard status into lock-review-ready, budget-pressure-review, regression-blocked, and evidence-capture-required operator decision paths without expanding browser scope. Hosted evidence must report 1.4.0-alpha.22 internally while showing v1.4.0-alpha.22 Handoff Productivity Command Center to users. Productivity command center layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+    hostedDemoVerificationBody:'Handoff Productivity Runbook Gate is ready for release evidence: it turns handoff productivity evidence into a deterministic operator runbook for lock review, budget pressure, blocker repair, and missing-evidence capture without expanding browser scope. Hosted evidence must report 1.4.0-alpha.23 internally while showing v1.4.0-alpha.23 Handoff Productivity Runbook Gate to users. Runbook gate layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
     evidenceReviewGateBody:'Stable release evidence preserves the Evidence Review Queue, publication review gate, Export Pack v3, golden workflow, and privacy guards. Screenshots or ZIP files alone are insufficient for release approval.',
@@ -424,7 +424,7 @@
     publicDemoReadyBody:'استخدم هذه النسخة لعرض عام واضح: يبقى النمط اليدوي/الخاص هو الافتراضي، ويظل مسار البدء الأول ظاهرًا، وتوضح ملاحظات الإصدار ما تغيّر وما لم يتغيّر عمدًا.',
     localOnlyDefault:'افتراضي محلي فقط', safeExportBoundary:'حدود تصدير آمنة', noLiveProviderBehaviorChange:'لا تغيير في سلوك المزوّد الحي', releaseNotesReady:'ملاحظات الإصدار جاهزة',
     hostedDemoVerificationEyebrow:'التحقق من العرض المستضاف', hostedDemoVerificationTitle:'لا تنشر إلا بعد توفر أدلة المتصفح',
-    hostedDemoVerificationBody:'مركز إنتاجية التسليم جاهز لأدلة الإصدار: يفحص جاهزية تسليم سجل القرارات، يراجع هوية حزمة القفل، يؤكد حدود السلوك، ويحافظ على قرار المشغّل اليدوي دون توسيع سطح المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.22 مع عرض v1.4.0-alpha.22 مركز إنتاجية التسليم · مراجعة المشغّل للمستخدمين. طبقة تدقيق تسليم فقط: دون نداءات مزوّد حية، دون نداءات شبكة مخفية، دون OAuth/دورة رموز حقيقية، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
+    hostedDemoVerificationBody:'بوابة دليل تشغيل إنتاجية التسليم جاهزة لأدلة الإصدار: يرتب خطوات دليل تشغيل القفل، يراجع هوية حزمة القفل، يؤكد حدود المشغّل، ويمنع التوقيع أو قفل التصدير الآلي دون توسيع سطح المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.23 مع عرض v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم · مراجعة المشغّل للمستخدمين. طبقة بوابة دليل التشغيل فقط: دون نداءات مزوّد حية، دون نداءات شبكة مخفية، دون OAuth/دورة رموز حقيقية، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
     hostedUrlChecked:'تم فحص رابط الاستضافة', desktopEvidence:'دليل سطح المكتب', mobileEvidence:'دليل الهاتف', providerExportEvidence:'دليل المزوّد/التصدير',
     evidenceReviewGateEyebrow:'بوابة مراجعة الأدلة', evidenceReviewGateTitle:'راجع اللقطات والبيانات الوصفية قبل النشر',
     evidenceReviewGateBody:'تحافظ أدلة الإصدار المستقر على صف مراجعة الأدلة، بوابة مراجعة النشر، Export Pack v3، المجموعة الذهبية، وحراس الخصوصية. لا تكفي اللقطات أو ملفات ZIP وحدها لاعتماد الإصدار.',
@@ -444,7 +444,7 @@
     publicDemoReadyBody:'Utilisez cette version pour une démonstration publique claire : le mode manuel/privé reste par défaut, le parcours de démarrage est visible, et les notes de version indiquent ce qui a changé et ce qui n’a volontairement pas changé.',
     localOnlyDefault:'Défaut local uniquement', safeExportBoundary:'Frontière d’export sûre', noLiveProviderBehaviorChange:'Aucun changement du fournisseur live', releaseNotesReady:'Notes de version prêtes',
     hostedDemoVerificationEyebrow:'Vérification de la démo hébergée', hostedDemoVerificationTitle:'Publier seulement après preuve navigateur',
-    hostedDemoVerificationBody:'La centre de productivité de remise est prête pour les preuves de release : elle vérifie les éléments de remise, l’identité alpha.21 verrouillée, la matrice de preuves, les instantanés de texte visible, la garde d’identité d’artefact et la revue opérateur sans élargir la portée navigateur. Les preuves hébergées doivent annoncer 1.4.0-alpha.22 en interne tout en affichant v1.4.0-alpha.22 Centre de productivité de remise · revue opérateur aux utilisateurs. Couche centre de productivité uniquement : aucun appel fournisseur réel, appel réseau caché, OAuth/cycle de token réel, persistance d’identifiants, fetch source live, vérification, visa, verrou ou publication automatique.',
+    hostedDemoVerificationBody:'La centre de productivité de remise est prête pour les preuves de release : elle vérifie les éléments de remise, l’identité alpha.21 verrouillée, la matrice de preuves, les instantanés de texte visible, la garde d’identité d’artefact et la revue opérateur sans élargir la portée navigateur. Les preuves hébergées doivent annoncer 1.4.0-alpha.23 en interne tout en affichant v1.4.0-alpha.23 Porte de runbook de productivité de remise · revue opérateur aux utilisateurs. Couche centre de productivité uniquement : aucun appel fournisseur réel, appel réseau caché, OAuth/cycle de token réel, persistance d’identifiants, fetch source live, vérification, visa, verrou ou publication automatique.',
     hostedUrlChecked:'URL hébergée vérifiée', desktopEvidence:'Preuve desktop', mobileEvidence:'Preuve mobile', providerExportEvidence:'Preuve fournisseur/export',
     evidenceReviewGateEyebrow:'Barrière de revue des preuves', evidenceReviewGateTitle:'Revoir captures et métadonnées avant publication',
     evidenceReviewGateBody:'Les preuves de release stable conservent la file de revue des preuves, la revue publication, Export Pack v3, le golden workflow et les garde-fous de confidentialité. Captures ou ZIP seuls sont insuffisants pour approuver la release.',
@@ -537,7 +537,7 @@
 
 
   Object.assign(COPY.en, {
-    analysisReleaseNote:'1.4.0-alpha.22 converts evidence-budget regression results into pass, warn, fail, and review-required operator actions without network calls.',
+    analysisReleaseNote:'1.4.0-alpha.23 converts evidence-budget regression results into pass, warn, fail, and review-required operator actions without network calls.',
     oauthAuthorizationEndpoint:'OAuth authorization endpoint', oauthTokenEndpoint:'OAuth token endpoint', oauthClientId:'OAuth client ID', oauthRedirectUri:'OAuth redirect URI', oauthScopes:'OAuth scopes', oauthCallbackUrl:'OAuth callback URL', oauthCallbackPlaceholder:'Paste redirect URL with ?code=...&state=...', buildPortableOAuthUrl:'Build OAuth PKCE URL', completePortableOAuthCallback:'Complete OAuth callback', disconnectPortableOAuthSpike:'Disconnect OAuth spike',
     yes:'yes', no:'no', unknown:'unknown', none:'none', required:'required', chars:'chars', truncatedPreview:'truncated preview', providerPromptMissing:'No prompt preview yet.', providerPromptMissingHint:'Use preview or dry-run.', providerRunEmptyHint:'Use dry-run or mock provider execution to create auditable provider runs.',
     sourceTypesEmpty:'no source types', convertedLabel:'converted', rejectedLabel:'rejected',
@@ -552,7 +552,7 @@
     layerLabels:{interests:'interests', actors:'actors', tools:'tools', narrative:'narrative', outcomes:'outcomes', results:'results', feedback:'feedback', contradictions:'contradictions', scenarios:'scenarios'}
   });
   Object.assign(COPY.ar, {
-    analysisReleaseNote:'يحوّل 1.4.0-alpha.22 نتائج انحدار ميزانية الأدلة إلى نجاح وتحذير وفشل ومراجعة مطلوبة مع إجراءات المشغّل دون نداءات شبكة.',
+    analysisReleaseNote:'يحوّل 1.4.0-alpha.23 نتائج انحدار ميزانية الأدلة إلى نجاح وتحذير وفشل ومراجعة مطلوبة مع إجراءات المشغّل دون نداءات شبكة.',
     oauthAuthorizationEndpoint:'نقطة تفويض OAuth', oauthTokenEndpoint:'نقطة رمز OAuth', oauthClientId:'معرّف عميل OAuth', oauthRedirectUri:'رابط إعادة توجيه OAuth', oauthScopes:'صلاحيات OAuth', oauthCallbackUrl:'رابط عودة OAuth', oauthCallbackPlaceholder:'الصق رابط العودة الذي يحتوي على ?code=...&state=...', buildPortableOAuthUrl:'بناء رابط OAuth/PKCE', completePortableOAuthCallback:'إكمال عودة OAuth', disconnectPortableOAuthSpike:'فصل تجربة OAuth',
     yes:'نعم', no:'لا', unknown:'غير معروف', none:'لا يوجد', required:'مطلوب', chars:'حرف', truncatedPreview:'معاينة مختصرة', providerPromptMissing:'لا توجد معاينة برومبت بعد.', providerPromptMissingHint:'استخدم المعاينة أو الطلب التجريبي.', providerRunEmptyHint:'استخدم طلبًا تجريبيًا أو تنفيذ مزوّد وهميًا لإنشاء سجل تشغيل قابل للتدقيق.',
     runLedgerEmpty:'لا توجد عمليات مزوّد بعد.',
@@ -568,7 +568,7 @@
     layerLabels:{interests:'المصالح', actors:'الفاعلون', tools:'الأدوات', narrative:'السردية', outcomes:'المخرجات', results:'النتائج', feedback:'التغذية الراجعة', contradictions:'التناقضات', scenarios:'السيناريوهات'}
   });
   Object.assign(COPY.fr, {
-    analysisReleaseNote:'1.4.0-alpha.22 convertit les résultats de régression du budget preuves en actions opérateur pass, warn, fail et revue requise sans appels réseau.',
+    analysisReleaseNote:'1.4.0-alpha.23 convertit les résultats de régression du budget preuves en actions opérateur pass, warn, fail et revue requise sans appels réseau.',
     oauthAuthorizationEndpoint:'Endpoint d’autorisation OAuth', oauthTokenEndpoint:'Endpoint de jeton OAuth', oauthClientId:'ID client OAuth', oauthRedirectUri:'URI de redirection OAuth', oauthScopes:'Scopes OAuth', oauthCallbackUrl:'URL de retour OAuth', oauthCallbackPlaceholder:'Collez l’URL de retour avec ?code=...&state=...', buildPortableOAuthUrl:'Construire l’URL OAuth/PKCE', completePortableOAuthCallback:'Finaliser le retour OAuth', disconnectPortableOAuthSpike:'Déconnecter l’essai OAuth',
     yes:'oui', no:'non', unknown:'inconnu', none:'aucun', required:'requis', chars:'caractères', truncatedPreview:'aperçu tronqué', providerPromptMissing:'Aucun aperçu de prompt.', providerPromptMissingHint:'Utilisez l’aperçu ou le dry-run.', providerRunEmptyHint:'Utilisez un dry-run ou une exécution fournisseur simulée pour créer des runs auditables.',
     runLedgerEmpty:'Aucune exécution fournisseur pour l’instant.',
@@ -1303,7 +1303,7 @@
 
 
   Object.assign(COPY.en, {
-    alphaBadge:'v1.4.0-alpha.22 Handoff Productivity Command Center · Runtime-Budget Guard Only',
+    alphaBadge:'v1.4.0-alpha.23 Handoff Productivity Runbook Gate · Runtime-Budget Guard Only',
     briefTemplateSystemTitle:'Brief Template System',
     assemblyVariantQaTitle:'Assembly Variant QA',
     briefTemplateUxPolishTitle:'Brief Template UX Polish',
@@ -1325,7 +1325,7 @@
     assemblyVariantQaBoundary:'Assembly Variant QA checks local template coverage only. No automatic source verification is claimed.'
   });
   Object.assign(COPY.ar, {
-    alphaBadge:'v1.4.0-alpha.22 مركز إنتاجية التسليم · مراجعة المشغّل',
+    alphaBadge:'v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم · مراجعة المشغّل',
     briefTemplateSystemTitle:'نظام قوالب الموجز',
     assemblyVariantQaTitle:'تدقيق متغيرات التجميع',
     briefTemplateUxPolishTitle:'تحسين تجربة قوالب الموجز',
@@ -1347,7 +1347,7 @@
     assemblyVariantQaBoundary:'تدقيق متغيرات التجميع يفحص تغطية القوالب محلياً فقط ولا يدّعي التحقق التلقائي من المصادر.'
   });
   Object.assign(COPY.fr, {
-    alphaBadge:'v1.4.0-alpha.22 Centre de productivité de remise · revue opérateur',
+    alphaBadge:'v1.4.0-alpha.23 Porte de runbook de productivité de remise · revue opérateur',
     briefTemplateSystemTitle:'Système de modèles de brief',
     assemblyVariantQaTitle:'QA des variantes d’assemblage',
     briefTemplateUxPolishTitle:'Polish UX des modèles de brief',
@@ -1472,7 +1472,7 @@
 
 
   Object.assign(COPY.en, {
-    alphaBadge:'v1.4.0-alpha.22 Handoff Productivity Command Center · Runtime-Budget Guard Only',
+    alphaBadge:'v1.4.0-alpha.23 Handoff Productivity Runbook Gate · Runtime-Budget Guard Only',
     sourceToClaimGapClosureTitle:'Source-to-Claim Gap Closure Queue',
     openGaps:'open gaps',
     exportBlocking:'export blocking',
@@ -1481,7 +1481,7 @@
     sourceToClaimGapClosureBoundary:'Source-to-claim gap closure is local/manual. It exposes unresolved evidence, contradiction, and falsifier gaps before export but does not fetch, verify, or resolve sources automatically.'
   });
   Object.assign(COPY.ar, {
-    alphaBadge:'v1.4.0-alpha.22 مركز إنتاجية التسليم · مراجعة المشغّل',
+    alphaBadge:'v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم · مراجعة المشغّل',
     sourceToClaimGapClosureTitle:'قائمة إغلاق فجوات المصدر إلى الادعاء',
     openGaps:'فجوات مفتوحة',
     exportBlocking:'تعطيل التصدير',
@@ -1490,7 +1490,7 @@
     sourceToClaimGapClosureBoundary:'إغلاق فجوات المصدر إلى الادعاء محلي/يدوي. يعرض فجوات الأدلة والتناقضات وشروط الإبطال قبل التصدير لكنه لا يجلب المصادر ولا يتحقق منها ولا يحلها تلقائياً.'
   });
   Object.assign(COPY.fr, {
-    alphaBadge:'v1.4.0-alpha.22 Centre de productivité de remise · revue opérateur',
+    alphaBadge:'v1.4.0-alpha.23 Porte de runbook de productivité de remise · revue opérateur',
     sourceToClaimGapClosureTitle:'File de clôture des écarts source-affirmation',
     openGaps:'écarts ouverts',
     exportBlocking:'blocage export',
@@ -1501,16 +1501,16 @@
 
 
   Object.assign(COPY.en, {
-    hostedDemoVerificationBody:'Handoff Productivity Command Center is ready for release evidence: it maps dashboard status into lock-review-ready, budget-pressure-review, regression-blocked, and evidence-capture-required operator decision paths without expanding browser scope. Hosted evidence must report 1.4.0-alpha.22 internally while showing v1.4.0-alpha.22 Handoff Productivity Command Center to users. Productivity command center layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
-    analysisReleaseNote:'1.4.0-alpha.22 converts evidence-budget regression results into pass, warn, fail, and review-required operator actions without network calls.',
+    hostedDemoVerificationBody:'Handoff Productivity Runbook Gate is ready for release evidence: it turns handoff productivity evidence into a deterministic operator runbook for lock review, budget pressure, blocker repair, and missing-evidence capture without expanding browser scope. Hosted evidence must report 1.4.0-alpha.23 internally while showing v1.4.0-alpha.23 Handoff Productivity Runbook Gate to users. Runbook gate layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+    analysisReleaseNote:'1.4.0-alpha.23 converts evidence-budget regression results into pass, warn, fail, and review-required operator actions without network calls.',
   });
   Object.assign(COPY.ar, {
-    hostedDemoVerificationBody:'مركز إنتاجية التسليم جاهز لأدلة الإصدار: يفحص جاهزية تسليم سجل القرارات، يراجع هوية حزمة القفل، يؤكد حدود السلوك، ويحافظ على قرار المشغّل اليدوي دون توسيع سطح المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.22 مع عرض v1.4.0-alpha.22 مركز إنتاجية التسليم · مراجعة المشغّل للمستخدمين. طبقة تدقيق تسليم فقط: دون نداءات مزوّد حية، دون نداءات شبكة مخفية، دون OAuth/دورة رموز حقيقية، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
-    analysisReleaseNote:'يحوّل 1.4.0-alpha.22 نتائج انحدار ميزانية الأدلة إلى نجاح وتحذير وفشل ومراجعة مطلوبة مع إجراءات المشغّل دون نداءات شبكة.',
+    hostedDemoVerificationBody:'بوابة دليل تشغيل إنتاجية التسليم جاهزة لأدلة الإصدار: يرتب خطوات دليل تشغيل القفل، يراجع هوية حزمة القفل، يؤكد حدود المشغّل، ويمنع التوقيع أو قفل التصدير الآلي دون توسيع سطح المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.23 مع عرض v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم · مراجعة المشغّل للمستخدمين. طبقة بوابة دليل التشغيل فقط: دون نداءات مزوّد حية، دون نداءات شبكة مخفية، دون OAuth/دورة رموز حقيقية، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
+    analysisReleaseNote:'يحوّل 1.4.0-alpha.23 نتائج انحدار ميزانية الأدلة إلى نجاح وتحذير وفشل ومراجعة مطلوبة مع إجراءات المشغّل دون نداءات شبكة.',
   });
   Object.assign(COPY.fr, {
-    hostedDemoVerificationBody:'La centre de productivité de remise est prête pour les preuves de release : elle vérifie les éléments de remise, l’identité alpha.21 verrouillée, la matrice de preuves, les instantanés de texte visible, la garde d’identité d’artefact et la revue opérateur sans élargir la portée navigateur. Les preuves hébergées doivent annoncer 1.4.0-alpha.22 en interne tout en affichant v1.4.0-alpha.22 Centre de productivité de remise · revue opérateur aux utilisateurs. Couche centre de productivité uniquement : aucun appel fournisseur réel, appel réseau caché, OAuth/cycle de token réel, persistance d’identifiants, fetch source live, vérification, visa, verrou ou publication automatique.',
-    analysisReleaseNote:'1.4.0-alpha.22 convertit les résultats de régression du budget preuves en actions opérateur pass, warn, fail et revue requise sans appels réseau.',
+    hostedDemoVerificationBody:'La centre de productivité de remise est prête pour les preuves de release : elle vérifie les éléments de remise, l’identité alpha.21 verrouillée, la matrice de preuves, les instantanés de texte visible, la garde d’identité d’artefact et la revue opérateur sans élargir la portée navigateur. Les preuves hébergées doivent annoncer 1.4.0-alpha.23 en interne tout en affichant v1.4.0-alpha.23 Porte de runbook de productivité de remise · revue opérateur aux utilisateurs. Couche centre de productivité uniquement : aucun appel fournisseur réel, appel réseau caché, OAuth/cycle de token réel, persistance d’identifiants, fetch source live, vérification, visa, verrou ou publication automatique.',
+    analysisReleaseNote:'1.4.0-alpha.23 convertit les résultats de régression du budget preuves en actions opérateur pass, warn, fail et revue requise sans appels réseau.',
   });
 
 
@@ -1637,17 +1637,17 @@
 
 
   Object.assign(COPY.en, {
-    adapterContractTestBenchTitle:'Handoff Productivity Command Center',
+    adapterContractTestBenchTitle:'Handoff Productivity Runbook Gate',
     adapterContractTestBenchSubtitle:'Map evidence-dashboard status into lock-review-ready, budget-pressure-review, regression-blocked, and evidence-capture-required operator decisions without expanding browser scope.',
-    adapterContractTestBenchPolicyNote:'Productivity command center layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, or publication permission.'
+    adapterContractTestBenchPolicyNote:'Runbook gate layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, or publication permission.'
   });
   Object.assign(COPY.ar, {
-    adapterContractTestBenchTitle:'مركز إنتاجية التسليم',
+    adapterContractTestBenchTitle:'بوابة دليل تشغيل إنتاجية التسليم',
     adapterContractTestBenchSubtitle:'تحوّل حالة لوحة الأدلة إلى مسارات قرار للمشغّل دون توسيع سطح المتصفح.',
     adapterContractTestBenchPolicyNote:'طبقة قائمة جاهزية فقط: لا نداءات مزوّد حقيقية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر حي ولا تحقق أو توقيع أو قفل تصدير أو إذن نشر آلي.'
   });
   Object.assign(COPY.fr, {
-    adapterContractTestBenchTitle:'Centre de productivité de remise',
+    adapterContractTestBenchTitle:'Porte de runbook de productivité de remise',
     adapterContractTestBenchSubtitle:'Convertit l’état du tableau preuves en chemins de décision opérateur sans élargir la portée navigateur.',
     adapterContractTestBenchPolicyNote:'Couche centre de productivité uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.'
   });
@@ -1699,7 +1699,7 @@
 })(window);
 
 
-/* v1.4.0-alpha.22 · Handoff Productivity Command Center */
+/* v1.4.0-alpha.23 · Handoff Productivity Runbook Gate */
 
 /* legacy-test-token: مرشح مستقر; candidat stable. Public visible stable labels are العرض العام المستقر / Démo publique stable. */
 

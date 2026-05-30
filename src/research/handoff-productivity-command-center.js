@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine handoff productivity command center v1.4.0-alpha.22. */
+/* Jarbou3i Research Engine handoff productivity runbook gate v1.4.0-alpha.23. */
 /* Static metadata-only productivity routing. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.22';
-  const MILESTONE = 'v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center';
+  const VERSION = '1.4.0-alpha.23';
+  const MILESTONE = 'v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate';
   const LOCKED_BASELINE = '1.4.0-alpha.21';
   const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.21 — Evidence Handoff Readiness Checklist';
   const LOCKED_BASELINE_RUN_ID = '26681464045';
@@ -17,7 +17,7 @@
   const ACTIONABILITY_BASELINE = '1.4.0-alpha.18';
   const REGRESSION_DASHBOARD_BASELINE = '1.4.0-alpha.17';
   const EVIDENCE_BUDGET_BASELINE = '1.4.0-alpha.16';
-  const MODEL = 'handoff_productivity_command_center.v1';
+  const MODEL = 'handoff_productivity_runbook_gate.v1';
 
   const STATUS = Object.freeze({
     pass: 'pass',
@@ -258,7 +258,7 @@
     const actionPlan = buildProductivityActions(overallStatus, priorityQueue);
     const totalEstimatedMinutesSaved = signals.reduce((sum, signal) => sum + signal.minutes_saved_estimate, 0);
     const report = {
-      handoff_productivity_command_center_version: VERSION,
+      handoff_productivity_runbook_gate_version: VERSION,
       generated_at: generatedAt,
       milestone: MILESTONE,
       locked_baseline: LOCKED_BASELINE,
