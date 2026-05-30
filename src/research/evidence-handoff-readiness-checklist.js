@@ -1,19 +1,22 @@
-/* Jarbou3i Research Engine evidence dashboard decision ledger v1.4.0-alpha.21. */
-/* Static metadata-only review ledger. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
+/* Jarbou3i Research Engine evidence handoff readiness checklist v1.4.0-alpha.21. */
+/* Static metadata-only readiness checklist. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
   const VERSION = '1.4.0-alpha.21';
   const MILESTONE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
-  const LOCKED_BASELINE = '1.4.0-alpha.21';
-  const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
-  const LOCKED_BASELINE_RUN_ID = '26660959763';
-  const LOCKED_BASELINE_COMMIT = '4e2c852fa0568fcc12881d7565ba9fd50844e0c4';
-  const ACTIONABILITY_BASELINE = '1.4.0-alpha.21';
+  const LOCKED_BASELINE = '1.4.0-alpha.20';
+  const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.20 — Evidence Decision Ledger Handoff Audit';
+  const LOCKED_BASELINE_RUN_ID = '26680024039';
+  const LOCKED_BASELINE_COMMIT = 'd492d8e7de270f6bab5780a5dad5f821056c74b7';
+  const LOCKED_BASELINE_BUNDLE_SHA256 = '4b5f1d224c4fca49681981265c0d412c804972ede0e5636cdd2d3b5f06508147';
+  const HANDOFF_AUDIT_BASELINE = '1.4.0-alpha.20';
+  const DECISION_LEDGER_BASELINE = '1.4.0-alpha.19';
+  const ACTIONABILITY_BASELINE = '1.4.0-alpha.18';
   const REGRESSION_DASHBOARD_BASELINE = '1.4.0-alpha.17';
   const EVIDENCE_BUDGET_BASELINE = '1.4.0-alpha.16';
-  const MODEL = 'evidence_dashboard_decision_ledger.v1';
+  const MODEL = 'evidence_handoff_readiness_checklist.v1';
 
   const STATUS = Object.freeze({
     pass: 'pass',
@@ -22,17 +25,18 @@
     review_required: 'review_required'
   });
 
-  const DECISION_STATE = Object.freeze({
-    lock_review_ready: 'lock_review_ready',
-    review_budget_pressure_before_lock: 'review_budget_pressure_before_lock',
-    block_lock_until_evidence_budget_regression_fixed: 'block_lock_until_evidence_budget_regression_fixed',
-    capture_current_evidence_before_lock: 'capture_current_evidence_before_lock'
+  const READINESS_ACTION = Object.freeze({
+    handoff_packet_ready_for_review: 'handoff_packet_ready_for_review',
+    review_handoff_warnings_before_lock: 'review_handoff_warnings_before_lock',
+    block_handoff_until_repaired: 'block_handoff_until_repaired',
+    capture_handoff_evidence_before_review: 'capture_handoff_evidence_before_review'
   });
 
-  const LOCKED_ALPHA18_OBSERVED = Object.freeze({
+  const LOCKED_ALPHA20_OBSERVED = Object.freeze({
     run_id: LOCKED_BASELINE_RUN_ID,
     commit: LOCKED_BASELINE_COMMIT,
-    no_browser_checks: 147,
+    bundle_sha256: LOCKED_BASELINE_BUNDLE_SHA256,
+    no_browser_checks: 149,
     browser_checks: 17,
     hosted_language_count: 3,
     hosted_surface_count: 13,
@@ -48,10 +52,21 @@
     lockable: true
   });
 
+  const REQUIRED_CHECKLIST_ITEMS = Object.freeze([
+    'locked_alpha20_identity_recorded',
+    'decision_ledger_handoff_audit_available',
+    'current_evidence_matrix_available',
+    'visible_text_snapshots_available',
+    'artifact_identity_guard_available',
+    'behavior_boundaries_confirmed',
+    'operator_review_path_confirmed'
+  ]);
+
   const SAFETY_BOUNDARY_FLAGS = Object.freeze({
-    decision_ledger_only: true,
+    readiness_checklist_only: true,
     static_metadata_only: true,
-    actionability_interpretation_only: true,
+    handoff_packet_interpretation_only: true,
+    operator_review_required: true,
     runtime_budget_policy: 'guardrail_only',
     no_dynamic_browser_timing_collection_added: true,
     network_invocation_allowed: false,
@@ -112,84 +127,63 @@
     return `fnv1a32:${hash.toString(16).padStart(8, '0')}`;
   }
 
-  function normalizeStatus(input) {
-    const status = input && typeof input === 'object'
-      ? (input.overall_dashboard_status || input.overall_status || input.status_summary?.overall_dashboard_status || input.status)
-      : input;
-    if (Object.values(STATUS).includes(status)) return status;
+  function normalizeStatus(value) {
+    if (value === STATUS.pass || value === true) return STATUS.pass;
+    if (value === STATUS.warn) return STATUS.warn;
+    if (value === STATUS.fail || value === false) return STATUS.fail;
     return STATUS.review_required;
   }
 
-  function decisionStateForStatus(status) {
-    if (status === STATUS.pass) return DECISION_STATE.lock_review_ready;
-    if (status === STATUS.warn) return DECISION_STATE.review_budget_pressure_before_lock;
-    if (status === STATUS.fail) return DECISION_STATE.block_lock_until_evidence_budget_regression_fixed;
-    return DECISION_STATE.capture_current_evidence_before_lock;
+  function statusPriority(status) {
+    if (status === STATUS.fail) return 3;
+    if (status === STATUS.review_required) return 2;
+    if (status === STATUS.warn) return 1;
+    return 0;
   }
 
-  function buildLedgerEntries(status, action) {
-    const base = [
-      {
-        entry_id: 'ledger_001_capture_evidence_snapshot',
-        phase: 'evidence_snapshot',
-        status: status === STATUS.review_required ? STATUS.review_required : STATUS.pass,
-        operator_action: status === STATUS.review_required ? DECISION_STATE.capture_current_evidence_before_lock : 'evidence_snapshot_available',
-        operator_decision_required: status === STATUS.review_required,
-        automatic_transition_allowed: false
-      },
-      {
-        entry_id: 'ledger_002_interpret_dashboard_status',
-        phase: 'dashboard_interpretation',
-        status,
-        operator_action: action,
-        operator_decision_required: true,
-        automatic_transition_allowed: false
-      },
-      {
-        entry_id: 'ledger_003_confirm_boundaries',
-        phase: 'boundary_confirmation',
-        status: status === STATUS.fail ? STATUS.fail : STATUS.pass,
-        operator_action: status === STATUS.fail ? DECISION_STATE.block_lock_until_evidence_budget_regression_fixed : 'confirm_no_behavior_expansion',
-        operator_decision_required: true,
-        automatic_transition_allowed: false
-      },
-      {
-        entry_id: 'ledger_004_lock_handoff_decision',
-        phase: 'lock_handoff',
-        status,
-        operator_action: action,
-        operator_decision_required: true,
-        automatic_transition_allowed: false
-      }
-    ];
-    return Object.freeze(base.map((entry) => Object.freeze(Object.assign({}, entry, {
+  function aggregateStatuses(statuses) {
+    return statuses.reduce((current, next) => statusPriority(next) > statusPriority(current) ? next : current, STATUS.pass);
+  }
+
+  function actionForStatus(status) {
+    if (status === STATUS.pass) return READINESS_ACTION.handoff_packet_ready_for_review;
+    if (status === STATUS.warn) return READINESS_ACTION.review_handoff_warnings_before_lock;
+    if (status === STATUS.fail) return READINESS_ACTION.block_handoff_until_repaired;
+    return READINESS_ACTION.capture_handoff_evidence_before_review;
+  }
+
+  function evaluateChecklistItem(itemId, evidence = {}) {
+    const provided = evidence[itemId];
+    const status = normalizeStatus(provided && typeof provided === 'object' ? provided.status : provided);
+    const note = provided && typeof provided === 'object' ? provided.note || null : null;
+    return Object.freeze({
+      item_id: itemId,
+      status,
+      note,
+      required_for_handoff: true,
+      operator_review_required: true,
+      automatic_transition_allowed: false,
       automatic_signoff_performed: false,
       automatic_export_lock_performed: false,
       publication_permission_claimed: false,
-      checksum: deterministicChecksum({
-        entry_id: entry.entry_id,
-        phase: entry.phase,
-        status: entry.status,
-        operator_action: entry.operator_action,
-        operator_decision_required: entry.operator_decision_required,
-        automatic_transition_allowed: entry.automatic_transition_allowed
-      })
-    }))));
+      checksum: deterministicChecksum({ item_id:itemId, status, required_for_handoff:true, operator_review_required:true })
+    });
   }
 
-  function buildDecisionSummary(status, action) {
-    return Object.freeze({
-      dashboard_status: status,
-      decision_state: action,
-      operator_review_required: true,
-      lock_review_ready: action === DECISION_STATE.lock_review_ready,
-      budget_pressure_requires_review: action === DECISION_STATE.review_budget_pressure_before_lock,
-      lock_blocked: action === DECISION_STATE.block_lock_until_evidence_budget_regression_fixed,
-      evidence_capture_required: action === DECISION_STATE.capture_current_evidence_before_lock,
-      automatic_signoff_performed: false,
-      automatic_export_lock_performed: false,
-      publication_permission_claimed: false
-    });
+  function buildReadinessChecklist(options = {}) {
+    const evidence = options.current_evidence || {};
+    return Object.freeze(REQUIRED_CHECKLIST_ITEMS.map((itemId) => evaluateChecklistItem(itemId, evidence)));
+  }
+
+  function buildReadinessActions(status, checklist) {
+    const actions = [actionForStatus(status)];
+    if (status === STATUS.pass) actions.push('review_canonical_lock_bundle_before_lock');
+    if (status === STATUS.warn) actions.push('review_warning_items_before_operator_handoff');
+    if (status === STATUS.fail) actions.push('repair_failed_handoff_items_before_lock');
+    if (status === STATUS.review_required) actions.push('capture_current_handoff_evidence_before_lock');
+    const failedItems = checklist.filter((item) => item.status === STATUS.fail).map((item) => item.item_id);
+    const missingItems = checklist.filter((item) => item.status === STATUS.review_required).map((item) => item.item_id);
+    return Object.freeze({ actions:Object.freeze(actions), failed_items:Object.freeze(failedItems), missing_or_review_required_items:Object.freeze(missingItems) });
   }
 
   function walkForbiddenFields(value, path, findings) {
@@ -202,7 +196,7 @@
     }
   }
 
-  function validateDashboardDecisionLedgerSafety(report) {
+  function validateReadinessChecklistSafety(report) {
     const forbiddenPresent = [];
     walkForbiddenFields(report, '', forbiddenPresent);
     const flags = report && report.safety_boundary_flags ? report.safety_boundary_flags : {};
@@ -234,30 +228,33 @@
     return Object.freeze({ ok: forbiddenPresent.length === 0 && unsafeFlags.length === 0, forbidden_present: forbiddenPresent, unsafe_flags: unsafeFlags });
   }
 
-  function buildEvidenceDashboardDecisionLedger(options = {}) {
-    const generatedAt = options.generated_at || '2026-05-29T00:00:00.000Z';
-    const dashboardInput = options.actionability_report || options.status_summary || options.dashboard_status || null;
-    const status = normalizeStatus(dashboardInput);
-    const action = decisionStateForStatus(status);
-    const ledgerEntries = buildLedgerEntries(status, action);
-    const decisionSummary = buildDecisionSummary(status, action);
+  function buildEvidenceHandoffReadinessChecklist(options = {}) {
+    const generatedAt = options.generated_at || '2026-05-30T00:00:00.000Z';
+    const checklist = buildReadinessChecklist(options);
+    const overallStatus = aggregateStatuses(checklist.map((item) => item.status));
+    const readinessActions = buildReadinessActions(overallStatus, checklist);
     const report = {
-      evidence_dashboard_decision_ledger_version: VERSION,
+      evidence_handoff_readiness_checklist_version: VERSION,
       generated_at: generatedAt,
       milestone: MILESTONE,
       locked_baseline: LOCKED_BASELINE,
       locked_baseline_title: LOCKED_BASELINE_TITLE,
       locked_baseline_run_id: LOCKED_BASELINE_RUN_ID,
       locked_baseline_commit: LOCKED_BASELINE_COMMIT,
+      locked_baseline_bundle_sha256: LOCKED_BASELINE_BUNDLE_SHA256,
+      handoff_audit_baseline: HANDOFF_AUDIT_BASELINE,
+      decision_ledger_baseline: DECISION_LEDGER_BASELINE,
       actionability_baseline: ACTIONABILITY_BASELINE,
       regression_dashboard_baseline: REGRESSION_DASHBOARD_BASELINE,
       evidence_budget_baseline: EVIDENCE_BUDGET_BASELINE,
       model: MODEL,
-      locked_alpha18_observed: LOCKED_ALPHA18_OBSERVED,
-      actionability_input_status: status,
-      decision_summary: decisionSummary,
-      decision_ledger_entries: ledgerEntries,
-      recommended_operator_actions: Object.freeze([action]),
+      locked_alpha20_observed: LOCKED_ALPHA20_OBSERVED,
+      required_checklist_items: REQUIRED_CHECKLIST_ITEMS,
+      readiness_checklist: checklist,
+      overall_readiness_status: overallStatus,
+      recommended_operator_actions: readinessActions.actions,
+      failed_items: readinessActions.failed_items,
+      missing_or_review_required_items: readinessActions.missing_or_review_required_items,
       safety_boundary_flags: SAFETY_BOUNDARY_FLAGS,
       safe_metadata_only: true,
       can_execute_now: false,
@@ -270,31 +267,37 @@
       automatic_export_lock_performed: false,
       publication_permission_claimed: false
     };
-    report.checksum = deterministicChecksum(Object.assign({}, report, { generated_at: 'deterministic', checksum: undefined }));
+    report.checksum = deterministicChecksum(Object.assign({}, report, { generated_at:'deterministic', checksum:undefined }));
     return Object.freeze(report);
   }
 
-  root.evidenceDashboardDecisionLedger = Object.freeze({
+  root.evidenceHandoffReadinessChecklist = Object.freeze({
     VERSION,
     MILESTONE,
     LOCKED_BASELINE,
     LOCKED_BASELINE_TITLE,
     LOCKED_BASELINE_RUN_ID,
     LOCKED_BASELINE_COMMIT,
+    LOCKED_BASELINE_BUNDLE_SHA256,
+    HANDOFF_AUDIT_BASELINE,
+    DECISION_LEDGER_BASELINE,
     ACTIONABILITY_BASELINE,
     REGRESSION_DASHBOARD_BASELINE,
     EVIDENCE_BUDGET_BASELINE,
     MODEL,
     STATUS,
-    DECISION_STATE,
-    LOCKED_ALPHA18_OBSERVED,
+    READINESS_ACTION,
+    REQUIRED_CHECKLIST_ITEMS,
+    LOCKED_ALPHA20_OBSERVED,
     SAFETY_BOUNDARY_FLAGS,
     deterministicChecksum,
     normalizeStatus,
-    decisionStateForStatus,
-    buildLedgerEntries,
-    buildDecisionSummary,
-    buildEvidenceDashboardDecisionLedger,
-    validateDashboardDecisionLedgerSafety
+    aggregateStatuses,
+    actionForStatus,
+    evaluateChecklistItem,
+    buildReadinessChecklist,
+    buildReadinessActions,
+    buildEvidenceHandoffReadinessChecklist,
+    validateReadinessChecklistSafety
   });
 })(typeof window !== 'undefined' ? window : globalThis);

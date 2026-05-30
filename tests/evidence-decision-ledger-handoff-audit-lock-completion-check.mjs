@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.20';
-const RELEASE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
-const PUBLIC_LABEL = 'v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit';
+const VERSION = '1.4.0-alpha.21';
+const RELEASE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
+const PUBLIC_LABEL = 'v1.4.0-alpha.21 Evidence Handoff Readiness Checklist';
 const LOCKED_ALPHA19 = '1.4.0-alpha.19';
 const LOCKED_ALPHA19_TITLE = 'v1.4.0-alpha.19 — Evidence Dashboard Decision Ledger';
 const RUN_ID_ALPHA19 = '26668213509';
@@ -68,14 +68,14 @@ assert.equal((roadmap.match(/Current candidate/g) || []).length, 1, 'roadmap mus
 
 assert.ok(index.includes(PUBLIC_LABEL));
 assert.ok(helpers.includes(PUBLIC_LABEL));
-assert.ok(index.includes('content="1.4.0-alpha.20"'));
+assert.ok(index.includes('content="1.4.0-alpha.21"'));
 assert.ok(index.includes('src="src/research/evidence-decision-ledger-handoff-audit.js" defer'));
 assert.ok(index.includes('data-browser-qa="evidence-decision-ledger-handoff-audit"'));
-assert.ok(helpers.includes('Evidence Decision Ledger Handoff Audit'));
-assert.ok(helpers.includes('تدقيق تسليم سجل قرارات الأدلة'));
-assert.ok(helpers.includes('Audit de remise du registre de décision preuves'));
-assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.20_${{ github.run_id }}'));
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.20'"));
+assert.ok(helpers.includes('Evidence Handoff Readiness Checklist'));
+assert.ok(helpers.includes('قائمة جاهزية تسليم الأدلة'));
+assert.ok(helpers.includes('Liste de préparation de remise des preuves'));
+assert.ok(workflow.includes('lock-evidence-bundle_1.4.0-alpha.21_${{ github.run_id }}'));
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.21'"));
 
 for (const gate of ['no-browser','current-no-browser','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes(TARGET_CHECK), `${gate} must run alpha.20 handoff-audit check`);

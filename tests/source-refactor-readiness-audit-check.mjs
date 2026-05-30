@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.20';
-const CURRENT_TITLE = 'Evidence Decision Ledger Handoff Audit';
+const CURRENT_VERSION = '1.4.0-alpha.21';
+const CURRENT_TITLE = 'Evidence Handoff Readiness Checklist';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.20';
-const CURRENT_TITLE = 'Evidence Decision Ledger Handoff Audit';
+const CURRENT_VERSION = '1.4.0-alpha.21';
+const CURRENT_TITLE = 'Evidence Handoff Readiness Checklist';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/release-candidate-hygiene.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

@@ -4,9 +4,9 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '1.4.0-alpha.20';
-const TITLE = 'Evidence Decision Ledger Handoff Audit';
-const PUBLIC_LABEL = 'v1.4.0-alpha.20 Evidence Decision Ledger Handoff Audit';
+const VERSION = '1.4.0-alpha.21';
+const TITLE = 'Evidence Handoff Readiness Checklist';
+const PUBLIC_LABEL = 'v1.4.0-alpha.21 Evidence Handoff Readiness Checklist';
 const config = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
 const spec = fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs', 'utf8');
 const script = fs.readFileSync('scripts/build-lock-evidence-bundle.mjs', 'utf8');
@@ -63,7 +63,7 @@ assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false);
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false);
 
 for (const token of [
-  'lock-evidence-bundle_1.4.0-alpha.20_${{ github.run_id }}',
+  'lock-evidence-bundle_1.4.0-alpha.21_${{ github.run_id }}',
   'lock-evidence-bundle-decision',
   'playwright-install-deps-log',
   'playwright-install-log',
@@ -94,7 +94,7 @@ assert.ok(workflow.includes('retrying once after 15 seconds'), 'browser install 
 assert.ok(workflow.includes('Download Playwright install-deps evidence log'), 'canonical bundle must download playwright install-deps evidence log');
 assert.ok(workflow.includes('Download Playwright install evidence log'), 'canonical bundle must download playwright install evidence log');
 assert.ok(workflow.includes('canonical bundle policy: upload only when no-browser and browser both pass'), 'canonical bundle skip path must emit an explicit decision');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.20'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.21'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
 

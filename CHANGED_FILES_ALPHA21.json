@@ -1,0 +1,26 @@
+{
+  "version": "1.4.0-alpha.21",
+  "milestone": "v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist",
+  "changed_files": [
+    "package.json",
+    "package-lock.json",
+    "MANIFEST.json",
+    "README.md",
+    "PUBLIC_DEMO.md",
+    "CHANGELOG.md",
+    "docs/current-release.md",
+    "docs/roadmap.md",
+    "docs/qa-matrix.md",
+    "docs/release-and-evidence.md",
+    "docs/release-history.md",
+    "tests/ci-gate-registry.json",
+    "tests/version-suite-registry.json",
+    "tests/evidence/evidence-matrix.config.json",
+    "index.html",
+    "src/research/render-helpers.js",
+    "src/research/evidence-handoff-readiness-checklist.js",
+    "tests/evidence-handoff-readiness-checklist-lock-completion-check.mjs",
+    "CHANGED_FILES_ALPHA21.json"
+  ],
+  "note": "Changed-files-only patch against locked v1.4.0-alpha.20. Preserves runtime/provider/OAuth/backend/source/storage behavior."
+}

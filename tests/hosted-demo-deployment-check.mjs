@@ -26,7 +26,7 @@ vm.createContext(sandbox);
 vm.runInContext(read('src/research/hosted-demo-verification.js'), sandbox, { filename:'src/research/hosted-demo-verification.js' });
 const hosted = sandbox.window.Jarbou3iResearchModules.hostedDemoVerification;
 
-assert.equal(pkg.version, '1.4.0-alpha.20');
+assert.equal(pkg.version, '1.4.0-alpha.21');
 assert.equal(hosted.VERSION, '1.3.0');
 assert.ok(index.includes('id="hostedDemoVerificationPanel"'), 'hosted demo panel missing');
 assert.ok(index.includes('id="hostedDemoEvidenceReviewPanel"'), 'evidence review panel missing');

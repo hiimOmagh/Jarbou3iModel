@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine evidence decision ledger handoff audit v1.4.0-alpha.20. */
+/* Jarbou3i Research Engine evidence decision ledger handoff audit v1.4.0-alpha.21. */
 /* Static metadata-only handoff audit. No provider calls, network calls, OAuth/token lifecycle, credential persistence, live source fetching, backend, storage, or source behavior expansion. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.20';
-  const MILESTONE = 'v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
+  const VERSION = '1.4.0-alpha.21';
+  const MILESTONE = 'v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
   const LOCKED_BASELINE = '1.4.0-alpha.19';
   const LOCKED_BASELINE_TITLE = 'v1.4.0-alpha.19 — Evidence Dashboard Decision Ledger';
   const LOCKED_BASELINE_RUN_ID = '26668213509';

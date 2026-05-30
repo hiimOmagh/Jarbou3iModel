@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.20",
-  "milestone": "v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit",
+  "version": "1.4.0-alpha.21",
+  "milestone": "v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist",
   "changed_files": [
     "CHANGED_FILES_ALPHA18.json",
     "src/research/evidence-dashboard-decision-ledger.js",

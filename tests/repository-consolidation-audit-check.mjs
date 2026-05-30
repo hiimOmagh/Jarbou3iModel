@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.20';
-const CURRENT_TITLE = 'Evidence Decision Ledger Handoff Audit';
+const CURRENT_VERSION = '1.4.0-alpha.21';
+const CURRENT_TITLE = 'Evidence Handoff Readiness Checklist';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

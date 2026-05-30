@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.20';
+const CURRENT_VERSION = '1.4.0-alpha.21';
 const LOCKED_ALPHA18 = '1.4.0-alpha.18';
 const LOCKED_ALPHA18_TITLE = 'v1.4.0-alpha.18 — Alpha.17 Lock Completion + Evidence Budget Dashboard Actionability';
 const RUN_ID_ALPHA18 = '26660959763';

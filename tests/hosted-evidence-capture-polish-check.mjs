@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.20';
-const CURRENT_TITLE = 'Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit';
+const CURRENT_VERSION = '1.4.0-alpha.21';
+const CURRENT_TITLE = 'Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

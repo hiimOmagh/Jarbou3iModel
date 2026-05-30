@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.20",
-  "milestone": "v1.4.0-alpha.20 — Alpha.19 Lock Completion + Evidence Decision Ledger Handoff Audit",
+  "version": "1.4.0-alpha.21",
+  "milestone": "v1.4.0-alpha.21 — Alpha.20 Lock Completion + Evidence Handoff Readiness Checklist",
   "locked_baseline": "v1.4.0-alpha.19 — Evidence Dashboard Decision Ledger",
   "locked_baseline_run_id": "26668213509",
   "locked_baseline_commit": "2b3665b66861d631e779e9133d77399d0560d827",
