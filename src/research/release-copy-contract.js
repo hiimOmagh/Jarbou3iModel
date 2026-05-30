@@ -12,7 +12,7 @@
         'Release System Consolidation + Effective Diff Guard',
         'current-release contract',
         'effective diff guard',
-        'single copy contract',
+        'one release copy contract',
         'no live provider calls'
       ]),
       ar: Object.freeze([
@@ -34,7 +34,10 @@
       'v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard',
       'v1.4.0-alpha.24 توحيد نظام الإصدار وحارس الفرق الفعلي',
       'v1.4.0-alpha.24 Consolidation du système de release + garde de diff effectif',
-      'Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard'
+      'Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard',
+      'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
+      'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
+      'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
     ]),
     copy: Object.freeze({
       en: Object.freeze({

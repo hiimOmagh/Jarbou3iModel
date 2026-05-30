@@ -17,6 +17,7 @@ for (const currentLocaleStale of ['alphaBadge:\'v1.1.0 العرض العام ا�
 }
 
 const spec=fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs','utf8');
+const releaseCopyContractSource = fs.readFileSync('src/research/release-copy-contract.js', 'utf8');
 for (const token of ['collectVisibleTextSnapshot','visible-text-ar.json','visible-text-fr.json','visible-text-en.json','unexpected_english_residuals','unexpected_non_locale_residuals','MOJIBAKE_MARKERS','has_arabic_unicode','mojibake_markers']) assert.ok(spec.includes(token), token);
 assert.ok(!/\bEVIDENCE_DIR\b/.test(spec), 'hosted evidence spec must use EVIDENCE_ROOT for visible-text snapshot writes');
 assert.ok(spec.includes('path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale])'), 'visible-text snapshots must be written into the hosted evidence artifact root');
@@ -32,23 +33,28 @@ for (const staleReleaseLabel of [
 }
 for (const staleCurrentDescription of [
   'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
-  'نموذج أولي محدود للتنفيذ الحي اليدوي',
-  'هيكل اشتراك يدوي فقط',
-  'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
+  'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
+  'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
 ]) {
-  assert.ok(spec.includes(staleCurrentDescription), `visible-text current-release description guard must catch ${staleCurrentDescription}`);
+  assert.ok(releaseCopyContractSource.includes(staleCurrentDescription), `release-copy contract staleVisibleText guard must catch old release-description phrase: ${staleCurrentDescription}`);
 }
+for (const validAdvancedSurfaceCopy of [
+  'نموذج أولي محدود للتنفيذ الحي اليدوي',
+  'هيكل اشتراك يدوي فقط'
+]) {
+  assert.equal(releaseCopyContractSource.includes(`'${validAdvancedSurfaceCopy}'`), false, `release-copy staleVisibleText must not flag valid advanced-surface copy: ${validAdvancedSurfaceCopy}`);
+}
+assert.ok(spec.includes('RELEASE_COPY_CONTRACT.staleVisibleText'), 'hosted evidence stale current-release guard must consume release-copy contract staleVisibleText');
 const hostedDemoBodies = [...renderPublicLabels.matchAll(/hostedDemoVerificationBody:'([^']+)'/g)].map((match)=>match[1]);
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('توحيد نظام الإصدار وحارس الفرق الفعلي جاهز لأدلة الإصدار'), 'Arabic current-release description must identify alpha.20 evidence decision ledger handoff audit');
+  assert.ok(body.includes('توحيد نظام الإصدار وحارس الفرق الفعلي جاهز لأدلة الإصدار'), 'Arabic current-release description must identify alpha.25 release system consolidation');
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
-    'نموذج أولي محدود للتنفيذ الحي اليدوي',
-    'هيكل اشتراك يدوي فقط',
-    'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
-  ]) assert.equal(body.includes(staleCurrentDescription), false, `Arabic current-release description must not carry stale alpha.10/alpha.11 wording: ${staleCurrentDescription}`);
+    'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
+    'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
+  ]) assert.equal(body.includes(staleCurrentDescription), false, `Arabic current-release description must not carry stale alpha.10/alpha.11 release-description wording: ${staleCurrentDescription}`);
 }
 for (const residual of [
   'scores explain prioritization not truth',
