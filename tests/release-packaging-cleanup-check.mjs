@@ -7,8 +7,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.4.0-alpha.23';
-const CURRENT_TITLE = 'Handoff Productivity Runbook Gate';
+const CURRENT_VERSION = '1.4.0-alpha.24';
+const CURRENT_TITLE = 'Changed-Files Patch Hygiene Guard';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const pkg = json('package.json');
@@ -134,7 +134,7 @@ for (const token of [
 for (const token of ['node_modules/','playwright-report/','test-results/','*.zip','backend/.dev.vars']) {
   assert.ok(releaseIgnore.includes(token), `.releaseignore missing ${token}`);
 }
-for (const token of ['jarbou3i-research-engine','1.4.0-alpha.23','runtime_capability_change','test:ci:browser','release_type','release_scope']) {
+for (const token of ['jarbou3i-research-engine','1.4.0-alpha.24','runtime_capability_change','test:ci:browser','release_type','release_scope']) {
   assert.ok(manifest.includes(token), `release manifest missing ${token}`);
 }
 for (const script of ['test:release-packaging','test:repo:hygiene','test:public-demo','test:hosted-demo','test:browser:evidence','test:ci:node24','test:version-registry','test:current:no-browser','test:release:evidence']) {

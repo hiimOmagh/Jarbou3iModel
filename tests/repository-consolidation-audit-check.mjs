@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.23';
-const CURRENT_TITLE = 'Handoff Productivity Runbook Gate';
+const CURRENT_VERSION = '1.4.0-alpha.24';
+const CURRENT_TITLE = 'Changed-Files Patch Hygiene Guard';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

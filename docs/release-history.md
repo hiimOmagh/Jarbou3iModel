@@ -1,7 +1,17 @@
-## v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate
+## v1.4.0-alpha.24 — Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard
 
 - Status: current candidate. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence, artifact identity guard, and canonical lock bundle review.
-- Public release label: v1.4.0-alpha.23 Handoff Productivity Runbook Gate.
+- Public release label: v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard.
+- Locked alpha.23 baseline: `v1.4.0-alpha.23 — Handoff Productivity Runbook Gate`. Alpha.23 lock evidence: Run ID `26684865061`; commit `4675e12940112f734e0434421bf4553906093ff8`; bundle SHA256 `441c4fb891effea54a8e4492730b2c851baec838a5e45b451ec3a501343356c6`; no-browser 144 checks passed; browser 17 checks passed; hosted-demo evidence passed; evidence matrix 39/39 passed; AR/FR/EN visible-text snapshots passed; artifact identity guard passed; bundle validation passed; lockable true.
+- Scope: static changed-files patch hygiene guard only. It verifies changed-files-only packages, manifest alignment, effective patch delta, self-removing cleanup scripts for deleted files, stale-test removal hygiene, and zero-effect patch rejection before operator lock review.
+- Patch hygiene outcomes: apply_changed_files_patch; run_cleanup_script_before_validation; block_zero_effect_patch; capture_missing_patch_manifest.
+- Safety: no live provider calls, hidden network calls, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission.
+- Runtime/provider/OAuth/backend/source/storage boundaries remain unchanged.
+
+## v1.4.0-alpha.24 — Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard
+
+- Status: current candidate. Lock is pending green no-browser CI, green browser CI, hosted-demo evidence, artifact identity guard, and canonical lock bundle review.
+- Public release label: v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard.
 - Locked alpha.22 baseline: `v1.4.0-alpha.22 — Handoff Productivity Command Center`. Alpha.22 lock evidence: Run ID `26683651807`; commit `a86d23efa3df7450c34d151f0dbb30fe3abdabef`; bundle SHA256 `a93d248dbe256fe073f93d977ab7cf432207293e2d59fdef0dbc0652d45f0068`; no-browser 150 checks passed; browser 17 checks passed; hosted-demo evidence passed; evidence matrix 39/39 passed; AR/FR/EN visible-text snapshots passed; artifact identity guard passed; bundle validation passed; lockable true.
 - Scope: static handoff productivity runbook gate only. It verifies current-candidate identity, no-browser/browser gates, hosted evidence matrix, visible-text snapshots, artifact identity guard, operator boundary, and no-automatic-signoff/export-lock runbook steps.
 - Runbook outcomes: execute_operator_lock_runbook; review_budget_pressure_then_continue; repair_blockers_before_runbook; capture_missing_evidence_before_runbook.

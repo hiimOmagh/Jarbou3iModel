@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.23';
-const RELEASE = 'v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate';
-const PUBLIC_LABEL = 'v1.4.0-alpha.23 Handoff Productivity Runbook Gate';
+const VERSION = '1.4.0-alpha.24';
+const RELEASE = 'v1.4.0-alpha.24 — Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard';
+const PUBLIC_LABEL = 'v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
@@ -39,7 +39,7 @@ for (const token of ['source strategy continuity','release evidence continuity',
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'alpha22-lock-completion-handoff-productivity-runbook-gate');
+assert.equal(manifest.release_type, 'alpha23-lock-completion-changed-files-patch-hygiene-guard');
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, LOCKED_ALPHA14, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);
@@ -99,7 +99,7 @@ for (const gate of ['no-browser','current-no-browser','privacy','provider','rele
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs'), `${gate} must preserve alpha.14 replay corpus check`);
 }
 for (const gate of ['no-browser','current-no-browser','release']) {
-  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/handoff-productivity-runbook-gate-lock-completion-check.mjs'), `${gate} must run alpha.23 handoff productivity runbook gate check`);
+  assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs'), `${gate} must run alpha.23 changed-files patch hygiene guard check`);
 }
 for (const gate of ['no-browser','current-no-browser','source','release']) {
   assert.ok(ciRegistry.gates[gate].node_checks.includes('tests/source-acquisition-control-surface-check.mjs'), `${gate} must preserve source acquisition control surface check`);
@@ -115,7 +115,7 @@ for (const file of [
   'src/research/adapter-replay-fixture-corpus-coverage-matrix.js',
   'tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs',
   'src/research/evidence-budget-regression-dashboard-evidence-runtime-budget.js',
-  'tests/handoff-productivity-runbook-gate-lock-completion-check.mjs',
+  'tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs',
   'src/research/handoff-productivity-runbook-gate.js'
 ]) {
   assert.ok(ciRegistry.syntax_matrix.files.includes(file), `syntax matrix must cover ${file}`);

@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.23';
-const CURRENT_TITLE = 'Alpha.22 Lock Completion + Handoff Productivity Runbook Gate';
+const CURRENT_VERSION = '1.4.0-alpha.24';
+const CURRENT_TITLE = 'Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

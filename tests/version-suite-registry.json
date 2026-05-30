@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.23",
-  "release_title": "v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate",
+  "version_suite_registry_version": "1.4.0-alpha.24",
+  "release_title": "v1.4.0-alpha.24 — Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.23 Handoff Productivity Runbook Gate', 'English public version label must identify v1.4.0-alpha.23');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم', 'Arabic public version label must identify v1.4.0-alpha.23');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.23 Porte de runbook de productivité de remise', 'French public version label must identify v1.4.0-alpha.23');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard', 'English public version label must identify v1.4.0-alpha.24');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.24 حارس نظافة حزمة الملفات المعدلة', 'Arabic public version label must identify v1.4.0-alpha.24');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.24 Garde d’hygiène des patchs à fichiers modifiés', 'French public version label must identify v1.4.0-alpha.24');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
@@ -42,7 +42,7 @@ const hostedDemoBodies = [...renderPublicLabels.matchAll(/hostedDemoVerification
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('بوابة دليل تشغيل إنتاجية التسليم جاهزة لأدلة الإصدار'), 'Arabic current-release description must identify alpha.20 evidence decision ledger handoff audit');
+  assert.ok(body.includes('حارس نظافة حزمة الملفات المعدلة جاهزة لأدلة الإصدار'), 'Arabic current-release description must identify alpha.20 evidence decision ledger handoff audit');
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
     'نموذج أولي محدود للتنفيذ الحي اليدوي',

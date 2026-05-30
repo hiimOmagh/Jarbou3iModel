@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.23",
-  "release_title": "v1.4.0-alpha.23 — Alpha.22 Lock Completion + Handoff Productivity Runbook Gate",
+  "ci_gate_registry_version": "1.4.0-alpha.24",
+  "release_title": "v1.4.0-alpha.24 — Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -177,7 +177,7 @@
         "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
         "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
-        "tests/handoff-productivity-runbook-gate-lock-completion-check.mjs"
+        "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -255,7 +255,7 @@
         "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
         "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
-        "tests/handoff-productivity-runbook-gate-lock-completion-check.mjs"
+        "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
       ],
       "syntax_checks": [
         "tests/ci-gate-runner.mjs",
@@ -527,7 +527,7 @@
         "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
         "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
-        "tests/handoff-productivity-runbook-gate-lock-completion-check.mjs"
+        "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -559,7 +559,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.23",
+    "version": "1.4.0-alpha.24",
     "scope": "handoff_productivity_runbook_gate",
     "optimization_scope": "handoff_productivity_runbook_gate",
     "syntax_matrix_parallelization_enabled": true,
@@ -571,11 +571,11 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 100,
-    "current_candidate": "1.4.0-alpha.23",
+    "current_candidate": "1.4.0-alpha.24",
     "name": "handoff_productivity_runbook_gate"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.23",
+    "version": "1.4.0-alpha.24",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -750,14 +750,15 @@
       "src/research/evidence-dashboard-decision-ledger.js",
       "src/research/evidence-decision-ledger-handoff-audit.js",
       "src/research/handoff-productivity-command-center.js",
-      "tests/handoff-productivity-runbook-gate-lock-completion-check.mjs",
-      "src/research/handoff-productivity-runbook-gate.js"
+      "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs",
+      "src/research/handoff-productivity-runbook-gate.js",
+      "src/research/changed-files-patch-hygiene-guard.js"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.23",
+    "version": "1.4.0-alpha.24",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

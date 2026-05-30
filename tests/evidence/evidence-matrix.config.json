@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.23",
-  "internal_build_version": "1.4.0-alpha.23",
-  "public_version_label": "v1.4.0-alpha.23 Handoff Productivity Runbook Gate",
+  "evidence_matrix_config_version": "1.4.0-alpha.24",
+  "internal_build_version": "1.4.0-alpha.24",
+  "public_version_label": "v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Handoff Productivity Runbook Gate"
+        "Changed-Files Patch Hygiene Guard"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -43,7 +43,8 @@
         "ضغط تجربة محوّل المزوّد اليدوي",
         "قابلية عمل لوحة ميزانية الأدلة",
         "سجل قرارات لوحة الأدلة",
-        "مركز إنتاجية التسليم"
+        "مركز إنتاجية التسليم",
+        "حارس نظافة حزمة الملفات المعدلة"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -66,7 +67,8 @@
         "Compression UX de l’adaptateur fournisseur manuel",
         "Actionnabilité du tableau budget preuves",
         "Registre de décision du tableau preuves",
-        "Porte de runbook de productivité de remise"
+        "Garde d’hygiène des patchs à fichiers modifiés",
+        "Garde d’hygiène des patchs"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -252,8 +254,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.23 Handoff Productivity Runbook Gate",
-    "ar": "v1.4.0-alpha.23 بوابة دليل تشغيل إنتاجية التسليم",
-    "fr": "v1.4.0-alpha.23 Porte de runbook de productivité de remise"
+    "en": "v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard",
+    "ar": "v1.4.0-alpha.24 حارس نظافة حزمة الملفات المعدلة",
+    "fr": "v1.4.0-alpha.24 Garde d’hygiène des patchs à fichiers modifiés"
   }
 }

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.23';
-const TITLE = 'Alpha.22 Lock Completion + Handoff Productivity Runbook Gate';
+const VERSION = '1.4.0-alpha.24';
+const TITLE = 'Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');
