@@ -1,0 +1,9 @@
+{
+  "version": "1.4.0-alpha.22",
+  "patch": "alpha22-browser-arabic-visible-copy-fix",
+  "changed_files": [
+    "src/research/render-helpers.js"
+  ],
+  "removed_files": [],
+  "note": "Changed-files-only patch. Aligns Arabic hosted-demo visible copy with the browser evidence spec by exposing the required token: طبقة تدقيق تسليم فقط."
+}
