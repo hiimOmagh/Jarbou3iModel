@@ -34,7 +34,7 @@ for (const token of [
   'npm run test:backend:hardening'
 ]) assert.ok(readme.includes(token) || checklist.includes(token), `Docs missing hardening token: ${token}`);
 
-assert.equal(pkg.version, '1.4.0-alpha.28');
+assert.equal(pkg.version, '1.4.0-alpha.29');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(schema.required.includes('backend_hardening'), 'schema must require backend_hardening metadata');

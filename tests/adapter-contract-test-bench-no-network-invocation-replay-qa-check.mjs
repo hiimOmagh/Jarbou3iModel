@@ -185,7 +185,7 @@ for (const forbidden of ['sk-', 'ghp_', 'AKIA', 'BEGIN PRIVATE KEY', 'Bearer '])
 const index = fs.readFileSync('index.html', 'utf8');
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 assert.ok(index.includes('src="src/research/adapter-contract-test-bench-no-network-invocation-replay-qa.js" defer'), 'index must load alpha.13 module');
-assert.ok(index.includes('Adapter Replay Review Pack + Operator Handoff Export') || index.includes('Adapter Contract Test Bench + No-Network Invocation Replay QA'), 'index must expose current adapter replay/contract QA label');
+assert.ok(index.includes('Adapter Replay Review Pack UI Polish + Export Preview') || index.includes('Adapter Contract Test Bench + No-Network Invocation Replay QA'), 'index must expose current adapter replay/contract QA label');
 assert.ok(index.includes('data-browser-qa="adapter-replay-fixture-corpus-coverage-matrix"') || index.includes('data-browser-qa="adapter-contract-test-bench-no-network-invocation-replay-qa"'), 'index must expose browser QA adapter replay/contract card');
 for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', 'source', 'release']) {
   assert.ok(registry.gates[gate].node_checks.includes('tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs'), `${gate} must run alpha.13 adapter contract check`);

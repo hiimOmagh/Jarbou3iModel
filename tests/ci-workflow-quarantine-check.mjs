@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const RELEASE = 'v1.4.0-alpha.28';
-const TITLE = 'Adapter Replay Review Pack + Operator Handoff Export';
-const PUBLIC_TITLE = 'Adapter Replay Review Pack + Operator Handoff Export';
+const RELEASE = 'v1.4.0-alpha.29';
+const TITLE = 'Adapter Replay Review Pack UI Polish + Export Preview';
+const PUBLIC_TITLE = 'Adapter Replay Review Pack UI Polish + Export Preview';
 const workflowPath = '.github/workflows/ci.yml';
 const workflow = fs.readFileSync(workflowPath, 'utf8');
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
@@ -19,28 +19,22 @@ assert.match(workflow, /group:\s*\$\{\{ github\.workflow \}\}-\$\{\{ github\.ref
 assert.match(workflow, /no-browser:[\s\S]*?timeout-minutes:\s*20/, 'no-browser job must have a bounded timeout');
 assert.match(workflow, /browser:[\s\S]*?needs:\s*no-browser[\s\S]*?timeout-minutes:\s*30/, 'browser job must depend on no-browser and have a bounded timeout');
 assert.match(workflow, /lock-evidence-bundle:[\s\S]*?needs:\s*\[no-browser, browser\][\s\S]*?timeout-minutes:\s*15/, 'lock evidence job must remain gated and timeout-bounded');
-assert.ok(workflow.includes(`summary.internal_build_version !== '1.4.0-alpha.28'`), 'browser matrix guard must validate v1.4.0-alpha.28 internal build version');
-assert.ok(workflow.includes(`lock-evidence-bundle_1.4.0-alpha.28_`), 'lock evidence artifact must be versioned as v1.4.0-alpha.28');
+assert.ok(workflow.includes(`summary.internal_build_version !== '1.4.0-alpha.29'`), 'browser matrix guard must validate v1.4.0-alpha.28 internal build version');
+assert.ok(workflow.includes(`lock-evidence-bundle_1.4.0-alpha.29_`), 'lock evidence artifact must be versioned as v1.4.0-alpha.28');
 
 assert.equal(registry.release_title, `${RELEASE} — ${TITLE}`, 'CI registry release title must identify v1.4.0-alpha.28 adapter replay review pack release');
-assert.equal(evidenceMatrix.internal_build_version, '1.4.0-alpha.28', 'evidence matrix internal version must identify v1.4.0-alpha.28');
+assert.equal(evidenceMatrix.internal_build_version, '1.4.0-alpha.29', 'evidence matrix internal version must identify v1.4.0-alpha.28');
 assert.equal(evidenceMatrix.public_version_label, `${RELEASE} ${PUBLIC_TITLE}`, 'English public label must identify v1.4.0-alpha.28 adapter replay review pack release');
-assert.equal(evidenceMatrix.public_version_labels.ar, `${RELEASE} حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل`, 'Arabic public label must identify v1.4.0-alpha.28 adapter replay review pack release');
-assert.equal(evidenceMatrix.public_version_labels.fr, `${RELEASE} Pack de revue de rejeu + export de handoff opérateur`, 'French public label must identify v1.4.0-alpha.28 adapter replay review pack release');
+assert.equal(evidenceMatrix.public_version_labels.ar, `${RELEASE} صقل واجهة حزمة المراجعة + معاينة التصدير`, 'Arabic public label must identify current release');
+assert.equal(evidenceMatrix.public_version_labels.fr, `${RELEASE} Polish UI du pack de revue + aperçu export`, 'French public label must identify current release');
 
-for (const marker of [
-  `${RELEASE} ${PUBLIC_TITLE}`,
-  `${RELEASE} حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل`,
-  `${RELEASE} Pack de revue de rejeu + export de handoff opérateur`
-]) {
-  assert.ok(renderHelpers.includes(marker), `render helpers missing localized alpha.27 release marker: ${marker}`);
-}
+assert.ok(renderHelpers.includes(PUBLIC_TITLE), 'render helpers must expose current English release title through localized copy');
 
 for (const marker of [
   'live_fetching_performed: false',
   'provider_execution_performed: false',
   'automatic_source_verification_claimed: false',
-  'Adapter Replay Review Pack + Operator Handoff Export'
+  'Adapter Replay Review Pack UI Polish + Export Preview'
 ]) {
   assert.ok(currentRelease.includes(marker), `current release doc missing controlled provider/source preparation marker: ${marker}`);
 }

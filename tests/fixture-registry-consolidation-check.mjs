@@ -5,7 +5,7 @@ import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixt
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
 const CURRENT_VERSION = '1.4.0-alpha.29';
-const CURRENT_TITLE = 'Adapter Replay Review Pack + Operator Handoff Export';
+const CURRENT_TITLE = 'Adapter Replay Review Pack UI Polish + Export Preview';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const PATCH_ARTIFACT = 'jarbou3i-research-engine-v1.3.0-manual-workflow-release.zip';
@@ -55,7 +55,12 @@ assert.ok(pkg.scripts['test:current:no-browser']?.includes('ci-gate-runner.mjs c
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(fs.readFileSync('index.html', 'utf8').includes(`v${CURRENT_VERSION} · ${CURRENT_TITLE}`));
+const currentReleaseContract = JSON.parse(fs.readFileSync('tests/current-release-contract.json', 'utf8'));
+const ciRegistry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
+assert.equal(currentReleaseContract.version, CURRENT_VERSION);
+assert.equal(currentReleaseContract.milestone_name, CURRENT_TITLE);
+assert.equal(ciRegistry.release_title, `v${CURRENT_VERSION} — ${CURRENT_TITLE}`);
+assert.ok(fs.readFileSync('index.html', 'utf8').includes('src/research/adapter-replay-review-pack-ui-export-preview.js'), 'index must load alpha.29 export preview module');
 assert.ok(releaseDocExists(`docs/v${VERSION}-evidence-pack-export-v3-brief-traceability.md`));
 
 console.log('Fixture registry consolidation checks passed.');

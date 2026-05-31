@@ -1,6 +1,6 @@
 {
   "ci_gate_registry_version": "1.4.0-alpha.29",
-  "release_title": "v1.4.0-alpha.29 — Adapter Replay Review Pack UI Polish + Export Preview",
+  "release_title": "v1.4.0-alpha.29 \u2014 Adapter Replay Review Pack UI Polish + Export Preview",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -179,6 +179,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -261,6 +262,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -399,6 +401,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs"
       ],
       "syntax_checks": [],
@@ -540,6 +543,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -773,7 +777,9 @@
       "src/research/adapter-replay-review-pack-ui-export-preview.js",
       "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
       "src/research/adapter-replay-decision-drilldown-evidence-trace-links.js",
-      "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs"
+      "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+      "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
+      "src/research/adapter-replay-review-pack-operator-handoff-export.js"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
