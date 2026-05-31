@@ -31,6 +31,9 @@
       ])
     }),
     staleVisibleText: Object.freeze([
+      'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار',
+      'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
+      'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
       'v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export',
       'v1.4.0-alpha.28 حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل',
       'v1.4.0-alpha.28 Pack de revue de rejeu + export de handoff opérateur',
