@@ -3,7 +3,7 @@
   global.Jarbou3iResearchReleaseCopyContract = Object.freeze({
     version: '1.4.0-alpha.29',
     publicVersionLabels: Object.freeze({
-      en:
+      en: 'v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview',
       ar: 'v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير',
       fr: 'v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export'
     }),
@@ -11,7 +11,7 @@
       en: Object.freeze([
         'Adapter Replay Review Pack UI Polish + Export Preview',
         'export preview',
-        'markdown preview',
+        'Markdown preview',
         'JSON preview',
         'no live provider calls'
       ]),
@@ -31,43 +31,38 @@
       ])
     }),
     staleVisibleText: Object.freeze([
+      'v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export',
       'v1.4.0-alpha.28 حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل',
       'v1.4.0-alpha.28 Pack de revue de rejeu + export de handoff opérateur',
       'v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links',
       'v1.4.0-alpha.27 تفصيل قرار إعادة التشغيل وروابط تتبع الأدلة',
       'v1.4.0-alpha.27 Drilldown de décision de rejeu + liens de trace preuve',
       'v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface',
-      'v1.4.0-alpha.26 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل',
-      'v1.4.0-alpha.26 Insights de rejeu adaptateur + surface de décision opérateur',
       'v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard',
-      'v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard',
-      'Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard',
-      'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
-      'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
-      'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار'
+      'v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard'
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview · Export Preview Polish',
-        hostedDemoVerificationBody: 'Adapter Replay Review Pack UI Polish + Export Preview is ready for release evidence: it makes the alpha.28 review pack easier to inspect with an export preview, markdown preview, JSON preview, copy/export action metadata, and grouped operator action summary without changing provider execution. Hosted evidence must report 1.4.0-alpha.29 internally while showing v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview to users. Export preview polish only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.29 adds metadata-only review-pack UI polish with markdown preview, JSON preview, copy/export action metadata, and grouped operator action summary while remaining no-network.',
+        alphaBadge: 'v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview · Export Preview',
+        hostedDemoVerificationBody: 'Adapter Replay Review Pack UI Polish + Export Preview is ready for release evidence: it adds a no-network export preview for the review pack with Markdown preview, JSON preview, operator action summary, and evidence trace bundle visibility without changing provider execution. Hosted evidence must report 1.4.0-alpha.29 internally while showing v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview to users. No-network export preview only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.29 adds review-pack UI polish and metadata-only Markdown/JSON export previews while remaining no-network.',
         adapterReplayInsightTitle: 'Adapter Replay Insight UX + Operator Decision Surface',
         adapterReplayInsightSubtitle: 'Summarize replay coverage, gap groups, review-required cells, and operator readiness from the deterministic adapter replay corpus.',
         adapterReplayInsightPolicyNote: 'No-network insight layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, automatic verification, signoff, export lock, or publication permission.',
         adapterReplayDrilldownTitle: 'Adapter Replay Decision Drilldown + Evidence Trace Links',
         adapterReplayDrilldownSubtitle: 'Open replay verdicts into fixture links, policy rows, evidence trace links, blocker explanations, and operator checklist items.',
         adapterReplayDrilldownPolicyNote: 'No-network drilldown only: trace links are metadata references and never execute providers, fetch sources, store credentials, sign off, lock exports, or publish.',
-        adapterReplayReviewPackTitle: 'Adapter Replay Review Pack UI Polish + Export Preview',
+        adapterReplayReviewPackTitle: 'Adapter Replay Review Pack + Operator Handoff Export',
         adapterReplayReviewPackSubtitle: 'Convert replay trace links into a review pack, handoff export payload, required actions, and evidence trace bundle for manual operator review.',
         adapterReplayReviewPackPolicyNote: 'No-network review pack only: export payloads are metadata summaries and never execute providers, fetch sources, store credentials, sign off, lock exports, or publish.',
-        adapterReplayExportPreviewTitle: 'Adapter Replay Review Pack UI Polish + Export Preview',
-        adapterReplayExportPreviewSubtitle: 'Preview markdown, JSON, copy/export action metadata, and grouped operator actions before any manual handoff.',
-        adapterReplayExportPreviewPolicyNote: 'Export preview polish only: preview controls are metadata-only and never execute providers, fetch sources, store credentials, sign off, lock exports, or publish.'
+        adapterReplayReviewPackPreviewTitle: 'Adapter Replay Review Pack UI Polish + Export Preview',
+        adapterReplayReviewPackPreviewSubtitle: 'Preview Markdown, JSON, operator actions, and evidence-trace bundle payloads before manual copy/export.',
+        adapterReplayReviewPackPreviewPolicyNote: 'Preview only: metadata payloads do not execute providers, fetch sources, persist credentials, sign off, lock exports, or publish.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير · صقل معاينة التصدير',
-        hostedDemoVerificationBody: 'صقل واجهة حزمة المراجعة + معاينة التصدير جاهز لأدلة الإصدار: يجعل حزمة مراجعة alpha.28 أسهل للفحص عبر معاينة التصدير ومعاينة Markdown ومعاينة JSON وبيانات إجراءات النسخ/التصدير وملخص إجراءات المشغّل المجمّعة دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.29 مع عرض v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير للمستخدمين. صقل معاينة التصدير فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
-        analysisReleaseNote: 'يضيف 1.4.0-alpha.29 صقل واجهة metadata فقط لحزمة المراجعة مع معاينة Markdown ومعاينة JSON وبيانات إجراءات النسخ/التصدير وملخص إجراءات المشغّل المجمّعة مع البقاء بلا شبكة.',
+        alphaBadge: 'v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير · معاينة التصدير',
+        hostedDemoVerificationBody: 'صقل واجهة حزمة المراجعة + معاينة التصدير جاهز لأدلة الإصدار: يضيف معاينة تصدير بلا شبكة لحزمة المراجعة مع معاينة Markdown ومعاينة JSON وملخص إجراءات المشغّل وحزمة تتبع الأدلة دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.29 مع عرض v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير للمستخدمين. معاينة تصدير بلا شبكة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.29 صقل واجهة حزمة المراجعة ومعاينات تصدير Markdown/JSON metadata فقط مع البقاء بلا شبكة.',
         adapterReplayInsightTitle: 'رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل',
         adapterReplayInsightSubtitle: 'تلخّص تغطية إعادة التشغيل، فجوات التغطية، الخلايا التي تحتاج مراجعة، وجاهزية قرار المشغّل من corpus محلي حتمي.',
         adapterReplayInsightPolicyNote: 'طبقة رؤى بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا تحقق أو توقيع أو قفل أو نشر آلي.',
@@ -77,14 +72,14 @@
         adapterReplayReviewPackTitle: 'حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل',
         adapterReplayReviewPackSubtitle: 'حوّل روابط تتبع إعادة التشغيل إلى حزمة المراجعة وتصدير التسليم وإجراءات مطلوبة وحزمة تتبع الأدلة لمراجعة المشغّل اليدوية.',
         adapterReplayReviewPackPolicyNote: 'حزمة مراجعة بلا شبكة فقط: حمولات التصدير ملخصات metadata ولا تنفّذ مزوّدين ولا تجلب مصادر ولا تخزّن بيانات اعتماد ولا توقّع أو تقفل أو تنشر.',
-        adapterReplayExportPreviewTitle: 'صقل واجهة حزمة المراجعة + معاينة التصدير',
-        adapterReplayExportPreviewSubtitle: 'عاين Markdown وJSON وبيانات إجراءات النسخ/التصدير وإجراءات المشغّل المجمّعة قبل أي تسليم يدوي.',
-        adapterReplayExportPreviewPolicyNote: 'صقل معاينة التصدير فقط: عناصر المعاينة metadata فقط ولا تنفّذ مزوّدين ولا تجلب مصادر ولا تخزّن بيانات اعتماد ولا توقّع أو تقفل أو تنشر.'
+        adapterReplayReviewPackPreviewTitle: 'صقل واجهة حزمة المراجعة + معاينة التصدير',
+        adapterReplayReviewPackPreviewSubtitle: 'عاين Markdown وJSON وإجراءات المشغّل وحزمة تتبع الأدلة قبل النسخ أو التصدير اليدوي.',
+        adapterReplayReviewPackPreviewPolicyNote: 'معاينة فقط: حمولات metadata لا تنفّذ مزوّدين ولا تجلب مصادر ولا تخزّن بيانات اعتماد ولا توقّع أو تقفل أو تنشر.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export · polish aperçu export',
-        hostedDemoVerificationBody: 'Polish UI du pack de revue + aperçu export est prêt pour les preuves de release : il rend le pack de revue alpha.28 plus facile à inspecter avec aperçu export, aperçu Markdown, aperçu JSON, métadonnées des actions copier/exporter et résumé groupé des actions opérateur, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.29 en interne tout en affichant v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export aux utilisateurs. Polish aperçu export uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
-        analysisReleaseNote: '1.4.0-alpha.29 ajoute un polish UI metadata du pack de revue avec aperçu Markdown, aperçu JSON, métadonnées copier/exporter et résumé groupé des actions opérateur, tout en restant sans réseau.',
+        alphaBadge: 'v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export · aperçu export',
+        hostedDemoVerificationBody: 'Polish UI du pack de revue + aperçu export est prêt pour les preuves de release : il ajoute un aperçu export sans réseau pour le pack de revue avec aperçu Markdown, aperçu JSON, résumé des actions opérateur et visibilité du lot de traces preuve, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.29 en interne tout en affichant v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export aux utilisateurs. Aperçu export sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
+        analysisReleaseNote: '1.4.0-alpha.29 ajoute le polish UI du pack de revue et des aperçus export Markdown/JSON metadata uniquement, tout en restant sans réseau.',
         adapterReplayInsightTitle: 'Insights de rejeu adaptateur + surface de décision opérateur',
         adapterReplayInsightSubtitle: 'Résume couverture de rejeu, groupes de lacunes, cellules à revoir et préparation opérateur depuis le corpus déterministe.',
         adapterReplayInsightPolicyNote: 'Couche d’insight sans réseau uniquement : aucun appel fournisseur live, appel réseau caché, OAuth/cycle token, persistance d’identifiants, fetch source, vérification, visa, verrou ou publication automatique.',
@@ -94,9 +89,9 @@
         adapterReplayReviewPackTitle: 'Pack de revue de rejeu + export de handoff opérateur',
         adapterReplayReviewPackSubtitle: 'Convertit les liens de trace de rejeu en pack de revue, export de handoff, actions requises et lot de traces preuve pour la revue opérateur manuelle.',
         adapterReplayReviewPackPolicyNote: 'Pack de revue sans réseau uniquement : les payloads d’export sont des résumés metadata et n’exécutent aucun fournisseur, fetch, stockage d’identifiants, visa, verrou ou publication.',
-        adapterReplayExportPreviewTitle: 'Polish UI du pack de revue + aperçu export',
-        adapterReplayExportPreviewSubtitle: 'Prévisualise Markdown, JSON, métadonnées copier/exporter et actions opérateur groupées avant tout handoff manuel.',
-        adapterReplayExportPreviewPolicyNote: 'Polish aperçu export uniquement : les contrôles de prévisualisation sont metadata-only et n’exécutent aucun fournisseur, fetch, stockage d’identifiants, visa, verrou ou publication.'
+        adapterReplayReviewPackPreviewTitle: 'Polish UI du pack de revue + aperçu export',
+        adapterReplayReviewPackPreviewSubtitle: 'Prévisualise Markdown, JSON, actions opérateur et lot de traces preuve avant copie ou export manuel.',
+        adapterReplayReviewPackPreviewPolicyNote: 'Aperçu uniquement : les payloads metadata n’exécutent aucun fournisseur, fetch, stockage d’identifiants, visa, verrou ou publication.'
       })
     })
   });

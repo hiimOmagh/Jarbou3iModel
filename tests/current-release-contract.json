@@ -1,7 +1,7 @@
 {
   "version": "1.4.0-alpha.29",
   "milestone_name": "Adapter Replay Review Pack UI Polish + Export Preview",
-  "release_type": "adapter-replay-review-pack-ui-export-preview",
+  "release_type": "product-facing",
   "allowed_scope": [
     "operator-facing adapter replay review-pack UI polish",
     "markdown export preview",
@@ -89,8 +89,7 @@
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
     "hosted evidence must report internal_build_version 1.4.0-alpha.29",
-    "public labels must expose v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
-    "runtime optimization scope must be adapter_replay_review_pack_ui_export_preview"
+    "public labels must expose v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
