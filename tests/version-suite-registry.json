@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.28",
-  "release_title": "v1.4.0-alpha.28 \u2014 Adapter Replay Review Pack + Operator Handoff Export",
+  "version_suite_registry_version": "1.4.0-alpha.29",
+  "release_title": "v1.4.0-alpha.29 — Adapter Replay Review Pack UI Polish + Export Preview",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1858,7 +1858,7 @@
     },
     {
       "id": "v140-alpha16",
-      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
+      "title": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
       "former_file": null,
       "preserved_as": "registry_entry",
       "checks": [
@@ -1873,7 +1873,7 @@
       "check_count": 0,
       "checks": [],
       "preserved_as": "registry_entry",
-      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
+      "title": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
       "former_console_message": "v1.4.0-alpha.22 handoff productivity command center and alpha.20 lock completion gate passed."
     }
   ]

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.28",
-  "internal_build_version": "1.4.0-alpha.28",
-  "public_version_label": "v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export",
+  "evidence_matrix_config_version": "1.4.0-alpha.29",
+  "internal_build_version": "1.4.0-alpha.29",
+  "public_version_label": "v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Adapter Replay Review Pack + Operator Handoff Export"
+        "Adapter Replay Review Pack UI Polish + Export Preview"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -254,8 +254,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export",
-    "ar": "v1.4.0-alpha.28 حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل",
-    "fr": "v1.4.0-alpha.28 Pack de revue de rejeu + export de handoff opérateur"
+    "en": "v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
+    "ar": "v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير",
+    "fr": "v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export"
   }
 }

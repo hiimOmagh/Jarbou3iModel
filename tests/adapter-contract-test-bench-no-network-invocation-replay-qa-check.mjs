@@ -192,8 +192,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/adapter-contract-test-bench-no-network-invocation-replay-qa.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs'));
-assert.ok(['adapter_contract_test_bench_no_network_invocation_replay_qa', 'adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
-assert.ok([VERSION, '1.4.0-alpha.28'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
+assert.ok(['adapter_contract_test_bench_no_network_invocation_replay_qa', 'adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'adapter_replay_review_pack_ui_export_preview'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
+assert.ok([VERSION, '1.4.0-alpha.28', '1.4.0-alpha.29'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
 
 console.log('Adapter contract test bench + no-network invocation replay QA checks passed.');
 process.exit(0);
