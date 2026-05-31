@@ -24,7 +24,7 @@ vm.createContext(sandbox);
 vm.runInContext(read('src/research/hosted-demo-verification.js'), sandbox, { filename:'src/research/hosted-demo-verification.js' });
 const hosted = sandbox.window.Jarbou3iResearchModules.hostedDemoVerification;
 
-assert.equal(pkg.version, '1.4.0-alpha.27');
+assert.equal(pkg.version, '1.4.0-alpha.28');
 assert.ok(config.includes('HOSTED_DEMO_URL'), 'Playwright config must support hosted URL verification');
 assert.ok(config.includes('webServer: hostedDemoUrl ? undefined'), 'hosted URL mode must not launch local webServer');
 assert.ok(browserSpec.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser evidence spec must support artifact directory override');

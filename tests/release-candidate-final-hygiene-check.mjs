@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.27';
-const CURRENT_TITLE = 'Adapter Replay Decision Drilldown + Evidence Trace Links';
+const CURRENT_VERSION = '1.4.0-alpha.28';
+const CURRENT_TITLE = 'Adapter Replay Review Pack + Operator Handoff Export';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/release-candidate-hygiene.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

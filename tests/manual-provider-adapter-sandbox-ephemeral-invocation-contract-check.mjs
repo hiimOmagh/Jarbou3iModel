@@ -177,8 +177,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/manual-provider-adapter-sandbox-ephemeral-invocation-contract.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs'));
-assert.ok(['manual_provider_adapter_sandbox_ephemeral_invocation_contract','adapter_contract_test_bench_no_network_invocation_replay_qa','adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_decision_drilldown_evidence_trace_links'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization scope may point to current alpha while preserving alpha.12 check');
-assert.ok([VERSION,'1.4.0-alpha.27'].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.12 check');
+assert.ok(['manual_provider_adapter_sandbox_ephemeral_invocation_contract','adapter_contract_test_bench_no_network_invocation_replay_qa','adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization scope may point to current alpha while preserving alpha.12 check');
+assert.ok([VERSION,'1.4.0-alpha.28'].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.12 check');
 
 console.log('Manual provider adapter sandbox + ephemeral invocation contract checks passed.');
 process.exit(0);

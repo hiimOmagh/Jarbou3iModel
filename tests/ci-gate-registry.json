@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.27",
-  "release_title": "v1.4.0-alpha.27 — Adapter Replay Decision Drilldown + Evidence Trace Links",
+  "ci_gate_registry_version": "1.4.0-alpha.28",
+  "release_title": "v1.4.0-alpha.28 \u2014 Adapter Replay Review Pack + Operator Handoff Export",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -179,6 +179,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
       ],
@@ -260,6 +261,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
       ],
@@ -396,7 +398,8 @@
         "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
-        "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs"
+        "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -537,6 +540,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
+        "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
       ],
@@ -570,9 +574,9 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.27",
-    "scope": "adapter_replay_decision_drilldown_evidence_trace_links",
-    "optimization_scope": "adapter_replay_decision_drilldown_evidence_trace_links",
+    "version": "1.4.0-alpha.28",
+    "scope": "adapter_replay_review_pack_operator_handoff_export",
+    "optimization_scope": "adapter_replay_review_pack_operator_handoff_export",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -582,11 +586,11 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 100,
-    "current_candidate": "1.4.0-alpha.27",
-    "name": "adapter_replay_decision_drilldown_evidence_trace_links"
+    "current_candidate": "1.4.0-alpha.28",
+    "name": "adapter_replay_review_pack_operator_handoff_export"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.27",
+    "version": "1.4.0-alpha.28",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -766,6 +770,8 @@
       "src/research/changed-files-patch-hygiene-guard.js",
       "src/research/adapter-replay-insight-ux-operator-decision-surface.js",
       "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
+      "src/research/adapter-replay-review-pack-operator-handoff-export.js",
+      "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
       "src/research/adapter-replay-decision-drilldown-evidence-trace-links.js",
       "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs"
     ],
@@ -773,7 +779,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.27",
+    "version": "1.4.0-alpha.28",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

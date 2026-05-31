@@ -69,21 +69,7 @@ for (const [key, value] of Object.entries(drilldown.boundary_flags)) {
   }
 }
 for (const key of [
-  'network_invocation_allowed',
-  'live_provider_execution_enabled',
-  'live_provider_execution_performed',
-  'live_source_fetching_enabled',
-  'live_source_fetching_performed',
-  'hidden_network_calls_allowed',
-  'real_oauth_token_lifecycle_enabled',
-  'real_api_keys_stored',
-  'real_tokens_stored',
-  'credential_persistence_allowed',
-  'backend_storage_expanded',
-  'automatic_source_verification_claimed',
-  'automatic_signoff_performed',
-  'automatic_export_lock_performed',
-  'publication_permission_claimed'
+  'network_invocation_allowed','live_provider_execution_enabled','live_provider_execution_performed','live_source_fetching_enabled','live_source_fetching_performed','hidden_network_calls_allowed','real_oauth_token_lifecycle_enabled','real_api_keys_stored','real_tokens_stored','credential_persistence_allowed','backend_storage_expanded','automatic_source_verification_claimed','automatic_signoff_performed','automatic_export_lock_performed','publication_permission_claimed'
 ]) {
   assert.equal(drilldown[key], false, `${key} must remain false`);
 }
@@ -107,8 +93,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.27 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.27 check');
-assert.equal(registry.runtime_optimization.version, VERSION);
-assert.equal(registry.runtime_optimization.optimization_scope, 'adapter_replay_decision_drilldown_evidence_trace_links');
+assert.ok(['1.4.0-alpha.27', '1.4.0-alpha.28'].includes(registry.runtime_optimization.version), 'runtime optimization must preserve alpha.27 or newer release identity');
+assert.ok(['adapter_replay_decision_drilldown_evidence_trace_links', 'adapter_replay_review_pack_operator_handoff_export'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization must preserve alpha.27 drilldown or alpha.28 review-pack scope');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

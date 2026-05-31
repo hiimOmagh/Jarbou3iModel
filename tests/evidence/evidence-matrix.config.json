@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.27",
-  "internal_build_version": "1.4.0-alpha.27",
-  "public_version_label": "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
+  "evidence_matrix_config_version": "1.4.0-alpha.28",
+  "internal_build_version": "1.4.0-alpha.28",
+  "public_version_label": "v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,7 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Adapter Replay Decision Drilldown + Evidence Trace Links"
+        "Adapter Replay Review Pack + Operator Handoff Export"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -254,8 +254,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
-    "ar": "v1.4.0-alpha.27 تفصيل قرار إعادة التشغيل وروابط تتبع الأدلة",
-    "fr": "v1.4.0-alpha.27 Drilldown de décision de rejeu + liens de trace preuve"
+    "en": "v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export",
+    "ar": "v1.4.0-alpha.28 حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل",
+    "fr": "v1.4.0-alpha.28 Pack de revue de rejeu + export de handoff opérateur"
   }
 }

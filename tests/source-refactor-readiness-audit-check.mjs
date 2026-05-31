@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.27';
-const CURRENT_TITLE = 'Adapter Replay Decision Drilldown + Evidence Trace Links';
+const CURRENT_VERSION = '1.4.0-alpha.28';
+const CURRENT_TITLE = 'Adapter Replay Review Pack + Operator Handoff Export';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const audit = fs.readFileSync('docs/source-refactor-readiness-audit.md', 'utf8');

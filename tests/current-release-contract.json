@@ -1,12 +1,12 @@
 {
-  "version": "1.4.0-alpha.27",
-  "milestone_name": "Adapter Replay Decision Drilldown + Evidence Trace Links",
+  "version": "1.4.0-alpha.28",
+  "milestone_name": "Adapter Replay Review Pack + Operator Handoff Export",
   "release_type": "product-facing",
   "allowed_scope": [
-    "operator-facing adapter replay decision drilldown surface",
-    "replay verdict to fixture, policy row, and evidence trace links",
-    "grouped blocker explanations for gaps, blocked cells, and review-required cells",
-    "operator readiness checklist for no-network replay review",
+    "operator-facing adapter replay review pack",
+    "metadata-only operator handoff export payload",
+    "required manual action summary",
+    "evidence trace bundle from alpha.27 trace links",
     "no-network replay review only"
   ],
   "forbidden_scope": [
@@ -16,6 +16,7 @@
     "source-fetching or scraping behavior changes",
     "automatic source verification",
     "automatic signoff or export lock",
+    "cryptographic signature claims",
     "new alpha-specific lock-completion test filenames"
   ],
   "required_docs": [
@@ -32,8 +33,9 @@
     "tests/current-release-lock-completion-check.mjs",
     "tests/effective-diff-check.mjs",
     "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
-    "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
-    "tests/hosted-demo-browser-evidence.spec.mjs"
+    "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
+    "tests/hosted-demo-browser-evidence.spec.mjs",
+    "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -76,13 +78,15 @@
     "docs/release-and-evidence.md",
     "docs/qa-matrix.md",
     "docs/roadmap.md",
-    "src/research/adapter-replay-decision-drilldown-evidence-trace-links.js",
-    "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs"
+    "src/research/adapter-replay-review-pack-operator-handoff-export.js",
+    "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
+    "src/research/adapter-replay-review-pack-operator-handoff-export.js",
+    "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs"
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.27",
-    "public labels must expose v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links"
+    "hosted evidence must report internal_build_version 1.4.0-alpha.28",
+    "public labels must expose v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -94,6 +98,9 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
+    "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
+    "v1.4.0-alpha.27 تفصيل قرار إعادة التشغيل وروابط تتبع الأدلة",
+    "v1.4.0-alpha.27 Drilldown de décision de rejeu + liens de trace preuve",
     "v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface",
     "v1.4.0-alpha.26 رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل",
     "v1.4.0-alpha.26 Insights de rejeu adaptateur + surface de décision opérateur",
