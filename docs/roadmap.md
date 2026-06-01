@@ -1,8 +1,8 @@
-## v1.4.0-alpha.34 — Adapter Replay Review Pack Triage Workbench
+## v1.4.0-alpha.35 — Adapter Replay Review Pack Handoff Dossier
 
-Public label: v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench
+Public label: v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier
 
-Status: built locally pending lock evidence. Adds a metadata-only triage workbench for the adapter replay review pack: replay-case priority ranking, blocker reason, evidence completeness, recommended next operator action, and export-ready triage summary. No live scraping. No production OAuth. No real OAuth. No real API keys. No credential persistence. No provider execution expansion. No backend behavior expansion. No storage expansion. No source behavior expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signing. No cryptographic signature claim. No publication permission claim. Preserves v1.3.0 — Stable Manual Workflow Release, v1.4.0-alpha.28 — Adapter Replay Review Pack + Operator Handoff Export, v1.4.0-alpha.31 — Adapter Replay Review Pack Operator Workflow Polish, and v1.4.0-alpha.32 — Adapter Replay Review Pack Evidence Trace Reader.
+Status: built locally pending lock evidence. Adds a no-network handoff dossier for the adapter replay review pack: dossier sections, batch triage snapshot, blocker appendix, evidence trace digest, operator checklist, and export-ready handoff summary.
 
 
 ## v1.4.0-alpha.28 — Adapter Replay Review Pack + Operator Handoff Export

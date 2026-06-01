@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.34",
-  "release_title": "v1.4.0-alpha.34 — Adapter Replay Review Pack Triage Workbench",
+  "ci_gate_registry_version": "1.4.0-alpha.35",
+  "release_title": "v1.4.0-alpha.35 — Adapter Replay Review Pack Handoff Dossier",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -185,6 +185,7 @@
         "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-decision-queue-check.mjs",
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
+        "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -273,6 +274,7 @@
         "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-decision-queue-check.mjs",
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
+        "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -416,6 +418,7 @@
         "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-decision-queue-check.mjs",
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
+        "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
       ],
       "syntax_checks": [],
@@ -562,6 +565,7 @@
         "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-decision-queue-check.mjs",
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
+        "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -596,9 +600,9 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.34",
-    "scope": "adapter_replay_review_pack_triage_workbench",
-    "optimization_scope": "adapter_replay_review_pack_triage_workbench",
+    "version": "1.4.0-alpha.35",
+    "scope": "adapter_replay_review_pack_handoff_dossier",
+    "optimization_scope": "adapter_replay_review_pack_handoff_dossier",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -608,11 +612,11 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 100,
-    "current_candidate": "1.4.0-alpha.34",
-    "name": "adapter_replay_review_pack_triage_workbench"
+    "current_candidate": "1.4.0-alpha.35",
+    "name": "adapter_replay_review_pack_handoff_dossier"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.34",
+    "version": "1.4.0-alpha.35",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -807,13 +811,15 @@
       "tests/adapter-replay-review-pack-decision-queue-check.mjs",
       "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
       "src/research/adapter-replay-review-pack-operator-workflow-polish.js",
-      "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
+      "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
+      "src/research/adapter-replay-review-pack-handoff-dossier.js",
+      "tests/adapter-replay-review-pack-handoff-dossier-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.34",
+    "version": "1.4.0-alpha.35",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.34';
-const CURRENT_TITLE = 'Adapter Replay Review Pack Triage Workbench';
+const CURRENT_VERSION = '1.4.0-alpha.35';
+const CURRENT_TITLE = 'Adapter Replay Review Pack Handoff Dossier';
 const VERSION = '1.3.0';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');

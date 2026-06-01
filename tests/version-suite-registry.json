@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.34",
-  "release_title": "v1.4.0-alpha.34 — Adapter Replay Review Pack Triage Workbench",
+  "version_suite_registry_version": "1.4.0-alpha.35",
+  "release_title": "v1.4.0-alpha.35 — Adapter Replay Review Pack Handoff Dossier",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

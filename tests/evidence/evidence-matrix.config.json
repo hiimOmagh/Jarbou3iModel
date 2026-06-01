@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.34",
-  "internal_build_version": "1.4.0-alpha.34",
-  "public_version_label": "v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench",
+  "evidence_matrix_config_version": "1.4.0-alpha.35",
+  "internal_build_version": "1.4.0-alpha.35",
+  "public_version_label": "v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Adapter Replay Review Pack Triage Workbench",
+        "Adapter Replay Review Pack Handoff Dossier",
         "triage workbench",
         "batch status",
         "no live provider calls",
@@ -28,7 +28,7 @@
     },
     "ar": {
       "required": [
-        "منضدة فرز حزمة مراجعة إعادة التشغيل",
+        "ملف تسليم حزمة مراجعة إعادة التشغيل",
         "بطاقات الفرز",
         "ملخص الفرز الجاهز للتصدير",
         "دون نداءات مزوّد حية",
@@ -44,7 +44,7 @@
     },
     "fr": {
       "required": [
-        "Workbench de triage du pack de revue de rejeu",
+        "Dossier de handoff du pack de revue de rejeu",
         "cartes de triage",
         "résumé de triage prêt pour export",
         "aucun appel fournisseur réel",
@@ -235,8 +235,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench",
-    "ar": "v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل",
-    "fr": "v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu"
+    "en": "v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier",
+    "ar": "v1.4.0-alpha.35 ملف تسليم حزمة مراجعة إعادة التشغيل",
+    "fr": "v1.4.0-alpha.35 Dossier de handoff du pack de revue de rejeu"
   }
 }

@@ -1,33 +1,36 @@
 (function(global){
   'use strict';
   global.Jarbou3iResearchReleaseCopyContract = Object.freeze({
-    version: '1.4.0-alpha.34',
+    version: '1.4.0-alpha.35',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench',
-      ar: 'v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل',
-      fr: 'v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu'
+      en: 'v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier',
+      ar: 'v1.4.0-alpha.35 ملف تسليم حزمة مراجعة إعادة التشغيل',
+      fr: 'v1.4.0-alpha.35 Dossier de handoff du pack de revue de rejeu'
     }),
     requiredVisibleText: Object.freeze({
       en: Object.freeze([
-        'Adapter Replay Review Pack Triage Workbench',
-        'triage workbench',
-        'batch status',
+        'Adapter Replay Review Pack Handoff Dossier',
+        'handoff dossier',
+        'blocker appendix',
         'no live provider calls'
       ]),
       ar: Object.freeze([
-        'منضدة فرز حزمة مراجعة إعادة التشغيل',
-        'بطاقات الفرز',
-        'ملخص الفرز الجاهز للتصدير',
+        'ملف تسليم حزمة مراجعة إعادة التشغيل',
+        'ملف التسليم',
+        'ملحق العوائق',
         'دون نداءات مزوّد حية'
       ]),
       fr: Object.freeze([
-        'Workbench de triage du pack de revue de rejeu',
-        'cartes de triage',
-        'résumé de triage prêt pour export',
+        'Dossier de handoff du pack de revue de rejeu',
+        'dossier de handoff',
+        'annexe des blocages',
         'aucun appel fournisseur réel'
       ])
     }),
     staleVisibleText: Object.freeze([
+      'v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench',
+      'v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل',
+      'v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu',
       'v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue',
       'v1.4.0-alpha.33 قائمة قرارات حزمة مراجعة إعادة التشغيل',
       'v1.4.0-alpha.33 File de décision du pack de revue de rejeu',
@@ -52,37 +55,37 @@
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench · Batch Triage',
-        hostedDemoVerificationBody: 'Adapter Replay Review Pack Triage Workbench is ready for release evidence: this triage workbench groups decision-queue items into manual triage batches, exposes batch status, blocker types, inline trace previews, fixture-only review history, filters, sorting, triage cards, and export-ready triage summaries without changing provider execution. Hosted evidence must report 1.4.0-alpha.34 internally while showing v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench to users. Triage workbench only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, status persistence, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.34 adds a metadata-only triage workbench with batch triage, filters, inline trace preview, fixture-only review history, and export-ready triage summary while remaining no-network.',
-        adapterReplayReviewPackPreviewTitle: 'Adapter Replay Review Pack Triage Workbench',
-        adapterReplayReviewPackPreviewSubtitle: 'Group decision-queue items into manual batches, inspect inline trace previews, and export a triage summary before handoff.',
-        adapterReplayReviewPackPreviewPolicyNote: 'Triage workbench only: metadata payloads do not execute providers, fetch sources, persist status, persist credentials, verify, sign off, lock exports, or publish.',
-        adapterReplayOperatorWorkflowTitle: 'Adapter Replay Review Pack Triage Workbench',
-        adapterReplayOperatorWorkflowSubtitle: 'Batch decision-queue items by blocker type, priority, evidence completeness, and recommended manual next action.',
-        adapterReplayOperatorWorkflowPolicyNote: 'No-network triage workbench only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, status persistence, automatic verification, signoff, export lock, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier · Handoff Dossier',
+        hostedDemoVerificationBody: 'Adapter Replay Review Pack Handoff Dossier is ready for release evidence: it turns the triage workbench into a handoff dossier with dossier sections, batch triage snapshot, blocker appendix, evidence trace digest, operator checklist, and export-ready handoff summary without changing provider execution. Hosted evidence must report 1.4.0-alpha.35 internally while showing v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier to users. Handoff dossier only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, status persistence, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.35 adds a metadata-only handoff dossier with dossier sections, batch triage snapshot, blocker appendix, evidence trace digest, operator checklist, and export-ready handoff summary while remaining no-network.',
+        adapterReplayReviewPackPreviewTitle: 'Adapter Replay Review Pack Handoff Dossier',
+        adapterReplayReviewPackPreviewSubtitle: 'Turn triage batches into a manual handoff dossier with blocker appendix, evidence trace digest, and export-ready summary.',
+        adapterReplayReviewPackPreviewPolicyNote: 'Handoff dossier only: metadata payloads do not execute providers, fetch sources, persist status, persist credentials, verify, sign off, lock exports, or publish.',
+        adapterReplayOperatorWorkflowTitle: 'Adapter Replay Review Pack Handoff Dossier',
+        adapterReplayOperatorWorkflowSubtitle: 'Assemble dossier sections, blocker appendix, trace digest, checklist, and manual handoff copy from review-pack triage data.',
+        adapterReplayOperatorWorkflowPolicyNote: 'No-network handoff dossier only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, status persistence, automatic verification, signoff, export lock, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل · فرز دفعي',
-        hostedDemoVerificationBody: 'منضدة فرز حزمة مراجعة إعادة التشغيل جاهزة لأدلة الإصدار: تجمع عناصر قائمة القرارات في دفعات فرز يدوية وتعرض بطاقات الفرز وحالة الدفعة وأنواع العوائق ومعاينة تتبع داخلية وسجل مراجعة fixture فقط ومرشحات وترتيباً وملخص الفرز الجاهز للتصدير دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.34 مع عرض v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل للمستخدمين. منضدة فرز بلا شبكة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو حفظ حالة أو نشر آلي.',
-        analysisReleaseNote: 'يضيف 1.4.0-alpha.34 منضدة فرز metadata فقط مع فرز دفعي ومرشحات ومعاينة تتبع داخلية وسجل مراجعة fixture فقط وملخص فرز جاهز للتصدير مع البقاء بلا شبكة.',
-        adapterReplayReviewPackPreviewTitle: 'منضدة فرز حزمة مراجعة إعادة التشغيل',
-        adapterReplayReviewPackPreviewSubtitle: 'اجمع عناصر قائمة القرارات في دفعات يدوية وراجع معاينات التتبع الداخلية وصدّر ملخص الفرز قبل التسليم.',
-        adapterReplayReviewPackPreviewPolicyNote: 'منضدة فرز فقط: حمولات metadata لا تنفّذ مزوّدين ولا تجلب مصادر ولا تحفظ حالة أو بيانات اعتماد ولا تتحقق أو توقّع أو تقفل أو تنشر.',
-        adapterReplayOperatorWorkflowTitle: 'منضدة فرز حزمة مراجعة إعادة التشغيل',
-        adapterReplayOperatorWorkflowSubtitle: 'افرز عناصر قائمة القرارات حسب نوع العائق والأولوية واكتمال الأدلة والإجراء اليدوي التالي.',
-        adapterReplayOperatorWorkflowPolicyNote: 'منضدة فرز بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا حفظ حالة ولا تحقق أو توقيع أو قفل أو نشر آلي.'
+        alphaBadge: 'v1.4.0-alpha.35 ملف تسليم حزمة مراجعة إعادة التشغيل · ملف التسليم',
+        hostedDemoVerificationBody: 'ملف تسليم حزمة مراجعة إعادة التشغيل جاهز لأدلة الإصدار: يحوّل منضدة الفرز إلى ملف التسليم مع أقسام الملف ولقطة الفرز الدفعي وملحق العوائق وملخص تتبع الأدلة وقائمة فحص المشغّل وملخص تسليم جاهز للتصدير دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.35 مع عرض v1.4.0-alpha.35 ملف تسليم حزمة مراجعة إعادة التشغيل للمستخدمين. ملف تسليم بلا شبكة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو حفظ حالة أو نشر آلي.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.35 ملف تسليم metadata فقط مع أقسام الملف ولقطة الفرز الدفعي وملحق العوائق وملخص تتبع الأدلة وقائمة فحص المشغّل وملخص تسليم جاهز للتصدير مع البقاء بلا شبكة.',
+        adapterReplayReviewPackPreviewTitle: 'ملف تسليم حزمة مراجعة إعادة التشغيل',
+        adapterReplayReviewPackPreviewSubtitle: 'حوّل دفعات الفرز إلى ملف التسليم اليدوي مع ملحق العوائق وملخص تتبع الأدلة وملخص جاهز للتصدير.',
+        adapterReplayReviewPackPreviewPolicyNote: 'ملف تسليم فقط: حمولات metadata لا تنفّذ مزوّدين ولا تجلب مصادر ولا تحفظ حالة أو بيانات اعتماد ولا تتحقق أو توقّع أو تقفل أو تنشر.',
+        adapterReplayOperatorWorkflowTitle: 'ملف تسليم حزمة مراجعة إعادة التشغيل',
+        adapterReplayOperatorWorkflowSubtitle: 'اجمع أقسام الملف وملحق العوائق وملخص التتبع وقائمة الفحص ونسخة التسليم اليدوية من بيانات فرز حزمة المراجعة.',
+        adapterReplayOperatorWorkflowPolicyNote: 'ملف تسليم بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا حفظ حالة ولا تحقق أو توقيع أو قفل أو نشر آلي.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu · triage batch',
-        hostedDemoVerificationBody: 'Workbench de triage du pack de revue de rejeu est prêt pour les preuves de release : il regroupe les éléments de file de décision en lots de triage manuel, expose cartes de triage, statut de lot, types de blocage, aperçu inline des traces, historique fixture-only, filtres, tri et résumé de triage prêt pour export, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.34 en interne tout en affichant v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu aux utilisateurs. Workbench de triage sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export, persistance de statut ou permission de publication automatique.',
-        analysisReleaseNote: '1.4.0-alpha.34 ajoute un workbench de triage metadata-only avec triage batch, filtres, aperçu inline des traces, historique fixture-only et résumé de triage prêt pour export, tout en restant sans réseau.',
-        adapterReplayReviewPackPreviewTitle: 'Workbench de triage du pack de revue de rejeu',
-        adapterReplayReviewPackPreviewSubtitle: 'Regroupez les éléments de file de décision en lots manuels, inspectez les aperçus de trace inline et exportez un résumé de triage avant handoff.',
-        adapterReplayReviewPackPreviewPolicyNote: 'Workbench de triage uniquement : les payloads metadata n’exécutent aucun fournisseur, fetch, stockage de statut ou d’identifiants, vérification, visa, verrou ou publication.',
-        adapterReplayOperatorWorkflowTitle: 'Workbench de triage du pack de revue de rejeu',
-        adapterReplayOperatorWorkflowSubtitle: 'Triez les éléments de file de décision par type de blocage, priorité, complétude preuve et prochaine action manuelle recommandée.',
-        adapterReplayOperatorWorkflowPolicyNote: 'Workbench de triage sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source, statut persistant, vérification, visa, verrou ou publication.'
+        alphaBadge: 'v1.4.0-alpha.35 Dossier de handoff du pack de revue de rejeu · dossier de handoff',
+        hostedDemoVerificationBody: 'Dossier de handoff du pack de revue de rejeu est prêt pour les preuves de release : il transforme le workbench de triage en dossier de handoff avec sections du dossier, instantané de triage batch, annexe des blocages, digest de traces preuve, checklist opérateur et résumé de handoff prêt pour export, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.35 en interne tout en affichant v1.4.0-alpha.35 Dossier de handoff du pack de revue de rejeu aux utilisateurs. Dossier de handoff sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export, persistance de statut ou permission de publication automatique.',
+        analysisReleaseNote: '1.4.0-alpha.35 ajoute un dossier de handoff metadata-only avec sections du dossier, instantané de triage batch, annexe des blocages, digest de traces preuve, checklist opérateur et résumé de handoff prêt pour export, tout en restant sans réseau.',
+        adapterReplayReviewPackPreviewTitle: 'Dossier de handoff du pack de revue de rejeu',
+        adapterReplayReviewPackPreviewSubtitle: 'Transformez les lots de triage en dossier de handoff manuel avec annexe des blocages, digest des traces et résumé prêt pour export.',
+        adapterReplayReviewPackPreviewPolicyNote: 'Dossier de handoff uniquement : les payloads metadata n’exécutent aucun fournisseur, fetch, stockage de statut ou d’identifiants, vérification, visa, verrou ou publication.',
+        adapterReplayOperatorWorkflowTitle: 'Dossier de handoff du pack de revue de rejeu',
+        adapterReplayOperatorWorkflowSubtitle: 'Assemblez sections du dossier, annexe des blocages, digest des traces, checklist et copie de handoff manuel depuis les données de triage du pack de revue.',
+        adapterReplayOperatorWorkflowPolicyNote: 'Dossier de handoff sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source, statut persistant, vérification, visa, verrou ou publication.'
       })
     })
   });
