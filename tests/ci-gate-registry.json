@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.30",
-  "release_title": "v1.4.0-alpha.30 — Release Identity Single Source Contract",
+  "ci_gate_registry_version": "1.4.0-alpha.31",
+  "release_title": "v1.4.0-alpha.31 — Adapter Replay Review Pack Operator Workflow Polish",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -182,6 +182,7 @@
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
       ],
@@ -266,6 +267,7 @@
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
       ],
@@ -404,7 +406,8 @@
         "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
-        "tests/adapter-replay-review-pack-ui-export-preview-check.mjs"
+        "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -547,6 +550,7 @@
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
       ],
@@ -580,9 +584,9 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.30",
-    "scope": "release_identity_single_source_contract",
-    "optimization_scope": "release_identity_single_source_contract",
+    "version": "1.4.0-alpha.31",
+    "scope": "adapter_replay_review_pack_operator_workflow_polish",
+    "optimization_scope": "adapter_replay_review_pack_operator_workflow_polish",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -592,11 +596,11 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 100,
-    "current_candidate": "1.4.0-alpha.30",
-    "name": "release_identity_single_source_contract"
+    "current_candidate": "1.4.0-alpha.31",
+    "name": "adapter_replay_review_pack_operator_workflow_polish"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.30",
+    "version": "1.4.0-alpha.31",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -783,13 +787,15 @@
       "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
       "src/research/adapter-replay-review-pack-operator-handoff-export.js",
       "tests/current-release-identity.mjs",
-      "tests/release-identity-single-source-contract-check.mjs"
+      "tests/release-identity-single-source-contract-check.mjs",
+      "src/research/adapter-replay-review-pack-operator-workflow-polish.js",
+      "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.30",
+    "version": "1.4.0-alpha.31",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

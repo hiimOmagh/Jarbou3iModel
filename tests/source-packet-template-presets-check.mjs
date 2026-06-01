@@ -34,7 +34,7 @@ const templates = context.window.Jarbou3iResearchModules.sourcePacketTemplates;
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const roundtrip = context.window.Jarbou3iResearchModules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.4.0-alpha.30');
+assert.equal(pkg.version, '1.4.0-alpha.31');
 assert.equal(templates.VERSION, '1.3.0');
 assert.equal(templates.TEMPLATE_MODEL, 'source_packet_template_presets.v1');
 assert.equal(templates.PACKET_SCHEMA, 'manual_source_packet.v1');

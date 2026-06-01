@@ -1,6 +1,6 @@
-## v1.4.0-alpha.30 — Release Identity Single Source Contract
+## v1.4.0-alpha.31 — Adapter Replay Review Pack Operator Workflow Polish
 
-Public label: v1.4.0-alpha.30 Release Identity Single Source Contract
+Public label: v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish
 
 Status: built locally pending lock evidence. Adds metadata-only UI polish for the alpha.28 adapter replay review pack: markdown preview, JSON preview, copy/export action metadata, and grouped operator action summary. No live scraping. No production OAuth. No real OAuth. No real API keys. No credential persistence. No provider execution expansion. No backend behavior expansion. No storage expansion. No source behavior expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signing. No cryptographic signature claim. No publication permission claim. Preserves v1.3.0 — Stable Manual Workflow Release, v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix, v1.4.0-alpha.27 — Adapter Replay Decision Drilldown + Evidence Trace Links, and v1.4.0-alpha.28 — Adapter Replay Review Pack + Operator Handoff Export.
 

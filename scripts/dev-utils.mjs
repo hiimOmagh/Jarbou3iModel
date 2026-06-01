@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.4.0-alpha.30';
-export const RELEASE_TITLE = 'v1.4.0-alpha.30 — Release Identity Single Source Contract';
+export const VERSION = '1.4.0-alpha.31';
+export const RELEASE_TITLE = 'v1.4.0-alpha.31 — Adapter Replay Review Pack Operator Workflow Polish';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {

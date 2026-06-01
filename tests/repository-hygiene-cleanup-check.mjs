@@ -33,7 +33,7 @@ const trackedPaths = (() => {
   }
 })();
 
-assert.equal(pkg.version, '1.4.0-alpha.30');
+assert.equal(pkg.version, '1.4.0-alpha.31');
 assert.ok(pkg.description.includes('evidence scoring'));
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.equal(sample.workflow_version, '1.3.0');
@@ -85,7 +85,7 @@ assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.3.0'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
   assert.ok(corpus.includes('v1.4.0-alpha.28') || corpus.includes('v1.3.0') || corpus.includes('v1.1.0'), 'release corpus missing current alpha.1, stable baseline, or retained history');
-  assert.ok(corpus.includes('Release Identity Single Source Contract') || corpus.includes('Stable Manual Workflow Release') || corpus.includes('Diagnostic Repair Queue + Export Risk Resolution'), 'release corpus missing current alpha.1, stable, or retained release title');
+  assert.ok(corpus.includes('Adapter Replay Review Pack Operator Workflow Polish') || corpus.includes('Stable Manual Workflow Release') || corpus.includes('Diagnostic Repair Queue + Export Risk Resolution'), 'release corpus missing current alpha.1, stable, or retained release title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));

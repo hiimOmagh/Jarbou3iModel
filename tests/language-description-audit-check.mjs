@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.30';
-const CURRENT_TITLE = 'Release Identity Single Source Contract';
+const CURRENT_VERSION = '1.4.0-alpha.31';
+const CURRENT_TITLE = 'Adapter Replay Review Pack Operator Workflow Polish';
 const VERSION = '1.3.0';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');

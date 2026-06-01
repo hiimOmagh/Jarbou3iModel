@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.30",
-  "internal_build_version": "1.4.0-alpha.30",
-  "public_version_label": "v1.4.0-alpha.30 Release Identity Single Source Contract",
+  "evidence_matrix_config_version": "1.4.0-alpha.31",
+  "internal_build_version": "1.4.0-alpha.31",
+  "public_version_label": "v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish",
   "locales": [
     "en",
     "ar",
@@ -18,8 +18,10 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Release Identity Single Source Contract",
-        "no live provider calls"
+        "Adapter Replay Review Pack Operator Workflow Polish",
+        "no live provider calls",
+        "operator workflow polish",
+        "manual next-step copy"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -32,22 +34,12 @@
     },
     "ar": {
       "required": [
+        "صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل",
+        "أولوية قرار المشغّل",
+        "نسخة الخطوة التالية اليدوية",
+        "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
-        "اعتماد مراجعة التصدير",
-        "تصدير",
-        "حزمة تسليم التصدير المعتمدة",
-        "سطح مراجعة سجل قفل التصدير",
-        "سطح التحكم في اكتساب المصادر",
-        "حدود بيانات الاعتماد",
-        "قمرة أمان التنفيذ اليدوي + سجل الجلسة",
-        "صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر",
-        "ضغط تجربة محوّل المزوّد اليدوي",
-        "قابلية عمل لوحة ميزانية الأدلة",
-        "سجل قرارات لوحة الأدلة",
-        "مركز إنتاجية التسليم",
-        "رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل",
-        "عقد هوية الإصدار من مصدر واحد",
-        "دون نداءات مزوّد حية"
+        "اعتماد مراجعة التصدير"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -58,22 +50,12 @@
     },
     "fr": {
       "required": [
+        "Polish workflow opérateur du pack de revue de rejeu",
+        "priorité de décision opérateur",
+        "copie manuelle de prochaine étape",
+        "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
-        "visa de revue export",
-        "Export Pack v3",
-        "Pack de remise export signé",
-        "Surface de revue du registre de verrouillage",
-        "Surface de contrôle d’acquisition des sources",
-        "frontière des identifiants",
-        "Cockpit de sécurité d’exécution manuelle + registre de session",
-        "Bac à sable d’adaptateur fournisseur manuel + contrat d’invocation éphémère",
-        "Compression UX de l’adaptateur fournisseur manuel",
-        "Actionnabilité du tableau budget preuves",
-        "Registre de décision du tableau preuves",
-        "Insights de rejeu adaptateur + surface de décision opérateur",
-        "Garde d’hygiène des patchs",
-        "Contrat source unique d’identité de release",
-        "aucun appel fournisseur réel"
+        "visa de revue export"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -259,8 +241,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.30 Release Identity Single Source Contract",
-    "ar": "v1.4.0-alpha.30 عقد هوية الإصدار من مصدر واحد",
-    "fr": "v1.4.0-alpha.30 Contrat source unique d’identité de release"
+    "en": "v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish",
+    "ar": "v1.4.0-alpha.31 صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل",
+    "fr": "v1.4.0-alpha.31 Polish workflow opérateur du pack de revue de rejeu"
   }
 }

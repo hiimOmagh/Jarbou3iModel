@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.30",
-  "release_title": "v1.4.0-alpha.30 — Release Identity Single Source Contract",
+  "version_suite_registry_version": "1.4.0-alpha.31",
+  "release_title": "v1.4.0-alpha.31 — Adapter Replay Review Pack Operator Workflow Polish",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
