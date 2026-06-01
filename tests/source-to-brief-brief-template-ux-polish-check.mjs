@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 const VERSION = '1.3.0';
-const CURRENT_VERSION = '1.4.0-alpha.33';
+const CURRENT_VERSION = '1.4.0-alpha.34';
 const filesToLoad = [
   'src/research/evidence-workspace-ux.js',
   'src/research/operator-command-palette.js',
@@ -74,9 +74,9 @@ assert.ok(pack.files.find((file)=>file.path === 'source-to-brief/assembly-varian
 
 const matrix = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json','utf8'));
 assert.equal(matrix.internal_build_version, CURRENT_VERSION);
-assert.equal(matrix.public_version_label, 'v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue');
+assert.equal(matrix.public_version_label, 'v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench');
 assert.equal(JSON.stringify(matrix.language_rules).includes('Guided Research Session'), false, 'legacy guided-session matrix requirement should be removed');
-assert.ok(matrix.language_rules.en.required.includes('Stable Manual Workflow Release') || matrix.language_rules.en.required.includes('Adapter Replay Review Pack Decision Queue'));
+assert.ok(matrix.language_rules.en.required.includes('Stable Manual Workflow Release') || matrix.language_rules.en.required.includes('Adapter Replay Review Pack Triage Workbench'));
 assert.ok(matrix.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'));
 assert.ok(matrix.language_rules.ar.required.includes('اعتماد مراجعة التصدير'));
 assert.ok(matrix.language_rules.fr.required.includes('Diff aperçu assemblage du brief'));

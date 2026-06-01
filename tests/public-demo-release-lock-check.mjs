@@ -7,8 +7,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.33';
-const CURRENT_TITLE = 'Adapter Replay Review Pack Decision Queue';
+const CURRENT_VERSION = '1.4.0-alpha.34';
+const CURRENT_TITLE = 'Adapter Replay Review Pack Triage Workbench';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

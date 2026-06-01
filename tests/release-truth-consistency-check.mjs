@@ -40,7 +40,7 @@ for (const token of ['source strategy continuity','release evidence continuity',
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.ok(['release-identity-single-source-contract','adapter-replay-review-pack-ui-export-preview','adapter-replay-review-pack-decision-queue'].includes(manifest.release_type));
+assert.ok(['release-identity-single-source-contract','adapter-replay-review-pack-ui-export-preview','adapter-replay-review-pack-triage-workbench'].includes(manifest.release_type));
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, LOCKED_ALPHA14, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);

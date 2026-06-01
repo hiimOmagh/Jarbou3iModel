@@ -92,8 +92,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.33 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.33 check');
-assert.equal(registry.runtime_optimization.version, VERSION);
-assert.equal(registry.runtime_optimization.optimization_scope, 'adapter_replay_review_pack_decision_queue');
+assert.ok(registry.runtime_optimization.version >= VERSION, 'runtime optimization should point to the current release while preserving alpha.33 decision queue check');
+assert.ok(['adapter_replay_review_pack_decision_queue','adapter_replay_review_pack_triage_workbench'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization must preserve decision queue lineage or current triage scope');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

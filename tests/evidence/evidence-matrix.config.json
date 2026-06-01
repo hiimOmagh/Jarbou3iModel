@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.33",
-  "internal_build_version": "1.4.0-alpha.33",
-  "public_version_label": "v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue",
+  "evidence_matrix_config_version": "1.4.0-alpha.34",
+  "internal_build_version": "1.4.0-alpha.34",
+  "public_version_label": "v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench",
   "locales": [
     "en",
     "ar",
@@ -11,9 +11,9 @@
   "language_rules": {
     "en": {
       "required": [
-        "Adapter Replay Review Pack Decision Queue",
-        "decision queue",
-        "decision cards",
+        "Adapter Replay Review Pack Triage Workbench",
+        "triage workbench",
+        "batch status",
         "no live provider calls",
         "manual review"
       ],
@@ -28,9 +28,9 @@
     },
     "ar": {
       "required": [
-        "قائمة قرارات حزمة مراجعة إعادة التشغيل",
-        "بطاقات القرار",
-        "ملخص القائمة الجاهز للتصدير",
+        "منضدة فرز حزمة مراجعة إعادة التشغيل",
+        "بطاقات الفرز",
+        "ملخص الفرز الجاهز للتصدير",
         "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
         "اعتماد مراجعة التصدير"
@@ -44,9 +44,9 @@
     },
     "fr": {
       "required": [
-        "File de décision du pack de revue de rejeu",
-        "cartes de décision",
-        "résumé de file prêt pour export",
+        "Workbench de triage du pack de revue de rejeu",
+        "cartes de triage",
+        "résumé de triage prêt pour export",
         "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
         "visa de revue export"
@@ -235,8 +235,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue",
-    "ar": "v1.4.0-alpha.33 قائمة قرارات حزمة مراجعة إعادة التشغيل",
-    "fr": "v1.4.0-alpha.33 File de décision du pack de revue de rejeu"
+    "en": "v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench",
+    "ar": "v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل",
+    "fr": "v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu"
   }
 }
