@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const VERSION = '1.4.0-alpha.32';
-const TITLE = 'Adapter Replay Review Pack Evidence Trace Reader';
+const VERSION = '1.4.0-alpha.33';
+const TITLE = 'Adapter Replay Review Pack Decision Queue';
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');

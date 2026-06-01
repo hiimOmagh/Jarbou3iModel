@@ -1,70 +1,10 @@
 {
+  "release": "v1.4.0-alpha.33 — Adapter Replay Review Pack Decision Queue",
   "version": "1.4.0-alpha.33",
-  "milestone_name": "Adapter Replay Review Pack Decision Queue",
-  "release_type": "product-facing",
-  "allowed_scope": [
-    "adapter replay review-pack decision queue",
-    "queue replay cases by urgency and actionability",
-    "blocker reason and evidence completeness metadata",
-    "recommended next operator action",
-    "export-ready queue summary and manual queue copy",
-    "localized no-network workflow copy"
-  ],
-  "forbidden_scope": [
-    "live provider calls",
-    "OAuth/token lifecycle changes",
-    "backend/storage behavior changes",
-    "source-fetching or scraping behavior changes",
-    "automatic source verification",
-    "automatic signoff or export lock",
-    "cryptographic signature claims",
-    "publication permission claims",
-    "new release-governance system"
-  ],
-  "required_docs": [
-    "README.md",
-    "CHANGELOG.md",
-    "PUBLIC_DEMO.md",
-    "docs/current-release.md",
-    "docs/release-history.md",
-    "docs/release-and-evidence.md",
-    "docs/qa-matrix.md",
-    "docs/roadmap.md"
-  ],
-  "required_tests": [
-    "tests/current-release-lock-completion-check.mjs",
-    "tests/effective-diff-check.mjs",
-    "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
-    "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
-    "tests/hosted-demo-browser-evidence.spec.mjs",
-    "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
-    "tests/localization-regression-matrix-check.mjs",
-    "tests/release-identity-single-source-contract-check.mjs",
-    "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
-    "tests/adapter-replay-review-pack-decision-queue-check.mjs",
-    "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
-  ],
-  "required_browser_evidence_files": [
-    "desktop-first-screen.png",
-    "mobile-first-screen.png",
-    "provider-mode.png",
-    "quality-export.png",
-    "hosted-demo-metadata.json",
-    "visible-text-ar.json",
-    "visible-text-fr.json",
-    "visible-text-en.json"
-  ],
-  "required_locale_snapshots": [
-    "ar",
-    "fr",
-    "en"
-  ],
-  "expected_deleted_files": [
-    "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
-  ],
-  "expected_changed_files": [
+  "changed_files_count": 94,
+  "changed_files": [
     ".github/workflows/ci.yml",
-    "ALPHA32_CHANGED_FILES.json",
+    "ALPHA33_CHANGED_FILES.json",
     "CHANGELOG.md",
     "MANIFEST.json",
     "PUBLIC_DEMO.md",
@@ -77,6 +17,7 @@
     "index.html",
     "package-lock.json",
     "package.json",
+    "scripts/build-lock-evidence-bundle.mjs",
     "scripts/dev-utils.mjs",
     "src/research/adapter-replay-review-pack-decision-queue.js",
     "src/research/release-copy-contract.js",
@@ -86,6 +27,7 @@
     "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
     "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
     "tests/adapter-replay-review-pack-decision-queue-check.mjs",
+    "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
     "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
     "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
     "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
@@ -98,11 +40,11 @@
     "tests/ci-workflow-quarantine-check.mjs",
     "tests/current-release-contract.json",
     "tests/dev-productivity-command-center-check.mjs",
-    "tests/evidence/evidence-matrix.config.json",
     "tests/evidence-matrix-canonical-bundle-check.mjs",
     "tests/evidence-scoring-calibration-check.mjs",
     "tests/evidence-scoring-check.mjs",
     "tests/evidence-workspace-ux-throughput-check.mjs",
+    "tests/evidence/evidence-matrix.config.json",
     "tests/expansion-lane-acceptance-matrix-check.mjs",
     "tests/final-public-demo-freeze-audit-check.mjs",
     "tests/fixture-test-debt-ledger-check.mjs",
@@ -156,34 +98,5 @@
     "tests/ux-stabilization-patch-check.mjs",
     "tests/version-suite-registry.json"
   ],
-  "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.33",
-    "public labels must expose v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue",
-    "decision queue must remain no-network and metadata-only",
-    "active release tests should derive from tests/current-release-identity.mjs where release identity is not historical"
-  ],
-  "windows_portability_rules": [
-    "node \"$PLAYWRIGHT_CLI\" install --with-deps",
-    "node tests/ci-gate-runner.mjs browser"
-  ],
-  "effective_diff_rules": [
-    "zero_effect_patch_rejected",
-    "expected_deleted_files_must_be_absent",
-    "implementation_or_test_delta_required"
-  ],
-  "stale_current_release_tokens": [
-    "v1.4.0-alpha.30 Release Identity Single Source Contract",
-    "v1.4.0-alpha.30 عقد هوية الإصدار من مصدر واحد",
-    "v1.4.0-alpha.30 Contrat source unique d’identité de release",
-    "v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
-    "v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير",
-    "v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export",
-    "v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export",
-    "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
-    "v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface",
-    "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard"
-  ],
-  "runtime_scope": "adapter_replay_review_pack_decision_queue",
-  "lock_conditions": []
+  "scope": "Product-facing adapter replay review-pack decision queue. No provider/OAuth/backend/storage/source behavior change."
 }

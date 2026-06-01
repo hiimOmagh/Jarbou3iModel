@@ -65,7 +65,7 @@ assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false);
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false);
 
 for (const token of [
-  'lock-evidence-bundle_1.4.0-alpha.32_${{ github.run_id }}',
+  'lock-evidence-bundle_1.4.0-alpha.33_${{ github.run_id }}',
   'lock-evidence-bundle-decision',
   'playwright-install-deps-log',
   'playwright-install-log',
@@ -96,7 +96,7 @@ assert.ok(workflow.includes('retrying once after 15 seconds'), 'browser install 
 assert.ok(workflow.includes('Download Playwright install-deps evidence log'), 'canonical bundle must download playwright install-deps evidence log');
 assert.ok(workflow.includes('Download Playwright install evidence log'), 'canonical bundle must download playwright install evidence log');
 assert.ok(workflow.includes('canonical bundle policy: upload only when no-browser and browser both pass'), 'canonical bundle skip path must emit an explicit decision');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.32'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.33'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
 

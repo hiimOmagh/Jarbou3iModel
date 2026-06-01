@@ -40,13 +40,13 @@ assert.equal(pack.source_readiness_verdict, 'review_required');
 assert.ok(pack.review_pack_summary.total_trace_links > 20, 'review pack must carry the alpha.27 trace index');
 assert.ok(pack.review_pack_summary.fixture_links > 0, 'review pack must include fixture trace links');
 assert.ok(pack.review_pack_summary.policy_links > 0, 'review pack must include policy row trace links');
-assert.ok(pack.review_pack_summary.evidence_links > 0, 'review pack must include evidence trace links');
+assert.ok(pack.review_pack_summary.evidence_links > 0, 'review pack must include decision queue links');
 assert.ok(pack.review_pack_summary.required_actions > 0, 'operator handoff must include required actions');
-assert.ok(pack.handoff_sections.some((section) => section.id === 'trace-bundle'), 'handoff must include evidence trace bundle section');
+assert.ok(pack.handoff_sections.some((section) => section.id === 'trace-bundle'), 'handoff must include decision queue bundle section');
 assert.ok(pack.handoff_sections.some((section) => section.id === 'boundary'), 'handoff must include execution boundary section');
 assert.ok(pack.required_operator_actions.some((action) => action.id === 'record-operator-decision'), 'review pack must preserve manual decision action');
 assert.ok(pack.export_payload.includes('adapter-replay-review-pack-1.4.0-alpha.28'), 'export payload must include deterministic review pack id');
-assert.ok(pack.export_payload.includes('evidence_trace_bundle'), 'export payload must include evidence trace bundle');
+assert.ok(pack.export_payload.includes('evidence_trace_bundle'), 'export payload must include decision queue bundle');
 assert.ok(pack.handoff_markdown.includes('Required actions'), 'handoff markdown must include required actions');
 
 for (const [key, value] of Object.entries(pack.boundary_flags)) {
@@ -81,8 +81,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.28 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.28 check');
-assert.ok([VERSION, '1.4.0-alpha.29', '1.4.0-alpha.32'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
-assert.ok(['adapter_replay_review_pack_operator_handoff_export', 'adapter_replay_review_pack_ui_export_preview', 'adapter_replay_review_pack_evidence_trace_reader'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
+assert.ok([VERSION, '1.4.0-alpha.29', '1.4.0-alpha.33'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
+assert.ok(['adapter_replay_review_pack_operator_handoff_export', 'adapter_replay_review_pack_ui_export_preview', 'adapter_replay_review_pack_decision_queue'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

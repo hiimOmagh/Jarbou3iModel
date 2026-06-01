@@ -1,29 +1,29 @@
 (function(global){
   'use strict';
   global.Jarbou3iResearchReleaseCopyContract = Object.freeze({
-    version: '1.4.0-alpha.32',
+    version: '1.4.0-alpha.33',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader',
-      ar: 'v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
-      fr: 'v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu'
+      en: 'v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue',
+      ar: 'v1.4.0-alpha.33 قائمة قرارات حزمة مراجعة إعادة التشغيل',
+      fr: 'v1.4.0-alpha.33 File de décision du pack de revue de rejeu'
     }),
     requiredVisibleText: Object.freeze({
       en: Object.freeze([
-        'Adapter Replay Review Pack Evidence Trace Reader',
-        'evidence trace reader',
-        'trace cards',
+        'Adapter Replay Review Pack Decision Queue',
+        'decision queue',
+        'decision cards',
         'no live provider calls'
       ]),
       ar: Object.freeze([
-        'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
-        'بطاقات التتبع',
-        'ملخص التتبع الجاهز للتصدير',
+        'قائمة قرارات حزمة مراجعة إعادة التشغيل',
+        'بطاقات القرار',
+        'ملخص القائمة الجاهز للتصدير',
         'دون نداءات مزوّد حية'
       ]),
       fr: Object.freeze([
-        'Lecteur de traces preuve du pack de revue de rejeu',
-        'cartes de trace',
-        'résumé de trace prêt pour export',
+        'File de décision du pack de revue de rejeu',
+        'cartes de décision',
+        'résumé de file prêt pour export',
         'aucun appel fournisseur réel'
       ])
     }),
@@ -34,6 +34,9 @@
       'v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish',
       'v1.4.0-alpha.31 صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل',
       'v1.4.0-alpha.31 Polish workflow opérateur du pack de revue de rejeu',
+      'v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader',
+      'v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
+      'v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu',
       'v1.4.0-alpha.30 Release Identity Single Source Contract',
       'v1.4.0-alpha.30 عقد هوية الإصدار من مصدر واحد',
       'v1.4.0-alpha.30 Contrat source unique d’identité de release',
@@ -46,37 +49,37 @@
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader · Evidence Trace Reader',
-        hostedDemoVerificationBody: 'Adapter Replay Review Pack Evidence Trace Reader is ready for release evidence: it turns the review-pack workflow into trace cards, evidence trace IDs, missing-evidence summary, blocker reasons, recommended next action, and export-ready trace summary without changing provider execution. Hosted evidence must report 1.4.0-alpha.32 internally while showing v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader to users. Evidence trace reader only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.32 adds a metadata-only evidence trace reader with trace cards, blocker reasons, missing-evidence summary, and export-ready trace copy while remaining no-network.',
-        adapterReplayReviewPackPreviewTitle: 'Adapter Replay Review Pack Evidence Trace Reader',
-        adapterReplayReviewPackPreviewSubtitle: 'Inspect trace cards, evidence trace IDs, blocker reasons, missing-evidence summary, and export-ready trace summary before handoff.',
-        adapterReplayReviewPackPreviewPolicyNote: 'Evidence trace reader only: metadata payloads do not execute providers, fetch sources, persist credentials, verify, sign off, lock exports, or publish.',
-        adapterReplayOperatorWorkflowTitle: 'Adapter Replay Review Pack Evidence Trace Reader',
-        adapterReplayOperatorWorkflowSubtitle: 'Read why review-pack decisions were made through trace cards, evidence links, missing-evidence state, and recommended manual next action.',
-        adapterReplayOperatorWorkflowPolicyNote: 'No-network trace reader only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, automatic verification, signoff, export lock, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue · Decision Queue',
+        hostedDemoVerificationBody: 'Adapter Replay Review Pack Decision Queue is ready for release evidence: it turns the review-pack workflow into decision cards, decision queue IDs, blocker summary, blocker reasons, recommended next action, and export-ready queue summary without changing provider execution. Hosted evidence must report 1.4.0-alpha.33 internally while showing v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue to users. Decision queue only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.33 adds a metadata-only decision queue with decision cards, blocker reasons, blocker summary, and export-ready queue copy while remaining no-network.',
+        adapterReplayReviewPackPreviewTitle: 'Adapter Replay Review Pack Decision Queue',
+        adapterReplayReviewPackPreviewSubtitle: 'Inspect decision cards, decision queue IDs, blocker reasons, blocker summary, and export-ready queue summary before handoff.',
+        adapterReplayReviewPackPreviewPolicyNote: 'Decision queue only: metadata payloads do not execute providers, fetch sources, persist credentials, verify, sign off, lock exports, or publish.',
+        adapterReplayOperatorWorkflowTitle: 'Adapter Replay Review Pack Decision Queue',
+        adapterReplayOperatorWorkflowSubtitle: 'Read why review-pack decisions were made through decision cards, evidence links, missing-evidence state, and recommended manual next action.',
+        adapterReplayOperatorWorkflowPolicyNote: 'No-network decision queue only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, automatic verification, signoff, export lock, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل · قارئ التتبع',
-        hostedDemoVerificationBody: 'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل جاهز لأدلة الإصدار: يحوّل سير حزمة المراجعة إلى بطاقات التتبع ومعرّفات تتبع الأدلة وملخص الأدلة الناقصة وأسباب العوائق والإجراء التالي المقترح وملخص التتبع الجاهز للتصدير دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.32 مع عرض v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل للمستخدمين. قارئ تتبع بلا شبكة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
-        analysisReleaseNote: 'يضيف 1.4.0-alpha.32 قارئ تتبع أدلة metadata فقط مع بطاقات التتبع وأسباب العوائق وملخص الأدلة الناقصة ونسخة تتبع جاهزة للتصدير مع البقاء بلا شبكة.',
-        adapterReplayReviewPackPreviewTitle: 'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
-        adapterReplayReviewPackPreviewSubtitle: 'راجع بطاقات التتبع ومعرّفات الأدلة وأسباب العوائق وحالة الأدلة الناقصة وملخص التتبع الجاهز للتصدير قبل التسليم.',
-        adapterReplayReviewPackPreviewPolicyNote: 'قارئ تتبع فقط: حمولات metadata لا تنفّذ مزوّدين ولا تجلب مصادر ولا تخزّن بيانات اعتماد ولا تتحقق أو توقّع أو تقفل أو تنشر.',
-        adapterReplayOperatorWorkflowTitle: 'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
-        adapterReplayOperatorWorkflowSubtitle: 'اقرأ لماذا اتُّخذت قرارات حزمة المراجعة عبر بطاقات التتبع وروابط الأدلة وحالة الأدلة الناقصة والإجراء اليدوي التالي.',
-        adapterReplayOperatorWorkflowPolicyNote: 'قارئ تتبع بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا تحقق أو توقيع أو قفل أو نشر آلي.'
+        alphaBadge: 'v1.4.0-alpha.33 قائمة قرارات حزمة مراجعة إعادة التشغيل · قائمة القرارات',
+        hostedDemoVerificationBody: 'قائمة قرارات حزمة مراجعة إعادة التشغيل جاهز لأدلة الإصدار: يحوّل سير حزمة المراجعة إلى بطاقات القرار ومعرّفات القرار وملخص العوائق وأسباب العوائق والإجراء التالي المقترح وملخص القائمة الجاهز للتصدير دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.33 مع عرض v1.4.0-alpha.33 قائمة قرارات حزمة مراجعة إعادة التشغيل للمستخدمين. قائمة قرارات بلا شبكة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.33 قائمة قرارات أدلة metadata فقط مع بطاقات القرار وأسباب العوائق وملخص العوائق ونسخة قائمة جاهزة للتصدير مع البقاء بلا شبكة.',
+        adapterReplayReviewPackPreviewTitle: 'قائمة قرارات حزمة مراجعة إعادة التشغيل',
+        adapterReplayReviewPackPreviewSubtitle: 'راجع بطاقات القرار ومعرّفات الأدلة وأسباب العوائق وحالة الأدلة الناقصة وملخص القائمة الجاهز للتصدير قبل التسليم.',
+        adapterReplayReviewPackPreviewPolicyNote: 'قائمة قرارات فقط: حمولات metadata لا تنفّذ مزوّدين ولا تجلب مصادر ولا تخزّن بيانات اعتماد ولا تتحقق أو توقّع أو تقفل أو تنشر.',
+        adapterReplayOperatorWorkflowTitle: 'قائمة قرارات حزمة مراجعة إعادة التشغيل',
+        adapterReplayOperatorWorkflowSubtitle: 'اقرأ لماذا اتُّخذت قرارات حزمة المراجعة عبر بطاقات القرار وروابط الأدلة وحالة الأدلة الناقصة والإجراء اليدوي التالي.',
+        adapterReplayOperatorWorkflowPolicyNote: 'قائمة قرارات بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا تحقق أو توقيع أو قفل أو نشر آلي.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu · lecteur trace',
-        hostedDemoVerificationBody: 'Lecteur de traces preuve du pack de revue de rejeu est prêt pour les preuves de release : il transforme le workflow du pack de revue en cartes de trace, identifiants de trace preuve, résumé de preuves manquantes, raisons de blocage, prochaine action recommandée et résumé de trace prêt pour export, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.32 en interne tout en affichant v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu aux utilisateurs. Lecteur de trace sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
-        analysisReleaseNote: '1.4.0-alpha.32 ajoute un lecteur de traces preuve metadata-only avec cartes de trace, raisons de blocage, résumé de preuves manquantes et copie de trace prête pour export, tout en restant sans réseau.',
-        adapterReplayReviewPackPreviewTitle: 'Lecteur de traces preuve du pack de revue de rejeu',
-        adapterReplayReviewPackPreviewSubtitle: 'Inspectez cartes de trace, identifiants preuve, raisons de blocage, état des preuves manquantes et résumé de trace prêt pour export avant handoff.',
-        adapterReplayReviewPackPreviewPolicyNote: 'Lecteur de trace uniquement : les payloads metadata n’exécutent aucun fournisseur, fetch, stockage d’identifiants, vérification, visa, verrou ou publication.',
-        adapterReplayOperatorWorkflowTitle: 'Lecteur de traces preuve du pack de revue de rejeu',
-        adapterReplayOperatorWorkflowSubtitle: 'Lisez pourquoi les décisions du pack de revue ont été prises via cartes de trace, liens preuve, état des preuves manquantes et prochaine action manuelle.',
-        adapterReplayOperatorWorkflowPolicyNote: 'Lecteur de trace sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source, vérification, visa, verrou ou publication.'
+        alphaBadge: 'v1.4.0-alpha.33 File de décision du pack de revue de rejeu · file décision',
+        hostedDemoVerificationBody: 'File de décision du pack de revue de rejeu est prêt pour les preuves de release : il transforme le workflow du pack de revue en cartes de décision, identifiants décision, résumé des bloqueurs, raisons de blocage, prochaine action recommandée et résumé de file prêt pour export, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.33 en interne tout en affichant v1.4.0-alpha.33 File de décision du pack de revue de rejeu aux utilisateurs. File de décision sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
+        analysisReleaseNote: '1.4.0-alpha.33 ajoute un lecteur de traces preuve metadata-only avec cartes de décision, raisons de blocage, résumé des bloqueurs et copie de file prête pour export, tout en restant sans réseau.',
+        adapterReplayReviewPackPreviewTitle: 'File de décision du pack de revue de rejeu',
+        adapterReplayReviewPackPreviewSubtitle: 'Inspectez cartes de décision, identifiants preuve, raisons de blocage, état des preuves manquantes et résumé de file prêt pour export avant handoff.',
+        adapterReplayReviewPackPreviewPolicyNote: 'File de décision uniquement : les payloads metadata n’exécutent aucun fournisseur, fetch, stockage d’identifiants, vérification, visa, verrou ou publication.',
+        adapterReplayOperatorWorkflowTitle: 'File de décision du pack de revue de rejeu',
+        adapterReplayOperatorWorkflowSubtitle: 'Lisez pourquoi les décisions du pack de revue ont été prises via cartes de décision, liens preuve, état des preuves manquantes et prochaine action manuelle.',
+        adapterReplayOperatorWorkflowPolicyNote: 'File de décision sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source, vérification, visa, verrou ou publication.'
       })
     })
   });

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.32",
-  "internal_build_version": "1.4.0-alpha.32",
-  "public_version_label": "v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader",
+  "evidence_matrix_config_version": "1.4.0-alpha.33",
+  "internal_build_version": "1.4.0-alpha.33",
+  "public_version_label": "v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue",
   "locales": [
     "en",
     "ar",
@@ -11,9 +11,9 @@
   "language_rules": {
     "en": {
       "required": [
-        "Adapter Replay Review Pack Evidence Trace Reader",
-        "evidence trace reader",
-        "trace cards",
+        "Adapter Replay Review Pack Decision Queue",
+        "decision queue",
+        "decision cards",
         "no live provider calls",
         "manual review"
       ],
@@ -28,9 +28,9 @@
     },
     "ar": {
       "required": [
-        "قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل",
-        "بطاقات التتبع",
-        "ملخص التتبع الجاهز للتصدير",
+        "قائمة قرارات حزمة مراجعة إعادة التشغيل",
+        "بطاقات القرار",
+        "ملخص القائمة الجاهز للتصدير",
         "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
         "اعتماد مراجعة التصدير"
@@ -44,9 +44,9 @@
     },
     "fr": {
       "required": [
-        "Lecteur de traces preuve du pack de revue de rejeu",
-        "cartes de trace",
-        "résumé de trace prêt pour export",
+        "File de décision du pack de revue de rejeu",
+        "cartes de décision",
+        "résumé de file prêt pour export",
         "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
         "visa de revue export"
@@ -235,8 +235,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader",
-    "ar": "v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل",
-    "fr": "v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu"
+    "en": "v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue",
+    "ar": "v1.4.0-alpha.33 قائمة قرارات حزمة مراجعة إعادة التشغيل",
+    "fr": "v1.4.0-alpha.33 File de décision du pack de revue de rejeu"
   }
 }

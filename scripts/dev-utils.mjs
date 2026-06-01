@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-export const VERSION = '1.4.0-alpha.32';
-export const RELEASE_TITLE = 'v1.4.0-alpha.32 — Adapter Replay Review Pack Evidence Trace Reader';
+export const VERSION = '1.4.0-alpha.33';
+export const RELEASE_TITLE = 'v1.4.0-alpha.33 — Adapter Replay Review Pack Decision Queue';
 export const DIST_DIR = 'dist';
 
 export function readJson(file) {
