@@ -1,15 +1,15 @@
 {
-  "version": "1.4.0-alpha.35",
-  "milestone_name": "Adapter Replay Review Pack Handoff Dossier",
+  "version": "1.4.0-alpha.36",
+  "milestone_name": "Adapter Replay Review Pack Operator Review Console",
   "release_type": "product-facing",
   "allowed_scope": [
-    "adapter replay review-pack handoff dossier",
-    "dossier sections over triage-workbench output",
-    "batch triage snapshot for handoff review",
-    "blocker appendix and unresolved blocker inventory",
-    "evidence trace digest with no source fetching",
-    "operator checklist and manual handoff copy",
-    "export-ready handoff summary and localized no-network workflow copy"
+    "adapter replay review-pack operator review console",
+    "unified operator console over decision queue, triage workbench, evidence trace reader, and handoff dossier",
+    "review tabs and unified review cards",
+    "trace navigation without source fetching",
+    "preview-only batch controls without status mutation",
+    "handoff readiness and export review summary",
+    "manual operator review console copy and localized no-network workflow copy"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -21,6 +21,7 @@
     "cryptographic signature claims",
     "publication permission claims",
     "status persistence or backend mutation",
+    "batch mutation or persisted review state",
     "new release-governance system"
   ],
   "required_docs": [
@@ -46,7 +47,8 @@
     "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
     "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
     "tests/adapter-replay-review-pack-decision-queue-check.mjs",
-    "tests/adapter-replay-review-pack-handoff-dossier-check.mjs"
+    "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
+    "tests/adapter-replay-review-pack-operator-review-console-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -68,8 +70,7 @@
   ],
   "expected_changed_files": [
     ".github/workflows/ci.yml",
-    "ALPHA34_CHANGED_FILES.json",
-    "ALPHA32_CHANGED_FILES.json",
+    "ALPHA36_CHANGED_FILES.json",
     "CHANGELOG.md",
     "MANIFEST.json",
     "PUBLIC_DEMO.md",
@@ -82,17 +83,22 @@
     "index.html",
     "package-lock.json",
     "package.json",
+    "scripts/build-lock-evidence-bundle.mjs",
     "scripts/dev-utils.mjs",
-    "src/research/adapter-replay-review-pack-triage-workbench.js",
+    "src/research/adapter-replay-review-pack-operator-review-console.js",
     "src/research/release-copy-contract.js",
     "src/research/render-helpers.js",
     "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
     "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
     "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
     "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
-    "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
+    "tests/adapter-replay-review-pack-decision-queue-check.mjs",
+    "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
+    "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
     "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
+    "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
     "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
+    "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
     "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
     "tests/backend-hardening-check.mjs",
     "tests/browser-qa-hardening-check.mjs",
@@ -103,11 +109,11 @@
     "tests/ci-workflow-quarantine-check.mjs",
     "tests/current-release-contract.json",
     "tests/dev-productivity-command-center-check.mjs",
-    "tests/evidence/evidence-matrix.config.json",
     "tests/evidence-matrix-canonical-bundle-check.mjs",
     "tests/evidence-scoring-calibration-check.mjs",
     "tests/evidence-scoring-check.mjs",
     "tests/evidence-workspace-ux-throughput-check.mjs",
+    "tests/evidence/evidence-matrix.config.json",
     "tests/expansion-lane-acceptance-matrix-check.mjs",
     "tests/final-public-demo-freeze-audit-check.mjs",
     "tests/fixture-test-debt-ledger-check.mjs",
@@ -159,21 +165,14 @@
     "tests/syntax-matrix-check.mjs",
     "tests/test-matrix-runtime-optimization-check.mjs",
     "tests/ux-stabilization-patch-check.mjs",
-    "tests/version-suite-registry.json",
-    "src/research/adapter-replay-review-pack-decision-queue.js",
-    "tests/adapter-replay-review-pack-decision-queue-check.mjs",
-    "scripts/build-lock-evidence-bundle.mjs",
-    "ALPHA35_CHANGED_FILES.json",
-    "src/research/adapter-replay-review-pack-handoff-dossier.js",
-    "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
-    "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs"
+    "tests/version-suite-registry.json"
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.35",
-    "public labels must expose v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier",
-    "handoff dossier must remain no-network and metadata-only",
-    "active release tests should derive from tests/current-release-identity.mjs where release identity is not historical"
+    "hosted evidence must report internal_build_version 1.4.0-alpha.36",
+    "public labels must expose v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console",
+    "active release tests should derive from tests/current-release-identity.mjs where release identity is not historical",
+    "operator review console must remain no-network, metadata-only, preview-only, and manually reviewed"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -185,6 +184,9 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
+    "v1.4.0-alpha.35 Dossier de handoff du pack de revue de rejeu",
+    "v1.4.0-alpha.35 ملف تسليم حزمة مراجعة إعادة التشغيل",
+    "v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier",
     "v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu",
     "v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل",
     "v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench",
@@ -205,6 +207,6 @@
     "v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface",
     "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard"
   ],
-  "runtime_scope": "adapter_replay_review_pack_handoff_dossier",
+  "runtime_scope": "adapter_replay_review_pack_operator_review_console",
   "lock_conditions": []
 }

@@ -6,7 +6,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const worker = fs.readFileSync('backend/cloudflare-worker.js', 'utf8');
 const smoke = fs.readFileSync('tests/backend-worker-smoke.mjs', 'utf8');
 
-assert.equal(pkg.version, '1.4.0-alpha.35', 'package version must be v1.1.0');
+assert.equal(pkg.version, '1.4.0-alpha.36', 'package version must be v1.1.0');
 assert.equal(pkg.type, 'module', 'package.json must declare package-level ESM mode');
 assert.ok(worker.includes("const VERSION = '1.3.0'"), 'Worker proxy version must be v1.1.0');
 assert.ok(smoke.includes("backend/cloudflare-worker.js"), 'backend smoke test must import the Worker module directly');

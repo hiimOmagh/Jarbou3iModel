@@ -78,7 +78,7 @@ for (const forbidden of ['fetch(', 'XMLHttpRequest', 'WebSocket', 'navigator.sen
 const index = fs.readFileSync('index.html', 'utf8');
 assert.ok(index.includes('src="src/research/adapter-replay-review-pack-ui-export-preview.js" defer'), 'index must load alpha.29 UI export preview module');
 assert.ok(index.includes('data-browser-qa="adapter-replay-review-pack-ui-export-preview"'), 'index must expose alpha.29 export preview surface');
-assert.ok(index.includes('Adapter Replay Review Pack UI Polish + Export Preview') || index.includes('Adapter Replay Review Pack Handoff Dossier'), 'index must expose alpha.29 preview or current release identity title');
+assert.ok(index.includes('Adapter Replay Review Pack UI Polish + Export Preview') || index.includes('Adapter Replay Review Pack Operator Review Console'), 'index must expose alpha.29 preview or current release identity title');
 assert.ok(index.includes('adapterReplayExportPreviewMount'), 'index must expose alpha.29 render mount');
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
@@ -87,8 +87,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.29 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.29 check');
-assert.ok([VERSION, '1.4.0-alpha.35', '1.4.0-alpha.35'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.30 while preserving alpha.29 export-preview check');
-assert.ok(['adapter_replay_review_pack_ui_export_preview', 'adapter_replay_review_pack_handoff_dossier', 'adapter_replay_review_pack_handoff_dossier'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.30 while preserving alpha.29 export-preview check');
+assert.ok([VERSION, '1.4.0-alpha.36', '1.4.0-alpha.36'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.30 while preserving alpha.29 export-preview check');
+assert.ok(['adapter_replay_review_pack_ui_export_preview', 'adapter_replay_review_pack_operator_review_console', 'adapter_replay_review_pack_operator_review_console'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.30 while preserving alpha.29 export-preview check');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

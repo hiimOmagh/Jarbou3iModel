@@ -111,8 +111,8 @@ if (!researchApp.includes('source_policy')) fail('source policy support missing'
 if (!index.includes('id="evidenceReviewOutput"')) fail('evidence review queue UI missing');
 if (!researchApp.includes('evidence_review_queue') || !researchApp.includes('promoteReviewItem')) fail('evidence review queue support missing');
 if (!sourceConnectors.includes('SOURCE_CONNECTORS') || !sourceConnectors.includes('runSourceFixtureSuite')) fail('source connector contracts missing');
-if (pkg.version !== '1.4.0-alpha.35') fail('package version must be 1.4.0-alpha.35');
-if (!index.includes('name="app-version" content="1.4.0-alpha.35"')) fail('app version metadata missing');
+if (pkg.version !== '1.4.0-alpha.36') fail('package version must be 1.4.0-alpha.36');
+if (!index.includes('name="app-version" content="1.4.0-alpha.36"')) fail('app version metadata missing');
 
 const requiredTop = ['schema_version','subject','interests','actors','tools','narrative','results','feedback','contradictions','scenarios'];
 const arraySections = ['interests','actors','tools','narrative','results','feedback'];

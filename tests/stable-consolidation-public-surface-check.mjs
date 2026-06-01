@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const CURRENT_VERSION = '1.4.0-alpha.35';
-const CURRENT_TITLE = 'Adapter Replay Review Pack Handoff Dossier';
+const CURRENT_VERSION = '1.4.0-alpha.36';
+const CURRENT_TITLE = 'Adapter Replay Review Pack Operator Review Console';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
-const CURRENT_PUBLIC = 'v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier';
+const CURRENT_PUBLIC = 'v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console';
 const STABLE_PUBLIC = 'v1.3.0 Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
 const index = fs.readFileSync('index.html','utf8');
@@ -18,7 +18,7 @@ const publicDemo = fs.readFileSync('PUBLIC_DEMO.md','utf8');
 
 assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
-assert.equal(registry.release_title, 'v1.4.0-alpha.35 — Adapter Replay Review Pack Handoff Dossier');
+assert.equal(registry.release_title, 'v1.4.0-alpha.36 — Adapter Replay Review Pack Operator Review Console');
 assert.ok(index.includes(`content="${CURRENT_VERSION}"`), 'hosted metadata must report the current internal version');
 assert.ok(index.includes(`content="${CURRENT_VERSION}"`), 'public index must expose current internal build metadata');
 assert.ok(helpers.includes(CURRENT_PUBLIC), 'localized copy must expose alpha.15 planning identity');

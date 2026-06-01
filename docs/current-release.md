@@ -1,6 +1,6 @@
-## v1.4.0-alpha.35 — Adapter Replay Review Pack Handoff Dossier
+## v1.4.0-alpha.36 — Adapter Replay Review Pack Operator Review Console
 
-Public label: v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier
+Public label: v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console
 
 Status: built locally pending lock evidence. Adds a no-network handoff dossier for the adapter replay review pack: dossier sections, batch triage snapshot, blocker appendix, evidence trace digest, operator checklist, and export-ready handoff summary.
 

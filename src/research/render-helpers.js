@@ -1,11 +1,11 @@
-/* current public label: v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier */
-/* current-public-label: v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier */
-/* release-truth-public-label: v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier */
+/* current public label: v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console */
+/* current-public-label: v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console */
+/* release-truth-public-label: v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console */
 /* current public release label:  */
 /* current release public label:  */
 
 /* v1.4.0-alpha.28 localized labels: ; v1.4.0-alpha.28 حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل; v1.4.0-alpha.28 Pack de revue de rejeu + export de handoff opérateur. */
-/* v1.4.0-alpha.28 · Adapter Replay Review Pack Handoff Dossier. Runtime-budget guard only; disabled by default. */
+/* v1.4.0-alpha.28 · Adapter Replay Review Pack Operator Review Console. Runtime-budget guard only; disabled by default. */
 /* continuity tokens for legacy alpha.15/alpha.17 release gates: ضغط تجربة محوّل المزوّد اليدوي; Compression UX de l’adaptateur fournisseur manuel; bounded runtime surface. */
 (function(global){
   'use strict';
@@ -412,7 +412,7 @@
     publicDemoReadyBody:'Use this build for a clean public walkthrough: manual/private mode stays default, the first-run path is visible, and release notes state what changed and what deliberately did not change.',
     localOnlyDefault:'Local-only default', safeExportBoundary:'Safe export boundary', noLiveProviderBehaviorChange:'No live-provider behavior change', releaseNotesReady:'Release notes ready',
     hostedDemoVerificationEyebrow:'Hosted demo verification', hostedDemoVerificationTitle:'Publish only after browser evidence exists',
-    hostedDemoVerificationBody:'Adapter Replay Review Pack Handoff Dossier is ready for release evidence: it turns the adapter replay coverage matrix into an operator-facing decision surface with replay coverage, coverage gaps, failure reason groups, evidence links, and operator readiness without changing provider execution. Hosted evidence must report 1.4.0-alpha.28 internally while showing  to users. No-network replay insight layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+    hostedDemoVerificationBody:'Adapter Replay Review Pack Operator Review Console is ready for release evidence: it turns the adapter replay coverage matrix into an operator-facing decision surface with replay coverage, coverage gaps, failure reason groups, evidence links, and operator readiness without changing provider execution. Hosted evidence must report 1.4.0-alpha.28 internally while showing  to users. No-network replay insight layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
     hostedUrlChecked:'Hosted URL checked', desktopEvidence:'Desktop evidence', mobileEvidence:'Mobile evidence', providerExportEvidence:'Provider/export evidence',
     evidenceReviewGateEyebrow:'Evidence review gate', evidenceReviewGateTitle:'Review screenshots and metadata before publish',
     evidenceReviewGateBody:'Stable release evidence preserves the Evidence Review Queue, publication review gate, Export Pack v3, golden workflow, and privacy guards. Screenshots or ZIP files alone are insufficient for release approval.',
@@ -1508,7 +1508,7 @@
 
 
   Object.assign(COPY.en, {
-    hostedDemoVerificationBody:'Adapter Replay Review Pack Handoff Dossier is ready for release evidence: it turns the adapter replay coverage matrix into an operator-facing decision surface with replay coverage, coverage gaps, failure reason groups, evidence links, and operator readiness without changing provider execution. Hosted evidence must report 1.4.0-alpha.28 internally while showing  to users. No-network replay insight layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+    hostedDemoVerificationBody:'Adapter Replay Review Pack Operator Review Console is ready for release evidence: it turns the adapter replay coverage matrix into an operator-facing decision surface with replay coverage, coverage gaps, failure reason groups, evidence links, and operator readiness without changing provider execution. Hosted evidence must report 1.4.0-alpha.28 internally while showing  to users. No-network replay insight layer only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
     analysisReleaseNote:'1.4.0-alpha.28 converts evidence-budget regression results into pass, warn, fail, and review-required operator actions without network calls.',
   });
   Object.assign(COPY.ar, {
@@ -1667,10 +1667,10 @@
     adapterReplayDrilldownTitle:'Adapter Replay Decision Drilldown + Evidence Trace Links',
     adapterReplayDrilldownSubtitle:'Open replay verdicts into fixture links, policy rows, evidence trace links, blocker explanations, and operator checklist items.',
     adapterReplayDrilldownPolicyNote:'No-network drilldown only: trace links are metadata references and never execute providers, fetch sources, store credentials, sign off, lock exports, or publish.',
-    adapterReplayReviewPackTitle:'Adapter Replay Review Pack Handoff Dossier',
+    adapterReplayReviewPackTitle:'Adapter Replay Review Pack Operator Review Console',
     adapterReplayReviewPackSubtitle:'Convert replay trace links into a review pack, handoff export payload, required actions, and evidence trace bundle for manual operator review.',
     adapterReplayReviewPackPolicyNote:'No-network review pack only: export payloads are metadata summaries and never execute providers, fetch sources, store credentials, sign off, lock exports, or publish.',
-    adapterReplayExportPreviewTitle:'Adapter Replay Review Pack Handoff Dossier',
+    adapterReplayExportPreviewTitle:'Adapter Replay Review Pack Operator Review Console',
     adapterReplayExportPreviewSubtitle:'Preview markdown, JSON, copy/export action metadata, and grouped operator actions before any manual handoff.',
     adapterReplayExportPreviewPolicyNote:'Export preview polish only: preview controls are metadata-only and never execute providers, fetch sources, store credentials, sign off, lock exports, or publish.'
   });
@@ -1757,7 +1757,7 @@
 })(window);
 
 
-/* v1.4.0-alpha.28 · Adapter Replay Review Pack Handoff Dossier */
+/* v1.4.0-alpha.28 · Adapter Replay Review Pack Operator Review Console */
 
 /* legacy-test-token: مرشح مستقر; candidat stable. Public visible stable labels are العرض العام المستقر / Démo publique stable. */
 

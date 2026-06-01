@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.35",
-  "internal_build_version": "1.4.0-alpha.35",
-  "public_version_label": "v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier",
+  "evidence_matrix_config_version": "1.4.0-alpha.36",
+  "internal_build_version": "1.4.0-alpha.36",
+  "public_version_label": "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console",
   "locales": [
     "en",
     "ar",
@@ -11,11 +11,10 @@
   "language_rules": {
     "en": {
       "required": [
-        "Adapter Replay Review Pack Handoff Dossier",
-        "triage workbench",
-        "batch status",
-        "no live provider calls",
-        "manual review"
+        "Adapter Replay Review Pack Operator Review Console",
+        "operator review console",
+        "handoff readiness",
+        "no live provider calls"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -24,13 +23,14 @@
         "مراجعة النشر",
         "الأدلة",
         "تصدير"
-      ]
+      ],
+      "public_label": "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console"
     },
     "ar": {
       "required": [
-        "ملف تسليم حزمة مراجعة إعادة التشغيل",
-        "بطاقات الفرز",
-        "ملخص الفرز الجاهز للتصدير",
+        "وحدة مراجعة المشغّل لحزمة مراجعة إعادة التشغيل",
+        "وحدة مراجعة المشغّل",
+        "جاهزية التسليم",
         "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
         "اعتماد مراجعة التصدير"
@@ -44,11 +44,12 @@
     },
     "fr": {
       "required": [
-        "Dossier de handoff du pack de revue de rejeu",
-        "cartes de triage",
-        "résumé de triage prêt pour export",
+        "Console de revue opérateur du pack de revue de rejeu",
+        "console de revue opérateur",
+        "préparation du handoff",
         "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
+        "validation revue export",
         "visa de revue export"
       ],
       "forbidden": [
@@ -235,8 +236,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier",
-    "ar": "v1.4.0-alpha.35 ملف تسليم حزمة مراجعة إعادة التشغيل",
-    "fr": "v1.4.0-alpha.35 Dossier de handoff du pack de revue de rejeu"
+    "en": "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console",
+    "ar": "v1.4.0-alpha.36 وحدة مراجعة المشغّل لحزمة مراجعة إعادة التشغيل",
+    "fr": "v1.4.0-alpha.36 Console de revue opérateur du pack de revue de rejeu"
   }
 }
