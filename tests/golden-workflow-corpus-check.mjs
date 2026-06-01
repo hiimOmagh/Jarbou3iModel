@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.31';
-const CURRENT_TITLE = 'Adapter Replay Review Pack Operator Workflow Polish';
+const CURRENT_VERSION = '1.4.0-alpha.32';
+const CURRENT_TITLE = 'Adapter Replay Review Pack Evidence Trace Reader';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/golden-workflow-corpus.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

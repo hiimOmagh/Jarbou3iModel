@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { migrationRegistry, privacyRegistry } from './fixture-registry-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.31';
-const CURRENT_TITLE = 'Adapter Replay Review Pack Operator Workflow Polish';
+const CURRENT_VERSION = '1.4.0-alpha.32';
+const CURRENT_TITLE = 'Adapter Replay Review Pack Evidence Trace Reader';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));

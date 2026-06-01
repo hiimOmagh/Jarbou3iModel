@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.31",
-  "release_title": "v1.4.0-alpha.31 — Adapter Replay Review Pack Operator Workflow Polish",
+  "ci_gate_registry_version": "1.4.0-alpha.32",
+  "release_title": "v1.4.0-alpha.32 — Adapter Replay Review Pack Evidence Trace Reader",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -182,6 +182,7 @@
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -267,6 +268,7 @@
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -407,6 +409,7 @@
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
       ],
       "syntax_checks": [],
@@ -550,6 +553,7 @@
         "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
         "tests/adapter-replay-review-pack-operator-handoff-export-check.mjs",
         "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+        "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -584,9 +588,9 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.31",
-    "scope": "adapter_replay_review_pack_operator_workflow_polish",
-    "optimization_scope": "adapter_replay_review_pack_operator_workflow_polish",
+    "version": "1.4.0-alpha.32",
+    "scope": "adapter_replay_review_pack_evidence_trace_reader",
+    "optimization_scope": "adapter_replay_review_pack_evidence_trace_reader",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -596,11 +600,11 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "previous_serial_no_browser_syntax_checks": 100,
-    "current_candidate": "1.4.0-alpha.31",
-    "name": "adapter_replay_review_pack_operator_workflow_polish"
+    "current_candidate": "1.4.0-alpha.32",
+    "name": "adapter_replay_review_pack_evidence_trace_reader"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.31",
+    "version": "1.4.0-alpha.32",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -788,6 +792,8 @@
       "src/research/adapter-replay-review-pack-operator-handoff-export.js",
       "tests/current-release-identity.mjs",
       "tests/release-identity-single-source-contract-check.mjs",
+      "src/research/adapter-replay-review-pack-evidence-trace-reader.js",
+      "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
       "src/research/adapter-replay-review-pack-operator-workflow-polish.js",
       "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
     ],
@@ -795,7 +801,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.31",
+    "version": "1.4.0-alpha.32",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

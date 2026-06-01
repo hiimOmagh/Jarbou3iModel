@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.31",
-  "internal_build_version": "1.4.0-alpha.31",
-  "public_version_label": "v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish",
+  "evidence_matrix_config_version": "1.4.0-alpha.32",
+  "internal_build_version": "1.4.0-alpha.32",
+  "public_version_label": "v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader",
   "locales": [
     "en",
     "ar",
@@ -11,17 +11,11 @@
   "language_rules": {
     "en": {
       "required": [
-        "Stable Manual Workflow Release",
-        "Brief Template UX Polish",
-        "Export Pack v3",
-        "Signed Export Handoff Pack",
-        "Lock Ledger Review Surface",
-        "Source Acquisition Control Surface",
-        "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Adapter Replay Review Pack Operator Workflow Polish",
+        "Adapter Replay Review Pack Evidence Trace Reader",
+        "evidence trace reader",
+        "trace cards",
         "no live provider calls",
-        "operator workflow polish",
-        "manual next-step copy"
+        "manual review"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -34,9 +28,9 @@
     },
     "ar": {
       "required": [
-        "صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل",
-        "أولوية قرار المشغّل",
-        "نسخة الخطوة التالية اليدوية",
+        "قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل",
+        "بطاقات التتبع",
+        "ملخص التتبع الجاهز للتصدير",
         "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
         "اعتماد مراجعة التصدير"
@@ -50,9 +44,9 @@
     },
     "fr": {
       "required": [
-        "Polish workflow opérateur du pack de revue de rejeu",
-        "priorité de décision opérateur",
-        "copie manuelle de prochaine étape",
+        "Lecteur de traces preuve du pack de revue de rejeu",
+        "cartes de trace",
+        "résumé de trace prêt pour export",
         "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
         "visa de revue export"
@@ -241,8 +235,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish",
-    "ar": "v1.4.0-alpha.31 صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل",
-    "fr": "v1.4.0-alpha.31 Polish workflow opérateur du pack de revue de rejeu"
+    "en": "v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader",
+    "ar": "v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل",
+    "fr": "v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu"
   }
 }

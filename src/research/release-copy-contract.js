@@ -1,29 +1,29 @@
 (function(global){
   'use strict';
   global.Jarbou3iResearchReleaseCopyContract = Object.freeze({
-    version: '1.4.0-alpha.31',
+    version: '1.4.0-alpha.32',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish',
-      ar: 'v1.4.0-alpha.31 صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل',
-      fr: 'v1.4.0-alpha.31 Polish workflow opérateur du pack de revue de rejeu'
+      en: 'v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader',
+      ar: 'v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
+      fr: 'v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu'
     }),
     requiredVisibleText: Object.freeze({
       en: Object.freeze([
-        'Adapter Replay Review Pack Operator Workflow Polish',
-        'operator workflow polish',
-        'manual next-step copy',
+        'Adapter Replay Review Pack Evidence Trace Reader',
+        'evidence trace reader',
+        'trace cards',
         'no live provider calls'
       ]),
       ar: Object.freeze([
-        'صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل',
-        'أولوية قرار المشغّل',
-        'نسخة الخطوة التالية اليدوية',
+        'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
+        'بطاقات التتبع',
+        'ملخص التتبع الجاهز للتصدير',
         'دون نداءات مزوّد حية'
       ]),
       fr: Object.freeze([
-        'Polish workflow opérateur du pack de revue de rejeu',
-        'priorité de décision opérateur',
-        'copie manuelle de prochaine étape',
+        'Lecteur de traces preuve du pack de revue de rejeu',
+        'cartes de trace',
+        'résumé de trace prêt pour export',
         'aucun appel fournisseur réel'
       ])
     }),
@@ -31,6 +31,9 @@
       'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار',
       'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
       'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
+      'v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish',
+      'v1.4.0-alpha.31 صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل',
+      'v1.4.0-alpha.31 Polish workflow opérateur du pack de revue de rejeu',
       'v1.4.0-alpha.30 Release Identity Single Source Contract',
       'v1.4.0-alpha.30 عقد هوية الإصدار من مصدر واحد',
       'v1.4.0-alpha.30 Contrat source unique d’identité de release',
@@ -43,37 +46,37 @@
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish · Operator Workflow Polish',
-        hostedDemoVerificationBody: 'Adapter Replay Review Pack Operator Workflow Polish is ready for release evidence: it improves the alpha.29 adapter replay review pack operator workflow with decision lane ordering, action priority ranking, review-focus summary, handoff checklist, and manual next-step copy without changing provider execution. Hosted evidence must report 1.4.0-alpha.31 internally while showing v1.4.0-alpha.31 Adapter Replay Review Pack Operator Workflow Polish to users. Operator workflow polish only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.31 improves adapter replay review-pack operator workflow readability, action priority, and manual handoff copy while remaining no-network.',
-        adapterReplayReviewPackPreviewTitle: 'Adapter Replay Review Pack Operator Workflow Polish',
-        adapterReplayReviewPackPreviewSubtitle: 'Review decision lanes, prioritized operator actions, handoff checklist, and manual next-step copy before export.',
-        adapterReplayReviewPackPreviewPolicyNote: 'Workflow polish only: metadata payloads do not execute providers, fetch sources, persist credentials, sign off, lock exports, or publish.',
-        adapterReplayOperatorWorkflowTitle: 'Adapter Replay Review Pack Operator Workflow Polish',
-        adapterReplayOperatorWorkflowSubtitle: 'Order review-pack decisions into lanes, priority levels, handoff checklist items, and manual next-step copy for operator review.',
-        adapterReplayOperatorWorkflowPolicyNote: 'No-network workflow polish only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, automatic verification, signoff, export lock, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader · Evidence Trace Reader',
+        hostedDemoVerificationBody: 'Adapter Replay Review Pack Evidence Trace Reader is ready for release evidence: it turns the review-pack workflow into trace cards, evidence trace IDs, missing-evidence summary, blocker reasons, recommended next action, and export-ready trace summary without changing provider execution. Hosted evidence must report 1.4.0-alpha.32 internally while showing v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader to users. Evidence trace reader only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic verification, signoff, export lock, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.32 adds a metadata-only evidence trace reader with trace cards, blocker reasons, missing-evidence summary, and export-ready trace copy while remaining no-network.',
+        adapterReplayReviewPackPreviewTitle: 'Adapter Replay Review Pack Evidence Trace Reader',
+        adapterReplayReviewPackPreviewSubtitle: 'Inspect trace cards, evidence trace IDs, blocker reasons, missing-evidence summary, and export-ready trace summary before handoff.',
+        adapterReplayReviewPackPreviewPolicyNote: 'Evidence trace reader only: metadata payloads do not execute providers, fetch sources, persist credentials, verify, sign off, lock exports, or publish.',
+        adapterReplayOperatorWorkflowTitle: 'Adapter Replay Review Pack Evidence Trace Reader',
+        adapterReplayOperatorWorkflowSubtitle: 'Read why review-pack decisions were made through trace cards, evidence links, missing-evidence state, and recommended manual next action.',
+        adapterReplayOperatorWorkflowPolicyNote: 'No-network trace reader only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, source fetching, automatic verification, signoff, export lock, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.31 صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل · صقل سير العمل',
-        hostedDemoVerificationBody: 'صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل جاهز لأدلة الإصدار: يحسّن سير مراجعة المشغّل لحزمة إعادة التشغيل عبر ترتيب مسارات القرار، أولوية قرار المشغّل، ملخص تركيز المراجعة، قائمة تسليم، ونسخة الخطوة التالية اليدوية دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.31 مع عرض v1.4.0-alpha.31 صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل للمستخدمين. صقل سير عمل فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
-        analysisReleaseNote: 'يحسّن 1.4.0-alpha.31 قابلية قراءة سير عمل المشغّل لحزمة مراجعة إعادة التشغيل وأولوية الإجراءات ونسخة التسليم اليدوية مع البقاء بلا شبكة.',
-        adapterReplayReviewPackPreviewTitle: 'صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل',
-        adapterReplayReviewPackPreviewSubtitle: 'راجع مسارات القرار، أولوية إجراءات المشغّل، قائمة التسليم، ونسخة الخطوة التالية اليدوية قبل التصدير.',
-        adapterReplayReviewPackPreviewPolicyNote: 'صقل سير العمل فقط: حمولات metadata لا تنفّذ مزوّدين ولا تجلب مصادر ولا تخزّن بيانات اعتماد ولا توقّع أو تقفل أو تنشر.',
-        adapterReplayOperatorWorkflowTitle: 'صقل سير عمل المشغّل لحزمة مراجعة إعادة التشغيل',
-        adapterReplayOperatorWorkflowSubtitle: 'رتّب قرارات حزمة المراجعة إلى مسارات وأولويات وقائمة تسليم ونسخة خطوة تالية يدوية للمراجعة.',
-        adapterReplayOperatorWorkflowPolicyNote: 'صقل بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا تحقق أو توقيع أو قفل أو نشر آلي.'
+        alphaBadge: 'v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل · قارئ التتبع',
+        hostedDemoVerificationBody: 'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل جاهز لأدلة الإصدار: يحوّل سير حزمة المراجعة إلى بطاقات التتبع ومعرّفات تتبع الأدلة وملخص الأدلة الناقصة وأسباب العوائق والإجراء التالي المقترح وملخص التتبع الجاهز للتصدير دون تغيير تنفيذ المزوّد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.32 مع عرض v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل للمستخدمين. قارئ تتبع بلا شبكة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth/دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق أو توقيع أو قفل أو نشر آلي.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.32 قارئ تتبع أدلة metadata فقط مع بطاقات التتبع وأسباب العوائق وملخص الأدلة الناقصة ونسخة تتبع جاهزة للتصدير مع البقاء بلا شبكة.',
+        adapterReplayReviewPackPreviewTitle: 'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
+        adapterReplayReviewPackPreviewSubtitle: 'راجع بطاقات التتبع ومعرّفات الأدلة وأسباب العوائق وحالة الأدلة الناقصة وملخص التتبع الجاهز للتصدير قبل التسليم.',
+        adapterReplayReviewPackPreviewPolicyNote: 'قارئ تتبع فقط: حمولات metadata لا تنفّذ مزوّدين ولا تجلب مصادر ولا تخزّن بيانات اعتماد ولا تتحقق أو توقّع أو تقفل أو تنشر.',
+        adapterReplayOperatorWorkflowTitle: 'قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل',
+        adapterReplayOperatorWorkflowSubtitle: 'اقرأ لماذا اتُّخذت قرارات حزمة المراجعة عبر بطاقات التتبع وروابط الأدلة وحالة الأدلة الناقصة والإجراء اليدوي التالي.',
+        adapterReplayOperatorWorkflowPolicyNote: 'قارئ تتبع بلا شبكة فقط: لا نداءات مزوّد حية ولا طلبات شبكة مخفية ولا OAuth/دورة رموز ولا تخزين بيانات اعتماد ولا جلب مصادر ولا تحقق أو توقيع أو قفل أو نشر آلي.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.31 Polish workflow opérateur du pack de revue de rejeu · polish workflow',
-        hostedDemoVerificationBody: 'Polish workflow opérateur du pack de revue de rejeu est prêt pour les preuves de release : il améliore le workflow opérateur du pack de revue avec ordre des lanes de décision, priorité de décision opérateur, résumé de focus revue, checklist de handoff et copie manuelle de prochaine étape, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.31 en interne tout en affichant v1.4.0-alpha.31 Polish workflow opérateur du pack de revue de rejeu aux utilisateurs. Polish workflow uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
-        analysisReleaseNote: '1.4.0-alpha.31 améliore la lisibilité du workflow opérateur du pack de revue, la priorité des actions et la copie de handoff manuel tout en restant sans réseau.',
-        adapterReplayReviewPackPreviewTitle: 'Polish workflow opérateur du pack de revue de rejeu',
-        adapterReplayReviewPackPreviewSubtitle: 'Passez en revue lanes de décision, priorités opérateur, checklist de handoff et copie manuelle de prochaine étape avant export.',
-        adapterReplayReviewPackPreviewPolicyNote: 'Polish workflow uniquement : les payloads metadata n’exécutent aucun fournisseur, fetch, stockage d’identifiants, visa, verrou ou publication.',
-        adapterReplayOperatorWorkflowTitle: 'Polish workflow opérateur du pack de revue de rejeu',
-        adapterReplayOperatorWorkflowSubtitle: 'Ordonne les décisions du pack de revue en lanes, priorités, checklist de handoff et copie de prochaine étape pour revue opérateur.',
-        adapterReplayOperatorWorkflowPolicyNote: 'Polish sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source, vérification, visa, verrou ou publication.'
+        alphaBadge: 'v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu · lecteur trace',
+        hostedDemoVerificationBody: 'Lecteur de traces preuve du pack de revue de rejeu est prêt pour les preuves de release : il transforme le workflow du pack de revue en cartes de trace, identifiants de trace preuve, résumé de preuves manquantes, raisons de blocage, prochaine action recommandée et résumé de trace prêt pour export, sans changer l’exécution fournisseur. Les preuves hébergées doivent annoncer 1.4.0-alpha.32 en interne tout en affichant v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu aux utilisateurs. Lecteur de trace sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle de token, persistance d’identifiants, fetch source live, vérification, visa, verrou d’export ou permission de publication automatique.',
+        analysisReleaseNote: '1.4.0-alpha.32 ajoute un lecteur de traces preuve metadata-only avec cartes de trace, raisons de blocage, résumé de preuves manquantes et copie de trace prête pour export, tout en restant sans réseau.',
+        adapterReplayReviewPackPreviewTitle: 'Lecteur de traces preuve du pack de revue de rejeu',
+        adapterReplayReviewPackPreviewSubtitle: 'Inspectez cartes de trace, identifiants preuve, raisons de blocage, état des preuves manquantes et résumé de trace prêt pour export avant handoff.',
+        adapterReplayReviewPackPreviewPolicyNote: 'Lecteur de trace uniquement : les payloads metadata n’exécutent aucun fournisseur, fetch, stockage d’identifiants, vérification, visa, verrou ou publication.',
+        adapterReplayOperatorWorkflowTitle: 'Lecteur de traces preuve du pack de revue de rejeu',
+        adapterReplayOperatorWorkflowSubtitle: 'Lisez pourquoi les décisions du pack de revue ont été prises via cartes de trace, liens preuve, état des preuves manquantes et prochaine action manuelle.',
+        adapterReplayOperatorWorkflowPolicyNote: 'Lecteur de trace sans réseau uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source, vérification, visa, verrou ou publication.'
       })
     })
   });
