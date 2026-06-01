@@ -1,14 +1,13 @@
 {
-  "version": "1.4.0-alpha.29",
-  "milestone_name": "Adapter Replay Review Pack UI Polish + Export Preview",
-  "release_type": "product-facing",
+  "version": "1.4.0-alpha.30",
+  "milestone_name": "Release Identity Single Source Contract",
+  "release_type": "consolidation",
   "allowed_scope": [
-    "operator-facing adapter replay review-pack UI polish",
-    "markdown export preview",
-    "JSON export preview",
-    "copy/export action metadata",
-    "grouped operator action summary",
-    "no-network replay review only"
+    "canonical release identity helper",
+    "contract-derived active gate assertions",
+    "workflow/evidence identity alignment",
+    "localized public-label single source",
+    "no product capability expansion"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -38,7 +37,8 @@
     "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
     "tests/hosted-demo-browser-evidence.spec.mjs",
     "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
-    "tests/localization-regression-matrix-check.mjs"
+    "tests/localization-regression-matrix-check.mjs",
+    "tests/release-identity-single-source-contract-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -84,12 +84,15 @@
     "src/research/adapter-replay-review-pack-ui-export-preview.js",
     "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
     "src/research/adapter-replay-review-pack-ui-export-preview.js",
-    "tests/adapter-replay-review-pack-ui-export-preview-check.mjs"
+    "tests/adapter-replay-review-pack-ui-export-preview-check.mjs",
+    "tests/current-release-identity.mjs",
+    "tests/release-identity-single-source-contract-check.mjs"
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.29",
-    "public labels must expose v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview"
+    "hosted evidence must report internal_build_version 1.4.0-alpha.30",
+    "public labels must expose v1.4.0-alpha.30 Release Identity Single Source Contract",
+    "active release tests should derive from tests/current-release-identity.mjs instead of hardcoding current identity"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -101,8 +104,11 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
-    "v1.4.0-alpha.29 حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل",
-    "v1.4.0-alpha.29 Pack de revue de rejeu + export de handoff opérateur",
+    "v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
+    "v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير",
+    "v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export",
+    "v1.4.0-alpha.30 حزمة مراجعة إعادة التشغيل + تصدير تسليم المشغّل",
+    "v1.4.0-alpha.30 Pack de revue de rejeu + export de handoff opérateur",
     "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
     "v1.4.0-alpha.27 تفصيل قرار إعادة التشغيل وروابط تتبع الأدلة",
     "v1.4.0-alpha.27 Drilldown de décision de rejeu + liens de trace preuve",
@@ -113,5 +119,5 @@
     "v1.4.0-alpha.24 Changed-Files Patch Hygiene Guard",
     "Alpha.23 Lock Completion + Changed-Files Patch Hygiene Guard"
   ],
-  "runtime_scope": "adapter_replay_review_pack_ui_export_preview"
+  "runtime_scope": "release_identity_single_source_contract"
 }

@@ -93,8 +93,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.27 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.27 check');
-assert.ok(['1.4.0-alpha.27', '1.4.0-alpha.28', '1.4.0-alpha.29'].includes(registry.runtime_optimization.version), 'runtime optimization must preserve alpha.27 or newer release identity');
-assert.ok(['adapter_replay_decision_drilldown_evidence_trace_links', 'adapter_replay_review_pack_operator_handoff_export', 'adapter_replay_review_pack_ui_export_preview'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization must preserve alpha.27 drilldown or alpha.28 review-pack scope');
+assert.ok(['1.4.0-alpha.27', '1.4.0-alpha.28', '1.4.0-alpha.30'].includes(registry.runtime_optimization.version), 'runtime optimization must preserve alpha.27 or newer release identity');
+assert.ok(['adapter_replay_decision_drilldown_evidence_trace_links', 'adapter_replay_review_pack_operator_handoff_export', 'release_identity_single_source_contract'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization must preserve alpha.27 drilldown or alpha.28 review-pack scope');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

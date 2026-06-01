@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
-const VERSION = '1.4.0-alpha.29';
-const RELEASE = 'v1.4.0-alpha.29 — Adapter Replay Review Pack UI Polish + Export Preview';
-const PUBLIC_LABEL = 'v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview';
+const VERSION = CURRENT_VERSION;
+const RELEASE = CURRENT_RELEASE;
+const PUBLIC_LABEL = CURRENT_PUBLIC_LABEL;
 const LOCKED_ALPHA14 = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
 const STABLE_BASELINE = 'v1.3.0 — Stable Manual Workflow Release';
 const SOURCE_ACQUISITION_BASELINE = 'v1.4.0-alpha.7 — Source Acquisition Control Surface';
@@ -39,7 +40,7 @@ for (const token of ['source strategy continuity','release evidence continuity',
 
 assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
-assert.equal(manifest.release_type, 'adapter-replay-review-pack-ui-export-preview');
+assert.ok(['release-identity-single-source-contract','adapter-replay-review-pack-ui-export-preview'].includes(manifest.release_type));
 for (const key of ['runtime_capability_change','provider_behavior_changed','oauth_behavior_changed','backend_behavior_changed','source_behavior_changed','storage_behavior_changed','public_demo_capability_expansion']) assert.equal(manifest[key], false, `${key} must remain false`);
 for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASELINE, MOCK_TO_LIVE_BASELINE, STABLE_BASELINE, LOCKED_ALPHA14, 'real API keys', 'cryptographic signing']) {
   assert.ok(manifest.release_scope.includes(token), `manifest release scope missing ${token}`);

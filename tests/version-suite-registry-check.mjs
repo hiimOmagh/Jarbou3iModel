@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
-const VERSION = '1.4.0-alpha.29';
-const RELEASE = 'v1.4.0-alpha.29 — Adapter Replay Review Pack UI Polish + Export Preview';
+const VERSION = CURRENT_VERSION;
+const RELEASE = CURRENT_RELEASE;
 const registry = JSON.parse(fs.readFileSync('tests/version-suite-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 

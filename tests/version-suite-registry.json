@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.29",
-  "release_title": "v1.4.0-alpha.29 — Adapter Replay Review Pack UI Polish + Export Preview",
+  "version_suite_registry_version": "1.4.0-alpha.30",
+  "release_title": "v1.4.0-alpha.30 — Release Identity Single Source Contract",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

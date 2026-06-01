@@ -1,14 +1,16 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
-const VERSION = '1.4.0-alpha.29';
-const RELEASE = 'v1.4.0-alpha.29 — Adapter Replay Review Pack UI Polish + Export Preview';
+const VERSION = CURRENT_VERSION;
+const RELEASE = CURRENT_RELEASE;
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
 const ciBrowser = fs.readFileSync('scripts/ci-browser.sh', 'utf8');
 
+assertCurrentReleaseIdentity(assert);
 assert.equal(pkg.version, VERSION);
 assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(registry.release_title, RELEASE);

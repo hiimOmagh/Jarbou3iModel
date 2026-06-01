@@ -6,8 +6,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.29';
-const CURRENT_TITLE = 'Adapter Replay Review Pack UI Polish + Export Preview';
+const CURRENT_VERSION = '1.4.0-alpha.30';
+const CURRENT_TITLE = 'Release Identity Single Source Contract';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

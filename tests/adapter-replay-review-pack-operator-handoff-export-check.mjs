@@ -81,8 +81,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.28 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.28 check');
-assert.ok([VERSION, '1.4.0-alpha.29'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
-assert.ok(['adapter_replay_review_pack_operator_handoff_export', 'adapter_replay_review_pack_ui_export_preview'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
+assert.ok([VERSION, '1.4.0-alpha.29', '1.4.0-alpha.30'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
+assert.ok(['adapter_replay_review_pack_operator_handoff_export', 'adapter_replay_review_pack_ui_export_preview', 'release_identity_single_source_contract'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.29 while preserving alpha.28 review-pack check');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

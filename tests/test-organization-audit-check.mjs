@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
 const VERSION = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));

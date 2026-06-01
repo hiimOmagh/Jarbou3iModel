@@ -3,10 +3,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
+import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
-const VERSION = '1.4.0-alpha.29';
-const TITLE = 'Adapter Replay Review Pack UI Polish + Export Preview';
-const PUBLIC_LABEL = 'v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview';
+const VERSION = CURRENT_VERSION;
+const TITLE = CURRENT_TITLE;
+const PUBLIC_LABEL = CURRENT_PUBLIC_LABEL;
 const config = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
 const spec = fs.readFileSync('tests/hosted-demo-browser-evidence.spec.mjs', 'utf8');
 const script = fs.readFileSync('scripts/build-lock-evidence-bundle.mjs', 'utf8');
@@ -14,6 +15,7 @@ const workflow = fs.readFileSync('.github/workflows/ci.yml', 'utf8');
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 
+assertCurrentReleaseIdentity(assert);
 assert.equal(pkg.version, VERSION);
 assert.ok(pkg.description.includes(TITLE));
 assert.equal(config.evidence_matrix_config_version, VERSION);
@@ -63,7 +65,7 @@ assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-input'"), false);
 assert.equal(script.includes("|| 'ci-artifacts/lock-evidence-bundle'"), false);
 
 for (const token of [
-  'lock-evidence-bundle_1.4.0-alpha.29_${{ github.run_id }}',
+  'lock-evidence-bundle_1.4.0-alpha.30_${{ github.run_id }}',
   'lock-evidence-bundle-decision',
   'playwright-install-deps-log',
   'playwright-install-log',
@@ -94,7 +96,7 @@ assert.ok(workflow.includes('retrying once after 15 seconds'), 'browser install 
 assert.ok(workflow.includes('Download Playwright install-deps evidence log'), 'canonical bundle must download playwright install-deps evidence log');
 assert.ok(workflow.includes('Download Playwright install evidence log'), 'canonical bundle must download playwright install evidence log');
 assert.ok(workflow.includes('canonical bundle policy: upload only when no-browser and browser both pass'), 'canonical bundle skip path must emit an explicit decision');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.29'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.30'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
 

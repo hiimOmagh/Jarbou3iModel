@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.29",
-  "internal_build_version": "1.4.0-alpha.29",
-  "public_version_label": "v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
+  "evidence_matrix_config_version": "1.4.0-alpha.30",
+  "internal_build_version": "1.4.0-alpha.30",
+  "public_version_label": "v1.4.0-alpha.30 Release Identity Single Source Contract",
   "locales": [
     "en",
     "ar",
@@ -18,7 +18,8 @@
         "Lock Ledger Review Surface",
         "Source Acquisition Control Surface",
         "Manual Provider Adapter Sandbox + Ephemeral Invocation Contract",
-        "Adapter Replay Review Pack UI Polish + Export Preview"
+        "Release Identity Single Source Contract",
+        "no live provider calls"
       ],
       "forbidden": [
         "Gel de la surface publique",
@@ -44,7 +45,9 @@
         "قابلية عمل لوحة ميزانية الأدلة",
         "سجل قرارات لوحة الأدلة",
         "مركز إنتاجية التسليم",
-        "رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل"
+        "رؤى إعادة تشغيل المحوّل وسطح قرار المشغّل",
+        "عقد هوية الإصدار من مصدر واحد",
+        "دون نداءات مزوّد حية"
       ],
       "forbidden": [
         "Stable consolidation",
@@ -68,7 +71,9 @@
         "Actionnabilité du tableau budget preuves",
         "Registre de décision du tableau preuves",
         "Insights de rejeu adaptateur + surface de décision opérateur",
-        "Garde d’hygiène des patchs"
+        "Garde d’hygiène des patchs",
+        "Contrat source unique d’identité de release",
+        "aucun appel fournisseur réel"
       ],
       "forbidden": [
         "Public surface freeze",
@@ -254,8 +259,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
-    "ar": "v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير",
-    "fr": "v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export"
+    "en": "v1.4.0-alpha.30 Release Identity Single Source Contract",
+    "ar": "v1.4.0-alpha.30 عقد هوية الإصدار من مصدر واحد",
+    "fr": "v1.4.0-alpha.30 Contrat source unique d’identité de release"
   }
 }

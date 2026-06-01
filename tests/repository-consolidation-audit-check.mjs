@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.29';
-const CURRENT_TITLE = 'Adapter Replay Review Pack UI Polish + Export Preview';
+const CURRENT_VERSION = '1.4.0-alpha.30';
+const CURRENT_TITLE = 'Release Identity Single Source Contract';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';
@@ -46,7 +46,7 @@ assert.ok(pkg.description.includes('fixture registry payload compression'));
 assert.ok(pkg.description.includes('test organization audit'));
 assert.ok(pkg.description.includes('runtime/provider/OAuth/backend/source/storage boundaries remain unchanged'));
 assert.equal(schema.properties.workflow_version.const, VERSION);
-assert.ok(index.includes(`v${CURRENT_VERSION} · ${CURRENT_TITLE}`), 'index badge must expose current alpha.1 planning identity');
+assert.ok(index.includes(`content="${CURRENT_VERSION}"`) || index.includes(`content='${CURRENT_VERSION}'`), 'index metadata must expose current release identity without acting as release registry');
 assert.ok((index.includes('hosted evidence capture polish') || index.includes('حارس الشوائب البصرية')) && (index.includes('visual artifact guard') || index.includes('أدلة الاستضافة')), 'index must communicate alpha.10 hosted evidence polish scope in the active shell language');
 assert.ok(index.includes('without changing runtime behavior') || index.includes('دون تغيير سلوك التشغيل'), 'index must preserve runtime boundary in the active shell language');
 assert.ok(auditSource.includes("const VERSION = '1.3.0'"));
