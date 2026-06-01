@@ -23,7 +23,7 @@ vm.createContext(context);
 vm.runInContext(scorerSource, context, {filename:'src/research/evidence-scorer.js'});
 const scorer = context.window.Jarbou3iResearchModules.evidenceScorer;
 
-assert.equal(pkg.version, '1.4.0-alpha.36');
+assert.equal(pkg.version, '1.4.0-alpha.37');
 assert.equal(scorer.VERSION, '1.3.0');
 assert.equal(scorer.SCORING_VERSION, 'evidence_scoring.v1');
 assert.equal(scorer.CALIBRATION_VERSION, 'evidence_scoring_calibration.v1');
@@ -61,7 +61,7 @@ assert.equal(setReport.score_theater_guard, 'scores_explain_prioritization_not_t
 assert.ok(setReport.calibration_warning_count >= 1);
 assert.ok(setReport.risk_flags.includes('calibration_warning_present'));
 
-assert.ok(index.includes('content="1.4.0-alpha.36"'), 'current hosted metadata missing');
+assert.ok(index.includes('content="1.4.0-alpha.37"'), 'current hosted metadata missing');
 assert.ok(index.includes('data-r-i18n="evidenceScoringCalibrationShort"'), 'UI must expose localized evidence-scoring calibration copy');
 assert.ok(renderHelpers.includes('evidenceScoringCalibrationShort'), 'render helpers must provide localized evidence-scoring calibration copy');
 assert.ok(engine.includes('calibration_warning_count'), 'engine UI must surface calibration warning count');

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.36",
-  "internal_build_version": "1.4.0-alpha.36",
-  "public_version_label": "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console",
+  "evidence_matrix_config_version": "1.4.0-alpha.37",
+  "internal_build_version": "1.4.0-alpha.37",
+  "public_version_label": "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
   "locales": [
     "en",
     "ar",
@@ -11,8 +11,8 @@
   "language_rules": {
     "en": {
       "required": [
-        "Adapter Replay Review Pack Operator Review Console",
-        "operator review console",
+        "Adapter Replay Review Pack Compact Navigation UX",
+        "compact navigation UX",
         "handoff readiness",
         "no live provider calls"
       ],
@@ -24,12 +24,12 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console"
+      "public_label": "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX"
     },
     "ar": {
       "required": [
-        "وحدة مراجعة المشغّل لحزمة مراجعة إعادة التشغيل",
-        "وحدة مراجعة المشغّل",
+        "تجربة التنقل المختصر لحزمة مراجعة إعادة التشغيل",
+        "التنقل المختصر",
         "جاهزية التسليم",
         "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
@@ -44,8 +44,8 @@
     },
     "fr": {
       "required": [
-        "Console de revue opérateur du pack de revue de rejeu",
-        "console de revue opérateur",
+        "UX de navigation compacte du pack de revue de rejeu",
+        "navigation compacte",
         "préparation du handoff",
         "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
@@ -236,8 +236,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console",
-    "ar": "v1.4.0-alpha.36 وحدة مراجعة المشغّل لحزمة مراجعة إعادة التشغيل",
-    "fr": "v1.4.0-alpha.36 Console de revue opérateur du pack de revue de rejeu"
+    "en": "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
+    "ar": "v1.4.0-alpha.37 تجربة التنقل المختصر لحزمة مراجعة إعادة التشغيل",
+    "fr": "v1.4.0-alpha.37 UX de navigation compacte du pack de revue de rejeu"
   }
 }

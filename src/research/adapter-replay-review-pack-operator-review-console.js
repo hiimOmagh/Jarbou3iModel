@@ -1,12 +1,12 @@
-/* Jarbou3i Research Engine adapter replay review pack operator review console v1.4.0-alpha.36. */
+/* Jarbou3i Research Engine adapter replay review pack operator review console v1.4.0-alpha.37. */
 /* Metadata-only operator review console. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, or status persistence. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.36';
-  const MILESTONE = 'v1.4.0-alpha.36 — Adapter Replay Review Pack Operator Review Console';
-  const MODEL = 'adapter_replay_review_pack_operator_review_console.v1';
+  const VERSION = '1.4.0-alpha.37';
+  const MILESTONE = 'v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX';
+  const MODEL = 'adapter_replay_review_pack_compact_navigation_ux.v1';
   const HANDOFF_DOSSIER_BASELINE = '1.4.0-alpha.35';
   const TRIAGE_WORKBENCH_BASELINE = '1.4.0-alpha.34';
   const DECISION_QUEUE_BASELINE = '1.4.0-alpha.33';
@@ -200,7 +200,7 @@
       makeSection('export-review-summary', 'Export review summary', 'Draft export summary for manual review; no publication permission.', { export_summary: exportSummary })
     ]);
     return Object.freeze({
-      adapter_replay_review_pack_operator_review_console_version: VERSION,
+      adapter_replay_review_pack_compact_navigation_ux_version: VERSION,
       milestone: MILESTONE,
       model: MODEL,
       generated_at: generatedAt,

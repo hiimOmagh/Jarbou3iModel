@@ -1,6 +1,8 @@
-## v1.4.0-alpha.36 — Adapter Replay Review Pack Operator Review Console
+## v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX
 
-Public label: v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console
+Public label: v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX
+
+Adds a no-network compact navigation UX over the adapter replay operator review console: quick jump map, focus rail, progressive disclosure, keyboard hints, mobile compression plan, and export navigation summary. No provider/OAuth/backend/storage/source behavior changes.
 
 Status: built locally pending lock evidence. Adds a no-network handoff dossier for the adapter replay review pack: dossier sections, batch triage snapshot, blocker appendix, evidence trace digest, operator checklist, and export-ready handoff summary.
 

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.36';
-const CURRENT_TITLE = 'Adapter Replay Review Pack Operator Review Console';
+const CURRENT_VERSION = '1.4.0-alpha.37';
+const CURRENT_TITLE = 'Adapter Replay Review Pack Compact Navigation UX';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const read = (file) => fs.readFileSync(file, 'utf8');
