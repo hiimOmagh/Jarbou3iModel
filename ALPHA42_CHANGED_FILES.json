@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.42",
-  "release_title": "v1.4.0-alpha.42 — Manual Workflow UX Consolidation",
+  "version": "1.4.0-alpha.43",
+  "release_title": "v1.4.0-alpha.43 — Targeted Hosted Evidence Capture",
   "changed_files": [
     ".github/workflows/ci.yml",
     "ALPHA37_CHANGED_FILES.json",
@@ -24,7 +24,7 @@
     "scripts/dev-utils.mjs",
     "src/research/adapter-replay-review-pack-compact-navigation-ux.js",
     "src/research/adapter-replay-review-pack-operator-review-console.js",
-    "src/research/manual-workflow-ux-consolidation.js",
+    "src/research/targeted-hosted-evidence-capture.js",
     "src/research/release-copy-contract.js",
     "src/research/render-helpers.js",
     "src/research/source-to-brief-operator-continuity-console.js",
@@ -71,7 +71,7 @@
     "tests/lock-evidence-artifact-identity-guard-check.mjs",
     "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
     "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
-    "tests/manual-workflow-ux-consolidation-check.mjs",
+    "tests/targeted-hosted-evidence-capture-check.mjs",
     "tests/mobile-header-logo-geometry-check.mjs",
     "tests/module-type-warning-fix-check.mjs",
     "tests/node24-ci-compat-check.mjs",

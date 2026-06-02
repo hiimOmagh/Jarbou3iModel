@@ -14,7 +14,7 @@ const ciGateRegistry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json',
 const v103Entry = versionRegistry.entries.find((entry) => entry.id === 'v103');
 const release = fs.readFileSync('src/research/release-candidate.js', 'utf8');
 
-assert.equal(pkg.version, '1.4.0-alpha.42');
+assert.equal(pkg.version, '1.4.0-alpha.43');
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.equal(fixture.workflow_version, '1.3.0');
 assert.equal(fixture.release_candidate.stable_release_version, '1.3.0');

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.42';
-const MILESTONE = 'v1.4.0-alpha.42 — Manual Workflow UX Consolidation';
+const VERSION = '1.4.0-alpha.43';
+const MILESTONE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
 const MODULE = 'src/research/source-to-brief-publication-readiness-suite.js';
 const CHECK = 'tests/source-to-brief-publication-readiness-suite-check.mjs';
 const DEPENDENCIES = [
@@ -33,7 +33,7 @@ assert.ok(controlRoomApi, 'source-to-brief control room must remain available');
 assert.ok(mod, 'alpha.40 source-to-brief publication readiness suite module must be registered');
 assert.equal(mod.VERSION, VERSION);
 assert.equal(mod.MILESTONE, MILESTONE);
-assert.equal(mod.MODEL, 'manual_workflow_ux_consolidation.v1');
+assert.equal(mod.MODEL, 'targeted_hosted_evidence_capture.v1');
 assert.equal(mod.SOURCE_TO_BRIEF_BASELINE, '1.3.0');
 assert.equal(mod.CONTINUITY_CONSOLE_BASELINE, '1.4.0-alpha.38');
 assert.equal(mod.CONTROL_ROOM_BASELINE, '1.4.0-alpha.39');
@@ -60,9 +60,9 @@ const continuity = continuityApi.buildSourceToBriefOperatorContinuityConsole({ s
 const controlRoom = controlRoomApi.buildSourceToBriefOperatorControlRoom({ continuity_console: continuity, generated_at:'2026-06-01T16:00:00.000Z' });
 const suite = mod.buildSourceToBriefPublicationReadinessSuite({ control_room: controlRoom, generated_at:'2026-06-01T16:00:00.000Z' });
 
-assert.equal(suite.manual_workflow_ux_consolidation_version, VERSION);
+assert.equal(suite.targeted_hosted_evidence_capture_version, VERSION);
 assert.equal(suite.milestone, MILESTONE);
-assert.equal(suite.model, 'manual_workflow_ux_consolidation.v1');
+assert.equal(suite.model, 'targeted_hosted_evidence_capture.v1');
 assert.equal(suite.publication_readiness_ready, true);
 assert.equal(suite.safe_metadata_only, true);
 assert.ok(suite.publication_risk_matrix.length >= 4, 'publication readiness suite must expose risk matrix');
@@ -87,7 +87,7 @@ assert.equal(suite.export_readiness_report.export_allowed, false);
 assert.equal(suite.export_readiness_report.publication_permission_claimed, false);
 assert.ok(suite.manual_publication_readiness_copy.includes('Source-to-brief publication readiness verdict'), 'manual copy must summarize readiness verdict');
 assert.ok(suite.manual_publication_readiness_copy.includes('no live provider calls'), 'manual copy must restate no-live-provider boundary');
-assert.equal(suite.publication_readiness_safety_contract.manual_workflow_ux_consolidation_only, true);
+assert.equal(suite.publication_readiness_safety_contract.targeted_hosted_evidence_capture_only, true);
 assert.equal(suite.publication_readiness_safety_contract.metadata_only, true);
 assert.equal(suite.publication_readiness_safety_contract.no_auto_verification, true);
 assert.equal(suite.publication_readiness_safety_contract.no_auto_signoff, true);
@@ -102,9 +102,9 @@ assert.equal(suite.boundary_flags.navigation_state_persistence_enabled, false);
 assert.equal(suite.boundary_flags.publication_permission_claimed, false);
 
 const index = fs.readFileSync('index.html', 'utf8');
-assert.ok(index.includes('Manual Workflow UX Consolidation'), 'index must expose current publication readiness title');
-assert.ok(index.includes('src="src/research/manual-workflow-ux-consolidation.js" defer'), 'index must load current publication readiness module');
-assert.ok(index.includes('data-browser-qa="manual-workflow-ux-consolidation"'), 'index must expose current publication readiness browser QA surface');
+assert.ok(index.includes('Targeted Hosted Evidence Capture'), 'index must expose current publication readiness title');
+assert.ok(index.includes('src="src/research/targeted-hosted-evidence-capture.js" defer'), 'index must load current publication readiness module');
+assert.ok(index.includes('data-browser-qa="targeted-hosted-evidence-capture"'), 'index must expose current publication readiness browser QA surface');
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 for (const gate of ['no-browser', 'current-no-browser', 'source', 'release', 'browser']) {

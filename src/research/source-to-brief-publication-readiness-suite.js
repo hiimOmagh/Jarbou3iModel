@@ -1,12 +1,12 @@
-/* Jarbou3i Research Engine source-to-brief publication readiness suite v1.4.0-alpha.42. */
+/* Jarbou3i Research Engine source-to-brief publication readiness suite v1.4.0-alpha.43. */
 /* Metadata-only publication readiness suite. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, status persistence, batch mutation, automatic verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission action. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.42';
-  const MILESTONE = 'v1.4.0-alpha.42 — Manual Workflow UX Consolidation';
-  const MODEL = 'manual_workflow_ux_consolidation.v1';
+  const VERSION = '1.4.0-alpha.43';
+  const MILESTONE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
+  const MODEL = 'targeted_hosted_evidence_capture.v1';
   const SOURCE_TO_BRIEF_BASELINE = '1.3.0';
   const CONTINUITY_CONSOLE_BASELINE = '1.4.0-alpha.38';
   const CONTROL_ROOM_BASELINE = '1.4.0-alpha.39';
@@ -14,7 +14,7 @@
   const FIXED_GENERATED_AT = '2026-06-01T00:00:00.000Z';
 
   const BOUNDARY_FLAGS = Object.freeze({
-    manual_workflow_ux_consolidation_only: true,
+    targeted_hosted_evidence_capture_only: true,
     metadata_preview_only: true,
     control_room_backed: true,
     manual_operator_review_required: true,
@@ -241,7 +241,7 @@
     const decisionSummary = buildOperatorPublicationDecisionSummary(riskMatrix, checklist, digest, blockerMap);
     const readinessReport = buildReadinessReport(controlRoom, riskMatrix, checklist, digest, blockerMap, sufficiencyBands, decisionSummary);
     return Object.freeze({
-      manual_workflow_ux_consolidation_version: VERSION,
+      targeted_hosted_evidence_capture_version: VERSION,
       milestone: MILESTONE,
       model: MODEL,
       source_to_brief_baseline: SOURCE_TO_BRIEF_BASELINE,
@@ -261,7 +261,7 @@
       next_operator_action: decisionSummary.next_operator_action,
       manual_publication_readiness_copy: buildManualCopy(decisionSummary, digest, blockerMap),
       publication_readiness_safety_contract: Object.freeze({
-        manual_workflow_ux_consolidation_only: true,
+        targeted_hosted_evidence_capture_only: true,
         metadata_only: true,
         no_live_fetching: true,
         no_provider_execution: true,

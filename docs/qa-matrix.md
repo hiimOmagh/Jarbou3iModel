@@ -1,6 +1,6 @@
-## v1.4.0-alpha.42 — Manual Workflow UX Consolidation
+## v1.4.0-alpha.43 — Targeted Hosted Evidence Capture
 
-Public label: v1.4.0-alpha.42 Manual Workflow UX Consolidation
+Public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture
 
 Adds a no-network source-to-brief operator continuity console: current brief stage, unresolved evidence gaps, source-to-claim repair state, operator signoff readiness, export/publication readiness, continuity risk rail, and export-ready continuity summary. No provider/OAuth/backend/storage/source behavior changes.
 

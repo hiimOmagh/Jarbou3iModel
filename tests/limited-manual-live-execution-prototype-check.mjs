@@ -139,8 +139,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/limited-manual-live-execution-prototype.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/limited-manual-live-execution-prototype-check.mjs'));
-assert.ok(['limited_manual_live_execution_prototype','manual_execution_safety_cockpit_session_ledger','adapter_contract_test_bench_no_network_invocation_replay_qa','adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'manual_workflow_ux_consolidation'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may point to current alpha while preserving alpha.10 check');
-assert.ok(['1.4.0-alpha.10','1.4.0-alpha.11','1.4.0-alpha.28', '1.4.0-alpha.42'].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.10 check');
+assert.ok(['limited_manual_live_execution_prototype','manual_execution_safety_cockpit_session_ledger','adapter_contract_test_bench_no_network_invocation_replay_qa','adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may point to current alpha while preserving alpha.10 check');
+assert.ok(['1.4.0-alpha.10','1.4.0-alpha.11','1.4.0-alpha.28', '1.4.0-alpha.43'].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.10 check');
 
 console.log('Limited manual live-execution prototype checks passed.');
 process.exit(0);

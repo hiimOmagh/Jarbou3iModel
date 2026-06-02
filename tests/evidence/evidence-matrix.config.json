@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.42",
-  "internal_build_version": "1.4.0-alpha.42",
-  "public_version_label": "v1.4.0-alpha.42 Manual Workflow UX Consolidation",
+  "evidence_matrix_config_version": "1.4.0-alpha.43",
+  "internal_build_version": "1.4.0-alpha.43",
+  "public_version_label": "v1.4.0-alpha.43 Targeted Hosted Evidence Capture",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Manual Workflow UX Consolidation",
+        "Targeted Hosted Evidence Capture",
         "publication risk matrix",
         "claim-boundary checklist",
         "source coverage digest",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.42 Manual Workflow UX Consolidation"
+      "public_label": "v1.4.0-alpha.43 Targeted Hosted Evidence Capture"
     },
     "ar": {
       "required": [
@@ -239,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.42 Manual Workflow UX Consolidation",
-    "ar": "v1.4.0-alpha.42 دمج تجربة سير العمل اليدوي",
-    "fr": "v1.4.0-alpha.42 Consolidation UX du workflow manuel"
+    "en": "v1.4.0-alpha.43 Targeted Hosted Evidence Capture",
+    "ar": "v1.4.0-alpha.43 التقاط أدلة الاستضافة المستهدفة",
+    "fr": "v1.4.0-alpha.43 Capture ciblée des preuves hébergées"
   }
 }

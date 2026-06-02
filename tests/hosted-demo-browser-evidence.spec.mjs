@@ -37,6 +37,17 @@ const EXPECTED_CAPTURE_NAMES = Object.freeze(['desktop-first-screen','mobile-fir
 const EVIDENCE_SETTLE_FRAME_COUNT = 3;
 const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 180_000;
 const HOSTED_EVIDENCE_CANONICAL_PROJECT = 'chromium';
+const TARGETED_REGION_SCREENSHOT_MAX_WIDTH = 1200;
+const TARGETED_REGION_SCREENSHOT_MAX_HEIGHT = 900;
+const TARGETED_REGION_EVIDENCE_FILE = 'targeted-region-evidence-manifest.json';
+const TARGETED_EVIDENCE_REGIONS = Object.freeze([
+  { region_id:'first-run-guide', evidence_root_selector:'[data-evidence-region="first-run-guide"]', proof_selector:'[data-evidence-region="first-run-guide"] .firstRunCopy', selector:'[data-evidence-region="first-run-guide"] .firstRunCopy', surface:'onboarding', purpose:'Proves the first-run guide copy block is visible before manual work starts.', expected_tokens:['First-run guide'], open:async()=>{} },
+  { region_id:'public-demo-readiness', evidence_root_selector:'[data-evidence-region="public-demo-readiness"]', proof_selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', surface:'public-demo', purpose:'Proves public-demo readiness constraints are visible.', expected_tokens:['Public demo ready'], open:async()=>{} },
+  { region_id:'hosted-demo-release-contract', evidence_root_selector:'[data-evidence-region="hosted-demo-release-contract"]', proof_selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', surface:'hosted-demo', purpose:'Proves the current release evidence contract and targeted screenshot policy are visible.', expected_tokens:[...expectedCurrentReleaseDescriptionTokens('en')], open:async()=>{} },
+  { region_id:'evidence-review-gate', evidence_root_selector:'[data-evidence-region="evidence-review-gate"]', proof_selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', surface:'evidence-review', purpose:'Proves the evidence review gate is visible before publication.', expected_tokens:['Evidence review gate'], open:async()=>{} },
+  { region_id:'quality-export-surface', evidence_root_selector:'[data-evidence-region="quality-export-surface"]', proof_selector:'[data-evidence-region="quality-export-surface"] .researchScore:first-child', selector:'[data-evidence-region="quality-export-surface"] .researchScore:first-child', surface:'quality-export', purpose:'Proves the quality/export score card can be captured as a bounded region.', expected_tokens:['Quality'], open:openQualityExport }
+]);
+
 const TRANSIENT_ARTIFACT_SELECTORS = Object.freeze(['.toast.show','.modalBackdrop.show','[aria-busy="true"]','[data-loading="true"]','[data-testid*="loading"]','[class*="spinner"]','[class*="skeleton"]']);
 const MOJIBAKE_MARKERS = Object.freeze([
   { label:'Ø', pattern:/Ø/ },
@@ -131,6 +142,93 @@ async function assertHostedDemoReady(page){ await page.waitForLoadState('domcont
 async function capture(page, name){
   ensureEvidenceRoot(); await freezeMotion(page); const settle=await waitForEvidenceStable(page, name); const artifact_guard=await assertNoTransientArtifacts(page, name); const overflow_px=await assertNoHorizontalOverflow(page); const viewport=page.viewportSize() || { width:0, height:0 }; const buffer=await page.screenshot({ fullPage:true, animations:'disabled' }); const filePath=path.join(EVIDENCE_ROOT, `${name}.png`); fs.writeFileSync(filePath, buffer); await test.info().attach(`${name}.png`, { body:buffer, contentType:'image/png' }); expect(buffer.byteLength).toBeGreaterThan(20_000); const image=pngDimensions(buffer); expect(image.width).toBeGreaterThanOrEqual(Math.max(1, viewport.width - 2)); expect(image.height).toBeGreaterThanOrEqual(Math.max(1, viewport.height - 2)); return { name, path:filePath, bytes:buffer.byteLength, viewport, image, full_page:true, settle, artifact_guard, no_horizontal_overflow:overflow_px <= 2, horizontal_overflow_px:overflow_px, captured_at:new Date().toISOString() };
 }
+
+async function captureTargetedEvidenceRegion(page, region, locale = 'en'){
+  await region.open(page);
+  await freezeMotion(page);
+  const label = `targeted-${locale}-${region.region_id}`;
+  const settle = await waitForEvidenceStable(page, label);
+  const artifact_guard = await assertNoTransientArtifacts(page, label);
+  const overflow_px = await assertNoHorizontalOverflow(page);
+  const rootLocator = page.locator(region.evidence_root_selector || region.selector).first();
+  await expect(rootLocator, `${region.region_id} targeted evidence root must be visible`).toBeVisible();
+  const locator = page.locator(region.proof_selector || region.selector).first();
+  await expect(locator, `${region.region_id} targeted evidence proof region must be visible`).toBeVisible();
+  const text = (await locator.innerText()).trim();
+  const matchedTokens = region.expected_tokens.filter((token)=>corpusHasToken(text, token));
+  expect(matchedTokens, `${region.region_id} must expose expected targeted evidence tokens`).toEqual(region.expected_tokens);
+  const boundingBox = await locator.boundingBox();
+  expect(boundingBox, `${region.region_id} must expose a screenshot bounding box`).toBeTruthy();
+  expect(Math.ceil(boundingBox.width), `${region.region_id} width must remain targeted`).toBeLessThanOrEqual(TARGETED_REGION_SCREENSHOT_MAX_WIDTH);
+  expect(Math.ceil(boundingBox.height), `${region.region_id} height must remain targeted`).toBeLessThanOrEqual(TARGETED_REGION_SCREENSHOT_MAX_HEIGHT);
+  const targetedDir = path.join(EVIDENCE_ROOT, 'targeted-regions');
+  ensureDir(targetedDir);
+  const screenshotPath = path.join(targetedDir, `${region.region_id}.png`);
+  await locator.screenshot({ path:screenshotPath, animations:'disabled' });
+  const buffer = fs.readFileSync(screenshotPath);
+  await test.info().attach(`targeted-${region.region_id}.png`, { body:buffer, contentType:'image/png' });
+  const image = pngDimensions(buffer);
+  expect(image.width, `${region.region_id} image width must match targeted cap`).toBeLessThanOrEqual(TARGETED_REGION_SCREENSHOT_MAX_WIDTH);
+  expect(image.height, `${region.region_id} image height must match targeted cap`).toBeLessThanOrEqual(TARGETED_REGION_SCREENSHOT_MAX_HEIGHT);
+  const targetedPixelArea = image.width * image.height;
+  expect(image.width, `${region.region_id} screenshot must have non-trivial width`).toBeGreaterThan(24);
+  expect(image.height, `${region.region_id} screenshot must have non-trivial height`).toBeGreaterThan(24);
+  expect(targetedPixelArea, `${region.region_id} screenshot must have non-trivial pixel area`).toBeGreaterThan(20_000);
+  expect(buffer.byteLength, `${region.region_id} screenshot must not be an empty/tiny PNG`).toBeGreaterThan(1_200);
+  return {
+    region_id:region.region_id,
+    locale,
+    surface:region.surface,
+    evidence_root_selector:region.evidence_root_selector || region.selector,
+    proof_selector:region.proof_selector || region.selector,
+    selector:region.proof_selector || region.selector,
+    purpose:region.purpose,
+    claim:region.purpose,
+    expected_tokens:region.expected_tokens,
+    matched_tokens:matchedTokens,
+    screenshot:path.relative(EVIDENCE_ROOT, screenshotPath).replace(/\\/g, '/'),
+    screenshot_kind:'targeted-region',
+    full_page:false,
+    full_page_only_proof_allowed:false,
+    bounding_box:{ x:Math.round(boundingBox.x), y:Math.round(boundingBox.y), width:Math.round(boundingBox.width), height:Math.round(boundingBox.height) },
+    image,
+    bytes:buffer.byteLength,
+    no_horizontal_overflow:overflow_px <= 2,
+    horizontal_overflow_px:overflow_px,
+    capture_settled:settle.settled === true,
+    visual_artifact_guard_passed:artifact_guard.visual_artifact_guard_passed === true,
+    passed:true
+  };
+}
+async function generateTargetedRegionEvidence(page){
+  await switchLocaleForVisibleTextSnapshot(page, 'en');
+  const regions = [];
+  for (const region of TARGETED_EVIDENCE_REGIONS) regions.push(await captureTargetedEvidenceRegion(page, region, 'en'));
+  const manifest = {
+    internal_build_version:VERSION,
+    public_version_label:PUBLIC_VERSION_LABEL,
+    targeted_region_capture_enabled:true,
+    locator_screenshot_required:true,
+    region_to_claim_mapping_required:true,
+    bounding_box_required:true,
+    expected_token_proof_required:true,
+    full_page_context_capture_enabled:true,
+    full_page_only_proof_allowed:false,
+    required_region_count:TARGETED_EVIDENCE_REGIONS.length,
+    targeted_region_count:regions.length,
+    all_targeted_regions_visible:regions.every((region)=>region.passed === true),
+    all_targeted_region_tokens_found:regions.every((region)=>region.matched_tokens.length === region.expected_tokens.length),
+    all_targeted_region_bounding_boxes_valid:regions.every((region)=>region.bounding_box.width > 0 && region.bounding_box.height > 0),
+    screenshot_dimension_caps:{ max_width:TARGETED_REGION_SCREENSHOT_MAX_WIDTH, max_height:TARGETED_REGION_SCREENSHOT_MAX_HEIGHT },
+    regions
+  };
+  expect(manifest.targeted_region_count).toBe(manifest.required_region_count);
+  expect(manifest.all_targeted_regions_visible).toBe(true);
+  expect(manifest.all_targeted_region_tokens_found).toBe(true);
+  expect(manifest.all_targeted_region_bounding_boxes_valid).toBe(true);
+  writeJson(path.join(EVIDENCE_ROOT, TARGETED_REGION_EVIDENCE_FILE), manifest);
+  return manifest;
+}
 async function openProviderHarness(page){ await page.locator('#researchModeNav .uxTab[data-ux-tab="advanced"]').click(); await expect(page.locator('.providerHarnessCard')).toBeVisible(); const providerCard=page.locator('.providerHarnessCard'); if(await providerCard.evaluate((node)=>node.classList.contains('uxAccordionClosed'))) await providerCard.locator('h3').click(); await expect(page.locator('#providerName')).toBeVisible(); await waitForEvidenceStable(page, 'provider-mode-open'); }
 async function openQualityExport(page){ await page.locator('#researchModeNav .uxTab[data-ux-tab="quality"]').click(); await expect(page.locator('#researchQualityOutput')).toBeVisible(); await expect(page.locator('#exportSourcePacketBuilderBtn')).toBeVisible(); await waitForEvidenceStable(page, 'quality-export-open'); }
 async function openSurface(page, surface){ if(!surface.tab) return; const tabSelector = `#researchModeNav .uxTab[data-ux-tab="${surface.tab}"]`; await page.locator(tabSelector).click(); if(surface.slug === 'provider-routing') await openProviderHarness(page); else if(['quality-export','publication-review','golden-workflow-demo','strategic-evidence-graph'].includes(surface.slug)) await openQualityExport(page); await waitForEvidenceStable(page, `surface-${surface.slug}`); }
@@ -212,13 +310,13 @@ function writeExportEvidence(matrixSummary){
   writeJson(path.join(exportsDir, 'publication-review-report.json'), Object.assign({}, base, { publication_review_valid:true, valid:true }));
   writeJson(path.join(exportsDir, 'export-artifact-consistency.json'), Object.assign({}, base, { export_artifact_consistency_valid:true, no_secrets_exported:true, automatic_source_verification_claimed:false, valid:true }));
 }
-async function hostedMetadata(page, captures, visibleTextSnapshots = {}, matrixSummary = null){
+async function hostedMetadata(page, captures, visibleTextSnapshots = {}, matrixSummary = null, targetedRegionEvidence = null){
   const pageMeta = await page.evaluate(() => ({ title:document.title, app_version:document.querySelector('meta[name="app-version"]')?.getAttribute('content') || null, html_lang:document.documentElement.lang, html_dir:document.documentElement.dir, panels:{ first_run:!!document.getElementById('firstRunPanel'), public_demo:!!document.getElementById('publicDemoReadinessPanel'), hosted_demo:!!document.getElementById('hostedDemoVerificationPanel'), evidence_review:!!document.getElementById('hostedDemoEvidenceReviewPanel') }, storage_keys_visible:Object.keys(localStorage || {}).filter((key)=>key.startsWith('jarbou3i.')).sort() }));
   const captureNames = captures.map((captureResult)=>captureResult.name).sort(); const expectedNames=[...EXPECTED_CAPTURE_NAMES].sort();
-  return { evidence_review_version:VERSION, generated_at:new Date().toISOString(), base_url:test.info().project.use.baseURL || null, canonical_project:HOSTED_EVIDENCE_CANONICAL_PROJECT, test_timeout_ms:HOSTED_EVIDENCE_TEST_TIMEOUT_MS, hosted_demo_url_mode:process.env.HOSTED_DEMO_URL ? 'hosted_url' : 'local_static_server', manifest_policy:'single_final_metadata_with_all_required_captures_and_evidence_matrix', project_scope_policy: 'single_canonical_project_with_explicit_mobile_viewport_capture', capture_polish_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, visual_artifact_guard_required:true, capture_settle_required:true, duplicate_project_metadata_overwrite_guard: true, expected_capture_names:EXPECTED_CAPTURE_NAMES, capture_count:captures.length, capture_names:captureNames, captures, all_required_captures_present:JSON.stringify(captureNames) === JSON.stringify(expectedNames), visible_text_snapshot_files:VISIBLE_TEXT_SNAPSHOT_FILES, visible_text_snapshots:visibleTextSnapshots, localization_snapshot_contract:'ar_fr_en_visible_text_snapshots_with_technical_token_allowlist', screenshot_sanity:captures.map((captureResult)=>({ name:captureResult.name, viewport_width:captureResult.viewport.width, viewport_height:captureResult.viewport.height, image_width:captureResult.image.width, image_height:captureResult.image.height, bytes:captureResult.bytes, full_page:captureResult.full_page, no_horizontal_overflow:captureResult.no_horizontal_overflow, horizontal_overflow_px:captureResult.horizontal_overflow_px, capture_settled:captureResult.settle?.settled === true, visual_artifact_guard_passed:captureResult.artifact_guard?.visual_artifact_guard_passed === true, pass:captureResult.bytes > 20_000 && captureResult.image.width >= captureResult.viewport.width - 2 && captureResult.image.height >= captureResult.viewport.height - 2 && captureResult.no_horizontal_overflow && captureResult.settle?.settled === true && captureResult.artifact_guard?.visual_artifact_guard_passed === true })), evidence_matrix: matrixSummary ? { contract:'language_surface_evidence_matrix_v1', captures:matrixSummary.rows, languages:matrixSummary.languages, surface_count:matrixSummary.surface_count, expected_rows:matrixSummary.expected_rows, actual_rows:matrixSummary.actual_rows, passed_rows:matrixSummary.passed_rows, failed_rows:matrixSummary.failed_rows, language_purity_passed:matrixSummary.language_purity_passed, visual_guard_passed:matrixSummary.visual_guard_passed, horizontal_overflow_max_px:matrixSummary.horizontal_overflow_max_px, stale_version_residue_detected:matrixSummary.stale_version_residue_detected, mojibake_detected:matrixSummary.mojibake_detected, matrix_summary_file:'matrix-summary.json' } : null, page:pageMeta, release_gate:'evidence_review_metadata_written' };
+  return { evidence_review_version:VERSION, generated_at:new Date().toISOString(), base_url:test.info().project.use.baseURL || null, canonical_project:HOSTED_EVIDENCE_CANONICAL_PROJECT, test_timeout_ms:HOSTED_EVIDENCE_TEST_TIMEOUT_MS, hosted_demo_url_mode:process.env.HOSTED_DEMO_URL ? 'hosted_url' : 'local_static_server', manifest_policy:'single_final_metadata_with_all_required_captures_and_evidence_matrix', project_scope_policy: 'single_canonical_project_with_explicit_mobile_viewport_capture', capture_polish_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, visual_artifact_guard_required:true, capture_settle_required:true, duplicate_project_metadata_overwrite_guard: true, expected_capture_names:EXPECTED_CAPTURE_NAMES, capture_count:captures.length, capture_names:captureNames, captures, all_required_captures_present:JSON.stringify(captureNames) === JSON.stringify(expectedNames), visible_text_snapshot_files:VISIBLE_TEXT_SNAPSHOT_FILES, visible_text_snapshots:visibleTextSnapshots, localization_snapshot_contract:'ar_fr_en_visible_text_snapshots_with_technical_token_allowlist', screenshot_sanity:captures.map((captureResult)=>({ name:captureResult.name, viewport_width:captureResult.viewport.width, viewport_height:captureResult.viewport.height, image_width:captureResult.image.width, image_height:captureResult.image.height, bytes:captureResult.bytes, full_page:captureResult.full_page, no_horizontal_overflow:captureResult.no_horizontal_overflow, horizontal_overflow_px:captureResult.horizontal_overflow_px, capture_settled:captureResult.settle?.settled === true, visual_artifact_guard_passed:captureResult.artifact_guard?.visual_artifact_guard_passed === true, pass:captureResult.bytes > 20_000 && captureResult.image.width >= captureResult.viewport.width - 2 && captureResult.image.height >= captureResult.viewport.height - 2 && captureResult.no_horizontal_overflow && captureResult.settle?.settled === true && captureResult.artifact_guard?.visual_artifact_guard_passed === true })), evidence_matrix: matrixSummary ? { contract:'language_surface_evidence_matrix_v1', captures:matrixSummary.rows, languages:matrixSummary.languages, surface_count:matrixSummary.surface_count, expected_rows:matrixSummary.expected_rows, actual_rows:matrixSummary.actual_rows, passed_rows:matrixSummary.passed_rows, failed_rows:matrixSummary.failed_rows, language_purity_passed:matrixSummary.language_purity_passed, visual_guard_passed:matrixSummary.visual_guard_passed, horizontal_overflow_max_px:matrixSummary.horizontal_overflow_max_px, stale_version_residue_detected:matrixSummary.stale_version_residue_detected, mojibake_detected:matrixSummary.mojibake_detected, matrix_summary_file:'matrix-summary.json' } : null, page:pageMeta, targeted_region_evidence: targetedRegionEvidence, targeted_region_capture_enabled: targetedRegionEvidence?.targeted_region_capture_enabled === true, release_gate:'evidence_review_metadata_written' };
 }
-async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, matrixSummary = null){
-  ensureEvidenceRoot(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
+async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, matrixSummary = null, targetedRegionEvidence = null){
+  ensureEvidenceRoot(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary, targetedRegionEvidence); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.targeted_region_capture_enabled).toBe(true); expect(metadata.targeted_region_evidence.full_page_only_proof_allowed).toBe(false); expect(metadata.targeted_region_evidence.targeted_region_count).toBeGreaterThanOrEqual(5); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
 }
 
 test.describe(`${PUBLIC_VERSION_LABEL} hosted demo evidence matrix and manifest capture`, () => {
@@ -236,7 +334,8 @@ test.describe(`${PUBLIC_VERSION_LABEL} hosted demo evidence matrix and manifest 
     expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.en.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.ar.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('ar')]); expect(visibleTextSnapshots.fr.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('fr')]); expect(visibleTextSnapshots.en.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('en')]); expect(visibleTextSnapshots.ar).toMatchObject({ html_lang: 'ar', html_dir: 'rtl', has_arabic_unicode: true, mojibake_markers: [], locale_snapshot_passed: true }); expect(visibleTextSnapshots.fr).toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true }); expect(visibleTextSnapshots.en).toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true });
     const { matrixSummary } = await generateEvidenceMatrix(page);
     writeExportEvidence(matrixSummary);
-    const metadata = await writeMetadata(page, captures, visibleTextSnapshots, matrixSummary);
+    const targetedRegionEvidence = await generateTargetedRegionEvidence(page);
+    const metadata = await writeMetadata(page, captures, visibleTextSnapshots, matrixSummary, targetedRegionEvidence);
     expect(metadata.page.storage_keys_visible).toEqual(expect.arrayContaining([]));
   });
 });

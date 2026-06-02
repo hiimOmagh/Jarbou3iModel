@@ -1,12 +1,12 @@
-/* Jarbou3i Research Engine manual workflow UX consolidation 1.4.0-alpha.42. */
+/* Jarbou3i Research Engine manual workflow UX consolidation 1.4.0-alpha.43. */
 /* Metadata-only manual workflow consolidation. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, status persistence, batch mutation, navigation-state persistence, automatic verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission action. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.42';
-  const MILESTONE = 'v1.4.0-alpha.42 — Manual Workflow UX Consolidation';
-  const MODEL = 'manual_workflow_ux_consolidation.v1';
+  const VERSION = '1.4.0-alpha.43';
+  const MILESTONE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
+  const MODEL = 'targeted_hosted_evidence_capture.v1';
   const STABLE_MANUAL_WORKFLOW_BASELINE = '1.3.0';
   const ADAPTER_REPLAY_CLOSURE_BASELINE = '1.4.0-alpha.37';
   const SOURCE_TO_BRIEF_CONTINUITY_BASELINE = '1.4.0-alpha.38';
@@ -15,7 +15,7 @@
   const FIXED_GENERATED_AT = '2026-06-01T00:00:00.000Z';
 
   const BOUNDARY_FLAGS = Object.freeze({
-    manual_workflow_ux_consolidation_only: true,
+    targeted_hosted_evidence_capture_only: true,
     metadata_preview_only: true,
     consolidation_not_new_execution_surface: true,
     manual_operator_review_required: true,
@@ -117,7 +117,7 @@
     const unresolvedBlockers = asArray(publicationReadiness.unresolved_gap_blocker_map).length;
 
     const exportSummary = Object.freeze({
-      summary_id:'manual-workflow-ux-consolidation-export-summary',
+      summary_id:'targeted-hosted-evidence-capture-export-summary',
       generated_at: generatedAt,
       primary_workflow_steps: primaryPath.length,
       consolidated_surface_groups: surfaceMap.length,
@@ -145,7 +145,7 @@
     });
 
     return Object.freeze({
-      manual_workflow_ux_consolidation_version: VERSION,
+      targeted_hosted_evidence_capture_version: VERSION,
       milestone: MILESTONE,
       model: MODEL,
       generated_at: generatedAt,
@@ -169,7 +169,7 @@
         exportSummary.next_operator_action
       ].join('\n'),
       ux_consolidation_safety_contract: Object.freeze({
-        manual_workflow_ux_consolidation_only:true,
+        targeted_hosted_evidence_capture_only:true,
         metadata_only:true,
         no_new_execution_surface:true,
         no_auto_verification:true,

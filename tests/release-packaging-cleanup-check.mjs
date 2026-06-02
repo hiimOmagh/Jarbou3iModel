@@ -7,8 +7,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.4.0-alpha.42';
-const CURRENT_TITLE = 'Manual Workflow UX Consolidation';
+const CURRENT_VERSION = '1.4.0-alpha.43';
+const CURRENT_TITLE = 'Targeted Hosted Evidence Capture';
 const VERSION = '1.3.0';
 const RELEASE = 'v1.3.0 — Stable Manual Workflow Release';
 const pkg = json('package.json');

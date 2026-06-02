@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.42",
-  "release_title": "v1.4.0-alpha.42 — Manual Workflow UX Consolidation",
+  "ci_gate_registry_version": "1.4.0-alpha.43",
+  "release_title": "v1.4.0-alpha.43 — Targeted Hosted Evidence Capture",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -192,6 +192,7 @@
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/source-to-brief-operator-control-room-check.mjs",
         "tests/source-to-brief-publication-readiness-suite-check.mjs",
+        "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -287,6 +288,7 @@
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/source-to-brief-operator-control-room-check.mjs",
         "tests/source-to-brief-publication-readiness-suite-check.mjs",
+        "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -401,6 +403,7 @@
         "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
         "tests/source-to-brief-operator-control-room-check.mjs",
         "tests/source-to-brief-publication-readiness-suite-check.mjs",
+        "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs"
       ],
       "syntax_checks": [],
@@ -595,6 +598,7 @@
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/source-to-brief-operator-control-room-check.mjs",
         "tests/source-to-brief-publication-readiness-suite-check.mjs",
+        "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs"
@@ -616,6 +620,7 @@
         "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
         "tests/source-to-brief-operator-control-room-check.mjs",
         "tests/source-to-brief-publication-readiness-suite-check.mjs",
+        "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs"
       ],
       "syntax_checks": [],
@@ -633,15 +638,15 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.42",
-    "optimization_scope": "manual_workflow_ux_consolidation",
+    "version": "1.4.0-alpha.43",
+    "optimization_scope": "targeted_hosted_evidence_capture",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "manual_workflow_ux_consolidation",
-    "current_candidate": "1.4.0-alpha.42",
+    "name": "targeted_hosted_evidence_capture",
+    "current_candidate": "1.4.0-alpha.43",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -649,7 +654,7 @@
     "description": "Current alpha consolidates manual workflow UX without runtime/provider/OAuth/backend/source/storage behavior changes."
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.42",
+    "version": "1.4.0-alpha.43",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -852,18 +857,20 @@
       "src/research/source-to-brief-operator-continuity-console.js",
       "tests/source-to-brief-operator-continuity-console-check.mjs",
       "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
-      "src/research/manual-workflow-ux-consolidation.js",
-      "tests/manual-workflow-ux-consolidation-check.mjs",
+      "src/research/targeted-hosted-evidence-capture.js",
+      "tests/targeted-hosted-evidence-capture-check.mjs",
       "src/research/source-to-brief-operator-control-room.js",
       "tests/source-to-brief-operator-control-room-check.mjs",
       "src/research/source-to-brief-publication-readiness-suite.js",
-      "tests/source-to-brief-publication-readiness-suite-check.mjs"
+      "tests/source-to-brief-publication-readiness-suite-check.mjs",
+      "src/research/manual-workflow-ux-consolidation.js",
+      "tests/manual-workflow-ux-consolidation-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.42",
+    "version": "1.4.0-alpha.43",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -936,7 +943,7 @@
     "scripts/dev-utils.mjs",
     "src/research/adapter-replay-review-pack-compact-navigation-ux.js",
     "src/research/adapter-replay-review-pack-operator-review-console.js",
-    "src/research/manual-workflow-ux-consolidation.js",
+    "src/research/targeted-hosted-evidence-capture.js",
     "src/research/release-copy-contract.js",
     "src/research/render-helpers.js",
     "src/research/source-to-brief-operator-continuity-console.js",
@@ -983,7 +990,7 @@
     "tests/lock-evidence-artifact-identity-guard-check.mjs",
     "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
     "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
-    "tests/manual-workflow-ux-consolidation-check.mjs",
+    "tests/targeted-hosted-evidence-capture-check.mjs",
     "tests/mobile-header-logo-geometry-check.mjs",
     "tests/module-type-warning-fix-check.mjs",
     "tests/node24-ci-compat-check.mjs",

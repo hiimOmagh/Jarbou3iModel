@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.42",
-  "release": "v1.4.0-alpha.42 — Manual Workflow UX Consolidation",
+  "version": "1.4.0-alpha.43",
+  "release": "v1.4.0-alpha.43 — Targeted Hosted Evidence Capture",
   "changed_files": [
     ".github/workflows/ci.yml",
     "ALPHA37_CHANGED_FILES.json",

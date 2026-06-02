@@ -1,16 +1,16 @@
 {
-  "version": "1.4.0-alpha.42",
-  "milestone_name": "Manual Workflow UX Consolidation",
+  "version": "1.4.0-alpha.43",
+  "milestone_name": "Targeted Hosted Evidence Capture",
   "release_type": "product-facing",
   "allowed_scope": [
-    "manual workflow UX consolidation over the stable manual workflow",
-    "primary workflow path from intake/source packet to export/handoff",
-    "surface consolidation map across adapter replay, evidence, source-to-brief, publication, and export surfaces",
-    "duplicate-surface reduction and progressive disclosure guidance",
-    "cognitive-load reduction plan for operator actionability",
-    "mobile/RTL visibility contract and keyboard/navigation hints",
-    "export-ready UX consolidation summary and manual copy",
-    "manual no-network consolidation surface over existing metadata"
+    "targeted hosted evidence capture over the hosted-demo browser evidence workflow",
+    "locator-based screenshots for specific verification regions",
+    "region-to-claim mapping with expected visible tokens",
+    "bounding-box metadata and targeted screenshot dimension caps",
+    "manifest evidence proving targeted regions without relying on full-page-only screenshots",
+    "full-page screenshots retained only as contextual captures",
+    "hosted evidence metadata that reports targeted-region capture status",
+    "manual no-network evidence-process upgrade over existing product surfaces"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -26,7 +26,7 @@
     "navigation-state persistence",
     "provider execution expansion",
     "new adapter replay review-pack surface",
-    "new source-to-brief decision surface beyond consolidation"
+    "new source-to-brief decision surface beyond evidence capture"
   ],
   "required_docs": [
     "README.md",
@@ -40,7 +40,7 @@
   ],
   "required_tests": [
     "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
-    "tests/manual-workflow-ux-consolidation-check.mjs",
+    "tests/targeted-hosted-evidence-capture-check.mjs",
     "tests/source-to-brief-operator-continuity-console-check.mjs",
     "tests/current-release-lock-completion-check.mjs",
     "tests/effective-diff-check.mjs",
@@ -56,7 +56,8 @@
     "tests/adapter-replay-review-pack-decision-queue-check.mjs",
     "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
     "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
-    "src/research/manual-workflow-ux-consolidation.js"
+    "src/research/targeted-hosted-evidence-capture.js",
+    "tests/manual-workflow-ux-consolidation-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -66,7 +67,13 @@
     "hosted-demo-metadata.json",
     "visible-text-ar.json",
     "visible-text-fr.json",
-    "visible-text-en.json"
+    "visible-text-en.json",
+    "targeted-region-evidence-manifest.json",
+    "targeted-regions/first-run-guide.png",
+    "targeted-regions/public-demo-readiness.png",
+    "targeted-regions/hosted-demo-release-contract.png",
+    "targeted-regions/evidence-review-gate.png",
+    "targeted-regions/quality-export-surface.png"
   ],
   "required_locale_snapshots": [
     "ar",
@@ -99,7 +106,7 @@
     "scripts/dev-utils.mjs",
     "src/research/adapter-replay-review-pack-compact-navigation-ux.js",
     "src/research/adapter-replay-review-pack-operator-review-console.js",
-    "src/research/manual-workflow-ux-consolidation.js",
+    "src/research/targeted-hosted-evidence-capture.js",
     "src/research/release-copy-contract.js",
     "src/research/render-helpers.js",
     "src/research/source-to-brief-operator-continuity-console.js",
@@ -146,7 +153,7 @@
     "tests/lock-evidence-artifact-identity-guard-check.mjs",
     "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
     "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
-    "tests/manual-workflow-ux-consolidation-check.mjs",
+    "tests/targeted-hosted-evidence-capture-check.mjs",
     "tests/mobile-header-logo-geometry-check.mjs",
     "tests/module-type-warning-fix-check.mjs",
     "tests/node24-ci-compat-check.mjs",
@@ -187,14 +194,19 @@
     "tests/syntax-matrix-check.mjs",
     "tests/test-matrix-runtime-optimization-check.mjs",
     "tests/ux-stabilization-patch-check.mjs",
-    "tests/version-suite-registry.json"
+    "tests/version-suite-registry.json",
+    "ALPHA43_CHANGED_FILES.json",
+    "tests/hosted-demo-browser-evidence.spec.mjs",
+    "src/research/manual-workflow-ux-consolidation.js",
+    "tests/manual-workflow-ux-consolidation-check.mjs"
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.42",
-    "public labels must expose v1.4.0-alpha.42 Manual Workflow UX Consolidation",
-    "active release tests should derive from tests/current-release-identity.mjs where release identity is not historical",
-    "manual workflow UX consolidation must remain no-network, metadata-only, preview-only, and manually reviewed"
+    "hosted evidence must report internal_build_version 1.4.0-alpha.43",
+    "public labels must expose v1.4.0-alpha.43 Targeted Hosted Evidence Capture",
+    "targeted hosted evidence manifest must map selector to claim, expected tokens, bounding box, and region screenshot",
+    "full-page screenshots are contextual only and must not be the sole release proof",
+    "targeted hosted evidence capture must remain no-network, metadata-only, preview-only, and manually reviewed"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -206,53 +218,15 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
-    "Suite de préparation à la publication source-vers-brief est prête pour les preuves de release",
-    "مجموعة جاهزية النشر من المصدر إلى الموجز جاهزة لأدلة الإصدار",
-    "Source-to-Brief Publication Readiness Suite is ready for release evidence",
-    "v1.4.0-alpha.40 Suite de préparation à la publication source-vers-brief",
-    "v1.4.0-alpha.40 مجموعة جاهزية النشر من المصدر إلى الموجز",
-    "v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite",
-    "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
-    "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console",
-    "v1.4.0-alpha.36 وحدة مراجعة المشغّل لحزمة مراجعة إعادة التشغيل",
-    "v1.4.0-alpha.36 Console de revue opérateur du pack de revue de rejeu",
-    "v1.4.0-alpha.35 Dossier de handoff du pack de revue de rejeu",
-    "v1.4.0-alpha.35 ملف تسليم حزمة مراجعة إعادة التشغيل",
-    "v1.4.0-alpha.35 Adapter Replay Review Pack Handoff Dossier",
-    "v1.4.0-alpha.34 Workbench de triage du pack de revue de rejeu",
-    "v1.4.0-alpha.34 منضدة فرز حزمة مراجعة إعادة التشغيل",
-    "v1.4.0-alpha.34 Adapter Replay Review Pack Triage Workbench",
-    "v1.4.0-alpha.32 Lecteur de traces preuve du pack de revue de rejeu",
-    "v1.4.0-alpha.32 قارئ تتبع الأدلة لحزمة مراجعة إعادة التشغيل",
-    "v1.4.0-alpha.32 Adapter Replay Review Pack Evidence Trace Reader",
-    "v1.4.0-alpha.33 File de décision du pack de revue de rejeu",
-    "v1.4.0-alpha.33 قائمة قرارات حزمة مراجعة إعادة التشغيل",
-    "v1.4.0-alpha.33 Adapter Replay Review Pack Decision Queue",
-    "v1.4.0-alpha.30 Release Identity Single Source Contract",
-    "v1.4.0-alpha.30 عقد هوية الإصدار من مصدر واحد",
-    "v1.4.0-alpha.30 Contrat source unique d’identité de release",
-    "v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview",
-    "v1.4.0-alpha.29 صقل واجهة حزمة المراجعة + معاينة التصدير",
-    "v1.4.0-alpha.29 Polish UI du pack de revue + aperçu export",
-    "v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export",
-    "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
-    "v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface",
-    "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard",
-    "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
-    "v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX",
-    "v1.4.0-alpha.37 تجربة التنقل المختصر لحزمة مراجعة إعادة التشغيل",
-    "v1.4.0-alpha.37 UX de navigation compacte du pack de revue de rejeu",
-    "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
-    "v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console",
-    "v1.4.0-alpha.38 وحدة استمرارية المشغّل من المصدر إلى الموجز",
-    "v1.4.0-alpha.38 Console de continuité opérateur source-vers-brief",
-    "v1.4.0-alpha.39 — Source-to-Brief Operator Control Room",
-    "v1.4.0-alpha.39 Source-to-Brief Operator Control Room",
-    "v1.4.0-alpha.39 غرفة تحكم المشغّل من المصدر إلى الموجز",
-    "v1.4.0-alpha.39 Salle de contrôle opérateur source-vers-brief",
-    "Source-to-Brief Operator Control Room is ready for release evidence"
+    "Manual Workflow UX Consolidation is ready for release evidence",
+    "دمج تجربة سير العمل اليدوي جاهز لأدلة الإصدار",
+    "Consolidation UX du workflow manuel est prête pour les preuves de release",
+    "v1.4.0-alpha.42 Manual Workflow UX Consolidation",
+    "v1.4.0-alpha.42 دمج تجربة سير العمل اليدوي",
+    "v1.4.0-alpha.42 Consolidation UX du workflow manuel",
+    "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite"
   ],
-  "runtime_scope": "manual_workflow_ux_consolidation",
+  "runtime_scope": "targeted_hosted_evidence_capture",
   "lock_conditions": [],
   "acceptance_criteria": []
 }

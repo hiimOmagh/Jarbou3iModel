@@ -7,8 +7,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.42';
-const CURRENT_TITLE = 'Manual Workflow UX Consolidation';
+const CURRENT_VERSION = '1.4.0-alpha.43';
+const CURRENT_TITLE = 'Targeted Hosted Evidence Capture';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;
