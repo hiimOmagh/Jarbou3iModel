@@ -1,6 +1,6 @@
-## v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console
+## v1.4.0-alpha.39 — Source-to-Brief Operator Control Room
 
-Public label: v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console
+Public label: v1.4.0-alpha.39 Source-to-Brief Operator Control Room
 
 Adds a no-network source-to-brief operator continuity console: current brief stage, unresolved evidence gaps, source-to-claim repair state, operator signoff readiness, export/publication readiness, continuity risk rail, and export-ready continuity summary. No provider/OAuth/backend/storage/source behavior changes.
 

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.38';
-const MILESTONE = 'v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console';
+const VERSION = '1.4.0-alpha.39';
+const MILESTONE = 'v1.4.0-alpha.39 — Source-to-Brief Operator Control Room';
 const MODULE = 'src/research/source-to-brief-operator-continuity-console.js';
 const CHECK = 'tests/source-to-brief-operator-continuity-console-check.mjs';
 const DEPENDENCIES = [
@@ -101,7 +101,7 @@ const index = fs.readFileSync('index.html', 'utf8');
 assert.ok(index.includes('src="src/research/source-to-brief-operator-continuity-console.js" defer'), 'index must load alpha.38 continuity console module');
 assert.ok(index.includes('data-browser-qa="source-to-brief-operator-continuity-console"'), 'index must expose alpha.38 continuity console surface');
 assert.ok(index.includes('sourceToBriefOperatorContinuityConsoleMount'), 'index must expose alpha.38 render mount');
-assert.ok(index.includes('Source-to-Brief Operator Continuity Console'), 'index must expose alpha.38 visible title');
+assert.ok(index.includes('Source-to-Brief Operator Control Room'), 'index must expose alpha.38 visible title');
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
@@ -110,13 +110,13 @@ for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.38 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.38 check');
 assert.equal(registry.runtime_optimization.version, VERSION);
-assert.equal(registry.runtime_optimization.optimization_scope, 'source_to_brief_operator_continuity_console');
+assert.equal(registry.runtime_optimization.optimization_scope, 'source_to_brief_operator_control_room');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }
 
 const releaseCopy = fs.readFileSync('src/research/release-copy-contract.js', 'utf8');
-for (const token of ['Source-to-Brief Operator Continuity Console', 'operator continuity console', 'source-to-brief continuity', 'no live provider calls']) {
+for (const token of ['Source-to-Brief Operator Control Room', 'operator control room', 'stage board', 'no live provider calls']) {
   assert.ok(releaseCopy.includes(token), `release copy must include ${token}`);
 }
 

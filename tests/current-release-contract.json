@@ -1,17 +1,16 @@
 {
-  "version": "1.4.0-alpha.38",
-  "milestone_name": "Source-to-Brief Operator Continuity Console",
+  "version": "1.4.0-alpha.39",
+  "milestone_name": "Source-to-Brief Operator Control Room",
   "release_type": "product-facing",
   "allowed_scope": [
-    "source-to-brief operator continuity console",
-    "current brief stage summary",
-    "unresolved evidence gap summary",
-    "source-to-claim repair state overview",
-    "operator signoff readiness summary",
-    "export and publication readiness rail",
-    "continuity risk rail and next operator action",
-    "export-ready continuity summary and manual copy",
-    "manual no-network continuity surface over existing source-to-brief data"
+    "source-to-brief operator control room",
+    "stage board over current brief progress",
+    "manual intervention lanes for evidence gaps, repair queue, signoff, export, and publication review",
+    "blocker register and continuity risk consolidation",
+    "readiness scorecard for operator actionability",
+    "operator runbook with ordered next actions",
+    "export-ready control-room summary and manual copy",
+    "manual no-network control surface over existing source-to-brief metadata"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -25,6 +24,7 @@
     "status persistence",
     "batch mutation",
     "navigation-state persistence",
+    "provider execution expansion",
     "new adapter replay review-pack surface"
   ],
   "required_docs": [
@@ -38,6 +38,8 @@
     "docs/roadmap.md"
   ],
   "required_tests": [
+    "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
+    "tests/source-to-brief-operator-control-room-check.mjs",
     "tests/source-to-brief-operator-continuity-console-check.mjs",
     "tests/current-release-lock-completion-check.mjs",
     "tests/effective-diff-check.mjs",
@@ -73,6 +75,9 @@
     "tests/changed-files-patch-hygiene-guard-lock-completion-check.mjs"
   ],
   "expected_changed_files": [
+    "tests/source-to-brief-operator-control-room-check.mjs",
+    "src/research/source-to-brief-operator-control-room.js",
+    "ALPHA39_CHANGED_FILES.json",
     ".github/workflows/ci.yml",
     "ALPHA37_CHANGED_FILES.json",
     "CHANGELOG.md",
@@ -175,8 +180,8 @@
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.38",
-    "public labels must expose v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.39",
+    "public labels must expose v1.4.0-alpha.39 Source-to-Brief Operator Control Room",
     "active release tests should derive from tests/current-release-identity.mjs where release identity is not historical",
     "compact navigation UX must remain no-network, metadata-only, preview-only, and manually reviewed"
   ],
@@ -218,9 +223,13 @@
     "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
     "v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX",
     "v1.4.0-alpha.37 تجربة التنقل المختصر لحزمة مراجعة إعادة التشغيل",
-    "v1.4.0-alpha.37 UX de navigation compacte du pack de revue de rejeu"
+    "v1.4.0-alpha.37 UX de navigation compacte du pack de revue de rejeu",
+    "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
+    "v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console",
+    "v1.4.0-alpha.38 وحدة استمرارية المشغّل من المصدر إلى الموجز",
+    "v1.4.0-alpha.38 Console de continuité opérateur source-vers-brief"
   ],
-  "runtime_scope": "source_to_brief_operator_continuity_console",
+  "runtime_scope": "source_to_brief_operator_control_room",
   "lock_conditions": [],
   "acceptance_criteria": []
 }

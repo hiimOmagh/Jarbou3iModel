@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.38';
-const CURRENT_TITLE = 'Source-to-Brief Operator Continuity Console';
+const CURRENT_VERSION = '1.4.0-alpha.39';
+const CURRENT_TITLE = 'Source-to-Brief Operator Control Room';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

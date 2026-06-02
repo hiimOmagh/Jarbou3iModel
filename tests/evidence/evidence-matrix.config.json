@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.38",
-  "internal_build_version": "1.4.0-alpha.38",
-  "public_version_label": "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
+  "evidence_matrix_config_version": "1.4.0-alpha.39",
+  "internal_build_version": "1.4.0-alpha.39",
+  "public_version_label": "v1.4.0-alpha.39 Source-to-Brief Operator Control Room",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Source-to-Brief Operator Continuity Console",
+        "Source-to-Brief Operator Control Room",
         "operator continuity console",
         "source-to-brief continuity",
         "no live provider calls"
@@ -24,11 +24,11 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console"
+      "public_label": "v1.4.0-alpha.39 Source-to-Brief Operator Control Room"
     },
     "ar": {
       "required": [
-        "وحدة استمرارية المشغّل من المصدر إلى الموجز",
+        "غرفة تحكم المشغّل من المصدر إلى الموجز",
         "استمرارية المشغّل",
         "فجوات الأدلة",
         "دون نداءات مزوّد حية",
@@ -44,7 +44,7 @@
     },
     "fr": {
       "required": [
-        "Console de continuité opérateur source-vers-brief",
+        "Salle de contrôle opérateur source-vers-brief",
         "continuité opérateur",
         "écarts de preuve",
         "aucun appel fournisseur réel",
@@ -236,8 +236,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
-    "ar": "v1.4.0-alpha.38 وحدة استمرارية المشغّل من المصدر إلى الموجز",
-    "fr": "v1.4.0-alpha.38 Console de continuité opérateur source-vers-brief"
+    "en": "v1.4.0-alpha.39 Source-to-Brief Operator Control Room",
+    "ar": "v1.4.0-alpha.39 غرفة تحكم المشغّل من المصدر إلى الموجز",
+    "fr": "v1.4.0-alpha.39 Salle de contrôle opérateur source-vers-brief"
   }
 }

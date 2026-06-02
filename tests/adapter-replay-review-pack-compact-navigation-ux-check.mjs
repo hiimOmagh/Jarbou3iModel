@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.38';
+const VERSION = '1.4.0-alpha.39';
 const MODULE = 'src/research/source-to-brief-operator-continuity-console.js';
 const CHECK = 'tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs';
 const DEPENDENCIES = [
@@ -32,7 +32,7 @@ assert.equal(payload.boundary_flags.status_persistence_enabled, false);
 assert.equal(payload.boundary_flags.navigation_state_persistence_enabled, false);
 
 const index = fs.readFileSync('index.html', 'utf8');
-assert.ok(index.includes('Source-to-Brief Operator Continuity Console'), 'index must expose current continuity console title');
+assert.ok(index.includes('Source-to-Brief Operator Control Room'), 'index must expose current continuity console title');
 assert.ok(index.includes('src="src/research/source-to-brief-operator-continuity-console.js" defer'), 'index must load current continuity console module');
 assert.ok(index.includes('data-browser-qa="source-to-brief-operator-continuity-console"'), 'index must expose current continuity console browser QA surface');
 

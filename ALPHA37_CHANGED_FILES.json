@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.38",
-  "release": "v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console",
+  "version": "1.4.0-alpha.39",
+  "release": "v1.4.0-alpha.39 — Source-to-Brief Operator Control Room",
   "changed_files": [
     ".github/workflows/ci.yml",
     "ALPHA37_CHANGED_FILES.json",
