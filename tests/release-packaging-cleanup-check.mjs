@@ -92,7 +92,7 @@ const expectedDocHeadings = new Map([
   ['docs/v1.1.0-evidence-pack-export-v3-brief-traceability.md', '# v1.1.0 — Public Demo Stable']
 ]);
 for (const [file, heading] of expectedDocHeadings) {
-  assert.equal(readReleaseDoc(file).split('\n')[0], heading, `${file} heading drifted`);
+  assert.equal(readReleaseDoc(file).split(/\r?\n/)[0], heading, `${file} heading drifted`);
 }
 
 const docsCorpus = [readme, changelog, roadmap, qaMatrix, manifest, releaseHistory(), ...[...expectedDocHeadings.keys()].map(readReleaseDoc)].join('\n');
