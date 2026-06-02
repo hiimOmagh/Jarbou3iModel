@@ -1,10 +1,10 @@
-## v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX
+## v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console
 
-Public label: v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX
+Public label: v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console
 
-Adds a no-network compact navigation UX over the adapter replay operator review console: quick jump map, focus rail, progressive disclosure, keyboard hints, mobile compression plan, and export navigation summary. No provider/OAuth/backend/storage/source behavior changes.
+Adds a no-network source-to-brief operator continuity console: current brief stage, unresolved evidence gaps, source-to-claim repair state, operator signoff readiness, export/publication readiness, continuity risk rail, and export-ready continuity summary. No provider/OAuth/backend/storage/source behavior changes.
 
-Status: built locally pending lock evidence. Adds a no-network handoff dossier for the adapter replay review pack: dossier sections, batch triage snapshot, blocker appendix, evidence trace digest, operator checklist, and export-ready handoff summary.
+Status: built locally pending lock evidence.
 
 
 ## v1.4.0-alpha.28 — Adapter Replay Review Pack + Operator Handoff Export

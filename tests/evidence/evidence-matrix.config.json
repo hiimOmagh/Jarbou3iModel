@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.37",
-  "internal_build_version": "1.4.0-alpha.37",
-  "public_version_label": "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
+  "evidence_matrix_config_version": "1.4.0-alpha.38",
+  "internal_build_version": "1.4.0-alpha.38",
+  "public_version_label": "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
   "locales": [
     "en",
     "ar",
@@ -11,9 +11,9 @@
   "language_rules": {
     "en": {
       "required": [
-        "Adapter Replay Review Pack Compact Navigation UX",
-        "compact navigation UX",
-        "handoff readiness",
+        "Source-to-Brief Operator Continuity Console",
+        "operator continuity console",
+        "source-to-brief continuity",
         "no live provider calls"
       ],
       "forbidden": [
@@ -24,13 +24,13 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX"
+      "public_label": "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console"
     },
     "ar": {
       "required": [
-        "تجربة التنقل المختصر لحزمة مراجعة إعادة التشغيل",
-        "التنقل المختصر",
-        "جاهزية التسليم",
+        "وحدة استمرارية المشغّل من المصدر إلى الموجز",
+        "استمرارية المشغّل",
+        "فجوات الأدلة",
         "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
         "اعتماد مراجعة التصدير"
@@ -44,9 +44,9 @@
     },
     "fr": {
       "required": [
-        "UX de navigation compacte du pack de revue de rejeu",
-        "navigation compacte",
-        "préparation du handoff",
+        "Console de continuité opérateur source-vers-brief",
+        "continuité opérateur",
+        "écarts de preuve",
         "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
         "validation revue export",
@@ -236,8 +236,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
-    "ar": "v1.4.0-alpha.37 تجربة التنقل المختصر لحزمة مراجعة إعادة التشغيل",
-    "fr": "v1.4.0-alpha.37 UX de navigation compacte du pack de revue de rejeu"
+    "en": "v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
+    "ar": "v1.4.0-alpha.38 وحدة استمرارية المشغّل من المصدر إلى الموجز",
+    "fr": "v1.4.0-alpha.38 Console de continuité opérateur source-vers-brief"
   }
 }

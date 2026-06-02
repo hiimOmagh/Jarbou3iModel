@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.37",
-  "release_title": "v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX",
+  "ci_gate_registry_version": "1.4.0-alpha.38",
+  "release_title": "v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -187,6 +187,7 @@
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
         "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
@@ -278,6 +279,7 @@
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
         "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
@@ -297,6 +299,7 @@
     "privacy": {
       "description": "Privacy/export/release privacy gate.",
       "node_checks": [
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/privacy-export-guard-check.mjs",
         "tests/privacy-export-check.mjs",
         "tests/privacy-audit-check.mjs",
@@ -322,6 +325,8 @@
     "source": {
       "description": "Source planning, packet, scoring, review, and connector gate.",
       "node_checks": [
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
+        "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
         "tests/source-planning-check.mjs",
         "tests/source-import-check.mjs",
         "tests/source-cluster-gap-intelligence-check.mjs",
@@ -424,6 +429,7 @@
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
         "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs"
       ],
@@ -433,6 +439,7 @@
     "backend": {
       "description": "Backend proxy, hardening, and Worker smoke gate.",
       "node_checks": [
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/backend-proxy-check.mjs",
         "tests/backend-hardening-check.mjs",
         "tests/backend-worker-smoke.mjs",
@@ -449,6 +456,7 @@
     "fixtures": {
       "description": "Fixture/schema registry sanity gate.",
       "node_checks": [
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/fixtures-check.mjs",
         "tests/fixture-registry-consolidation-check.mjs",
         "tests/fixture-payload-budget-check.mjs",
@@ -573,6 +581,7 @@
         "tests/adapter-replay-review-pack-triage-workbench-check.mjs",
         "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
         "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
         "tests/adapter-replay-review-pack-operator-workflow-polish-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
@@ -584,6 +593,7 @@
     "browser": {
       "description": "Complete browser CI gate after Playwright installation.",
       "node_checks": [
+        "tests/source-to-brief-operator-continuity-console-check.mjs",
         "tests/dev-productivity-command-center-check.mjs",
         "tests/golden-baseline-automation-check.mjs",
         "tests/localization-regression-matrix-check.mjs",
@@ -608,22 +618,22 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.37",
-    "optimization_scope": "adapter_replay_review_pack_compact_navigation_ux",
+    "version": "1.4.0-alpha.38",
+    "optimization_scope": "source_to_brief_operator_continuity_console",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "adapter_replay_review_pack_compact_navigation_ux",
-    "current_candidate": "1.4.0-alpha.37",
+    "name": "source_to_brief_operator_continuity_console",
+    "current_candidate": "1.4.0-alpha.38",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.37",
+    "version": "1.4.0-alpha.38",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -823,14 +833,15 @@
       "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
       "src/research/adapter-replay-review-pack-operator-review-console.js",
       "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
-      "src/research/adapter-replay-review-pack-compact-navigation-ux.js",
+      "src/research/source-to-brief-operator-continuity-console.js",
+      "tests/source-to-brief-operator-continuity-console-check.mjs",
       "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.37",
+    "version": "1.4.0-alpha.38",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

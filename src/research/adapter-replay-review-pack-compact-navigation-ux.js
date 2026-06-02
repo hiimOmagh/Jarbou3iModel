@@ -1,12 +1,12 @@
-/* Jarbou3i Research Engine adapter replay review pack compact navigation UX v1.4.0-alpha.37. */
+/* Jarbou3i Research Engine adapter replay review pack compact navigation UX v1.4.0-alpha.38. */
 /* Metadata-only compact navigation layer. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, status persistence, or UI-triggered mutation. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.37';
-  const MILESTONE = 'v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX';
-  const MODEL = 'adapter_replay_review_pack_compact_navigation_ux.v1';
+  const VERSION = '1.4.0-alpha.38';
+  const MILESTONE = 'v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console';
+  const MODEL = 'source_to_brief_operator_continuity_console.v1';
   const OPERATOR_REVIEW_CONSOLE_BASELINE = '1.4.0-alpha.36';
   const HANDOFF_DOSSIER_BASELINE = '1.4.0-alpha.35';
   const TRIAGE_WORKBENCH_BASELINE = '1.4.0-alpha.34';
@@ -224,7 +224,7 @@
     const exportSummary = buildExportSummary(reviewConsole, quickJumpMap, focusRail, progressiveDisclosure);
 
     return Object.freeze({
-      adapter_replay_review_pack_compact_navigation_ux_version: VERSION,
+      source_to_brief_operator_continuity_console_version: VERSION,
       milestone: MILESTONE,
       model: MODEL,
       generated_at: FIXED_GENERATED_AT,

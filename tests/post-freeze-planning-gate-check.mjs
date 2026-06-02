@@ -10,8 +10,8 @@ const read = (file) => fs.readFileSync(path.join(repoRoot, file), 'utf8');
 const json = (file) => JSON.parse(read(file));
 const exists = (file) => fixturePathExists(file) || fs.existsSync(path.join(repoRoot, file));
 
-const CURRENT_VERSION = '1.4.0-alpha.37';
-const CURRENT_TITLE = 'Adapter Replay Review Pack Compact Navigation UX';
+const CURRENT_VERSION = '1.4.0-alpha.38';
+const CURRENT_TITLE = 'Source-to-Brief Operator Continuity Console';
 const VERSION = '1.3.0';
 const BASELINE = '1.1.0-alpha.1';
 const TITLE = 'Stable Manual Workflow Release';

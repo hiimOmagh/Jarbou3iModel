@@ -1,15 +1,17 @@
 {
-  "version": "1.4.0-alpha.37",
-  "milestone_name": "Adapter Replay Review Pack Compact Navigation UX",
+  "version": "1.4.0-alpha.38",
+  "milestone_name": "Source-to-Brief Operator Continuity Console",
   "release_type": "product-facing",
   "allowed_scope": [
-    "adapter replay review-pack compact navigation UX",
-    "quick jump map over the operator review console",
-    "focus rail for blocked, needs-review, trace, and handoff sections",
-    "progressive disclosure without hiding evidence access",
-    "keyboard hints and mobile compression without layout persistence",
-    "export compact navigation summary and manual copy",
-    "manual no-network navigation over existing review-pack data"
+    "source-to-brief operator continuity console",
+    "current brief stage summary",
+    "unresolved evidence gap summary",
+    "source-to-claim repair state overview",
+    "operator signoff readiness summary",
+    "export and publication readiness rail",
+    "continuity risk rail and next operator action",
+    "export-ready continuity summary and manual copy",
+    "manual no-network continuity surface over existing source-to-brief data"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -22,7 +24,8 @@
     "publication permission claims",
     "status persistence",
     "batch mutation",
-    "navigation-state persistence"
+    "navigation-state persistence",
+    "new adapter replay review-pack surface"
   ],
   "required_docs": [
     "README.md",
@@ -35,7 +38,7 @@
     "docs/roadmap.md"
   ],
   "required_tests": [
-    "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
+    "tests/source-to-brief-operator-continuity-console-check.mjs",
     "tests/current-release-lock-completion-check.mjs",
     "tests/effective-diff-check.mjs",
     "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
@@ -86,7 +89,7 @@
     "package.json",
     "scripts/build-lock-evidence-bundle.mjs",
     "scripts/dev-utils.mjs",
-    "src/research/adapter-replay-review-pack-compact-navigation-ux.js",
+    "src/research/source-to-brief-operator-continuity-console.js",
     "src/research/adapter-replay-review-pack-operator-review-console.js",
     "src/research/release-copy-contract.js",
     "src/research/render-helpers.js",
@@ -94,7 +97,7 @@
     "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
     "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
     "tests/adapter-replay-insight-ux-operator-decision-surface-check.mjs",
-    "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
+    "tests/source-to-brief-operator-continuity-console-check.mjs",
     "tests/adapter-replay-review-pack-decision-queue-check.mjs",
     "tests/adapter-replay-review-pack-evidence-trace-reader-check.mjs",
     "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
@@ -172,8 +175,8 @@
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.37",
-    "public labels must expose v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.38",
+    "public labels must expose v1.4.0-alpha.38 Source-to-Brief Operator Continuity Console",
     "active release tests should derive from tests/current-release-identity.mjs where release identity is not historical",
     "compact navigation UX must remain no-network, metadata-only, preview-only, and manually reviewed"
   ],
@@ -211,8 +214,13 @@
     "v1.4.0-alpha.28 Adapter Replay Review Pack + Operator Handoff Export",
     "v1.4.0-alpha.27 Adapter Replay Decision Drilldown + Evidence Trace Links",
     "v1.4.0-alpha.26 Adapter Replay Insight UX + Operator Decision Surface",
-    "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard"
+    "v1.4.0-alpha.25 Release System Consolidation + Effective Diff Guard",
+    "v1.4.0-alpha.37 Adapter Replay Review Pack Compact Navigation UX",
+    "v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX",
+    "v1.4.0-alpha.37 تجربة التنقل المختصر لحزمة مراجعة إعادة التشغيل",
+    "v1.4.0-alpha.37 UX de navigation compacte du pack de revue de rejeu"
   ],
-  "runtime_scope": "adapter_replay_review_pack_compact_navigation_ux",
-  "lock_conditions": []
+  "runtime_scope": "source_to_brief_operator_continuity_console",
+  "lock_conditions": [],
+  "acceptance_criteria": []
 }

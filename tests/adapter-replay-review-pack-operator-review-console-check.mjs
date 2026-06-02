@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.37';
-const MILESTONE = 'v1.4.0-alpha.37 — Adapter Replay Review Pack Compact Navigation UX';
+const VERSION = '1.4.0-alpha.38';
+const MILESTONE = 'v1.4.0-alpha.38 — Source-to-Brief Operator Continuity Console';
 const MODULE = 'src/research/adapter-replay-review-pack-operator-review-console.js';
 const CHECK = 'tests/adapter-replay-review-pack-operator-review-console-check.mjs';
 const DEPENDENCIES = [
@@ -36,7 +36,7 @@ assert.ok(root.adapterReplayReviewPackEvidenceTraceReader, 'alpha.32 evidence tr
 assert.ok(mod, 'alpha.36 operator review console module must be registered');
 assert.equal(mod.VERSION, VERSION);
 assert.equal(mod.MILESTONE, MILESTONE);
-assert.equal(mod.MODEL, 'adapter_replay_review_pack_compact_navigation_ux.v1');
+assert.equal(mod.MODEL, 'source_to_brief_operator_continuity_console.v1');
 assert.equal(mod.HANDOFF_DOSSIER_BASELINE, '1.4.0-alpha.35');
 assert.equal(mod.TRIAGE_WORKBENCH_BASELINE, '1.4.0-alpha.34');
 assert.equal(mod.DECISION_QUEUE_BASELINE, '1.4.0-alpha.33');
@@ -44,7 +44,7 @@ assert.equal(mod.TRACE_READER_BASELINE, '1.4.0-alpha.32');
 assert.equal(typeof mod.buildAdapterReplayReviewPackOperatorReviewConsole, 'function');
 
 const reviewConsole = mod.buildAdapterReplayReviewPackOperatorReviewConsole({ generated_at: '2026-06-01T15:00:00.000Z' });
-assert.equal(reviewConsole.adapter_replay_review_pack_compact_navigation_ux_version, VERSION);
+assert.equal(reviewConsole.source_to_brief_operator_continuity_console_version, VERSION);
 assert.equal(reviewConsole.milestone, MILESTONE);
 assert.equal(reviewConsole.operator_review_console_ready, true);
 assert.equal(reviewConsole.safe_metadata_only, true);
@@ -96,7 +96,7 @@ const index = fs.readFileSync('index.html', 'utf8');
 assert.ok(index.includes('src="src/research/adapter-replay-review-pack-operator-review-console.js" defer'), 'index must load alpha.36 operator review console module');
 assert.ok(index.includes('data-browser-qa="adapter-replay-review-pack-operator-review-console"'), 'index must expose alpha.36 operator review console surface');
 assert.ok(index.includes('adapterReplayOperatorReviewConsoleMount'), 'index must expose alpha.36 render mount');
-assert.ok(index.includes('Adapter Replay Review Pack Compact Navigation UX'), 'index must expose alpha.36 visible title');
+assert.ok(index.includes('Source-to-Brief Operator Continuity Console'), 'index must expose alpha.36 visible title');
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) {
@@ -105,7 +105,7 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.36 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.36 check');
 assert.equal(registry.runtime_optimization.version, VERSION);
-assert.equal(registry.runtime_optimization.optimization_scope, 'adapter_replay_review_pack_compact_navigation_ux');
+assert.equal(registry.runtime_optimization.optimization_scope, 'source_to_brief_operator_continuity_console');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }
