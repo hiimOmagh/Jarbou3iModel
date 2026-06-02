@@ -1,16 +1,16 @@
 {
-  "version": "1.4.0-alpha.40",
-  "milestone_name": "Source-to-Brief Publication Readiness Suite",
+  "version": "1.4.0-alpha.42",
+  "milestone_name": "Manual Workflow UX Consolidation",
   "release_type": "product-facing",
   "allowed_scope": [
-    "source-to-brief operator control room",
-    "stage board over current brief progress",
-    "manual intervention lanes for evidence gaps, repair queue, signoff, export, and publication review",
-    "blocker register and continuity risk consolidation",
-    "readiness scorecard for operator actionability",
-    "operator runbook with ordered next actions",
-    "export-ready control-room summary and manual copy",
-    "manual no-network control surface over existing source-to-brief metadata"
+    "manual workflow UX consolidation over the stable manual workflow",
+    "primary workflow path from intake/source packet to export/handoff",
+    "surface consolidation map across adapter replay, evidence, source-to-brief, publication, and export surfaces",
+    "duplicate-surface reduction and progressive disclosure guidance",
+    "cognitive-load reduction plan for operator actionability",
+    "mobile/RTL visibility contract and keyboard/navigation hints",
+    "export-ready UX consolidation summary and manual copy",
+    "manual no-network consolidation surface over existing metadata"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -25,7 +25,8 @@
     "batch mutation",
     "navigation-state persistence",
     "provider execution expansion",
-    "new adapter replay review-pack surface"
+    "new adapter replay review-pack surface",
+    "new source-to-brief decision surface beyond consolidation"
   ],
   "required_docs": [
     "README.md",
@@ -39,7 +40,7 @@
   ],
   "required_tests": [
     "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
-    "tests/source-to-brief-publication-readiness-suite-check.mjs",
+    "tests/manual-workflow-ux-consolidation-check.mjs",
     "tests/source-to-brief-operator-continuity-console-check.mjs",
     "tests/current-release-lock-completion-check.mjs",
     "tests/effective-diff-check.mjs",
@@ -55,7 +56,7 @@
     "tests/adapter-replay-review-pack-decision-queue-check.mjs",
     "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
     "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
-    "src/research/source-to-brief-publication-readiness-suite.js"
+    "src/research/manual-workflow-ux-consolidation.js"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -81,6 +82,7 @@
     "ALPHA38_CHANGED_FILES.json",
     "ALPHA39_CHANGED_FILES.json",
     "ALPHA40_CHANGED_FILES.json",
+    "ALPHA42_CHANGED_FILES.json",
     "CHANGELOG.md",
     "MANIFEST.json",
     "PUBLIC_DEMO.md",
@@ -97,6 +99,7 @@
     "scripts/dev-utils.mjs",
     "src/research/adapter-replay-review-pack-compact-navigation-ux.js",
     "src/research/adapter-replay-review-pack-operator-review-console.js",
+    "src/research/manual-workflow-ux-consolidation.js",
     "src/research/release-copy-contract.js",
     "src/research/render-helpers.js",
     "src/research/source-to-brief-operator-continuity-console.js",
@@ -143,6 +146,7 @@
     "tests/lock-evidence-artifact-identity-guard-check.mjs",
     "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
     "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
+    "tests/manual-workflow-ux-consolidation-check.mjs",
     "tests/mobile-header-logo-geometry-check.mjs",
     "tests/module-type-warning-fix-check.mjs",
     "tests/node24-ci-compat-check.mjs",
@@ -187,10 +191,10 @@
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.40",
-    "public labels must expose v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.42",
+    "public labels must expose v1.4.0-alpha.42 Manual Workflow UX Consolidation",
     "active release tests should derive from tests/current-release-identity.mjs where release identity is not historical",
-    "compact navigation UX must remain no-network, metadata-only, preview-only, and manually reviewed"
+    "manual workflow UX consolidation must remain no-network, metadata-only, preview-only, and manually reviewed"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -202,6 +206,13 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
+    "Suite de préparation à la publication source-vers-brief est prête pour les preuves de release",
+    "مجموعة جاهزية النشر من المصدر إلى الموجز جاهزة لأدلة الإصدار",
+    "Source-to-Brief Publication Readiness Suite is ready for release evidence",
+    "v1.4.0-alpha.40 Suite de préparation à la publication source-vers-brief",
+    "v1.4.0-alpha.40 مجموعة جاهزية النشر من المصدر إلى الموجز",
+    "v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite",
+    "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
     "v1.4.0-alpha.36 Adapter Replay Review Pack Operator Review Console",
     "v1.4.0-alpha.36 وحدة مراجعة المشغّل لحزمة مراجعة إعادة التشغيل",
     "v1.4.0-alpha.36 Console de revue opérateur du pack de revue de rejeu",
@@ -241,7 +252,7 @@
     "v1.4.0-alpha.39 Salle de contrôle opérateur source-vers-brief",
     "Source-to-Brief Operator Control Room is ready for release evidence"
   ],
-  "runtime_scope": "source_to_brief_publication_readiness_suite",
+  "runtime_scope": "manual_workflow_ux_consolidation",
   "lock_conditions": [],
   "acceptance_criteria": []
 }

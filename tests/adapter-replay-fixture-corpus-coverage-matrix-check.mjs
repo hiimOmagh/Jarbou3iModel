@@ -161,8 +161,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(NEW_MODULE), 'syntax matrix must cover alpha.14 module');
 assert.ok(registry.syntax_matrix.files.includes(NEW_CHECK), 'syntax matrix must cover alpha.14 check');
-assert.ok(['adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'source_to_brief_publication_readiness_suite', 'source_to_brief_operator_continuity_console', 'source_to_brief_publication_readiness_suite'].includes(registry.runtime_optimization.optimization_scope));
-assert.ok([VERSION,'1.4.0-alpha.28', '1.4.0-alpha.40', '1.4.0-alpha.40'].includes(registry.runtime_optimization.version));
+assert.ok(['adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'manual_workflow_ux_consolidation', 'source_to_brief_operator_continuity_console', 'manual_workflow_ux_consolidation'].includes(registry.runtime_optimization.optimization_scope));
+assert.ok([VERSION,'1.4.0-alpha.28', '1.4.0-alpha.42', '1.4.0-alpha.42'].includes(registry.runtime_optimization.version));
 
 console.log('Adapter replay fixture corpus + coverage matrix checks passed.');
 process.exit(0);

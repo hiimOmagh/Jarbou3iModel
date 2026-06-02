@@ -1,6 +1,6 @@
-## v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite
+## v1.4.0-alpha.42 — Manual Workflow UX Consolidation
 
-Public label: v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite
+Public label: v1.4.0-alpha.42 Manual Workflow UX Consolidation
 
 Product-facing source-to-brief operator control room. Adds a manual stage board, intervention lanes, blocker register, readiness scorecard, operator runbook, and export-ready control-room summary over the existing source-to-brief continuity metadata.
 

@@ -4,8 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.40';
-const CURRENT_TITLE = 'Source-to-Brief Publication Readiness Suite';
+const CURRENT_VERSION = '1.4.0-alpha.42';
+const CURRENT_TITLE = 'Manual Workflow UX Consolidation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

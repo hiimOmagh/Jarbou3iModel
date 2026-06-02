@@ -33,7 +33,7 @@ for (const token of [
   'download-artifact@v6',
   'upload-artifact@v6',
   'Build canonical lock evidence bundle',
-  'lock-evidence-bundle_1.4.0-alpha.40_${{ github.run_id }}',
+  'lock-evidence-bundle_1.4.0-alpha.42_${{ github.run_id }}',
   'needs: [no-browser, browser]',
   'Download Playwright install-deps evidence log',
   'Download Playwright install evidence log',
@@ -99,7 +99,7 @@ assert.ok(workflow.includes('Playwright install-deps started: timeout 10m npx pl
 assert.ok(workflow.includes('Playwright browser install started: timeout 8m npx playwright install chromium'), 'browser job must stamp playwright browser install log');
 assert.ok(workflow.includes("if: ${{ needs.no-browser.result == 'success' && needs.browser.result == 'success' }}"), 'canonical bundle upload/build steps must remain success-gated');
 assert.ok(workflow.includes('if: always()'), 'lock evidence decision job must run even when canonical bundle is not buildable');
-assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.40'"), 'browser job must assert matrix summary version');
+assert.ok(workflow.includes("summary.internal_build_version !== '1.4.0-alpha.42'"), 'browser job must assert matrix summary version');
 assert.ok(workflow.includes('summary.expected_rows !== 39'), 'browser job must assert matrix row activation');
 
 

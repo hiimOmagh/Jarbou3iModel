@@ -1,9 +1,13 @@
 {
   "version": "1.4.0-alpha.42",
-  "release": "v1.4.0-alpha.42 — Manual Workflow UX Consolidation",
+  "release_title": "v1.4.0-alpha.42 — Manual Workflow UX Consolidation",
   "changed_files": [
     ".github/workflows/ci.yml",
     "ALPHA37_CHANGED_FILES.json",
+    "ALPHA38_CHANGED_FILES.json",
+    "ALPHA39_CHANGED_FILES.json",
+    "ALPHA40_CHANGED_FILES.json",
+    "ALPHA42_CHANGED_FILES.json",
     "CHANGELOG.md",
     "MANIFEST.json",
     "PUBLIC_DEMO.md",
@@ -20,9 +24,12 @@
     "scripts/dev-utils.mjs",
     "src/research/adapter-replay-review-pack-compact-navigation-ux.js",
     "src/research/adapter-replay-review-pack-operator-review-console.js",
+    "src/research/manual-workflow-ux-consolidation.js",
     "src/research/release-copy-contract.js",
     "src/research/render-helpers.js",
     "src/research/source-to-brief-operator-continuity-console.js",
+    "src/research/source-to-brief-operator-control-room.js",
+    "src/research/source-to-brief-publication-readiness-suite.js",
     "tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs",
     "tests/adapter-replay-decision-drilldown-evidence-trace-links-check.mjs",
     "tests/adapter-replay-fixture-corpus-coverage-matrix-check.mjs",
@@ -64,6 +71,7 @@
     "tests/lock-evidence-artifact-identity-guard-check.mjs",
     "tests/manual-execution-safety-cockpit-session-ledger-check.mjs",
     "tests/manual-provider-adapter-sandbox-ephemeral-invocation-contract-check.mjs",
+    "tests/manual-workflow-ux-consolidation-check.mjs",
     "tests/mobile-header-logo-geometry-check.mjs",
     "tests/module-type-warning-fix-check.mjs",
     "tests/node24-ci-compat-check.mjs",
@@ -95,6 +103,8 @@
     "tests/source-refactor-readiness-audit-check.mjs",
     "tests/source-to-brief-brief-template-ux-polish-check.mjs",
     "tests/source-to-brief-operator-continuity-console-check.mjs",
+    "tests/source-to-brief-operator-control-room-check.mjs",
+    "tests/source-to-brief-publication-readiness-suite-check.mjs",
     "tests/stable-consolidation-public-surface-check.mjs",
     "tests/stable-manual-workflow-release-check.mjs",
     "tests/stable-release-check.mjs",
@@ -103,5 +113,16 @@
     "tests/test-matrix-runtime-optimization-check.mjs",
     "tests/ux-stabilization-patch-check.mjs",
     "tests/version-suite-registry.json"
-  ]
+  ],
+  "deleted_files": [],
+  "boundaries": {
+    "live_fetching": false,
+    "provider_execution": false,
+    "oauth_lifecycle": false,
+    "backend_storage_source_behavior_change": false,
+    "automatic_verification": false,
+    "automatic_signoff": false,
+    "export_lock": false,
+    "publication_permission_claim": false
+  }
 }

@@ -21,8 +21,8 @@ const walk = (dir) => {
   return out;
 };
 
-const CURRENT_VERSION = '1.4.0-alpha.40';
-const CURRENT_TITLE = 'Source-to-Brief Publication Readiness Suite';
+const CURRENT_VERSION = '1.4.0-alpha.42';
+const CURRENT_TITLE = 'Manual Workflow UX Consolidation';
 const VERSION = '1.3.0';
 const PREVIOUS_VERSION = '1.1.0-alpha.3';
 const FREEZE_BASELINE = '1.0.30';

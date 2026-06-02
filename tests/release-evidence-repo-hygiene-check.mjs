@@ -8,8 +8,8 @@ import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.4.0-alpha.40';
-const CURRENT_TITLE = 'Source-to-Brief Publication Readiness Suite';
+const CURRENT_VERSION = '1.4.0-alpha.42';
+const CURRENT_TITLE = 'Manual Workflow UX Consolidation';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

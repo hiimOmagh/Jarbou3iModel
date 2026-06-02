@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.40",
-  "internal_build_version": "1.4.0-alpha.40",
-  "public_version_label": "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
+  "evidence_matrix_config_version": "1.4.0-alpha.42",
+  "internal_build_version": "1.4.0-alpha.42",
+  "public_version_label": "v1.4.0-alpha.42 Manual Workflow UX Consolidation",
   "locales": [
     "en",
     "ar",
@@ -11,7 +11,7 @@
   "language_rules": {
     "en": {
       "required": [
-        "Source-to-Brief Publication Readiness Suite",
+        "Manual Workflow UX Consolidation",
         "publication risk matrix",
         "claim-boundary checklist",
         "source coverage digest",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite"
+      "public_label": "v1.4.0-alpha.42 Manual Workflow UX Consolidation"
     },
     "ar": {
       "required": [
@@ -239,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
-    "ar": "v1.4.0-alpha.40 مجموعة جاهزية النشر من المصدر إلى الموجز",
-    "fr": "v1.4.0-alpha.40 Suite de préparation à la publication source-vers-brief"
+    "en": "v1.4.0-alpha.42 Manual Workflow UX Consolidation",
+    "ar": "v1.4.0-alpha.42 دمج تجربة سير العمل اليدوي",
+    "fr": "v1.4.0-alpha.42 Consolidation UX du workflow manuel"
   }
 }

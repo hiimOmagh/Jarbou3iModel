@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.40",
-  "release": "v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite",
+  "version": "1.4.0-alpha.42",
+  "release": "v1.4.0-alpha.42 — Manual Workflow UX Consolidation",
   "changed_files": [
     ".github/workflows/ci.yml",
     "ALPHA37_CHANGED_FILES.json",

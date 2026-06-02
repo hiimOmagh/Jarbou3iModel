@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.40",
-  "release_title": "v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite",
+  "version_suite_registry_version": "1.4.0-alpha.42",
+  "release_title": "v1.4.0-alpha.42 — Manual Workflow UX Consolidation",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

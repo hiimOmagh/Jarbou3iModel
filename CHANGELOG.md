@@ -1,11 +1,11 @@
-## v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite
+## v1.4.0-alpha.42 — Manual Workflow UX Consolidation
 
 - Added source-to-brief operator control room: stage board, intervention lanes, blocker register, readiness scorecard, operator runbook, and export-ready control-room summary.
 - Preserved manual/no-network boundaries: no provider execution, source fetching, OAuth/backend/storage behavior change, automatic verification, signoff, export lock, or publication permission.
 
-## v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite
+## v1.4.0-alpha.42 — Manual Workflow UX Consolidation
 
-Public label: v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite
+Public label: v1.4.0-alpha.42 Manual Workflow UX Consolidation
 
 Adds a no-network source-to-brief operator continuity console: current brief stage, unresolved evidence gaps, source-to-claim repair state, operator signoff readiness, export/publication readiness, continuity risk rail, and export-ready continuity summary. No provider/OAuth/backend/storage/source behavior changes.
 
