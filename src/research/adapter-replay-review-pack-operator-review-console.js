@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine adapter replay review pack operator review console v1.4.0-alpha.39. */
+/* Jarbou3i Research Engine adapter replay review pack operator review console v1.4.0-alpha.40. */
 /* Metadata-only operator review console. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, or status persistence. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.39';
-  const MILESTONE = 'v1.4.0-alpha.39 — Source-to-Brief Operator Control Room';
+  const VERSION = '1.4.0-alpha.40';
+  const MILESTONE = 'v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite';
   const MODEL = 'source_to_brief_operator_continuity_console.v1';
   const HANDOFF_DOSSIER_BASELINE = '1.4.0-alpha.35';
   const TRIAGE_WORKBENCH_BASELINE = '1.4.0-alpha.34';

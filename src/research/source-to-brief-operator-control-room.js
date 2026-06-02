@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine source-to-brief operator control room v1.4.0-alpha.39. */
+/* Jarbou3i Research Engine source-to-brief operator control room v1.4.0-alpha.40. */
 /* Metadata-only source-to-brief control room. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, status persistence, batch mutation, or automatic signoff/export/publication action. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.39';
-  const MILESTONE = 'v1.4.0-alpha.39 — Source-to-Brief Operator Control Room';
+  const VERSION = '1.4.0-alpha.40';
+  const MILESTONE = 'v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite';
   const MODEL = 'source_to_brief_operator_control_room.v1';
   const SOURCE_TO_BRIEF_BASELINE = '1.3.0';
   const CONTINUITY_CONSOLE_BASELINE = '1.4.0-alpha.38';
@@ -13,7 +13,7 @@
   const FIXED_GENERATED_AT = '2026-06-01T00:00:00.000Z';
 
   const BOUNDARY_FLAGS = Object.freeze({
-    source_to_brief_operator_control_room_only: true,
+    source_to_brief_publication_readiness_suite_only: true,
     metadata_preview_only: true,
     continuity_console_backed: true,
     manual_operator_review_required: true,
@@ -150,7 +150,7 @@
 
   function buildExportSummary(consolePayload, stageBoard, lanes, blockers, scorecard){
     return Object.freeze({
-      summary_id:'source-to-brief-operator-control-room-export-summary',
+      summary_id:'source-to-brief-publication-readiness-suite-export-summary',
       release:MILESTONE,
       generated_at:FIXED_GENERATED_AT,
       source_to_brief_baseline:SOURCE_TO_BRIEF_BASELINE,
@@ -189,7 +189,7 @@
     const runbook = buildOperatorRunbook(stageBoard, lanes, blockers, scorecard);
     const exportSummary = buildExportSummary(continuity, stageBoard, lanes, blockers, scorecard);
     const payload = {
-      source_to_brief_operator_control_room_version: VERSION,
+      source_to_brief_publication_readiness_suite_version: VERSION,
       milestone: MILESTONE,
       model: MODEL,
       generated_at: asString(options.generated_at, FIXED_GENERATED_AT),
@@ -207,7 +207,7 @@
       export_control_room_summary: exportSummary,
       manual_control_room_copy: buildManualCopy(exportSummary, runbook),
       control_room_safety_contract: Object.freeze({
-        source_to_brief_operator_control_room_only: true,
+        source_to_brief_publication_readiness_suite_only: true,
         metadata_only: true,
         manual_operator_review_required: true,
         no_live_provider_calls: true,

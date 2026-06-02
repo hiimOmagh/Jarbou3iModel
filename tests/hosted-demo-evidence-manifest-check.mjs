@@ -6,8 +6,8 @@ import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fix
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.39';
-const CURRENT_TITLE = 'Source-to-Brief Operator Control Room';
+const CURRENT_VERSION = '1.4.0-alpha.40';
+const CURRENT_TITLE = 'Source-to-Brief Publication Readiness Suite';
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.39",
-  "internal_build_version": "1.4.0-alpha.39",
-  "public_version_label": "v1.4.0-alpha.39 Source-to-Brief Operator Control Room",
+  "evidence_matrix_config_version": "1.4.0-alpha.40",
+  "internal_build_version": "1.4.0-alpha.40",
+  "public_version_label": "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
   "locales": [
     "en",
     "ar",
@@ -11,9 +11,10 @@
   "language_rules": {
     "en": {
       "required": [
-        "Source-to-Brief Operator Control Room",
-        "operator continuity console",
-        "source-to-brief continuity",
+        "Source-to-Brief Publication Readiness Suite",
+        "publication risk matrix",
+        "claim-boundary checklist",
+        "source coverage digest",
         "no live provider calls"
       ],
       "forbidden": [
@@ -24,13 +25,14 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.39 Source-to-Brief Operator Control Room"
+      "public_label": "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite"
     },
     "ar": {
       "required": [
-        "غرفة تحكم المشغّل من المصدر إلى الموجز",
-        "استمرارية المشغّل",
-        "فجوات الأدلة",
+        "مجموعة جاهزية النشر",
+        "مصفوفة مخاطر النشر",
+        "قائمة حدود الادعاءات",
+        "ملخص تغطية المصادر",
         "دون نداءات مزوّد حية",
         "فرق معاينة تجميع الموجز",
         "اعتماد مراجعة التصدير"
@@ -44,9 +46,10 @@
     },
     "fr": {
       "required": [
-        "Salle de contrôle opérateur source-vers-brief",
-        "continuité opérateur",
-        "écarts de preuve",
+        "Suite de préparation à la publication",
+        "matrice de risque publication",
+        "checklist de limites des affirmations",
+        "digest de couverture des sources",
         "aucun appel fournisseur réel",
         "Diff aperçu assemblage du brief",
         "validation revue export",
@@ -236,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.39 Source-to-Brief Operator Control Room",
-    "ar": "v1.4.0-alpha.39 غرفة تحكم المشغّل من المصدر إلى الموجز",
-    "fr": "v1.4.0-alpha.39 Salle de contrôle opérateur source-vers-brief"
+    "en": "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
+    "ar": "v1.4.0-alpha.40 مجموعة جاهزية النشر من المصدر إلى الموجز",
+    "fr": "v1.4.0-alpha.40 Suite de préparation à la publication source-vers-brief"
   }
 }

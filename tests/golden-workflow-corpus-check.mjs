@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.39';
-const CURRENT_TITLE = 'Source-to-Brief Operator Control Room';
+const CURRENT_VERSION = '1.4.0-alpha.40';
+const CURRENT_TITLE = 'Source-to-Brief Publication Readiness Suite';
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/golden-workflow-corpus.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

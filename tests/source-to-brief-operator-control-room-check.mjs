@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const VERSION = '1.4.0-alpha.39';
-const MILESTONE = 'v1.4.0-alpha.39 — Source-to-Brief Operator Control Room';
+const VERSION = '1.4.0-alpha.40';
+const MILESTONE = 'v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite';
 const MODULE = 'src/research/source-to-brief-operator-control-room.js';
 const CHECK = 'tests/source-to-brief-operator-control-room-check.mjs';
 const DEPENDENCIES = [
@@ -55,7 +55,7 @@ const workbench = workbenchApi.buildSourceToBriefWorkbench(packet, {version:'1.3
 const continuity = continuityApi.buildSourceToBriefOperatorContinuityConsole({ source_to_brief_workbench: workbench, generated_at:'2026-06-01T16:00:00.000Z' });
 const controlRoom = mod.buildSourceToBriefOperatorControlRoom({ continuity_console: continuity, generated_at:'2026-06-01T16:00:00.000Z' });
 
-assert.equal(controlRoom.source_to_brief_operator_control_room_version, VERSION);
+assert.equal(controlRoom.source_to_brief_publication_readiness_suite_version, VERSION);
 assert.equal(controlRoom.milestone, MILESTONE);
 assert.equal(controlRoom.model, 'source_to_brief_operator_control_room.v1');
 assert.equal(controlRoom.control_room_ready, true);
@@ -80,7 +80,7 @@ assert.equal(controlRoom.export_control_room_summary.export_lock_performed, fals
 assert.equal(controlRoom.export_control_room_summary.publication_permission_claimed, false);
 assert.ok(controlRoom.manual_control_room_copy.includes('Source-to-brief operator control room verdict'), 'manual copy must summarize verdict');
 assert.ok(controlRoom.manual_control_room_copy.includes('no live provider calls'), 'manual copy must restate no-live-provider boundary');
-assert.equal(controlRoom.control_room_safety_contract.source_to_brief_operator_control_room_only, true);
+assert.equal(controlRoom.control_room_safety_contract.source_to_brief_publication_readiness_suite_only, true);
 assert.equal(controlRoom.control_room_safety_contract.metadata_only, true);
 assert.equal(controlRoom.control_room_safety_contract.no_auto_verification, true);
 assert.equal(controlRoom.control_room_safety_contract.no_auto_signoff, true);
@@ -94,9 +94,9 @@ assert.equal(controlRoom.boundary_flags.navigation_state_persistence_enabled, fa
 assert.equal(controlRoom.boundary_flags.publication_permission_claimed, false);
 
 const index = fs.readFileSync('index.html', 'utf8');
-assert.ok(index.includes('Source-to-Brief Operator Control Room'), 'index must expose current control room title');
-assert.ok(index.includes('src="src/research/source-to-brief-operator-control-room.js" defer'), 'index must load current control room module');
-assert.ok(index.includes('data-browser-qa="source-to-brief-operator-control-room"'), 'index must expose current control room browser QA surface');
+assert.ok(index.includes('Source-to-Brief Publication Readiness Suite'), 'index must expose current control room title');
+assert.ok(index.includes('src="src/research/source-to-brief-publication-readiness-suite.js" defer'), 'index must load current control room module');
+assert.ok(index.includes('data-browser-qa="source-to-brief-publication-readiness-suite"'), 'index must expose current control room browser QA surface');
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 for (const gate of ['no-browser', 'current-no-browser', 'source', 'release', 'browser']) {

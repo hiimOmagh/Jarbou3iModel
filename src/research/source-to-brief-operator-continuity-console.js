@@ -1,11 +1,11 @@
-/* Jarbou3i Research Engine source-to-brief operator continuity console v1.4.0-alpha.39. */
+/* Jarbou3i Research Engine source-to-brief operator continuity console v1.4.0-alpha.40. */
 /* Metadata-only continuity surface. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, status persistence, or UI-triggered mutation. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
 
-  const VERSION = '1.4.0-alpha.39';
-  const MILESTONE = 'v1.4.0-alpha.39 — Source-to-Brief Operator Control Room';
+  const VERSION = '1.4.0-alpha.40';
+  const MILESTONE = 'v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite';
   const MODEL = 'source_to_brief_operator_continuity_console.v1';
   const SOURCE_TO_BRIEF_BASELINE = '1.3.0';
   const OPERATOR_REVIEW_CONSOLE_BASELINE = '1.4.0-alpha.36';

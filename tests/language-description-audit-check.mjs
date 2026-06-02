@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const CURRENT_VERSION = '1.4.0-alpha.39';
-const CURRENT_TITLE = 'Source-to-Brief Operator Control Room';
+const CURRENT_VERSION = '1.4.0-alpha.40';
+const CURRENT_TITLE = 'Source-to-Brief Publication Readiness Suite';
 const VERSION = '1.3.0';
 const audit = fs.readFileSync('docs/language-description-audit.md', 'utf8');
 const app = fs.readFileSync('src/app.js', 'utf8');

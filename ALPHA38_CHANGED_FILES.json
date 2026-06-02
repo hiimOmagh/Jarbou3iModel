@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0-alpha.39",
-  "release": "v1.4.0-alpha.39 — Source-to-Brief Operator Control Room",
+  "version": "1.4.0-alpha.40",
+  "release": "v1.4.0-alpha.40 — Source-to-Brief Publication Readiness Suite",
   "changed_files": [
     ".github/workflows/ci.yml",
     "ALPHA37_CHANGED_FILES.json",

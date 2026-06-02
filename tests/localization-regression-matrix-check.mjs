@@ -6,9 +6,9 @@ const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.39 Source-to-Brief Operator Control Room', 'English public version label must identify v1.4.0-alpha.28');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.39 غرفة تحكم المشغّل من المصدر إلى الموجز', 'Arabic public version label must identify the current release');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.39 Salle de contrôle opérateur source-vers-brief', 'French public version label must identify the current release');
+assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite', 'English public version label must identify v1.4.0-alpha.28');
+assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.40 مجموعة جاهزية النشر من المصدر إلى الموجز', 'Arabic public version label must identify the current release');
+assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.40 Suite de préparation à la publication source-vers-brief', 'French public version label must identify the current release');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
@@ -51,7 +51,7 @@ hostedDemoBodies.push(...releaseCopyHostedDemoBodies);
 const arabicHostedDemoBodies = releaseCopyHostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('غرفة تحكم المشغّل من المصدر إلى الموجز') || body.includes('لوحة المراحل') || body.includes('مسارات التدخل'), 'Arabic current-release description must identify alpha.39 source-to-brief operator control room');
+  assert.ok(body.includes('مجموعة جاهزية النشر من المصدر إلى الموجز') || body.includes('مصفوفة مخاطر النشر') || body.includes('لوحة المراحل'), 'Arabic current-release description must identify alpha.40 publication readiness suite');
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
     'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',

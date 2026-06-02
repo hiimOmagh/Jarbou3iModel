@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
-const RELEASE = 'v1.4.0-alpha.39';
+const RELEASE = 'v1.4.0-alpha.40';
 const TITLE = CURRENT_TITLE;
 const PUBLIC_TITLE = CURRENT_TITLE;
 const workflowPath = '.github/workflows/ci.yml';
@@ -20,14 +20,14 @@ assert.match(workflow, /group:\s*\$\{\{ github\.workflow \}\}-\$\{\{ github\.ref
 assert.match(workflow, /no-browser:[\s\S]*?timeout-minutes:\s*20/, 'no-browser job must have a bounded timeout');
 assert.match(workflow, /browser:[\s\S]*?needs:\s*no-browser[\s\S]*?timeout-minutes:\s*30/, 'browser job must depend on no-browser and have a bounded timeout');
 assert.match(workflow, /lock-evidence-bundle:[\s\S]*?needs:\s*\[no-browser, browser\][\s\S]*?timeout-minutes:\s*15/, 'lock evidence job must remain gated and timeout-bounded');
-assert.ok(workflow.includes(`summary.internal_build_version !== '1.4.0-alpha.39'`), 'browser matrix guard must validate v1.4.0-alpha.28 internal build version');
-assert.ok(workflow.includes(`lock-evidence-bundle_1.4.0-alpha.39_`), 'lock evidence artifact must be versioned as v1.4.0-alpha.28');
+assert.ok(workflow.includes(`summary.internal_build_version !== '1.4.0-alpha.40'`), 'browser matrix guard must validate v1.4.0-alpha.28 internal build version');
+assert.ok(workflow.includes(`lock-evidence-bundle_1.4.0-alpha.40_`), 'lock evidence artifact must be versioned as v1.4.0-alpha.28');
 
 assert.equal(registry.release_title, `${RELEASE} — ${TITLE}`, 'CI registry release title must identify v1.4.0-alpha.28 adapter replay review pack release');
-assert.equal(evidenceMatrix.internal_build_version, '1.4.0-alpha.39', 'evidence matrix internal version must identify v1.4.0-alpha.28');
+assert.equal(evidenceMatrix.internal_build_version, '1.4.0-alpha.40', 'evidence matrix internal version must identify v1.4.0-alpha.28');
 assert.equal(evidenceMatrix.public_version_label, `${RELEASE} ${PUBLIC_TITLE}`, 'English public label must identify v1.4.0-alpha.28 adapter replay review pack release');
-assert.equal(evidenceMatrix.public_version_labels.ar, `v${CURRENT_VERSION} غرفة تحكم المشغّل من المصدر إلى الموجز`, 'Arabic public label must identify current release');
-assert.equal(evidenceMatrix.public_version_labels.fr, `v${CURRENT_VERSION} Salle de contrôle opérateur source-vers-brief`, 'French public label must identify current release');
+assert.equal(evidenceMatrix.public_version_labels.ar, `v${CURRENT_VERSION} مجموعة جاهزية النشر من المصدر إلى الموجز`, 'Arabic public label must identify current release');
+assert.equal(evidenceMatrix.public_version_labels.fr, `v${CURRENT_VERSION} Suite de préparation à la publication source-vers-brief`, 'French public label must identify current release');
 
 assert.ok(renderHelpers.includes(PUBLIC_TITLE), 'render helpers must expose current English release title through localized copy');
 
@@ -35,7 +35,7 @@ for (const marker of [
   'live_fetching_performed: false',
   'provider_execution_performed: false',
   'automatic_source_verification_claimed: false',
-  'Source-to-Brief Operator Control Room'
+  'Source-to-Brief Publication Readiness Suite'
 ]) {
   assert.ok(currentRelease.includes(marker), `current release doc missing controlled provider/source preparation marker: ${marker}`);
 }
