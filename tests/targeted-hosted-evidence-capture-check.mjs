@@ -41,7 +41,11 @@ assert.ok(capture.required_regions.length >= 5, 'at least five targeted evidence
 const boundedProofSelectors = capture.required_regions.map((region)=>region.proof_selector || region.selector);
 assert.ok(boundedProofSelectors.every((selector)=>selector.includes(' ') || selector.includes('>')), 'wide layout regions must use a bounded proof subselector, not the full panel root');
 assert.ok(capture.required_regions.find((region)=>region.region_id === 'first-run-guide').proof_selector.includes('.firstRunCopy'), 'first-run guide proof must target the copy block, not the full first-run panel');
-assert.ok(capture.required_regions.find((region)=>region.region_id === 'quality-export-surface').proof_selector.includes('.researchScore:first-child'), 'quality export proof must target the first score card, not the full quality output surface');
+const qualityExportRegion = capture.required_regions.find((region)=>region.region_id === 'quality-export-surface');
+assert.ok(qualityExportRegion.proof_selector.includes('.qualityExportProofSurface'), 'quality export proof must target the bounded quality/export proof surface, not the full quality output root or a single score chip');
+assert.ok(!qualityExportRegion.proof_selector.includes('.researchScore:first-child'), 'quality export proof must no longer target only the first score chip');
+assert.deepEqual([...qualityExportRegion.expected_tokens], ['Quality','Evidence scoring calibration','Publication']);
+assert.ok(qualityExportRegion.expected_tokens.length >= 3, 'quality export proof must require at least three visible tokens');
 for (const region of capture.required_regions) {
   assert.ok(region.region_id, 'region id required');
   assert.ok(region.evidence_root_selector.startsWith('[data-evidence-region="'), 'region root selector must use data-evidence-region');
@@ -49,6 +53,7 @@ for (const region of capture.required_regions) {
   assert.equal(region.selector, region.proof_selector, 'selector remains the screenshot proof selector for compatibility');
   assert.ok(region.claim.length > 20, 'region must map to a concrete claim');
   assert.ok(region.expected_tokens.length >= 1, 'region must define expected tokens');
+  assert.equal(region.expected_tokens_non_empty, true, 'region must expose non-empty expected token invariant');
   assert.ok(region.max_width <= 1200, 'target region width cap required');
   assert.ok(region.max_height <= 900, 'target region height cap required');
 }
@@ -89,6 +94,7 @@ for (const token of [
   'proof_selector',
   'bounding_box',
   'targetedPixelArea',
+  'expected_tokens_non_empty',
   'screenshot must have non-trivial pixel area',
   'screenshot must not be an empty/tiny PNG',
   '.screenshot(',

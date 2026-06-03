@@ -35,7 +35,7 @@
     Object.freeze({ region_id:'public-demo-readiness', evidence_root_selector:'[data-evidence-region="public-demo-readiness"]', proof_selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', surface:'public-demo', claim:'Public-demo readiness constraints are visible.', expected_tokens:Object.freeze(['Public demo ready']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
     Object.freeze({ region_id:'hosted-demo-release-contract', evidence_root_selector:'[data-evidence-region="hosted-demo-release-contract"]', proof_selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', surface:'hosted-demo', claim:'Current release and targeted evidence requirements are visible.', expected_tokens:Object.freeze(['Targeted Hosted Evidence Capture','locator-based screenshots','region-to-claim mapping','no full-page-only proof']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
     Object.freeze({ region_id:'evidence-review-gate', evidence_root_selector:'[data-evidence-region="evidence-review-gate"]', proof_selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', surface:'evidence-review', claim:'Evidence review gate is visible before publication.', expected_tokens:Object.freeze(['Evidence review gate']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
-    Object.freeze({ region_id:'quality-export-surface', evidence_root_selector:'[data-evidence-region="quality-export-surface"]', proof_selector:'[data-evidence-region="quality-export-surface"] .researchScore:first-child', selector:'[data-evidence-region="quality-export-surface"] .researchScore:first-child', surface:'quality-export', claim:'Quality/export score card can be targeted without relying on full-page screenshots.', expected_tokens:Object.freeze(['Quality']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT })
+    Object.freeze({ region_id:'quality-export-surface', evidence_root_selector:'[data-evidence-region="quality-export-surface"]', proof_selector:'[data-evidence-region="quality-export-surface"] .qualityExportProofSurface', selector:'[data-evidence-region="quality-export-surface"] .qualityExportProofSurface', surface:'quality-export', claim:'Quality/export proof surface captures quality, evidence-scoring, and publication-readiness evidence without relying on full-page screenshots.', expected_tokens:Object.freeze(['Quality','Evidence scoring calibration','Publication']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT })
   ]);
 
   function asArray(value){ return Array.isArray(value) ? value : []; }
@@ -51,12 +51,13 @@
       surface:String(region.surface || ''),
       claim:String(region.claim || ''),
       expected_tokens:Object.freeze(asArray(region.expected_tokens).map(String)),
+      expected_tokens_non_empty:asArray(region.expected_tokens).length > 0,
       max_width:Number(region.max_width || MAX_TARGETED_WIDTH),
       max_height:Number(region.max_height || MAX_TARGETED_HEIGHT)
     });
   }
   function buildTargetedHostedEvidenceCapture(options = {}){
-    const regions = freezeRows(asArray(options.regions).length ? options.regions.map(normalizeRegion) : REQUIRED_REGIONS);
+    const regions = freezeRows((asArray(options.regions).length ? options.regions : REQUIRED_REGIONS).map(normalizeRegion));
     const manifestRows = freezeRows(regions.map((region) => Object.assign({}, region, {
       screenshot_kind:'targeted-region',
       screenshot_policy:'locator_screenshot_required',
@@ -64,6 +65,7 @@
       full_page_only_proof_allowed:false,
       bounding_box_required:true,
       expected_token_proof_required:true,
+      expected_tokens_non_empty:region.expected_tokens_non_empty === true,
       region_to_claim_mapping_required:true,
       max_width:region.max_width,
       max_height:region.max_height,
@@ -82,6 +84,7 @@
         region_to_claim_mapping_required:true,
         bounding_box_required:true,
         expected_token_proof_required:true,
+        empty_expected_tokens_forbidden:true,
         full_page_context_capture_allowed:true,
         full_page_only_proof_allowed:false,
         target_screenshot_max_width:MAX_TARGETED_WIDTH,
@@ -92,7 +95,7 @@
         'Every required region must have a selector.',
         'Every required region must produce a locator screenshot.',
         'Every locator screenshot must include width, height, bytes, and bounding box.',
-        'Every required region must map to a claim and expected tokens.',
+        'Every required region must map to a claim and non-empty expected tokens.',
         'The evidence manifest must reject full-page-only proof.'
       ]),
       targeted_capture_copy:[

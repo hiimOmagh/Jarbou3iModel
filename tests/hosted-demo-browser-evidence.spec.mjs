@@ -45,7 +45,7 @@ const TARGETED_EVIDENCE_REGIONS = Object.freeze([
   { region_id:'public-demo-readiness', evidence_root_selector:'[data-evidence-region="public-demo-readiness"]', proof_selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', surface:'public-demo', purpose:'Proves public-demo readiness constraints are visible.', expected_tokens:['Public demo ready'], open:async()=>{} },
   { region_id:'hosted-demo-release-contract', evidence_root_selector:'[data-evidence-region="hosted-demo-release-contract"]', proof_selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', surface:'hosted-demo', purpose:'Proves the current release evidence contract and targeted screenshot policy are visible.', expected_tokens:[...expectedCurrentReleaseDescriptionTokens('en')], open:async()=>{} },
   { region_id:'evidence-review-gate', evidence_root_selector:'[data-evidence-region="evidence-review-gate"]', proof_selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', surface:'evidence-review', purpose:'Proves the evidence review gate is visible before publication.', expected_tokens:['Evidence review gate'], open:async()=>{} },
-  { region_id:'quality-export-surface', evidence_root_selector:'[data-evidence-region="quality-export-surface"]', proof_selector:'[data-evidence-region="quality-export-surface"] .researchScore:first-child', selector:'[data-evidence-region="quality-export-surface"] .researchScore:first-child', surface:'quality-export', purpose:'Proves the quality/export score card can be captured as a bounded region.', expected_tokens:['Quality'], open:openQualityExport }
+  { region_id:'quality-export-surface', evidence_root_selector:'[data-evidence-region="quality-export-surface"]', proof_selector:'[data-evidence-region="quality-export-surface"] .qualityExportProofSurface', selector:'[data-evidence-region="quality-export-surface"] .qualityExportProofSurface', surface:'quality-export', purpose:'Proves the quality/export proof surface captures quality, evidence-scoring, and publication-readiness evidence.', expected_tokens:['Quality','Evidence scoring calibration','Publication'], open:openQualityExport }
 ]);
 
 const TRANSIENT_ARTIFACT_SELECTORS = Object.freeze(['.toast.show','.modalBackdrop.show','[aria-busy="true"]','[data-loading="true"]','[data-testid*="loading"]','[class*="spinner"]','[class*="skeleton"]']);
@@ -155,8 +155,11 @@ async function captureTargetedEvidenceRegion(page, region, locale = 'en'){
   const locator = page.locator(region.proof_selector || region.selector).first();
   await expect(locator, `${region.region_id} targeted evidence proof region must be visible`).toBeVisible();
   const text = (await locator.innerText()).trim();
-  const matchedTokens = region.expected_tokens.filter((token)=>corpusHasToken(text, token));
-  expect(matchedTokens, `${region.region_id} must expose expected targeted evidence tokens`).toEqual(region.expected_tokens);
+  const expectedTokens = Array.isArray(region.expected_tokens) ? region.expected_tokens : [];
+  expect(expectedTokens.length, `${region.region_id} expected_tokens must be non-empty`).toBeGreaterThan(0);
+  const matchedTokens = expectedTokens.filter((token)=>corpusHasToken(text, token));
+  const missingTokens = expectedTokens.filter((token)=>!corpusHasToken(text, token));
+  expect(missingTokens, `${region.region_id} must expose all expected targeted evidence tokens`).toEqual([]);
   const boundingBox = await locator.boundingBox();
   expect(boundingBox, `${region.region_id} must expose a screenshot bounding box`).toBeTruthy();
   expect(Math.ceil(boundingBox.width), `${region.region_id} width must remain targeted`).toBeLessThanOrEqual(TARGETED_REGION_SCREENSHOT_MAX_WIDTH);
@@ -184,14 +187,23 @@ async function captureTargetedEvidenceRegion(page, region, locale = 'en'){
     selector:region.proof_selector || region.selector,
     purpose:region.purpose,
     claim:region.purpose,
-    expected_tokens:region.expected_tokens,
+    expected_tokens:expectedTokens,
+    expected_tokens_non_empty:expectedTokens.length > 0,
+    tokens_found:matchedTokens,
+    tokens_missing:missingTokens,
     matched_tokens:matchedTokens,
+    token_validation_passed:expectedTokens.length > 0 && missingTokens.length === 0,
     screenshot:path.relative(EVIDENCE_ROOT, screenshotPath).replace(/\\/g, '/'),
+    screenshot_file:path.relative(EVIDENCE_ROOT, screenshotPath).replace(/\\/g, '/'),
     screenshot_kind:'targeted-region',
     full_page:false,
     full_page_only_proof_allowed:false,
     bounding_box:{ x:Math.round(boundingBox.x), y:Math.round(boundingBox.y), width:Math.round(boundingBox.width), height:Math.round(boundingBox.height) },
     image,
+    pixel_area:targetedPixelArea,
+    screenshot_dimension_validation_passed:image.width <= TARGETED_REGION_SCREENSHOT_MAX_WIDTH && image.height <= TARGETED_REGION_SCREENSHOT_MAX_HEIGHT && image.width > 24 && image.height > 24 && targetedPixelArea > 20_000,
+    bounding_box_validation_passed:!!boundingBox && boundingBox.width > 0 && boundingBox.height > 0,
+    region_validation_passed:expectedTokens.length > 0 && missingTokens.length === 0 && !!boundingBox && boundingBox.width > 0 && boundingBox.height > 0 && targetedPixelArea > 20_000,
     bytes:buffer.byteLength,
     no_horizontal_overflow:overflow_px <= 2,
     horizontal_overflow_px:overflow_px,
@@ -217,13 +229,15 @@ async function generateTargetedRegionEvidence(page){
     required_region_count:TARGETED_EVIDENCE_REGIONS.length,
     targeted_region_count:regions.length,
     all_targeted_regions_visible:regions.every((region)=>region.passed === true),
-    all_targeted_region_tokens_found:regions.every((region)=>region.matched_tokens.length === region.expected_tokens.length),
+    all_targeted_regions_have_expected_tokens:regions.every((region)=>(region.expected_tokens || []).length > 0 && region.expected_tokens_non_empty === true),
+    all_targeted_region_tokens_found:regions.every((region)=>(region.expected_tokens || []).length > 0 && (region.tokens_missing || []).length === 0),
     all_targeted_region_bounding_boxes_valid:regions.every((region)=>region.bounding_box.width > 0 && region.bounding_box.height > 0),
     screenshot_dimension_caps:{ max_width:TARGETED_REGION_SCREENSHOT_MAX_WIDTH, max_height:TARGETED_REGION_SCREENSHOT_MAX_HEIGHT },
     regions
   };
   expect(manifest.targeted_region_count).toBe(manifest.required_region_count);
   expect(manifest.all_targeted_regions_visible).toBe(true);
+  expect(manifest.all_targeted_regions_have_expected_tokens).toBe(true);
   expect(manifest.all_targeted_region_tokens_found).toBe(true);
   expect(manifest.all_targeted_region_bounding_boxes_valid).toBe(true);
   writeJson(path.join(EVIDENCE_ROOT, TARGETED_REGION_EVIDENCE_FILE), manifest);
