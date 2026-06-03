@@ -79,7 +79,7 @@ function visibleTextCorpus(snapshot){ return (snapshot.visible_text || []).join(
 function publicVersionLabelsForLocale(locale){ const configured = MATRIX_CONFIG.public_version_labels?.[locale] || []; const labels = Array.isArray(configured) ? configured : [configured]; return [PUBLIC_VERSION_LABEL, ...labels].filter(Boolean); }
 function staleReleaseTitleMatches(corpus){ return STALE_RELEASE_TITLE_TOKENS.filter((token)=>corpusHasToken(corpus, token)); }
 function staleCurrentReleaseDescriptionMatches(text){ return (RELEASE_COPY_CONTRACT.staleVisibleText || []).filter((token)=>corpusHasToken(text, token)); }
-function expectedCurrentReleaseDescriptionTokens(locale){ return RELEASE_COPY_CONTRACT.requiredVisibleText?.[locale] || []; }
+function expectedCurrentReleaseDescriptionTokens(locale){ return RELEASE_COPY_CONTRACT.requiredVisibleText?.[locale] || RELEASE_COPY_CONTRACT.expectedCurrentReleaseDescriptionTokens?.[locale] || []; }
 function expectedCurrentReleaseDescriptionMatches(locale, text){ return expectedCurrentReleaseDescriptionTokens(locale).filter((token)=>corpusHasToken(text, token)); }
 function findMojibakeMarkers(text){
   const value = String(text || '');

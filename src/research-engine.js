@@ -2637,7 +2637,8 @@
     const fm = (ge.formats || []).length ? ge.formats.join(', ') : 'none';
     const graphHtml = '<div class="researchJsonCard strategicEvidenceGraphSummary" data-browser-qa="strategic-evidence-graph"><h4>' + esc(gt) + '</h4><div class="miniChips"><span>graph nodes ' + esc(gq.node_count || 0) + '</span><span>edges ' + esc(gq.edge_count || 0) + '</span><span>formats: ' + esc(fm) + '</span><span>gate: ' + esc(lStatus(gq.release_gate || graphIntel.release_gate || 'graph_review_required')) + '</span></div><small>graph gaps: ' + esc(gf) + ' · no live fetching · no automatic source verification</small></div>';
     const reportHtml = scoringHtml + graphHtml + '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(lStatus(report.publication_readiness)) + '</h4><div class="miniChips"><span>' + esc(lStatus(report.release_gate)) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' ' + esc(tr('blockers')) + '</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
-    el.innerHTML = '<div class="qualityExportProofSurface" data-browser-qa="quality-export-proof-surface">' + scoreHtml + reportHtml + '</div>';
+    const proofSurfaceHtml = '<div class="qualityExportProofSurface" data-browser-qa="quality-export-proof-surface" style="box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:10px 14px;"><span>Quality</span><span>Evidence scoring calibration</span><span>Publication</span></div>';
+    el.innerHTML = proofSurfaceHtml + scoreHtml + reportHtml;
   }
   function scrubVisibleMojibakeText(root = document.body){
     if(!root || typeof document === 'undefined') return;
