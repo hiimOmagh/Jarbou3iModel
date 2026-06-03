@@ -255,8 +255,21 @@ function localizedVersionVisible(locale, corpus){
 function languagePurity(locale, corpus){
   const rules = MATRIX_CONFIG.language_rules[locale] || {required:[], forbidden:[]};
   const required_present = rules.required.filter((token)=>corpusHasToken(corpus, token));
+  const required_missing = rules.required.filter((token)=>!corpusHasToken(corpus, token));
   const forbidden_present = rules.forbidden.filter((token)=>corpusHasToken(corpus, token));
-  return { required_present, required_missing:rules.required.filter((token)=>!corpusHasToken(corpus, token)), forbidden_present, language_purity_passed:forbidden_present.length === 0 && required_present.length >= 1 };
+  const required_language_proof_passed = required_present.length >= 1;
+  const language_required_blocking_missing = required_language_proof_passed ? [] : required_missing;
+  const language_required_advisory_missing = required_language_proof_passed ? required_missing : [];
+  return {
+    required_present,
+    required_missing,
+    language_required_blocking_missing,
+    language_required_advisory_missing,
+    forbidden_present,
+    required_language_proof_passed,
+    language_required_threshold:'at_least_one_required_locale_marker',
+    language_purity_passed:forbidden_present.length === 0 && required_language_proof_passed
+  };
 }
 async function collectDomFacts(page, locale, surface){
   return page.evaluate(({ locale, surface, version, publicVersionLabel }) => {
@@ -292,8 +305,8 @@ async function captureMatrixRow(page, locale, surface){
   const staleTokens = ['1.1.0-alpha','1.1.0-rc.0','1.1.0-rc.1','1.1.0-stable-fix.1','1.4.0-alpha.24','alpha.24','alpha.23','RC0','RC1', ...STALE_RELEASE_TITLE_TOKENS, ...(RELEASE_COPY_CONTRACT.staleVisibleText || [])]
     .filter((token, index, tokens)=>token && !currentReleaseResidueAllowlist.has(token) && tokens.indexOf(token) === index);
   const staleMatches = staleTokens.filter((token)=>corpusHasToken(corpus, token));
-  const validation = { matrix_id:rowId, locale, surface:surface.slug, surface_id:surface.id, internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, screenshot:path.relative(EVIDENCE_ROOT, screenshot).replaceAll(path.sep,'/'), visible_text_file:path.relative(EVIDENCE_ROOT, visibleTextFile).replaceAll(path.sep,'/'), dom_facts_file:path.relative(EVIDENCE_ROOT, domFactsFile).replaceAll(path.sep,'/'), required_copy_present:purity.required_present.length >= 1, version_visible:localizedVersionVisible(locale, corpus), language_purity_passed:purity.language_purity_passed, language_required_present:purity.required_present, language_required_missing:purity.required_missing, forbidden_language_tokens_present:purity.forbidden_present, stale_version_residue_detected:staleMatches.length > 0, stale_version_residue_tokens:staleMatches, mojibake_markers:findMojibakeMarkers(corpus), horizontal_overflow_px, capture_settled:settle.settled === true, visual_artifact_guard_passed:artifact_guard.visual_artifact_guard_passed === true, required_state_present:domFacts.required_selector_present === true, required_text_present:domFacts.required_text_present === true, image_width:image.width, image_height:image.height, bytes:buffer.byteLength, pass:false };
-  validation.pass = validation.required_copy_present && validation.version_visible && validation.language_purity_passed && !validation.stale_version_residue_detected && validation.mojibake_markers.length === 0 && validation.horizontal_overflow_px <= 2 && validation.capture_settled && validation.visual_artifact_guard_passed && validation.required_state_present && validation.required_text_present && buffer.byteLength > 20_000;
+  const validation = { matrix_id:rowId, locale, surface:surface.slug, surface_id:surface.id, internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, screenshot:path.relative(EVIDENCE_ROOT, screenshot).replaceAll(path.sep,'/'), visible_text_file:path.relative(EVIDENCE_ROOT, visibleTextFile).replaceAll(path.sep,'/'), dom_facts_file:path.relative(EVIDENCE_ROOT, domFactsFile).replaceAll(path.sep,'/'), required_copy_present:purity.required_present.length >= 1, version_visible:localizedVersionVisible(locale, corpus), language_purity_passed:purity.language_purity_passed, required_language_proof_passed:purity.required_language_proof_passed === true, language_required_threshold:purity.language_required_threshold, language_required_present:purity.required_present, language_required_missing:purity.required_missing, language_required_missing_semantics:'advisory_when_language_required_blocking_missing_is_empty', language_required_blocking_missing:purity.language_required_blocking_missing, language_required_advisory_missing:purity.language_required_advisory_missing, forbidden_language_tokens_present:purity.forbidden_present, stale_version_residue_detected:staleMatches.length > 0, stale_version_residue_tokens:staleMatches, mojibake_markers:findMojibakeMarkers(corpus), horizontal_overflow_px, capture_settled:settle.settled === true, visual_artifact_guard_passed:artifact_guard.visual_artifact_guard_passed === true, required_state_present:domFacts.required_selector_present === true, required_text_present:domFacts.required_text_present === true, image_width:image.width, image_height:image.height, bytes:buffer.byteLength, pass:false };
+  validation.pass = validation.required_copy_present && validation.required_language_proof_passed && validation.language_required_blocking_missing.length === 0 && validation.version_visible && validation.language_purity_passed && !validation.stale_version_residue_detected && validation.mojibake_markers.length === 0 && validation.horizontal_overflow_px <= 2 && validation.capture_settled && validation.visual_artifact_guard_passed && validation.required_state_present && validation.required_text_present && buffer.byteLength > 20_000;
   const validationFile = slugPath(locale, surface.slug, 'validation.json');
   writeJson(validationFile, validation);
   expect(validation.pass, `${rowId} matrix row must pass`).toBe(true);
@@ -309,10 +322,15 @@ async function generateEvidenceMatrix(page){
   }
   const expectedRows = MATRIX_CONFIG.locales.length * MATRIX_CONFIG.surfaces.length;
   const failedRows = rows.filter((row)=>row.pass !== true);
-  const matrixSummary = { internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, matrix_config_version:MATRIX_CONFIG.evidence_matrix_config_version, language_count:MATRIX_CONFIG.locales.length, languages:MATRIX_CONFIG.locales, surface_count:MATRIX_CONFIG.surfaces.length, surfaces:MATRIX_CONFIG.surfaces.map((surface)=>({id:surface.id, slug:surface.slug, label:surface.label})), expected_rows:expectedRows, actual_rows:rows.length, passed_rows:rows.length - failedRows.length, failed_rows:failedRows.length, all_required_surfaces_present:rows.length === expectedRows, all_required_languages_present:MATRIX_CONFIG.locales.every((locale)=>rows.some((row)=>row.locale === locale)), language_purity_passed:rows.every((row)=>row.language_purity_passed === true), visual_guard_passed:rows.every((row)=>row.visual_artifact_guard_passed === true), horizontal_overflow_max_px:Math.max(0, ...rows.map((row)=>Number(row.horizontal_overflow_px || 0))), stale_version_residue_detected:rows.some((row)=>row.stale_version_residue_detected === true), mojibake_detected:rows.some((row)=>(row.mojibake_markers || []).length > 0), golden_workflow_loaded:rows.some((row)=>row.surface === 'golden-workflow-demo'), export_pack_v3_valid:true, publication_review_valid:true, rows };
+  const languageBlockingRows = rows.filter((row)=>(row.language_required_blocking_missing || []).length > 0 || row.required_language_proof_passed !== true);
+  const languageAdvisoryRows = rows.filter((row)=>(row.language_required_advisory_missing || []).length > 0);
+  const matrixSummary = { internal_build_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, matrix_config_version:MATRIX_CONFIG.evidence_matrix_config_version, language_count:MATRIX_CONFIG.locales.length, languages:MATRIX_CONFIG.locales, surface_count:MATRIX_CONFIG.surfaces.length, surfaces:MATRIX_CONFIG.surfaces.map((surface)=>({id:surface.id, slug:surface.slug, label:surface.label})), expected_rows:expectedRows, actual_rows:rows.length, passed_rows:rows.length - failedRows.length, failed_rows:failedRows.length, all_required_surfaces_present:rows.length === expectedRows, all_required_languages_present:MATRIX_CONFIG.locales.every((locale)=>rows.some((row)=>row.locale === locale)), language_purity_passed:rows.every((row)=>row.language_purity_passed === true), language_required_missing_semantics:'blocking_missing_fails_rows_advisory_missing_does_not', language_required_blocking_passed:languageBlockingRows.length === 0, language_required_blocking_missing_rows:languageBlockingRows.length, language_required_advisory_missing_rows:languageAdvisoryRows.length, language_required_advisory_missing_total:rows.reduce((total, row)=>total + (row.language_required_advisory_missing || []).length, 0), visual_guard_passed:rows.every((row)=>row.visual_artifact_guard_passed === true), horizontal_overflow_max_px:Math.max(0, ...rows.map((row)=>Number(row.horizontal_overflow_px || 0))), stale_version_residue_detected:rows.some((row)=>row.stale_version_residue_detected === true), mojibake_detected:rows.some((row)=>(row.mojibake_markers || []).length > 0), golden_workflow_loaded:rows.some((row)=>row.surface === 'golden-workflow-demo'), export_pack_v3_valid:true, publication_review_valid:true, rows };
   writeJson(path.join(EVIDENCE_ROOT, 'matrix-summary.json'), matrixSummary);
   expect(matrixSummary.expected_rows).toBe(39);
   expect(matrixSummary.failed_rows).toBe(0);
+  expect(matrixSummary.language_required_blocking_passed).toBe(true);
+  expect(matrixSummary.language_required_blocking_missing_rows).toBe(0);
+  expect(matrixSummary.language_required_advisory_missing_rows).toBeGreaterThanOrEqual(0);
   expect(matrixSummary.mojibake_detected).toBe(false);
   return { rows, matrixSummary };
 }
