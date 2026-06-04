@@ -4,6 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -26,7 +28,7 @@ vm.createContext(sandbox);
 vm.runInContext(read('src/research/hosted-demo-verification.js'), sandbox, { filename:'src/research/hosted-demo-verification.js' });
 const hosted = sandbox.window.Jarbou3iResearchModules.hostedDemoVerification;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(hosted.VERSION, '1.3.0');
 assert.ok(index.includes('id="hostedDemoVerificationPanel"'), 'hosted demo panel missing');
 assert.ok(index.includes('id="hostedDemoEvidenceReviewPanel"'), 'evidence review panel missing');

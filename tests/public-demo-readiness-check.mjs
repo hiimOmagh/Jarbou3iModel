@@ -4,6 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -28,7 +30,7 @@ vm.createContext(sandbox);
 vm.runInContext(read('src/research/public-demo-readiness.js'), sandbox, { filename:'src/research/public-demo-readiness.js' });
 const publicDemo = sandbox.window.Jarbou3iResearchModules.publicDemoReadiness;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(publicDemo.VERSION, '1.3.0');
 assert.ok(index.includes('id="publicDemoReadinessPanel"'), 'public demo panel missing');
 assert.ok(index.includes('src="src/research/public-demo-readiness.js" defer'), 'public demo module missing from index');

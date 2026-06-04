@@ -4,6 +4,8 @@ import { execSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
+import { CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -33,7 +35,7 @@ const trackedPaths = (() => {
   }
 })();
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(pkg.description.includes('evidence scoring'));
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.equal(sample.workflow_version, '1.3.0');
@@ -85,7 +87,7 @@ assert.ok(migrationSource.includes("const MIGRATION_VERSION = '1.3.0'"));
 
 for (const corpus of [manifest, changelog, readme, qaMatrix, roadmap]) {
   assert.ok(corpus.includes('v1.4.0-alpha.28') || corpus.includes('v1.3.0') || corpus.includes('v1.1.0'), 'release corpus missing current alpha.1, stable baseline, or retained history');
-  assert.ok(corpus.includes('Targeted Hosted Evidence Capture') || corpus.includes('Stable Manual Workflow Release') || corpus.includes('Diagnostic Repair Queue + Export Risk Resolution'), 'release corpus missing current alpha.1, stable, or retained release title');
+  assert.ok(corpus.includes(CURRENT_TITLE) || corpus.includes('Stable Manual Workflow Release') || corpus.includes('Diagnostic Repair Queue + Export Risk Resolution'), 'release corpus missing current alpha.1, stable, or retained release title');
 }
 
 assert.ok(hygieneCheck.includes('docs/v1.0.11-repository-hygiene-stale-artifact-cleanup.md'));

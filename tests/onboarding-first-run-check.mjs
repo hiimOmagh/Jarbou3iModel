@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const index = fs.readFileSync('index.html', 'utf8');
@@ -17,7 +19,7 @@ vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync('src/research/onboarding.js', 'utf8'), sandbox);
 const onboarding = sandbox.window.Jarbou3iResearchModules.onboarding;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(onboarding.VERSION, '1.3.0');
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.ok(schema.required.includes('onboarding'), 'schema must require onboarding metadata');

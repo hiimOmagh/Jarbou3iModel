@@ -4,14 +4,14 @@ import { spawnSync } from 'node:child_process';
 import { fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
 
-const CURRENT_VERSION = '1.4.0-alpha.43';
 const HISTORICAL_VERSION = '1.0.23';
 const HISTORICAL_TITLE = 'CI Result Review + Browser Evidence Artifact Audit';
-const CURRENT_TITLE = 'Targeted Hosted Evidence Capture';
 
 const pkg = json('package.json');
 const lock = json('package-lock.json');

@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -42,7 +44,7 @@ const templates = context.window.Jarbou3iResearchModules.sourcePacketTemplates;
 const importer = context.window.Jarbou3iResearchModules.sourcePacketImporter;
 const roundtrip = context.window.Jarbou3iResearchModules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(templates.VERSION, '1.3.0');
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.equal(schema.$defs.source_packet_template_report.properties.template_report_version.const, '1.3.0');

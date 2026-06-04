@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const index = fs.readFileSync('index.html', 'utf8');
 const styles = fs.readFileSync('src/styles.css', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(index.includes('id="releaseHealthCard"'), 'release health summary card missing');
 assert.ok(index.includes('id="releaseHealthMetrics"'), 'release health metrics outlet missing');
 assert.ok(index.includes('id="researchModeNav"'), 'research mode navigation missing');

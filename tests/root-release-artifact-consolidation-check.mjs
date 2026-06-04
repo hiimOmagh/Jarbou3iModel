@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
+import { CURRENT_TITLE } from './current-release-identity.mjs';
+
 
 const VERSION = '1.4.0-alpha.43';
-const TITLE = 'Targeted Hosted Evidence Capture';
+const TITLE = CURRENT_TITLE;
 const RELEASE = `v${VERSION} — ${TITLE}`;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 

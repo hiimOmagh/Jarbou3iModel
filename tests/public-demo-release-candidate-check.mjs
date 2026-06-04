@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.43';
-const CURRENT_TITLE = 'Targeted Hosted Evidence Capture';
+
 const VERSION = '1.4.0-alpha.43';
-const RELEASE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
+const RELEASE = CURRENT_RELEASE;
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const index = fs.readFileSync('index.html', 'utf8');
@@ -16,7 +16,7 @@ const qa = fs.readFileSync('docs/qa-matrix.md', 'utf8');
 assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
 assert.equal(registry.release_title, `v${CURRENT_VERSION} — ${CURRENT_TITLE}`);
-assert.ok(index.includes('v1.4.0-alpha.43') && (index.includes('Targeted Hosted Evidence Capture') || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes('Targeted Hosted Evidence Capture')), 'index/release helpers must expose alpha.30 release identity');
+assert.ok(index.includes('v1.4.0-alpha.43') && (index.includes(CURRENT_TITLE) || fs.readFileSync('src/research/render-helpers.js', 'utf8').includes(CURRENT_TITLE)), 'index/release helpers must expose alpha.30 release identity');
 const renderHelpers = fs.readFileSync('src/research/render-helpers.js', 'utf8');
 assert.ok(index.includes('سطح التحكم في اكتساب المصادر') || renderHelpers.includes('سطح التحكم في اكتساب المصادر'), 'Arabic alpha.1 public visible copy missing');
 assert.ok(index.includes('Surface de contrôle d’acquisition des sources') || renderHelpers.includes('Surface de contrôle d’acquisition des sources'), 'French alpha.1 public visible copy missing');

@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -24,7 +26,7 @@ vm.createContext(sandbox);
 vm.runInContext(read('src/research/hosted-demo-verification.js'), sandbox, { filename:'src/research/hosted-demo-verification.js' });
 const hosted = sandbox.window.Jarbou3iResearchModules.hostedDemoVerification;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(config.includes('HOSTED_DEMO_URL'), 'Playwright config must support hosted URL verification');
 assert.ok(config.includes('webServer: hostedDemoUrl ? undefined'), 'hosted URL mode must not launch local webServer');
 assert.ok(browserSpec.includes('HOSTED_DEMO_EVIDENCE_DIR'), 'browser evidence spec must support artifact directory override');

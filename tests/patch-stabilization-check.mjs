@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { getMigrationFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const schema = JSON.parse(fs.readFileSync('schema/research-workflow.schema.json', 'utf8'));
@@ -14,7 +16,7 @@ const ciGateRegistry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json',
 const v103Entry = versionRegistry.entries.find((entry) => entry.id === 'v103');
 const release = fs.readFileSync('src/research/release-candidate.js', 'utf8');
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 assert.equal(fixture.workflow_version, '1.3.0');
 assert.equal(fixture.release_candidate.stable_release_version, '1.3.0');

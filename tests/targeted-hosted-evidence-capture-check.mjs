@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_RELEASE } from './current-release-identity.mjs';
+
 
 const VERSION = '1.4.0-alpha.43';
-const MILESTONE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
+const MILESTONE = CURRENT_RELEASE;
 const MODULE = 'src/research/targeted-hosted-evidence-capture.js';
 const CHECK = 'tests/targeted-hosted-evidence-capture-check.mjs';
 const HOSTED_SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';

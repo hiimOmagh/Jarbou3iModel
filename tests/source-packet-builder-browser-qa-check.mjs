@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -18,7 +20,7 @@ const fixture = json('fixtures/research/sample-research-workflow-en.json');
 const migrationFixture = getMigrationFixture('fixtures/migrations/v1.3.0-packet.json');
 const privacyFixture = getPrivacyFixture('fixtures/privacy/browser-generated-export-v1.3.0.json');
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(schema.properties.workflow_version.const, '1.3.0');
 for (const packet of [fixture, migrationFixture, privacyFixture]) {
   assert.equal(packet.workflow_version, '1.3.0');

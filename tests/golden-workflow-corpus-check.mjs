@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.43';
-const CURRENT_TITLE = 'Targeted Hosted Evidence Capture';
+
 const VERSION = '1.3.0';
 const source = fs.readFileSync('src/research/golden-workflow-corpus.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');

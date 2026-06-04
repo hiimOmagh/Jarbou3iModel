@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const worker = fs.readFileSync('backend/cloudflare-worker.js', 'utf8');
 const readme = fs.readFileSync('backend/README.md', 'utf8');
@@ -34,7 +36,7 @@ for (const token of [
   'npm run test:backend:hardening'
 ]) assert.ok(readme.includes(token) || checklist.includes(token), `Docs missing hardening token: ${token}`);
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(schema.required.includes('backend_hardening'), 'schema must require backend_hardening metadata');

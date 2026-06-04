@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { migrationRegistry, privacyRegistry } from './fixture-registry-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.43';
-const CURRENT_TITLE = 'Targeted Hosted Evidence Capture';
+
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));

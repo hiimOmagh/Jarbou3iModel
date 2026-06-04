@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const fail = (message) => {
   console.error(`QA check failed: ${message}`);
@@ -111,8 +113,8 @@ if (!researchApp.includes('source_policy')) fail('source policy support missing'
 if (!index.includes('id="evidenceReviewOutput"')) fail('evidence review queue UI missing');
 if (!researchApp.includes('evidence_review_queue') || !researchApp.includes('promoteReviewItem')) fail('evidence review queue support missing');
 if (!sourceConnectors.includes('SOURCE_CONNECTORS') || !sourceConnectors.includes('runSourceFixtureSuite')) fail('source connector contracts missing');
-if (pkg.version !== '1.4.0-alpha.43') fail('package version must be 1.4.0-alpha.43');
-if (!index.includes('name="app-version" content="1.4.0-alpha.43"')) fail('app version metadata missing');
+if (pkg.version !== CURRENT_VERSION) fail('package version must be 1.4.0-alpha.43');
+if (!index.includes(`name="app-version" content="${CURRENT_VERSION}"`)) fail(`app version metadata missing for ${CURRENT_VERSION}`);
 
 const requiredTop = ['schema_version','subject','interests','actors','tools','narrative','results','feedback','contradictions','scenarios'];
 const arraySections = ['interests','actors','tools','narrative','results','feedback'];

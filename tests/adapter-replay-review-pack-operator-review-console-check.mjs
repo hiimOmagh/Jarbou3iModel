@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_RELEASE } from './current-release-identity.mjs';
+
 
 const VERSION = '1.4.0-alpha.43';
-const MILESTONE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
+const MILESTONE = CURRENT_RELEASE;
 const MODULE = 'src/research/adapter-replay-review-pack-operator-review-console.js';
 const CHECK = 'tests/adapter-replay-review-pack-operator-review-console-check.mjs';
 const DEPENDENCIES = [

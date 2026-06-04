@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const scorerSource = read('src/research/evidence-scorer.js');
@@ -26,7 +28,7 @@ vm.runInContext(builderSource, context, {filename:'src/research/source-packet-bu
 const scorer = context.window.Jarbou3iResearchModules.evidenceScorer;
 const builder = context.window.Jarbou3iResearchModules.sourcePacketBuilder;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(builder.VERSION, '1.3.0');
 assert.equal(builder.BUILDER_VERSION, 'source_packet_builder.v1');
 assert.equal(builder.PACKET_SCHEMA, 'manual_source_packet.v1');

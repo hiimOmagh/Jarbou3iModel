@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const index = fs.readFileSync('index.html', 'utf8');
 const styles = fs.readFileSync('src/styles.css', 'utf8');
@@ -9,7 +11,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
 const migrations = fs.readFileSync('src/research/migrations.js', 'utf8');
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(fixture.workflow_version, '1.3.0');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');

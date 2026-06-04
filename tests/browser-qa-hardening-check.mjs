@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const playwrightConfig = fs.readFileSync('playwright.config.js', 'utf8');
@@ -12,7 +14,7 @@ const engine = fs.readFileSync('src/research-engine.js', 'utf8');
 const docs = releaseDocExists('docs/v1.0.4-browser-qa-visual-regression-hardening.md') ? readReleaseDoc('docs/v1.0.4-browser-qa-visual-regression-hardening.md') : '';
 const fixture = JSON.parse(fs.readFileSync('fixtures/research/sample-research-workflow-en.json', 'utf8'));
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 for (const script of ['test:browser:layout','test:browser:visual','test:browser:visual:strict','test:browser:qa','test:version-registry','test:current:no-browser']) {
   assert.ok(Object.keys(pkg.scripts).length <= 20, 'package script surface must remain compressed');
 }

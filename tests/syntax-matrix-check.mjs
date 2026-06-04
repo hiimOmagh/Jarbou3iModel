@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import { spawn } from 'node:child_process';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const matrix = registry.syntax_matrix || {};
@@ -9,8 +11,8 @@ const files = Array.isArray(matrix.files) ? matrix.files : [];
 const requestedConcurrency = Number.parseInt(process.env.CI_SYNTAX_CONCURRENCY || String(matrix.default_concurrency || 8), 10);
 const concurrency = Math.max(1, Math.min(Number.isFinite(requestedConcurrency) ? requestedConcurrency : 8, os.cpus().length || 8, files.length || 1));
 
-assert.equal(registry.ci_gate_registry_version, '1.4.0-alpha.43');
-assert.equal(matrix.version, '1.4.0-alpha.43');
+assert.equal(registry.ci_gate_registry_version, CURRENT_VERSION);
+assert.equal(matrix.version, CURRENT_VERSION);
 assert.equal(matrix.runner, 'tests/syntax-matrix-check.mjs');
 assert.equal(matrix.parallelizable, true);
 assert.ok(files.length >= 60, `syntax matrix unexpectedly small: ${files.length}`);

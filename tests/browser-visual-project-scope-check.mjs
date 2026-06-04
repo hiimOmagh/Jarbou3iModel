@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const spec = fs.readFileSync('tests/browser-visual-regression.spec.mjs', 'utf8');
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -7,7 +9,7 @@ const ciNoBrowser = fs.readFileSync('scripts/ci-no-browser.sh', 'utf8');
 const ciBrowser = fs.readFileSync('scripts/ci-browser.sh', 'utf8');
 const workflow = fs.readFileSync('.github/workflows/ci.yml', 'utf8');
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(spec.includes("testInfo.project.name !== 'chromium'"), 'desktop visual screenshots must be scoped to chromium only');
 assert.ok(spec.includes("testInfo.project.name !== 'mobile-chrome'"), 'mobile visual screenshots must be scoped to mobile-chrome only');
 assert.ok(spec.includes('v121-desktop-'), 'desktop screenshots should use v1.1.0 artifact names');

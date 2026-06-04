@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
@@ -36,7 +38,7 @@ const builder = modules.sourcePacketBuilder;
 const importer = modules.sourcePacketImporter;
 const roundtrip = modules.sourcePacketRoundtrip;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(builder.VERSION, '1.3.0');
 assert.equal(importer.VERSION, '1.3.0');
 assert.equal(roundtrip.VERSION, '1.3.0');

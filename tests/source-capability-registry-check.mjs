@@ -4,6 +4,8 @@ import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, registryHasMigrationFixture, registryHasPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const read = (file) => readReleaseArtifact(file);
 const json = (file) => JSON.parse(read(file));
@@ -29,7 +31,7 @@ vm.createContext(context);
 vm.runInContext(moduleSource, context, { filename: 'src/research/source-capability-registry.js' });
 const registry = context.Jarbou3iResearchModules.sourceCapabilityRegistry;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.ok(pkg.description.includes('source strategy'));
 assert.equal(registry.VERSION, '1.3.0');
 assert.equal(typeof registry.strategyBlueprint, 'function');

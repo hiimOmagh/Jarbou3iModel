@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
+
 
 const releaseModule = fs.readFileSync('src/research/release-candidate.js', 'utf8');
 const engine = fs.readFileSync('src/research-engine.js', 'utf8');
@@ -18,7 +20,7 @@ vm.createContext(context);
 vm.runInContext(releaseModule, context, { filename: 'src/research/release-candidate.js' });
 const release = context.Jarbou3iResearchModules.releaseCandidate;
 
-assert.equal(pkg.version, '1.4.0-alpha.43');
+assert.equal(pkg.version, CURRENT_VERSION);
 assert.equal(release.RELEASE_VERSION, '1.3.0');
 assert.equal(typeof release.releaseCandidatePolicy, 'function');
 assert.equal(typeof release.buildReleaseCandidateReport, 'function');

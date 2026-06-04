@@ -2,13 +2,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { CURRENT_PUBLIC_LABEL, evidenceMatrixConfig } from './current-release-identity.mjs';
+
 const matrix=fs.readFileSync('docs/localization-regression-matrix.md','utf8');
 for (const token of ['visible-text-ar.json','visible-text-fr.json','visible-text-en.json','JSON','OAuth','PKCE','BYOK','OpenAI']) assert.ok(matrix.includes(token), token);
 
 const matrixConfig = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
-assert.equal(matrixConfig.public_version_labels.en, 'v1.4.0-alpha.43 Targeted Hosted Evidence Capture', 'English public version label must identify v1.4.0-alpha.28');
-assert.equal(matrixConfig.public_version_labels.ar, 'v1.4.0-alpha.43 التقاط أدلة الاستضافة المستهدفة', 'Arabic public version label must identify the current release');
-assert.equal(matrixConfig.public_version_labels.fr, 'v1.4.0-alpha.43 Capture ciblée des preuves hébergées', 'French public version label must identify the current release');
+assert.equal(matrixConfig.public_version_labels.en, CURRENT_PUBLIC_LABEL, 'English public version label must identify v1.4.0-alpha.28');
+assert.equal(matrixConfig.public_version_labels.ar, evidenceMatrixConfig.public_version_labels.ar, 'Arabic public version label must identify the current release');
+assert.equal(matrixConfig.public_version_labels.fr, evidenceMatrixConfig.public_version_labels.fr, 'French public version label must identify the current release');
 assert.ok(matrixConfig.language_rules.ar.required.includes('فرق معاينة تجميع الموجز'), 'Arabic evidence matrix must require alpha.5 preview diff copy');
 assert.ok(matrixConfig.language_rules.fr.required.includes('Diff aperçu assemblage du brief'), 'French evidence matrix must require alpha.5 preview diff copy');
 const renderPublicLabels = fs.readFileSync('src/research/render-helpers.js', 'utf8');
