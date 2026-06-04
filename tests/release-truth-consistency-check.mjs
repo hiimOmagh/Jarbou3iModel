@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { CURRENT_PUBLIC_LABEL, CURRENT_RELEASE, CURRENT_RUNTIME_SCOPE, CURRENT_TITLE, CURRENT_VERSION, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
+import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
 const VERSION = CURRENT_VERSION;
 const RELEASE = CURRENT_RELEASE;
@@ -33,7 +33,7 @@ const index = read('index.html');
 const render = read('src/research/render-helpers.js');
 
 assert.equal(pkg.version, VERSION);
-assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose current release public label');
+assert.ok(pkg.description.includes(PUBLIC_LABEL), 'package description must expose alpha.15 public label');
 for (const token of ['source strategy continuity','release evidence continuity','package script compression and CI gate registry','cryptographic signature claim', STABLE_BASELINE, MOCK_TO_LIVE_BASELINE, LOCKED_ALPHA14]) {
   assert.ok(pkg.description.includes(token), `package description missing token: ${token}`);
 }
@@ -47,7 +47,7 @@ for (const token of ['Planning/control-plane milestone', SOURCE_ACQUISITION_BASE
 }
 
 for (const [name, text] of Object.entries({ current, roadmap, readme, changelog, publicDemo, qa })) {
-  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose canonical release identity`);
+  assert.ok(text.includes(RELEASE) || text.includes(PUBLIC_LABEL), `${name} must expose alpha.15 release identity`);
   assert.ok(text.includes(LOCKED_ALPHA14), `${name} must record locked alpha.14 baseline`);
   assert.ok(text.includes(STABLE_BASELINE), `${name} must preserve v1.3.0 stable baseline`);
   assert.ok(text.includes(SOURCE_ACQUISITION_BASELINE), `${name} must preserve alpha.7 lock baseline`);

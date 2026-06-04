@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { CURRENT_RELEASE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const pkg = readJson('package.json');
@@ -18,7 +17,7 @@ assert.equal(manifest.version, VERSION);
 assert.equal(manifest.release_title, RELEASE);
 assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(registry.release_title, RELEASE);
-assert.ok([CURRENT_VERSION, VERSION].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving historical module check');
+assert.equal(registry.runtime_optimization.version, VERSION);
 assert.equal(registry.runtime_optimization.current_candidate, VERSION);
 assert.equal(RUNTIME_SCOPE, 'targeted_hosted_evidence_capture');
 assert.ok(['release-identity-single-source-contract','adapter-replay-review-pack-ui-export-preview','adapter-replay-review-pack-triage-workbench','adapter-replay-review-pack-handoff-dossier','adapter-replay-review-pack-operator-review-console','source-to-brief-operator-continuity-console','targeted-hosted-evidence-capture'].includes(manifest.release_type));

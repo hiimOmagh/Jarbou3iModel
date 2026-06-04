@@ -5,7 +5,7 @@ import { spawnSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
-import { CURRENT_RELEASE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const VERSION = '1.3.0';

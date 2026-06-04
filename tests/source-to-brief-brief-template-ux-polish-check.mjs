@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_PUBLIC_LABEL, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_PUBLIC_LABEL, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const VERSION = '1.3.0';

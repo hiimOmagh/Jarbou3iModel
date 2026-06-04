@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import zlib from 'node:zlib';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture } from './fixture-registry-loader.mjs';
-import { CURRENT_RELEASE } from './current-release-identity.mjs';
 
 const VERSION = '1.3.0';
 const TITLE = 'Stable Manual Workflow Release';

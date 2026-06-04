@@ -1,6 +1,16 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { CURRENT_PUBLIC_LABEL, CURRENT_RELEASE, CURRENT_RUNTIME_SCOPE, CURRENT_TITLE, CURRENT_VERSION, assertCurrentReleaseIdentity, ciGateRegistry, currentReleaseContract, evidenceMatrixConfig } from './current-release-identity.mjs';
+import {
+  CURRENT_VERSION,
+  CURRENT_TITLE,
+  CURRENT_RELEASE,
+  CURRENT_PUBLIC_LABEL,
+  CURRENT_RUNTIME_SCOPE,
+  assertCurrentReleaseIdentity,
+  currentReleaseContract,
+  ciGateRegistry,
+  evidenceMatrixConfig
+} from './current-release-identity.mjs';
 
 assertCurrentReleaseIdentity(assert);
 

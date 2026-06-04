@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
-import { CURRENT_RELEASE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const read = (file) => fs.readFileSync(file, 'utf8');

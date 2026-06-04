@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
-import { CURRENT_RELEASE } from './current-release-identity.mjs';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
 const scorerSource = read('src/research/evidence-scorer.js');
