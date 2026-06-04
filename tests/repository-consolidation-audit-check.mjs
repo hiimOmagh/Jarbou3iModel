@@ -4,7 +4,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, registryHasMigrationFixture, registryHasPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
-import { CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const repoRoot = process.cwd();

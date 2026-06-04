@@ -89,3 +89,23 @@ Hosted Demo browser evidence evidence review continuity preserved.
 Arabic release token: بوابة دليل تشغيل إنتاجية التسليم.
 
 French release token: Porte de runbook de productivité de remise.
+
+
+## v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening — Release evidence continuity
+
+v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening
+v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening
+
+Evidence Matrix Semantics + Targeted Proof Hardening preserves green no-browser CI, green browser CI, hosted-demo-metadata.json, desktop-first-screen, mobile-first-screen, provider-mode, quality-export, and changed-files-only patch handoff.
+
+Evidence policy continuity:
+- Screenshots alone are not sufficient.
+- ZIP existence alone is not sufficient.
+- Full-page screenshots remain context only.
+- Targeted proof must include locator-based screenshots, region-to-claim mapping, bounding boxes, expected-token proof, and targeted screenshot sanity limits.
+- PLAYWRIGHT_SKIP_INSTALL=1 npm run test:ci:browser remains the browser evidence command.
+- No live scraping.
+- no real OAuth.
+- No real API keys.
+- No automatic source verification.
+- No cryptographic signing.

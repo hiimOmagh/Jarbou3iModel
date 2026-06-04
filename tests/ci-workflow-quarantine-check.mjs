@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 const RELEASE = `v${CURRENT_VERSION}`;
 const TITLE = CURRENT_TITLE;
@@ -26,8 +26,8 @@ assert.ok(workflow.includes(`lock-evidence-bundle_${CURRENT_VERSION}_`), 'lock e
 assert.equal(registry.release_title, `${RELEASE} — ${TITLE}`, 'CI registry release title must identify v1.4.0-alpha.28 adapter replay review pack release');
 assert.equal(evidenceMatrix.internal_build_version, CURRENT_VERSION, 'evidence matrix internal version must identify v1.4.0-alpha.28');
 assert.equal(evidenceMatrix.public_version_label, `${RELEASE} ${PUBLIC_TITLE}`, 'English public label must identify v1.4.0-alpha.28 adapter replay review pack release');
-assert.equal(evidenceMatrix.public_version_labels.ar, `v${CURRENT_VERSION} التقاط أدلة الاستضافة المستهدفة`, 'Arabic public label must identify current release');
-assert.equal(evidenceMatrix.public_version_labels.fr, `v${CURRENT_VERSION} Capture ciblée des preuves hébergées`, 'French public label must identify current release');
+assert.equal(evidenceMatrix.public_version_labels.ar, `v${CURRENT_VERSION} دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف`, 'Arabic public label must identify current release');
+assert.equal(evidenceMatrix.public_version_labels.fr, `v${CURRENT_VERSION} Sémantique de la matrice de preuves + durcissement de la preuve ciblée`, 'French public label must identify current release');
 
 assert.ok(renderHelpers.includes(PUBLIC_TITLE), 'render helpers must expose current English release title through localized copy');
 

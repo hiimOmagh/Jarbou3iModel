@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
-const VERSION = '1.4.0-alpha.43';
-const TITLE = 'Targeted Hosted Evidence Capture';
+const VERSION = CURRENT_VERSION;
+const TITLE = CURRENT_TITLE;
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 const runner = fs.readFileSync('tests/ci-gate-runner.mjs', 'utf8');
 const syntaxMatrix = fs.readFileSync('tests/syntax-matrix-check.mjs', 'utf8');

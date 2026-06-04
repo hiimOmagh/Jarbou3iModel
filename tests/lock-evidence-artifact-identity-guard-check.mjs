@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
 
-const VERSION = '1.4.0-alpha.43';
+const VERSION = CURRENT_VERSION;
 const workflow = fs.readFileSync('.github/workflows/ci.yml', 'utf8');
 const script = fs.readFileSync('scripts/build-lock-evidence-bundle.mjs', 'utf8');
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));

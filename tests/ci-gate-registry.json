@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.43",
-  "release_title": "v1.4.0-alpha.43 — Targeted Hosted Evidence Capture",
+  "ci_gate_registry_version": "1.4.0-alpha.44",
+  "release_title": "v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -638,7 +638,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.43",
+    "version": "1.4.0-alpha.44",
     "optimization_scope": "targeted_hosted_evidence_capture",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
@@ -646,7 +646,7 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "name": "targeted_hosted_evidence_capture",
-    "current_candidate": "1.4.0-alpha.43",
+    "current_candidate": "1.4.0-alpha.44",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
@@ -654,7 +654,7 @@
     "description": "Current alpha consolidates manual workflow UX without runtime/provider/OAuth/backend/source/storage behavior changes."
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.43",
+    "version": "1.4.0-alpha.44",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -870,7 +870,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.43",
+    "version": "1.4.0-alpha.44",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

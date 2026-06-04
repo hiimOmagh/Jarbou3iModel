@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
-import { CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const read = (file) => fs.readFileSync(file, 'utf8');
@@ -63,7 +63,7 @@ assert.equal(setReport.score_theater_guard, 'scores_explain_prioritization_not_t
 assert.ok(setReport.calibration_warning_count >= 1);
 assert.ok(setReport.risk_flags.includes('calibration_warning_present'));
 
-assert.ok(index.includes(`content="${CURRENT_VERSION}"`), `current hosted metadata missing for ${CURRENT_VERSION}`);
+assert.ok(index.includes(`name="app-version" content="${CURRENT_VERSION}"`) || index.includes(`content="${CURRENT_VERSION}"`), `current hosted metadata missing for ${CURRENT_VERSION}`);
 assert.ok(index.includes('data-r-i18n="evidenceScoringCalibrationShort"'), 'UI must expose localized evidence-scoring calibration copy');
 assert.ok(renderHelpers.includes('evidenceScoringCalibrationShort'), 'render helpers must provide localized evidence-scoring calibration copy');
 assert.ok(engine.includes('calibration_warning_count'), 'engine UI must surface calibration warning count');
@@ -97,3 +97,5 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
 
 console.log('Evidence scoring calibration checks passed.');
 process.exit(0);
+
+

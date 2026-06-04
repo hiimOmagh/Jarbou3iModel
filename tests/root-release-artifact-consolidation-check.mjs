@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { readReleaseArtifact, releaseArtifactExists, releaseArtifactReplacement } from './release-artifacts-loader.mjs';
-import { CURRENT_TITLE } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
-const VERSION = '1.4.0-alpha.43';
+const VERSION = CURRENT_VERSION;
 const TITLE = CURRENT_TITLE;
-const RELEASE = `v${VERSION} — ${TITLE}`;
+const RELEASE = CURRENT_RELEASE;
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const pkg = json('package.json');

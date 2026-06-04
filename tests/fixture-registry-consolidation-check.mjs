@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { migrationRegistry, privacyRegistry, getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
-import { CURRENT_VERSION, CURRENT_TITLE, CURRENT_RELEASE, CURRENT_PUBLIC_LABEL, CURRENT_RUNTIME_SCOPE, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
+import { CURRENT_PUBLIC_LABEL, CURRENT_RELEASE, CURRENT_RUNTIME_SCOPE, CURRENT_TITLE, CURRENT_VERSION, assertCurrentReleaseIdentity } from './current-release-identity.mjs';
 
 const CURRENT_VERSION_LOCAL = CURRENT_VERSION;
 const CURRENT_TITLE_LOCAL = CURRENT_TITLE;

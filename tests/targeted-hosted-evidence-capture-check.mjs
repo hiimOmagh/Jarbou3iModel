@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_RELEASE } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
-const VERSION = '1.4.0-alpha.43';
-const MILESTONE = CURRENT_RELEASE;
+const VERSION = '1.4.0-alpha.44';
+const MILESTONE = 'v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening';
 const MODULE = 'src/research/targeted-hosted-evidence-capture.js';
 const CHECK = 'tests/targeted-hosted-evidence-capture-check.mjs';
 const HOSTED_SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';
@@ -107,7 +107,7 @@ assert.ok(!hostedSpec.includes('full_page_only_proof_allowed:true'), 'hosted evi
 
 const contract = JSON.parse(fs.readFileSync('tests/current-release-contract.json', 'utf8'));
 assert.equal(contract.version, VERSION);
-assert.equal(contract.milestone_name, 'Targeted Hosted Evidence Capture');
+assert.equal(contract.milestone_name, CURRENT_TITLE);
 assert.ok(contract.required_tests.includes(CHECK));
 assert.ok(contract.required_tests.includes(HOSTED_SPEC));
 assert.ok(contract.required_browser_evidence_files.includes('targeted-region-evidence-manifest.json'));

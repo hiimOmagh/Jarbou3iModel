@@ -6,8 +6,9 @@ import { spawnSync } from 'node:child_process';
 import { getMigrationFixture, getPrivacyFixture, fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
+import { CURRENT_RELEASE, CURRENT_VERSION } from './current-release-identity.mjs';
 
-const CURRENT_VERSION = '1.4.0-alpha.43'; const VERSION = '1.3.0';
+const VERSION = '1.3.0';
 const BASE_VERSION = '1.0.30';
 const TITLE = 'Stable Manual Workflow Release';
 const RELEASE = `v${VERSION} — ${TITLE}`;

@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_RELEASE } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const VERSION = '1.4.0-alpha.43';
-const MILESTONE = CURRENT_RELEASE;
+const MILESTONE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
 const MODULE = 'src/research/source-to-brief-operator-continuity-console.js';
 const CHECK = 'tests/source-to-brief-operator-continuity-console-check.mjs';
 const DEPENDENCIES = [
@@ -103,7 +103,7 @@ const index = fs.readFileSync('index.html', 'utf8');
 assert.ok(index.includes('src="src/research/source-to-brief-operator-continuity-console.js" defer'), 'index must load alpha.38 continuity console module');
 assert.ok(index.includes('data-browser-qa="source-to-brief-operator-continuity-console"'), 'index must expose alpha.38 continuity console surface');
 assert.ok(index.includes('sourceToBriefOperatorContinuityConsoleMount'), 'index must expose alpha.38 render mount');
-assert.ok(index.includes('Targeted Hosted Evidence Capture'), 'index must expose alpha.38 visible title');
+assert.ok(index.includes(CURRENT_TITLE) || index.includes(CURRENT_TITLE), 'index must expose alpha.38 visible title');
 
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
@@ -111,14 +111,14 @@ for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.38 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.38 check');
-assert.equal(registry.runtime_optimization.version, VERSION);
+assert.ok([CURRENT_VERSION, VERSION].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving historical module check');
 assert.equal(registry.runtime_optimization.optimization_scope, 'targeted_hosted_evidence_capture');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }
 
 const releaseCopy = fs.readFileSync('src/research/release-copy-contract.js', 'utf8');
-for (const token of ['Targeted Hosted Evidence Capture', 'operator control room', 'stage board', 'no live provider calls']) {
+for (const token of [CURRENT_TITLE, 'operator control room', 'stage board', 'no live provider calls']) {
   assert.ok(releaseCopy.includes(token), `release copy must include ${token}`);
 }
 

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.43",
-  "internal_build_version": "1.4.0-alpha.43",
-  "public_version_label": "v1.4.0-alpha.43 Targeted Hosted Evidence Capture",
+  "evidence_matrix_config_version": "1.4.0-alpha.44",
+  "internal_build_version": "1.4.0-alpha.44",
+  "public_version_label": "v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening",
   "locales": [
     "en",
     "ar",
@@ -239,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.43 Targeted Hosted Evidence Capture",
-    "ar": "v1.4.0-alpha.43 التقاط أدلة الاستضافة المستهدفة",
-    "fr": "v1.4.0-alpha.43 Capture ciblée des preuves hébergées"
+    "en": "v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening",
+    "ar": "v1.4.0-alpha.44 دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف",
+    "fr": "v1.4.0-alpha.44 Sémantique de la matrice de preuves + durcissement de la preuve ciblée"
   }
 }

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
 
 const VERSION = '1.4.0-alpha.14';
 const MILESTONE = 'v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix';
@@ -162,7 +163,7 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 assert.ok(registry.syntax_matrix.files.includes(NEW_MODULE), 'syntax matrix must cover alpha.14 module');
 assert.ok(registry.syntax_matrix.files.includes(NEW_CHECK), 'syntax matrix must cover alpha.14 check');
 assert.ok(['adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope));
-assert.ok([VERSION,'1.4.0-alpha.28', '1.4.0-alpha.43', '1.4.0-alpha.43'].includes(registry.runtime_optimization.version));
+assert.ok([CURRENT_VERSION, VERSION,'1.4.0-alpha.28', '1.4.0-alpha.43', '1.4.0-alpha.43'].includes(registry.runtime_optimization.version));
 
 console.log('Adapter replay fixture corpus + coverage matrix checks passed.');
 process.exit(0);

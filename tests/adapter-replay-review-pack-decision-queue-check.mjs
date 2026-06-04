@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_VERSION } from './current-release-identity.mjs';
 
 const VERSION = '1.4.0-alpha.33';
 const MILESTONE = 'v1.4.0-alpha.33 — Adapter Replay Review Pack Decision Queue';

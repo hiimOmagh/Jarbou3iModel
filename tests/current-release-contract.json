@@ -1,16 +1,16 @@
 {
-  "version": "1.4.0-alpha.43",
-  "milestone_name": "Targeted Hosted Evidence Capture",
+  "version": "1.4.0-alpha.44",
+  "milestone_name": "Evidence Matrix Semantics + Targeted Proof Hardening",
   "release_type": "product-facing",
   "allowed_scope": [
-    "targeted hosted evidence capture over the hosted-demo browser evidence workflow",
+    "evidence matrix semantics split over hosted-demo browser evidence workflow",
+    "blocking language proof failures are separated from advisory missing-language metadata",
+    "targeted hosted evidence capture hardening remains active",
     "locator-based screenshots for specific verification regions",
-    "region-to-claim mapping with expected visible tokens",
-    "bounding-box metadata and targeted screenshot dimension caps",
-    "manifest evidence proving targeted regions without relying on full-page-only screenshots",
-    "full-page screenshots retained only as contextual captures",
-    "hosted evidence metadata that reports targeted-region capture status",
-    "manual no-network evidence-process upgrade over existing product surfaces"
+    "region-to-claim mapping for targeted screenshots",
+    "bounding boxes, expected-token proof, and targeted screenshot sanity limits",
+    "full-page screenshots remain contextual only and cannot satisfy release proof alone",
+    "current release assertions derive from the canonical release identity contract"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -228,5 +228,15 @@
   ],
   "runtime_scope": "targeted_hosted_evidence_capture",
   "lock_conditions": [],
-  "acceptance_criteria": []
+  "acceptance_criteria": [],
+  "lock_assertions": [
+    "hosted evidence must report internal_build_version 1.4.0-alpha.44",
+    "public labels must expose v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening",
+    "targeted hosted evidence manifest must map selector to claim, expected tokens, bounding box, and region screenshot",
+    "evidence matrix rows must expose blocking/advisory language semantics",
+    "blocking missing language proof must fail rows while advisory missing language metadata must not",
+    "full-page screenshots are contextual only and must not be the sole release proof",
+    "release must remain no-network, metadata-only, preview-only, and manually reviewed",
+    "current release tests must derive identity from tests/current-release-identity.mjs"
+  ]
 }

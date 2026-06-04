@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { fixturePathExists } from './fixture-registry-loader.mjs';
 import { readReleaseDoc, releaseDocExists, releaseHistory } from './release-docs-loader.mjs';
 import { readReleaseArtifact, releaseArtifactExists } from './release-artifacts-loader.mjs';
-import { CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const read = (file) => readReleaseArtifact(file);

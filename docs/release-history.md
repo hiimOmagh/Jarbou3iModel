@@ -454,3 +454,11 @@ Package Script Compression + CI Gate Registry. timeline_pruning_policy continuit
 Arabic release token: بوابة دليل تشغيل إنتاجية التسليم.
 
 French release token: Porte de runbook de productivité de remise.
+
+
+## v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening
+
+v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening
+v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening
+
+Release identity migration note: Evidence Matrix Semantics + Targeted Proof Hardening is the current alpha.44 identity layer. It preserves historical module contracts while current release assertions derive from the canonical current-release contract. Evidence matrix semantics, targeted proof hardening, blocking/advisory language separation, targeted screenshots, region-to-claim mapping, expected-token proof, and the no full-page-only proof rule remain active.

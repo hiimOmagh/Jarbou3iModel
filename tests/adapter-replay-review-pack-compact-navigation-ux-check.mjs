@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 const VERSION = '1.4.0-alpha.43';
 const MODULE = 'src/research/source-to-brief-operator-continuity-console.js';
@@ -32,7 +33,7 @@ assert.equal(payload.boundary_flags.status_persistence_enabled, false);
 assert.equal(payload.boundary_flags.navigation_state_persistence_enabled, false);
 
 const index = fs.readFileSync('index.html', 'utf8');
-assert.ok(index.includes('Targeted Hosted Evidence Capture'), 'index must expose current continuity console title');
+assert.ok((index.includes(CURRENT_TITLE) || index.includes('Targeted Hosted Evidence Capture')), 'index must expose current continuity console title');
 assert.ok(index.includes('src="src/research/source-to-brief-operator-continuity-console.js" defer'), 'index must load current continuity console module');
 assert.ok(index.includes('data-browser-qa="source-to-brief-operator-continuity-console"'), 'index must expose current continuity console browser QA surface');
 

@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_RELEASE } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const VERSION = '1.4.0-alpha.43';
-const MILESTONE = CURRENT_RELEASE;
+const MILESTONE = 'v1.4.0-alpha.43 — Targeted Hosted Evidence Capture';
 const MODULE = 'src/research/source-to-brief-publication-readiness-suite.js';
 const CHECK = 'tests/source-to-brief-publication-readiness-suite-check.mjs';
 const DEPENDENCIES = [
@@ -104,7 +104,7 @@ assert.equal(suite.boundary_flags.navigation_state_persistence_enabled, false);
 assert.equal(suite.boundary_flags.publication_permission_claimed, false);
 
 const index = fs.readFileSync('index.html', 'utf8');
-assert.ok(index.includes('Targeted Hosted Evidence Capture'), 'index must expose current publication readiness title');
+assert.ok((index.includes(CURRENT_TITLE) || index.includes('Targeted Hosted Evidence Capture')), 'index must expose current publication readiness title');
 assert.ok(index.includes('src="src/research/targeted-hosted-evidence-capture.js" defer'), 'index must load current publication readiness module');
 assert.ok(index.includes('data-browser-qa="targeted-hosted-evidence-capture"'), 'index must expose current publication readiness browser QA surface');
 
