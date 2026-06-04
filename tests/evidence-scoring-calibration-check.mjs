@@ -97,5 +97,3 @@ for (const packet of [fixture, migrationFixture, privacyFixture]) {
 
 console.log('Evidence scoring calibration checks passed.');
 process.exit(0);
-
-
