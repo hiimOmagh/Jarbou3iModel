@@ -10,6 +10,7 @@ const contract = readJson('tests/current-release-contract.json');
 const VERSION = contract.version;
 const RELEASE = `v${VERSION} — ${contract.milestone_name}`;
 const RUNTIME_SCOPE = registry.runtime_optimization?.optimization_scope || registry.runtime_optimization?.scope;
+const EXPECTED_RUNTIME_SCOPE = contract.runtime_scope;
 
 assert.equal(pkg.name, 'jarbou3i-research-engine');
 assert.equal(pkg.version, VERSION);
@@ -19,7 +20,7 @@ assert.equal(registry.ci_gate_registry_version, VERSION);
 assert.equal(registry.release_title, RELEASE);
 assert.equal(registry.runtime_optimization.version, VERSION);
 assert.equal(registry.runtime_optimization.current_candidate, VERSION);
-assert.equal(RUNTIME_SCOPE, 'targeted_hosted_evidence_capture');
+assert.equal(RUNTIME_SCOPE, EXPECTED_RUNTIME_SCOPE);
 assert.ok(['release-identity-single-source-contract','adapter-replay-review-pack-ui-export-preview','adapter-replay-review-pack-triage-workbench','adapter-replay-review-pack-handoff-dossier','adapter-replay-review-pack-operator-review-console','source-to-brief-operator-continuity-console','targeted-hosted-evidence-capture'].includes(manifest.release_type));
 assert.ok(manifest.release_scope.includes('v1.3.0 — Stable Manual Workflow Release'), 'stable manual workflow baseline continuity must remain documented');
 assert.ok(manifest.release_scope.includes('No live scraping'), 'release scope must preserve no-live-scraping boundary');

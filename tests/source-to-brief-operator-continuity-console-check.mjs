@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RELEASE, CURRENT_RUNTIME_SCOPE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
 const VERSION = '1.4.0-alpha.43';
@@ -111,8 +111,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.38 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.38 check');
-assert.ok([CURRENT_VERSION, VERSION].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving historical module check');
-assert.equal(registry.runtime_optimization.optimization_scope, 'targeted_hosted_evidence_capture');
+assert.ok([CURRENT_RUNTIME_SCOPE, CURRENT_VERSION, VERSION].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving historical module check');
+assert.equal(registry.runtime_optimization.optimization_scope, CURRENT_RUNTIME_SCOPE);
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

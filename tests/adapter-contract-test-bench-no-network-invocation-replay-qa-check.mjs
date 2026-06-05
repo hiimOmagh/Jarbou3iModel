@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RUNTIME_SCOPE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 const VERSION = '1.4.0-alpha.13';
 const MILESTONE = 'v1.4.0-alpha.13 — Adapter Contract Test Bench + No-Network Invocation Replay QA';
@@ -193,8 +193,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/adapter-contract-test-bench-no-network-invocation-replay-qa.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/adapter-contract-test-bench-no-network-invocation-replay-qa-check.mjs'));
-assert.ok(['adapter_contract_test_bench_no_network_invocation_replay_qa', 'adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
-assert.ok([CURRENT_VERSION, VERSION, '1.4.0-alpha.28', '1.4.0-alpha.43', '1.4.0-alpha.43'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
+assert.ok([CURRENT_RUNTIME_SCOPE, 'adapter_contract_test_bench_no_network_invocation_replay_qa', 'adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
+assert.ok([CURRENT_RUNTIME_SCOPE, CURRENT_VERSION, VERSION, '1.4.0-alpha.28', '1.4.0-alpha.43', '1.4.0-alpha.43'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.14 while preserving alpha.13 check');
 
 console.log('Adapter contract test bench + no-network invocation replay QA checks passed.');
 process.exit(0);

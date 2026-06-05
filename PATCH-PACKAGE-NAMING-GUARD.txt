@@ -1,0 +1,3 @@
+Do not include a lowercase manifest.json inside patch ZIP packages.
+On Windows, manifest.json can overwrite repository MANIFEST.json because the filesystem is case-insensitive.
+Use PACKAGE-MANIFEST.json for package metadata instead.

@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening */
+/* Current public release label: v1.4.0-alpha.46 Module Boundary Regression Guard */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_RELEASE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_PUBLIC_LABEL, CURRENT_RELEASE, CURRENT_RUNTIME_SCOPE, CURRENT_TITLE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 
-const VERSION = '1.4.0-alpha.44';
-const MILESTONE = 'v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening';
+const VERSION = CURRENT_VERSION;
+const MILESTONE = CURRENT_RELEASE;
 const MODULE = 'src/research/targeted-hosted-evidence-capture.js';
 const CHECK = 'tests/targeted-hosted-evidence-capture-check.mjs';
 const HOSTED_SPEC = 'tests/hosted-demo-browser-evidence.spec.mjs';

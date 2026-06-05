@@ -462,3 +462,29 @@ v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening
 v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening
 
 Release identity migration note: Evidence Matrix Semantics + Targeted Proof Hardening is the current alpha.44 identity layer. It preserves historical module contracts while current release assertions derive from the canonical current-release contract. Evidence matrix semantics, targeted proof hardening, blocking/advisory language separation, targeted screenshots, region-to-claim mapping, expected-token proof, and the no full-page-only proof rule remain active.
+
+
+## v1.4.0-alpha.46 — Module Boundary Regression Guard — Module boundary regression guard
+
+v1.4.0-alpha.46 — Module Boundary Regression Guard
+v1.4.0-alpha.46 Module Boundary Regression Guard
+
+Module Boundary Regression Guard locks the alpha.45 research-engine extraction boundary. It verifies extracted module presence, syntax, index.html load order, research-engine.js delegation tokens, the 185000-byte engine ceiling, modular quality/UI token surfaces, and prevents tests from reverting to engine-only assertions for moved renderer tokens.
+
+Historical continuity retained:
+- v1.3.0 — Stable Manual Workflow Release
+- v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix
+- v1.4.0-alpha.7 — Source Acquisition Control Surface
+- v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence
+- v1.4.0-alpha.5 — Dry-Run Replay Pack + Operator Approval Simulation
+- v1.4.0-alpha.4 — Dry-Run Trace Inspector + Execution Readiness Report
+- v1.4.0-alpha.3 — Provider/Source Dry-Run Execution Harness + Policy Simulator
+- v1.4.0-alpha.2 — Provider/Source Execution Policy Matrix + Failure UX Contracts
+- v1.4.0-alpha.1 — Controlled Provider/Source Execution Preparation
+- v1.3.0-alpha.10 — Brief Publication Pack v4
+
+Boundary continuity retained:
+No live scraping. No production OAuth. No real OAuth. No real API keys. No credential persistence. No provider execution expansion. No backend behavior expansion. No storage expansion. No source behavior expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signing. No publication permission claim.
+
+Regression continuity retained:
+adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013.

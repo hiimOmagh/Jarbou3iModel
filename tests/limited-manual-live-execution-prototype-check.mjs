@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RUNTIME_SCOPE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 const VERSION = '1.4.0-alpha.10';
 const STABLE_BASELINE = '1.3.0';
@@ -140,8 +140,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'privacy', 'provider', '
 }
 assert.ok(registry.syntax_matrix.files.includes('src/research/limited-manual-live-execution-prototype.js'));
 assert.ok(registry.syntax_matrix.files.includes('tests/limited-manual-live-execution-prototype-check.mjs'));
-assert.ok(['limited_manual_live_execution_prototype','manual_execution_safety_cockpit_session_ledger','adapter_contract_test_bench_no_network_invocation_replay_qa','adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may point to current alpha while preserving alpha.10 check');
-assert.ok([CURRENT_VERSION, VERSION].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.10 check');
+assert.ok([CURRENT_RUNTIME_SCOPE, 'limited_manual_live_execution_prototype','manual_execution_safety_cockpit_session_ledger','adapter_contract_test_bench_no_network_invocation_replay_qa','adapter_replay_fixture_corpus_coverage_matrix','manual_provider_adapter_ux_compression_evidence_runtime_budget','handoff_productivity_runbook_gate', 'adapter_replay_insight_ux_operator_decision_surface', 'adapter_replay_review_pack_operator_handoff_export', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may point to current alpha while preserving alpha.10 check');
+assert.ok([CURRENT_RUNTIME_SCOPE, CURRENT_VERSION, VERSION].includes(registry.runtime_optimization.version), 'runtime optimization version may point to current alpha while preserving alpha.10 check');
 
 console.log('Limited manual live-execution prototype checks passed.');
 process.exit(0);

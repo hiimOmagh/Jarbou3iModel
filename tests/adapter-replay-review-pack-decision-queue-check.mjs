@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { CURRENT_RUNTIME_SCOPE } from './current-release-identity.mjs';
 
 const VERSION = '1.4.0-alpha.33';
 const MILESTONE = 'v1.4.0-alpha.33 — Adapter Replay Review Pack Decision Queue';
@@ -93,7 +94,7 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.33 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.33 check');
 assert.ok(registry.runtime_optimization.version >= VERSION, 'runtime optimization should point to the current release while preserving alpha.33 decision queue check');
-assert.ok(['adapter_replay_review_pack_decision_queue','source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization must preserve decision queue lineage or current triage scope');
+assert.ok([CURRENT_RUNTIME_SCOPE, 'adapter_replay_review_pack_decision_queue','source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization must preserve decision queue lineage or current triage scope');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }

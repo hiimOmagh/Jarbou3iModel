@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.44",
-  "release_title": "v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening",
+  "ci_gate_registry_version": "1.4.0-alpha.46",
+  "release_title": "v1.4.0-alpha.46 — Module Boundary Regression Guard",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -51,6 +51,7 @@
         "tests/export-pack-v2-check.mjs",
         "tests/migration-check.mjs",
         "tests/research-module-check.mjs",
+        "tests/module-boundary-regression-guard-check.mjs",
         "tests/ux-reliability-check.mjs",
         "tests/project-workspace-check.mjs",
         "tests/analysis-template-check.mjs",
@@ -220,6 +221,7 @@
         "tests/hosted-evidence-capture-polish-check.mjs",
         "tests/language-description-audit-check.mjs",
         "tests/source-refactor-readiness-audit-check.mjs",
+        "tests/module-boundary-regression-guard-check.mjs",
         "tests/fixture-test-debt-ledger-check.mjs",
         "tests/provider-router-cost-ledger-check.mjs",
         "tests/evidence-pack-v3-brief-traceability-check.mjs",
@@ -491,6 +493,7 @@
       "description": "Release, patch, hygiene, evidence, and public-demo lock gate without browser specs.",
       "node_checks": [
         "tests/release-truth-consistency-check.mjs",
+        "tests/module-boundary-regression-guard-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/release-candidate-freeze-check.mjs",
         "tests/stable-release-check.mjs",
@@ -638,23 +641,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.44",
-    "optimization_scope": "targeted_hosted_evidence_capture",
+    "version": "1.4.0-alpha.46",
+    "optimization_scope": "module_boundary_regression_guard",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "targeted_hosted_evidence_capture",
-    "current_candidate": "1.4.0-alpha.44",
+    "name": "module_boundary_regression_guard",
+    "current_candidate": "1.4.0-alpha.46",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha consolidates manual workflow UX without runtime/provider/OAuth/backend/source/storage behavior changes."
+    "description": "Current alpha consolidates manual workflow UX without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "module_boundary_regression_guard"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.44",
+    "version": "1.4.0-alpha.46",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -864,13 +868,14 @@
       "src/research/source-to-brief-publication-readiness-suite.js",
       "tests/source-to-brief-publication-readiness-suite-check.mjs",
       "src/research/manual-workflow-ux-consolidation.js",
-      "tests/manual-workflow-ux-consolidation-check.mjs"
+      "tests/manual-workflow-ux-consolidation-check.mjs",
+      "tests/module-boundary-regression-guard-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.44",
+    "version": "1.4.0-alpha.46",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

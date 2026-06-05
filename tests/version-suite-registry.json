@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.44",
-  "release_title": "v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening",
+  "version_suite_registry_version": "1.4.0-alpha.46",
+  "release_title": "v1.4.0-alpha.46 — Module Boundary Regression Guard",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

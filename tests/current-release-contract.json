@@ -1,16 +1,13 @@
 {
-  "version": "1.4.0-alpha.44",
-  "milestone_name": "Evidence Matrix Semantics + Targeted Proof Hardening",
+  "version": "1.4.0-alpha.46",
+  "milestone_name": "Module Boundary Regression Guard",
   "release_type": "product-facing",
   "allowed_scope": [
-    "evidence matrix semantics split over hosted-demo browser evidence workflow",
-    "blocking language proof failures are separated from advisory missing-language metadata",
-    "targeted hosted evidence capture hardening remains active",
-    "locator-based screenshots for specific verification regions",
-    "region-to-claim mapping for targeted screenshots",
-    "bounding boxes, expected-token proof, and targeted screenshot sanity limits",
-    "full-page screenshots remain contextual only and cannot satisfy release proof alone",
-    "current release assertions derive from the canonical release identity contract"
+    "module boundary regression guard for extracted research modules",
+    "research-engine.js remains below the 185000-byte module-boundary ceiling",
+    "index.html script order is locked for extracted modules before research-engine.js",
+    "tests validate modular UI and quality surfaces instead of engine-only locality",
+    "current release assertions remain derived from the canonical release identity contract"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -57,7 +54,8 @@
     "tests/adapter-replay-review-pack-handoff-dossier-check.mjs",
     "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
     "src/research/targeted-hosted-evidence-capture.js",
-    "tests/manual-workflow-ux-consolidation-check.mjs"
+    "tests/manual-workflow-ux-consolidation-check.mjs",
+    "tests/module-boundary-regression-guard-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -198,12 +196,16 @@
     "ALPHA43_CHANGED_FILES.json",
     "tests/hosted-demo-browser-evidence.spec.mjs",
     "src/research/manual-workflow-ux-consolidation.js",
-    "tests/manual-workflow-ux-consolidation-check.mjs"
+    "tests/manual-workflow-ux-consolidation-check.mjs",
+    "tests/module-boundary-regression-guard-check.mjs",
+    "tests/research-module-check.mjs",
+    "tests/current-release-lock-completion-check.mjs",
+    "PATCH-PACKAGE-NAMING-GUARD.txt"
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.43",
-    "public labels must expose v1.4.0-alpha.43 Targeted Hosted Evidence Capture",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.46",
+    "public labels must expose v1.4.0-alpha.46 Module Boundary Regression Guard",
     "targeted hosted evidence manifest must map selector to claim, expected tokens, bounding box, and region screenshot",
     "full-page screenshots are contextual only and must not be the sole release proof",
     "targeted hosted evidence capture must remain no-network, metadata-only, preview-only, and manually reviewed"
@@ -226,12 +228,12 @@
     "v1.4.0-alpha.42 Consolidation UX du workflow manuel",
     "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite"
   ],
-  "runtime_scope": "targeted_hosted_evidence_capture",
+  "runtime_scope": "module_boundary_regression_guard",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted evidence must report internal_build_version 1.4.0-alpha.44",
-    "public labels must expose v1.4.0-alpha.44 Evidence Matrix Semantics + Targeted Proof Hardening",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.46",
+    "public labels must expose v1.4.0-alpha.46 Module Boundary Regression Guard",
     "targeted hosted evidence manifest must map selector to claim, expected tokens, bounding box, and region screenshot",
     "evidence matrix rows must expose blocking/advisory language semantics",
     "blocking missing language proof must fail rows while advisory missing language metadata must not",

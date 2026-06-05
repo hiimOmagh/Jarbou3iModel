@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import { CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_RUNTIME_SCOPE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 const VERSION = '1.4.0-alpha.34';
 const MILESTONE = 'v1.4.0-alpha.34 — Adapter Replay Review Pack Triage Workbench';
@@ -100,8 +100,8 @@ for (const gate of ['no-browser', 'current-no-browser', 'provider', 'release']) 
 }
 assert.ok(registry.syntax_matrix.files.includes(MODULE), 'syntax matrix must cover alpha.34 module');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover alpha.34 check');
-assert.ok([CURRENT_VERSION, VERSION, '1.4.0-alpha.43'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.35 while preserving alpha.34 triage workbench');
-assert.ok(['adapter_replay_review_pack_triage_workbench', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.35 handoff dossier while preserving alpha.34 triage workbench');
+assert.ok([CURRENT_RUNTIME_SCOPE, CURRENT_VERSION, VERSION, '1.4.0-alpha.43'].includes(registry.runtime_optimization.version), 'runtime optimization may advance to alpha.35 while preserving alpha.34 triage workbench');
+assert.ok([CURRENT_RUNTIME_SCOPE, 'adapter_replay_review_pack_triage_workbench', 'source_to_brief_operator_continuity_console', 'targeted_hosted_evidence_capture'].includes(registry.runtime_optimization.optimization_scope), 'runtime optimization may advance to alpha.35 handoff dossier while preserving alpha.34 triage workbench');
 for (const key of ['provider_behavior_changed', 'oauth_behavior_changed', 'backend_behavior_changed', 'source_behavior_changed', 'storage_behavior_changed']) {
   assert.equal(registry.runtime_optimization[key], false, `${key} must remain false`);
 }
