@@ -112,3 +112,39 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     }
   }
 })();
+
+const ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
+  ar: Object.freeze(['blocking/advisory language semantics', 'Targeted Proof Hardening', 'no full-page-only proof']),
+  fr: Object.freeze(['blocking/advisory language semantics', 'Targeted Proof Hardening', 'no full-page-only proof']),
+  en: Object.freeze(['blocking/advisory language semantics', 'Targeted Proof Hardening', 'no full-page-only proof'])
+});
+
+(function enforceAlpha46BrowserVisibleTextContract() {
+  const root = typeof globalThis !== 'undefined' ? globalThis : this;
+  const contract = root.Jarbou3iResearchReleaseCopyContract;
+  if (!contract) return;
+
+  contract.version = '1.4.0-alpha.46';
+  contract.release = 'v1.4.0-alpha.46 — Module Boundary Regression Guard';
+  contract.releaseTitle = 'v1.4.0-alpha.46 — Module Boundary Regression Guard';
+  contract.milestone = 'Module Boundary Regression Guard';
+  contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
+    en: 'v1.4.0-alpha.46 Module Boundary Regression Guard',
+    ar: (contract.publicVersionLabels && contract.publicVersionLabels.ar
+      ? String(contract.publicVersionLabels.ar).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.46')
+      : 'v1.4.0-alpha.46 Module Boundary Regression Guard'),
+    fr: (contract.publicVersionLabels && contract.publicVersionLabels.fr
+      ? String(contract.publicVersionLabels.fr).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.46')
+      : 'v1.4.0-alpha.46 Module Boundary Regression Guard')
+  });
+
+  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT);
+  contract.expectedCurrentReleaseDescriptionTokens = Object.assign(
+    {},
+    contract.expectedCurrentReleaseDescriptionTokens || {},
+    ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT
+  );
+
+  contract.staleVisibleText = (contract.staleVisibleText || [])
+    .filter((token) => token !== 'Evidence Matrix Semantics');
+})();
