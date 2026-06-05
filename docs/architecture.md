@@ -84,3 +84,6 @@ No live scraping. No real OAuth or production OAuth is enabled. Screenshots alon
 Evidence manifest gate continuity: single final metadata, capture manifest, visual freeze, mobile header, CI Gate Registry, Package Script, Root Manifest, Release Artifact Consolidation, Fixture Registry payload compression, test organization, planning gate. v1.1.0 and 1.3.0 continuity preserved.
 
 Provenance gate continuity: provenance ledger, changed-files-only, fixture registry consolidation, visual freeze, mobile header, CI Gate Registry, Package Script, Root Manifest, Release Artifact Consolidation. v1.1.0 and 1.3.0 continuity preserved.
+
+v1.4.0-alpha.46 — Module Boundary Regression Guard
+v1.4.0-alpha.46 Module Boundary Regression Guard

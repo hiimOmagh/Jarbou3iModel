@@ -50,3 +50,19 @@ v1.4.0-alpha.44 — Evidence Matrix Semantics + Targeted Proof Hardening remains
 ## Alpha.45 Continuity Note
 
 v1.4.0-alpha.45 — Research Engine Orchestration Extraction reduced the research-engine monolith by extracting renderer/orchestration modules while preserving behavior.
+
+
+## v1.4.0-alpha.46 — Module Boundary Regression Guard — Public Demo copy continuity
+
+v1.4.0-alpha.46 Module Boundary Regression Guard
+
+Public Demo continuity is retained for the alpha.46 module boundary regression guard. This document intentionally keeps public demo, public-demo, and Public Demo wording available for public-demo-readiness checks while preserving the no-network, no-live-provider, no-production-OAuth, no-real-API-key, no-automatic-source-verification, and no-publication-permission boundaries.
+
+
+## v1.4.0-alpha.46 — Module Boundary Regression Guard — Evidence manifest gate continuity
+
+v1.4.0-alpha.46 Module Boundary Regression Guard
+
+Evidence manifest gate continuity is retained for alpha.46. The release corpus intentionally preserves Package Script, CI Gate Registry, Root Manifest, Release Artifact Consolidation, Migration + Privacy Fixture Registry Consolidation, Fixture Registry payload compression, test organization, planning gate, evidence manifest, single final metadata, capture manifest, visual freeze, and mobile header language for hosted-demo evidence-manifest verification.
+
+The current module boundary regression guard does not expand runtime behavior. No live scraping. No production OAuth. No real OAuth. No real API keys. No credential persistence. No provider execution expansion. No backend behavior expansion. No storage expansion. No source behavior expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signing. No publication permission claim.

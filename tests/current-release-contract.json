@@ -200,7 +200,11 @@
     "tests/module-boundary-regression-guard-check.mjs",
     "tests/research-module-check.mjs",
     "tests/current-release-lock-completion-check.mjs",
-    "PATCH-PACKAGE-NAMING-GUARD.txt"
+    "PATCH-PACKAGE-NAMING-GUARD.txt",
+    "tests/source-to-brief-export-polish-check.mjs",
+    "docs/architecture.md",
+    "docs/ai-integration.md",
+    "docs/privacy-audit.md"
   ],
   "artifact_identity_rules": [
     "package/docs/manifest/registry versions must match the current-release contract",
