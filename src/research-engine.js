@@ -47,6 +47,11 @@
   const hostedDemoVerification = modules.hostedDemoVerification;
   const releaseApplyIntegrity = modules.releaseApplyIntegrity;
   const releaseProvenanceLedger = modules.releaseProvenanceLedger;
+  const evidenceReviewRenderer = modules.evidenceReviewRenderer;
+  const providerHarnessRenderer = modules.providerHarnessRenderer;
+  const qualityRenderer = modules.qualityRenderer;
+  const workflowPacketImporter = modules.workflowPacketImporter;
+  const critiqueBuilder = modules.critiqueBuilder;
   const sanitizeUiText = (value) => renderHelpers.sanitizeUiText ? renderHelpers.sanitizeUiText(value) : String(value ?? '');
   const esc = (value) => renderHelpers.esc(sanitizeUiText(value));
   const nowIso = () => new Date().toISOString();
@@ -932,32 +937,8 @@
     };
   }
   function buildCritique(){
-    const evidenceCount = state.evidence.length;
-    const urlCount = state.evidence.filter(e=>e.source_url).length;
-    const datedCount = state.evidence.filter(e=>e.source_date && e.source_date !== 'unknown').length;
-    const contradCount = state.evidence.filter(e=>e.contradicts?.length).length;
-    const sourceTypes = new Set(state.evidence.map(e=>e.source_type).filter(Boolean));
-    const linkCount = state.causal_links.length;
-    return {
-      critique_version: VERSION,
-      generated_at: nowIso(),
-      summary: evidenceCount >= 5 && linkCount >= 3 ? 'The workflow has a usable research packet, but source verification remains outside this alpha.' : 'The workflow is still under-evidenced or under-linked and should not be published.',
-      findings: [
-        {type:'evidence_volume', severity: evidenceCount >= 5 ? 'medium' : 'high', finding: evidenceCount >= 5 ? 'Evidence volume is acceptable for alpha synthesis.' : 'Add at least five evidence items before treating the analysis as serious.'},
-        {type:'source_traceability', severity: urlCount >= 3 && datedCount >= 3 ? 'medium' : 'high', finding: 'Strong outputs require source URLs and dates; otherwise claims remain weakly traceable.'},
-        {type:'source_diversity', severity: sourceTypes.size >= 3 ? 'medium' : 'high', finding: sourceTypes.size >= 3 ? 'Source-type diversity is emerging.' : 'Evidence is too concentrated in one or two source types.'},
-        {type:'counter_evidence_gap', severity: contradCount ? 'medium' : 'high', finding: contradCount ? 'At least one evidence item includes contradiction links.' : 'No evidence item clearly contradicts any claim or layer.'},
-        {type:'causal_risk', severity: linkCount >= 3 ? 'medium' : 'high', finding: linkCount >= 3 ? 'Causal links exist; still validate each relationship manually.' : 'Causal graph is too sparse for confident synthesis.'},
-        {type:'publication_risk', severity:'high', finding:'Alpha mock output is useful for architecture testing, not for final publication.'}
-      ],
-      recommended_next_actions: [
-        'Add at least five evidence items from diverse source types.',
-        'Include source dates and URLs for source-based claims.',
-        'Add counter-evidence before running final strategic synthesis.',
-        'Use causal links to connect evidence to interests, actors, tools, narrative, results, and feedback.',
-        'Test whether scenarios are disproven by contrary indicators.'
-      ]
-    };
+    if(!critiqueBuilder?.buildCritique) throw new Error('critiqueBuilder.buildCritique module is not loaded');
+    return critiqueBuilder.buildCritique({ VERSION, state, nowIso });
   }
   function portableAccountStatus(){
     return window.Jarbou3iResearchModules.portableAccountMock.status(state.portable_account, {version: VERSION});
@@ -1880,88 +1861,22 @@
     return migrator.migrateResearchPacket(packet, {targetVersion: VERSION});
   }
   function importWorkflowPacket(packet){
-    const migrated = migrateWorkflowPacketForImport(packet);
-    if(!migrated.ok || !migrated.packet) throw new Error('migration_failed');
-    const nextPacket = migrated.packet;
-    if(!validateWorkflowPacket(nextPacket)) throw new Error('invalid_packet');
-    state.plan = Object.assign({}, nextPacket.research_plan, {plan_version: VERSION});
-    state.research_planner_report = nextPacket.research_planner_report || state.plan.research_planner_report || null;
-    state.evidence = nextPacket.evidence_matrix.map((item, idx) => scoreEvidence(Object.assign({}, item, {evidence_id:`E${idx+1}`})));
-    state.causal_links = Array.isArray(nextPacket.causal_links) ? nextPacket.causal_links.filter(link => link && validId(link.from) && validId(link.to) && Array.isArray(link.evidence_ids)) : [];
-    state.analysis_brief = nextPacket.analysis_brief || null;
-    state.diagnostics = nextPacket.diagnostics || null;
-    state.critique = nextPacket.critique || null;
-    state.provider = nextPacket.provider || state.provider || 'mock';
-    state.provider_config = sanitizedProviderConfig(nextPacket.provider_config || state.provider_config || {});
-    state.provider_identity = nextPacket.provider_identity || providerIdentityReport(state.provider, state.provider_config);
-    state.provider_billing_policy = nextPacket.provider_billing_policy || providerBillingPolicy(state.provider, state.provider_config);
-    state.provider_route_plan = nextPacket.provider_route_plan || null;
-    state.provider_route_report = nextPacket.provider_route_report || null;
-    state.provider_cost_report = nextPacket.provider_cost_report || null;
-    state.provider_router_safety_report = nextPacket.provider_router_safety_report || null;
-    state.evidence_pack_v3_manifest = nextPacket.evidence_pack_v3_manifest || null;
-    state.brief_traceability_report = nextPacket.brief_traceability_report || null;
-    state.contradiction_falsifier_appendix = nextPacket.contradiction_falsifier_appendix || null;
-    state.bundle_consistency_report = nextPacket.bundle_consistency_report || null;
-    state.publication_readiness_export_report = nextPacket.publication_readiness_export_report || null;
-    state.claim_classification_report = nextPacket.claim_classification_report || null;
-    state.claim_boundary_audit_report = nextPacket.claim_boundary_audit_report || null;
-    state.contradiction_falsifier_completeness_report = nextPacket.contradiction_falsifier_completeness_report || null;
-    state.publication_review_gate_report = nextPacket.publication_review_gate_report || null;
-    state.export_safe_final_review_report = nextPacket.export_safe_final_review_report || null;
-    state.golden_workflow_corpus = nextPacket.golden_workflow_corpus || null;
-    state.golden_end_to_end_demo_report = nextPacket.golden_end_to_end_demo_report || null;
-    state.golden_export_pack_validation_report = nextPacket.golden_export_pack_validation_report || null;
-    state.hosted_demo_scenario_evidence = nextPacket.hosted_demo_scenario_evidence || null;
-    state.release_readiness_runbook = nextPacket.release_readiness_runbook || null;
-    state.final_repo_hygiene_report = nextPacket.final_repo_hygiene_report || null;
-    state.stale_release_copy_sweep = nextPacket.stale_release_copy_sweep || null;
-    state.golden_workflow_regression_lock = nextPacket.golden_workflow_regression_lock || null;
-    state.export_pack_artifact_consistency_lock = nextPacket.export_pack_artifact_consistency_lock || null;
-    state.hosted_demo_evidence_runbook = nextPacket.hosted_demo_evidence_runbook || null;
-    state.no_browser_browser_ci_parity_report = nextPacket.no_browser_browser_ci_parity_report || null;
-    state.release_candidate_readiness_report = nextPacket.release_candidate_readiness_report || null;
-    state.portable_account = nextPacket.portable_account || state.portable_account || null;
-    state.ai_runs = Array.isArray(nextPacket.ai_runs) ? nextPacket.ai_runs.slice(-25) : [];
-    state.lastMockAnalysis = null;
-    state.provider_diagnostics = nextPacket.provider_diagnostics || null;
-    state.provider_fixture_report = nextPacket.provider_fixture_report || null;
-    state.source_policy = nextPacket.source_policy || null;
-    state.source_diagnostics = nextPacket.source_diagnostics || null;
-    state.source_fixture_report = nextPacket.source_fixture_report || null;
-    state.last_source_request = Array.isArray(nextPacket.source_requests) ? nextPacket.source_requests[0] || null : null;
-    state.source_runs = Array.isArray(nextPacket.source_runs) ? nextPacket.source_runs.slice(-25) : [];
-    state.source_results = Array.isArray(nextPacket.source_results) ? nextPacket.source_results.slice(-25) : [];
-    state.release_candidate = nextPacket.release_candidate || null;
-    state.browser_qa_hardening = nextPacket.browser_qa_hardening || null;
-    state.public_demo = nextPacket.public_demo || null;
-    state.release_notes = nextPacket.release_notes || null;
-    state.source_imports = Array.isArray(nextPacket.source_imports) ? nextPacket.source_imports.slice(-25) : [];
-    state.evidence_review_queue = Array.isArray(nextPacket.evidence_review_queue) ? nextPacket.evidence_review_queue.slice(-200) : [];
-    state.evidence_review_report = nextPacket.evidence_review_report || null;
-    state.strategic_evidence_graph = nextPacket.strategic_evidence_graph || null;
-    state.graph_quality_report = nextPacket.graph_quality_report || null;
-    state.graph_export_report = nextPacket.graph_export_report || null;
-    state.source_to_brief_workbench = nextPacket.source_to_brief_workbench || nextPacket.source_to_brief_package || null;
-    state.source_to_brief_package = nextPacket.source_to_brief_package || nextPacket.source_to_brief_workbench || null;
-    state.claim_map = Array.isArray(nextPacket.claim_map) ? nextPacket.claim_map : (state.source_to_brief_workbench?.claim_map || []);
-    state.contradiction_groups = Array.isArray(nextPacket.contradiction_groups) ? nextPacket.contradiction_groups : (state.source_to_brief_workbench?.contradiction_groups || []);
-    state.source_to_brief_confidence_review = nextPacket.source_to_brief_confidence_review || state.source_to_brief_workbench?.confidence_review || null;
-    state.source_to_brief_gap_report = nextPacket.source_to_brief_gap_report || state.source_to_brief_workbench?.source_gaps || null;
-    state.source_import_report = nextPacket.source_import_report || null;
-    state.source_cluster_report = nextPacket.source_cluster_report || nextPacket.source_gap_report || null;
-    state.source_gap_report = nextPacket.source_gap_report || nextPacket.source_cluster_report || null;
-    state.source_packet_roundtrip_report = nextPacket.source_packet_roundtrip_report || null;
-    state.source_packet_template_report = nextPacket.source_packet_template_report || null;
-    state.packet_migration_report = nextPacket.packet_migration_report || migrated.report || null;
-    state.quality_gate = nextPacket.quality_gate || null;
-    state.export_pack = nextPacket.export_pack || null;
-    state.last_source_import_preview = null;
-    state.editingEvidenceIndex = -1;
-    save(); render();
-    const report = state.packet_migration_report;
-    const suffix = report && report.migrated ? ` ${report.source_version}→${report.target_version}` : '';
-    setStatus(`${tr('statusImported')}${suffix}`, report?.warnings?.length ? 'warn' : 'good');
+    if(!workflowPacketImporter?.importWorkflowPacket) throw new Error('workflowPacketImporter.importWorkflowPacket module is not loaded');
+    return workflowPacketImporter.importWorkflowPacket(packet, {
+      VERSION,
+      state,
+      migrateWorkflowPacketForImport,
+      validateWorkflowPacket,
+      scoreEvidence,
+      validId,
+      sanitizedProviderConfig,
+      providerIdentityReport,
+      providerBillingPolicy,
+      save,
+      render,
+      setStatus,
+      tr
+    });
   }
   async function copyText(text){
     try{await navigator.clipboard.writeText(text); setStatus(tr('copied'), 'good'); return true;}
@@ -2200,85 +2115,12 @@
     el.innerHTML = templateHtml + `<div class="researchJsonCard sourcePacketBuilderReportCard sourcePacketBuilderQaCard"><h4>${esc(tr('sourcePacketBuilderTitle'))}</h4><div class="miniChips sourcePacketBuilderChips"><span>${esc(packetCount)} ${esc(tr('sourcePacketPackets'))}</span><span>${esc(report?.evidence_item_count || 0)} ${esc(tr('sourcePacketEvidence'))}</span><span>${esc(tr('live'))}:${esc(localizedBoolean(report?.live_fetching_performed))}</span><span>${esc(tr('verified'))}:${esc(localizedBoolean(report?.verification_claimed))}</span><span>${esc(lStatus(releaseGate))}</span></div><div class="sourcePacketBuilderRiskGrid"><span>${esc(tr('sourcePacketWarnings'))}: ${esc(warningCount)}</span><span>${esc(tr('sourcePacketWeakTraceability'))}: ${esc(weakTraceability)}</span><span>${esc(tr('sourcePacketAttentionReliabilityRisks'))}: ${esc(attentionRisk)}</span></div><small>${esc(localizedPolicy(report?.policy || 'local_manual_source_packet_builder_no_fetch_no_verification'))}</small><small>${esc(tr('sourcePacketBuilderBrowserQaNote'))}</small>${packetPreview ? `<pre class="sourcePacketBuilderPreview" aria-label="Source packet builder preview">${esc(packetPreview)}</pre>` : ''}</div>`;
   }
   function renderEvidenceReviewQueue(){
-    const el = $('evidenceReviewOutput');
-    if(!el) return;
-    const queue = state.evidence_review_queue || [];
-    const filters = state.evidence_review_filters || reviewFilters();
-    const filtered = evidenceWorkspaceUx?.filterAndSortReviewQueue ? evidenceWorkspaceUx.filterAndSortReviewQueue(queue, filters, evidenceReviewContext()) : {filters, total_count:queue.length, visible_count:queue.length, items:queue.map((item,index)=>Object.assign({__review_index:index}, item))};
-    const report = evidenceReviewReport();
-    const uxReport = evidenceWorkspaceUxReport();
-    if(!queue.length){
-      el.innerHTML = emptyState(tr('evidenceReviewEmpty'), tr('sourceImportReviewEmptyBody'), tr('previewSourceImport'));
-      return;
-    }
-    const facets = uxReport?.facets || {source_types:[]};
-    const sourceTypeOptions = ['all'].concat(facets.source_types || []).map((value)=>`<option value="${esc(value)}" ${filtered.filters.source_type===value?'selected':''}>${esc(value==='all'?tr('allSources'):lST(value))}</option>`).join('');
-    const rows = filtered.items.map((item) => {
-      const i = Number(item.__review_index);
-      const e = item.evidence || {};
-      const resolved = item.status === 'accepted' || item.status === 'rejected';
-      const controls = window.Jarbou3iResearchModules.sourcePacketBuilder?.reviewControlsForEvidence ? window.Jarbou3iResearchModules.sourcePacketBuilder.reviewControlsForEvidence(e) : (item.scoring_review_controls || {});
-      const controlText = (controls.controls || []).join(', ') || 'manual_review';
-      return `<tr>
-        <td>${esc(item.review_id)}<small>${esc(item.import_id || '')}</small></td>
-        <td><span class="reviewStatus ${esc(item.status)}">${esc(tr(item.status === 'needs_edit' ? 'needsEdit' : item.status))}</span><small>${esc(item.accepted_evidence_id || '')}</small><small>${esc(localizedReviewGate(controls.review_gate || 'reviewable'))}</small></td>
-        <td><b>${esc(e.claim || '')}</b><small>${esc(e.notes || '')}</small><small>R:${esc(e.evidence_scoring?.reliability_score ?? '—')} · A:${esc(e.evidence_scoring?.attention_signal_score ?? '—')} · W:${esc(e.evidence_scoring?.synthesis_weight ?? '—')}</small><small>${esc(localizedReviewGate(controlText))}</small></td>
-        <td>${esc([e.source_title, lST(e.source_type), e.source_date].filter(Boolean).join(' · '))}${e.source_url?`<small>${esc(e.source_url)}</small>`:''}</td>
-        <td>${esc((e.supports || []).join(', ') || '—')} / ${esc((e.contradicts || []).join(', ') || '—')}</td>
-        <td><div class="rowActions">${resolved ? '' : `<button class="btn ghost reviewAccept" type="button" data-index="${i}">${esc(tr('accept'))}</button><button class="btn ghost reviewNeedsEdit" type="button" data-index="${i}">${esc(tr('needsEdit'))}</button><button class="btn ghost reviewEdit" type="button" data-index="${i}">${esc(tr('editCandidate'))}</button><button class="btn ghost reviewReject" type="button" data-index="${i}">${esc(tr('reject'))}</button>`}</div></td>
-      </tr>`;
-    }).join('');
-    const throughput = uxReport?.throughput_report || {};
-    const signals = uxReport?.unresolved_signals || {};
-    const laneHtml = (throughput.review_lanes?.lanes || uxReport?.review_lanes?.lanes || []).filter(lane => (lane.items || []).length).slice(0,5).map(lane => `<article class="reviewLaneCard"><header><b>${esc(tr('reviewLane'+kc(lane.lane_id)) || lane.label)}</b><span>${esc((lane.items || []).length)}</span></header><small>${esc((lane.items || []).map(item => item.review_id).filter(Boolean).join(', ') || '—')}</small></article>`).join('');
-    const actionHtml = (throughput.next_review_actions || uxReport?.next_review_actions || []).slice(0,5).map(action => `<li><strong>${esc(action.order || '')}. ${esc(action.label || action.action_id)}</strong><small>${action.review_id ? ` · ${esc(action.review_id)}` : ''} · ${esc(action.reason || '')}</small></li>`).join('') || `<li>${esc(tr('exportReviewReadyAction'))}</li>`;
-    const filterHtml = `<div class="researchJsonCard evidenceReviewThroughputCard"><h4>${esc(tr('reviewThroughputTitle'))}</h4><div class="miniChips"><span>${esc(filtered.visible_count)}/${esc(filtered.total_count)} ${esc(tr('visible'))}</span><span>${esc(tr('pending'))}:${esc(report.pending_count)}</span><span>${esc(tr('needsEdit'))}:${esc(throughput.counts?.needs_edit || 0)}</span><span>${esc(tr('contradictions'))}:${esc(throughput.contradiction_open_count || 0)}</span><span>${esc(tr('gaps'))}:${esc((signals.source_gap_warnings || []).length)}</span><span>${esc(tr('exportGate'))}:${esc(lStatus(throughput.export_throughput_gate || 'manual_review_required'))}</span></div><div class="reviewLaneGrid">${laneHtml || `<article class="reviewLaneCard"><b>${esc(tr('reviewThroughputClear'))}</b><small>${esc(tr('reviewThroughputClearBody'))}</small></article>`}</div><ul class="reviewNextActions">${actionHtml}</ul><small>${esc(tr('reviewKeyboardHint'))}</small><div class="reviewFilterGrid"><input id="reviewSearchInput" type="search" value="${esc(filtered.filters.keyword || '')}" placeholder="${esc(tr('reviewSearchPlaceholder'))}" /><select id="reviewStatusFilter"><option value="unresolved" ${filtered.filters.status==='unresolved'?'selected':''}>${esc(tr('unresolved'))}</option><option value="all" ${filtered.filters.status==='all'?'selected':''}>${esc(tr('all'))}</option><option value="pending" ${filtered.filters.status==='pending'?'selected':''}>${esc(tr('pending'))}</option><option value="needs_edit" ${filtered.filters.status==='needs_edit'?'selected':''}>${esc(tr('needsEdit'))}</option><option value="accepted" ${filtered.filters.status==='accepted'?'selected':''}>${esc(tr('accepted'))}</option><option value="rejected" ${filtered.filters.status==='rejected'?'selected':''}>${esc(tr('rejected'))}</option><option value="resolved" ${filtered.filters.status==='resolved'?'selected':''}>${esc(tr('resolved'))}</option></select><select id="reviewSourceTypeFilter">${sourceTypeOptions}</select><select id="reviewRelationshipFilter"><option value="all" ${filtered.filters.relationship==='all'?'selected':''}>${esc(tr('allRelationships'))}</option><option value="supports" ${filtered.filters.relationship==='supports'?'selected':''}>${esc(tr('supports'))}</option><option value="contradicts" ${filtered.filters.relationship==='contradicts'?'selected':''}>${esc(tr('contradicts'))}</option><option value="unlinked" ${filtered.filters.relationship==='unlinked'?'selected':''}>${esc(tr('unlinked'))}</option></select><select id="reviewSortSelect"><option value="needs_review_first" ${filtered.filters.sort==='needs_review_first'?'selected':''}>${esc(tr('needsReviewFirst'))}</option><option value="newest" ${filtered.filters.sort==='newest'?'selected':''}>${esc(tr('newest'))}</option><option value="oldest" ${filtered.filters.sort==='oldest'?'selected':''}>${esc(tr('oldest'))}</option><option value="reliability_desc" ${filtered.filters.sort==='reliability_desc'?'selected':''}>${esc(tr('reliability'))}</option><option value="attention_desc" ${filtered.filters.sort==='attention_desc'?'selected':''}>${esc(tr('attention'))}</option></select></div></div>`;
-    el.innerHTML = filterHtml + `<div class="researchJsonCard evidenceReviewReportCard"><h4>${esc(tr('evidenceReviewTitle'))}</h4><div class="miniChips"><span>${esc(report.pending_count)} ${esc(tr('pending'))}</span><span>${esc(report.accepted_count)} ${esc(tr('accepted'))}</span><span>${esc(report.rejected_count)} ${esc(tr('rejected'))}</span><span>${esc(tr('verifiedLabel'))}:${esc(localizedBoolean(report.verification_claimed))}</span><span>${esc(tr('queueBypass'))}:${esc(localizedBoolean(false))}</span></div></div><div class="researchTableWrap"><table class="researchTable evidenceReviewTable"><thead><tr><th>ID</th><th>${esc(tr('reviewStatus'))}</th><th>${esc(tr('claim'))}</th><th>${esc(tr('sourceTitle'))}</th><th>${esc(tr('supports'))}/${esc(tr('contradicts'))}</th><th></th></tr></thead><tbody>${rows || `<tr><td colspan="6">${esc(tr('noVisibleReviewItems'))}</td></tr>`}</tbody></table></div>`;
-    ['reviewSearchInput','reviewStatusFilter','reviewSourceTypeFilter','reviewRelationshipFilter','reviewSortSelect'].forEach(id => $(id)?.addEventListener('input', () => { persistReviewFilters(); save(); render(); }));
-    document.querySelectorAll('.reviewAccept').forEach(btn => btn.addEventListener('click', () => { promoteReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceAccepted'), 'good'); }));
-    document.querySelectorAll('.reviewReject').forEach(btn => btn.addEventListener('click', () => { rejectReviewItem(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceRejected'), 'warn'); }));
-    document.querySelectorAll('.reviewEdit').forEach(btn => btn.addEventListener('click', () => { editReviewItem(Number(btn.dataset.index)); save(); render(); }));
-    document.querySelectorAll('.reviewNeedsEdit').forEach(btn => btn.addEventListener('click', () => { markReviewItemNeedsEdit(Number(btn.dataset.index)); save(); render(); setStatus(tr('statusEvidenceNeedsEdit'), 'warn'); }));
+    if(!evidenceReviewRenderer?.renderEvidenceReviewQueue) throw new Error('evidenceReviewRenderer.renderEvidenceReviewQueue module is not loaded');
+    return evidenceReviewRenderer.renderEvidenceReviewQueue({ $, state, reviewFilters, evidenceWorkspaceUx, evidenceReviewContext, evidenceReviewReport, evidenceWorkspaceUxReport, emptyState, tr, esc, lST, localizedReviewGate, kc, persistReviewFilters, save, render, promoteReviewItem, setStatus, rejectReviewItem, editReviewItem, markReviewItemNeedsEdit });
   }
   function renderProviderHarness(){
-    const contractEl = $('providerContractPreview');
-    const promptEl = $('providerPromptPreview');
-    const diagEl = $('providerDiagnosticsOutput');
-    const runEl = $('providerRunOutput');
-    const currentTask = $('providerTask')?.value || state.activeProviderTask || 'synthesis';
-    const contract = state.last_provider_contract_preview || providerContractPreview(currentTask);
-    const promptPreview = state.last_provider_prompt_preview || (state.last_provider_payload ? providerPromptPreview(state.last_provider_payload) : null);
-    const diagnostics = state.provider_diagnostics || (state.last_provider_payload ? providerDiagnostics(state.last_provider_payload) : null);
-    const fixtureReport = state.provider_fixture_report;
-    const portable = portableAccountStatus();
-    const guideEl = $('providerModeGuide');
-    if(guideEl){
-      guideEl.innerHTML = uxReliability?.providerModeGuideHtml ? uxReliability.providerModeGuideHtml(state.provider || $('providerName')?.value || 'mock', tr, esc) : '';
-    }
-    if(contractEl){
-      contractEl.innerHTML = `<strong>${esc(tr('providerContractLabel'))}</strong><span>${esc(contract.title || contract.type)} · ${esc(contract.type)}</span><small>${esc((contract.required || []).length)} ${esc(tr('required'))} · ${(contract.required || []).slice(0,5).map(esc).join(', ')}</small>`;
-    }
-    if(promptEl){
-      if(promptPreview){
-        promptEl.innerHTML = `<strong>${esc(tr('providerPromptLabel'))}</strong><span>${esc(promptPreview.task)} · ${esc(promptPreview.prompt_chars)} ${esc(tr('chars'))} · ${esc(promptPreview.prompt_fingerprint)}</span><small>${esc(promptPreview.privacy_mode)}${promptPreview.truncated ? ' · ' + tr('truncatedPreview') : ''}</small>`;
-      } else {
-        promptEl.innerHTML = `<strong>${esc(tr('providerPromptLabel'))}</strong><span>${esc(tr('providerPromptMissing'))}</span><small>${esc(tr('providerPromptMissingHint'))}</small>`;
-      }
-    }
-    if(diagEl){
-      const diagHtml = diagnostics ? `<div class="researchJsonCard providerDiagnosticsCard"><h4>${esc(tr('providerDiagnosticsTitle'))}</h4><div class="miniChips"><span>${esc(diagnostics.readiness)}</span><span>${esc(diagnostics.contract_type)}</span><span>${esc(diagnostics.prompt_chars)} ${esc(tr('chars'))}</span><span>${esc(tr('keyExported'))}:${esc(localizedBoolean(diagnostics.key_exported))}</span><span>key_exported:${diagnostics.key_exported ? 'true' : 'false'}</span><span>${esc(tr('auth'))}:${esc(diagnostics.auth_type || tr('unknown'))}</span><span>${esc(tr('billing'))}:${esc(diagnostics.billing_owner || tr('unknown'))}</span></div><ul>${(diagnostics.warnings || [tr('noSourceWarnings')]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
-      const fixtureHtml = fixtureReport ? `<div class="researchJsonCard fixtureSuiteCard"><h4>${esc(tr('fixtureSuiteTitle'))}</h4><div class="miniChips"><span>${esc(fixtureReport.pass_count)}/${esc(fixtureReport.fixture_count)} ${esc(tr('passed'))}</span><span>${esc(tr('fails'))}:${esc(fixtureReport.fail_count)}</span></div><ul>${(fixtureReport.results || []).map(item=>`<li><strong>${esc(item.fixture_id)}</strong>: ${esc(item.pass ? lStatus('pass') : 'fail')} · ${esc(tr('accepted'))}:${esc(localizedBoolean(item.accepted))} · ${esc(tr('issues'))}:${esc(item.issue_count)}</li>`).join('')}</ul></div>` : '';
-      const routeReport = providerRouteReport();
-      const costReport = providerCostReport();
-      const routeHtml = routeReport ? `<div class="researchJsonCard providerRouteCard"><h4>${esc(tr('providerRouterTitle'))}</h4><div class="miniChips"><span>${esc(routeReport.selected_provider || 'mock')}</span><span>${esc(tr('suitability'))}:${esc(routeReport.average_suitability_score || 0)}/100</span><span>${esc(tr('cost'))}:$${esc(costReport?.selected_estimated_cost_usd ?? 0)}</span><span>${esc(tr('dryRun'))}:${esc(localizedBoolean(routeReport.dry_run_only))}</span></div><small>${esc(lStatus(routeReport.release_gate || 'provider_route_review_required'))}</small></div>` : '';
-      const portableSpike = portableOAuthSpikeStatus();
-      const portableHtml = `<div class="researchJsonCard portableAccountCard"><h4>${esc(tr('portableTitle'))}</h4><div class="miniChips"><span>${esc(portable.status)}</span><span>${esc(tr('token'))}:${esc(localizedBoolean(portable.token_present))}</span><span>${esc(tr('mock'))}:${esc(localizedBoolean(portable.mock_only))}</span><span>${esc(tr('oauth'))}:${esc(lStatus(portableSpike?.status || 'none'))}</span><span>${esc(tr('keyExported'))}:${esc(localizedBoolean(portable.key_exported))}</span></div><small>${esc(portable.safety_verdict)}${portable.account_id ? ' · ' + esc(portable.account_id) : ''}</small></div>`;
-      diagEl.innerHTML = diagHtml + routeHtml + portableHtml + fixtureHtml;
-    }
-    if(!runEl) return;
-    const runs = state.ai_runs || [];
-    if(!runs.length){ runEl.innerHTML = emptyState(tr('runLedgerEmpty'), tr('providerRunEmptyHint'), tr('dryRunProviderRequest')); return; }
-    runEl.innerHTML = `<div class="researchTableWrap"><table class="researchTable providerTable"><thead><tr><th>${esc(tr('run'))}</th><th>${esc(tr('providerTask'))}</th><th>${esc(tr('providerName'))}</th><th>${esc(tr('status'))}</th><th>${esc(tr('validation'))}</th><th>${esc(tr('output'))}</th></tr></thead><tbody>${runs.slice().reverse().map(run=>`<tr><td>${esc(run.run_id)}</td><td>${esc(run.task)}</td><td>${esc(run.provider)}</td><td>${esc(run.status)} · ${esc(run.duration_ms)}ms</td><td>${esc(validationSummary(run.response_validation, run.repair_trace))}</td><td>${esc(run.output_summary)}<small>${esc((run.warnings || []).join(' · '))}</small></td></tr>`).join('')}</tbody></table></div>`;
+    if(!providerHarnessRenderer?.renderProviderHarness) throw new Error('providerHarnessRenderer.renderProviderHarness module is not loaded');
+    return providerHarnessRenderer.renderProviderHarness({ $, state, providerContractPreview, providerPromptPreview, providerDiagnostics, portableAccountStatus, uxReliability, tr, esc, localizedBoolean, lStatus, providerRouteReport, providerCostReport, portableOAuthSpikeStatus, emptyState, validationSummary });
   }
   function localizedCritique(){
     const e=state.evidence||[],l=state.causal_links||[],u=e.filter(x=>x.source_url).length,t=new Set(e.map(x=>x.source_type).filter(Boolean)).size,c=e.filter(x=>x.contradicts&&x.contradicts.length).length,r=(a,b,o,n)=>({type:tr(a),severity:tr(b?'severityMedium':'severityHigh'),finding:tr(b?o:n)});
@@ -2434,50 +2276,8 @@
     renderScreenDisciplineNextAction();
   }
   function renderQuality(){
-    const plannerReport = buildResearchPlannerReport(state.plan);
-    const graphIntel = buildStrategicEvidenceGraph();
-    const providerRouting = buildProviderRouterBundle();
-    const scores = qualityScores();
-    const report = qualityGateReport();
-    const el = $('researchQualityOutput');
-    if(!el) return;
-    const rows = [
-      ['qualityV3Score', scores.qualityV3],
-      ['completenessScore', scores.completeness],
-      ['evidenceStrengthScore', scores.evidenceStrength],
-      ['evidenceReliabilityScore', scores.evidenceReliability],
-      ['attentionSignalIntegrityScore', scores.attentionSignalIntegrity],
-      ['contradictionCoverageScore', scores.contradictionCoverage],
-      ['sourceDiversityScore', scores.sourceDiversity],
-      ['actorLayerCoverageScore', scores.actorLayerCoverage],
-      ['causalLinkDensityScore', scores.causalLinkDensity],
-      ['providerSafetyScore', scores.providerSafety],
-      ['privacySafetyScore', scores.privacySafety],
-      ['migrationSafetyScore', scores.migrationSafety],
-      ['templateScore', scores.templateFit],
-      ['readiness', scores.readiness],
-      ['sourcePlanningScore', scores.sourcePlanning],
-      ['sourcePolicyScore', scores.sourcePolicyScore],
-      ['sourceFixtureScore', scores.sourceFixtures],
-      ['sourceImportScore', scores.sourceImport],
-      ['evidenceReviewScore', scores.evidenceReview],
-      ['providerIdentityScore', scores.providerIdentity],
-      ['responseValidationScore', scores.responseValidation],
-      ['contractFixtureScore', scores.contractFixtures]
-    ];
-    const scoreHtml = rows.map(([label,value]) => '<div class="researchScore"><span>' + esc(tr(label)) + '</span><strong>' + esc(value) + '</strong><meter min="0" max="100" value="' + esc(value) + '"></meter></div>').join('');
-    const weakestHtml = report.weakest_dimensions.map(item => '<li><strong>' + esc(lDim(item.dimension)) + '</strong>: ' + esc(item.score) + ' · ' + esc(lStatus(item.severity)) + '</li>').join('');
-    const actionsHtml = report.fix_actions.map(action => '<li>' + esc(localizedQualityAction(action)) + '</li>').join('');
-    const scoringReport = evidenceScoringReport();
-    const scoringHtml = '<div class="researchJsonCard evidenceScoringCard"><h4>' + esc(tr('qualityScoringTitle')) + '</h4><div class="miniChips"><span>' + esc(tr('reliabilityLabel')) + ' ' + esc(scoringReport.average_reliability_score || 0) + '/100 · ' + esc(lBand(scoringReport.reliability_band || '—')) + '</span><span>' + esc(tr('attentionLabel')) + ' ' + esc(scoringReport.average_attention_signal_score || 0) + '/100 · ' + esc(lBand(scoringReport.attention_band || '—')) + '</span><span>' + esc(tr('traceabilityLabel')) + ' ' + esc(scoringReport.average_traceability_score || 0) + '/100 · ' + esc(lBand(scoringReport.traceability_band || '—')) + '</span><span>' + esc(tr('calibrationWarnings')) + ' ' + esc(scoringReport.calibration_warning_count || 0) + '</span></div><small>' + esc(localizedPolicy(scoringReport.policy || '')) + '</small><small>' + esc(tr('evidenceScoringPolicyNote')) + ' ' + esc(tr('guardLabel')) + ': ' + esc(lStatus(scoringReport.score_theater_guard || 'score_theater_guard')) + '</small></div>';
-    const gq = graphIntel.graph_quality_report || {}, ge = graphIntel.graph_export_report || {}, gl = getLang();
-    const gt = gl === 'ar' ? 'رسم الأدلة الاستراتيجية' : gl === 'fr' ? 'graphe stratégique des preuves' : 'strategic evidence graph';
-    const gf = (gq.graph_gap_flags || []).length ? gq.graph_gap_flags.join(', ') : 'none';
-    const fm = (ge.formats || []).length ? ge.formats.join(', ') : 'none';
-    const graphHtml = '<div class="researchJsonCard strategicEvidenceGraphSummary" data-browser-qa="strategic-evidence-graph"><h4>' + esc(gt) + '</h4><div class="miniChips"><span>graph nodes ' + esc(gq.node_count || 0) + '</span><span>edges ' + esc(gq.edge_count || 0) + '</span><span>formats: ' + esc(fm) + '</span><span>gate: ' + esc(lStatus(gq.release_gate || graphIntel.release_gate || 'graph_review_required')) + '</span></div><small>graph gaps: ' + esc(gf) + ' · no live fetching · no automatic source verification</small></div>';
-    const reportHtml = scoringHtml + graphHtml + '<div class="researchJsonCard qualityGateV3Card"><h4>' + esc(tr('publicationReadiness')) + ': ' + esc(lStatus(report.publication_readiness)) + '</h4><div class="miniChips"><span>' + esc(lStatus(report.release_gate)) + '</span><span>' + esc(report.overall_score) + '/100</span><span>' + esc(report.blockers.length) + ' ' + esc(tr('blockers')) + '</span></div><h5>' + esc(tr('weakestDimensions')) + '</h5><ul>' + weakestHtml + '</ul><h5>' + esc(tr('fixActions')) + '</h5><ul>' + actionsHtml + '</ul></div>';
-    const proofSurfaceHtml = '<div class="qualityExportProofSurface" data-browser-qa="quality-export-proof-surface" style="box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:10px 14px;"><span>Quality</span><span>Evidence scoring calibration</span><span>Publication</span></div>';
-    el.innerHTML = proofSurfaceHtml + scoreHtml + reportHtml;
+    if(!qualityRenderer?.renderQuality) throw new Error('qualityRenderer.renderQuality module is not loaded');
+    return qualityRenderer.renderQuality({ buildResearchPlannerReport, state, buildStrategicEvidenceGraph, buildProviderRouterBundle, qualityScores, qualityGateReport, $, esc, tr, lDim, lStatus, localizedQualityAction, evidenceScoringReport, lBand, localizedPolicy, getLang });
   }
   function scrubVisibleMojibakeText(root = document.body){
     if(!root || typeof document === 'undefined') return;

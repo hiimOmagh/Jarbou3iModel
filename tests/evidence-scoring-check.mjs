@@ -8,6 +8,8 @@ import { CURRENT_VERSION } from './current-release-identity.mjs';
 const read = (file) => fs.readFileSync(file, 'utf8');
 const scorerSource = read('src/research/evidence-scorer.js');
 const engine = read('src/research-engine.js');
+const qualityRenderer = fs.existsSync('src/research/quality-renderer.js') ? read('src/research/quality-renderer.js') : '';
+const researchQualitySurface = `${engine}\n${qualityRenderer}`;
 const quality = read('src/research/quality-gate.js');
 const index = read('index.html');
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
@@ -58,7 +60,7 @@ assert.ok(setReport.attention_dominance_risk_count >= 1);
 assert.ok(index.includes('src="src/research/evidence-scorer.js" defer'), 'evidence scorer must load in index');
 assert.ok(index.indexOf('evidence-scorer.js') < index.indexOf('source-packet-importer.js'), 'evidence scorer must load before source importers');
 assert.ok(engine.includes('evidence_scoring_report'), 'research packet must export evidence scoring report');
-assert.ok(engine.includes('attentionSignalIntegrityScore'), 'quality UI must surface attention integrity');
+assert.ok(researchQualitySurface.includes('attentionSignalIntegrityScore'), 'quality UI must surface attention integrity');
 assert.ok(quality.includes('evidence_reliability'), 'quality gate must include evidence reliability dimension');
 assert.ok(quality.includes('attention_signal_integrity'), 'quality gate must include attention signal integrity dimension');
 

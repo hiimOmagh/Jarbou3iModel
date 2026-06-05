@@ -7,6 +7,8 @@ const fail = (message) => {
 const read = (file) => fs.readFileSync(file, 'utf8');
 const index = read('index.html');
 const researchApp = read('src/research-engine.js');
+const qualityRenderer = fs.existsSync('src/research/quality-renderer.js') ? read('src/research/quality-renderer.js') : '';
+const researchQualitySurface = `${researchApp}\n${qualityRenderer}`;
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
 
@@ -25,12 +27,12 @@ for (const token of [
   'queueImportedEvidence',
   'promoteReviewItem',
   'rejectReviewItem',
-  'renderEvidenceReviewQueue',
-  'evidenceReviewScore'
+  'renderEvidenceReviewQueue'
 ]) {
   if (!researchApp.includes(token)) fail(`research app missing token: ${token}`);
 }
 if (!schema.required.includes('evidence_review_queue')) fail('schema must require evidence_review_queue');
+if (!researchQualitySurface.includes('evidenceReviewScore')) fail('research app missing token: evidenceReviewScore');
 if (!schema.required.includes('evidence_review_report')) fail('schema must require evidence_review_report');
 if (!schema.$defs.evidence_review_item) fail('schema missing evidence_review_item definition');
 if (!schema.$defs.evidence_review_report) fail('schema missing evidence_review_report definition');
