@@ -94,8 +94,18 @@ for (const marker of ['sourceToBriefLaneGrid','sourceToBriefExportPolishPanel','
   assert.ok(renderer.includes(marker), `renderer missing ${marker}`);
 }
 const engine = fs.readFileSync('src/research-engine.js','utf8');
+const evidenceReviewRenderer = fs.existsSync('src/research/evidence-review-renderer.js')
+  ? fs.readFileSync('src/research/evidence-review-renderer.js','utf8')
+  : '';
+const sourceToBriefWorkbenchSource = fs.existsSync('src/research/source-to-brief-workbench.js')
+  ? fs.readFileSync('src/research/source-to-brief-workbench.js','utf8')
+  : '';
+const sourceToBriefOperatorRendererSource = fs.existsSync('src/research/source-to-brief-operator-renderer.js')
+  ? fs.readFileSync('src/research/source-to-brief-operator-renderer.js','utf8')
+  : '';
+const researchUiSurface = `${engine}\n${evidenceReviewRenderer}\n${sourceToBriefWorkbenchSource}\n${sourceToBriefOperatorRendererSource}`;
 for (const marker of ['reviewLaneGrid','reviewNextActions','export_throughput_gate']) {
-  assert.ok(engine.includes(marker), `research engine missing ${marker}`);
+  assert.ok(researchUiSurface.includes(marker), `research UI surface missing ${marker}`);
 }
 const helpers = fs.readFileSync('src/research/render-helpers.js','utf8');
 for (const marker of ['Export polish review','مراجعة صقل التصدير','Revue de finition export','reviewLaneTraceability']) {

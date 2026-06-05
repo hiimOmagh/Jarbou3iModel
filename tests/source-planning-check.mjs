@@ -10,6 +10,8 @@ const read = (file) => fs.readFileSync(file, 'utf8');
 const sourceModule = read('src/research/source-connectors.js');
 const index = read('index.html');
 const researchApp = read('src/research-engine.js');
+const qualityRenderer = fs.existsSync('src/research/quality-renderer.js') ? read('src/research/quality-renderer.js') : '';
+const researchQualitySurface = `${researchApp}\n${qualityRenderer}`;
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
 
@@ -42,7 +44,7 @@ if (!index.includes('id="sourceBackendEndpoint"')) fail('source backend endpoint
 if (!researchApp.includes('runSourceTask')) fail('research app missing source task runner');
 if (!researchApp.includes('source_policy')) fail('research packet missing source policy support');
 if (!researchApp.includes('source_fixture_report')) fail('research packet missing source fixture support');
-if (!researchApp.includes('sourcePlanningScore')) fail('quality gate missing source planning score');
+if (!researchQualitySurface.includes('sourcePlanningScore')) fail('quality gate missing source planning score');
 if (schema.properties.workflow_version.const !== '1.3.0') fail('schema workflow version mismatch');
 for (const key of ['source_policy','source_diagnostics','source_fixture_report','source_requests','source_runs','source_results','search_provider_identity','search_query_budget','search_policy']) {
   if (!schema.required.includes(key)) fail(`research schema must require ${key}`);

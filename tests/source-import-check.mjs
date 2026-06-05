@@ -10,6 +10,8 @@ const scorerText = read('src/research/evidence-scorer.js');
 const moduleText = read('src/research/source-import-adapter.js');
 const index = read('index.html');
 const researchApp = read('src/research-engine.js');
+const qualityRenderer = fs.existsSync('src/research/quality-renderer.js') ? read('src/research/quality-renderer.js') : '';
+const researchQualitySurface = `${researchApp}\n${qualityRenderer}`;
 const schema = JSON.parse(read('schema/research-workflow.schema.json'));
 const fixture = JSON.parse(read('fixtures/research/sample-research-workflow-en.json'));
 try { new vm.Script(scorerText, { filename: 'src/research/evidence-scorer.js' }); new vm.Script(moduleText, { filename: 'src/research/source-import-adapter.js' }); }
@@ -39,9 +41,10 @@ if (!index.includes('src="src/research/source-import-adapter.js" defer')) fail('
 for (const id of ['sourceImportText','previewSourceImportBtn','importSourceEvidenceBtn','sourceImportOutput']) {
   if (!index.includes(`id="${id}"`)) fail(`source import UI missing ${id}`);
 }
-for (const token of ['previewSourceImport','importSourceEvidence','source_import_report','source_imports','sourceImportScore','queueImportedEvidence','evidence_review_queue']) {
+for (const token of ['previewSourceImport','importSourceEvidence','source_import_report','source_imports','queueImportedEvidence','evidence_review_queue']) {
   if (!researchApp.includes(token)) fail(`research app missing token: ${token}`);
 }
+if (!researchQualitySurface.includes('sourceImportScore')) fail('research app missing token: sourceImportScore');
 if (!schema.required.includes('source_imports')) fail('schema must require source_imports');
 if (!schema.required.includes('source_import_report')) fail('schema must require source_import_report');
 if (!schema.$defs.source_import) fail('schema missing source_import definition');
