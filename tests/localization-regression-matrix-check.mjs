@@ -53,7 +53,13 @@ hostedDemoBodies.push(...releaseCopyHostedDemoBodies);
 const arabicHostedDemoBodies = releaseCopyHostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
-  assert.ok(body.includes('التقاط أدلة الاستضافة المستهدفة') || body.includes('لقطات محددة بالمحدّد') || body.includes('ربط المنطقة بالادعاء'), 'Arabic current-release description must identify alpha.43 targeted hosted evidence capture');
+  assert.ok(
+    body.includes('حارس تصادم حزم التصحيح') ||
+    body.includes('مسح هوية الإصدار') ||
+    body.includes('تشخيص جماعي') ||
+    body.includes('PACKAGE-MANIFEST.json'),
+    'Arabic current-release description must identify alpha.47 patch package safety and release identity sweep guard'
+  );
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
     'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',

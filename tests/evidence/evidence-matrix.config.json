@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.46",
-  "internal_build_version": "1.4.0-alpha.46",
-  "public_version_label": "v1.4.0-alpha.46 Module Boundary Regression Guard",
+  "evidence_matrix_config_version": "1.4.0-alpha.47",
+  "internal_build_version": "1.4.0-alpha.47",
+  "public_version_label": "v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.46 Module Boundary Regression Guard"
+      "public_label": "v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard"
     },
     "ar": {
       "required": [
@@ -239,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.46 Module Boundary Regression Guard",
-    "ar": "v1.4.0-alpha.46 دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف",
-    "fr": "v1.4.0-alpha.46 Sémantique de la matrice de preuves + durcissement de la preuve ciblée"
+    "en": "v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard",
+    "ar": "v1.4.0-alpha.47 أمان حزم التصحيح + حارس مسح هوية الإصدار",
+    "fr": "v1.4.0-alpha.47 Sécurité des paquets de correctifs + garde de balayage d’identité de release"
   }
 }

@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.46 Module Boundary Regression Guard */
+/* Current public release label: v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

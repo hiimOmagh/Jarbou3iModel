@@ -1,13 +1,13 @@
 {
-  "version": "1.4.0-alpha.46",
-  "milestone_name": "Module Boundary Regression Guard",
+  "version": "1.4.0-alpha.47",
+  "milestone_name": "Patch Package Safety + Release Identity Sweep Guard",
   "release_type": "product-facing",
   "allowed_scope": [
-    "module boundary regression guard for extracted research modules",
-    "research-engine.js remains below the 185000-byte module-boundary ceiling",
-    "index.html script order is locked for extracted modules before research-engine.js",
-    "tests validate modular UI and quality surfaces instead of engine-only locality",
-    "current release assertions remain derived from the canonical release identity contract"
+    "patch package collision safety for changed-files handoff ZIPs",
+    "current release identity sweep for current-sensitive metadata and visible copy",
+    "bulk current-no-browser diagnosis without stop-on-first-failure",
+    "repo hygiene guard extension for patch package artifacts",
+    "package ZIP contract documentation with nested metadata rules"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -33,7 +33,8 @@
     "docs/release-history.md",
     "docs/release-and-evidence.md",
     "docs/qa-matrix.md",
-    "docs/roadmap.md"
+    "docs/roadmap.md",
+    "docs/patch-package-contract.md"
   ],
   "required_tests": [
     "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
@@ -55,7 +56,10 @@
     "tests/adapter-replay-review-pack-operator-review-console-check.mjs",
     "src/research/targeted-hosted-evidence-capture.js",
     "tests/manual-workflow-ux-consolidation-check.mjs",
-    "tests/module-boundary-regression-guard-check.mjs"
+    "tests/module-boundary-regression-guard-check.mjs",
+    "tests/patch-package-safety-check.mjs",
+    "tests/current-release-identity-sweep-check.mjs",
+    "tests/bulk-current-no-browser-diagnosis-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -204,15 +208,20 @@
     "tests/source-to-brief-export-polish-check.mjs",
     "docs/architecture.md",
     "docs/ai-integration.md",
-    "docs/privacy-audit.md"
+    "docs/privacy-audit.md",
+    "docs/patch-package-contract.md",
+    "tests/patch-package-safety-check.mjs",
+    "tests/current-release-identity-sweep-check.mjs",
+    "tests/bulk-current-no-browser-diagnosis-check.mjs",
+    "tests/repo-file-hygiene-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match the current-release contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.46",
-    "public labels must expose v1.4.0-alpha.46 Module Boundary Regression Guard",
-    "targeted hosted evidence manifest must map selector to claim, expected tokens, bounding box, and region screenshot",
-    "full-page screenshots are contextual only and must not be the sole release proof",
-    "targeted hosted evidence capture must remain no-network, metadata-only, preview-only, and manually reviewed"
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.47",
+    "public labels must expose v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard",
+    "patch package ZIPs must not contain root repo-colliding metadata or application files",
+    "current release identity sweep must catch stale current-release assertions before browser/no-browser gates",
+    "bulk current-no-browser diagnosis must classify failure families without stop-on-first-failure"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -224,25 +233,29 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
+    "v1.4.0-alpha.46 Module Boundary Regression Guard",
+    "v1.4.0-alpha.46 — Module Boundary Regression Guard",
+    "Module Boundary Regression Guard is ready for release evidence",
+    "1.4.0-alpha.46 adds Module Boundary Regression Guard",
+    "v1.4.0-alpha.46 دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف",
+    "v1.4.0-alpha.46 Sémantique de la matrice de preuves + durcissement de la preuve ciblée",
+    "دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف",
+    "Sémantique de la matrice de preuves + durcissement de la preuve ciblée",
     "Manual Workflow UX Consolidation is ready for release evidence",
-    "دمج تجربة سير العمل اليدوي جاهز لأدلة الإصدار",
-    "Consolidation UX du workflow manuel est prête pour les preuves de release",
     "v1.4.0-alpha.42 Manual Workflow UX Consolidation",
-    "v1.4.0-alpha.42 دمج تجربة سير العمل اليدوي",
-    "v1.4.0-alpha.42 Consolidation UX du workflow manuel",
     "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite"
   ],
-  "runtime_scope": "module_boundary_regression_guard",
+  "runtime_scope": "patch_package_safety_release_identity_sweep_guard",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted evidence must report internal_build_version 1.4.0-alpha.46",
-    "public labels must expose v1.4.0-alpha.46 Module Boundary Regression Guard",
-    "targeted hosted evidence manifest must map selector to claim, expected tokens, bounding box, and region screenshot",
-    "evidence matrix rows must expose blocking/advisory language semantics",
-    "blocking missing language proof must fail rows while advisory missing language metadata must not",
-    "full-page screenshots are contextual only and must not be the sole release proof",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.47",
+    "public labels must expose v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard",
+    "patch package safety guard must reject root repo-colliding package entries",
+    "repo hygiene must reject root patch package artifacts",
+    "current release identity sweep must derive identity from tests/current-release-identity.mjs",
+    "bulk current-no-browser diagnosis must support non-stop failure-family classification",
     "release must remain no-network, metadata-only, preview-only, and manually reviewed",
-    "current release tests must derive identity from tests/current-release-identity.mjs"
+    "runtime/provider/OAuth/backend/source/storage behavior must remain unchanged"
   ]
 }

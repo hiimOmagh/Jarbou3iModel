@@ -1,25 +1,28 @@
 const CURRENT_RELEASE_IDENTITY = Object.freeze({
-  version: '1.4.0-alpha.46',
-  title: 'Module Boundary Regression Guard',
-  release: 'v1.4.0-alpha.46 — Module Boundary Regression Guard',
-  publicLabel: 'v1.4.0-alpha.46 Module Boundary Regression Guard',
-  runtimeScope: 'module_boundary_regression_guard'
+  version: '1.4.0-alpha.47',
+  title: 'Patch Package Safety + Release Identity Sweep Guard',
+  release: 'v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard',
+  publicLabel: 'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
+  runtimeScope: 'patch_package_safety_release_identity_sweep_guard'
 });
 
-/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.46. */
+/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.47. */
 (function(global){
   'use strict';
   const contract = Object.freeze({
-    version: '1.4.0-alpha.46',
+    version: '1.4.0-alpha.47',
+    release: 'v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard',
+    releaseTitle: 'v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard',
+    milestone: 'Patch Package Safety + Release Identity Sweep Guard',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.46 Module Boundary Regression Guard',
-      ar: 'v1.4.0-alpha.46 دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف',
-      fr: 'v1.4.0-alpha.46 Sémantique de la matrice de preuves + durcissement de la preuve ciblée'
+      en: 'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
+      ar: 'v1.4.0-alpha.47 أمان حزم التصحيح + حارس مسح هوية الإصدار',
+      fr: 'v1.4.0-alpha.47 Sécurité des paquets de correctifs + garde de balayage d’identité de release'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
-      en: Object.freeze(["blocking/advisory language semantics","Targeted Proof Hardening","no full-page-only proof"]),
-      ar: Object.freeze(["التمييز بين الحظر والإرشاد","تقوية الإثبات المستهدف","لا دليل بصفحة كاملة فقط"]),
-      fr: Object.freeze(["sémantique bloquante et consultative","durcissement de la preuve ciblée","pas de preuve page entière seule"])
+      en: Object.freeze(["patch package collision guard","release identity sweep","bulk diagnosis"]),
+      ar: Object.freeze(["حارس تصادم حزم التصحيح","مسح هوية الإصدار","تشخيص جماعي"]),
+      fr: Object.freeze(["garde anti-collision des paquets de correctifs","balayage d’identité de release","diagnostic groupé"])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
       'v1.4.0-alpha.42 Manual Workflow UX Consolidation',
@@ -46,31 +49,31 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.46 Module Boundary Regression Guard · targeted evidence',
-        hostedDemoVerificationBody: 'Module Boundary Regression Guard is ready for release evidence: hosted-demo proof now separates blocking/advisory language semantics, keeps targeted proof hardening, preserves locator-based screenshots, region-to-claim mapping, bounding boxes, expected-token proof, targeted screenshot sanity limits, and a manifest that rejects full-page-only proof with a no full-page-only proof release rule. Hosted evidence must report 1.4.0-alpha.46 internally while showing v1.4.0-alpha.46 Module Boundary Regression Guard to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled. Full-page screenshots remain context only; proof screenshots must target the specific UI region being verified.',
-        analysisReleaseNote: '1.4.0-alpha.46 adds Module Boundary Regression Guard: blocking/advisory language semantics, targeted proof screenshots, region-to-claim mapping, expected-token proof, and no full-page-only proof while remaining no-network.',
-        adapterReplayReviewPackPreviewTitle: 'Module Boundary Regression Guard',
-        adapterReplayReviewPackPreviewBody: 'Evidence capture view: locator-based screenshots, region-to-claim mapping, bounding boxes, expected tokens, targeted screenshot caps, no full-page-only proof, no live provider calls.',
-        adapterReplayOperatorWorkflowTitle: 'Module Boundary Regression Guard',
-        adapterReplayOperatorWorkflowBody: 'Module Boundary Regression Guard: operator control room stage board no live provider calls. Targeted hosted evidence capture for the public-demo intelligence workspace. Metadata-only. No automatic verification, signoff, export lock, persistence, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard · package safety',
+        hostedDemoVerificationBody: 'Patch Package Safety + Release Identity Sweep Guard is ready for release evidence: patch package collision guard, release identity sweep, bulk diagnosis, nested ZIP package contract, PACKAGE-MANIFEST.json metadata, README-PACKAGE.md package notes, and root patch artifact hygiene are verified before browser/no-browser gates. Hosted evidence must report 1.4.0-alpha.47 internally while showing v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.47 adds patch package collision guard, release identity sweep, bulk diagnosis, and root patch artifact hygiene while remaining no-network.',
+        adapterReplayReviewPackPreviewTitle: 'Patch Package Safety + Release Identity Sweep Guard',
+        adapterReplayReviewPackPreviewBody: 'Release governance view: patch package collision guard, nested ZIP contract, release identity sweep, bulk diagnosis, and root patch artifact hygiene. No live provider calls.',
+        adapterReplayOperatorWorkflowTitle: 'Patch Package Safety + Release Identity Sweep Guard',
+        adapterReplayOperatorWorkflowBody: 'Patch Package Safety + Release Identity Sweep Guard: operator control room release-governance stage board only. Metadata-only. No automatic verification, signoff, export lock, persistence, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.46 دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف · أدلة مستهدفة',
-        hostedDemoVerificationBody: 'التقاط أدلة الاستضافة المستهدفة جاهز لأدلة الإصدار: يجب أن تعتمد أدلة العرض المستضاف الآن على لقطات محددة بالمحدّد، وربط المنطقة بالادعاء، وصناديق حدود، وإثبات رموز متوقعة، وحدود حجم للقطات المستهدفة، واستمرارية لوحة مراحل operator control room، وmanifest يرفض لا دليل بصفحة كاملة فقط. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.46 مع عرض v1.4.0-alpha.46 دلالات مصفوفة الأدلة + التمييز بين الحظر والإرشاد + تقوية الإثبات المستهدف للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر. تبقى لقطات الصفحة الكاملة سياقاً فقط؛ يجب أن تستهدف لقطات الإثبات منطقة الواجهة المحددة التي يتم التحقق منها.',
-        analysisReleaseNote: 'يضيف 1.4.0-alpha.46 دلالات مصفوفة الأدلة والتمييز بين الحظر والإرشاد وتقوية الإثبات المستهدف مع لقطات محددة بالمحدّد وربط المنطقة بالادعاء وصناديق حدود ورموز متوقعة ورفض دليل الصفحة الكاملة فقط مع البقاء بلا شبكة.',
-        adapterReplayReviewPackPreviewTitle: 'التقاط أدلة الاستضافة المستهدفة',
-        adapterReplayReviewPackPreviewBody: 'عرض التقاط الأدلة: لقطات محددة بالمحدّد، ربط المنطقة بالادعاء، صناديق حدود، رموز متوقعة، حدود للقطات المستهدفة، لا دليل بصفحة كاملة فقط، دون نداءات مزوّد حية.',
-        adapterReplayOperatorWorkflowTitle: 'التقاط أدلة الاستضافة المستهدفة',
-        adapterReplayOperatorWorkflowBody: 'التقاط أدلة الاستضافة المستهدفة لمساحة ذكاء العرض العام. metadata فقط. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
+        alphaBadge: 'v1.4.0-alpha.47 أمان حزم التصحيح + حارس مسح هوية الإصدار · أمان الحزم',
+        hostedDemoVerificationBody: 'أمان حزم التصحيح + حارس مسح هوية الإصدار جاهز لأدلة الإصدار: يتم التحقق من حارس تصادم حزم التصحيح، ومسح هوية الإصدار، وتشخيص جماعي، وعقد ZIP بمجلد متداخل، وبيانات PACKAGE-MANIFEST.json، وملاحظات README-PACKAGE.md، ونظافة آثار التصحيح في الجذر قبل بوابات المتصفح و no-browser. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.47 مع عرض v1.4.0-alpha.47 أمان حزم التصحيح + حارس مسح هوية الإصدار للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.47 حارس تصادم حزم التصحيح، ومسح هوية الإصدار، وتشخيص جماعي، ونظافة آثار التصحيح في الجذر مع البقاء بلا شبكة.',
+        adapterReplayReviewPackPreviewTitle: 'أمان حزم التصحيح + حارس مسح هوية الإصدار',
+        adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: حارس تصادم حزم التصحيح، عقد ZIP متداخل، مسح هوية الإصدار، تشخيص جماعي، ونظافة آثار التصحيح في الجذر. دون نداءات مزوّد حية.',
+        adapterReplayOperatorWorkflowTitle: 'أمان حزم التصحيح + حارس مسح هوية الإصدار',
+        adapterReplayOperatorWorkflowBody: 'أمان حزم التصحيح + حارس مسح هوية الإصدار: لوحة مراحل حوكمة الإصدار فقط. metadata فقط. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.46 Sémantique de la matrice de preuves + durcissement de la preuve ciblée · preuves ciblées',
-        hostedDemoVerificationBody: 'Capture ciblée des preuves hébergées est prête pour les preuves de release : la preuve de démo hébergée exige désormais des captures par sélecteur, une cartographie région-vers-revendication, des boîtes de délimitation, des jetons attendus prouvés, des limites de taille pour capture ciblée, une continuité stage board operator control room et un manifeste qui refuse pas de preuve page entière seule. Les preuves hébergées doivent annoncer 1.4.0-alpha.46 en interne tout en affichant v1.4.0-alpha.46 Sémantique de la matrice de preuves + sémantique bloquante et consultative + durcissement de la preuve ciblée aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication. Les captures pleine page restent seulement contextuelles ; les captures de preuve doivent cibler la région UI vérifiée.',
-        analysisReleaseNote: '1.4.0-alpha.46 ajoute la sémantique de la matrice de preuves, la sémantique bloquante et consultative, et le durcissement de la preuve ciblée avec captures par sélecteur, cartographie région-vers-revendication, boîtes de délimitation, jetons attendus et refus des preuves pleine page seules, tout en restant sans réseau.',
-        adapterReplayReviewPackPreviewTitle: 'Capture ciblée des preuves hébergées',
-        adapterReplayReviewPackPreviewBody: 'Vue capture de preuve : captures par sélecteur, cartographie région-vers-revendication, boîtes de délimitation, jetons attendus, limites ciblées, pas de preuve page entière seule, aucun appel fournisseur réel.',
-        adapterReplayOperatorWorkflowTitle: 'Capture ciblée des preuves hébergées',
-        adapterReplayOperatorWorkflowBody: 'Capture ciblée des preuves hébergées pour l’espace de démonstration public. Metadata only. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
+        alphaBadge: 'v1.4.0-alpha.47 Sécurité des paquets de correctifs + garde de balayage d’identité de release · sécurité package',
+        hostedDemoVerificationBody: 'Sécurité des paquets de correctifs + garde de balayage d’identité de release est prête pour les preuves de release : garde anti-collision des paquets de correctifs, balayage d’identité de release, diagnostic groupé, contrat ZIP à dossier imbriqué, métadonnées PACKAGE-MANIFEST.json, notes README-PACKAGE.md et hygiène des artefacts de patch à la racine sont vérifiés avant les gates navigateur/no-browser. Les preuves hébergées doivent annoncer 1.4.0-alpha.47 en interne tout en affichant v1.4.0-alpha.47 Sécurité des paquets de correctifs + garde de balayage d’identité de release aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
+        analysisReleaseNote: '1.4.0-alpha.47 ajoute la garde anti-collision des paquets de correctifs, le balayage d’identité de release, le diagnostic groupé et l’hygiène des artefacts de patch à la racine, tout en restant sans réseau.',
+        adapterReplayReviewPackPreviewTitle: 'Sécurité des paquets de correctifs + garde de balayage d’identité de release',
+        adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : garde anti-collision des paquets de correctifs, contrat ZIP imbriqué, balayage d’identité de release, diagnostic groupé et hygiène des artefacts de patch à la racine. Aucun appel fournisseur réel.',
+        adapterReplayOperatorWorkflowTitle: 'Sécurité des paquets de correctifs + garde de balayage d’identité de release',
+        adapterReplayOperatorWorkflowBody: 'Sécurité des paquets de correctifs + garde de balayage d’identité de release : stage board gouvernance uniquement. Metadata only. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
       })
     })
   });
@@ -89,10 +92,10 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
     ar: (contract.publicVersionLabels && contract.publicVersionLabels.ar
-      ? String(contract.publicVersionLabels.ar).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.46')
+      ? String(contract.publicVersionLabels.ar).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.47')
       : CURRENT_RELEASE_IDENTITY.publicLabel),
     fr: (contract.publicVersionLabels && contract.publicVersionLabels.fr
-      ? String(contract.publicVersionLabels.fr).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.46')
+      ? String(contract.publicVersionLabels.fr).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.47')
       : CURRENT_RELEASE_IDENTITY.publicLabel)
   });
 
@@ -113,36 +116,36 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   }
 })();
 
-const ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
-  ar: Object.freeze(['التمييز بين الحظر والإرشاد', 'تقوية الإثبات المستهدف', 'لا دليل بصفحة كاملة فقط']),
-  fr: Object.freeze(['sémantique bloquante et consultative', 'durcissement de la preuve ciblée', 'pas de preuve page entière seule']),
-  en: Object.freeze(['blocking/advisory language semantics', 'Targeted Proof Hardening', 'no full-page-only proof'])
+const ALPHA47_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
+  ar: Object.freeze(['حارس تصادم حزم التصحيح', 'مسح هوية الإصدار', 'تشخيص جماعي']),
+  fr: Object.freeze(['garde anti-collision des paquets de correctifs', 'balayage d’identité de release', 'diagnostic groupé']),
+  en: Object.freeze(['patch package collision guard', 'release identity sweep', 'bulk diagnosis'])
 });
 
-(function enforceAlpha46BrowserVisibleTextContract() {
+(function enforceAlpha47BrowserVisibleTextContract() {
   const root = typeof globalThis !== 'undefined' ? globalThis : this;
   const contract = root.Jarbou3iResearchReleaseCopyContract;
   if (!contract) return;
 
-  contract.version = '1.4.0-alpha.46';
-  contract.release = 'v1.4.0-alpha.46 — Module Boundary Regression Guard';
-  contract.releaseTitle = 'v1.4.0-alpha.46 — Module Boundary Regression Guard';
-  contract.milestone = 'Module Boundary Regression Guard';
+  contract.version = '1.4.0-alpha.47';
+  contract.release = 'v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard';
+  contract.releaseTitle = 'v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard';
+  contract.milestone = 'Patch Package Safety + Release Identity Sweep Guard';
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
-    en: 'v1.4.0-alpha.46 Module Boundary Regression Guard',
+    en: 'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
     ar: (contract.publicVersionLabels && contract.publicVersionLabels.ar
-      ? String(contract.publicVersionLabels.ar).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.46')
-      : 'v1.4.0-alpha.46 Module Boundary Regression Guard'),
+      ? String(contract.publicVersionLabels.ar).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.47')
+      : 'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard'),
     fr: (contract.publicVersionLabels && contract.publicVersionLabels.fr
-      ? String(contract.publicVersionLabels.fr).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.46')
-      : 'v1.4.0-alpha.46 Module Boundary Regression Guard')
+      ? String(contract.publicVersionLabels.fr).replace(/^v1\.4\.0-alpha\.\d+/, 'v1.4.0-alpha.47')
+      : 'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard')
   });
 
-  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT);
+  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA47_BROWSER_VISIBLE_TEXT_CONTRACT);
   contract.expectedCurrentReleaseDescriptionTokens = Object.assign(
     {},
     contract.expectedCurrentReleaseDescriptionTokens || {},
-    ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT
+    ALPHA47_BROWSER_VISIBLE_TEXT_CONTRACT
   );
 
   contract.staleVisibleText = (contract.staleVisibleText || [])

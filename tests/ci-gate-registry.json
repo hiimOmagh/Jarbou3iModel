@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.46",
-  "release_title": "v1.4.0-alpha.46 — Module Boundary Regression Guard",
+  "ci_gate_registry_version": "1.4.0-alpha.47",
+  "release_title": "v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -38,6 +38,8 @@
         "tests/static-check.mjs",
         "tests/release-truth-consistency-check.mjs",
         "tests/release-identity-single-source-contract-check.mjs",
+        "tests/current-release-identity-sweep-check.mjs",
+        "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
@@ -78,6 +80,7 @@
         "tests/lockfile-dependency-version-integrity-check.mjs",
         "tests/browser-visual-project-scope-check.mjs",
         "tests/repo-file-hygiene-check.mjs",
+        "tests/patch-package-safety-check.mjs",
         "tests/repository-hygiene-cleanup-check.mjs",
         "tests/public-demo-readiness-check.mjs",
         "tests/hosted-demo-deployment-check.mjs",
@@ -208,6 +211,8 @@
         "tests/version-suite-registry-check.mjs",
         "tests/release-truth-consistency-check.mjs",
         "tests/release-identity-single-source-contract-check.mjs",
+        "tests/current-release-identity-sweep-check.mjs",
+        "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
@@ -215,6 +220,7 @@
         "tests/test-organization-audit-check.mjs",
         "tests/fixture-payload-budget-check.mjs",
         "tests/repo-file-hygiene-check.mjs",
+        "tests/patch-package-safety-check.mjs",
         "tests/test-matrix-runtime-optimization-check.mjs",
         "tests/release-doc-timeline-pruning-check.mjs",
         "tests/syntax-matrix-check.mjs",
@@ -302,7 +308,10 @@
         "tests/test-organization-audit-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/test-matrix-runtime-optimization-check.mjs",
-        "tests/release-doc-timeline-pruning-check.mjs"
+        "tests/release-doc-timeline-pruning-check.mjs",
+        "tests/current-release-identity-sweep-check.mjs",
+        "tests/patch-package-safety-check.mjs",
+        "tests/bulk-current-no-browser-diagnosis-check.mjs"
       ],
       "playwright_specs": []
     },
@@ -532,6 +541,7 @@
         "tests/release-apply-integrity-check.mjs",
         "tests/release-provenance-ledger-check.mjs",
         "tests/repo-file-hygiene-check.mjs",
+        "tests/patch-package-safety-check.mjs",
         "tests/repository-hygiene-cleanup-check.mjs",
         "tests/public-demo-readiness-check.mjs",
         "tests/hosted-demo-deployment-check.mjs",
@@ -604,7 +614,9 @@
         "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
-        "tests/effective-diff-check.mjs"
+        "tests/effective-diff-check.mjs",
+        "tests/current-release-identity-sweep-check.mjs",
+        "tests/bulk-current-no-browser-diagnosis-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -641,24 +653,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.46",
-    "optimization_scope": "module_boundary_regression_guard",
+    "version": "1.4.0-alpha.47",
+    "optimization_scope": "patch_package_safety_release_identity_sweep_guard",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "module_boundary_regression_guard",
-    "current_candidate": "1.4.0-alpha.46",
+    "name": "patch_package_safety_release_identity_sweep_guard",
+    "current_candidate": "1.4.0-alpha.47",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha consolidates manual workflow UX without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "module_boundary_regression_guard"
+    "description": "Current alpha hardens patch-package safety, release identity sweep coverage, and bulk diagnosis without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "patch_package_safety_release_identity_sweep_guard"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.46",
+    "version": "1.4.0-alpha.47",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -869,13 +881,16 @@
       "tests/source-to-brief-publication-readiness-suite-check.mjs",
       "src/research/manual-workflow-ux-consolidation.js",
       "tests/manual-workflow-ux-consolidation-check.mjs",
-      "tests/module-boundary-regression-guard-check.mjs"
+      "tests/module-boundary-regression-guard-check.mjs",
+      "tests/current-release-identity-sweep-check.mjs",
+      "tests/patch-package-safety-check.mjs",
+      "tests/bulk-current-no-browser-diagnosis-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.46",
+    "version": "1.4.0-alpha.47",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

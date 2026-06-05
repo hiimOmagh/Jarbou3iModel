@@ -65,6 +65,16 @@ const requiredDeletes = [
   }
 ];
 
+
+const forbiddenRootPackageArtifacts = [
+  { pattern: /^_patch[-_]/, type: 'dir', reason: 'extracted patch package staging directory' },
+  { pattern: /^.+-package\.zip$/, type: 'file', reason: 'patch package archive must stay outside the committed repo' },
+  { pattern: /^PACKAGE-MANIFEST\.json$/, type: 'file', reason: 'patch package metadata must stay nested inside the package folder' },
+  { pattern: /^README-PACKAGE\.md$/, type: 'file', reason: 'patch package README must stay nested inside the package folder' },
+  { pattern: /^apply-.+\.mjs$/, type: 'file', reason: 'temporary patch apply script must not be committed at repo root' },
+  { pattern: /^validate-.+\.mjs$/, type: 'file', reason: 'temporary patch validation script must not be committed at repo root' }
+];
+
 const generatedRootNames = [
   'dist',
   'build',
@@ -97,6 +107,14 @@ if ([...trackedPaths].some((file) => file === 'node_modules' || file.startsWith(
 
 for (const file of forbiddenSecretFiles) {
   if (exists(file)) failures.push(`DELETE ${file} — local secret/config file must not be committed`);
+}
+
+for (const entry of allEntries.filter((candidate) => !candidate.path.includes('/'))) {
+  for (const artifact of forbiddenRootPackageArtifacts) {
+    if (entry.type === artifact.type && artifact.pattern.test(entry.path)) {
+      failures.push(`DELETE ${entry.path}${entry.type === 'dir' ? '/' : ''} — ${artifact.reason}`);
+    }
+  }
 }
 
 for (const entry of allEntries) {
