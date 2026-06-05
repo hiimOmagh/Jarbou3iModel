@@ -17,9 +17,9 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
       fr: 'v1.4.0-alpha.46 Sémantique de la matrice de preuves + durcissement de la preuve ciblée'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
-      en: Object.freeze(["Evidence Matrix Semantics","blocking/advisory language semantics","Targeted Proof Hardening","no full-page-only proof"]),
-      ar: Object.freeze(["دلالات مصفوفة الأدلة","التمييز بين الحظر والإرشاد","تقوية الإثبات المستهدف","لا دليل بصفحة كاملة فقط"]),
-      fr: Object.freeze(["Sémantique de la matrice de preuves","sémantique bloquante et consultative","durcissement de la preuve ciblée","pas de preuve page entière seule"])
+      en: Object.freeze(["blocking/advisory language semantics","Targeted Proof Hardening","no full-page-only proof"]),
+      ar: Object.freeze(["التمييز بين الحظر والإرشاد","تقوية الإثبات المستهدف","لا دليل بصفحة كاملة فقط"]),
+      fr: Object.freeze(["sémantique bloquante et consultative","durcissement de la preuve ciblée","pas de preuve page entière seule"])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
       'v1.4.0-alpha.42 Manual Workflow UX Consolidation',
@@ -114,8 +114,8 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
 })();
 
 const ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
-  ar: Object.freeze(['blocking/advisory language semantics', 'Targeted Proof Hardening', 'no full-page-only proof']),
-  fr: Object.freeze(['blocking/advisory language semantics', 'Targeted Proof Hardening', 'no full-page-only proof']),
+  ar: Object.freeze(['التمييز بين الحظر والإرشاد', 'تقوية الإثبات المستهدف', 'لا دليل بصفحة كاملة فقط']),
+  fr: Object.freeze(['sémantique bloquante et consultative', 'durcissement de la preuve ciblée', 'pas de preuve page entière seule']),
   en: Object.freeze(['blocking/advisory language semantics', 'Targeted Proof Hardening', 'no full-page-only proof'])
 });
 
@@ -146,5 +146,9 @@ const ALPHA46_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
   );
 
   contract.staleVisibleText = (contract.staleVisibleText || [])
-    .filter((token) => token !== 'Evidence Matrix Semantics');
+    .filter((token) => ![
+      'Evidence Matrix Semantics',
+      'دلالات مصفوفة الأدلة',
+      'Sémantique de la matrice de preuves'
+    ].includes(token));
 })();
