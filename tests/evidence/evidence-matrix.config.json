@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.51",
-  "internal_build_version": "1.4.0-alpha.51",
-  "public_version_label": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
+  "evidence_matrix_config_version": "1.4.0-alpha.52",
+  "internal_build_version": "1.4.0-alpha.52",
+  "public_version_label": "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest"
+      "public_label": "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract"
     },
     "ar": {
       "required": [
@@ -88,7 +88,8 @@
         "Public demo ready",
         "العرض العام جاهز",
         "Démo publique prête"
-      ]
+      ],
+      "public_label": "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract"
     },
     {
       "id": "S02",
@@ -239,8 +240,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
-    "ar": "v1.4.0-alpha.51 لوحة قفل الإصدار + ملخص الأدلة",
-    "fr": "v1.4.0-alpha.51 Tableau de verrouillage de release + digest des preuves"
+    "en": "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract",
+    "ar": "v1.4.0-alpha.52 حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل",
+    "fr": "v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage"
   }
 }

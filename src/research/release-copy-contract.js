@@ -1,23 +1,23 @@
 const CURRENT_RELEASE_IDENTITY = Object.freeze({
-  version: '1.4.0-alpha.51',
-  title: 'Release Lock Dashboard Artifact + Evidence Digest',
-  release: 'v1.4.0-alpha.51 — Release Lock Dashboard Artifact + Evidence Digest',
-  publicLabel: 'v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest',
-  runtimeScope: 'release_lock_dashboard_artifact_evidence_digest'
+  version: '1.4.0-alpha.52',
+  title: 'Release Digest Regression Guard + Lock Bundle Schema Contract',
+  release: 'v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract',
+  publicLabel: 'v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract',
+  runtimeScope: 'release_digest_regression_guard_lock_bundle_schema_contract'
 });
 
-/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.51. */
+/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.52. */
 (function(global){
   'use strict';
   const contract = Object.freeze({
-    version: '1.4.0-alpha.51',
-    release: 'v1.4.0-alpha.51 — Release Lock Dashboard Artifact + Evidence Digest',
-    releaseTitle: 'v1.4.0-alpha.51 — Release Lock Dashboard Artifact + Evidence Digest',
-    milestone: 'Release Lock Dashboard Artifact + Evidence Digest',
+    version: '1.4.0-alpha.52',
+    release: 'v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract',
+    releaseTitle: 'v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract',
+    milestone: 'Release Digest Regression Guard + Lock Bundle Schema Contract',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest',
-      ar: 'v1.4.0-alpha.51 لوحة قفل الإصدار + ملخص الأدلة',
-      fr: 'v1.4.0-alpha.51 Tableau de verrouillage de release + digest des preuves'
+      en: 'v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract',
+      ar: 'v1.4.0-alpha.52 حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل',
+      fr: 'v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
       en: Object.freeze(['release lock dashboard', 'evidence digest', 'lockable reviewer decision']),
@@ -54,31 +54,31 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest · artifact export',
-        hostedDemoVerificationBody: 'Release Lock Dashboard Artifact + Evidence Digest is ready for release evidence: a compact release-lock dashboard, evidence digest, no-browser/browser gate summary, matrix and hosted-capture counts, targeted-region proof, stale-residue status, and lockable reviewer decision are available for evidence review. Hosted evidence must report 1.4.0-alpha.51 internally while showing v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.51 exports a compact release-lock dashboard evidence digest while remaining no-network.',
-        adapterReplayReviewPackPreviewTitle: 'Release Lock Dashboard Artifact + Evidence Digest',
+        alphaBadge: 'v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract · artifact export',
+        hostedDemoVerificationBody: 'Release Digest Regression Guard + Lock Bundle Schema Contract is ready for release evidence: a compact release-lock dashboard, evidence digest, no-browser/browser gate summary, matrix and hosted-capture counts, targeted-region proof, stale-residue status, and lockable reviewer decision are available for evidence review. Hosted evidence must report 1.4.0-alpha.52 internally while showing v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.52 exports a compact release-lock dashboard evidence digest while remaining no-network.',
+        adapterReplayReviewPackPreviewTitle: 'Release Digest Regression Guard + Lock Bundle Schema Contract',
         adapterReplayReviewPackPreviewBody: 'Release governance view: lock dashboard digest, gate status, evidence matrix count, hosted capture proof, targeted region summary, and reviewer lock decision. No live provider calls.',
-        adapterReplayOperatorWorkflowTitle: 'Release Lock Dashboard Artifact + Evidence Digest',
-        adapterReplayOperatorWorkflowBody: 'Release Lock Dashboard Artifact + Evidence Digest: compact lock evidence digest for operator handoff inside the operator control room stage board only. Metadata-only. No automatic verification, signoff, export lock, persistence, or publication permission.'
+        adapterReplayOperatorWorkflowTitle: 'Release Digest Regression Guard + Lock Bundle Schema Contract',
+        adapterReplayOperatorWorkflowBody: 'Release Digest Regression Guard + Lock Bundle Schema Contract: compact lock evidence digest for operator handoff inside the operator control room stage board only. Metadata-only. No automatic verification, signoff, export lock, persistence, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.51 لوحة قفل الإصدار + ملخص الأدلة · ملخص القفل',
-        hostedDemoVerificationBody: 'لوحة قفل الإصدار + ملخص الأدلة جاهزة لأدلة الإصدار: يتم تلخيص بوابات no-browser والمتصفح، وعدّ صفوف مصفوفة الأدلة، ولقطات الاستضافة، ومناطق الإثبات المستهدفة، وحالة بقايا النسخ القديمة، وقرار القفل للمراجع في ملخص واحد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.51 مع عرض v1.4.0-alpha.51 لوحة قفل الإصدار + ملخص الأدلة للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
-        analysisReleaseNote: 'يضيف 1.4.0-alpha.51 لوحة قفل الإصدار وملخص الأدلة وقرار القفل للمراجع مع البقاء بلا شبكة.',
-        adapterReplayReviewPackPreviewTitle: 'لوحة قفل الإصدار + ملخص الأدلة',
+        alphaBadge: 'v1.4.0-alpha.52 حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل · ملخص القفل',
+        hostedDemoVerificationBody: 'حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل جاهزة لأدلة الإصدار: يتم تلخيص بوابات no-browser والمتصفح، وعدّ صفوف مصفوفة الأدلة، ولقطات الاستضافة، ومناطق الإثبات المستهدفة، وحالة بقايا النسخ القديمة، وقرار القفل للمراجع في ملخص واحد. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.52 مع عرض v1.4.0-alpha.52 حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.52 لوحة قفل الإصدار وملخص الأدلة وقرار القفل للمراجع مع البقاء بلا شبكة.',
+        adapterReplayReviewPackPreviewTitle: 'حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل',
         adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: ملخص بوابات القفل، مصفوفة الأدلة، لقطات الاستضافة، مناطق الإثبات، وقرار القفل للمراجع. دون نداءات مزوّد حية.',
-        adapterReplayOperatorWorkflowTitle: 'لوحة قفل الإصدار + ملخص الأدلة',
-        adapterReplayOperatorWorkflowBody: 'لوحة قفل الإصدار + ملخص الأدلة: ملخص أدلة القفل للمشغل فقط. metadata فقط. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
+        adapterReplayOperatorWorkflowTitle: 'حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل',
+        adapterReplayOperatorWorkflowBody: 'حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل: ملخص أدلة القفل للمشغل فقط. metadata فقط. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.51 Tableau de verrouillage de release + digest des preuves · digest verrouillage',
-        hostedDemoVerificationBody: 'Tableau de verrouillage de release + digest des preuves est prêt pour les preuves de release : le digest résume les gates no-browser/navigateur, les lignes de matrice, les captures hébergées, les régions ciblées, les résidus de version ancienne et la décision de verrouillage du reviewer. Les preuves hébergées doivent annoncer 1.4.0-alpha.51 en interne tout en affichant v1.4.0-alpha.51 Tableau de verrouillage de release + digest des preuves aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
-        analysisReleaseNote: '1.4.0-alpha.51 ajoute un tableau de verrouillage et un digest des preuves, tout en restant sans réseau.',
-        adapterReplayReviewPackPreviewTitle: 'Tableau de verrouillage de release + digest des preuves',
+        alphaBadge: 'v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage · digest verrouillage',
+        hostedDemoVerificationBody: 'Garde de régression du digest de release + contrat de schéma du bundle de verrouillage est prêt pour les preuves de release : le digest résume les gates no-browser/navigateur, les lignes de matrice, les captures hébergées, les régions ciblées, les résidus de version ancienne et la décision de verrouillage du reviewer. Les preuves hébergées doivent annoncer 1.4.0-alpha.52 en interne tout en affichant v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
+        analysisReleaseNote: '1.4.0-alpha.52 ajoute un tableau de verrouillage et un digest des preuves, tout en restant sans réseau.',
+        adapterReplayReviewPackPreviewTitle: 'Garde de régression du digest de release + contrat de schéma du bundle de verrouillage',
         adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : digest des gates, matrice de preuves, captures hébergées, régions ciblées et décision reviewer. Aucun appel fournisseur réel.',
-        adapterReplayOperatorWorkflowTitle: 'Tableau de verrouillage de release + digest des preuves',
-        adapterReplayOperatorWorkflowBody: 'Tableau de verrouillage de release + digest des preuves : digest de preuves de verrouillage uniquement. Metadata only. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
+        adapterReplayOperatorWorkflowTitle: 'Garde de régression du digest de release + contrat de schéma du bundle de verrouillage',
+        adapterReplayOperatorWorkflowBody: 'Garde de régression du digest de release + contrat de schéma du bundle de verrouillage : digest de preuves de verrouillage uniquement. Metadata only. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
       })
     })
   });
@@ -96,8 +96,8 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.51 لوحة قفل الإصدار + ملخص الأدلة',
-    fr: 'v1.4.0-alpha.51 Tableau de verrouillage de release + digest des preuves'
+    ar: 'v1.4.0-alpha.52 حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل',
+    fr: 'v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage'
   });
 })();
 
@@ -118,8 +118,8 @@ const ALPHA51_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.51 لوحة قفل الإصدار + ملخص الأدلة',
-    fr: 'v1.4.0-alpha.51 Tableau de verrouillage de release + digest des preuves'
+    ar: 'v1.4.0-alpha.52 حارس تراجع ملخص الإصدار + عقد مخطط حزمة القفل',
+    fr: 'v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage'
   });
 
   contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA51_BROWSER_VISIBLE_TEXT_CONTRACT);

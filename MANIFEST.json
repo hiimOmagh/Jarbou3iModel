@@ -1,7 +1,7 @@
 {
-  "version": "1.4.0-alpha.51",
-  "release_title": "v1.4.0-alpha.51 \u2014 Release Lock Dashboard Artifact + Evidence Digest",
-  "public_version_label": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
+  "version": "1.4.0-alpha.52",
+  "release_title": "v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract",
+  "public_version_label": "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract",
   "release_type": "release-identity-single-source-contract",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -10,8 +10,8 @@
   "source_behavior_changed": false,
   "storage_behavior_changed": false,
   "public_demo_capability_expansion": false,
-  "runtime_scope": "release_lock_dashboard_artifact_evidence_digest",
-  "milestone_name": "Release Lock Dashboard Artifact + Evidence Digest",
+  "runtime_scope": "release_digest_regression_guard_lock_bundle_schema_contract",
+  "milestone_name": "Release Digest Regression Guard + Lock Bundle Schema Contract",
   "consolidated_root_artifacts": [
     "BROWSER_EVIDENCE.md",
     "HOSTED_DEMO_VERIFICATION.md",
@@ -29,7 +29,7 @@
     "PUBLIC_DEMO.md",
     "index.html"
   ],
-  "release_scope": " v1.4.0-alpha.51 \u2014 Release Lock Dashboard Artifact + Evidence Digest; v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest; release_lock_dashboard_artifact_evidence_digest; release lock dashboard artifact; evidence digest; compact reviewer dashboard; no-browser/browser gate status digest; evidence matrix digest; hosted-demo capture digest; targeted region digest; stale residue summary; lockable reviewer decision; previous diagnosis artifact lifecycle guard; Planning/control-plane milestone; v1.4.0-alpha.7 \u2014 Source Acquisition Control Surface; v1.4.0-alpha.6 \u2014 Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 \u2014 Stable Manual Workflow Release; v1.4.0-alpha.14 \u2014 Adapter Replay Fixture Corpus + Coverage Matrix; module boundary regression guard; real API keys; cryptographic signing; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff;",
+  "release_scope": " v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract; v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract; release_digest_regression_guard_lock_bundle_schema_contract; release digest regression guard; lock bundle schema contract; release dashboard digest schema; dashboard JSON/Markdown required files; checksum manifest inclusion; lockable reviewer decision consistency; malformed dashboard digest regression tests; previous release lock dashboard artifact and evidence digest; previous diagnosis artifact lifecycle guard; Planning/control-plane milestone; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; module boundary regression guard; real API keys; cryptographic signing; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff;",
   "boundaries": {
     "evidence_capture_only": true,
     "no_live_scraping": true,
@@ -46,10 +46,10 @@
     "no_publication_permission_claim": true
   },
   "current_release_identity": {
-    "version": "1.4.0-alpha.51",
-    "title": "Release Lock Dashboard Artifact + Evidence Digest",
-    "release": "v1.4.0-alpha.51 \u2014 Release Lock Dashboard Artifact + Evidence Digest",
-    "public_label": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
-    "runtime_scope": "release_lock_dashboard_artifact_evidence_digest"
+    "version": "1.4.0-alpha.52",
+    "title": "Release Digest Regression Guard + Lock Bundle Schema Contract",
+    "release": "v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract",
+    "public_label": "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract",
+    "runtime_scope": "release_digest_regression_guard_lock_bundle_schema_contract"
   }
 }

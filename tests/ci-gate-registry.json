@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.51",
-  "release_title": "v1.4.0-alpha.51 \u2014 Release Lock Dashboard Artifact + Evidence Digest",
+  "ci_gate_registry_version": "1.4.0-alpha.52",
+  "release_title": "v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -44,6 +44,7 @@
         "tests/diagnosis-report-artifact-export-check.mjs",
         "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
         "tests/release-lock-dashboard-artifact-check.mjs",
+        "tests/release-lock-dashboard-schema-contract-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
@@ -221,6 +222,7 @@
         "tests/diagnosis-report-artifact-export-check.mjs",
         "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
         "tests/release-lock-dashboard-artifact-check.mjs",
+        "tests/release-lock-dashboard-schema-contract-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
@@ -664,24 +666,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.51",
-    "optimization_scope": "release_lock_dashboard_artifact_evidence_digest",
+    "version": "1.4.0-alpha.52",
+    "optimization_scope": "release_digest_regression_guard_lock_bundle_schema_contract",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "release_lock_dashboard_artifact_evidence_digest",
-    "current_candidate": "1.4.0-alpha.51",
+    "name": "release_digest_regression_guard_lock_bundle_schema_contract",
+    "current_candidate": "1.4.0-alpha.52",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
     "description": "Current alpha exports a compact release-lock dashboard evidence digest without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "release_lock_dashboard_artifact_evidence_digest"
+    "scope": "release_digest_regression_guard_lock_bundle_schema_contract"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.51",
+    "version": "1.4.0-alpha.52",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -896,13 +898,15 @@
       "tests/current-release-identity-sweep-check.mjs",
       "tests/patch-package-safety-check.mjs",
       "tests/bulk-current-no-browser-diagnosis-check.mjs",
-      "tests/bulk-diagnosis-ux-report-check.mjs"
+      "tests/bulk-diagnosis-ux-report-check.mjs",
+      "scripts/release-lock-dashboard-schema-contract.mjs",
+      "tests/release-lock-dashboard-schema-contract-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.51",
+    "version": "1.4.0-alpha.52",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -1067,6 +1071,25 @@
     "tests/bulk-current-no-browser-diagnosis-check.mjs",
     "tests/bulk-diagnosis-ux-report-check.mjs",
     "tests/diagnosis-report-artifact-export-check.mjs",
-    "tests/diagnosis-artifact-lifecycle-guard-check.mjs"
-  ]
+    "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
+    "scripts/release-lock-dashboard-schema-contract.mjs",
+    "tests/release-lock-dashboard-schema-contract-check.mjs",
+    "scripts/release-lock-dashboard-digest.mjs",
+    "tests/release-lock-dashboard-artifact-check.mjs"
+  ],
+  "release_digest_schema_contract": {
+    "version": "1.4.0-alpha.52",
+    "scope": "release_digest_regression_guard_lock_bundle_schema_contract",
+    "dashboard_json_required": true,
+    "dashboard_markdown_required": true,
+    "checksum_inclusion_required": true,
+    "identity_consistency_required": true,
+    "malformed_digest_regression_cases": true,
+    "runtime_capability_change": false,
+    "provider_behavior_changed": false,
+    "oauth_behavior_changed": false,
+    "backend_behavior_changed": false,
+    "source_behavior_changed": false,
+    "storage_behavior_changed": false
+  }
 }
