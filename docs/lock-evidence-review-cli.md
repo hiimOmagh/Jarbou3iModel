@@ -1,6 +1,6 @@
 # Lock Evidence Review CLI Operator Commands
 
-Current release: v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs
+Current release: v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes
 
 This document is an operator handoff reference for the read-only lock evidence review CLI. It does not create, modify, sign, publish, or approve a release. It only reads the canonical dashboard digest already present in a lock evidence bundle.
 
@@ -9,7 +9,7 @@ This document is an operator handoff reference for the read-only lock evidence r
 Use this when GitHub Actions artifacts have already been downloaded and extracted.
 
 ```powershell
-node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.55_<run_id>
+node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.56_<run_id>
 ```
 
 Expected successful summary includes:
@@ -29,7 +29,7 @@ Dashboard digest checksums: present
 Use this when the canonical lock bundle is still compressed.
 
 ```powershell
-node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.55_<run_id>.zip
+node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.56_<run_id>.zip
 ```
 
 The command must remain read-only. It does not extract files into the repository and must not create `dist/`, `test-results/`, `playwright-report/`, or package artifacts.
@@ -39,7 +39,7 @@ The command must remain read-only. It does not extract files into the repository
 Use JSON output when another script or an AI agent needs a structured lock review summary.
 
 ```powershell
-node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.55_<run_id>.zip --json
+node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.56_<run_id>.zip --json
 ```
 
 Required JSON fields include:
@@ -66,13 +66,13 @@ next_action
 If the bundle does not contain the dashboard JSON or Markdown digest, the command must fail before any merge decision:
 
 ```text
-lock-evidence-review failed: lock evidence file missing: release-lock-dashboard/release-lock-dashboard-digest.json
+lock-evidence-review failed [LOCK_EVIDENCE_REVIEW_BUNDLE_CONTRACT/bundle_contract/exit 66]: lock evidence file missing: release-lock-dashboard/release-lock-dashboard-digest.json
 ```
 
 or:
 
 ```text
-lock-evidence-review failed: lock evidence file missing: release-lock-dashboard/release-lock-dashboard-digest.md
+lock-evidence-review failed [LOCK_EVIDENCE_REVIEW_BUNDLE_CONTRACT/bundle_contract/exit 66]: lock evidence file missing: release-lock-dashboard/release-lock-dashboard-digest.md
 ```
 
 ## Failure example: checksum omission
@@ -80,8 +80,30 @@ lock-evidence-review failed: lock evidence file missing: release-lock-dashboard/
 If the dashboard digest exists but is not listed in `checksums/SHA256SUMS.txt`, the command must fail with a checksum-coverage error:
 
 ```text
-lock-evidence-review failed: checksum manifest must include dashboard digest file: release-lock-dashboard/release-lock-dashboard-digest.json
+lock-evidence-review failed [LOCK_EVIDENCE_REVIEW_CHECKSUM_CONTRACT/checksum_contract/exit 67]: checksum manifest must include dashboard digest file: release-lock-dashboard/release-lock-dashboard-digest.json
 ```
+
+## Exit code contract
+
+The CLI uses stable exit codes so automation can distinguish a bad command from a bad bundle.
+
+| Exit code | Failure family | Meaning |
+| --- | --- | --- |
+| `0` | `success` | Review completed; bundle is lockable, or `--allow-blocked` was used for an intentionally blocked bundle. |
+| `1` | `unexpected` | Unexpected implementation failure. |
+| `64` | `usage` | Missing or invalid CLI arguments, such as omitting `--bundle`. |
+| `65` | `input` | Bundle path missing, unreadable, or invalid ZIP input. |
+| `66` | `bundle_contract` | Required bundle/digest/schema/Markdown field is missing or malformed. |
+| `67` | `checksum_contract` | Dashboard digest exists but checksum coverage is missing or malformed. |
+| `68` | `lock_decision` | Bundle review completed but the evidence decision is not lockable. Use `--allow-blocked` only for inspection. |
+
+Failure lines include the machine-readable code, failure family, and exit code:
+
+```text
+lock-evidence-review failed [LOCK_EVIDENCE_REVIEW_CHECKSUM_CONTRACT/checksum_contract/exit 67]: checksum manifest must include dashboard digest file
+```
+
+The JSON output also includes `exit_codes` and `failure_families` for automation handoff.
 
 ## CI smoke expectation
 

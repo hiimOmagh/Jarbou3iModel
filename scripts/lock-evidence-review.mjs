@@ -10,11 +10,30 @@ import {
 } from './release-lock-dashboard-schema-contract.mjs';
 
 export const LOCK_EVIDENCE_REVIEW_CONTRACT = Object.freeze({
-  version: 1,
+  version: 2,
   digest_json: 'release-lock-dashboard/release-lock-dashboard-digest.json',
   digest_markdown: 'release-lock-dashboard/release-lock-dashboard-digest.md',
   checksum_file: 'checksums/SHA256SUMS.txt',
   evidence_manifest: 'evidence-manifest.json'
+});
+
+export const LOCK_EVIDENCE_REVIEW_EXIT_CODES = Object.freeze({
+  success: 0,
+  unexpected_error: 1,
+  usage_error: 64,
+  input_error: 65,
+  bundle_contract_error: 66,
+  checksum_contract_error: 67,
+  not_lockable: 68
+});
+
+export const LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES = Object.freeze({
+  usage: 'usage',
+  input: 'input',
+  bundle_contract: 'bundle_contract',
+  checksum_contract: 'checksum_contract',
+  lock_decision: 'lock_decision',
+  unexpected: 'unexpected'
 });
 
 function normalizeBundlePath(value) {
@@ -27,6 +46,44 @@ function readJsonText(text, label) {
   } catch (error) {
     throw new Error(`${label} is not valid JSON: ${error.message}`);
   }
+}
+
+function reviewError(message, exitCode, failureFamily, code) {
+  const error = new Error(message);
+  error.exitCode = exitCode;
+  error.failureFamily = failureFamily;
+  error.code = code;
+  return error;
+}
+
+export function classifyLockEvidenceReviewError(error) {
+  const message = String(error?.message || error || 'unknown lock evidence review failure');
+  if (Number.isInteger(error?.exitCode) && error?.failureFamily) {
+    return {
+      code: error.code || 'LOCK_EVIDENCE_REVIEW_ERROR',
+      exit_code: error.exitCode,
+      failure_family: error.failureFamily,
+      message
+    };
+  }
+  if (/missing --bundle|usage/i.test(message)) {
+    return { code: 'LOCK_EVIDENCE_REVIEW_USAGE', exit_code: LOCK_EVIDENCE_REVIEW_EXIT_CODES.usage_error, failure_family: LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.usage, message };
+  }
+  if (/not found|ZIP end-of-central-directory|invalid ZIP|unsupported ZIP|local header|central directory/i.test(message)) {
+    return { code: 'LOCK_EVIDENCE_REVIEW_INPUT', exit_code: LOCK_EVIDENCE_REVIEW_EXIT_CODES.input_error, failure_family: LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.input, message };
+  }
+  if (/checksum manifest/i.test(message)) {
+    return { code: 'LOCK_EVIDENCE_REVIEW_CHECKSUM_CONTRACT', exit_code: LOCK_EVIDENCE_REVIEW_EXIT_CODES.checksum_contract_error, failure_family: LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.checksum_contract, message };
+  }
+  if (/release-lock-dashboard|dashboard digest|schema|Markdown|not valid JSON|lock evidence file missing|evidence-manifest/i.test(message)) {
+    return { code: 'LOCK_EVIDENCE_REVIEW_BUNDLE_CONTRACT', exit_code: LOCK_EVIDENCE_REVIEW_EXIT_CODES.bundle_contract_error, failure_family: LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.bundle_contract, message };
+  }
+  return { code: 'LOCK_EVIDENCE_REVIEW_UNEXPECTED', exit_code: LOCK_EVIDENCE_REVIEW_EXIT_CODES.unexpected_error, failure_family: LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.unexpected, message };
+}
+
+export function formatLockEvidenceReviewError(error) {
+  const classified = classifyLockEvidenceReviewError(error);
+  return `lock-evidence-review failed [${classified.code}/${classified.failure_family}/exit ${classified.exit_code}]: ${classified.message}`;
 }
 
 function findEndOfCentralDirectory(buffer) {
@@ -88,7 +145,7 @@ function normalizeZipEntryMap(entries) {
 
 function createBundleReader(inputPath) {
   const resolved = path.resolve(inputPath);
-  if (!fs.existsSync(resolved)) throw new Error(`lock evidence input not found: ${resolved}`);
+  if (!fs.existsSync(resolved)) throw reviewError(`lock evidence input not found: ${resolved}`, LOCK_EVIDENCE_REVIEW_EXIT_CODES.input_error, LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.input, 'LOCK_EVIDENCE_REVIEW_INPUT');
   const stat = fs.statSync(resolved);
   if (stat.isDirectory()) {
     return {
@@ -146,6 +203,9 @@ export function readLockEvidenceReview(inputPath) {
 
   return {
     review_contract_version: LOCK_EVIDENCE_REVIEW_CONTRACT.version,
+    exit_code_contract_version: 1,
+    exit_codes: LOCK_EVIDENCE_REVIEW_EXIT_CODES,
+    failure_families: LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES,
     source_type: reader.type,
     source: reader.source,
     release: digest.release,
@@ -205,16 +265,22 @@ if (isCliEntrypoint()) {
   const json = process.argv.includes('--json');
   const allowBlocked = process.argv.includes('--allow-blocked');
   if (!bundlePath) {
-    console.error('lock-evidence-review failed: missing --bundle <zip-or-directory>');
-    process.exit(1);
+    const error = reviewError('missing --bundle <zip-or-directory>', LOCK_EVIDENCE_REVIEW_EXIT_CODES.usage_error, LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.usage, 'LOCK_EVIDENCE_REVIEW_USAGE');
+    console.error(formatLockEvidenceReviewError(error));
+    process.exit(LOCK_EVIDENCE_REVIEW_EXIT_CODES.usage_error);
   }
   try {
     const review = readLockEvidenceReview(bundlePath);
     if (json) console.log(JSON.stringify(review, null, 2));
     else process.stdout.write(renderLockEvidenceReviewSummary(review));
-    if (!allowBlocked && review.lock_decision.lockable !== true) process.exit(2);
+    if (!allowBlocked && review.lock_decision.lockable !== true) {
+      const error = reviewError('lock evidence reviewer decision is BLOCKED; pass --allow-blocked to inspect without failing automation', LOCK_EVIDENCE_REVIEW_EXIT_CODES.not_lockable, LOCK_EVIDENCE_REVIEW_FAILURE_FAMILIES.lock_decision, 'LOCK_EVIDENCE_REVIEW_NOT_LOCKABLE');
+      console.error(formatLockEvidenceReviewError(error));
+      process.exit(LOCK_EVIDENCE_REVIEW_EXIT_CODES.not_lockable);
+    }
   } catch (error) {
-    console.error(`lock-evidence-review failed: ${error.message}`);
-    process.exit(1);
+    const classified = classifyLockEvidenceReviewError(error);
+    console.error(formatLockEvidenceReviewError(error));
+    process.exit(classified.exit_code);
   }
 }

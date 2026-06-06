@@ -1,12 +1,13 @@
 {
-  "version": "1.4.0-alpha.55",
-  "milestone_name": "Lock Review CLI CI Smoke + Operator Command Docs",
+  "version": "1.4.0-alpha.56",
+  "milestone_name": "Lock Evidence Review CLI Hardening + Exit Codes",
   "release_type": "product-facing",
   "allowed_scope": [
-    "CI smoke coverage for lock evidence review CLI commands on generated fixture bundles",
-    "operator command documentation for ZIP and extracted lock-bundle review",
-    "documented JSON output usage for reviewer automation handoff",
-    "failure examples for missing dashboard digest and checksum coverage",
+    "formal exit-code contract for the read-only lock evidence review CLI",
+    "failure-family classification for usage, input, bundle contract, checksum contract, and blocked lock decisions",
+    "automation-safe stderr formatting for lock evidence review failures",
+    "operator documentation for exit codes and failure families",
+    "deterministic tests for successful, missing-input, malformed-bundle, checksum-gap, and non-lockable review outcomes",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -72,7 +73,8 @@
     "scripts/build-lock-evidence-bundle.mjs",
     "scripts/lock-evidence-review.mjs",
     "tests/lock-evidence-review-cli-check.mjs",
-    "tests/lock-review-cli-ci-smoke-check.mjs"
+    "tests/lock-review-cli-ci-smoke-check.mjs",
+    "tests/lock-evidence-review-exit-code-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -238,16 +240,16 @@
     "scripts/lock-evidence-review.mjs",
     "tests/lock-evidence-review-cli-check.mjs",
     "docs/lock-evidence-review-cli.md",
-    "tests/lock-review-cli-ci-smoke-check.mjs"
+    "tests/lock-review-cli-ci-smoke-check.mjs",
+    "tests/lock-evidence-review-exit-code-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.55",
-    "public labels must expose v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs",
-    "release lock dashboard schema contract must run during canonical bundle build",
-    "CI must enforce dashboard digest schema before uploading canonical lock bundle",
-    "checksum manifest must include dashboard digest JSON and Markdown files",
-    "lock evidence review CLI smoke must run in CI and operator command docs must cover ZIP and extracted bundle usage"
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.56",
+    "public labels must expose v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes",
+    "lock evidence review CLI exit codes must remain stable for automation",
+    "failure-family labels must distinguish usage, input, bundle contract, checksum contract, and lock decision failures",
+    "not-lockable evidence must exit 68 unless --allow-blocked is passed"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -315,16 +317,22 @@
     "1.4.0-alpha.52 adds release digest regression guard",
     "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract",
     "v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract",
-    "Release Digest Regression Guard + Lock Bundle Schema Contract"
+    "Release Digest Regression Guard + Lock Bundle Schema Contract",
+    "v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs",
+    "v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs",
+    "Lock Review CLI CI Smoke + Operator Command Docs",
+    "اختبار CI لواجهة مراجعة القفل ووثائق أوامر المشغّل",
+    "Smoke CI du CLI de revue verrouillage + docs commandes opérateur",
+    "lock_review_cli_ci_smoke_operator_command_docs"
   ],
-  "runtime_scope": "lock_review_cli_ci_smoke_operator_command_docs",
+  "runtime_scope": "lock_evidence_review_cli_hardening_exit_codes",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "lock evidence review CLI smoke runs against a generated fixture bundle in CI/no-browser gates",
-    "operator docs include PowerShell commands for ZIP and extracted bundle review",
-    "operator docs include JSON output command for automation handoff",
-    "operator docs include missing digest and checksum failure examples",
+    "lock evidence review CLI exposes stable exit code 0 for success",
+    "lock evidence review CLI exits 64 for usage errors and 65 for missing input",
+    "lock evidence review CLI exits 66 for bundle contract failures and 67 for checksum contract failures",
+    "lock evidence review CLI exits 68 for non-lockable evidence unless --allow-blocked is passed",
     "runtime/provider/OAuth/backend/storage/source boundaries remain unchanged"
   ]
 }

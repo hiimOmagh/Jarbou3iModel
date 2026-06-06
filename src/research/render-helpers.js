@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs */
+/* Current public release label: v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

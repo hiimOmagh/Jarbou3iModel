@@ -273,8 +273,8 @@ try {
   const brokenDir = createFixtureBundle(tempRoot, `lock-evidence-bundle_${CURRENT_VERSION}_missing_digest_fixture`);
   fs.rmSync(path.join(brokenDir, 'release-lock-dashboard', 'release-lock-dashboard-digest.md'));
   const brokenRun = spawnSync(process.execPath, [SCRIPT, '--bundle', brokenDir], { encoding: 'utf8' });
-  assert.notEqual(brokenRun.status, 0, 'missing Markdown digest must fail review CLI');
-  assert.ok(brokenRun.stderr.includes('release-lock-dashboard/release-lock-dashboard-digest.md') || brokenRun.stderr.includes('Markdown'), 'missing digest failure must name missing digest');
+  assert.equal(brokenRun.status, 66, 'missing Markdown digest must fail review CLI with bundle contract exit code');
+  assert.ok(brokenRun.stderr.includes('/bundle_contract/exit 66') && (brokenRun.stderr.includes('release-lock-dashboard/release-lock-dashboard-digest.md') || brokenRun.stderr.includes('Markdown')), 'missing digest failure must name missing digest and exit code');
 } finally {
   fs.rmSync(tempRoot, { recursive: true, force: true });
 }

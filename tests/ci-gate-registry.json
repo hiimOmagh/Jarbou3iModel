@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.55",
-  "release_title": "v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs",
+  "ci_gate_registry_version": "1.4.0-alpha.56",
+  "release_title": "v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -47,6 +47,7 @@
         "tests/release-lock-dashboard-schema-contract-check.mjs",
         "tests/lock-bundle-schema-enforcement-ci-check.mjs",
         "tests/lock-evidence-review-cli-check.mjs",
+        "tests/lock-evidence-review-exit-code-check.mjs",
         "tests/lock-review-cli-ci-smoke-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/syntax-matrix-check.mjs",
@@ -228,6 +229,7 @@
         "tests/release-lock-dashboard-schema-contract-check.mjs",
         "tests/lock-bundle-schema-enforcement-ci-check.mjs",
         "tests/lock-evidence-review-cli-check.mjs",
+        "tests/lock-evidence-review-exit-code-check.mjs",
         "tests/lock-review-cli-ci-smoke-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
@@ -674,24 +676,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.55",
-    "optimization_scope": "lock_review_cli_ci_smoke_operator_command_docs",
+    "version": "1.4.0-alpha.56",
+    "optimization_scope": "lock_evidence_review_cli_hardening_exit_codes",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "lock_review_cli_ci_smoke_operator_command_docs",
-    "current_candidate": "1.4.0-alpha.55",
+    "name": "lock_evidence_review_cli_hardening_exit_codes",
+    "current_candidate": "1.4.0-alpha.56",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha adds CI smoke coverage and operator command documentation for the read-only lock evidence review CLI without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "lock_review_cli_ci_smoke_operator_command_docs"
+    "description": "Current alpha formalizes lock evidence review CLI exit codes and failure-family classification for automation without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "lock_evidence_review_cli_hardening_exit_codes"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.55",
+    "version": "1.4.0-alpha.56",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -918,7 +920,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.55",
+    "version": "1.4.0-alpha.56",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -1087,11 +1089,12 @@
     "scripts/release-lock-dashboard-schema-contract.mjs",
     "tests/release-lock-dashboard-schema-contract-check.mjs",
     "scripts/release-lock-dashboard-digest.mjs",
-    "tests/release-lock-dashboard-artifact-check.mjs"
+    "tests/release-lock-dashboard-artifact-check.mjs",
+    "tests/lock-evidence-review-exit-code-check.mjs"
   ],
   "release_digest_schema_contract": {
-    "version": "1.4.0-alpha.55",
-    "scope": "lock_review_cli_ci_smoke_operator_command_docs",
+    "version": "1.4.0-alpha.56",
+    "scope": "lock_evidence_review_cli_hardening_exit_codes",
     "dashboard_json_required": true,
     "dashboard_markdown_required": true,
     "checksum_inclusion_required": true,
@@ -1105,13 +1108,31 @@
     "storage_behavior_changed": false
   },
   "lock_bundle_schema_enforcement_ci": {
-    "version": "1.4.0-alpha.55",
-    "scope": "lock_review_cli_ci_smoke_operator_command_docs",
+    "version": "1.4.0-alpha.56",
+    "scope": "lock_evidence_review_cli_hardening_exit_codes",
     "workflow_enforcement_required": true,
     "build_script_enforcement_required": true,
     "dashboard_json_required": true,
     "dashboard_markdown_required": true,
     "checksum_manifest_inclusion_required": true,
     "enforcement_must_run_before_upload": true
+  },
+  "lock_evidence_review_cli_exit_codes": {
+    "version": "1.4.0-alpha.56",
+    "scope": "lock_evidence_review_cli_hardening_exit_codes",
+    "success": 0,
+    "usage_error": 64,
+    "input_error": 65,
+    "bundle_contract_error": 66,
+    "checksum_contract_error": 67,
+    "not_lockable": 68,
+    "failure_families": [
+      "usage",
+      "input",
+      "bundle_contract",
+      "checksum_contract",
+      "lock_decision",
+      "unexpected"
+    ]
   }
 }

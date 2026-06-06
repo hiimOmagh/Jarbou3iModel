@@ -1,7 +1,7 @@
 {
-  "version": "1.4.0-alpha.55",
-  "release_title": "v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs",
-  "public_version_label": "v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs",
+  "version": "1.4.0-alpha.56",
+  "release_title": "v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes",
+  "public_version_label": "v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes",
   "release_type": "release-identity-single-source-contract",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -10,8 +10,8 @@
   "source_behavior_changed": false,
   "storage_behavior_changed": false,
   "public_demo_capability_expansion": false,
-  "runtime_scope": "lock_review_cli_ci_smoke_operator_command_docs",
-  "milestone_name": "Lock Review CLI CI Smoke + Operator Command Docs",
+  "runtime_scope": "lock_evidence_review_cli_hardening_exit_codes",
+  "milestone_name": "Lock Evidence Review CLI Hardening + Exit Codes",
   "consolidated_root_artifacts": [
     "BROWSER_EVIDENCE.md",
     "HOSTED_DEMO_VERIFICATION.md",
@@ -29,7 +29,7 @@
     "PUBLIC_DEMO.md",
     "index.html"
   ],
-  "release_scope": " v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs; v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs; lock_review_cli_ci_smoke_operator_command_docs; lock evidence review CLI CI smoke; operator command docs; PowerShell ZIP review command; extracted bundle review command; JSON review command; missing digest failure example; checksum failure example; previous lock evidence review CLI and digest reader; previous lock bundle schema enforcement in CI; previous release digest regression guard; previous release lock dashboard artifact and evidence digest; previous diagnosis artifact lifecycle guard; Planning/control-plane milestone; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; module boundary regression guard; real API keys; cryptographic signing; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff;",
+  "release_scope": " v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes; v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes; lock_evidence_review_cli_hardening_exit_codes; lock evidence review CLI hardening; formal exit codes; failure families; usage error exit 64; input error exit 65; bundle contract error exit 66; checksum contract error exit 67; not lockable exit 68; automation-safe CLI failure classification; previous lock review CLI CI smoke and operator docs; previous lock evidence review CLI and digest reader; previous lock bundle schema enforcement in CI; previous release digest regression guard; previous release lock dashboard artifact and evidence digest; previous diagnosis artifact lifecycle guard; Planning/control-plane milestone; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; module boundary regression guard; real API keys; cryptographic signing; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff;",
   "boundaries": {
     "evidence_capture_only": true,
     "no_live_scraping": true,
@@ -46,10 +46,10 @@
     "no_publication_permission_claim": true
   },
   "current_release_identity": {
-    "version": "1.4.0-alpha.55",
-    "title": "Lock Review CLI CI Smoke + Operator Command Docs",
-    "release": "v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs",
-    "public_label": "v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs",
-    "runtime_scope": "lock_review_cli_ci_smoke_operator_command_docs"
+    "version": "1.4.0-alpha.56",
+    "title": "Lock Evidence Review CLI Hardening + Exit Codes",
+    "release": "v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes",
+    "public_label": "v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes",
+    "runtime_scope": "lock_evidence_review_cli_hardening_exit_codes"
   }
 }

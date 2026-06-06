@@ -204,9 +204,9 @@ for (const token of [
   'Failure example: missing dashboard digest',
   'Failure example: checksum omission',
   'CI smoke expectation',
-  'node scripts/lock-evidence-review.mjs --bundle .\\lock-evidence-bundle_1.4.0-alpha.55_<run_id>',
-  'node scripts/lock-evidence-review.mjs --bundle .\\lock-evidence-bundle_1.4.0-alpha.55_<run_id>.zip',
-  'lock-evidence-review failed: checksum manifest must include dashboard digest file'
+  `node scripts/lock-evidence-review.mjs --bundle .\\lock-evidence-bundle_${CURRENT_VERSION}_<run_id>`,
+  `node scripts/lock-evidence-review.mjs --bundle .\\lock-evidence-bundle_${CURRENT_VERSION}_<run_id>.zip`,
+  'lock-evidence-review failed [LOCK_EVIDENCE_REVIEW_CHECKSUM_CONTRACT/checksum_contract/exit 67]'
 ]) {
   assert.ok(fs.readFileSync(DOC, 'utf8').includes(token), `operator docs must include token: ${token}`);
 }
@@ -235,8 +235,8 @@ try {
   const brokenBundle = createFixtureBundle(tempRoot, `lock-evidence-bundle_${CURRENT_VERSION}_missing_checksum_fixture`);
   writeChecksums(brokenBundle, { omitDashboardJson: true });
   const brokenRun = spawnSync(process.execPath, [SCRIPT, '--bundle', brokenBundle], { encoding: 'utf8' });
-  assert.equal(brokenRun.status, 1, 'missing checksum smoke must fail');
-  assert.ok(brokenRun.stderr.includes('checksum manifest must include dashboard digest file'), 'missing checksum smoke must explain failure');
+  assert.equal(brokenRun.status, 67, 'missing checksum smoke must fail with checksum contract exit code');
+  assert.ok(brokenRun.stderr.includes('/checksum_contract/exit 67') && brokenRun.stderr.includes('checksum manifest must include dashboard digest file'), 'missing checksum smoke must explain failure family and exit code');
 } finally {
   fs.rmSync(tempRoot, { recursive: true, force: true });
 }
