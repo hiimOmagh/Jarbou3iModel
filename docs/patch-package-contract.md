@@ -1,8 +1,8 @@
-# v1.4.0-alpha.54 — Lock Evidence Review CLI + Digest Reader
+# v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs
 
-Public label: v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader
+Public label: v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs
 
-Alpha.54 keeps the alpha.47 patch-package safety contract and adds a read-only local lock evidence review CLI for ZIP or extracted lock bundles. It reads the dashboard digest and prints reviewer decision, gate status, evidence counts, checksum coverage, stale-residue state, and next action.
+Alpha.55 keeps the alpha.47 patch-package safety contract and adds CI smoke coverage plus operator command documentation for the read-only lock evidence review CLI. Operators can review ZIP bundles, extracted bundles, JSON output, missing digest failures, and checksum omissions without changing runtime behavior.
 
 # Patch Package Contract
 

@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.54",
-  "internal_build_version": "1.4.0-alpha.54",
-  "public_version_label": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader",
+  "evidence_matrix_config_version": "1.4.0-alpha.55",
+  "internal_build_version": "1.4.0-alpha.55",
+  "public_version_label": "v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader"
+      "public_label": "v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs"
     },
     "ar": {
       "required": [
@@ -42,7 +42,8 @@
         "Public surface freeze",
         "Gel de la surface",
         "Revue publication"
-      ]
+      ],
+      "public_label": "v1.4.0-alpha.55 اختبار CI لواجهة مراجعة القفل ووثائق أوامر المشغّل"
     },
     "fr": {
       "required": [
@@ -59,7 +60,8 @@
         "Public surface freeze",
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
-      ]
+      ],
+      "public_label": "v1.4.0-alpha.55 Smoke CI du CLI de revue verrouillage + docs commandes opérateur"
     }
   },
   "allowed_technical_terms": [
@@ -89,7 +91,7 @@
         "العرض العام جاهز",
         "Démo publique prête"
       ],
-      "public_label": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader"
+      "public_label": "v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs"
     },
     {
       "id": "S02",
@@ -240,8 +242,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader",
-    "ar": "v1.4.0-alpha.54 واجهة مراجعة أدلة القفل وقراءة الملخص",
-    "fr": "v1.4.0-alpha.54 CLI de revue des preuves de verrouillage + lecteur de digest"
+    "en": "v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs",
+    "ar": "v1.4.0-alpha.55 اختبار CI لواجهة مراجعة القفل ووثائق أوامر المشغّل",
+    "fr": "v1.4.0-alpha.55 Smoke CI du CLI de revue verrouillage + docs commandes opérateur"
   }
 }

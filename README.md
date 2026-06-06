@@ -67,12 +67,12 @@ Evidence manifest gate continuity is retained for alpha.46. The release corpus i
 
 The current module boundary regression guard does not expand runtime behavior. No live scraping. No production OAuth. No real OAuth. No real API keys. No credential persistence. No provider execution expansion. No backend behavior expansion. No storage expansion. No source behavior expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signing. No publication permission claim.
 
-## v1.4.0-alpha.54 — Lock Evidence Review CLI + Digest Reader — Local lock-bundle review surface
+## v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs — Local lock-bundle review surface
 
-v1.4.0-alpha.54 — Lock Evidence Review CLI + Digest Reader
-v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader
+v1.4.0-alpha.55 — Lock Review CLI CI Smoke + Operator Command Docs
+v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs
 
-Lock Evidence Review CLI + Digest Reader adds a read-only local reviewer command for ZIP or extracted lock bundles. It prints reviewer decision, release identity, no-browser/browser status, evidence matrix count, hosted capture count, targeted region count, stale-residue state, dashboard checksum coverage, and the next operator action without changing runtime behavior.
+Lock Review CLI CI Smoke + Operator Command Docs adds CI smoke coverage for the read-only lock evidence review CLI and documents exact operator commands for ZIP bundles, extracted bundles, JSON handoff output, missing digest failures, and checksum omissions without changing runtime behavior.
 
 Historical continuity retained:
 - v1.3.0 — Stable Manual Workflow Release
