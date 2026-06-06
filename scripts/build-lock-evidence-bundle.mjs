@@ -4,6 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import os from 'node:os';
 import { writeReleaseLockDashboardDigest } from './release-lock-dashboard-digest.mjs';
+import { validateReleaseLockDashboardBundle } from './release-lock-dashboard-schema-contract.mjs';
 
 const root = process.cwd();
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
@@ -219,5 +220,7 @@ writeReleaseLockDashboardDigest(bundleDir, path.join(bundleDir, 'release-lock-da
 const checksumLines=listFiles(bundleDir).filter((file)=>!file.endsWith('SHA256SUMS.txt')).map((file)=>`${sha256(file)}  ${path.relative(bundleDir,file).replaceAll(path.sep,'/')}`).join('\n') + '\n';
 ensureDir(path.join(bundleDir,'checksums'));
 fs.writeFileSync(path.join(bundleDir,'checksums','SHA256SUMS.txt'), checksumLines);
+const dashboardSchemaResult = validateReleaseLockDashboardBundle(bundleDir);
+console.log(`Release lock dashboard schema contract enforced: ${dashboardSchemaResult.digest.release}`);
 console.log(`Canonical lock evidence bundle built: ${bundleDir}`);
 console.log(`Bundle manifest: ${path.join(bundleDir,'evidence-manifest.json')}`);

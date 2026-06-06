@@ -1,6 +1,6 @@
-# v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract
+# v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI
 
-Public label: v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract
+Public label: v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI
 
 Alpha.48 keeps the alpha.47 patch-package safety contract and adds operator-readable bulk diagnosis output: failure-family summary, failed commands, affected checks/files, likely root cause, recommended next command, and operator repair checklist.
 

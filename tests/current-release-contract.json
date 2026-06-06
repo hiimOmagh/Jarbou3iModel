@@ -1,13 +1,13 @@
 {
-  "version": "1.4.0-alpha.52",
-  "milestone_name": "Release Digest Regression Guard + Lock Bundle Schema Contract",
+  "version": "1.4.0-alpha.53",
+  "milestone_name": "Lock Bundle Schema Enforcement in CI",
   "release_type": "product-facing",
   "allowed_scope": [
-    "release lock dashboard digest JSON schema validation",
-    "release lock dashboard Markdown required-section validation",
-    "lock bundle checksum inclusion validation for dashboard digest files",
-    "identity consistency validation between evidence manifest and dashboard digest",
-    "deterministic malformed/missing digest regression cases without runtime behavior change"
+    "release lock dashboard schema contract enforcement during canonical bundle generation",
+    "CI workflow enforcement before canonical bundle artifact upload",
+    "checksum manifest validation for dashboard digest files before finalization",
+    "clear failure messages for missing or malformed dashboard digest artifacts",
+    "deterministic CI enforcement regression check without runtime behavior change"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -66,7 +66,9 @@
     "scripts/release-lock-dashboard-digest.mjs",
     "tests/release-lock-dashboard-artifact-check.mjs",
     "scripts/release-lock-dashboard-schema-contract.mjs",
-    "tests/release-lock-dashboard-schema-contract-check.mjs"
+    "tests/release-lock-dashboard-schema-contract-check.mjs",
+    "tests/lock-bundle-schema-enforcement-ci-check.mjs",
+    "scripts/build-lock-evidence-bundle.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -227,16 +229,16 @@
     "scripts/release-lock-dashboard-digest.mjs",
     "tests/release-lock-dashboard-artifact-check.mjs",
     "scripts/release-lock-dashboard-schema-contract.mjs",
-    "tests/release-lock-dashboard-schema-contract-check.mjs"
+    "tests/release-lock-dashboard-schema-contract-check.mjs",
+    "tests/lock-bundle-schema-enforcement-ci-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.52",
-    "public labels must expose v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract",
-    "release lock dashboard digest must write stable JSON and Markdown reviewer artifacts",
-    "dashboard digest must include gate summary, evidence digest, targeted-region summary, stale-residue state, and reviewer checklist",
-    "release lock dashboard artifact self-test must use deterministic fixture lock evidence",
-    "current release identity sweep must catch stale current-release assertions before browser/no-browser gates"
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.53",
+    "public labels must expose v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI",
+    "release lock dashboard schema contract must run during canonical bundle build",
+    "CI must enforce dashboard digest schema before uploading canonical lock bundle",
+    "checksum manifest must include dashboard digest JSON and Markdown files"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -295,18 +297,20 @@
     "v1.4.0-alpha.51 — Release Lock Dashboard Artifact + Evidence Digest",
     "أمان حزم التصحيح + حارس مسح هوية الإصدار",
     "تصدير تقرير التشخيص + لقطة تسليم للمشغّل",
-    "دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف"
+    "دلالات مصفوفة الأدلة + تقوية الإثبات المستهدف",
+    "1.4.0-alpha.52 adds release digest regression guard",
+    "v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract",
+    "v1.4.0-alpha.52 — Release Digest Regression Guard + Lock Bundle Schema Contract",
+    "Release Digest Regression Guard + Lock Bundle Schema Contract"
   ],
-  "runtime_scope": "release_digest_regression_guard_lock_bundle_schema_contract",
+  "runtime_scope": "lock_bundle_schema_enforcement_in_ci",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "release digest schema contract validates dashboard JSON and Markdown artifacts",
-    "lock bundle checksum manifest includes dashboard digest files",
-    "dashboard digest identity matches evidence manifest version, release, public label, commit, ref, and run id",
-    "malformed dashboard digest cases fail deterministically",
-    "missing dashboard digest files fail deterministically",
-    "runtime/provider/OAuth/backend/storage/source behavior remains unchanged",
-    "browser and no-browser gates remain green before lock"
+    "canonical lock bundle builder validates dashboard digest schema before reporting success",
+    "CI workflow validates dashboard digest schema before uploading lock bundle artifact",
+    "dashboard JSON and Markdown digest files are required in every canonical lock bundle",
+    "checksum manifest includes dashboard digest files before lock bundle is accepted",
+    "missing or malformed dashboard digest cases fail with clear operator-facing errors"
   ]
 }

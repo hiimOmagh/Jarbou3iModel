@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.52 Release Digest Regression Guard + Lock Bundle Schema Contract */
+/* Current public release label: v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
