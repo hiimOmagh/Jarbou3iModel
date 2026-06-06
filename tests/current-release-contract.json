@@ -1,13 +1,13 @@
 {
-  "version": "1.4.0-alpha.49",
-  "milestone_name": "Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+  "version": "1.4.0-alpha.50",
+  "milestone_name": "Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
   "release_type": "product-facing",
   "allowed_scope": [
-    "artifact-exportable bulk current-no-browser diagnosis report",
-    "stable failure-family JSON and Markdown handoff snapshots",
-    "affected checks/files and failed command artifact reporting",
-    "recommended next command and operator repair checklist artifact output",
-    "deterministic fixture QA for diagnosis report artifact export"
+    "static-mode diagnosis artifact export skip for normal no-browser gates",
+    "safe external diagnosis artifact output directory by default",
+    "unsafe repo generated-output directory rejection by default",
+    "deterministic lifecycle guard QA for leaked artifact environment variables",
+    "artifact export cleanup boundary proof for diagnosis handoff artifacts"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -61,7 +61,8 @@
     "tests/current-release-identity-sweep-check.mjs",
     "tests/bulk-current-no-browser-diagnosis-check.mjs",
     "tests/bulk-diagnosis-ux-report-check.mjs",
-    "tests/diagnosis-report-artifact-export-check.mjs"
+    "tests/diagnosis-report-artifact-export-check.mjs",
+    "tests/diagnosis-artifact-lifecycle-guard-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -217,12 +218,13 @@
     "tests/bulk-current-no-browser-diagnosis-check.mjs",
     "tests/repo-file-hygiene-check.mjs",
     "tests/bulk-diagnosis-ux-report-check.mjs",
-    "tests/diagnosis-report-artifact-export-check.mjs"
+    "tests/diagnosis-report-artifact-export-check.mjs",
+    "tests/diagnosis-artifact-lifecycle-guard-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.49",
-    "public labels must expose v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.50",
+    "public labels must expose v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
     "bulk diagnosis artifact export must write stable JSON, Markdown handoff, and manifest artifacts",
     "operator handoff snapshot must include gate summary, failure families, failed commands, and repair checklist",
     "diagnosis artifact export self-test must use deterministic fixture failure output",
@@ -262,14 +264,24 @@
     "Bulk Diagnosis UX + Gate Failure Family Report is ready for release evidence",
     "1.4.0-alpha.48 improves bulk diagnosis UX",
     "v1.4.0-alpha.48 تحسين تشخيص البوابات + تقرير عائلات الفشل",
-    "v1.4.0-alpha.48 UX diagnostic groupé + rapport des familles d’échec"
+    "v1.4.0-alpha.48 UX diagnostic groupé + rapport des familles d’échec",
+    "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+    "v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+    "Diagnosis Report Artifact Export + Operator Handoff Snapshot is ready for release evidence",
+    "1.4.0-alpha.49 exports the bulk diagnosis report",
+    "v1.4.0-alpha.49 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI",
+    "v1.4.0-alpha.49 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI",
+    "v1.4.0-alpha.50 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+    "v1.4.0-alpha.50 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+    "تصدير تقرير التشخيص + لقطة تسليم للمشغّل",
+    "Export du rapport diagnostic + instantané de passation opérateur"
   ],
-  "runtime_scope": "diagnosis_report_artifact_export_operator_handoff_snapshot",
+  "runtime_scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted evidence must report internal_build_version 1.4.0-alpha.49",
-    "public labels must expose v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.50",
+    "public labels must expose v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
     "bulk diagnosis must export stable JSON and Markdown operator handoff artifacts when explicitly requested",
     "diagnosis artifact manifest must identify report, snapshot, contract version, release, and output directory",
     "bulk diagnosis fixture mode must preserve non-zero failure behavior unless fixture-exit-zero is explicitly requested",

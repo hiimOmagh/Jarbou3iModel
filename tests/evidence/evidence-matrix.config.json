@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.49",
-  "internal_build_version": "1.4.0-alpha.49",
-  "public_version_label": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+  "evidence_matrix_config_version": "1.4.0-alpha.50",
+  "internal_build_version": "1.4.0-alpha.50",
+  "public_version_label": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot"
+      "public_label": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene"
     },
     "ar": {
       "required": [
@@ -239,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
-    "ar": "v1.4.0-alpha.49 تصدير تقرير التشخيص + لقطة تسليم للمشغّل",
-    "fr": "v1.4.0-alpha.49 Export du rapport diagnostic + instantané de passation opérateur"
+    "en": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+    "ar": "v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI",
+    "fr": "v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI"
   }
 }

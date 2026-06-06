@@ -1,28 +1,28 @@
 const CURRENT_RELEASE_IDENTITY = Object.freeze({
-  version: '1.4.0-alpha.49',
-  title: 'Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-  release: 'v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-  publicLabel: 'v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-  runtimeScope: 'diagnosis_report_artifact_export_operator_handoff_snapshot'
+  version: '1.4.0-alpha.50',
+  title: 'Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+  release: 'v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+  publicLabel: 'v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+  runtimeScope: 'diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene'
 });
 
-/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.49. */
+/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.50. */
 (function(global){
   'use strict';
   const contract = Object.freeze({
-    version: '1.4.0-alpha.49',
-    release: 'v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-    releaseTitle: 'v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-    milestone: 'Diagnosis Report Artifact Export + Operator Handoff Snapshot',
+    version: '1.4.0-alpha.50',
+    release: 'v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+    releaseTitle: 'v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+    milestone: 'Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-      ar: 'v1.4.0-alpha.49 تصدير تقرير التشخيص + لقطة تسليم للمشغّل',
-      fr: 'v1.4.0-alpha.49 Export du rapport diagnostic + instantané de passation opérateur'
+      en: 'v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+      ar: 'v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI',
+      fr: 'v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
-      en: Object.freeze(['diagnosis report JSON', 'operator handoff snapshot', 'artifact output contract']),
-      ar: Object.freeze(['تقرير التشخيص', 'لقطة التسليم', 'عقد المخرجات']),
-      fr: Object.freeze(['rapport diagnostic', 'instantané de passation', 'contrat d’artefact'])
+      en: Object.freeze(['artifact lifecycle guard', 'CI artifact hygiene', 'static-mode artifact skip']),
+      ar: Object.freeze(['دورة حياة', 'نظافة مخرجات', 'تخطي المخرجات']),
+      fr: Object.freeze(['cycle de vie', 'hygiène des artefacts', 'mode statique'])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
       'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
@@ -54,31 +54,31 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot · artifact export',
-        hostedDemoVerificationBody: 'Diagnosis Report Artifact Export + Operator Handoff Snapshot is ready for release evidence: diagnosis report JSON, operator handoff Markdown snapshot, failure-family summary, failed commands, affected files, likely root cause, recommended next command, and artifact output contract are verified before browser/no-browser gates. Hosted evidence must report 1.4.0-alpha.49 internally while showing v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.49 exports the bulk diagnosis report as stable JSON and an operator handoff Markdown snapshot while remaining no-network.',
-        adapterReplayReviewPackPreviewTitle: 'Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-        adapterReplayReviewPackPreviewBody: 'Release governance view: diagnosis report JSON, operator handoff snapshot, artifact manifest, failure families, failed commands, likely root cause, and repair checklist. No live provider calls.',
-        adapterReplayOperatorWorkflowTitle: 'Diagnosis Report Artifact Export + Operator Handoff Snapshot',
-        adapterReplayOperatorWorkflowBody: 'Diagnosis Report Artifact Export + Operator Handoff Snapshot: stable report artifacts for operator handoff inside the operator control room stage board only. Metadata-only. No automatic verification, signoff, export lock, persistence, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene · artifact export',
+        hostedDemoVerificationBody: 'Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene is ready for release evidence: artifact lifecycle guard, CI artifact hygiene, static-mode artifact skip, unsafe repo output rejection, safe external artifact output, and cleanup boundary checks are verified before browser/no-browser gates. Hosted evidence must report 1.4.0-alpha.50 internally while showing v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.50 hardens diagnosis artifact lifecycle and CI artifact hygiene while remaining no-network.',
+        adapterReplayReviewPackPreviewTitle: 'Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+        adapterReplayReviewPackPreviewBody: 'Release governance view: artifact lifecycle guard, CI artifact hygiene, static-mode artifact skip, unsafe repo output rejection, and safe external artifact output. No live provider calls.',
+        adapterReplayOperatorWorkflowTitle: 'Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene',
+        adapterReplayOperatorWorkflowBody: 'Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene: lifecycle-safe diagnosis artifacts for operator handoff inside the operator control room stage board only. Metadata-only. No automatic verification, signoff, export lock, persistence, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.49 تصدير تقرير التشخيص + لقطة تسليم للمشغّل · تصدير التشخيص',
-        hostedDemoVerificationBody: 'تصدير تقرير التشخيص + لقطة تسليم للمشغّل جاهز لأدلة الإصدار: يتم التحقق من ملخص تقرير التشخيص، والفحوصات المتأثرة، ولقطة التسليم، والأوامر الفاشلة، والسبب الجذري المحتمل، وعقد المخرجات، وقائمة إصلاح للمشغّل قبل بوابات المتصفح و no-browser. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.49 مع عرض v1.4.0-alpha.49 تصدير تقرير التشخيص + لقطة تسليم للمشغّل للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
-        analysisReleaseNote: 'يحسن 1.4.0-alpha.49 تصدير التشخيص عبر ملخص تقرير التشخيص ولقطة التسليم والسبب الجذري المحتمل وعقد المخرجات وقائمة إصلاح للمشغل مع البقاء بلا شبكة.',
-        adapterReplayReviewPackPreviewTitle: 'تصدير تقرير التشخيص + لقطة تسليم للمشغّل',
-        adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: ملخص تقرير التشخيص، الفحوصات ولقطة التسليم، الأوامر الفاشلة، السبب الجذري المحتمل، عقد المخرجات، وقائمة إصلاح للمشغل. دون نداءات مزوّد حية.',
-        adapterReplayOperatorWorkflowTitle: 'تصدير تقرير التشخيص + لقطة تسليم للمشغّل',
-        adapterReplayOperatorWorkflowBody: 'تصدير تقرير التشخيص + لقطة تسليم للمشغّل: تشخيص بوابات مقروء للمشغل فقط. metadata فقط. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
+        alphaBadge: 'v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI · تصدير التشخيص',
+        hostedDemoVerificationBody: 'حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI جاهز لأدلة الإصدار: يتم التحقق من حارس دورة حياة المخرجات، ونظافة مخرجات CI، وتخطي المخرجات في الوضع الثابت، ورفض مسارات المستودع غير الآمنة، ومخرجات خارجية آمنة قبل بوابات المتصفح و no-browser. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.50 مع عرض v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
+        analysisReleaseNote: 'يحسن 1.4.0-alpha.50 دورة حياة مخرجات التشخيص ونظافة مخرجات CI وتخطي المخرجات في الوضع الثابت مع البقاء بلا شبكة.',
+        adapterReplayReviewPackPreviewTitle: 'حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI',
+        adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: حارس دورة حياة المخرجات، نظافة مخرجات CI، تخطي المخرجات في الوضع الثابت، ورفض مسارات المستودع غير الآمنة. دون نداءات مزوّد حية.',
+        adapterReplayOperatorWorkflowTitle: 'حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI',
+        adapterReplayOperatorWorkflowBody: 'حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI: مخرجات تشخيص آمنة دورة الحياة للمشغل فقط. metadata فقط. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.49 Export du rapport diagnostic + instantané de passation opérateur · export artefact',
-        hostedDemoVerificationBody: 'Export du rapport diagnostic + instantané de passation opérateur est prêt pour les preuves de release : résumé des rapport diagnostic, checks affectés, instantané de passation, commandes échouées, cause racine probable, contrat d’artefact et checklist de réparation opérateur sont vérifiés avant les gates navigateur/no-browser. Les preuves hébergées doivent annoncer 1.4.0-alpha.49 en interne tout en affichant v1.4.0-alpha.49 Export du rapport diagnostic + instantané de passation opérateur aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
-        analysisReleaseNote: '1.4.0-alpha.49 améliore l’UX du diagnostic groupé avec rapport diagnostic, instantané de passation, cause racine probable, contrat d’artefact et checklist opérateur, tout en restant sans réseau.',
-        adapterReplayReviewPackPreviewTitle: 'Export du rapport diagnostic + instantané de passation opérateur',
-        adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : rapport diagnostic, checks/instantané de passation, commandes échouées, cause racine probable, contrat d’artefact et checklist opérateur. Aucun appel fournisseur réel.',
-        adapterReplayOperatorWorkflowTitle: 'Export du rapport diagnostic + instantané de passation opérateur',
-        adapterReplayOperatorWorkflowBody: 'Export du rapport diagnostic + instantané de passation opérateur : diagnostic de gates lisible opérateur uniquement. Metadata only. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
+        alphaBadge: 'v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI · export artefact',
+        hostedDemoVerificationBody: 'Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI est prêt pour les preuves de release : garde du cycle de vie des artefacts, hygiène des artefacts CI, saut d’export en mode statique, rejet des sorties dépôt non sûres et sortie externe sûre sont vérifiés avant les gates navigateur/no-browser. Les preuves hébergées doivent annoncer 1.4.0-alpha.50 en interne tout en affichant v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
+        analysisReleaseNote: '1.4.0-alpha.50 durcit le cycle de vie des artefacts diagnostic, l’hygiène CI et le saut d’export en mode statique, tout en restant sans réseau.',
+        adapterReplayReviewPackPreviewTitle: 'Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI',
+        adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : garde de cycle de vie, hygiène des artefacts CI, saut d’export en mode statique et rejet des sorties dépôt non sûres. Aucun appel fournisseur réel.',
+        adapterReplayOperatorWorkflowTitle: 'Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI',
+        adapterReplayOperatorWorkflowBody: 'Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI : artefacts diagnostic sûrs sur le cycle de vie uniquement. Metadata only. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
       })
     })
   });
@@ -96,18 +96,18 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.49 تصدير تقرير التشخيص + لقطة تسليم للمشغّل',
-    fr: 'v1.4.0-alpha.49 Export du rapport diagnostic + instantané de passation opérateur'
+    ar: 'v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI',
+    fr: 'v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI'
   });
 })();
 
-const ALPHA49_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
-  ar: Object.freeze(['تقرير التشخيص', 'لقطة التسليم', 'عقد المخرجات']),
-  fr: Object.freeze(['rapport diagnostic', 'instantané de passation', 'contrat d’artefact']),
-  en: Object.freeze(['diagnosis report JSON', 'operator handoff snapshot', 'artifact output contract'])
+const ALPHA50_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
+  ar: Object.freeze(['دورة حياة', 'نظافة مخرجات', 'تخطي المخرجات']),
+  fr: Object.freeze(['cycle de vie', 'hygiène des artefacts', 'mode statique']),
+  en: Object.freeze(['artifact lifecycle guard', 'CI artifact hygiene', 'static-mode artifact skip'])
 });
 
-(function enforceAlpha49BrowserVisibleTextContract() {
+(function enforceAlpha50BrowserVisibleTextContract() {
   const root = typeof globalThis !== 'undefined' ? globalThis : this;
   const contract = root.Jarbou3iResearchReleaseCopyContract;
   if (!contract) return;
@@ -118,15 +118,15 @@ const ALPHA49_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.49 تصدير تقرير التشخيص + لقطة تسليم للمشغّل',
-    fr: 'v1.4.0-alpha.49 Export du rapport diagnostic + instantané de passation opérateur'
+    ar: 'v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI',
+    fr: 'v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI'
   });
 
-  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA49_BROWSER_VISIBLE_TEXT_CONTRACT);
+  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA50_BROWSER_VISIBLE_TEXT_CONTRACT);
   contract.expectedCurrentReleaseDescriptionTokens = Object.assign(
     {},
     contract.expectedCurrentReleaseDescriptionTokens || {},
-    ALPHA49_BROWSER_VISIBLE_TEXT_CONTRACT
+    ALPHA50_BROWSER_VISIBLE_TEXT_CONTRACT
   );
 
   contract.staleVisibleText = (contract.staleVisibleText || [])

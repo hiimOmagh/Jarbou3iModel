@@ -25,7 +25,7 @@ const hostedDemoBodies = [...renderHelpers.matchAll(/hostedDemoVerificationBody:
 const releaseCopySource = fs.readFileSync('src/research/release-copy-contract.js', 'utf8');
 hostedDemoBodies.push(...[...releaseCopySource.matchAll(/hostedDemoVerificationBody: '([^']+)'/g)].map((match)=>match[1]));
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
-assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('عائلات الفشل') || body.includes('الملفات المتأثرة') || body.includes('الأمر التالي المقترح') || body.includes('قائمة إصلاح')), 'Arabic current-release description must identify alpha.48 diagnosis report artifact export and failure-family report');
+assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('دورة حياة') || body.includes('نظافة مخرجات') || body.includes('تخطي المخرجات') || body.includes('مسارات المستودع غير الآمنة')), 'Arabic current-release description must identify alpha.50 diagnosis artifact lifecycle and CI artifact hygiene');
 for (const body of arabicHostedDemoBodies) {
   for (const stale of ['النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار', 'نموذج أولي محدود للتنفيذ الحي اليدوي', 'هيكل اشتراك يدوي فقط', 'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار']) {
     assert.equal(body.includes(stale), false, `Arabic current-release description must not carry stale alpha.10/alpha.11 wording: ${stale}`);
@@ -37,7 +37,7 @@ for (const doc of [current, publicDemo, roadmap, qa]) {
 }
 assert.ok(current.includes('Planning/control-plane only') || current.includes('controlled execution candidate') || current.includes('no-execution'), 'current release must state controlled execution candidate control-plane freeze');
 assert.ok(current.includes('A ZIP archive alone is insufficient'), 'current release must preserve ZIP insufficiency warning');
-assert.ok(publicDemo.includes(CURRENT_VERSION) && /hosted.*evidence|hosted.*metadata|bulk diagnosis|failure family|Bulk Diagnosis/i.test(publicDemo), 'public demo must state current hosted evidence lock requirement');
+assert.ok(publicDemo.includes(CURRENT_VERSION) && /hosted.*evidence|hosted.*metadata|artifact hygiene|artifact lifecycle|CI artifact|diagnosis artifact/i.test(publicDemo), 'public demo must state current hosted evidence lock requirement');
 assert.ok(roadmap.includes('v1.3.0 — Stable Manual Workflow Release') && /stable/i.test(roadmap), 'roadmap must point to stable release baseline');
 assert.ok(!roadmap.includes('alpha.26 unless') || roadmap.includes('No alpha.26 unless'), 'roadmap must reject default alpha continuation');
 assert.equal(registry.runtime_capability_change, false);

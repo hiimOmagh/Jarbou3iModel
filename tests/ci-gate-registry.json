@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.49",
-  "release_title": "v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+  "ci_gate_registry_version": "1.4.0-alpha.50",
+  "release_title": "v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -42,6 +42,7 @@
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
+        "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
@@ -217,6 +218,7 @@
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
+        "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
@@ -622,7 +624,8 @@
         "tests/current-release-identity-sweep-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
-        "tests/diagnosis-report-artifact-export-check.mjs"
+        "tests/diagnosis-report-artifact-export-check.mjs",
+        "tests/diagnosis-artifact-lifecycle-guard-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -659,24 +662,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.49",
-    "optimization_scope": "diagnosis_report_artifact_export_operator_handoff_snapshot",
+    "version": "1.4.0-alpha.50",
+    "optimization_scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "diagnosis_report_artifact_export_operator_handoff_snapshot",
-    "current_candidate": "1.4.0-alpha.49",
+    "name": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene",
+    "current_candidate": "1.4.0-alpha.50",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha improves diagnosis report artifact export and gate failure-family reporting without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "diagnosis_report_artifact_export_operator_handoff_snapshot"
+    "description": "Current alpha hardens diagnosis artifact lifecycle and CI artifact hygiene without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.49",
+    "version": "1.4.0-alpha.50",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -897,7 +900,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.49",
+    "version": "1.4.0-alpha.50",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -1061,6 +1064,7 @@
     "tests/version-suite-registry.json",
     "tests/bulk-current-no-browser-diagnosis-check.mjs",
     "tests/bulk-diagnosis-ux-report-check.mjs",
-    "tests/diagnosis-report-artifact-export-check.mjs"
+    "tests/diagnosis-report-artifact-export-check.mjs",
+    "tests/diagnosis-artifact-lifecycle-guard-check.mjs"
   ]
 }

@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot */
+/* Current public release label: v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

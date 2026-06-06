@@ -67,12 +67,12 @@ Evidence manifest gate continuity is retained for alpha.46. The release corpus i
 
 The current module boundary regression guard does not expand runtime behavior. No live scraping. No production OAuth. No real OAuth. No real API keys. No credential persistence. No provider execution expansion. No backend behavior expansion. No storage expansion. No source behavior expansion. No automatic source verification. No automatic signoff. No automatic export lock. No cryptographic signing. No publication permission claim.
 
-## v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot — Bulk diagnosis UX and failure-family report
+## v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene — Diagnosis artifact lifecycle and CI artifact hygiene
 
-v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot
-v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot
+v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene
+v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene
 
-Diagnosis Report Artifact Export + Operator Handoff Snapshot turns the alpha.47 non-stop diagnosis runner into an operator-readable report. It groups failures by family, lists failed commands, extracts affected checks/files, states likely root causes, recommends next commands, and emits a repair checklist without changing runtime behavior.
+Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene turns the alpha.47 non-stop diagnosis runner into an operator-readable report. It groups failures by family, lists failed commands, extracts affected checks/files, states likely root causes, recommends next commands, and emits a repair checklist without changing runtime behavior.
 
 Historical continuity retained:
 - v1.3.0 — Stable Manual Workflow Release

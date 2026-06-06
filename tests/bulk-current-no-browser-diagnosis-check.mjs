@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { CURRENT_RELEASE } from './current-release-identity.mjs';
@@ -31,7 +32,44 @@ function shouldWriteArtifacts() {
 }
 
 function artifactOutputDir() {
-  return readOption('--artifact-dir') || process.env.BULK_DIAGNOSIS_ARTIFACT_DIR || 'dist/diagnosis';
+  const explicitDir = readOption('--artifact-dir') || process.env.BULK_DIAGNOSIS_ARTIFACT_DIR;
+  if (explicitDir) return explicitDir;
+  const safeReleaseSlug = CURRENT_RELEASE.replace(/[^A-Za-z0-9._-]+/g, '-').replace(/^-|-$/g, '');
+  return path.join(os.tmpdir(), 'jarbou3i-diagnosis-artifacts', safeReleaseSlug);
+}
+
+function shouldWriteArtifactsInStaticMode() {
+  return hasFlag('--write-static-artifacts') || process.env.WRITE_BULK_DIAGNOSIS_STATIC_ARTIFACTS === '1';
+}
+
+function allowRepoArtifactDir() {
+  return hasFlag('--allow-repo-artifact-dir') || process.env.ALLOW_REPO_DIAGNOSIS_ARTIFACT_DIR === '1';
+}
+
+const DIAGNOSIS_ARTIFACT_ROOTS_FORBIDDEN_IN_REPO = Object.freeze([
+  'dist',
+  'build',
+  'coverage',
+  'playwright-report',
+  'test-results',
+  'ci-artifacts'
+]);
+
+function repoRelativePath(candidatePath) {
+  const relative = path.relative(process.cwd(), path.resolve(candidatePath));
+  if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) return null;
+  return relative.replace(/\\/g, '/');
+}
+
+function validateArtifactOutputDir(candidatePath) {
+  const resolved = path.resolve(candidatePath);
+  const repoRelative = repoRelativePath(resolved);
+  if (!repoRelative) return resolved;
+  const rootSegment = repoRelative.split('/')[0];
+  if (DIAGNOSIS_ARTIFACT_ROOTS_FORBIDDEN_IN_REPO.includes(rootSegment) && !allowRepoArtifactDir()) {
+    throw new Error(`Unsafe diagnosis artifact output directory inside repo generated-output root: ${repoRelative}. Use an external temp directory or pass --allow-repo-artifact-dir intentionally.`);
+  }
+  return resolved;
 }
 
 const DIAGNOSIS_ARTIFACT_CONTRACT = Object.freeze({
@@ -270,7 +308,7 @@ function renderOperatorHandoffSnapshot(report) {
 }
 
 function writeDiagnosisArtifacts(report) {
-  const outputDir = artifactOutputDir();
+  const outputDir = validateArtifactOutputDir(artifactOutputDir());
   fs.mkdirSync(outputDir, { recursive: true });
   const enrichedReport = {
     artifact_contract: DIAGNOSIS_ARTIFACT_CONTRACT,
@@ -348,7 +386,14 @@ const expectedStaticTokens = [
   '--artifact-dir',
   'DIAGNOSIS_ARTIFACT_CONTRACT',
   'operator-handoff-snapshot.md',
-  'diagnosis-artifact-manifest.json'
+  'diagnosis-artifact-manifest.json',
+  '--write-static-artifacts',
+  '--allow-repo-artifact-dir',
+  'WRITE_BULK_DIAGNOSIS_STATIC_ARTIFACTS',
+  'ALLOW_REPO_DIAGNOSIS_ARTIFACT_DIR',
+  'DIAGNOSIS_ARTIFACT_ROOTS_FORBIDDEN_IN_REPO',
+  'jarbou3i-diagnosis-artifacts',
+  'Bulk diagnosis artifact export skipped in static mode'
 ];
 const source = fs.readFileSync(selfFile, 'utf8');
 for (const token of expectedStaticTokens) assert.ok(source.includes(token), `bulk diagnosis source must encode report token: ${token}`);
@@ -370,6 +415,11 @@ if (process.argv.includes('--fixture-failure-report')) {
 if (process.env.RUN_BULK_CURRENT_DIAGNOSIS !== '1') {
   const staticReport = buildReport([]);
   assert.equal(staticReport.failure_family_summary.length, 0, 'static report must expose an empty failure-family summary on no results');
+  if (shouldWriteArtifacts() && shouldWriteArtifactsInStaticMode()) {
+    writeDiagnosisArtifacts(staticReport);
+  } else if (shouldWriteArtifacts()) {
+    console.log('Bulk diagnosis artifact export skipped in static mode; use --fixture-failure-report, RUN_BULK_CURRENT_DIAGNOSIS=1, or --write-static-artifacts for intentional artifact output.');
+  }
   console.log(`Bulk current no-browser diagnosis UX check passed in static mode: ${checksToRun.length} checks available for ${CURRENT_RELEASE}.`);
   process.exit(0);
 }

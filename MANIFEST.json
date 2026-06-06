@@ -1,7 +1,7 @@
 {
-  "version": "1.4.0-alpha.49",
-  "release_title": "v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
-  "public_version_label": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+  "version": "1.4.0-alpha.50",
+  "release_title": "v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+  "public_version_label": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
   "release_type": "release-identity-single-source-contract",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -10,8 +10,8 @@
   "source_behavior_changed": false,
   "storage_behavior_changed": false,
   "public_demo_capability_expansion": false,
-  "runtime_scope": "diagnosis_report_artifact_export_operator_handoff_snapshot",
-  "milestone_name": "Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+  "runtime_scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene",
+  "milestone_name": "Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
   "consolidated_root_artifacts": [
     "BROWSER_EVIDENCE.md",
     "HOSTED_DEMO_VERIFICATION.md",
@@ -29,7 +29,7 @@
     "PUBLIC_DEMO.md",
     "index.html"
   ],
-  "release_scope": " v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot; v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot; diagnosis_report_artifact_export_operator_handoff_snapshot; diagnosis report artifact export; operator handoff snapshot; affected checks; affected files; likely root cause; recommended next command; operator repair checklist; deterministic artifact-export QA; Planning/control-plane milestone; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; module boundary regression guard; real API keys; cryptographic signing; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff;",
+  "release_scope": " v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene; v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene; diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene; diagnosis artifact lifecycle guard; CI artifact hygiene; static-mode artifact skip; safe artifact output; unsafe dist rejection; operator handoff artifacts; Planning/control-plane milestone; previous diagnosis artifact export milestone; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; module boundary regression guard; real API keys; cryptographic signing; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff;",
   "boundaries": {
     "evidence_capture_only": true,
     "no_live_scraping": true,
@@ -46,10 +46,10 @@
     "no_publication_permission_claim": true
   },
   "current_release_identity": {
-    "version": "1.4.0-alpha.49",
-    "title": "Diagnosis Report Artifact Export + Operator Handoff Snapshot",
-    "release": "v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
-    "public_label": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
-    "runtime_scope": "diagnosis_report_artifact_export_operator_handoff_snapshot"
+    "version": "1.4.0-alpha.50",
+    "title": "Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+    "release": "v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+    "public_label": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+    "runtime_scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene"
   }
 }
