@@ -136,12 +136,12 @@ No live scraping. No production OAuth. No real OAuth. No real API keys. No crede
 Regression continuity retained:
 adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013.
 
-## v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI — Release lock dashboard artifact and evidence digest
+## v1.4.0-alpha.54 — Lock Evidence Review CLI + Digest Reader — Local lock-bundle review surface
 
-v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI
-v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI
+v1.4.0-alpha.54 — Lock Evidence Review CLI + Digest Reader
+v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader
 
-Lock Bundle Schema Enforcement in CI turns the alpha.47 non-stop diagnosis runner into an operator-readable report. It groups failures by family, lists failed commands, extracts affected checks/files, states likely root causes, recommends next commands, and emits a repair checklist without changing runtime behavior.
+Lock Evidence Review CLI + Digest Reader adds a read-only local reviewer command for ZIP or extracted lock bundles. It prints reviewer decision, release identity, no-browser/browser status, evidence matrix count, hosted capture count, targeted region count, stale-residue state, dashboard checksum coverage, and the next operator action without changing runtime behavior.
 
 Historical continuity retained:
 - v1.3.0 — Stable Manual Workflow Release
@@ -160,4 +160,3 @@ No live scraping. No production OAuth. No real OAuth. No real API keys. No crede
 
 Regression continuity retained:
 adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013; module boundary regression guard.
-

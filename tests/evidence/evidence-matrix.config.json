@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.53",
-  "internal_build_version": "1.4.0-alpha.53",
-  "public_version_label": "v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI",
+  "evidence_matrix_config_version": "1.4.0-alpha.54",
+  "internal_build_version": "1.4.0-alpha.54",
+  "public_version_label": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI"
+      "public_label": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader"
     },
     "ar": {
       "required": [
@@ -89,7 +89,7 @@
         "العرض العام جاهز",
         "Démo publique prête"
       ],
-      "public_label": "v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI"
+      "public_label": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader"
     },
     {
       "id": "S02",
@@ -240,8 +240,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI",
-    "ar": "v1.4.0-alpha.53 فرض مخطط حزمة القفل في CI",
-    "fr": "v1.4.0-alpha.53 Application du schéma du bundle de verrouillage dans CI"
+    "en": "v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader",
+    "ar": "v1.4.0-alpha.54 واجهة مراجعة أدلة القفل وقراءة الملخص",
+    "fr": "v1.4.0-alpha.54 CLI de revue des preuves de verrouillage + lecteur de digest"
   }
 }

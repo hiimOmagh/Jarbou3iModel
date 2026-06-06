@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI */
+/* Current public release label: v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

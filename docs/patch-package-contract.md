@@ -1,8 +1,8 @@
-# v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI
+# v1.4.0-alpha.54 — Lock Evidence Review CLI + Digest Reader
 
-Public label: v1.4.0-alpha.53 Lock Bundle Schema Enforcement in CI
+Public label: v1.4.0-alpha.54 Lock Evidence Review CLI + Digest Reader
 
-Alpha.48 keeps the alpha.47 patch-package safety contract and adds operator-readable bulk diagnosis output: failure-family summary, failed commands, affected checks/files, likely root cause, recommended next command, and operator repair checklist.
+Alpha.54 keeps the alpha.47 patch-package safety contract and adds a read-only local lock evidence review CLI for ZIP or extracted lock bundles. It reads the dashboard digest and prints reviewer decision, gate status, evidence counts, checksum coverage, stale-residue state, and next action.
 
 # Patch Package Contract
 

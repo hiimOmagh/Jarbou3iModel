@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.53",
-  "release_title": "v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI",
+  "ci_gate_registry_version": "1.4.0-alpha.54",
+  "release_title": "v1.4.0-alpha.54 \u2014 Lock Evidence Review CLI + Digest Reader",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -46,6 +46,7 @@
         "tests/release-lock-dashboard-artifact-check.mjs",
         "tests/release-lock-dashboard-schema-contract-check.mjs",
         "tests/lock-bundle-schema-enforcement-ci-check.mjs",
+        "tests/lock-evidence-review-cli-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
@@ -225,6 +226,7 @@
         "tests/release-lock-dashboard-artifact-check.mjs",
         "tests/release-lock-dashboard-schema-contract-check.mjs",
         "tests/lock-bundle-schema-enforcement-ci-check.mjs",
+        "tests/lock-evidence-review-cli-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
@@ -669,24 +671,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.53",
-    "optimization_scope": "lock_bundle_schema_enforcement_in_ci",
+    "version": "1.4.0-alpha.54",
+    "optimization_scope": "lock_evidence_review_cli_digest_reader",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "lock_bundle_schema_enforcement_in_ci",
-    "current_candidate": "1.4.0-alpha.53",
+    "name": "lock_evidence_review_cli_digest_reader",
+    "current_candidate": "1.4.0-alpha.54",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha enforces the release-lock dashboard digest/schema contract during canonical bundle build and CI finalization without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "lock_bundle_schema_enforcement_in_ci"
+    "description": "Current alpha adds a read-only lock evidence review CLI and digest reader for ZIP or extracted lock bundles without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "lock_evidence_review_cli_digest_reader"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.53",
+    "version": "1.4.0-alpha.54",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -910,7 +912,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.53",
+    "version": "1.4.0-alpha.54",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -1082,8 +1084,8 @@
     "tests/release-lock-dashboard-artifact-check.mjs"
   ],
   "release_digest_schema_contract": {
-    "version": "1.4.0-alpha.53",
-    "scope": "lock_bundle_schema_enforcement_in_ci",
+    "version": "1.4.0-alpha.54",
+    "scope": "lock_evidence_review_cli_digest_reader",
     "dashboard_json_required": true,
     "dashboard_markdown_required": true,
     "checksum_inclusion_required": true,
@@ -1097,8 +1099,8 @@
     "storage_behavior_changed": false
   },
   "lock_bundle_schema_enforcement_ci": {
-    "version": "1.4.0-alpha.53",
-    "scope": "lock_bundle_schema_enforcement_in_ci",
+    "version": "1.4.0-alpha.54",
+    "scope": "lock_evidence_review_cli_digest_reader",
     "workflow_enforcement_required": true,
     "build_script_enforcement_required": true,
     "dashboard_json_required": true,

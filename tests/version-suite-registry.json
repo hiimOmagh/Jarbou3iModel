@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.53",
-  "release_title": "v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI",
+  "version_suite_registry_version": "1.4.0-alpha.54",
+  "release_title": "v1.4.0-alpha.54 \u2014 Lock Evidence Review CLI + Digest Reader",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1858,7 +1858,7 @@
     },
     {
       "id": "v140-alpha16",
-      "title": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
+      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
       "former_file": null,
       "preserved_as": "registry_entry",
       "checks": [
@@ -1873,19 +1873,19 @@
       "check_count": 0,
       "checks": [],
       "preserved_as": "registry_entry",
-      "title": "v1.4.0-alpha.22 — Alpha.21 Lock Completion + Handoff Productivity Command Center",
+      "title": "v1.4.0-alpha.22 \u2014 Alpha.21 Lock Completion + Handoff Productivity Command Center",
       "former_console_message": "v1.4.0-alpha.22 handoff productivity command center and alpha.20 lock completion gate passed."
     },
     {
       "id": "v140-alpha53",
-      "title": "v1.4.0-alpha.53 — Lock Bundle Schema Enforcement in CI",
+      "title": "v1.4.0-alpha.54 \u2014 Lock Evidence Review CLI + Digest Reader",
       "former_file": null,
       "check_count": 1,
       "checks": [
         "tests/lock-bundle-schema-enforcement-ci-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.53 lock bundle schema enforcement in CI gate passed."
+      "former_console_message": "v1.4.0-alpha.54 lock bundle schema enforcement in CI gate passed."
     }
   ]
 }
