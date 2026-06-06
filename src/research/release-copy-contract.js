@@ -21,7 +21,7 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
       en: Object.freeze(['exit codes', 'failure families', 'automation']),
-      ar: Object.freeze(['رموز الخروج', 'عائلات الفشل', 'الأتمتة']),
+      ar: Object.freeze(['رموز الخروج', 'عائلات الفشل']),
       fr: Object.freeze(['codes de sortie', 'familles d’échec', 'automatisation'])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
@@ -106,7 +106,7 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
 })();
 
 const ALPHA56_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
-  ar: Object.freeze(['رموز الخروج', 'عائلات الفشل', 'الأتمتة']),
+  ar: Object.freeze(['رموز الخروج', 'عائلات الفشل']),
   fr: Object.freeze(['codes de sortie', 'familles d’échec', 'automatisation']),
   en: Object.freeze(['exit codes', 'failure families', 'automation'])
 });
