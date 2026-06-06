@@ -118,12 +118,12 @@ No live scraping. No production OAuth. No real OAuth. No real API keys. No crede
 Regression continuity retained:
 adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013.
 
-## v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report — Bulk diagnosis UX and failure-family report
+## v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot — Bulk diagnosis UX and failure-family report
 
-v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report
-v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report
+v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot
+v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot
 
-Bulk Diagnosis UX + Gate Failure Family Report turns the alpha.47 non-stop diagnosis runner into an operator-readable report. It groups failures by family, lists failed commands, extracts affected checks/files, states likely root causes, recommends next commands, and emits a repair checklist without changing runtime behavior.
+Diagnosis Report Artifact Export + Operator Handoff Snapshot turns the alpha.47 non-stop diagnosis runner into an operator-readable report. It groups failures by family, lists failed commands, extracts affected checks/files, states likely root causes, recommends next commands, and emits a repair checklist without changing runtime behavior.
 
 Historical continuity retained:
 - v1.3.0 — Stable Manual Workflow Release
@@ -142,3 +142,4 @@ No live scraping. No production OAuth. No real OAuth. No real API keys. No crede
 
 Regression continuity retained:
 adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013; module boundary regression guard.
+

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { CURRENT_RELEASE } from './current-release-identity.mjs';
 
@@ -11,6 +12,34 @@ assert.ok(currentGate.node_checks.length > 0, 'current-no-browser gate must not 
 
 const selfFile = 'tests/bulk-current-no-browser-diagnosis-check.mjs';
 const checksToRun = currentGate.node_checks.filter((file) => file !== selfFile);
+
+
+function hasFlag(flag) {
+  return process.argv.includes(flag);
+}
+
+function readOption(name) {
+  const exact = process.argv.find((arg) => arg.startsWith(`${name}=`));
+  if (exact) return exact.slice(name.length + 1);
+  const index = process.argv.indexOf(name);
+  if (index >= 0 && process.argv[index + 1]) return process.argv[index + 1];
+  return null;
+}
+
+function shouldWriteArtifacts() {
+  return hasFlag('--write-artifacts') || process.env.WRITE_BULK_DIAGNOSIS_ARTIFACTS === '1';
+}
+
+function artifactOutputDir() {
+  return readOption('--artifact-dir') || process.env.BULK_DIAGNOSIS_ARTIFACT_DIR || 'dist/diagnosis';
+}
+
+const DIAGNOSIS_ARTIFACT_CONTRACT = Object.freeze({
+  version: 1,
+  report_json: 'bulk-current-no-browser-diagnosis-report.json',
+  handoff_markdown: 'operator-handoff-snapshot.md',
+  manifest_json: 'diagnosis-artifact-manifest.json'
+});
 
 const FAILURE_FAMILIES = Object.freeze({
   current_release_identity_drift: {
@@ -199,6 +228,74 @@ function renderOperatorReport(report) {
   return lines.join('\n');
 }
 
+function renderOperatorHandoffSnapshot(report) {
+  const lines = [];
+  lines.push(`# Operator Handoff Snapshot — ${report.release}`);
+  lines.push('');
+  lines.push('## Gate summary');
+  lines.push(`- Checks attempted: ${report.total_checks_attempted}`);
+  lines.push(`- Passed checks: ${report.passed_checks}`);
+  lines.push(`- Failed checks: ${report.failed_checks}`);
+  lines.push(`- Recommended next command: ${report.recommended_next_command || 'n/a'}`);
+  lines.push('');
+  lines.push('## Failure family summary');
+  if (report.failure_family_summary.length === 0) {
+    lines.push('- none');
+  } else {
+    for (const family of report.failure_family_summary) {
+      lines.push(`- ${family.label} (${family.failure_count})`);
+      lines.push(`  - Family ID: ${family.family}`);
+      lines.push(`  - Affected checks: ${family.affected_checks.join(', ')}`);
+      lines.push(`  - Affected files: ${family.affected_files.join(', ') || 'n/a'}`);
+      lines.push(`  - Likely root cause: ${family.likely_root_cause}`);
+      lines.push(`  - Recommended next command: ${family.recommended_next_command}`);
+    }
+  }
+  lines.push('');
+  lines.push('## Failed commands');
+  if (report.failed_commands.length === 0) {
+    lines.push('- none');
+  } else {
+    for (const command of report.failed_commands) lines.push(`- ${command.command} => status ${command.status} (${command.family})`);
+  }
+  lines.push('');
+  lines.push('## Operator repair checklist');
+  for (const item of report.operator_repair_checklist) lines.push(`- ${item}`);
+  lines.push('');
+  lines.push('## Artifact contract');
+  lines.push(`- Contract version: ${DIAGNOSIS_ARTIFACT_CONTRACT.version}`);
+  lines.push(`- JSON report: ${DIAGNOSIS_ARTIFACT_CONTRACT.report_json}`);
+  lines.push(`- Markdown snapshot: ${DIAGNOSIS_ARTIFACT_CONTRACT.handoff_markdown}`);
+  return lines.join('\n');
+}
+
+function writeDiagnosisArtifacts(report) {
+  const outputDir = artifactOutputDir();
+  fs.mkdirSync(outputDir, { recursive: true });
+  const enrichedReport = {
+    artifact_contract: DIAGNOSIS_ARTIFACT_CONTRACT,
+    release: report.release,
+    generated_by: 'tests/bulk-current-no-browser-diagnosis-check.mjs',
+    ...report
+  };
+  const files = {
+    report_json: path.join(outputDir, DIAGNOSIS_ARTIFACT_CONTRACT.report_json),
+    handoff_markdown: path.join(outputDir, DIAGNOSIS_ARTIFACT_CONTRACT.handoff_markdown),
+    manifest_json: path.join(outputDir, DIAGNOSIS_ARTIFACT_CONTRACT.manifest_json)
+  };
+  fs.writeFileSync(files.report_json, `${JSON.stringify(enrichedReport, null, 2)}\n`);
+  fs.writeFileSync(files.handoff_markdown, `${renderOperatorHandoffSnapshot(enrichedReport)}\n`);
+  const manifest = {
+    artifact_contract: DIAGNOSIS_ARTIFACT_CONTRACT,
+    release: report.release,
+    output_dir: outputDir,
+    generated_by: 'tests/bulk-current-no-browser-diagnosis-check.mjs',
+    files: Object.fromEntries(Object.entries(files).map(([key, value]) => [key, value.replace(/\\/g, '/')]))
+  };
+  fs.writeFileSync(files.manifest_json, `${JSON.stringify(manifest, null, 2)}\n`);
+  return manifest;
+}
+
 function buildFixtureResults() {
   return [
     {
@@ -246,7 +343,12 @@ const expectedStaticTokens = [
   'Likely root cause',
   'Recommended next command',
   'Operator repair checklist',
-  'BULK_DIAGNOSIS_REPORT_JSON_START'
+  'BULK_DIAGNOSIS_REPORT_JSON_START',
+  '--write-artifacts',
+  '--artifact-dir',
+  'DIAGNOSIS_ARTIFACT_CONTRACT',
+  'operator-handoff-snapshot.md',
+  'diagnosis-artifact-manifest.json'
 ];
 const source = fs.readFileSync(selfFile, 'utf8');
 for (const token of expectedStaticTokens) assert.ok(source.includes(token), `bulk diagnosis source must encode report token: ${token}`);
@@ -260,6 +362,7 @@ if (process.argv.includes('--list')) {
 
 if (process.argv.includes('--fixture-failure-report')) {
   const report = buildReport(buildFixtureResults());
+  if (shouldWriteArtifacts()) writeDiagnosisArtifacts(report);
   console.log(renderOperatorReport(report));
   process.exit(process.argv.includes('--fixture-exit-zero') ? 0 : 1);
 }
@@ -273,5 +376,6 @@ if (process.env.RUN_BULK_CURRENT_DIAGNOSIS !== '1') {
 
 const results = checksToRun.map(runCheck);
 const report = buildReport(results);
+if (shouldWriteArtifacts()) writeDiagnosisArtifacts(report);
 console.log(renderOperatorReport(report));
 assert.equal(report.failed_checks, 0, 'bulk current no-browser diagnosis found failing checks');

@@ -25,7 +25,7 @@ const hostedDemoBodies = [...renderHelpers.matchAll(/hostedDemoVerificationBody:
 const releaseCopySource = fs.readFileSync('src/research/release-copy-contract.js', 'utf8');
 hostedDemoBodies.push(...[...releaseCopySource.matchAll(/hostedDemoVerificationBody: '([^']+)'/g)].map((match)=>match[1]));
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
-assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('عائلات الفشل') || body.includes('الملفات المتأثرة') || body.includes('الأمر التالي المقترح') || body.includes('قائمة إصلاح')), 'Arabic current-release description must identify alpha.48 bulk diagnosis UX and failure-family report');
+assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('عائلات الفشل') || body.includes('الملفات المتأثرة') || body.includes('الأمر التالي المقترح') || body.includes('قائمة إصلاح')), 'Arabic current-release description must identify alpha.48 diagnosis report artifact export and failure-family report');
 for (const body of arabicHostedDemoBodies) {
   for (const stale of ['النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار', 'نموذج أولي محدود للتنفيذ الحي اليدوي', 'هيكل اشتراك يدوي فقط', 'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار']) {
     assert.equal(body.includes(stale), false, `Arabic current-release description must not carry stale alpha.10/alpha.11 wording: ${stale}`);

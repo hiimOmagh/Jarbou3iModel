@@ -1,6 +1,6 @@
-# v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report
+# v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot
 
-Public label: v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report
+Public label: v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot
 
 Alpha.48 keeps the alpha.47 patch-package safety contract and adds operator-readable bulk diagnosis output: failure-family summary, failed commands, affected checks/files, likely root cause, recommended next command, and operator repair checklist.
 

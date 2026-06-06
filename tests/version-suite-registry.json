@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.48",
-  "release_title": "v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report",
+  "version_suite_registry_version": "1.4.0-alpha.49",
+  "release_title": "v1.4.0-alpha.49 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",

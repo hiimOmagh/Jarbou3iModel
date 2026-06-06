@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report */
+/* Current public release label: v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

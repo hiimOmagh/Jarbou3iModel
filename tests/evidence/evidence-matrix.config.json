@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.48",
-  "internal_build_version": "1.4.0-alpha.48",
-  "public_version_label": "v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report",
+  "evidence_matrix_config_version": "1.4.0-alpha.49",
+  "internal_build_version": "1.4.0-alpha.49",
+  "public_version_label": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report"
+      "public_label": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot"
     },
     "ar": {
       "required": [
@@ -239,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report",
-    "ar": "v1.4.0-alpha.48 تحسين تشخيص البوابات + تقرير عائلات الفشل",
-    "fr": "v1.4.0-alpha.48 UX diagnostic groupé + rapport des familles d’échec"
+    "en": "v1.4.0-alpha.49 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
+    "ar": "v1.4.0-alpha.49 تصدير تقرير التشخيص + لقطة تسليم للمشغّل",
+    "fr": "v1.4.0-alpha.49 Export du rapport diagnostic + instantané de passation opérateur"
   }
 }

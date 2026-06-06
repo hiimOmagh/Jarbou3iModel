@@ -58,7 +58,7 @@ for (const body of arabicHostedDemoBodies) {
     body.includes('الملفات المتأثرة') ||
     body.includes('الأمر التالي المقترح') ||
     body.includes('قائمة إصلاح'),
-    'Arabic current-release description must identify alpha.48 bulk diagnosis UX and failure-family report'
+    'Arabic current-release description must identify alpha.48 diagnosis report artifact export and failure-family report'
   );
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',
