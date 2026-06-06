@@ -1,6 +1,8 @@
-# v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard
+# v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report
 
-Public label: v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard
+Public label: v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report
+
+Alpha.48 keeps the alpha.47 patch-package safety contract and adds operator-readable bulk diagnosis output: failure-family summary, failed commands, affected checks/files, likely root cause, recommended next command, and operator repair checklist.
 
 # Patch Package Contract
 

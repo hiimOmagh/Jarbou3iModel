@@ -1,13 +1,13 @@
 {
-  "version": "1.4.0-alpha.47",
-  "milestone_name": "Patch Package Safety + Release Identity Sweep Guard",
+  "version": "1.4.0-alpha.48",
+  "milestone_name": "Bulk Diagnosis UX + Gate Failure Family Report",
   "release_type": "product-facing",
   "allowed_scope": [
-    "patch package collision safety for changed-files handoff ZIPs",
-    "current release identity sweep for current-sensitive metadata and visible copy",
-    "bulk current-no-browser diagnosis without stop-on-first-failure",
-    "repo hygiene guard extension for patch package artifacts",
-    "package ZIP contract documentation with nested metadata rules"
+    "operator-readable bulk current-no-browser diagnosis output",
+    "failure-family summary grouped by likely root cause",
+    "affected checks/files and failed command reporting",
+    "recommended next command and operator repair checklist output",
+    "deterministic fixture QA for diagnosis report shape"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -59,7 +59,8 @@
     "tests/module-boundary-regression-guard-check.mjs",
     "tests/patch-package-safety-check.mjs",
     "tests/current-release-identity-sweep-check.mjs",
-    "tests/bulk-current-no-browser-diagnosis-check.mjs"
+    "tests/bulk-current-no-browser-diagnosis-check.mjs",
+    "tests/bulk-diagnosis-ux-report-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -213,15 +214,16 @@
     "tests/patch-package-safety-check.mjs",
     "tests/current-release-identity-sweep-check.mjs",
     "tests/bulk-current-no-browser-diagnosis-check.mjs",
-    "tests/repo-file-hygiene-check.mjs"
+    "tests/repo-file-hygiene-check.mjs",
+    "tests/bulk-diagnosis-ux-report-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.47",
-    "public labels must expose v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard",
-    "patch package ZIPs must not contain root repo-colliding metadata or application files",
-    "current release identity sweep must catch stale current-release assertions before browser/no-browser gates",
-    "bulk current-no-browser diagnosis must classify failure families without stop-on-first-failure"
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.48",
+    "public labels must expose v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report",
+    "bulk diagnosis report must include failure-family summary, affected files/checks, failed commands, likely root cause, recommended next command, and operator repair checklist",
+    "bulk diagnosis report-shape self-test must use deterministic fixture failure output",
+    "current release identity sweep must catch stale current-release assertions before browser/no-browser gates"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -243,18 +245,25 @@
     "Sémantique de la matrice de preuves + durcissement de la preuve ciblée",
     "Manual Workflow UX Consolidation is ready for release evidence",
     "v1.4.0-alpha.42 Manual Workflow UX Consolidation",
-    "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite"
+    "v1.4.0-alpha.40 Source-to-Brief Publication Readiness Suite",
+    "v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard",
+    "v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard",
+    "Patch Package Safety + Release Identity Sweep Guard is ready for release evidence",
+    "1.4.0-alpha.47 adds patch package collision guard",
+    "v1.4.0-alpha.47 تحسين تشخيص البوابات + تقرير عائلات الفشل",
+    "v1.4.0-alpha.47 UX diagnostic groupé + rapport des familles d’échec",
+    "أمان حزم التصحيح + حارس مسح هوية الإصدار",
+    "Sécurité des paquets de correctifs + garde de balayage d’identité de release"
   ],
-  "runtime_scope": "patch_package_safety_release_identity_sweep_guard",
+  "runtime_scope": "bulk_diagnosis_ux_failure_family_report",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted evidence must report internal_build_version 1.4.0-alpha.47",
-    "public labels must expose v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard",
-    "patch package safety guard must reject root repo-colliding package entries",
-    "repo hygiene must reject root patch package artifacts",
-    "current release identity sweep must derive identity from tests/current-release-identity.mjs",
-    "bulk current-no-browser diagnosis must support non-stop failure-family classification",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.48",
+    "public labels must expose v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report",
+    "bulk diagnosis must render an operator-readable failure family summary",
+    "bulk diagnosis must expose failed commands, affected checks/files, likely root cause, and recommended next command",
+    "bulk diagnosis fixture mode must exit non-zero on real failure simulation",
     "release must remain no-network, metadata-only, preview-only, and manually reviewed",
     "runtime/provider/OAuth/backend/source/storage behavior must remain unchanged"
   ]

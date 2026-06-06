@@ -54,11 +54,11 @@ const arabicHostedDemoBodies = releaseCopyHostedDemoBodies.filter((body)=>body.i
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
   assert.ok(
-    body.includes('حارس تصادم حزم التصحيح') ||
-    body.includes('مسح هوية الإصدار') ||
-    body.includes('تشخيص جماعي') ||
-    body.includes('PACKAGE-MANIFEST.json'),
-    'Arabic current-release description must identify alpha.47 patch package safety and release identity sweep guard'
+    body.includes('عائلات الفشل') ||
+    body.includes('الملفات المتأثرة') ||
+    body.includes('الأمر التالي المقترح') ||
+    body.includes('قائمة إصلاح'),
+    'Arabic current-release description must identify alpha.48 bulk diagnosis UX and failure-family report'
   );
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',

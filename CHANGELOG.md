@@ -149,12 +149,12 @@ No live scraping. No production OAuth. No real OAuth. No real API keys. No crede
 Regression continuity retained:
 adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013.
 
-## v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard — Patch package safety and identity sweep
+## v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report — Bulk diagnosis UX and failure-family report
 
-v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard
-v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard
+v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report
+v1.4.0-alpha.48 Bulk Diagnosis UX + Gate Failure Family Report
 
-Patch Package Safety + Release Identity Sweep Guard prevents the alpha.46 failure pattern from recurring. It adds a patch package collision guard, current release identity sweep, bulk current-no-browser diagnosis without stop-on-first-failure, stronger root patch artifact hygiene, and a documented nested ZIP package contract using PACKAGE-MANIFEST.json and README-PACKAGE.md.
+Bulk Diagnosis UX + Gate Failure Family Report turns the alpha.47 non-stop diagnosis runner into an operator-readable report. It groups failures by family, lists failed commands, extracts affected checks/files, states likely root causes, recommends next commands, and emits a repair checklist without changing runtime behavior.
 
 Historical continuity retained:
 - v1.3.0 — Stable Manual Workflow Release

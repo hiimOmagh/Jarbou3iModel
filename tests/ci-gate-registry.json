@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.47",
-  "release_title": "v1.4.0-alpha.47 — Patch Package Safety + Release Identity Sweep Guard",
+  "ci_gate_registry_version": "1.4.0-alpha.48",
+  "release_title": "v1.4.0-alpha.48 — Bulk Diagnosis UX + Gate Failure Family Report",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -40,6 +40,7 @@
         "tests/release-identity-single-source-contract-check.mjs",
         "tests/current-release-identity-sweep-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
+        "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
@@ -213,6 +214,7 @@
         "tests/release-identity-single-source-contract-check.mjs",
         "tests/current-release-identity-sweep-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
+        "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
@@ -616,7 +618,8 @@
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs",
         "tests/current-release-identity-sweep-check.mjs",
-        "tests/bulk-current-no-browser-diagnosis-check.mjs"
+        "tests/bulk-current-no-browser-diagnosis-check.mjs",
+        "tests/bulk-diagnosis-ux-report-check.mjs"
       ],
       "syntax_checks": [],
       "playwright_specs": []
@@ -653,24 +656,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.47",
-    "optimization_scope": "patch_package_safety_release_identity_sweep_guard",
+    "version": "1.4.0-alpha.48",
+    "optimization_scope": "bulk_diagnosis_ux_failure_family_report",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "patch_package_safety_release_identity_sweep_guard",
-    "current_candidate": "1.4.0-alpha.47",
+    "name": "bulk_diagnosis_ux_failure_family_report",
+    "current_candidate": "1.4.0-alpha.48",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha hardens patch-package safety, release identity sweep coverage, and bulk diagnosis without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "patch_package_safety_release_identity_sweep_guard"
+    "description": "Current alpha improves bulk diagnosis UX and gate failure-family reporting without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "bulk_diagnosis_ux_failure_family_report"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.47",
+    "version": "1.4.0-alpha.48",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -884,13 +887,14 @@
       "tests/module-boundary-regression-guard-check.mjs",
       "tests/current-release-identity-sweep-check.mjs",
       "tests/patch-package-safety-check.mjs",
-      "tests/bulk-current-no-browser-diagnosis-check.mjs"
+      "tests/bulk-current-no-browser-diagnosis-check.mjs",
+      "tests/bulk-diagnosis-ux-report-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.47",
+    "version": "1.4.0-alpha.48",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -1051,6 +1055,8 @@
     "tests/syntax-matrix-check.mjs",
     "tests/test-matrix-runtime-optimization-check.mjs",
     "tests/ux-stabilization-patch-check.mjs",
-    "tests/version-suite-registry.json"
+    "tests/version-suite-registry.json",
+    "tests/bulk-current-no-browser-diagnosis-check.mjs",
+    "tests/bulk-diagnosis-ux-report-check.mjs"
   ]
 }
