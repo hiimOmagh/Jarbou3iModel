@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import os from 'node:os';
+import { writeReleaseLockDashboardDigest } from './release-lock-dashboard-digest.mjs';
 
 const root = process.cwd();
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
@@ -212,6 +213,8 @@ const manifest={
 };
 writeJson(path.join(bundleDir,'evidence-manifest.json'), manifest);
 fs.writeFileSync(path.join(bundleDir,'evidence-manifest.md'), `# ${release}\n\n- Internal build version: \`${version}\`\n- Public version label: \`${publicVersionLabel}\`\n- Run ID: \`${runId}\`\n- Commit: \`${commitSha}\`\n- Branch: \`${branch}\`\n- Hosted evidence version: \`${metadata.evidence_review_version}\`\n- Root capture count: \`${metadata.capture_count}\`\n- Evidence matrix rows: \`${matrixSummary.passed_rows}/${matrixSummary.expected_rows}\`\n- Required captures present: \`${metadata.all_required_captures_present}\`\n- Max horizontal overflow: \`${manifest.evidence_matrix.horizontal_overflow_max_px}\`\n- Language purity: \`${manifest.evidence_matrix.language_purity_passed}\`\n- Bundle validation: \`${manifest.bundle_validation.status}\`\n`);
+writeReleaseLockDashboardDigest(bundleDir, path.join(bundleDir, 'release-lock-dashboard'));
+
 
 const checksumLines=listFiles(bundleDir).filter((file)=>!file.endsWith('SHA256SUMS.txt')).map((file)=>`${sha256(file)}  ${path.relative(bundleDir,file).replaceAll(path.sep,'/')}`).join('\n') + '\n';
 ensureDir(path.join(bundleDir,'checksums'));

@@ -54,11 +54,11 @@ const arabicHostedDemoBodies = releaseCopyHostedDemoBodies.filter((body)=>body.i
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
   assert.ok(
-    body.includes('دورة حياة') ||
-    body.includes('نظافة مخرجات') ||
-    body.includes('تخطي المخرجات') ||
-    body.includes('مسارات المستودع غير الآمنة'),
-    'Arabic current-release description must identify alpha.50 diagnosis artifact lifecycle and CI artifact hygiene'
+    body.includes('لوحة قفل الإصدار') ||
+    body.includes('ملخص الأدلة') ||
+    body.includes('قرار القفل') ||
+    body.includes('مناطق الإثبات'),
+    'Arabic current-release description must identify alpha.51 release lock dashboard and evidence digest'
   );
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',

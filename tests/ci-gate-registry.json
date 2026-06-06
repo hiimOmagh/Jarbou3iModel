@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.50",
-  "release_title": "v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+  "ci_gate_registry_version": "1.4.0-alpha.51",
+  "release_title": "v1.4.0-alpha.51 \u2014 Release Lock Dashboard Artifact + Evidence Digest",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -43,6 +43,7 @@
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
         "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
+        "tests/release-lock-dashboard-artifact-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/syntax-matrix-check.mjs",
         "tests/schema-check.mjs",
@@ -219,6 +220,7 @@
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
         "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
+        "tests/release-lock-dashboard-artifact-check.mjs",
         "tests/stable-manual-workflow-release-check.mjs",
         "tests/root-release-artifact-consolidation-check.mjs",
         "tests/repository-consolidation-audit-check.mjs",
@@ -662,24 +664,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.50",
-    "optimization_scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene",
+    "version": "1.4.0-alpha.51",
+    "optimization_scope": "release_lock_dashboard_artifact_evidence_digest",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene",
-    "current_candidate": "1.4.0-alpha.50",
+    "name": "release_lock_dashboard_artifact_evidence_digest",
+    "current_candidate": "1.4.0-alpha.51",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha hardens diagnosis artifact lifecycle and CI artifact hygiene without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene"
+    "description": "Current alpha exports a compact release-lock dashboard evidence digest without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "release_lock_dashboard_artifact_evidence_digest"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.50",
+    "version": "1.4.0-alpha.51",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -900,7 +902,7 @@
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.50",
+    "version": "1.4.0-alpha.51",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,

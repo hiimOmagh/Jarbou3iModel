@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.50",
-  "internal_build_version": "1.4.0-alpha.50",
-  "public_version_label": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+  "evidence_matrix_config_version": "1.4.0-alpha.51",
+  "internal_build_version": "1.4.0-alpha.51",
+  "public_version_label": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene"
+      "public_label": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest"
     },
     "ar": {
       "required": [
@@ -239,8 +239,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
-    "ar": "v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI",
-    "fr": "v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI"
+    "en": "v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
+    "ar": "v1.4.0-alpha.51 لوحة قفل الإصدار + ملخص الأدلة",
+    "fr": "v1.4.0-alpha.51 Tableau de verrouillage de release + digest des preuves"
   }
 }

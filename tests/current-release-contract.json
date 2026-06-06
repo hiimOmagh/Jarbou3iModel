@@ -1,13 +1,13 @@
 {
-  "version": "1.4.0-alpha.50",
-  "milestone_name": "Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+  "version": "1.4.0-alpha.51",
+  "milestone_name": "Release Lock Dashboard Artifact + Evidence Digest",
   "release_type": "product-facing",
   "allowed_scope": [
-    "static-mode diagnosis artifact export skip for normal no-browser gates",
-    "safe external diagnosis artifact output directory by default",
-    "unsafe repo generated-output directory rejection by default",
-    "deterministic lifecycle guard QA for leaked artifact environment variables",
-    "artifact export cleanup boundary proof for diagnosis handoff artifacts"
+    "release lock dashboard JSON digest from canonical lock evidence",
+    "release lock dashboard Markdown digest for operator review",
+    "gate status summary for no-browser and browser lock evidence",
+    "evidence digest for matrix rows, hosted captures, targeted regions, stale residue, and lockable decision",
+    "deterministic dashboard artifact QA without runtime behavior change"
   ],
   "forbidden_scope": [
     "live provider calls",
@@ -62,7 +62,9 @@
     "tests/bulk-current-no-browser-diagnosis-check.mjs",
     "tests/bulk-diagnosis-ux-report-check.mjs",
     "tests/diagnosis-report-artifact-export-check.mjs",
-    "tests/diagnosis-artifact-lifecycle-guard-check.mjs"
+    "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
+    "scripts/release-lock-dashboard-digest.mjs",
+    "tests/release-lock-dashboard-artifact-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -219,15 +221,17 @@
     "tests/repo-file-hygiene-check.mjs",
     "tests/bulk-diagnosis-ux-report-check.mjs",
     "tests/diagnosis-report-artifact-export-check.mjs",
-    "tests/diagnosis-artifact-lifecycle-guard-check.mjs"
+    "tests/diagnosis-artifact-lifecycle-guard-check.mjs",
+    "scripts/release-lock-dashboard-digest.mjs",
+    "tests/release-lock-dashboard-artifact-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.50",
-    "public labels must expose v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
-    "bulk diagnosis artifact export must write stable JSON, Markdown handoff, and manifest artifacts",
-    "operator handoff snapshot must include gate summary, failure families, failed commands, and repair checklist",
-    "diagnosis artifact export self-test must use deterministic fixture failure output",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.51 — Release Lock Dashboard Artifact + Evidence Digest",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.51",
+    "public labels must expose v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
+    "release lock dashboard digest must write stable JSON and Markdown reviewer artifacts",
+    "dashboard digest must include gate summary, evidence digest, targeted-region summary, stale-residue state, and reviewer checklist",
+    "release lock dashboard artifact self-test must use deterministic fixture lock evidence",
     "current release identity sweep must catch stale current-release assertions before browser/no-browser gates"
   ],
   "windows_portability_rules": [
@@ -274,17 +278,23 @@
     "v1.4.0-alpha.50 Diagnosis Report Artifact Export + Operator Handoff Snapshot",
     "v1.4.0-alpha.50 — Diagnosis Report Artifact Export + Operator Handoff Snapshot",
     "تصدير تقرير التشخيص + لقطة تسليم للمشغّل",
-    "Export du rapport diagnostic + instantané de passation opérateur"
+    "Export du rapport diagnostic + instantané de passation opérateur",
+    "v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+    "v1.4.0-alpha.50 — Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
+    "Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene is ready for release evidence",
+    "1.4.0-alpha.50 hardens diagnosis artifact lifecycle",
+    "v1.4.0-alpha.50 حارس دورة حياة مخرجات التشخيص + نظافة مخرجات CI",
+    "v1.4.0-alpha.50 Garde du cycle de vie des artefacts diagnostic + hygiène des artefacts CI"
   ],
-  "runtime_scope": "diagnosis_artifact_lifecycle_guard_ci_artifact_hygiene",
+  "runtime_scope": "release_lock_dashboard_artifact_evidence_digest",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted evidence must report internal_build_version 1.4.0-alpha.50",
-    "public labels must expose v1.4.0-alpha.50 Diagnosis Artifact Lifecycle Guard + CI Artifact Hygiene",
-    "bulk diagnosis must export stable JSON and Markdown operator handoff artifacts when explicitly requested",
-    "diagnosis artifact manifest must identify report, snapshot, contract version, release, and output directory",
-    "bulk diagnosis fixture mode must preserve non-zero failure behavior unless fixture-exit-zero is explicitly requested",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.51",
+    "public labels must expose v1.4.0-alpha.51 Release Lock Dashboard Artifact + Evidence Digest",
+    "release lock dashboard digest must export stable JSON and Markdown artifacts from canonical lock evidence",
+    "release lock digest must include no-browser/browser status, evidence matrix count, hosted captures, targeted regions, stale residue, and lockable reviewer decision",
+    "release dashboard artifact generator must use deterministic fixture evidence without writing repo-generated output",
     "release must remain no-network, metadata-only, preview-only, and manually reviewed",
     "runtime/provider/OAuth/backend/source/storage behavior must remain unchanged"
   ]
