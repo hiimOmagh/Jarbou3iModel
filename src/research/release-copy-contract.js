@@ -20,9 +20,9 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
       fr: 'v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
-      en: Object.freeze(['release lock dashboard', 'evidence digest', 'lockable reviewer decision']),
-      ar: Object.freeze(['لوحة قفل الإصدار', 'ملخص الأدلة', 'قرار القفل']),
-      fr: Object.freeze(['tableau de verrouillage', 'digest des preuves', 'décision de verrouillage'])
+      en: Object.freeze(['release-lock dashboard', 'evidence digest', 'lockable reviewer decision']),
+      ar: Object.freeze(['مصفوفة الأدلة', 'لقطات الاستضافة', 'قرار القفل']),
+      fr: Object.freeze(['digest résume les gates', 'captures hébergées', 'décision de verrouillage'])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
       'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
@@ -101,13 +101,13 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   });
 })();
 
-const ALPHA51_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
-  ar: Object.freeze(['لوحة قفل الإصدار', 'ملخص الأدلة', 'قرار القفل']),
-  fr: Object.freeze(['tableau de verrouillage', 'digest des preuves', 'décision de verrouillage']),
-  en: Object.freeze(['release lock dashboard', 'evidence digest', 'lockable reviewer decision'])
+const ALPHA52_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
+  ar: Object.freeze(['مصفوفة الأدلة', 'لقطات الاستضافة', 'قرار القفل']),
+  fr: Object.freeze(['digest résume les gates', 'captures hébergées', 'décision de verrouillage']),
+  en: Object.freeze(['release-lock dashboard', 'evidence digest', 'lockable reviewer decision'])
 });
 
-(function enforceAlpha51BrowserVisibleTextContract() {
+(function enforceAlpha52BrowserVisibleTextContract() {
   const root = typeof globalThis !== 'undefined' ? globalThis : this;
   const contract = root.Jarbou3iResearchReleaseCopyContract;
   if (!contract) return;
@@ -122,11 +122,11 @@ const ALPHA51_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
     fr: 'v1.4.0-alpha.52 Garde de régression du digest de release + contrat de schéma du bundle de verrouillage'
   });
 
-  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA51_BROWSER_VISIBLE_TEXT_CONTRACT);
+  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA52_BROWSER_VISIBLE_TEXT_CONTRACT);
   contract.expectedCurrentReleaseDescriptionTokens = Object.assign(
     {},
     contract.expectedCurrentReleaseDescriptionTokens || {},
-    ALPHA51_BROWSER_VISIBLE_TEXT_CONTRACT
+    ALPHA52_BROWSER_VISIBLE_TEXT_CONTRACT
   );
 
   contract.staleVisibleText = (contract.staleVisibleText || [])
