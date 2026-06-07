@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.57",
-  "release_title": "v1.4.0-alpha.57 — Visible-Text Token Drift Guard",
+  "ci_gate_registry_version": "1.4.0-alpha.58",
+  "release_title": "v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -40,6 +40,7 @@
         "tests/release-identity-single-source-contract-check.mjs",
         "tests/current-release-identity-sweep-check.mjs",
         "tests/visible-text-token-drift-guard-check.mjs",
+        "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
@@ -223,6 +224,7 @@
         "tests/release-identity-single-source-contract-check.mjs",
         "tests/current-release-identity-sweep-check.mjs",
         "tests/visible-text-token-drift-guard-check.mjs",
+        "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
@@ -435,6 +437,7 @@
         "tests/source-to-brief-operator-control-room-check.mjs",
         "tests/source-to-brief-publication-readiness-suite-check.mjs",
         "tests/targeted-hosted-evidence-capture-check.mjs",
+        "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs"
       ],
       "syntax_checks": [],
@@ -633,6 +636,7 @@
         "tests/source-to-brief-operator-control-room-check.mjs",
         "tests/source-to-brief-publication-readiness-suite-check.mjs",
         "tests/targeted-hosted-evidence-capture-check.mjs",
+        "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs",
@@ -678,24 +682,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.57",
-    "optimization_scope": "visible_text_token_drift_guard",
+    "version": "1.4.0-alpha.58",
+    "optimization_scope": "hosted_evidence_capture_timeout_budget_guard",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "visible_text_token_drift_guard",
-    "current_candidate": "1.4.0-alpha.57",
+    "name": "hosted_evidence_capture_timeout_budget_guard",
+    "current_candidate": "1.4.0-alpha.58",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Current alpha formalizes lock evidence review CLI exit codes and failure-family classification for automation without runtime/provider/OAuth/backend/source/storage behavior changes.",
-    "scope": "lock_evidence_review_cli_hardening_exit_codes"
+    "description": "Current alpha records hosted evidence capture timing and enforces timeout-budget guardrails without runtime/provider/OAuth/backend/source/storage behavior changes.",
+    "scope": "hosted_evidence_capture_timeout_budget_guard"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.57",
+    "version": "1.4.0-alpha.58",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -916,13 +920,14 @@
       "tests/lock-bundle-schema-enforcement-ci-check.mjs",
       "scripts/lock-evidence-review.mjs",
       "tests/lock-evidence-review-cli-check.mjs",
-      "tests/lock-review-cli-ci-smoke-check.mjs"
+      "tests/lock-review-cli-ci-smoke-check.mjs",
+      "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.57",
+    "version": "1.4.0-alpha.58",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -1096,8 +1101,8 @@
     "tests/visible-text-token-drift-guard-check.mjs"
   ],
   "release_digest_schema_contract": {
-    "version": "1.4.0-alpha.57",
-    "scope": "visible_text_token_drift_guard",
+    "version": "1.4.0-alpha.58",
+    "scope": "hosted_evidence_capture_timeout_budget_guard",
     "dashboard_json_required": true,
     "dashboard_markdown_required": true,
     "checksum_inclusion_required": true,
@@ -1111,8 +1116,8 @@
     "storage_behavior_changed": false
   },
   "lock_bundle_schema_enforcement_ci": {
-    "version": "1.4.0-alpha.57",
-    "scope": "visible_text_token_drift_guard",
+    "version": "1.4.0-alpha.58",
+    "scope": "hosted_evidence_capture_timeout_budget_guard",
     "workflow_enforcement_required": true,
     "build_script_enforcement_required": true,
     "dashboard_json_required": true,
@@ -1121,8 +1126,8 @@
     "enforcement_must_run_before_upload": true
   },
   "lock_evidence_review_cli_exit_codes": {
-    "version": "1.4.0-alpha.57",
-    "scope": "visible_text_token_drift_guard",
+    "version": "1.4.0-alpha.58",
+    "scope": "hosted_evidence_capture_timeout_budget_guard",
     "success": 0,
     "usage_error": 64,
     "input_error": 65,
@@ -1137,5 +1142,19 @@
       "lock_decision",
       "unexpected"
     ]
+  },
+  "hosted_evidence_capture_timeout_budget_guard": {
+    "version": "1.4.0-alpha.58",
+    "scope": "hosted_evidence_capture_timeout_budget_guard",
+    "timing_metadata_required": true,
+    "phase_budget_records_required": true,
+    "targeted_region_budget_records_required": true,
+    "static_guard_required_before_browser": true,
+    "runtime_capability_change": false,
+    "provider_behavior_changed": false,
+    "oauth_behavior_changed": false,
+    "backend_behavior_changed": false,
+    "source_behavior_changed": false,
+    "storage_behavior_changed": false
   }
 }

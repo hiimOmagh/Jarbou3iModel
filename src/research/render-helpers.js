@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.57 Visible-Text Token Drift Guard */
+/* Current public release label: v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

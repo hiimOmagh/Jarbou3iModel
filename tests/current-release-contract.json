@@ -1,12 +1,12 @@
 {
-  "version": "1.4.0-alpha.57",
-  "milestone_name": "Visible-Text Token Drift Guard",
+  "version": "1.4.0-alpha.58",
+  "milestone_name": "Hosted Evidence Capture Timeout Budget Guard",
   "release_type": "product-facing",
   "allowed_scope": [
-    "static visible-token drift guard across English, Arabic, and French release copy",
-    "pre-browser comparison of expected current-release tokens against hosted-demo verification body text",
-    "deterministic stale-token regression cases for Arabic, French, and English token drift",
-    "current release identity update to v1.4.0-alpha.57",
+    "hosted-demo evidence capture timing budget metadata",
+    "per-phase timing records for hosted evidence capture",
+    "static timeout-budget regression guard before browser evidence review",
+    "current release identity update to v1.4.0-alpha.58",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -74,7 +74,8 @@
     "tests/lock-evidence-review-cli-check.mjs",
     "tests/lock-review-cli-ci-smoke-check.mjs",
     "tests/lock-evidence-review-exit-code-check.mjs",
-    "tests/visible-text-token-drift-guard-check.mjs"
+    "tests/visible-text-token-drift-guard-check.mjs",
+    "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -242,15 +243,17 @@
     "docs/lock-evidence-review-cli.md",
     "tests/lock-review-cli-ci-smoke-check.mjs",
     "tests/lock-evidence-review-exit-code-check.mjs",
-    "tests/visible-text-token-drift-guard-check.mjs"
+    "tests/visible-text-token-drift-guard-check.mjs",
+    "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.57 — Visible-Text Token Drift Guard",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.57",
-    "public labels must expose v1.4.0-alpha.57 Visible-Text Token Drift Guard",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.58",
+    "public labels must expose v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard",
+    "hosted evidence metadata must record timing budget guard fields",
+    "targeted region evidence manifest must record targeted capture timing budget fields",
     "lock evidence review CLI exit codes must remain stable for automation",
-    "failure-family labels must distinguish usage, input, bundle contract, checksum contract, and lock decision failures",
-    "not-lockable evidence must exit 68 unless --allow-blocked is passed"
+    "failure-family labels must distinguish usage, input, bundle contract, checksum contract, and lock decision failures"
   ],
   "windows_portability_rules": [
     "node \"$PLAYWRIGHT_CLI\" install --with-deps",
@@ -329,16 +332,22 @@
     "Lock Review CLI CI Smoke + Operator Command Docs",
     "اختبار CI لواجهة مراجعة القفل ووثائق أوامر المشغّل",
     "Smoke CI du CLI de revue verrouillage + docs commandes opérateur",
-    "lock_review_cli_ci_smoke_operator_command_docs"
+    "lock_review_cli_ci_smoke_operator_command_docs",
+    "v1.4.0-alpha.57 Visible-Text Token Drift Guard",
+    "v1.4.0-alpha.57 — Visible-Text Token Drift Guard",
+    "Visible-Text Token Drift Guard",
+    "حارس انجراف رموز النص المرئي",
+    "Garde anti-dérive des jetons de texte visible",
+    "visible_text_token_drift_guard"
   ],
-  "runtime_scope": "visible_text_token_drift_guard",
+  "runtime_scope": "hosted_evidence_capture_timeout_budget_guard",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "visible-text token drift guard passes for the current release copy contract",
-    "visible-text token drift guard fails deterministic Arabic stale-token mutation before browser evidence",
-    "visible-text token drift guard fails deterministic French stale-token mutation before browser evidence",
-    "visible-text token drift guard fails deterministic English stale-token mutation before browser evidence",
-    "browser evidence remains unchanged and is protected by the static guard preflight"
+    "hosted evidence capture timeout budget guard check passes for the current release",
+    "hosted-demo browser evidence spec records timing_budget_guard metadata",
+    "targeted-region evidence manifest records per-region timing budgets",
+    "static timing-budget regression cases reject over-budget phases before browser lock review",
+    "browser evidence artifacts and selectors remain unchanged"
   ]
 }

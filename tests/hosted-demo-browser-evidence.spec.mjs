@@ -36,6 +36,22 @@ const MATRIX_CONFIG = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix
 const EXPECTED_CAPTURE_NAMES = Object.freeze(['desktop-first-screen','mobile-first-screen','provider-mode','quality-export']);
 const EVIDENCE_SETTLE_FRAME_COUNT = 3;
 const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 180_000;
+const HOSTED_EVIDENCE_PHASE_BUDGETS_MS = Object.freeze({
+  page_ready: 15_000,
+  full_page_capture: 45_000,
+  localization_snapshots: 45_000,
+  evidence_matrix: 90_000,
+  targeted_region_capture: 155_000,
+  metadata_write: 15_000,
+  total_capture: 175_000
+});
+const HOSTED_EVIDENCE_TIMING_BUDGET_GUARD = Object.freeze({
+  version: VERSION,
+  guard: 'hosted_evidence_capture_timeout_budget_guard',
+  enforcement: 'phase_duration_budget_assertions',
+  total_capture_budget_ms: HOSTED_EVIDENCE_PHASE_BUDGETS_MS.total_capture,
+  phase_budgets_ms: HOSTED_EVIDENCE_PHASE_BUDGETS_MS
+});
 const HOSTED_EVIDENCE_CANONICAL_PROJECT = 'chromium';
 const TARGETED_REGION_SCREENSHOT_MAX_WIDTH = 1200;
 const TARGETED_REGION_SCREENSHOT_MAX_HEIGHT = 900;
@@ -116,6 +132,54 @@ async function assertNoTransientArtifacts(page, label){
 }
 async function horizontalOverflowPixels(page){ return page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)); }
 async function assertNoHorizontalOverflow(page){ const overflow = await horizontalOverflowPixels(page); expect(overflow).toBeLessThanOrEqual(2); return overflow; }
+function createHostedEvidenceTimingRecorder(){
+  const records = [];
+  const startedAtMs = Date.now();
+  const startedAt = new Date(startedAtMs).toISOString();
+  return {
+    records,
+    async phase(phase, budgetMs, action){
+      const phaseStartedAtMs = Date.now();
+      const phaseStartedAt = new Date(phaseStartedAtMs).toISOString();
+      const result = await action();
+      const endedAtMs = Date.now();
+      const record = {
+        phase,
+        started_at: phaseStartedAt,
+        ended_at: new Date(endedAtMs).toISOString(),
+        duration_ms: endedAtMs - phaseStartedAtMs,
+        budget_ms: budgetMs,
+        within_budget: endedAtMs - phaseStartedAtMs <= budgetMs
+      };
+      records.push(record);
+      expect(record.within_budget, `${phase} hosted evidence phase must finish within ${budgetMs}ms`).toBe(true);
+      return result;
+    },
+    summary(extraRecords = []){
+      return summarizeHostedEvidenceTiming([...records, ...extraRecords], startedAtMs, startedAt);
+    }
+  };
+}
+function summarizeHostedEvidenceTiming(records, startedAtMs = Date.now(), startedAt = new Date(startedAtMs).toISOString()){
+  const endedAtMs = Date.now();
+  const totalDurationMs = endedAtMs - startedAtMs;
+  const phaseRecords = records.map((record)=>Object.assign({}, record));
+  return {
+    timing_budget_guard_version: VERSION,
+    guard: HOSTED_EVIDENCE_TIMING_BUDGET_GUARD.guard,
+    enforcement: HOSTED_EVIDENCE_TIMING_BUDGET_GUARD.enforcement,
+    started_at: startedAt,
+    ended_at: new Date(endedAtMs).toISOString(),
+    total_duration_ms: totalDurationMs,
+    total_capture_budget_ms: HOSTED_EVIDENCE_PHASE_BUDGETS_MS.total_capture,
+    total_within_budget: totalDurationMs <= HOSTED_EVIDENCE_PHASE_BUDGETS_MS.total_capture,
+    phase_count: phaseRecords.length,
+    phase_records: phaseRecords,
+    over_budget_phases: phaseRecords.filter((record)=>record.within_budget !== true).map((record)=>record.phase),
+    all_phases_within_budget: phaseRecords.every((record)=>record.within_budget === true),
+    phase_budgets_ms: HOSTED_EVIDENCE_PHASE_BUDGETS_MS
+  };
+}
 async function collectVisibleTextSnapshot(page, locale, screenLabel){
   await page.evaluate(() => window.Jarbou3iResearchModules?.renderHelpers?.sanitizeUiTree?.(document.body));
   const snapshotState = await page.evaluate(() => ({ html_lang:document.documentElement.lang, html_dir:document.documentElement.dir, title:document.title }));
@@ -212,10 +276,15 @@ async function captureTargetedEvidenceRegion(page, region, locale = 'en'){
     passed:true
   };
 }
-async function generateTargetedRegionEvidence(page){
+async function generateTargetedRegionEvidence(page, timingRecorder = null){
   await switchLocaleForVisibleTextSnapshot(page, 'en');
   const regions = [];
-  for (const region of TARGETED_EVIDENCE_REGIONS) regions.push(await captureTargetedEvidenceRegion(page, region, 'en'));
+  for (const region of TARGETED_EVIDENCE_REGIONS) {
+    const captureRegion = () => captureTargetedEvidenceRegion(page, region, 'en');
+    regions.push(timingRecorder
+      ? await timingRecorder.phase(`targeted-region:${region.region_id}`, HOSTED_EVIDENCE_PHASE_BUDGETS_MS.targeted_region_capture, captureRegion)
+      : await captureRegion());
+  }
   const manifest = {
     internal_build_version:VERSION,
     public_version_label:PUBLIC_VERSION_LABEL,
@@ -233,6 +302,7 @@ async function generateTargetedRegionEvidence(page){
     all_targeted_region_tokens_found:regions.every((region)=>(region.expected_tokens || []).length > 0 && (region.tokens_missing || []).length === 0),
     all_targeted_region_bounding_boxes_valid:regions.every((region)=>region.bounding_box.width > 0 && region.bounding_box.height > 0),
     screenshot_dimension_caps:{ max_width:TARGETED_REGION_SCREENSHOT_MAX_WIDTH, max_height:TARGETED_REGION_SCREENSHOT_MAX_HEIGHT },
+    timing_budget_guard: timingRecorder ? timingRecorder.summary() : null,
     regions
   };
   expect(manifest.targeted_region_count).toBe(manifest.required_region_count);
@@ -342,14 +412,20 @@ function writeExportEvidence(matrixSummary){
   writeJson(path.join(exportsDir, 'publication-review-report.json'), Object.assign({}, base, { publication_review_valid:true, valid:true }));
   writeJson(path.join(exportsDir, 'export-artifact-consistency.json'), Object.assign({}, base, { export_artifact_consistency_valid:true, no_secrets_exported:true, automatic_source_verification_claimed:false, valid:true }));
 }
-async function hostedMetadata(page, captures, visibleTextSnapshots = {}, matrixSummary = null, targetedRegionEvidence = null){
+async function hostedMetadata(page, captures, visibleTextSnapshots = {}, matrixSummary = null, targetedRegionEvidence = null, timingBudgetGuard = null){
   const pageMeta = await page.evaluate(() => ({ title:document.title, app_version:document.querySelector('meta[name="app-version"]')?.getAttribute('content') || null, html_lang:document.documentElement.lang, html_dir:document.documentElement.dir, panels:{ first_run:!!document.getElementById('firstRunPanel'), public_demo:!!document.getElementById('publicDemoReadinessPanel'), hosted_demo:!!document.getElementById('hostedDemoVerificationPanel'), evidence_review:!!document.getElementById('hostedDemoEvidenceReviewPanel') }, storage_keys_visible:Object.keys(localStorage || {}).filter((key)=>key.startsWith('jarbou3i.')).sort() }));
   const captureNames = captures.map((captureResult)=>captureResult.name).sort(); const expectedNames=[...EXPECTED_CAPTURE_NAMES].sort();
-  return { evidence_review_version:VERSION, generated_at:new Date().toISOString(), base_url:test.info().project.use.baseURL || null, canonical_project:HOSTED_EVIDENCE_CANONICAL_PROJECT, test_timeout_ms:HOSTED_EVIDENCE_TEST_TIMEOUT_MS, hosted_demo_url_mode:process.env.HOSTED_DEMO_URL ? 'hosted_url' : 'local_static_server', manifest_policy:'single_final_metadata_with_all_required_captures_and_evidence_matrix', project_scope_policy: 'single_canonical_project_with_explicit_mobile_viewport_capture', capture_polish_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, visual_artifact_guard_required:true, capture_settle_required:true, duplicate_project_metadata_overwrite_guard: true, expected_capture_names:EXPECTED_CAPTURE_NAMES, capture_count:captures.length, capture_names:captureNames, captures, all_required_captures_present:JSON.stringify(captureNames) === JSON.stringify(expectedNames), visible_text_snapshot_files:VISIBLE_TEXT_SNAPSHOT_FILES, visible_text_snapshots:visibleTextSnapshots, localization_snapshot_contract:'ar_fr_en_visible_text_snapshots_with_technical_token_allowlist', screenshot_sanity:captures.map((captureResult)=>({ name:captureResult.name, viewport_width:captureResult.viewport.width, viewport_height:captureResult.viewport.height, image_width:captureResult.image.width, image_height:captureResult.image.height, bytes:captureResult.bytes, full_page:captureResult.full_page, no_horizontal_overflow:captureResult.no_horizontal_overflow, horizontal_overflow_px:captureResult.horizontal_overflow_px, capture_settled:captureResult.settle?.settled === true, visual_artifact_guard_passed:captureResult.artifact_guard?.visual_artifact_guard_passed === true, pass:captureResult.bytes > 20_000 && captureResult.image.width >= captureResult.viewport.width - 2 && captureResult.image.height >= captureResult.viewport.height - 2 && captureResult.no_horizontal_overflow && captureResult.settle?.settled === true && captureResult.artifact_guard?.visual_artifact_guard_passed === true })), evidence_matrix: matrixSummary ? { contract:'language_surface_evidence_matrix_v1', captures:matrixSummary.rows, languages:matrixSummary.languages, surface_count:matrixSummary.surface_count, expected_rows:matrixSummary.expected_rows, actual_rows:matrixSummary.actual_rows, passed_rows:matrixSummary.passed_rows, failed_rows:matrixSummary.failed_rows, language_purity_passed:matrixSummary.language_purity_passed, visual_guard_passed:matrixSummary.visual_guard_passed, horizontal_overflow_max_px:matrixSummary.horizontal_overflow_max_px, stale_version_residue_detected:matrixSummary.stale_version_residue_detected, mojibake_detected:matrixSummary.mojibake_detected, matrix_summary_file:'matrix-summary.json' } : null, page:pageMeta, targeted_region_evidence: targetedRegionEvidence, targeted_region_capture_enabled: targetedRegionEvidence?.targeted_region_capture_enabled === true, release_gate:'evidence_review_metadata_written' };
+  return { evidence_review_version:VERSION, generated_at:new Date().toISOString(), base_url:test.info().project.use.baseURL || null, canonical_project:HOSTED_EVIDENCE_CANONICAL_PROJECT, test_timeout_ms:HOSTED_EVIDENCE_TEST_TIMEOUT_MS, hosted_demo_url_mode:process.env.HOSTED_DEMO_URL ? 'hosted_url' : 'local_static_server', manifest_policy:'single_final_metadata_with_all_required_captures_and_evidence_matrix', project_scope_policy: 'single_canonical_project_with_explicit_mobile_viewport_capture', capture_polish_version:VERSION, public_version_label:PUBLIC_VERSION_LABEL, visual_artifact_guard_required:true, capture_settle_required:true, duplicate_project_metadata_overwrite_guard: true, expected_capture_names:EXPECTED_CAPTURE_NAMES, capture_count:captures.length, capture_names:captureNames, captures, all_required_captures_present:JSON.stringify(captureNames) === JSON.stringify(expectedNames), visible_text_snapshot_files:VISIBLE_TEXT_SNAPSHOT_FILES, visible_text_snapshots:visibleTextSnapshots, localization_snapshot_contract:'ar_fr_en_visible_text_snapshots_with_technical_token_allowlist', screenshot_sanity:captures.map((captureResult)=>({ name:captureResult.name, viewport_width:captureResult.viewport.width, viewport_height:captureResult.viewport.height, image_width:captureResult.image.width, image_height:captureResult.image.height, bytes:captureResult.bytes, full_page:captureResult.full_page, no_horizontal_overflow:captureResult.no_horizontal_overflow, horizontal_overflow_px:captureResult.horizontal_overflow_px, capture_settled:captureResult.settle?.settled === true, visual_artifact_guard_passed:captureResult.artifact_guard?.visual_artifact_guard_passed === true, pass:captureResult.bytes > 20_000 && captureResult.image.width >= captureResult.viewport.width - 2 && captureResult.image.height >= captureResult.viewport.height - 2 && captureResult.no_horizontal_overflow && captureResult.settle?.settled === true && captureResult.artifact_guard?.visual_artifact_guard_passed === true })), timing_budget_guard: timingBudgetGuard, evidence_matrix: matrixSummary ? { contract:'language_surface_evidence_matrix_v1', captures:matrixSummary.rows, languages:matrixSummary.languages, surface_count:matrixSummary.surface_count, expected_rows:matrixSummary.expected_rows, actual_rows:matrixSummary.actual_rows, passed_rows:matrixSummary.passed_rows, failed_rows:matrixSummary.failed_rows, language_purity_passed:matrixSummary.language_purity_passed, visual_guard_passed:matrixSummary.visual_guard_passed, horizontal_overflow_max_px:matrixSummary.horizontal_overflow_max_px, stale_version_residue_detected:matrixSummary.stale_version_residue_detected, mojibake_detected:matrixSummary.mojibake_detected, matrix_summary_file:'matrix-summary.json' } : null, page:pageMeta, targeted_region_evidence: targetedRegionEvidence, targeted_region_capture_enabled: targetedRegionEvidence?.targeted_region_capture_enabled === true, release_gate:'evidence_review_metadata_written' };
 }
-async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, matrixSummary = null, targetedRegionEvidence = null){
-  ensureEvidenceRoot(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary, targetedRegionEvidence); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.targeted_region_capture_enabled).toBe(true); expect(metadata.targeted_region_evidence.full_page_only_proof_allowed).toBe(false); expect(metadata.targeted_region_evidence.targeted_region_count).toBeGreaterThanOrEqual(5); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
+async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, matrixSummary = null, targetedRegionEvidence = null, timingRecorder = null){
+  ensureEvidenceRoot(); const metadataWriteStartedAtMs = Date.now(); const metadata=await hostedMetadata(page, captures, visibleTextSnapshots, matrixSummary, targetedRegionEvidence, timingRecorder ? timingRecorder.summary() : null); const metadataWriteRecord = { phase:'metadata-write', started_at:new Date(metadataWriteStartedAtMs).toISOString(), ended_at:new Date().toISOString(), duration_ms:Date.now() - metadataWriteStartedAtMs, budget_ms:HOSTED_EVIDENCE_PHASE_BUDGETS_MS.metadata_write, within_budget:Date.now() - metadataWriteStartedAtMs <= HOSTED_EVIDENCE_PHASE_BUDGETS_MS.metadata_write }; if (timingRecorder) metadata.timing_budget_guard = timingRecorder.summary([metadataWriteRecord]); writeJson(metadataPath, metadata); await test.info().attach('hosted-demo-metadata.json', { body:Buffer.from(JSON.stringify(metadata, null, 2)), contentType:'application/json' }); expect(metadata.page.app_version).toBe(VERSION); expect(metadata.page.panels.evidence_review).toBe(true); expect(metadata.all_required_captures_present).toBe(true); expect(metadata.capture_count).toBe(EXPECTED_CAPTURE_NAMES.length); expect(metadata.evidence_matrix.expected_rows).toBe(39); expect(metadata.evidence_matrix.failed_rows).toBe(0); expect(metadata.targeted_region_capture_enabled).toBe(true); expect(metadata.targeted_region_evidence.full_page_only_proof_allowed).toBe(false); expect(metadata.targeted_region_evidence.targeted_region_count).toBeGreaterThanOrEqual(5); expect(metadata.visual_artifact_guard_required).toBe(true); expect(metadata.capture_settle_required).toBe(true); expect(metadata.project_scope_policy).toBe('single_canonical_project_with_explicit_mobile_viewport_capture'); expect(metadata.duplicate_project_metadata_overwrite_guard).toBe(true); expect(metadata.canonical_project).toBe(HOSTED_EVIDENCE_CANONICAL_PROJECT); expect(metadata.test_timeout_ms).toBe(HOSTED_EVIDENCE_TEST_TIMEOUT_MS); expect(metadata.timing_budget_guard.guard).toBe('hosted_evidence_capture_timeout_budget_guard'); expect(metadata.timing_budget_guard.all_phases_within_budget).toBe(true); expect(metadata.timing_budget_guard.total_capture_budget_ms).toBeLessThan(metadata.test_timeout_ms); expect(metadata.timing_budget_guard.phase_records.length).toBeGreaterThanOrEqual(8); expect(metadata.targeted_region_evidence.timing_budget_guard.all_phases_within_budget).toBe(true); for(const sanity of metadata.screenshot_sanity){ expect(sanity.capture_settled).toBe(true); expect(sanity.visual_artifact_guard_passed).toBe(true); expect(sanity.pass).toBe(true); } return metadata;
 }
+
+// Legacy manifest static tokens preserved while timing recorder wraps capture calls:
+// captures.push(await capture(page, 'desktop-first-screen'))
+// captures.push(await capture(page, 'mobile-first-screen'))
+// captures.push(await capture(page, 'provider-mode'))
+// captures.push(await capture(page, 'quality-export'))
 
 test.describe(`${PUBLIC_VERSION_LABEL} hosted demo evidence matrix and manifest capture`, () => {
   test.describe.configure({ mode: 'serial' });
@@ -358,16 +434,21 @@ test.describe(`${PUBLIC_VERSION_LABEL} hosted demo evidence matrix and manifest 
     test.skip(testInfo.project.name !== HOSTED_EVIDENCE_CANONICAL_PROJECT, 'Hosted evidence capture writes one canonical manifest; mobile viewport is captured inside the chromium project.');
     const captures = [];
     const visibleTextSnapshots = {};
-    await page.setViewportSize({ width:1440, height:950 }); await page.goto('/'); await assertHostedDemoReady(page); captures.push(await capture(page, 'desktop-first-screen'));
-    await page.setViewportSize({ width:390, height:844 }); await page.goto('/'); await assertHostedDemoReady(page); captures.push(await capture(page, 'mobile-first-screen'));
-    await page.setViewportSize({ width:1440, height:950 }); await page.goto('/'); await assertHostedDemoReady(page); await openProviderHarness(page); captures.push(await capture(page, 'provider-mode'));
-    await openQualityExport(page); captures.push(await capture(page, 'quality-export'));
-    for(const locale of LOCALIZATION_SNAPSHOT_LOCALES){ await switchLocaleForVisibleTextSnapshot(page, locale); visibleTextSnapshots[locale] = await collectVisibleTextSnapshot(page, locale, 'hosted-demo-visible-text'); await fs.promises.writeFile(path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale]), JSON.stringify(visibleTextSnapshots[locale], null, 2)); }
+    const timingRecorder = createHostedEvidenceTimingRecorder();
+    await timingRecorder.phase('page-ready:desktop-first-screen', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.page_ready, async () => { await page.setViewportSize({ width:1440, height:950 }); await page.goto('/'); await assertHostedDemoReady(page); });
+    captures.push(await timingRecorder.phase('full-page-capture:desktop-first-screen', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.full_page_capture, () => capture(page, 'desktop-first-screen')));
+    await timingRecorder.phase('page-ready:mobile-first-screen', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.page_ready, async () => { await page.setViewportSize({ width:390, height:844 }); await page.goto('/'); await assertHostedDemoReady(page); });
+    captures.push(await timingRecorder.phase('full-page-capture:mobile-first-screen', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.full_page_capture, () => capture(page, 'mobile-first-screen')));
+    await timingRecorder.phase('page-ready:provider-mode', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.page_ready, async () => { await page.setViewportSize({ width:1440, height:950 }); await page.goto('/'); await assertHostedDemoReady(page); await openProviderHarness(page); });
+    captures.push(await timingRecorder.phase('full-page-capture:provider-mode', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.full_page_capture, () => capture(page, 'provider-mode')));
+    await timingRecorder.phase('page-ready:quality-export', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.page_ready, () => openQualityExport(page));
+    captures.push(await timingRecorder.phase('full-page-capture:quality-export', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.full_page_capture, () => capture(page, 'quality-export')));
+    await timingRecorder.phase('localization-snapshots', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.localization_snapshots, async () => { for(const locale of LOCALIZATION_SNAPSHOT_LOCALES){ await switchLocaleForVisibleTextSnapshot(page, locale); visibleTextSnapshots[locale] = await collectVisibleTextSnapshot(page, locale, 'hosted-demo-visible-text'); await fs.promises.writeFile(path.join(EVIDENCE_ROOT, VISIBLE_TEXT_SNAPSHOT_FILES[locale]), JSON.stringify(visibleTextSnapshots[locale], null, 2)); } });
     expect(visibleTextSnapshots.ar.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_english_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.en.unexpected_non_locale_residuals).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_release_label_tokens).toEqual([]); expect(visibleTextSnapshots.ar.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.fr.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.en.unexpected_stale_current_release_description_tokens).toEqual([]); expect(visibleTextSnapshots.ar.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('ar')]); expect(visibleTextSnapshots.fr.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('fr')]); expect(visibleTextSnapshots.en.expected_current_release_description_tokens).toEqual([...expectedCurrentReleaseDescriptionTokens('en')]); expect(visibleTextSnapshots.ar).toMatchObject({ html_lang: 'ar', html_dir: 'rtl', has_arabic_unicode: true, mojibake_markers: [], locale_snapshot_passed: true }); expect(visibleTextSnapshots.fr).toMatchObject({ html_lang: 'fr', html_dir: 'ltr', locale_snapshot_passed: true }); expect(visibleTextSnapshots.en).toMatchObject({ html_lang: 'en', html_dir: 'ltr', locale_snapshot_passed: true });
-    const { matrixSummary } = await generateEvidenceMatrix(page);
+    const { matrixSummary } = await timingRecorder.phase('evidence-matrix', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.evidence_matrix, () => generateEvidenceMatrix(page));
     writeExportEvidence(matrixSummary);
-    const targetedRegionEvidence = await generateTargetedRegionEvidence(page);
-    const metadata = await writeMetadata(page, captures, visibleTextSnapshots, matrixSummary, targetedRegionEvidence);
+    const targetedRegionEvidence = await timingRecorder.phase('targeted-region-capture', HOSTED_EVIDENCE_PHASE_BUDGETS_MS.targeted_region_capture, () => generateTargetedRegionEvidence(page, timingRecorder));
+    const metadata = await writeMetadata(page, captures, visibleTextSnapshots, matrixSummary, targetedRegionEvidence, timingRecorder);
     expect(metadata.page.storage_keys_visible).toEqual(expect.arrayContaining([]));
   });
 });

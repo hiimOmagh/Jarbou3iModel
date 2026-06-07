@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.57",
-  "internal_build_version": "1.4.0-alpha.57",
-  "public_version_label": "v1.4.0-alpha.57 Visible-Text Token Drift Guard",
+  "evidence_matrix_config_version": "1.4.0-alpha.58",
+  "internal_build_version": "1.4.0-alpha.58",
+  "public_version_label": "v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.57 Visible-Text Token Drift Guard"
+      "public_label": "v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard"
     },
     "ar": {
       "required": [
@@ -43,7 +43,7 @@
         "Gel de la surface",
         "Revue publication"
       ],
-      "public_label": "v1.4.0-alpha.57 حارس انجراف رموز النص المرئي"
+      "public_label": "v1.4.0-alpha.58 حارس ميزانية مهلة التقاط أدلة الاستضافة"
     },
     "fr": {
       "required": [
@@ -61,7 +61,7 @@
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
       ],
-      "public_label": "v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible"
+      "public_label": "v1.4.0-alpha.58 Garde budget délai capture preuves hébergées"
     }
   },
   "allowed_technical_terms": [
@@ -91,7 +91,7 @@
         "العرض العام جاهز",
         "Démo publique prête"
       ],
-      "public_label": "v1.4.0-alpha.57 Visible-Text Token Drift Guard"
+      "public_label": "v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard"
     },
     {
       "id": "S02",
@@ -242,8 +242,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.57 Visible-Text Token Drift Guard",
-    "ar": "v1.4.0-alpha.57 حارس انجراف رموز النص المرئي",
-    "fr": "v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible"
+    "en": "v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard",
+    "ar": "v1.4.0-alpha.58 حارس ميزانية مهلة التقاط أدلة الاستضافة",
+    "fr": "v1.4.0-alpha.58 Garde budget délai capture preuves hébergées"
   }
 }
