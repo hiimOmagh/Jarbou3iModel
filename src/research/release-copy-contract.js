@@ -20,7 +20,7 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
       fr: 'v1.4.0-alpha.56 Durcissement du CLI de revue des preuves + codes de sortie'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
-      en: Object.freeze(['exit codes', 'failure families', 'automation']),
+      en: Object.freeze(['exit codes', 'failure families']),
       ar: Object.freeze(['رموز الخروج', 'عائلات الفشل']),
       fr: Object.freeze(['codes de sortie'])
     }),
