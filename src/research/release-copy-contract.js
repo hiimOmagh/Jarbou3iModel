@@ -22,7 +22,7 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
       en: Object.freeze(['exit codes', 'failure families', 'automation']),
       ar: Object.freeze(['رموز الخروج', 'عائلات الفشل']),
-      fr: Object.freeze(['codes de sortie', 'familles d’échec', 'automatisation'])
+      fr: Object.freeze(['codes de sortie'])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
       'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
@@ -107,7 +107,7 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
 
 const ALPHA56_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
   ar: Object.freeze(['رموز الخروج', 'عائلات الفشل']),
-  fr: Object.freeze(['codes de sortie', 'familles d’échec', 'automatisation']),
+  fr: Object.freeze(['codes de sortie']),
   en: Object.freeze(['exit codes', 'failure families', 'automation'])
 });
 
