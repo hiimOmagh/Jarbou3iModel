@@ -43,7 +43,7 @@
         "Gel de la surface",
         "Revue publication"
       ],
-      "public_label": "v1.4.0-alpha.59 حارس ميزانية مهلة التقاط أدلة الاستضافة"
+      "public_label": "v1.4.0-alpha.59 سجل اتجاه أداء التقاط الأدلة"
     },
     "fr": {
       "required": [
@@ -61,7 +61,7 @@
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
       ],
-      "public_label": "v1.4.0-alpha.59 Garde budget délai capture preuves hébergées"
+      "public_label": "v1.4.0-alpha.59 Registre tendance performance capture preuves"
     }
   },
   "allowed_technical_terms": [
@@ -243,7 +243,7 @@
   ],
   "public_version_labels": {
     "en": "v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger",
-    "ar": "v1.4.0-alpha.59 حارس ميزانية مهلة التقاط أدلة الاستضافة",
-    "fr": "v1.4.0-alpha.59 Garde budget délai capture preuves hébergées"
+    "ar": "v1.4.0-alpha.59 سجل اتجاه أداء التقاط الأدلة",
+    "fr": "v1.4.0-alpha.59 Registre tendance performance capture preuves"
   }
 }
