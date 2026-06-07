@@ -1,6 +1,6 @@
 {
-  "version_suite_registry_version": "1.4.0-alpha.58",
-  "release_title": "v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
+  "version_suite_registry_version": "1.4.0-alpha.59",
+  "release_title": "v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
   "generated_from": "1.1.0-alpha.5",
   "registry_type": "version_suite_registry",
   "replacement_for": "tests/v*-no-browser-suite.mjs",
@@ -1878,47 +1878,47 @@
     },
     {
       "id": "v140-alpha53",
-      "title": "v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
+      "title": "v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
       "former_file": null,
       "check_count": 1,
       "checks": [
         "tests/lock-bundle-schema-enforcement-ci-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.58 lock bundle schema enforcement in CI gate passed."
+      "former_console_message": "v1.4.0-alpha.59 lock bundle schema enforcement in CI gate passed."
     },
     {
       "id": "v140-alpha55",
-      "title": "v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
+      "title": "v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
       "former_file": null,
       "check_count": 1,
       "checks": [
         "tests/lock-review-cli-ci-smoke-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.58 lock review CLI CI smoke and exit-code and failure-family contract gate passed."
+      "former_console_message": "v1.4.0-alpha.59 lock review CLI CI smoke and exit-code and failure-family contract gate passed."
     },
     {
       "id": "v140-alpha56",
-      "title": "v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
+      "title": "v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
       "former_file": null,
       "check_count": 1,
       "checks": [
         "tests/lock-evidence-review-exit-code-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.58 lock evidence review CLI exit code and failure family gate passed."
+      "former_console_message": "v1.4.0-alpha.59 lock evidence review CLI exit code and failure family gate passed."
     },
     {
       "id": "v140-alpha58",
-      "title": "v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
+      "title": "v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
       "former_file": null,
       "check_count": 1,
       "checks": [
         "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs"
       ],
       "preserved_as": "registry_entry",
-      "former_console_message": "v1.4.0-alpha.58 hosted evidence capture timeout budget guard gate passed."
+      "former_console_message": "v1.4.0-alpha.59 hosted evidence capture timeout budget guard gate passed."
     }
   ]
 }

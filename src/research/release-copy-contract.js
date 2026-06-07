@@ -1,28 +1,28 @@
 const CURRENT_RELEASE_IDENTITY = Object.freeze({
-  version: '1.4.0-alpha.58',
-  title: 'Hosted Evidence Capture Timeout Budget Guard',
-  release: 'v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard',
-  publicLabel: 'v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard',
-  runtimeScope: 'hosted_evidence_capture_timeout_budget_guard'
+  version: '1.4.0-alpha.59',
+  title: 'Evidence Capture Performance Trend Ledger',
+  release: 'v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger',
+  publicLabel: 'v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger',
+  runtimeScope: 'evidence_capture_performance_trend_ledger'
 });
 
-/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.58. */
+/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.59. */
 (function(global){
   'use strict';
   const contract = Object.freeze({
-    version: '1.4.0-alpha.58',
-    release: 'v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard',
-    releaseTitle: 'v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard',
-    milestone: 'Hosted Evidence Capture Timeout Budget Guard',
+    version: '1.4.0-alpha.59',
+    release: 'v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger',
+    releaseTitle: 'v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger',
+    milestone: 'Evidence Capture Performance Trend Ledger',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard',
-      ar: 'v1.4.0-alpha.58 حارس ميزانية مهلة التقاط أدلة الاستضافة',
-      fr: 'v1.4.0-alpha.58 Garde budget délai capture preuves hébergées'
+      en: 'v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger',
+      ar: 'v1.4.0-alpha.59 سجل اتجاه أداء التقاط الأدلة',
+      fr: 'v1.4.0-alpha.59 Registre tendance performance capture preuves'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
-      en: Object.freeze(['capture timing', 'timeout budget']),
-      ar: Object.freeze(['توقيت الالتقاط', 'ميزانية المهلة']),
-      fr: Object.freeze(['chronométrage de capture', 'budget délai'])
+      en: Object.freeze(['performance trend', 'trend ledger']),
+      ar: Object.freeze(['اتجاه الأداء', 'سجل الاتجاه']),
+      fr: Object.freeze(['tendance performance', 'registre tendance'])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
       'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
@@ -52,6 +52,10 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
       'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار',
       'v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview',
 
+      'v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard',
+      'v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard',
+      'حارس ميزانية مهلة التقاط أدلة الاستضافة',
+      'Garde budget délai capture preuves hébergées',
       'v1.4.0-alpha.57 Visible-Text Token Drift Guard',
       'v1.4.0-alpha.57 — Visible-Text Token Drift Guard',
       'Visible-Text Token Drift Guard',
@@ -68,31 +72,31 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard · timing budget',
-        hostedDemoVerificationBody: 'Hosted Evidence Capture Timeout Budget Guard is ready for release evidence: capture timing and timeout budget metadata now record hosted-demo evidence phases before browser evidence becomes flaky. Hosted evidence must report 1.4.0-alpha.58 internally while showing v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.58 adds hosted-demo capture timing and timeout budget metadata before browser evidence lock.',
-        adapterReplayReviewPackPreviewTitle: 'Hosted Evidence Capture Timeout Budget Guard',
-        adapterReplayReviewPackPreviewBody: 'Release governance view: capture timing, timeout budget metadata, targeted evidence timing, and browser-evidence budget guard. No live provider calls.',
-        adapterReplayOperatorWorkflowTitle: 'Hosted Evidence Capture Timeout Budget Guard',
-        adapterReplayOperatorWorkflowBody: 'Hosted Evidence Capture Timeout Budget Guard: phase timing and timeout budget visibility for operator handoff inside the operator control room stage board and release evidence lane. no live provider calls. No automatic verification, signoff, export lock, persistence, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger · trend ledger',
+        hostedDemoVerificationBody: 'Evidence Capture Performance Trend Ledger is ready for release evidence: capture timing and timeout budget metadata now record hosted-demo evidence phases before browser evidence becomes flaky. Hosted evidence must report 1.4.0-alpha.59 internally while showing v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.59 adds a hosted evidence performance trend ledger for release lock review.',
+        adapterReplayReviewPackPreviewTitle: 'Evidence Capture Performance Trend Ledger',
+        adapterReplayReviewPackPreviewBody: 'Release governance view: performance trend ledger, slowest hosted evidence phase, timing history, and lock evidence budget status. No live provider calls.',
+        adapterReplayOperatorWorkflowTitle: 'Evidence Capture Performance Trend Ledger',
+        adapterReplayOperatorWorkflowBody: 'Evidence Capture Performance Trend Ledger: phase timing and timeout budget visibility for operator handoff inside the operator control room stage board and release evidence lane. no live provider calls. No automatic verification, signoff, export lock, persistence, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.58 حارس ميزانية مهلة التقاط أدلة الاستضافة · ميزانية المهلة',
-        hostedDemoVerificationBody: 'حارس ميزانية مهلة التقاط أدلة الاستضافة جاهز لأدلة الإصدار: تضيف بيانات توقيت الالتقاط وميزانية المهلة قياس مراحل أدلة الاستضافة قبل أن تتحول أدلة المتصفح إلى فشل متذبذب. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.58 مع عرض v1.4.0-alpha.58 حارس ميزانية مهلة التقاط أدلة الاستضافة للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
-        analysisReleaseNote: 'يضيف 1.4.0-alpha.58 توقيت الالتقاط وميزانية المهلة لأدلة الاستضافة قبل قفل أدلة المتصفح.',
+        alphaBadge: 'v1.4.0-alpha.59 سجل اتجاه أداء التقاط الأدلة · ميزانية المهلة',
+        hostedDemoVerificationBody: 'سجل اتجاه أداء التقاط الأدلة جاهز لأدلة الإصدار: يضيف اتجاه الأداء وسجل الاتجاه لحفظ توقيت التقاط أدلة الاستضافة عبر حزم القفل قبل أن تختفي تراجعات المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.59 مع عرض v1.4.0-alpha.59 سجل اتجاه أداء التقاط الأدلة للمستخدمين. سجل اتجاه الأدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.59 سجل اتجاه أداء أدلة الاستضافة لمراجعة القفل.',
         adapterReplayReviewPackPreviewTitle: 'حارس ميزانية مهلة التقاط الأدلة',
-        adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: توقيت الالتقاط، ميزانية المهلة، توقيت الأدلة المستهدفة، وحارس ميزانية المتصفح. دون نداءات مزوّد حية.',
+        adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: سجل اتجاه الأداء، أبطأ مرحلة، سجل التوقيت، وحالة الميزانية. دون نداءات مزوّد حية.',
         adapterReplayOperatorWorkflowTitle: 'حارس ميزانية مهلة التقاط الأدلة',
-        adapterReplayOperatorWorkflowBody: 'حارس ميزانية مهلة التقاط أدلة الاستضافة: وضوح توقيت المراحل وميزانية المهلة داخل مسار أدلة الإصدار. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
+        adapterReplayOperatorWorkflowBody: 'سجل اتجاه أداء التقاط الأدلة: وضوح اتجاه التوقيت وأبطأ مرحلة داخل مسار أدلة الإصدار. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.58 Garde budget délai capture preuves hébergées · budget délai',
-        hostedDemoVerificationBody: 'Garde budget délai capture preuves hébergées est prêt pour les preuves de release : le chronométrage de capture et le budget délai enregistrent les phases de preuve hébergée avant que les preuves navigateur deviennent instables. Les preuves hébergées doivent annoncer 1.4.0-alpha.58 en interne tout en affichant v1.4.0-alpha.58 Garde budget délai capture preuves hébergées aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
-        analysisReleaseNote: '1.4.0-alpha.58 ajoute le chronométrage de capture et le budget délai des preuves hébergées avant le verrouillage navigateur.',
+        alphaBadge: 'v1.4.0-alpha.59 Registre tendance performance capture preuves · budget délai',
+        hostedDemoVerificationBody: 'Registre tendance performance capture preuves est prêt pour les preuves de release : la tendance performance et le registre tendance conservent le chronométrage des preuves hébergées dans les bundles de verrouillage avant que les régressions navigateur deviennent cachées. Les preuves hébergées doivent annoncer 1.4.0-alpha.59 en interne tout en affichant v1.4.0-alpha.59 Registre tendance performance capture preuves aux utilisateurs. Registre de tendance uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
+        analysisReleaseNote: '1.4.0-alpha.59 ajoute un registre de tendance performance des preuves hébergées pour la revue de verrouillage.',
         adapterReplayReviewPackPreviewTitle: 'Garde budget délai capture preuves',
-        adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : chronométrage de capture, budget délai, chronométrage des preuves ciblées et garde de budget navigateur. Aucun appel fournisseur réel.',
+        adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : registre tendance performance, phase la plus lente, historique timing et état budget. Aucun appel fournisseur réel.',
         adapterReplayOperatorWorkflowTitle: 'Garde budget délai capture preuves',
-        adapterReplayOperatorWorkflowBody: 'Garde budget délai capture preuves hébergées : visibilité du chronométrage par phase et du budget délai dans le couloir preuves release. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
+        adapterReplayOperatorWorkflowBody: 'Registre tendance performance capture preuves : visibilité de tendance timing et phase la plus lente dans le couloir preuves release. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
       })
     })
   });
@@ -110,18 +114,18 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.58 حارس ميزانية مهلة التقاط أدلة الاستضافة',
-    fr: 'v1.4.0-alpha.58 Garde budget délai capture preuves hébergées'
+    ar: 'v1.4.0-alpha.59 سجل اتجاه أداء التقاط الأدلة',
+    fr: 'v1.4.0-alpha.59 Registre tendance performance capture preuves'
   });
 })();
 
-const ALPHA58_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
-  ar: Object.freeze(['توقيت الالتقاط', 'ميزانية المهلة']),
-  fr: Object.freeze(['chronométrage de capture', 'budget délai']),
-  en: Object.freeze(['capture timing', 'timeout budget'])
+const ALPHA59_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
+  ar: Object.freeze(['اتجاه الأداء', 'سجل الاتجاه']),
+  fr: Object.freeze(['tendance performance', 'registre tendance']),
+  en: Object.freeze(['performance trend', 'trend ledger'])
 });
 
-(function enforceAlpha58BrowserVisibleTextContract() {
+(function enforceAlpha59BrowserVisibleTextContract() {
   const root = typeof globalThis !== 'undefined' ? globalThis : this;
   const contract = root.Jarbou3iResearchReleaseCopyContract;
   if (!contract) return;
@@ -132,15 +136,15 @@ const ALPHA58_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.58 حارس ميزانية مهلة التقاط أدلة الاستضافة',
-    fr: 'v1.4.0-alpha.58 Garde budget délai capture preuves hébergées'
+    ar: 'v1.4.0-alpha.59 سجل اتجاه أداء التقاط الأدلة',
+    fr: 'v1.4.0-alpha.59 Registre tendance performance capture preuves'
   });
 
-  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA58_BROWSER_VISIBLE_TEXT_CONTRACT);
+  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA59_BROWSER_VISIBLE_TEXT_CONTRACT);
   contract.expectedCurrentReleaseDescriptionTokens = Object.assign(
     {},
     contract.expectedCurrentReleaseDescriptionTokens || {},
-    ALPHA58_BROWSER_VISIBLE_TEXT_CONTRACT
+    ALPHA59_BROWSER_VISIBLE_TEXT_CONTRACT
   );
 
   contract.staleVisibleText = (contract.staleVisibleText || [])

@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard */
+/* Current public release label: v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

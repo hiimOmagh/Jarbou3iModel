@@ -149,7 +149,7 @@ const metadata = {evidence_review_version:VERSION, capture_polish_version:VERSIO
   {name:'mobile-first-screen', horizontal_overflow_px:0, visual_artifact_guard_passed:true, pass:true},
   {name:'provider-mode', horizontal_overflow_px:0, visual_artifact_guard_passed:true, pass:true},
   {name:'quality-export', horizontal_overflow_px:0, visual_artifact_guard_passed:true, pass:true}
-], evidence_matrix:{captures:rows, expected_rows:39, actual_rows:39, passed_rows:39, failed_rows:0, language_purity_passed:true, visual_guard_passed:true, horizontal_overflow_max_px:0, stale_version_residue_detected:false}};
+], evidence_matrix:{captures:rows, expected_rows:39, actual_rows:39, passed_rows:39, failed_rows:0, language_purity_passed:true, visual_guard_passed:true, horizontal_overflow_max_px:0, stale_version_residue_detected:false}, timing_budget_guard:{guard:'hosted_evidence_capture_timeout_budget_guard', total_duration_ms:120000, total_capture_budget_ms:360000, total_within_budget:true, all_phases_within_budget:true, phase_records:[{phase:'page-ready', duration_ms:1000, budget_ms:20000, within_budget:true},{phase:'evidence-matrix', duration_ms:100000, budget_ms:180000, within_budget:true},{phase:'targeted-region-capture', duration_ms:19000, budget_ms:180000, within_budget:true}]}};
 fs.writeFileSync(path.join(hosted, 'hosted-demo-metadata.json'), JSON.stringify(metadata, null, 2));
 for (const locale of config.locales) fs.writeFileSync(path.join(hosted, `visible-text-${locale}.json`), JSON.stringify({visible_text:[VERSION, PUBLIC_LABEL, locale]}, null, 2));
 for (const image of ['desktop-first-screen.png','mobile-first-screen.png','provider-mode.png','quality-export.png']) fs.writeFileSync(path.join(hosted, image), 'png-placeholder');
@@ -182,6 +182,8 @@ assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'playwright-install.log')))
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'en', 'landing.validation.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'exports', 'export-pack-v3-manifest.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'checksums', 'SHA256SUMS.txt')));
+assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.json')), 'canonical bundle must include performance trend ledger JSON');
+assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.md')), 'canonical bundle must include performance trend ledger Markdown');
 
 console.log('Evidence matrix canonical bundle checks passed.');
 process.exit(0);

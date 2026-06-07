@@ -1,12 +1,12 @@
 {
-  "version": "1.4.0-alpha.58",
-  "milestone_name": "Hosted Evidence Capture Timeout Budget Guard",
+  "version": "1.4.0-alpha.59",
+  "milestone_name": "Evidence Capture Performance Trend Ledger",
   "release_type": "product-facing",
   "allowed_scope": [
-    "hosted-demo evidence capture timing budget metadata",
-    "per-phase timing records for hosted evidence capture",
-    "static timeout-budget regression guard before browser evidence review",
-    "current release identity update to v1.4.0-alpha.58",
+    "hosted-demo evidence capture performance trend ledger artifacts",
+    "current-entry timing trend records derived from hosted-demo timing metadata",
+    "static performance trend ledger regression guard before browser evidence review",
+    "current release identity update to v1.4.0-alpha.59",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -75,7 +75,9 @@
     "tests/lock-review-cli-ci-smoke-check.mjs",
     "tests/lock-evidence-review-exit-code-check.mjs",
     "tests/visible-text-token-drift-guard-check.mjs",
-    "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs"
+    "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
+    "scripts/hosted-evidence-performance-trend-ledger.mjs",
+    "tests/hosted-evidence-performance-trend-ledger-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -244,12 +246,14 @@
     "tests/lock-review-cli-ci-smoke-check.mjs",
     "tests/lock-evidence-review-exit-code-check.mjs",
     "tests/visible-text-token-drift-guard-check.mjs",
-    "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs"
+    "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
+    "scripts/hosted-evidence-performance-trend-ledger.mjs",
+    "tests/hosted-evidence-performance-trend-ledger-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.58 — Hosted Evidence Capture Timeout Budget Guard",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.58",
-    "public labels must expose v1.4.0-alpha.58 Hosted Evidence Capture Timeout Budget Guard",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.59",
+    "public labels must expose v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger",
     "hosted evidence metadata must record timing budget guard fields",
     "targeted region evidence manifest must record targeted capture timing budget fields",
     "lock evidence review CLI exit codes must remain stable for automation",
@@ -340,14 +344,18 @@
     "Garde anti-dérive des jetons de texte visible",
     "visible_text_token_drift_guard"
   ],
-  "runtime_scope": "hosted_evidence_capture_timeout_budget_guard",
+  "runtime_scope": "evidence_capture_performance_trend_ledger",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted evidence capture timeout budget guard check passes for the current release",
     "hosted-demo browser evidence spec records timing_budget_guard metadata",
     "targeted-region evidence manifest records per-region timing budgets",
     "static timing-budget regression cases reject over-budget phases before browser lock review",
-    "browser evidence artifacts and selectors remain unchanged"
+    "browser evidence artifacts and selectors remain unchanged",
+    "hosted evidence metadata must include timing_budget_guard records",
+    "lock bundle must include performance-trends/hosted-evidence-performance-trend-ledger.json",
+    "lock bundle must include performance-trends/hosted-evidence-performance-trend-ledger.md",
+    "performance trend ledger must identify the slowest hosted evidence phase and budget status",
+    "hosted evidence timeout budget guard remains active before browser evidence capture"
   ]
 }
