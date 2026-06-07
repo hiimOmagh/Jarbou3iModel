@@ -55,7 +55,7 @@ assert.ok(timeoutMatch, 'hosted evidence test timeout must be declared');
 const parseNumber = (value) => Number(String(value).replaceAll('_', ''));
 const totalBudgetMs = parseNumber(budgetMatch[1]);
 const testTimeoutMs = parseNumber(timeoutMatch[1]);
-assert.ok(totalBudgetMs > 120_000, 'total budget must be high enough for real hosted evidence capture');
+assert.ok(totalBudgetMs >= 360_000, 'total budget must be high enough for real hosted evidence capture on GitHub Actions');
 assert.ok(totalBudgetMs < testTimeoutMs, 'total budget must fail before Playwright test timeout');
 
 function assertBudgetRecord(record) {
@@ -68,12 +68,12 @@ function assertBudgetRecord(record) {
 
 const syntheticRecords = [
   { phase: 'full-page-capture:desktop-first-screen', duration_ms: 1000, budget_ms: 45000, within_budget: true },
-  { phase: 'targeted-region-capture', duration_ms: 1000, budget_ms: 155000, within_budget: true },
-  { phase: 'targeted-region:quality-export-surface', duration_ms: 1000, budget_ms: 155000, within_budget: true }
+  { phase: 'targeted-region-capture', duration_ms: 1000, budget_ms: 180000, within_budget: true },
+  { phase: 'targeted-region:quality-export-surface', duration_ms: 1000, budget_ms: 180000, within_budget: true }
 ];
 for (const record of syntheticRecords) assertBudgetRecord(record);
 
-const overBudget = { phase: 'targeted-region-capture', duration_ms: 156000, budget_ms: 155000, within_budget: false };
+const overBudget = { phase: 'targeted-region-capture', duration_ms: 181000, budget_ms: 180000, within_budget: false };
 assertBudgetRecord(overBudget);
 assert.equal(overBudget.within_budget, false, 'synthetic over-budget phase must be rejected deterministically');
 

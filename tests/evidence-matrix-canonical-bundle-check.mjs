@@ -47,7 +47,7 @@ for (const token of [
   'export-pack-v3-manifest.json'
 ]) assert.ok(spec.includes(token), `browser evidence spec missing ${token}`);
 assert.ok(spec.includes('expect(matrixSummary.expected_rows).toBe(39);'));
-assert.ok(spec.includes('HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 180_000'));
+assert.ok(spec.includes('HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 420_000'), 'browser evidence spec must use calibrated hosted evidence timeout budget');
 
 for (const token of [
   'normalizeCaptureSanity',

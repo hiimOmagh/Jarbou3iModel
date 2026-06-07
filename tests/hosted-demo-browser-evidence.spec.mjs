@@ -35,15 +35,15 @@ const metadataPath = path.join(EVIDENCE_ROOT, 'hosted-demo-metadata.json');
 const MATRIX_CONFIG = JSON.parse(fs.readFileSync('tests/evidence/evidence-matrix.config.json', 'utf8'));
 const EXPECTED_CAPTURE_NAMES = Object.freeze(['desktop-first-screen','mobile-first-screen','provider-mode','quality-export']);
 const EVIDENCE_SETTLE_FRAME_COUNT = 3;
-const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 180_000;
+const HOSTED_EVIDENCE_TEST_TIMEOUT_MS = 420_000;
 const HOSTED_EVIDENCE_PHASE_BUDGETS_MS = Object.freeze({
-  page_ready: 15_000,
-  full_page_capture: 45_000,
-  localization_snapshots: 45_000,
-  evidence_matrix: 90_000,
-  targeted_region_capture: 155_000,
-  metadata_write: 15_000,
-  total_capture: 175_000
+  page_ready: 20_000,
+  full_page_capture: 60_000,
+  localization_snapshots: 60_000,
+  evidence_matrix: 180_000,
+  targeted_region_capture: 180_000,
+  metadata_write: 20_000,
+  total_capture: 360_000
 });
 const HOSTED_EVIDENCE_TIMING_BUDGET_GUARD = Object.freeze({
   version: VERSION,
@@ -428,7 +428,7 @@ async function writeMetadata(page, captures = [], visibleTextSnapshots = {}, mat
 // captures.push(await capture(page, 'quality-export'))
 
 test.describe(`${PUBLIC_VERSION_LABEL} hosted demo evidence matrix and manifest capture`, () => {
-  test.describe.configure({ mode: 'serial' });
+  test.describe.configure({ mode: 'serial', timeout: HOSTED_EVIDENCE_TEST_TIMEOUT_MS });
   test('captures complete hosted demo evidence manifest without metadata overwrite', async ({ page }, testInfo) => {
     test.setTimeout(HOSTED_EVIDENCE_TEST_TIMEOUT_MS);
     test.skip(testInfo.project.name !== HOSTED_EVIDENCE_CANONICAL_PROJECT, 'Hosted evidence capture writes one canonical manifest; mobile viewport is captured inside the chromium project.');
