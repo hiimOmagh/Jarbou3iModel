@@ -54,11 +54,11 @@ const arabicHostedDemoBodies = releaseCopyHostedDemoBodies.filter((body)=>body.i
 assert.ok(arabicHostedDemoBodies.length >= 1, 'Arabic hosted release description must be present');
 for (const body of arabicHostedDemoBodies) {
   assert.ok(
-    body.includes('لوحة قفل الإصدار') ||
-    body.includes('ملخص الأدلة') ||
-    body.includes('قرار القفل') ||
-    body.includes('مناطق الإثبات'),
-    'Arabic current-release description must identify alpha.51 release lock dashboard and evidence digest'
+    body.includes('انجراف رموز النص') ||
+    body.includes('حارس ثابت') ||
+    body.includes('أدلة المتصفح') ||
+    body.includes('رموز النص المتوقعة'),
+    'Arabic current-release description must identify alpha.57 visible-text token drift guard'
   );
   for (const staleCurrentDescription of [
     'النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار',

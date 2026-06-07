@@ -1,28 +1,28 @@
 const CURRENT_RELEASE_IDENTITY = Object.freeze({
-  version: '1.4.0-alpha.56',
-  title: 'Lock Evidence Review CLI Hardening + Exit Codes',
-  release: 'v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes',
-  publicLabel: 'v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes',
-  runtimeScope: 'lock_evidence_review_cli_hardening_exit_codes'
+  version: '1.4.0-alpha.57',
+  title: 'Visible-Text Token Drift Guard',
+  release: 'v1.4.0-alpha.57 — Visible-Text Token Drift Guard',
+  publicLabel: 'v1.4.0-alpha.57 Visible-Text Token Drift Guard',
+  runtimeScope: 'visible_text_token_drift_guard'
 });
 
-/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.56. */
+/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.57. */
 (function(global){
   'use strict';
   const contract = Object.freeze({
-    version: '1.4.0-alpha.56',
-    release: 'v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes',
-    releaseTitle: 'v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes',
-    milestone: 'Lock Evidence Review CLI Hardening + Exit Codes',
+    version: '1.4.0-alpha.57',
+    release: 'v1.4.0-alpha.57 — Visible-Text Token Drift Guard',
+    releaseTitle: 'v1.4.0-alpha.57 — Visible-Text Token Drift Guard',
+    milestone: 'Visible-Text Token Drift Guard',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes',
-      ar: 'v1.4.0-alpha.56 تقوية واجهة مراجعة أدلة القفل + رموز الخروج',
-      fr: 'v1.4.0-alpha.56 Durcissement du CLI de revue des preuves + codes de sortie'
+      en: 'v1.4.0-alpha.57 Visible-Text Token Drift Guard',
+      ar: 'v1.4.0-alpha.57 حارس انجراف رموز النص المرئي',
+      fr: 'v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
-      en: Object.freeze(['exit codes', 'failure families']),
-      ar: Object.freeze(['رموز الخروج', 'عائلات الفشل']),
-      fr: Object.freeze(['codes de sortie'])
+      en: Object.freeze(['visible-token drift', 'static guard']),
+      ar: Object.freeze(['انجراف رموز النص', 'حارس ثابت']),
+      fr: Object.freeze(['dérive des jetons visibles', 'garde statique'])
     }),
     staleCurrentReleaseDescriptionTokens: Object.freeze([
       'v1.4.0-alpha.47 Patch Package Safety + Release Identity Sweep Guard',
@@ -51,6 +51,11 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
       'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار',
       'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار',
       'v1.4.0-alpha.29 Adapter Replay Review Pack UI Polish + Export Preview',
+
+      'v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes',
+      'v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes',
+      'تقوية واجهة مراجعة أدلة القفل + رموز الخروج',
+      'Durcissement du CLI de revue des preuves + codes de sortie',
       'v1.4.0-alpha.55 Lock Review CLI CI Smoke + Operator Command Docs',
       'Lock Review CLI CI Smoke + Operator Command Docs',
       'اختبار CI لواجهة مراجعة القفل ووثائق أوامر المشغّل',
@@ -58,31 +63,31 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes · artifact export',
-        hostedDemoVerificationBody: 'Lock Evidence Review CLI Hardening + Exit Codes is ready for release evidence: the review command now exposes stable exit codes and failure families for usage, input, bundle-contract, checksum-contract, and non-lockable evidence outcomes. Hosted evidence must report 1.4.0-alpha.56 internally while showing v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.56 hardens the read-only lock review CLI with stable exit codes and failure families while remaining no-network.',
-        adapterReplayReviewPackPreviewTitle: 'Lock Evidence Review CLI Hardening + Exit Codes',
-        adapterReplayReviewPackPreviewBody: 'Release governance view: read-only review command, stable exit codes, failure-family classification, checksum coverage, stale-residue status, and next action. No live provider calls.',
-        adapterReplayOperatorWorkflowTitle: 'Lock Evidence Review CLI Hardening + Exit Codes',
-        adapterReplayOperatorWorkflowBody: 'Lock Evidence Review CLI Hardening + Exit Codes: metadata-only digest review with automation-safe exit codes for operator handoff inside the operator control room stage board. No automatic verification, signoff, export lock, persistence, or publication permission.'
+        alphaBadge: 'v1.4.0-alpha.57 Visible-Text Token Drift Guard · static guard',
+        hostedDemoVerificationBody: 'Visible-Text Token Drift Guard is ready for release evidence: a static guard now compares current visible-token drift expectations against the hosted-demo verification body before browser evidence runs. Hosted evidence must report 1.4.0-alpha.57 internally while showing v1.4.0-alpha.57 Visible-Text Token Drift Guard to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.57 adds a static visible-token drift guard across English, Arabic, and French before browser evidence runs.',
+        adapterReplayReviewPackPreviewTitle: 'Visible-Text Token Drift Guard',
+        adapterReplayReviewPackPreviewBody: 'Release governance view: visible-token drift guard, static copy-token comparison, locale coverage, and browser-evidence preflight. No live provider calls.',
+        adapterReplayOperatorWorkflowTitle: 'Visible-Text Token Drift Guard',
+        adapterReplayOperatorWorkflowBody: 'Visible-Text Token Drift Guard: static locale-token drift detection for operator handoff inside the operator control room stage board. No automatic verification, signoff, export lock, persistence, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.56 تقوية واجهة مراجعة أدلة القفل + رموز الخروج · عائلات الفشل',
-        hostedDemoVerificationBody: 'تقوية واجهة مراجعة أدلة القفل + رموز الخروج جاهزة لأدلة الإصدار: تفرّق واجهة المراجعة الآن بين رموز الخروج وعائلات الفشل لحالات الاستخدام، والمدخلات، وعقد الحزمة، وعقد checksum، وقرار القفل غير الجاهز. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.56 مع عرض v1.4.0-alpha.56 تقوية واجهة مراجعة أدلة القفل + رموز الخروج للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
-        analysisReleaseNote: 'يقوّي 1.4.0-alpha.56 واجهة مراجعة أدلة القفل برموز خروج وعائلات فشل ثابتة دون شبكة.',
-        adapterReplayReviewPackPreviewTitle: 'رموز الخروج لواجهة مراجعة القفل',
-        adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: رموز خروج ثابتة، عائلات فشل، تغطية checksum، وحالة القفل. دون نداءات مزوّد حية.',
-        adapterReplayOperatorWorkflowTitle: 'رموز الخروج لواجهة مراجعة القفل',
-        adapterReplayOperatorWorkflowBody: 'تقوية واجهة مراجعة أدلة القفل + رموز الخروج: قراءة metadata فقط مع رموز خروج صالحة للأتمتة داخل operator control room stage board. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
+        alphaBadge: 'v1.4.0-alpha.57 حارس انجراف رموز النص المرئي · حارس ثابت',
+        hostedDemoVerificationBody: 'حارس انجراف رموز النص المرئي جاهز لأدلة الإصدار: يطابق حارس ثابت رموز النص المتوقعة مع نص التحقق المرئي قبل تشغيل أدلة المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.57 مع عرض v1.4.0-alpha.57 حارس انجراف رموز النص المرئي للمستخدمين. التقاط أدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
+        analysisReleaseNote: 'يضيف 1.4.0-alpha.57 حارساً ثابتاً لاكتشاف انجراف رموز النص المرئي عبر العربية والفرنسية والإنجليزية قبل أدلة المتصفح.',
+        adapterReplayReviewPackPreviewTitle: 'حارس انجراف رموز النص',
+        adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: انجراف رموز النص، حارس ثابت، تغطية اللغات، وتمهيد أدلة المتصفح. دون نداءات مزوّد حية.',
+        adapterReplayOperatorWorkflowTitle: 'حارس انجراف رموز النص',
+        adapterReplayOperatorWorkflowBody: 'حارس انجراف رموز النص المرئي: كشف ثابت لاختلاف رموز اللغة داخل operator control room stage board. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.56 Durcissement du CLI de revue des preuves + codes de sortie · familles d’échec',
-        hostedDemoVerificationBody: 'Durcissement du CLI de revue des preuves + codes de sortie est prêt pour les preuves de release : la commande de revue distingue désormais usage, entrée, contrat bundle, contrat checksum et décision non verrouillable avec des codes de sortie stables. Les preuves hébergées doivent annoncer 1.4.0-alpha.56 en interne tout en affichant v1.4.0-alpha.56 Durcissement du CLI de revue des preuves + codes de sortie aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
-        analysisReleaseNote: '1.4.0-alpha.56 durcit le CLI de revue avec des codes de sortie et familles d’échec stables, tout en restant sans réseau.',
-        adapterReplayReviewPackPreviewTitle: 'Codes de sortie du CLI de revue',
-        adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : codes de sortie stables, familles d’échec, checksum et décision de verrouillage. Aucun appel fournisseur réel.',
-        adapterReplayOperatorWorkflowTitle: 'Codes de sortie du CLI de revue',
-        adapterReplayOperatorWorkflowBody: 'Durcissement du CLI de revue des preuves + codes de sortie : revue metadata-only avec codes de sortie pour automatisation dans l’operator control room stage board. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
+        alphaBadge: 'v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible · garde statique',
+        hostedDemoVerificationBody: 'Garde anti-dérive des jetons de texte visible est prêt pour les preuves de release : une garde statique compare la dérive des jetons visibles attendus avec le texte de vérification avant les preuves navigateur. Les preuves hébergées doivent annoncer 1.4.0-alpha.57 en interne tout en affichant v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible aux utilisateurs. Capture de preuve uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
+        analysisReleaseNote: '1.4.0-alpha.57 ajoute une garde statique contre la dérive des jetons visibles en français, arabe et anglais avant les preuves navigateur.',
+        adapterReplayReviewPackPreviewTitle: 'Garde anti-dérive des jetons visibles',
+        adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : dérive des jetons visibles, garde statique, couverture locale et préflight navigateur. Aucun appel fournisseur réel.',
+        adapterReplayOperatorWorkflowTitle: 'Garde anti-dérive des jetons visibles',
+        adapterReplayOperatorWorkflowBody: 'Garde anti-dérive des jetons de texte visible : détection statique des écarts de jetons de langue dans l’operator control room stage board. Aucun auto-contrôle, visa, verrou export, persistance ou permission publication.'
       })
     })
   });
@@ -100,18 +105,18 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.56 تقوية واجهة مراجعة أدلة القفل + رموز الخروج',
-    fr: 'v1.4.0-alpha.56 Durcissement du CLI de revue des preuves + codes de sortie'
+    ar: 'v1.4.0-alpha.57 حارس انجراف رموز النص المرئي',
+    fr: 'v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible'
   });
 })();
 
-const ALPHA56_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
-  ar: Object.freeze(['رموز الخروج', 'عائلات الفشل']),
-  fr: Object.freeze(['codes de sortie']),
-  en: Object.freeze(['exit codes', 'failure families', 'automation'])
+const ALPHA57_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
+  ar: Object.freeze(['انجراف رموز النص', 'حارس ثابت']),
+  fr: Object.freeze(['dérive des jetons visibles', 'garde statique']),
+  en: Object.freeze(['visible-token drift', 'static guard'])
 });
 
-(function enforceAlpha56BrowserVisibleTextContract() {
+(function enforceAlpha57BrowserVisibleTextContract() {
   const root = typeof globalThis !== 'undefined' ? globalThis : this;
   const contract = root.Jarbou3iResearchReleaseCopyContract;
   if (!contract) return;
@@ -122,15 +127,15 @@ const ALPHA56_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.56 تقوية واجهة مراجعة أدلة القفل + رموز الخروج',
-    fr: 'v1.4.0-alpha.56 Durcissement du CLI de revue des preuves + codes de sortie'
+    ar: 'v1.4.0-alpha.57 حارس انجراف رموز النص المرئي',
+    fr: 'v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible'
   });
 
-  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA56_BROWSER_VISIBLE_TEXT_CONTRACT);
+  contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, ALPHA57_BROWSER_VISIBLE_TEXT_CONTRACT);
   contract.expectedCurrentReleaseDescriptionTokens = Object.assign(
     {},
     contract.expectedCurrentReleaseDescriptionTokens || {},
-    ALPHA56_BROWSER_VISIBLE_TEXT_CONTRACT
+    ALPHA57_BROWSER_VISIBLE_TEXT_CONTRACT
   );
 
   contract.staleVisibleText = (contract.staleVisibleText || [])

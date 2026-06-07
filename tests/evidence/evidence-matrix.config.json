@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.56",
-  "internal_build_version": "1.4.0-alpha.56",
-  "public_version_label": "v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes",
+  "evidence_matrix_config_version": "1.4.0-alpha.57",
+  "internal_build_version": "1.4.0-alpha.57",
+  "public_version_label": "v1.4.0-alpha.57 Visible-Text Token Drift Guard",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes"
+      "public_label": "v1.4.0-alpha.57 Visible-Text Token Drift Guard"
     },
     "ar": {
       "required": [
@@ -43,7 +43,7 @@
         "Gel de la surface",
         "Revue publication"
       ],
-      "public_label": "v1.4.0-alpha.56 اختبار CI لواجهة مراجعة القفل ووثائق أوامر المشغّل"
+      "public_label": "v1.4.0-alpha.57 حارس انجراف رموز النص المرئي"
     },
     "fr": {
       "required": [
@@ -61,7 +61,7 @@
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
       ],
-      "public_label": "v1.4.0-alpha.56 Smoke CI du CLI de revue verrouillage + docs commandes opérateur"
+      "public_label": "v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible"
     }
   },
   "allowed_technical_terms": [
@@ -91,7 +91,7 @@
         "العرض العام جاهز",
         "Démo publique prête"
       ],
-      "public_label": "v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes"
+      "public_label": "v1.4.0-alpha.57 Visible-Text Token Drift Guard"
     },
     {
       "id": "S02",
@@ -242,8 +242,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes",
-    "ar": "v1.4.0-alpha.56 تقوية واجهة مراجعة أدلة القفل + رموز الخروج",
-    "fr": "v1.4.0-alpha.56 Durcissement du CLI de revue des preuves + codes de sortie"
+    "en": "v1.4.0-alpha.57 Visible-Text Token Drift Guard",
+    "ar": "v1.4.0-alpha.57 حارس انجراف رموز النص المرئي",
+    "fr": "v1.4.0-alpha.57 Garde anti-dérive des jetons de texte visible"
   }
 }

@@ -25,7 +25,7 @@ const hostedDemoBodies = [...renderHelpers.matchAll(/hostedDemoVerificationBody:
 const releaseCopySource = fs.readFileSync('src/research/release-copy-contract.js', 'utf8');
 hostedDemoBodies.push(...[...releaseCopySource.matchAll(/hostedDemoVerificationBody: '([^']+)'/g)].map((match)=>match[1]));
 const arabicHostedDemoBodies = hostedDemoBodies.filter((body)=>body.includes('أدلة الإصدار') && /[\u0600-\u06FF]/.test(body));
-assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('لوحة قفل الإصدار') || body.includes('ملخص الأدلة') || body.includes('قرار القفل') || body.includes('مناطق الإثبات')), 'Arabic current-release description must identify alpha.51 release lock dashboard and evidence digest');
+assert.ok(arabicHostedDemoBodies.some((body)=>body.includes('انجراف رموز النص') || body.includes('حارس ثابت') || body.includes('أدلة المتصفح') || body.includes('رموز النص المتوقعة')), 'Arabic current-release description must identify alpha.57 visible-text token drift guard');
 for (const body of arabicHostedDemoBodies) {
   for (const stale of ['النموذج الأولي المحدود للتنفيذ الحي اليدوي جاهز لأدلة الإصدار', 'نموذج أولي محدود للتنفيذ الحي اليدوي', 'هيكل اشتراك يدوي فقط', 'قمرة أمان التنفيذ اليدوي + سجل الجلسة جاهزة لأدلة الإصدار', 'صندوق رمل محوّل المزوّد اليدوي + عقد الاستدعاء العابر جاهز لأدلة الإصدار']) {
     assert.equal(body.includes(stale), false, `Arabic current-release description must not carry stale alpha.10/alpha.11 wording: ${stale}`);

@@ -1,6 +1,6 @@
-# v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes
+# v1.4.0-alpha.57 — Visible-Text Token Drift Guard
 
-Public label: v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes
+Public label: v1.4.0-alpha.57 Visible-Text Token Drift Guard
 
 Alpha.55 keeps the alpha.47 patch-package safety contract and adds CI smoke coverage plus operator command documentation for the read-only lock evidence review CLI. Operators can review ZIP bundles, extracted bundles, JSON output, missing digest failures, and checksum omissions without changing runtime behavior.
 
@@ -87,6 +87,6 @@ Remove-Item -Force .\*-package.zip -ErrorAction SilentlyContinue
 Remove-Item -Force .\PACKAGE-MANIFEST.json, .\README-PACKAGE.md, .\apply-*.mjs, .\validate-*.mjs -ErrorAction SilentlyContinue
 ```
 
-## v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes
+## v1.4.0-alpha.57 — Visible-Text Token Drift Guard
 
-Patch packages remain manual-copy only. Lock Evidence Review CLI Hardening + Exit Codes adds no executable patch workflow and preserves changed-files-only hygiene.
+Patch packages remain manual-copy only. Visible-Text Token Drift Guard adds no executable patch workflow and preserves changed-files-only hygiene.
