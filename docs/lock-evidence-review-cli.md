@@ -1,6 +1,6 @@
 # Lock Evidence Review CLI Operator Commands
 
-Current release: v1.4.0-alpha.60 — Evidence Performance Ledger Reader + Trend Diff Guard
+Current release: v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy
 
 This document is an operator handoff reference for the read-only lock evidence review CLI. It does not create, modify, sign, publish, or approve a release. It only reads the canonical dashboard digest already present in a lock evidence bundle.
 
@@ -9,7 +9,7 @@ This document is an operator handoff reference for the read-only lock evidence r
 Use this when GitHub Actions artifacts have already been downloaded and extracted.
 
 ```powershell
-node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.60_<run_id>
+node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.61_<run_id>
 ```
 
 Expected successful summary includes:
@@ -29,7 +29,7 @@ Dashboard digest checksums: present
 Use this when the canonical lock bundle is still compressed.
 
 ```powershell
-node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.60_<run_id>.zip
+node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.61_<run_id>.zip
 ```
 
 The command must remain read-only. It does not extract files into the repository and must not create `dist/`, `test-results/`, `playwright-report/`, or package artifacts.
@@ -39,7 +39,7 @@ The command must remain read-only. It does not extract files into the repository
 Use JSON output when another script or an AI agent needs a structured lock review summary.
 
 ```powershell
-node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.60_<run_id>.zip --json
+node scripts/lock-evidence-review.mjs --bundle .\lock-evidence-bundle_1.4.0-alpha.61_<run_id>.zip --json
 ```
 
 Required JSON fields include:

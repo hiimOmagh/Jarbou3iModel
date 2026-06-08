@@ -159,12 +159,12 @@ No live scraping. No production OAuth. No real OAuth. No real API keys. No crede
 Regression continuity retained:
 adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral credential handoff; provider request-envelope preview; no-network dry invocation transcript; adapter failure taxonomy; safe request/response metadata ledger; ADR-018; session state machine; kill-switch; timeout; budget; safe metadata-only session ledger; no-execution fallback; ADR-017; manual_source; provider_proposed_source; future_controlled_fetch; ADR-013; module boundary regression guard.
 
-## v1.4.0-alpha.60 — Evidence Performance Ledger Reader + Trend Diff Guard — CLI exit-code hardening
+## v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy — CLI exit-code hardening
 
-v1.4.0-alpha.60 — Evidence Performance Ledger Reader + Trend Diff Guard
-v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard
+v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy
+v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy
 
-Evidence Performance Ledger Reader + Trend Diff Guard formalizes the read-only lock evidence review CLI exit-code contract and failure-family classification for automation. It distinguishes usage errors, input errors, bundle-contract errors, checksum-contract errors, and non-lockable lock decisions without changing runtime behavior.
+Evidence Performance Trend Regression Threshold Policy formalizes the read-only lock evidence review CLI exit-code contract and failure-family classification for automation. It distinguishes usage errors, input errors, bundle-contract errors, checksum-contract errors, and non-lockable lock decisions without changing runtime behavior.
 
 Boundary continuity: no live provider calls, no live scraping, no OAuth/token lifecycle change, no backend/storage/source behavior change, no automatic source verification, no automatic signoff, no automatic export lock, no status persistence, no batch mutation, no navigation-state persistence, no cryptographic signature claim, and no publication permission claim.
 
@@ -172,7 +172,7 @@ Release lock remains evidence-gated: no-browser, browser, hosted metadata, targe
 
 Planning/control-plane only: Product surface is frozen and the CLI remains read-only evidence tooling.
 
-## v1.4.0-alpha.60 — Evidence Performance Ledger Reader + Trend Diff Guard
+## v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy
 
 - Adds hosted evidence capture timeout budget guard.
 - Records capture timing and timeout budget metadata for hosted-demo evidence phases.

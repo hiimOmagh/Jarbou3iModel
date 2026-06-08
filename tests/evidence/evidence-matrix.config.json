@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.60",
-  "internal_build_version": "1.4.0-alpha.60",
-  "public_version_label": "v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard",
+  "evidence_matrix_config_version": "1.4.0-alpha.61",
+  "internal_build_version": "1.4.0-alpha.61",
+  "public_version_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard"
+      "public_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy"
     },
     "ar": {
       "required": [
@@ -43,7 +43,7 @@
         "Gel de la surface",
         "Revue publication"
       ],
-      "public_label": "v1.4.0-alpha.60 قارئ سجل أداء الأدلة + حارس فرق الاتجاه"
+      "public_label": "v1.4.0-alpha.61 سياسة عتبات تراجع اتجاه أداء الأدلة"
     },
     "fr": {
       "required": [
@@ -61,7 +61,7 @@
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
       ],
-      "public_label": "v1.4.0-alpha.60 Lecteur registre performance preuves + garde diff tendance"
+      "public_label": "v1.4.0-alpha.61 Politique seuils régression tendance performance preuves"
     }
   },
   "allowed_technical_terms": [
@@ -91,7 +91,7 @@
         "العرض العام جاهز",
         "Démo publique prête"
       ],
-      "public_label": "v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard"
+      "public_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy"
     },
     {
       "id": "S02",
@@ -242,8 +242,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard",
-    "ar": "v1.4.0-alpha.60 قارئ سجل أداء الأدلة + حارس فرق الاتجاه",
-    "fr": "v1.4.0-alpha.60 Lecteur registre performance preuves + garde diff tendance"
+    "en": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
+    "ar": "v1.4.0-alpha.61 سياسة عتبات تراجع اتجاه أداء الأدلة",
+    "fr": "v1.4.0-alpha.61 Politique seuils régression tendance performance preuves"
   }
 }

@@ -21,7 +21,7 @@ for (const [file, tokens] of [
   ]]
 ]) {
   const source = fs.readFileSync(file, 'utf8');
-  for (const token of tokens) assert.ok(source.includes(token), `${file} must include trend diff token: ${token}`);
+  for (const token of tokens) assert.ok(source.includes(token), `${file} must include threshold policy token: ${token}`);
 }
 
 function writeJson(file, value) {
@@ -72,24 +72,26 @@ assert.ok(stable.stdout.includes('Hosted evidence performance trend diff written
 assert.ok(stable.stdout.includes('Regression guard: stable'), 'stable comparison must report stable guard');
 const stableJson = path.join(outputDir, 'hosted-evidence-performance-trend-diff.json');
 const stableMd = path.join(outputDir, 'hosted-evidence-performance-trend-diff.md');
-assert.ok(fs.existsSync(stableJson), 'trend diff JSON must be written');
-assert.ok(fs.existsSync(stableMd), 'trend diff Markdown must be written');
+assert.ok(fs.existsSync(stableJson), 'threshold policy JSON must be written');
+assert.ok(fs.existsSync(stableMd), 'threshold policy Markdown must be written');
 const stableDiff = JSON.parse(fs.readFileSync(stableJson, 'utf8'));
-assert.equal(stableDiff.hosted_evidence_performance_trend_diff_version, 1, 'trend diff contract version must be stable');
-assert.equal(stableDiff.current.version, CURRENT_VERSION, 'trend diff current version must match current release');
-assert.equal(stableDiff.previous.version, '1.4.0-alpha.59', 'trend diff previous version must be retained');
+assert.equal(stableDiff.hosted_evidence_performance_trend_diff_version, 2, 'threshold policy contract version must be stable');
+assert.equal(stableDiff.current.version, CURRENT_VERSION, 'threshold policy current version must match current release');
+assert.equal(stableDiff.previous.version, '1.4.0-alpha.59', 'threshold policy previous version must be retained');
 assert.equal(stableDiff.total_duration_diff.status, 'stable', 'stable fixture total status must be stable');
+assert.equal(stableDiff.threshold_policy.status, 'pass', 'stable fixture threshold policy must pass');
 assert.equal(stableDiff.regression_guard.passed, true, 'stable fixture must pass guard');
 assert.equal(stableDiff.phase_diffs.find((record) => record.phase === 'evidence-matrix').status, 'stable', 'stable phase must stay stable');
 
 const stableMarkdown = fs.readFileSync(stableMd, 'utf8');
 for (const token of [
   `# Hosted Evidence Performance Trend Diff — ${CURRENT_RELEASE}`,
-  '## Phase trend diff',
+  '## Threshold policy',
+  'Threshold policy: `pass`',
   'Regression guard: `stable`',
-  '| evidence-matrix | 100000 | 102000 | 2000 | 2 | stable |'
+  '| evidence-matrix | 100000 | 102000 | 2000 | 2 | stable | pass | 0.5667 |'
 ]) {
-  assert.ok(stableMarkdown.includes(token), `trend diff Markdown must include token: ${token}`);
+  assert.ok(stableMarkdown.includes(token), `threshold policy Markdown must include token: ${token}`);
 }
 
 const improved = spawnSync(process.execPath, [SCRIPT, '--current-ledger', improvedCurrentFile, '--previous-ledger', previousFile, '--output-dir', path.join(tempRoot, 'improved')], { encoding: 'utf8' });
@@ -99,7 +101,7 @@ assert.ok(improved.stdout.includes('Regression guard: improved'), 'improved comp
 const regressed = spawnSync(process.execPath, [SCRIPT, '--current-ledger', regressedCurrentFile, '--previous-ledger', previousFile, '--output-dir', path.join(tempRoot, 'regressed')], { encoding: 'utf8' });
 assert.equal(regressed.status, 2, 'regressed comparison must exit with regression status code 2');
 assert.ok(regressed.stdout.includes('Regression guard: regressed'), 'regressed comparison must report regressed guard');
-assert.ok(regressed.stdout.includes('Regressed phases: evidence-matrix'), 'regressed comparison must identify regressed phase');
+assert.ok(regressed.stdout.includes('Failed phases: evidence-matrix'), 'regressed comparison must identify failed phase');
 
 const jsonOutput = spawnSync(process.execPath, [SCRIPT, '--current-ledger', stableCurrentFile, '--previous-ledger', previousFile, '--output-dir', path.join(tempRoot, 'json'), '--json'], { encoding: 'utf8' });
 assert.equal(jsonOutput.status, 0, 'JSON output comparison must exit cleanly');
@@ -114,21 +116,21 @@ const contract = JSON.parse(fs.readFileSync('tests/current-release-contract.json
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 assert.equal(contract.version, CURRENT_VERSION);
 assert.equal(contract.runtime_scope, CURRENT_RUNTIME_SCOPE);
-assert.ok(contract.required_tests.includes(SCRIPT), 'current release contract must require trend diff script');
-assert.ok(contract.required_tests.includes(CHECK), 'current release contract must require trend diff check');
-assert.ok(contract.expected_changed_files.includes(SCRIPT), 'expected changed files must include trend diff script');
-assert.ok(contract.expected_changed_files.includes(CHECK), 'expected changed files must include trend diff check');
-assert.ok(contract.lock_assertions.some((assertion) => assertion.includes('trend diff')), 'lock assertions must mention trend diff');
+assert.ok(contract.required_tests.includes(SCRIPT), 'current release contract must require threshold policy script');
+assert.ok(contract.required_tests.includes(CHECK), 'current release contract must require threshold policy check');
+assert.ok(contract.expected_changed_files.includes(SCRIPT), 'expected changed files must include threshold policy script');
+assert.ok(contract.expected_changed_files.includes(CHECK), 'expected changed files must include threshold policy check');
+assert.ok(contract.lock_assertions.some((assertion) => assertion.includes('threshold policy')), 'lock assertions must mention threshold policy');
 
 for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
-  assert.ok(registry.gates[gate].node_checks.includes(CHECK), `${gate} gate must run trend diff check before browser evidence`);
+  assert.ok(registry.gates[gate].node_checks.includes(CHECK), `${gate} gate must run threshold policy check before browser evidence`);
 }
-assert.ok(registry.syntax_matrix.files.includes(SCRIPT), 'syntax matrix must cover trend diff script');
-assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover trend diff check');
+assert.ok(registry.syntax_matrix.files.includes(SCRIPT), 'syntax matrix must cover threshold policy script');
+assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover threshold policy check');
 assert.equal(registry.evidence_performance_trend_diff_guard.version, CURRENT_VERSION);
 assert.equal(registry.evidence_performance_trend_diff_guard.previous_ledger_required, true);
 assert.equal(registry.evidence_performance_trend_diff_guard.regressed_timing_exit_code, 2);
 assert.equal(registry.evidence_performance_trend_diff_guard.runtime_capability_change, false);
 
 fs.rmSync(tempRoot, { recursive: true, force: true });
-console.log(`Hosted evidence performance trend diff checks passed for ${CURRENT_RELEASE}.`);
+console.log(`Hosted evidence performance threshold policy checks passed for ${CURRENT_RELEASE}.`);

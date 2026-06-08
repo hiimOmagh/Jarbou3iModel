@@ -1,13 +1,14 @@
 {
-  "version": "1.4.0-alpha.60",
-  "milestone_name": "Evidence Performance Ledger Reader + Trend Diff Guard",
+  "version": "1.4.0-alpha.61",
+  "milestone_name": "Evidence Performance Trend Regression Threshold Policy",
   "release_type": "product-facing",
   "allowed_scope": [
-    "hosted evidence performance ledger reader and trend diff guard",
-    "current-vs-previous timing ledger comparison for hosted-demo evidence capture",
-    "JSON and Markdown trend diff outputs for operator release review",
-    "deterministic improved/stable/regressed timing regression cases",
-    "current release identity update to v1.4.0-alpha.60",
+    "hosted evidence performance trend regression threshold policy",
+    "explicit total-duration warning and failure thresholds",
+    "explicit per-phase duration and utilization thresholds",
+    "JSON and Markdown trend diff outputs with threshold policy metadata",
+    "deterministic pass/warn/fail timing threshold policy cases",
+    "current release identity update to v1.4.0-alpha.61",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -80,7 +81,8 @@
     "scripts/hosted-evidence-performance-trend-ledger.mjs",
     "tests/hosted-evidence-performance-trend-ledger-check.mjs",
     "scripts/hosted-evidence-performance-trend-diff.mjs",
-    "tests/hosted-evidence-performance-trend-diff-check.mjs"
+    "tests/hosted-evidence-performance-trend-diff-check.mjs",
+    "tests/hosted-evidence-performance-threshold-policy-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -253,14 +255,15 @@
     "scripts/hosted-evidence-performance-trend-ledger.mjs",
     "tests/hosted-evidence-performance-trend-ledger-check.mjs",
     "scripts/hosted-evidence-performance-trend-diff.mjs",
-    "tests/hosted-evidence-performance-trend-diff-check.mjs"
+    "tests/hosted-evidence-performance-trend-diff-check.mjs",
+    "tests/hosted-evidence-performance-threshold-policy-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.60 — Evidence Performance Ledger Reader + Trend Diff Guard",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.60",
-    "public labels must expose v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard",
-    "performance trend diff guard must compare current and previous hosted evidence timing ledgers",
-    "trend diff guard must classify improved, stable, and regressed timing cases",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.61",
+    "public labels must expose v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
+    "performance threshold policy guard must compare current and previous hosted evidence timing ledgers",
+    "threshold policy guard must classify improved, stable, and regressed timing cases",
     "lock evidence review CLI exit codes must remain stable for automation",
     "failure-family labels must distinguish usage, input, bundle contract, checksum contract, and lock decision failures"
   ],
@@ -355,16 +358,20 @@
     "Garde anti-dérive des jetons de texte visible",
     "visible_text_token_drift_guard"
   ],
-  "runtime_scope": "evidence_performance_ledger_reader_trend_diff_guard",
+  "runtime_scope": "evidence_performance_trend_regression_threshold_policy",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted evidence performance trend diff script reads current and previous performance ledgers",
-    "trend diff guard emits JSON and Markdown comparison artifacts",
-    "trend diff guard classifies improved, stable, and regressed timing cases deterministically",
+    "hosted evidence performance threshold policy script reads current and previous performance ledgers",
+    "threshold policy guard emits JSON and Markdown comparison artifacts",
+    "threshold policy guard classifies improved, stable, and regressed timing cases deterministically",
     "regressed timing comparisons exit non-zero before browser lock review",
     "hosted evidence timeout budget guard remains active before browser evidence capture",
     "performance trend ledger artifacts remain generated in canonical lock bundles",
-    "performance trend diff ledger retains hosted evidence timing history"
+    "performance threshold policy ledger retains hosted evidence timing history",
+    "hosted evidence performance threshold policy is deterministic",
+    "threshold policy includes pass/warn/fail cases",
+    "threshold policy exits non-zero on fail",
+    "threshold policy does not change runtime/provider/OAuth/backend/storage/source behavior"
   ]
 }
