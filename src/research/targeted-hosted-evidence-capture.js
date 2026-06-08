@@ -1,10 +1,10 @@
-/* Jarbou3i Research Engine targeted hosted evidence capture 1.4.0-alpha.61. */
+/* Jarbou3i Research Engine targeted hosted evidence capture 1.4.0-alpha.62. */
 /* Evidence-process upgrade only. No network calls, provider execution, OAuth/token lifecycle, backend/storage/source behavior expansion, status persistence, batch mutation, navigation-state persistence, automatic verification, automatic signoff, automatic export lock, cryptographic signature claim, or publication permission action. */
 (function(global){
   'use strict';
   const root = global.Jarbou3iResearchModules = global.Jarbou3iResearchModules || {};
-  const VERSION = '1.4.0-alpha.61';
-  const MILESTONE = 'v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy';
+  const VERSION = '1.4.0-alpha.62';
+  const MILESTONE = 'v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook';
   const MODEL = 'targeted_hosted_evidence_capture.v1';
   const CONTEXT_CAPTURE_BASELINE = '1.4.0-alpha.42';
   const MAX_TARGETED_WIDTH = 1200;
@@ -33,7 +33,7 @@
   const REQUIRED_REGIONS = Object.freeze([
     Object.freeze({ region_id:'first-run-guide', evidence_root_selector:'[data-evidence-region="first-run-guide"]', proof_selector:'[data-evidence-region="first-run-guide"] .firstRunCopy', selector:'[data-evidence-region="first-run-guide"] .firstRunCopy', surface:'onboarding', claim:'First-run onboarding is visible and bounded before work starts.', expected_tokens:Object.freeze(['First-run guide']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
     Object.freeze({ region_id:'public-demo-readiness', evidence_root_selector:'[data-evidence-region="public-demo-readiness"]', proof_selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', selector:'[data-evidence-region="public-demo-readiness"] > div:first-child', surface:'public-demo', claim:'Public-demo readiness constraints are visible.', expected_tokens:Object.freeze(['Public demo ready']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
-    Object.freeze({ region_id:'hosted-demo-release-contract', evidence_root_selector:'[data-evidence-region="hosted-demo-release-contract"]', proof_selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', surface:'hosted-demo', claim:'Current release hosted evidence threshold policy ledger and slowest-phase timing summary are visible.', expected_tokens:Object.freeze(['Evidence Performance Trend Regression Threshold Policy','threshold policy','regression thresholds','hosted evidence']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
+    Object.freeze({ region_id:'hosted-demo-release-contract', evidence_root_selector:'[data-evidence-region="hosted-demo-release-contract"]', proof_selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', selector:'[data-evidence-region="hosted-demo-release-contract"] > div:first-child', surface:'hosted-demo', claim:'Current release hosted evidence threshold policy ledger and slowest-phase timing summary are visible.', expected_tokens:Object.freeze(['Evidence Performance Policy Docs + Operator Playbook','threshold policy','regression thresholds','hosted evidence']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
     Object.freeze({ region_id:'evidence-review-gate', evidence_root_selector:'[data-evidence-region="evidence-review-gate"]', proof_selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', selector:'[data-evidence-region="evidence-review-gate"] > div:first-child', surface:'evidence-review', claim:'Evidence review gate is visible before publication.', expected_tokens:Object.freeze(['Evidence review gate']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT }),
     Object.freeze({ region_id:'quality-export-surface', evidence_root_selector:'[data-evidence-region="quality-export-surface"]', proof_selector:'[data-evidence-region="quality-export-surface"] .qualityExportProofSurface', selector:'[data-evidence-region="quality-export-surface"] .qualityExportProofSurface', surface:'quality-export', claim:'Quality/export proof surface captures quality, evidence-scoring, and publication-readiness evidence without relying on full-page screenshots.', expected_tokens:Object.freeze(['Quality','Evidence scoring calibration','Publication']), max_width:MAX_TARGETED_WIDTH, max_height:MAX_TARGETED_HEIGHT })
   ]);

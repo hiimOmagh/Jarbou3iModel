@@ -1,6 +1,6 @@
-# v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy
+# v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook
 
-Public label: v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy
+Public label: v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook
 
 Alpha.55 keeps the alpha.47 patch-package safety contract and adds CI smoke coverage plus operator command documentation for the read-only lock evidence review CLI. Operators can review ZIP bundles, extracted bundles, JSON output, missing digest failures, and checksum omissions without changing runtime behavior.
 
@@ -87,6 +87,6 @@ Remove-Item -Force .\*-package.zip -ErrorAction SilentlyContinue
 Remove-Item -Force .\PACKAGE-MANIFEST.json, .\README-PACKAGE.md, .\apply-*.mjs, .\validate-*.mjs -ErrorAction SilentlyContinue
 ```
 
-## v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy
+## v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook
 
-Patch packages remain manual-copy only. Evidence Performance Trend Regression Threshold Policy adds no executable patch workflow and preserves changed-files-only hygiene.
+Patch packages remain manual-copy only. Evidence Performance Policy Docs + Operator Playbook adds no executable patch workflow and preserves changed-files-only hygiene.

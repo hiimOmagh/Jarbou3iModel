@@ -482,6 +482,3 @@ $('loadSampleBtn').onclick=()=>{const a=sampleAnalysis(state.lang);state.analysi
 $('modalClose').onclick=closeModal;$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();trapModalFocus(e)});$('modalCopy').onclick=async()=>{const ok=await copyText($('modalContent').textContent);toast(ok?t('copied'):t('copyFailed'))};
 ['analysisLang','assistantPreset','promptMode','timeframeInput','topicInput'].forEach(id=>$(id).addEventListener('change',()=>{state.analysisLang=$('analysisLang').value;state.assistant=$('assistantPreset').value;state.promptMode=$('promptMode').value;state.context=$('timeframeInput').value;state.topic=$('topicInput').value;}));$('topicInput').addEventListener('input',()=>{state.topic=$('topicInput').value});$('timeframeInput').addEventListener('input',()=>{state.context=$('timeframeInput').value});
 initializeTheme();renderAll();validateJsonInput();
-
-
-

@@ -1,7 +1,7 @@
 {
-  "version": "1.4.0-alpha.61",
-  "release_title": "v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy",
-  "public_version_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
+  "version": "1.4.0-alpha.62",
+  "release_title": "v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook",
+  "public_version_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
   "release_type": "release-identity-single-source-contract",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -10,8 +10,8 @@
   "source_behavior_changed": false,
   "storage_behavior_changed": false,
   "public_demo_capability_expansion": false,
-  "runtime_scope": "evidence_performance_trend_regression_threshold_policy",
-  "milestone_name": "Evidence Performance Trend Regression Threshold Policy",
+  "runtime_scope": "evidence_performance_policy_docs_operator_playbook",
+  "milestone_name": "Evidence Performance Policy Docs + Operator Playbook",
   "consolidated_root_artifacts": [
     "BROWSER_EVIDENCE.md",
     "HOSTED_DEMO_VERIFICATION.md",
@@ -29,7 +29,7 @@
     "PUBLIC_DEMO.md",
     "index.html"
   ],
-  "release_scope": " v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy; v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy; evidence_performance_trend_regression_threshold_policy; hosted evidence capture timeout budget guard; capture timing phases; targeted region timing budget; browser evidence timing metadata; previous visible-text token drift guard; previous lock evidence review CLI hardening and exit codes; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff; Planning/control-plane milestone; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; real API keys; cryptographic signing;",
+  "release_scope": " v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook; v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook; evidence_performance_policy_docs_operator_playbook; hosted evidence capture timeout budget guard; capture timing phases; targeted region timing budget; browser evidence timing metadata; previous visible-text token drift guard; previous lock evidence review CLI hardening and exit codes; No live scraping; No production OAuth; No real OAuth; No real API keys; No credential persistence; No provider execution expansion; No backend behavior expansion; No storage expansion; No source behavior expansion; automatic source verification; automatic signoff; automatic export lock; publication permission claim; changed-files-only patch handoff; Planning/control-plane milestone; v1.4.0-alpha.7 — Source Acquisition Control Surface; v1.4.0-alpha.6 — Provider Execution Harness Mock-to-Live Equivalence; v1.3.0 — Stable Manual Workflow Release; v1.4.0-alpha.14 — Adapter Replay Fixture Corpus + Coverage Matrix; real API keys; cryptographic signing;",
   "boundaries": {
     "evidence_capture_only": true,
     "no_live_scraping": true,
@@ -46,17 +46,17 @@
     "no_publication_permission_claim": true
   },
   "current_release_identity": {
-    "version": "1.4.0-alpha.61",
-    "title": "Evidence Performance Trend Regression Threshold Policy",
-    "release": "v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy",
-    "public_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
-    "runtime_scope": "evidence_performance_trend_regression_threshold_policy"
+    "version": "1.4.0-alpha.62",
+    "title": "Evidence Performance Policy Docs + Operator Playbook",
+    "release": "v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook",
+    "public_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
+    "runtime_scope": "evidence_performance_policy_docs_operator_playbook"
   },
   "current_release": {
-    "version": "1.4.0-alpha.61",
-    "title": "Evidence Performance Trend Regression Threshold Policy",
-    "release": "v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy",
-    "public_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
-    "runtime_scope": "evidence_performance_trend_regression_threshold_policy"
+    "version": "1.4.0-alpha.62",
+    "title": "Evidence Performance Policy Docs + Operator Playbook",
+    "release": "v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook",
+    "public_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
+    "runtime_scope": "evidence_performance_policy_docs_operator_playbook"
   }
 }

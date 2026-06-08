@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.61",
-  "internal_build_version": "1.4.0-alpha.61",
-  "public_version_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
+  "evidence_matrix_config_version": "1.4.0-alpha.62",
+  "internal_build_version": "1.4.0-alpha.62",
+  "public_version_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy"
+      "public_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook"
     },
     "ar": {
       "required": [
@@ -43,7 +43,7 @@
         "Gel de la surface",
         "Revue publication"
       ],
-      "public_label": "v1.4.0-alpha.61 سياسة عتبات تراجع اتجاه أداء الأدلة"
+      "public_label": "v1.4.0-alpha.62 دليل مشغّل سياسة أداء الأدلة"
     },
     "fr": {
       "required": [
@@ -61,7 +61,7 @@
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
       ],
-      "public_label": "v1.4.0-alpha.61 Politique seuils régression tendance performance preuves"
+      "public_label": "v1.4.0-alpha.62 Guide opérateur politique performance preuves"
     }
   },
   "allowed_technical_terms": [
@@ -91,7 +91,7 @@
         "العرض العام جاهز",
         "Démo publique prête"
       ],
-      "public_label": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy"
+      "public_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook"
     },
     {
       "id": "S02",
@@ -242,8 +242,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
-    "ar": "v1.4.0-alpha.61 سياسة عتبات تراجع اتجاه أداء الأدلة",
-    "fr": "v1.4.0-alpha.61 Politique seuils régression tendance performance preuves"
+    "en": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
+    "ar": "v1.4.0-alpha.62 دليل مشغّل سياسة أداء الأدلة",
+    "fr": "v1.4.0-alpha.62 Guide opérateur politique performance preuves"
   }
 }

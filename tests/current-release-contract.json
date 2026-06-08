@@ -1,14 +1,13 @@
 {
-  "version": "1.4.0-alpha.61",
-  "milestone_name": "Evidence Performance Trend Regression Threshold Policy",
+  "version": "1.4.0-alpha.62",
+  "milestone_name": "Evidence Performance Policy Docs + Operator Playbook",
   "release_type": "product-facing",
   "allowed_scope": [
-    "hosted evidence performance trend regression threshold policy",
-    "explicit total-duration warning and failure thresholds",
-    "explicit per-phase duration and utilization thresholds",
-    "JSON and Markdown trend diff outputs with threshold policy metadata",
-    "deterministic pass/warn/fail timing threshold policy cases",
-    "current release identity update to v1.4.0-alpha.61",
+    "evidence performance policy operator playbook",
+    "pass/warn/fail interpretation for evidence performance thresholds",
+    "total-duration, phase-duration, and utilization remediation checklist",
+    "operator docs contract test for performance policy guidance",
+    "current release identity update to v1.4.0-alpha.62",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -37,7 +36,8 @@
     "docs/qa-matrix.md",
     "docs/roadmap.md",
     "docs/patch-package-contract.md",
-    "docs/lock-evidence-review-cli.md"
+    "docs/lock-evidence-review-cli.md",
+    "docs/evidence-performance-policy-playbook.md"
   ],
   "required_tests": [
     "tests/adapter-replay-review-pack-compact-navigation-ux-check.mjs",
@@ -82,7 +82,8 @@
     "tests/hosted-evidence-performance-trend-ledger-check.mjs",
     "scripts/hosted-evidence-performance-trend-diff.mjs",
     "tests/hosted-evidence-performance-trend-diff-check.mjs",
-    "tests/hosted-evidence-performance-threshold-policy-check.mjs"
+    "tests/hosted-evidence-performance-threshold-policy-check.mjs",
+    "tests/evidence-performance-policy-docs-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -256,12 +257,14 @@
     "tests/hosted-evidence-performance-trend-ledger-check.mjs",
     "scripts/hosted-evidence-performance-trend-diff.mjs",
     "tests/hosted-evidence-performance-trend-diff-check.mjs",
-    "tests/hosted-evidence-performance-threshold-policy-check.mjs"
+    "tests/hosted-evidence-performance-threshold-policy-check.mjs",
+    "docs/evidence-performance-policy-playbook.md",
+    "tests/evidence-performance-policy-docs-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.61 — Evidence Performance Trend Regression Threshold Policy",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.61",
-    "public labels must expose v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.62",
+    "public labels must expose v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
     "performance threshold policy guard must compare current and previous hosted evidence timing ledgers",
     "threshold policy guard must classify improved, stable, and regressed timing cases",
     "lock evidence review CLI exit codes must remain stable for automation",
@@ -358,9 +361,14 @@
     "Garde anti-dérive des jetons de texte visible",
     "visible_text_token_drift_guard"
   ],
-  "runtime_scope": "evidence_performance_trend_regression_threshold_policy",
+  "runtime_scope": "evidence_performance_policy_docs_operator_playbook",
   "lock_conditions": [],
-  "acceptance_criteria": [],
+  "acceptance_criteria": [
+    "policy docs explain pass, warn, and fail outcomes",
+    "policy docs include total-duration, phase-duration, and utilization checklists",
+    "docs contract test passes in current-no-browser and no-browser gates",
+    "no runtime/provider/OAuth/backend/storage/source behavior changes are introduced"
+  ],
   "lock_assertions": [
     "hosted evidence performance threshold policy script reads current and previous performance ledgers",
     "threshold policy guard emits JSON and Markdown comparison artifacts",
@@ -372,6 +380,10 @@
     "hosted evidence performance threshold policy is deterministic",
     "threshold policy includes pass/warn/fail cases",
     "threshold policy exits non-zero on fail",
-    "threshold policy does not change runtime/provider/OAuth/backend/storage/source behavior"
+    "threshold policy does not change runtime/provider/OAuth/backend/storage/source behavior",
+    "evidence performance operator playbook documents pass/warn/fail interpretation",
+    "operator playbook includes total-duration, phase-duration, and utilization remediation checklists",
+    "evidence performance policy docs check is deterministic",
+    "policy docs do not change runtime/provider/OAuth/backend/storage/source behavior"
   ]
 }

@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.61 Evidence Performance Trend Regression Threshold Policy */
+/* Current public release label: v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
