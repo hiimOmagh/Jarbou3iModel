@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.59",
-  "release_title": "v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
+  "ci_gate_registry_version": "1.4.0-alpha.60",
+  "release_title": "v1.4.0-alpha.60 — Evidence Performance Ledger Reader + Trend Diff Guard",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -42,6 +42,7 @@
         "tests/visible-text-token-drift-guard-check.mjs",
         "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/hosted-evidence-performance-trend-ledger-check.mjs",
+        "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
@@ -227,6 +228,7 @@
         "tests/visible-text-token-drift-guard-check.mjs",
         "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/hosted-evidence-performance-trend-ledger-check.mjs",
+        "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
         "tests/diagnosis-report-artifact-export-check.mjs",
@@ -441,6 +443,7 @@
         "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/hosted-evidence-performance-trend-ledger-check.mjs",
+        "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs"
       ],
       "syntax_checks": [],
@@ -641,6 +644,7 @@
         "tests/targeted-hosted-evidence-capture-check.mjs",
         "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
         "tests/hosted-evidence-performance-trend-ledger-check.mjs",
+        "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
         "tests/effective-diff-check.mjs",
@@ -686,24 +690,24 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.59",
-    "optimization_scope": "evidence_capture_performance_trend_ledger",
+    "version": "1.4.0-alpha.60",
+    "optimization_scope": "evidence_performance_ledger_reader_trend_diff_guard",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
-    "name": "evidence_capture_performance_trend_ledger",
-    "current_candidate": "1.4.0-alpha.59",
+    "name": "evidence_performance_ledger_reader_trend_diff_guard",
+    "current_candidate": "1.4.0-alpha.60",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
-    "description": "Release-governance hardening: persists hosted evidence capture timing into a compact performance trend ledger so capture regressions are visible across lock bundles before they become browser flake.",
+    "description": "Release-governance hardening: compares current hosted evidence timing ledger against a previous ledger and flags meaningful performance regressions before they become browser flake.",
     "scope": "release evidence only; no runtime/provider/OAuth/backend/storage/source behavior change"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.59",
+    "version": "1.4.0-alpha.60",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -927,13 +931,15 @@
       "tests/lock-review-cli-ci-smoke-check.mjs",
       "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
       "tests/hosted-evidence-performance-trend-ledger-check.mjs",
-      "scripts/hosted-evidence-performance-trend-ledger.mjs"
+      "scripts/hosted-evidence-performance-trend-ledger.mjs",
+      "scripts/hosted-evidence-performance-trend-diff.mjs",
+      "tests/hosted-evidence-performance-trend-diff-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.59",
+    "version": "1.4.0-alpha.60",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -953,7 +959,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.4.0-alpha.12",
+    "version": "1.4.0-alpha.60",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
@@ -1106,11 +1112,13 @@
     "tests/lock-evidence-review-exit-code-check.mjs",
     "tests/visible-text-token-drift-guard-check.mjs",
     "scripts/hosted-evidence-performance-trend-ledger.mjs",
-    "tests/hosted-evidence-performance-trend-ledger-check.mjs"
+    "tests/hosted-evidence-performance-trend-ledger-check.mjs",
+    "scripts/hosted-evidence-performance-trend-diff.mjs",
+    "tests/hosted-evidence-performance-trend-diff-check.mjs"
   ],
   "release_digest_schema_contract": {
-    "version": "1.4.0-alpha.59",
-    "scope": "evidence_capture_performance_trend_ledger",
+    "version": "1.4.0-alpha.60",
+    "scope": "evidence_performance_ledger_reader_trend_diff_guard",
     "dashboard_json_required": true,
     "dashboard_markdown_required": true,
     "checksum_inclusion_required": true,
@@ -1124,8 +1132,8 @@
     "storage_behavior_changed": false
   },
   "lock_bundle_schema_enforcement_ci": {
-    "version": "1.4.0-alpha.59",
-    "scope": "evidence_capture_performance_trend_ledger",
+    "version": "1.4.0-alpha.60",
+    "scope": "evidence_performance_ledger_reader_trend_diff_guard",
     "workflow_enforcement_required": true,
     "build_script_enforcement_required": true,
     "dashboard_json_required": true,
@@ -1134,8 +1142,8 @@
     "enforcement_must_run_before_upload": true
   },
   "lock_evidence_review_cli_exit_codes": {
-    "version": "1.4.0-alpha.59",
-    "scope": "evidence_capture_performance_trend_ledger",
+    "version": "1.4.0-alpha.60",
+    "scope": "evidence_performance_ledger_reader_trend_diff_guard",
     "success": 0,
     "usage_error": 64,
     "input_error": 65,
@@ -1151,9 +1159,9 @@
       "unexpected"
     ]
   },
-  "evidence_capture_performance_trend_ledger": {
-    "version": "1.4.0-alpha.59",
-    "scope": "evidence_capture_performance_trend_ledger",
+  "evidence_performance_ledger_reader_trend_diff_guard": {
+    "version": "1.4.0-alpha.60",
+    "scope": "evidence_performance_ledger_reader_trend_diff_guard",
     "timing_metadata_required": true,
     "phase_budget_records_required": true,
     "targeted_region_budget_records_required": true,
@@ -1165,9 +1173,9 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false
   },
-  "hosted_evidence_capture_performance_trend_ledger": {
-    "version": "1.4.0-alpha.59",
-    "scope": "evidence_capture_performance_trend_ledger",
+  "hosted_evidence_performance_ledger_reader_trend_diff_guard": {
+    "version": "1.4.0-alpha.60",
+    "scope": "evidence_performance_ledger_reader_trend_diff_guard",
     "ledger_json_required": true,
     "ledger_markdown_required": true,
     "current_entry_required": true,
@@ -1182,12 +1190,30 @@
     "storage_behavior_changed": false
   },
   "hosted_evidence_capture_timeout_budget_guard": {
-    "version": "1.4.0-alpha.59",
+    "version": "1.4.0-alpha.60",
     "scope": "hosted_evidence_capture_timeout_budget_guard",
     "timing_metadata_required": true,
     "phase_budget_records_required": true,
     "targeted_region_budget_records_required": true,
     "static_guard_required_before_browser": true,
+    "runtime_capability_change": false,
+    "provider_behavior_changed": false,
+    "oauth_behavior_changed": false,
+    "backend_behavior_changed": false,
+    "source_behavior_changed": false,
+    "storage_behavior_changed": false
+  },
+  "evidence_performance_trend_diff_guard": {
+    "version": "1.4.0-alpha.60",
+    "scope": "evidence_performance_ledger_reader_trend_diff_guard",
+    "previous_ledger_required": true,
+    "current_ledger_required": true,
+    "json_output_required": true,
+    "markdown_output_required": true,
+    "stable_case_required": true,
+    "improved_case_required": true,
+    "regressed_case_required": true,
+    "regressed_timing_exit_code": 2,
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,

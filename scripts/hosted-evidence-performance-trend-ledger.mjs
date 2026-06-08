@@ -26,7 +26,7 @@ function writeText(file, value) {
 }
 
 function fail(message) {
-  throw new Error(`hosted evidence performance trend ledger failed: ${message}`);
+  throw new Error(`hosted evidence trend diff ledger failed: ${message}`);
 }
 
 function asNumber(value, fallback = 0) {
@@ -168,7 +168,7 @@ function main() {
   const markdownPath = path.join(outputDir, HOSTED_EVIDENCE_PERFORMANCE_TREND_LEDGER_CONTRACT.markdown_file);
   writeJson(jsonPath, ledger);
   writeText(markdownPath, renderHostedEvidencePerformanceTrendLedgerMarkdown(ledger));
-  console.log(`Hosted evidence performance trend ledger written: ${jsonPath}`);
+  console.log(`Hosted evidence trend diff ledger written: ${jsonPath}`);
   console.log(`Slowest phase: ${ledger.current_entry.slowest_phase?.phase || 'unknown'}`);
   console.log(`Regression guard: ${ledger.regression_guard.status}`);
 }

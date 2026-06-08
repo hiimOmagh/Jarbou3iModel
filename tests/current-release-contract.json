@@ -1,12 +1,13 @@
 {
-  "version": "1.4.0-alpha.59",
-  "milestone_name": "Evidence Capture Performance Trend Ledger",
+  "version": "1.4.0-alpha.60",
+  "milestone_name": "Evidence Performance Ledger Reader + Trend Diff Guard",
   "release_type": "product-facing",
   "allowed_scope": [
-    "hosted-demo evidence capture performance trend ledger artifacts",
-    "current-entry timing trend records derived from hosted-demo timing metadata",
-    "static performance trend ledger regression guard before browser evidence review",
-    "current release identity update to v1.4.0-alpha.59",
+    "hosted evidence performance ledger reader and trend diff guard",
+    "current-vs-previous timing ledger comparison for hosted-demo evidence capture",
+    "JSON and Markdown trend diff outputs for operator release review",
+    "deterministic improved/stable/regressed timing regression cases",
+    "current release identity update to v1.4.0-alpha.60",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -77,7 +78,9 @@
     "tests/visible-text-token-drift-guard-check.mjs",
     "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
     "scripts/hosted-evidence-performance-trend-ledger.mjs",
-    "tests/hosted-evidence-performance-trend-ledger-check.mjs"
+    "tests/hosted-evidence-performance-trend-ledger-check.mjs",
+    "scripts/hosted-evidence-performance-trend-diff.mjs",
+    "tests/hosted-evidence-performance-trend-diff-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -248,14 +251,16 @@
     "tests/visible-text-token-drift-guard-check.mjs",
     "tests/hosted-evidence-capture-timeout-budget-guard-check.mjs",
     "scripts/hosted-evidence-performance-trend-ledger.mjs",
-    "tests/hosted-evidence-performance-trend-ledger-check.mjs"
+    "tests/hosted-evidence-performance-trend-ledger-check.mjs",
+    "scripts/hosted-evidence-performance-trend-diff.mjs",
+    "tests/hosted-evidence-performance-trend-diff-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.59",
-    "public labels must expose v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger",
-    "hosted evidence metadata must record timing budget guard fields",
-    "targeted region evidence manifest must record targeted capture timing budget fields",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.60 — Evidence Performance Ledger Reader + Trend Diff Guard",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.60",
+    "public labels must expose v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard",
+    "performance trend diff guard must compare current and previous hosted evidence timing ledgers",
+    "trend diff guard must classify improved, stable, and regressed timing cases",
     "lock evidence review CLI exit codes must remain stable for automation",
     "failure-family labels must distinguish usage, input, bundle contract, checksum contract, and lock decision failures"
   ],
@@ -269,6 +274,12 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
+    "evidence_capture_performance_trend_ledger",
+    "Registre tendance performance capture preuves",
+    "سجل اتجاه أداء التقاط الأدلة",
+    "Evidence Capture Performance Trend Ledger",
+    "v1.4.0-alpha.59 — Evidence Capture Performance Trend Ledger",
+    "v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger",
     "v1.4.0-alpha.56 Lock Evidence Review CLI Hardening + Exit Codes",
     "v1.4.0-alpha.56 — Lock Evidence Review CLI Hardening + Exit Codes",
     "Lock Evidence Review CLI Hardening + Exit Codes",
@@ -344,18 +355,16 @@
     "Garde anti-dérive des jetons de texte visible",
     "visible_text_token_drift_guard"
   ],
-  "runtime_scope": "evidence_capture_performance_trend_ledger",
+  "runtime_scope": "evidence_performance_ledger_reader_trend_diff_guard",
   "lock_conditions": [],
   "acceptance_criteria": [],
   "lock_assertions": [
-    "hosted-demo browser evidence spec records timing_budget_guard metadata",
-    "targeted-region evidence manifest records per-region timing budgets",
-    "static timing-budget regression cases reject over-budget phases before browser lock review",
-    "browser evidence artifacts and selectors remain unchanged",
-    "hosted evidence metadata must include timing_budget_guard records",
-    "lock bundle must include performance-trends/hosted-evidence-performance-trend-ledger.json",
-    "lock bundle must include performance-trends/hosted-evidence-performance-trend-ledger.md",
-    "performance trend ledger must identify the slowest hosted evidence phase and budget status",
-    "hosted evidence timeout budget guard remains active before browser evidence capture"
+    "hosted evidence performance trend diff script reads current and previous performance ledgers",
+    "trend diff guard emits JSON and Markdown comparison artifacts",
+    "trend diff guard classifies improved, stable, and regressed timing cases deterministically",
+    "regressed timing comparisons exit non-zero before browser lock review",
+    "hosted evidence timeout budget guard remains active before browser evidence capture",
+    "performance trend ledger artifacts remain generated in canonical lock bundles",
+    "performance trend diff ledger retains hosted evidence timing history"
   ]
 }

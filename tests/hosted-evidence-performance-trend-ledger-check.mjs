@@ -18,7 +18,7 @@ for (const [file, tokens] of [
     'renderHostedEvidencePerformanceTrendLedgerMarkdown',
     'writeHostedEvidencePerformanceTrendLedger',
     'slowest_phase',
-    'performance trend ledger'
+    'trend diff ledger'
   ]],
   [BUILDER, [
     'hosted-evidence-performance-trend-ledger.mjs',
@@ -27,7 +27,7 @@ for (const [file, tokens] of [
   ]]
 ]) {
   const source = fs.readFileSync(file, 'utf8');
-  for (const token of tokens) assert.ok(source.includes(token), `${file} must include performance trend ledger token: ${token}`);
+  for (const token of tokens) assert.ok(source.includes(token), `${file} must include trend diff ledger token: ${token}`);
 }
 
 function writeJson(file, value) {
@@ -42,7 +42,7 @@ const outputDir = path.join(tempRoot, 'performance-trends');
 writeJson(path.join(bundleDir, 'evidence-manifest.json'), {
   version: CURRENT_VERSION,
   release: CURRENT_RELEASE,
-  public_version_label: `v${CURRENT_VERSION} Evidence Capture Performance Trend Ledger`,
+  public_version_label: `v${CURRENT_VERSION} Evidence Performance Ledger Reader + Trend Diff Guard`,
   run_id: 'fixture-run',
   run_attempt: '1',
   commit_sha: 'fixture-sha',
@@ -51,7 +51,7 @@ writeJson(path.join(bundleDir, 'evidence-manifest.json'), {
 writeJson(path.join(bundleDir, 'hosted-demo-evidence', 'hosted-demo-metadata.json'), {
   evidence_review_version: CURRENT_VERSION,
   capture_polish_version: CURRENT_VERSION,
-  public_version_label: `v${CURRENT_VERSION} Evidence Capture Performance Trend Ledger`,
+  public_version_label: `v${CURRENT_VERSION} Evidence Performance Ledger Reader + Trend Diff Guard`,
   generated_at: '2026-06-07T00:00:00.000Z',
   timing_budget_guard: {
     guard: 'hosted_evidence_capture_timeout_budget_guard',
@@ -69,16 +69,16 @@ writeJson(path.join(bundleDir, 'hosted-demo-evidence', 'hosted-demo-metadata.jso
 
 const result = spawnSync(process.execPath, [SCRIPT, '--bundle-dir', bundleDir, '--output-dir', outputDir], { encoding: 'utf8' });
 assert.equal(result.status, 0, `${SCRIPT} must exit cleanly: ${result.stderr || result.stdout}`);
-assert.ok(result.stdout.includes('Hosted evidence performance trend ledger written'), 'script must announce trend ledger output');
+assert.ok(result.stdout.includes('Hosted evidence trend diff ledger written'), 'script must announce ledger reader output');
 assert.ok(result.stdout.includes('Slowest phase: evidence-matrix'), 'script must announce slowest phase');
 assert.ok(result.stdout.includes('Regression guard: passed'), 'script must announce regression guard status');
 
 const jsonPath = path.join(outputDir, 'hosted-evidence-performance-trend-ledger.json');
 const markdownPath = path.join(outputDir, 'hosted-evidence-performance-trend-ledger.md');
-assert.ok(fs.existsSync(jsonPath), 'trend ledger JSON must be written');
-assert.ok(fs.existsSync(markdownPath), 'trend ledger Markdown must be written');
+assert.ok(fs.existsSync(jsonPath), 'ledger reader JSON must be written');
+assert.ok(fs.existsSync(markdownPath), 'ledger reader Markdown must be written');
 const ledger = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-assert.equal(ledger.hosted_evidence_performance_trend_ledger_version, 1, 'trend ledger contract version must be stable');
+assert.equal(ledger.hosted_evidence_performance_trend_ledger_version, 1, 'ledger reader contract version must be stable');
 assert.equal(ledger.version, CURRENT_VERSION, 'ledger version must match current release');
 assert.equal(ledger.release, CURRENT_RELEASE, 'ledger release must match current release');
 assert.equal(ledger.current_entry.run_id, 'fixture-run', 'ledger current entry must expose run id');
@@ -101,7 +101,7 @@ for (const token of [
   'Slowest phase: `evidence-matrix`',
   '| evidence-matrix | 100000 | 180000 | true | 0.5556 |'
 ]) {
-  assert.ok(markdown.includes(token), `trend ledger Markdown must include token: ${token}`);
+  assert.ok(markdown.includes(token), `ledger reader Markdown must include token: ${token}`);
 }
 
 const missingTimingDir = path.join(tempRoot, 'missing-timing-bundle');
@@ -116,19 +116,19 @@ const contract = JSON.parse(fs.readFileSync('tests/current-release-contract.json
 const registry = JSON.parse(fs.readFileSync('tests/ci-gate-registry.json', 'utf8'));
 assert.equal(contract.version, CURRENT_VERSION);
 assert.equal(contract.runtime_scope, CURRENT_RUNTIME_SCOPE);
-assert.ok(contract.required_tests.includes(SCRIPT), 'current release contract must require trend ledger script');
-assert.ok(contract.required_tests.includes(CHECK), 'current release contract must require trend ledger check');
-assert.ok(contract.expected_changed_files.includes(SCRIPT), 'expected changed files must include trend ledger script');
-assert.ok(contract.lock_assertions.some((assertion) => assertion.includes('performance trend ledger')), 'lock assertions must mention performance trend ledger');
+assert.ok(contract.required_tests.includes(SCRIPT), 'current release contract must require ledger reader script');
+assert.ok(contract.required_tests.includes(CHECK), 'current release contract must require ledger reader check');
+assert.ok(contract.expected_changed_files.includes(SCRIPT), 'expected changed files must include ledger reader script');
+assert.ok(contract.lock_assertions.some((assertion) => assertion.includes('trend diff ledger')), 'lock assertions must mention trend diff ledger');
 
 for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
-  assert.ok(registry.gates[gate].node_checks.includes(CHECK), `${gate} gate must run performance trend ledger check before browser evidence`);
+  assert.ok(registry.gates[gate].node_checks.includes(CHECK), `${gate} gate must run trend diff ledger check before browser evidence`);
 }
-assert.ok(registry.syntax_matrix.files.includes(SCRIPT), 'syntax matrix must cover trend ledger script');
-assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover trend ledger check');
-assert.equal(registry.hosted_evidence_capture_performance_trend_ledger.version, CURRENT_VERSION);
-assert.equal(registry.hosted_evidence_capture_performance_trend_ledger.ledger_json_required, true);
-assert.equal(registry.hosted_evidence_capture_performance_trend_ledger.slowest_phase_required, true);
+assert.ok(registry.syntax_matrix.files.includes(SCRIPT), 'syntax matrix must cover ledger reader script');
+assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover ledger reader check');
+assert.equal(registry.hosted_evidence_performance_ledger_reader_trend_diff_guard.version, CURRENT_VERSION);
+assert.equal(registry.hosted_evidence_performance_ledger_reader_trend_diff_guard.ledger_json_required, true);
+assert.equal(registry.hosted_evidence_performance_ledger_reader_trend_diff_guard.slowest_phase_required, true);
 
 fs.rmSync(tempRoot, { recursive: true, force: true });
-console.log(`Hosted evidence performance trend ledger checks passed for ${CURRENT_RELEASE}.`);
+console.log(`Hosted evidence trend diff ledger checks passed for ${CURRENT_RELEASE}.`);

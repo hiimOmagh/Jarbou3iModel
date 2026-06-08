@@ -182,8 +182,8 @@ assert.ok(fs.existsSync(path.join(bundleDir, 'logs', 'playwright-install.log')))
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'en', 'landing.validation.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'exports', 'export-pack-v3-manifest.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'checksums', 'SHA256SUMS.txt')));
-assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.json')), 'canonical bundle must include performance trend ledger JSON');
-assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.md')), 'canonical bundle must include performance trend ledger Markdown');
+assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.json')), 'canonical bundle must include trend diff ledger JSON');
+assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.md')), 'canonical bundle must include trend diff ledger Markdown');
 
 console.log('Evidence matrix canonical bundle checks passed.');
 process.exit(0);

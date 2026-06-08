@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.59 Evidence Capture Performance Trend Ledger */
+/* Current public release label: v1.4.0-alpha.60 Evidence Performance Ledger Reader + Trend Diff Guard */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
