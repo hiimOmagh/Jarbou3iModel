@@ -62,13 +62,13 @@ for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
   assert.ok(registry.gates[gate].node_checks.includes(CHECK), `${gate} gate must run evidence performance policy docs check`);
 }
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover docs policy check');
-assert.equal(registry.evidence_performance_policy_docs_operator_playbook.version, CURRENT_VERSION);
-assert.equal(registry.evidence_performance_policy_docs_operator_playbook.runtime_capability_change, false);
-assert.equal(registry.evidence_performance_policy_docs_operator_playbook.provider_behavior_changed, false);
-assert.equal(registry.evidence_performance_policy_docs_operator_playbook.oauth_behavior_changed, false);
-assert.equal(registry.evidence_performance_policy_docs_operator_playbook.backend_behavior_changed, false);
-assert.equal(registry.evidence_performance_policy_docs_operator_playbook.storage_behavior_changed, false);
-assert.equal(registry.evidence_performance_policy_docs_operator_playbook.source_behavior_changed, false);
+assert.equal(registry.evidence_performance_policy_enforcement_wiring.version, CURRENT_VERSION);
+assert.equal(registry.evidence_performance_policy_enforcement_wiring.runtime_capability_change, false);
+assert.equal(registry.evidence_performance_policy_enforcement_wiring.provider_behavior_changed, false);
+assert.equal(registry.evidence_performance_policy_enforcement_wiring.oauth_behavior_changed, false);
+assert.equal(registry.evidence_performance_policy_enforcement_wiring.backend_behavior_changed, false);
+assert.equal(registry.evidence_performance_policy_enforcement_wiring.storage_behavior_changed, false);
+assert.equal(registry.evidence_performance_policy_enforcement_wiring.source_behavior_changed, false);
 
 const suiteEntry = versionSuite.entries.find((entry) => entry.id === 'v140-alpha62');
 assert.ok(suiteEntry, 'version suite registry must include alpha62 policy docs entry');

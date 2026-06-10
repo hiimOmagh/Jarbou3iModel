@@ -102,6 +102,30 @@ function worstPolicyStatus(statuses) {
   return 'pass';
 }
 
+function operatorNextActionsForPolicy(policyStatus, total, warningPhases, failedPhases) {
+  if (policyStatus === 'fail') {
+    const failed = failedPhases.length ? failedPhases.join(', ') : 'total duration';
+    return [
+      `BLOCK MERGE: investigate hosted evidence performance regression in ${failed}.`,
+      'Compare the current and previous performance ledgers before changing browser timeout budgets.',
+      'Attach the trend diff JSON/Markdown to the release review and follow the evidence performance policy playbook.'
+    ];
+  }
+  if (policyStatus === 'warn') {
+    const warned = warningPhases.length ? warningPhases.join(', ') : total.policy_status === 'warn' ? 'total duration' : 'hosted evidence timing';
+    return [
+      `ALLOW MERGE WITH REVIEW: monitor hosted evidence performance warning in ${warned}.`,
+      'Record the trend diff in the operator handoff and compare the next release before widening budgets.',
+      'Escalate to failure policy if the same phase warns in two consecutive releases.'
+    ];
+  }
+  return [
+    'ALLOW MERGE: evidence performance policy passed.',
+    'Keep the trend diff artifact with the lock bundle and continue monitoring the slowest phase.',
+    'No timeout-budget intervention is required.'
+  ];
+}
+
 export function buildHostedEvidencePerformanceTrendDiff({
   currentLedger,
   previousLedger,
@@ -177,12 +201,15 @@ export function buildHostedEvidencePerformanceTrendDiff({
     },
     threshold_policy: {
       status: policyStatus,
+      enforcement_status: policyStatus,
       passed: policyStatus !== 'fail',
       warned: policyStatus === 'warn',
       failed: policyStatus === 'fail',
       total_policy_status: total.policy_status,
       warning_phases: warningPhases,
       failed_phases: regressedPhases,
+      operator_next_action: operatorNextActionsForPolicy(policyStatus, total, warningPhases, regressedPhases)[0],
+      operator_next_actions: operatorNextActionsForPolicy(policyStatus, total, warningPhases, regressedPhases),
       exit_code_on_failure: HOSTED_EVIDENCE_PERFORMANCE_TREND_DIFF_CONTRACT.regression_exit_code
     },
     current: {
@@ -209,7 +236,8 @@ export function buildHostedEvidencePerformanceTrendDiff({
       warning_phases: warningPhases,
       regressed_phases: regressedPhases,
       improved_phases: improvedPhases,
-      phase_count: phaseDiffs.length
+      phase_count: phaseDiffs.length,
+      operator_next_action: operatorNextActionsForPolicy(policyStatus, total, warningPhases, regressedPhases)[0]
     }
   };
 }
@@ -236,6 +264,10 @@ export function renderHostedEvidencePerformanceTrendDiffMarkdown(diff) {
     `- Phase failure threshold: \`${diff.thresholds.phase_failure_threshold_ratio}\``,
     `- Phase utilization warning: \`${diff.thresholds.phase_utilization_warning_ratio}\``,
     `- Phase utilization failure: \`${diff.thresholds.phase_utilization_failure_ratio}\``,
+    '',
+    '## Operator next actions',
+    '',
+    ...diff.threshold_policy.operator_next_actions.map((item) => `- ${item}`),
     '',
     '## Phase trend diff',
     '',
@@ -308,6 +340,7 @@ function main() {
     console.log(`Hosted evidence performance trend diff written: ${result.jsonPath}`);
     console.log(`Threshold policy: ${result.diff.threshold_policy.status}`);
     console.log(`Regression guard: ${result.diff.regression_guard.status}`);
+    console.log(`Operator next action: ${result.diff.threshold_policy.operator_next_action}`);
     console.log(`Total duration delta: ${result.diff.total_duration_diff.delta_ms}ms`);
     if (result.diff.threshold_policy.warning_phases.length) {
       console.log(`Warning phases: ${result.diff.threshold_policy.warning_phases.join(', ')}`);

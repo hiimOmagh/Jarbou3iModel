@@ -55,6 +55,34 @@ function countChecksumRows(bundleDir) {
   return fs.readFileSync(checksumFile, 'utf8').split(/\r?\n/).filter(Boolean).length;
 }
 
+function loadPerformancePolicySummary(bundleDir) {
+  const diff = optionalJson(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-diff.json'), null);
+  if (!diff) {
+    return {
+      status: 'not_evaluated',
+      passed: null,
+      warned: false,
+      failed: false,
+      operator_next_action: 'No performance trend diff artifact was present in this lock bundle.',
+      warning_phases: [],
+      failed_phases: []
+    };
+  }
+  const policy = diff.threshold_policy || {};
+  const guard = diff.regression_guard || {};
+  return {
+    status: policy.status || guard.status || 'unknown',
+    passed: policy.passed === true || guard.passed === true,
+    warned: policy.warned === true || policy.status === 'warn',
+    failed: policy.failed === true || policy.status === 'fail',
+    operator_next_action: policy.operator_next_action || guard.operator_next_action || 'Review hosted evidence performance trend diff before merge.',
+    warning_phases: Array.isArray(policy.warning_phases) ? policy.warning_phases : [],
+    failed_phases: Array.isArray(policy.failed_phases) ? policy.failed_phases : Array.isArray(guard.regressed_phases) ? guard.regressed_phases : [],
+    total_policy_status: policy.total_policy_status || guard.total_policy_status || 'unknown',
+    diff_file: 'performance-trends/hosted-evidence-performance-trend-diff.json'
+  };
+}
+
 function loadTargetedRegionSummary(bundleDir) {
   const manifest = optionalJson(path.join(bundleDir, 'hosted-demo-evidence', 'targeted-region-evidence-manifest.json'), {});
   const regions = Array.isArray(manifest.regions) ? manifest.regions : [];
@@ -77,6 +105,7 @@ export function buildReleaseLockDashboardDigest(bundleDir) {
   const noBrowserLog = parseGateLog(readText(path.join(bundleDir, 'logs', 'no-browser.log')), 'no-browser');
   const browserLog = parseGateLog(readText(path.join(bundleDir, 'logs', 'browser.log')), 'browser');
   const targetedRegions = loadTargetedRegionSummary(bundleDir);
+  const performancePolicy = loadPerformancePolicySummary(bundleDir);
   const identityGuard = evidenceManifest.artifact_identity_guard || {};
   const hostedDemo = evidenceManifest.hosted_demo || {};
   const matrix = evidenceManifest.evidence_matrix || {};
@@ -145,6 +174,7 @@ export function buildReleaseLockDashboardDigest(bundleDir) {
         stale_version_residue_detected: matrix.stale_version_residue_detected === true
       },
       targeted_regions: targetedRegions,
+      performance_policy: performancePolicy,
       exports: {
         export_pack_v3_valid: exportsSummary.export_pack_v3_valid === true,
         golden_workflow_valid: exportsSummary.golden_workflow_valid === true,
@@ -165,6 +195,7 @@ export function buildReleaseLockDashboardDigest(bundleDir) {
       `evidence matrix: ${matrixPassed}/${matrixExpected} rows passed`,
       `hosted demo captures: ${hostedCaptureCount}/4 required root captures`,
       `targeted regions: ${targetedRegions.passed_count}/${targetedRegions.required_count || targetedRegions.actual_count} regions passed`,
+      `performance policy: ${performancePolicy.status} — ${performancePolicy.operator_next_action}`,
       `stale version residue: ${staleVersionResidueDetected ? 'detected' : 'false'}`,
       `lock decision: ${lockable ? 'LOCKABLE' : 'BLOCKED'}`
     ]
@@ -175,6 +206,7 @@ export function renderReleaseLockDashboardMarkdown(digest) {
   const matrix = digest.evidence.evidence_matrix;
   const targeted = digest.evidence.targeted_regions;
   const hosted = digest.evidence.hosted_demo;
+  const performancePolicy = digest.evidence.performance_policy || {};
   const identities = digest.evidence.artifact_identity_guard;
   return [
     `# Release Lock Dashboard — ${digest.release}`,
@@ -200,6 +232,13 @@ export function renderReleaseLockDashboardMarkdown(digest) {
     `- Max horizontal overflow: \`${hosted.max_horizontal_overflow_px}px\``,
     `- Stale version residue: \`${digest.lock_decision.stale_version_residue_detected}\``,
     `- Lockable: \`${digest.lock_decision.lockable}\``,
+    '',
+    '## Evidence performance policy',
+    '',
+    `- Policy status: \`${performancePolicy.status || 'unknown'}\``,
+    `- Operator next action: ${performancePolicy.operator_next_action || 'Review hosted evidence performance trend diff before merge.'}`,
+    `- Warning phases: \`${Array.isArray(performancePolicy.warning_phases) && performancePolicy.warning_phases.length ? performancePolicy.warning_phases.join(', ') : 'none'}\``,
+    `- Failed phases: \`${Array.isArray(performancePolicy.failed_phases) && performancePolicy.failed_phases.length ? performancePolicy.failed_phases.join(', ') : 'none'}\``,
     '',
     '## Reviewer checklist',
     '',

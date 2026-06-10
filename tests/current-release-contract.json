@@ -1,13 +1,13 @@
 {
-  "version": "1.4.0-alpha.62",
-  "milestone_name": "Evidence Performance Policy Docs + Operator Playbook",
+  "version": "1.4.0-alpha.63",
+  "milestone_name": "Evidence Performance Policy Enforcement Wiring",
   "release_type": "product-facing",
   "allowed_scope": [
-    "evidence performance policy operator playbook",
-    "pass/warn/fail interpretation for evidence performance thresholds",
-    "total-duration, phase-duration, and utilization remediation checklist",
-    "operator docs contract test for performance policy guidance",
-    "current release identity update to v1.4.0-alpha.62",
+    "evidence performance policy enforcement wiring",
+    "policy status surfaced in trend diff and dashboard artifacts",
+    "operator next action strings for pass/warn/fail policy outcomes",
+    "deterministic policy wiring tests for pass/warn/fail and dashboard digest",
+    "current release identity update to v1.4.0-alpha.63",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -83,7 +83,8 @@
     "scripts/hosted-evidence-performance-trend-diff.mjs",
     "tests/hosted-evidence-performance-trend-diff-check.mjs",
     "tests/hosted-evidence-performance-threshold-policy-check.mjs",
-    "tests/evidence-performance-policy-docs-check.mjs"
+    "tests/evidence-performance-policy-docs-check.mjs",
+    "tests/evidence-performance-policy-enforcement-wiring-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -259,12 +260,13 @@
     "tests/hosted-evidence-performance-trend-diff-check.mjs",
     "tests/hosted-evidence-performance-threshold-policy-check.mjs",
     "docs/evidence-performance-policy-playbook.md",
-    "tests/evidence-performance-policy-docs-check.mjs"
+    "tests/evidence-performance-policy-docs-check.mjs",
+    "tests/evidence-performance-policy-enforcement-wiring-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.62",
-    "public labels must expose v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.63",
+    "public labels must expose v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring",
     "performance threshold policy guard must compare current and previous hosted evidence timing ledgers",
     "threshold policy guard must classify improved, stable, and regressed timing cases",
     "lock evidence review CLI exit codes must remain stable for automation",
@@ -361,7 +363,7 @@
     "Garde anti-dérive des jetons de texte visible",
     "visible_text_token_drift_guard"
   ],
-  "runtime_scope": "evidence_performance_policy_docs_operator_playbook",
+  "runtime_scope": "evidence_performance_policy_enforcement_wiring",
   "lock_conditions": [],
   "acceptance_criteria": [
     "policy docs explain pass, warn, and fail outcomes",
@@ -384,6 +386,10 @@
     "evidence performance operator playbook documents pass/warn/fail interpretation",
     "operator playbook includes total-duration, phase-duration, and utilization remediation checklists",
     "evidence performance policy docs check is deterministic",
-    "policy docs do not change runtime/provider/OAuth/backend/storage/source behavior"
+    "policy docs do not change runtime/provider/OAuth/backend/storage/source behavior",
+    "performance trend diff artifacts must expose threshold policy status and operator next action",
+    "release dashboard digest must surface evidence performance policy status when a trend diff artifact is present",
+    "operator next action strings must distinguish pass, warn, and fail outcomes",
+    "policy enforcement wiring must remain evidence-only with no runtime/provider/OAuth/backend/storage/source behavior change"
   ]
 }

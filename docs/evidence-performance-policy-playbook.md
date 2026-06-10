@@ -1,6 +1,6 @@
-# Evidence Performance Policy Docs + Operator Playbook
+# Evidence Performance Policy Enforcement Wiring
 
-Current release: v1.4.0-alpha.62 — Evidence Performance Policy Docs + Operator Playbook
+Current release: v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring
 
 This playbook explains how operators should interpret hosted evidence performance threshold output and what to do when a release shows pass, warn, or fail status.
 

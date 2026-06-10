@@ -1,7 +1,7 @@
 {
-  "evidence_matrix_config_version": "1.4.0-alpha.62",
-  "internal_build_version": "1.4.0-alpha.62",
-  "public_version_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
+  "evidence_matrix_config_version": "1.4.0-alpha.63",
+  "internal_build_version": "1.4.0-alpha.63",
+  "public_version_label": "v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring",
   "locales": [
     "en",
     "ar",
@@ -25,7 +25,7 @@
         "الأدلة",
         "تصدير"
       ],
-      "public_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook"
+      "public_label": "v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring"
     },
     "ar": {
       "required": [
@@ -43,7 +43,7 @@
         "Gel de la surface",
         "Revue publication"
       ],
-      "public_label": "v1.4.0-alpha.62 دليل مشغّل سياسة أداء الأدلة"
+      "public_label": "v1.4.0-alpha.63 توصيل إنفاذ سياسة أداء الأدلة"
     },
     "fr": {
       "required": [
@@ -61,7 +61,7 @@
         "مراجعة النشر",
         "تدقيق حدود الادعاءات"
       ],
-      "public_label": "v1.4.0-alpha.62 Guide opérateur politique performance preuves"
+      "public_label": "v1.4.0-alpha.63 Câblage application politique performance preuves"
     }
   },
   "allowed_technical_terms": [
@@ -91,7 +91,7 @@
         "العرض العام جاهز",
         "Démo publique prête"
       ],
-      "public_label": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook"
+      "public_label": "v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring"
     },
     {
       "id": "S02",
@@ -242,8 +242,8 @@
     }
   ],
   "public_version_labels": {
-    "en": "v1.4.0-alpha.62 Evidence Performance Policy Docs + Operator Playbook",
-    "ar": "v1.4.0-alpha.62 دليل مشغّل سياسة أداء الأدلة",
-    "fr": "v1.4.0-alpha.62 Guide opérateur politique performance preuves"
+    "en": "v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring",
+    "ar": "v1.4.0-alpha.63 توصيل إنفاذ سياسة أداء الأدلة",
+    "fr": "v1.4.0-alpha.63 Câblage application politique performance preuves"
   }
 }

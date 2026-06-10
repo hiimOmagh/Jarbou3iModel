@@ -41,7 +41,7 @@ const outputDir = path.join(tempRoot, 'performance-trends');
 writeJson(path.join(bundleDir, 'evidence-manifest.json'), {
   version: CURRENT_VERSION,
   release: CURRENT_RELEASE,
-  public_version_label: `v${CURRENT_VERSION} Evidence Performance Policy Docs + Operator Playbook`,
+  public_version_label: `v${CURRENT_VERSION} Evidence Performance Policy Enforcement Wiring`,
   run_id: 'fixture-run',
   run_attempt: '1',
   commit_sha: 'fixture-sha',
@@ -50,7 +50,7 @@ writeJson(path.join(bundleDir, 'evidence-manifest.json'), {
 writeJson(path.join(bundleDir, 'hosted-demo-evidence', 'hosted-demo-metadata.json'), {
   evidence_review_version: CURRENT_VERSION,
   capture_polish_version: CURRENT_VERSION,
-  public_version_label: `v${CURRENT_VERSION} Evidence Performance Policy Docs + Operator Playbook`,
+  public_version_label: `v${CURRENT_VERSION} Evidence Performance Policy Enforcement Wiring`,
   generated_at: '2026-06-07T00:00:00.000Z',
   timing_budget_guard: {
     guard: 'hosted_evidence_capture_timeout_budget_guard',
@@ -125,9 +125,9 @@ for (const gate of ['no-browser', 'current-no-browser', 'source', 'release']) {
 }
 assert.ok(registry.syntax_matrix.files.includes(SCRIPT), 'syntax matrix must cover trend ledger script');
 assert.ok(registry.syntax_matrix.files.includes(CHECK), 'syntax matrix must cover trend ledger check');
-assert.equal(registry.hosted_evidence_performance_policy_docs_operator_playbook.version, CURRENT_VERSION);
-assert.equal(registry.hosted_evidence_performance_policy_docs_operator_playbook.ledger_json_required, true);
-assert.equal(registry.hosted_evidence_performance_policy_docs_operator_playbook.slowest_phase_required, true);
+assert.equal(registry.hosted_evidence_performance_policy_enforcement_wiring.version, CURRENT_VERSION);
+assert.equal(registry.hosted_evidence_performance_policy_enforcement_wiring.ledger_json_required, true);
+assert.equal(registry.hosted_evidence_performance_policy_enforcement_wiring.slowest_phase_required, true);
 
 fs.rmSync(tempRoot, { recursive: true, force: true });
 console.log(`Hosted evidence trend ledger checks passed for ${CURRENT_RELEASE}.`);
