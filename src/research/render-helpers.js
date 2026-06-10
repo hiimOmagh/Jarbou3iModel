@@ -1,4 +1,4 @@
-/* Current public release label: v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring */
+/* Current public release label: v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion */
 /* current public label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* current-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */
 /* release-truth-public-label: v1.4.0-alpha.43 Targeted Hosted Evidence Capture */

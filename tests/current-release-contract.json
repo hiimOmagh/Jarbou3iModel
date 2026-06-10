@@ -1,13 +1,14 @@
 {
-  "version": "1.4.0-alpha.63",
-  "milestone_name": "Evidence Performance Policy Enforcement Wiring",
+  "version": "1.4.0-alpha.64",
+  "milestone_name": "Live Evidence Performance Trend Diff Bundle Inclusion",
   "release_type": "product-facing",
   "allowed_scope": [
-    "evidence performance policy enforcement wiring",
-    "policy status surfaced in trend diff and dashboard artifacts",
-    "operator next action strings for pass/warn/fail policy outcomes",
-    "deterministic policy wiring tests for pass/warn/fail and dashboard digest",
-    "current release identity update to v1.4.0-alpha.63",
+    "live hosted evidence performance trend diff bundle inclusion",
+    "trend diff JSON and Markdown generated during canonical bundle assembly",
+    "trend diff artifacts checksum-tracked inside the canonical bundle",
+    "release dashboard digest consumes bundled trend diff and reports pass/warn/fail",
+    "deterministic bundle-inclusion and dashboard-evaluation tests",
+    "current release identity update to v1.4.0-alpha.64",
     "no runtime/provider/OAuth/backend/storage/source behavior change"
   ],
   "forbidden_scope": [
@@ -84,7 +85,8 @@
     "tests/hosted-evidence-performance-trend-diff-check.mjs",
     "tests/hosted-evidence-performance-threshold-policy-check.mjs",
     "tests/evidence-performance-policy-docs-check.mjs",
-    "tests/evidence-performance-policy-enforcement-wiring-check.mjs"
+    "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
+    "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs"
   ],
   "required_browser_evidence_files": [
     "desktop-first-screen.png",
@@ -261,12 +263,15 @@
     "tests/hosted-evidence-performance-threshold-policy-check.mjs",
     "docs/evidence-performance-policy-playbook.md",
     "tests/evidence-performance-policy-docs-check.mjs",
-    "tests/evidence-performance-policy-enforcement-wiring-check.mjs"
+    "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
+    "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs"
   ],
   "artifact_identity_rules": [
-    "package/docs/manifest/registry versions must match v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring",
-    "hosted evidence must report internal_build_version 1.4.0-alpha.63",
-    "public labels must expose v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring",
+    "release dashboard performance policy must evaluate bundled trend diff as pass, warn, or fail instead of not_evaluated when the diff artifact is present",
+    "canonical lock bundle must include hosted evidence performance trend diff JSON and Markdown",
+    "package/docs/manifest/registry versions must match v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion",
+    "hosted evidence must report internal_build_version 1.4.0-alpha.64",
+    "public labels must expose v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion",
     "performance threshold policy guard must compare current and previous hosted evidence timing ledgers",
     "threshold policy guard must classify improved, stable, and regressed timing cases",
     "lock evidence review CLI exit codes must remain stable for automation",
@@ -282,6 +287,9 @@
     "implementation_or_test_delta_required"
   ],
   "stale_current_release_tokens": [
+    "v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring",
+    "v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring",
+    "Evidence Performance Policy Enforcement Wiring",
     "evidence_capture_performance_trend_ledger",
     "Registre tendance performance capture preuves",
     "سجل اتجاه أداء التقاط الأدلة",

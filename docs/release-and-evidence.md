@@ -165,12 +165,12 @@ adapter replay fixture corpus; coverage matrix; no-network replay QA; ephemeral 
 
 Current operator usage for the read-only lock evidence review CLI is documented in `docs/lock-evidence-review-cli.md`. The required commands cover extracted bundles, ZIP bundles, JSON output, missing digest failure, checksum omission failure, and CI smoke expectations.
 
-## v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring — CLI exit-code hardening
+## v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion — CLI exit-code hardening
 
-v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring
-v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring
+v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion
+v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion
 
-Evidence Performance Policy Enforcement Wiring formalizes the read-only lock evidence review CLI exit-code contract and failure-family classification for automation. It distinguishes usage errors, input errors, bundle-contract errors, checksum-contract errors, and non-lockable lock decisions without changing runtime behavior.
+Live Evidence Performance Trend Diff Bundle Inclusion formalizes the read-only lock evidence review CLI exit-code contract and failure-family classification for automation. It distinguishes usage errors, input errors, bundle-contract errors, checksum-contract errors, and non-lockable lock decisions without changing runtime behavior.
 
 Boundary continuity: no live provider calls, no live scraping, no OAuth/token lifecycle change, no backend/storage/source behavior change, no automatic source verification, no automatic signoff, no automatic export lock, no status persistence, no batch mutation, no navigation-state persistence, no cryptographic signature claim, and no publication permission claim.
 
@@ -178,16 +178,16 @@ Release lock remains evidence-gated: no-browser, browser, hosted metadata, targe
 
 Planning/control-plane only: Product surface is frozen and the CLI remains read-only evidence tooling.
 
-## v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring
+## v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion
 
 - Adds hosted evidence capture timeout budget guard.
 - Records capture timing and timeout budget metadata for hosted-demo evidence phases.
 - Preserves runtime/provider/OAuth/backend/storage/source behavior.
 
-## v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring
+## v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion
 
-v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring
-v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring
+v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion
+v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion
 
 - Adds an operator playbook for evidence performance threshold outcomes.
 - Documents pass/warn/fail interpretation for total-duration, phase-duration, and utilization policy.

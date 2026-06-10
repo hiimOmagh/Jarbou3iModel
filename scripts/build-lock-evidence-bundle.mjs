@@ -6,6 +6,7 @@ import os from 'node:os';
 import { writeReleaseLockDashboardDigest } from './release-lock-dashboard-digest.mjs';
 import { validateReleaseLockDashboardBundle } from './release-lock-dashboard-schema-contract.mjs';
 import { writeHostedEvidencePerformanceTrendLedger } from './hosted-evidence-performance-trend-ledger.mjs';
+import { writeHostedEvidencePerformanceTrendDiff } from './hosted-evidence-performance-trend-diff.mjs';
 
 const root = process.cwd();
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
@@ -39,6 +40,21 @@ function maybeCopy(src, dst){ if(fs.existsSync(src)) copyFile(src,dst); }
 function fail(message){ console.error(`lock-evidence-bundle failed: ${message}`); process.exit(1); }
 function textIncludes(file, token){ return fs.existsSync(file) && fs.readFileSync(file,'utf8').includes(token); }
 function maxOverflow(rows){ return Math.max(0, ...rows.map((row)=>Number(row.horizontal_overflow_px || row.horizontal_overflow_max_px || 0))); }
+
+function resolvePreviousPerformanceTrendLedgerFile(currentLedgerFile){
+  const candidates = [
+    process.env.HOSTED_EVIDENCE_PREVIOUS_PERFORMANCE_LEDGER_FILE,
+    process.env.PREVIOUS_HOSTED_EVIDENCE_PERFORMANCE_LEDGER_FILE,
+    path.join(inputDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.json'),
+    path.join(inputDir, 'previous-performance-trends', 'hosted-evidence-performance-trend-ledger.json'),
+    path.join(inputDir, 'hosted-evidence-performance-trend-ledger.json')
+  ].filter(Boolean);
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return { file: candidate, source: 'provided_previous_ledger' };
+  }
+  return { file: currentLedgerFile, source: 'current_ledger_first_run_baseline' };
+}
+
 
 function validateArtifactIdentity({artifactKind, jobName, file}){
   if(!fs.existsSync(file)) fail(`missing artifact identity ${artifactKind}: ${file}`);
@@ -215,8 +231,24 @@ const manifest={
 };
 writeJson(path.join(bundleDir,'evidence-manifest.json'), manifest);
 fs.writeFileSync(path.join(bundleDir,'evidence-manifest.md'), `# ${release}\n\n- Internal build version: \`${version}\`\n- Public version label: \`${publicVersionLabel}\`\n- Run ID: \`${runId}\`\n- Commit: \`${commitSha}\`\n- Branch: \`${branch}\`\n- Hosted evidence version: \`${metadata.evidence_review_version}\`\n- Root capture count: \`${metadata.capture_count}\`\n- Evidence matrix rows: \`${matrixSummary.passed_rows}/${matrixSummary.expected_rows}\`\n- Required captures present: \`${metadata.all_required_captures_present}\`\n- Max horizontal overflow: \`${manifest.evidence_matrix.horizontal_overflow_max_px}\`\n- Language purity: \`${manifest.evidence_matrix.language_purity_passed}\`\n- Bundle validation: \`${manifest.bundle_validation.status}\`\n`);
+const performanceTrendDir = path.join(bundleDir, 'performance-trends');
+const performanceLedgerResult = writeHostedEvidencePerformanceTrendLedger(bundleDir, performanceTrendDir);
+const previousPerformanceLedger = resolvePreviousPerformanceTrendLedgerFile(performanceLedgerResult.jsonPath);
+writeHostedEvidencePerformanceTrendDiff({
+  currentLedgerFile: performanceLedgerResult.jsonPath,
+  previousLedgerFile: previousPerformanceLedger.file,
+  outputDir: performanceTrendDir
+});
+const performanceTrendDiffFile = path.join(performanceTrendDir, 'hosted-evidence-performance-trend-diff.json');
+const performanceTrendDiff = readJson(performanceTrendDiffFile);
+performanceTrendDiff.bundle_inclusion = {
+  included_in_canonical_lock_bundle: true,
+  previous_ledger_source: previousPerformanceLedger.source,
+  previous_ledger_file: previousPerformanceLedger.source === 'provided_previous_ledger' ? path.basename(previousPerformanceLedger.file) : 'current ledger first-run baseline',
+  dashboard_evaluation_expected: true
+};
+writeJson(performanceTrendDiffFile, performanceTrendDiff);
 writeReleaseLockDashboardDigest(bundleDir, path.join(bundleDir, 'release-lock-dashboard'));
-writeHostedEvidencePerformanceTrendLedger(bundleDir, path.join(bundleDir, 'performance-trends'));
 
 const checksumLines=listFiles(bundleDir).filter((file)=>!file.endsWith('SHA256SUMS.txt')).map((file)=>`${sha256(file)}  ${path.relative(bundleDir,file).replaceAll(path.sep,'/')}`).join('\n') + '\n';
 ensureDir(path.join(bundleDir,'checksums'));

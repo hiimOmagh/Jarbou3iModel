@@ -1,23 +1,23 @@
 const CURRENT_RELEASE_IDENTITY = Object.freeze({
-  version: '1.4.0-alpha.63',
-  title: 'Evidence Performance Policy Enforcement Wiring',
-  release: 'v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring',
-  publicLabel: 'v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring',
+  version: '1.4.0-alpha.64',
+  title: 'Live Evidence Performance Trend Diff Bundle Inclusion',
+  release: 'v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion',
+  publicLabel: 'v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion',
   runtimeScope: 'evidence_performance_policy_enforcement_wiring'
 });
 
-/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.63. */
+/* Jarbou3i Research Engine release copy contract 1.4.0-alpha.64. */
 (function(global){
   'use strict';
   const contract = Object.freeze({
-    version: '1.4.0-alpha.63',
-    release: 'v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring',
-    releaseTitle: 'v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring',
-    milestone: 'Evidence Performance Policy Enforcement Wiring',
+    version: '1.4.0-alpha.64',
+    release: 'v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion',
+    releaseTitle: 'v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion',
+    milestone: 'Live Evidence Performance Trend Diff Bundle Inclusion',
     publicVersionLabels: Object.freeze({
-      en: 'v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring',
-      ar: 'v1.4.0-alpha.63 توصيل إنفاذ سياسة أداء الأدلة',
-      fr: 'v1.4.0-alpha.63 Câblage application politique performance preuves'
+      en: 'v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion',
+      ar: 'v1.4.0-alpha.64 توصيل إنفاذ سياسة أداء الأدلة',
+      fr: 'v1.4.0-alpha.64 Câblage application politique performance preuves'
     }),
     expectedCurrentReleaseDescriptionTokens: Object.freeze({
       en: Object.freeze(['policy enforcement', 'operator next action']),
@@ -76,27 +76,27 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
     ]),
     copy: Object.freeze({
       en: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring · policy enforcement',
-        hostedDemoVerificationBody: 'Evidence Performance Policy Enforcement Wiring is ready for release evidence: the trend diff now exposes policy enforcement status and operator next action guidance for pass, warning, and failure outcomes before browser evidence becomes flaky. Hosted evidence must report 1.4.0-alpha.63 internally while showing v1.4.0-alpha.63 Evidence Performance Policy Enforcement Wiring to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
-        analysisReleaseNote: '1.4.0-alpha.63 wires evidence performance policy status and operator next actions into release review artifacts.',
-        adapterReplayReviewPackPreviewTitle: 'Evidence Performance Policy Enforcement Wiring',
+        alphaBadge: 'v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion · policy enforcement',
+        hostedDemoVerificationBody: 'Live Evidence Performance Trend Diff Bundle Inclusion is ready for release evidence: the trend diff now exposes policy enforcement status and operator next action guidance for pass, warning, and failure outcomes before browser evidence becomes flaky. Hosted evidence must report 1.4.0-alpha.64 internally while showing v1.4.0-alpha.64 Live Evidence Performance Trend Diff Bundle Inclusion to users. Evidence capture only: no live provider calls, hidden network requests, OAuth/token lifecycle, credential persistence, live source fetching, automatic source verification, signoff, export lock, status persistence, batch mutation, navigation-state persistence, cryptographic signature claim, or publication permission is enabled.',
+        analysisReleaseNote: '1.4.0-alpha.64 wires evidence performance policy status and operator next actions into release review artifacts.',
+        adapterReplayReviewPackPreviewTitle: 'Live Evidence Performance Trend Diff Bundle Inclusion',
         adapterReplayReviewPackPreviewBody: 'Release governance view: policy status, operator next action, slowest hosted evidence phase, timing history, and lock evidence budget status. No live provider calls.',
-        adapterReplayOperatorWorkflowTitle: 'Evidence Performance Policy Enforcement Wiring',
-        adapterReplayOperatorWorkflowBody: 'Evidence Performance Policy Enforcement Wiring: policy enforcement, operator next action, phase timing, and timeout budget visibility for operator handoff inside the operator control room stage board and release evidence lane. no live provider calls. No automatic verification, signoff, export lock, persistence, or publication permission.'
+        adapterReplayOperatorWorkflowTitle: 'Live Evidence Performance Trend Diff Bundle Inclusion',
+        adapterReplayOperatorWorkflowBody: 'Live Evidence Performance Trend Diff Bundle Inclusion: policy enforcement, operator next action, phase timing, and timeout budget visibility for operator handoff inside the operator control room stage board and release evidence lane. no live provider calls. No automatic verification, signoff, export lock, persistence, or publication permission.'
       }),
       ar: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.63 توصيل إنفاذ سياسة أداء الأدلة · ميزانية المهلة',
-        hostedDemoVerificationBody: 'توصيل إنفاذ سياسة أداء الأدلة جاهز لأدلة الإصدار: يربط إنفاذ السياسة والإجراء التالي للمشغّل بنتائج النجاح والتحذير والفشل قبل أن تختفي تراجعات المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.63 مع عرض v1.4.0-alpha.63 توصيل إنفاذ سياسة أداء الأدلة للمستخدمين. سجل اتجاه الأدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
-        analysisReleaseNote: 'يربط 1.4.0-alpha.63 حالة سياسة أداء الأدلة والإجراء التالي بمراجعة القفل.',
+        alphaBadge: 'v1.4.0-alpha.64 توصيل إنفاذ سياسة أداء الأدلة · ميزانية المهلة',
+        hostedDemoVerificationBody: 'توصيل إنفاذ سياسة أداء الأدلة جاهز لأدلة الإصدار: يربط إنفاذ السياسة والإجراء التالي للمشغّل بنتائج النجاح والتحذير والفشل قبل أن تختفي تراجعات المتصفح. يجب أن تعلن أدلة الاستضافة داخلياً 1.4.0-alpha.64 مع عرض v1.4.0-alpha.64 توصيل إنفاذ سياسة أداء الأدلة للمستخدمين. سجل اتجاه الأدلة فقط: دون نداءات مزوّد حية، دون طلبات شبكة مخفية، دون OAuth أو دورة رموز، دون تخزين بيانات اعتماد، دون جلب مصادر حي، ودون تحقق آلي من المصادر أو توقيع أو قفل تصدير أو حفظ حالة أو تعديل دفعات أو حفظ حالة التنقل أو تصريح نشر.',
+        analysisReleaseNote: 'يربط 1.4.0-alpha.64 حالة سياسة أداء الأدلة والإجراء التالي بمراجعة القفل.',
         adapterReplayReviewPackPreviewTitle: 'حارس ميزانية مهلة التقاط الأدلة',
         adapterReplayReviewPackPreviewBody: 'عرض حوكمة الإصدار: سجل دليل المشغّل، أبطأ مرحلة، سجل التوقيت، وحالة الميزانية. دون نداءات مزوّد حية.',
         adapterReplayOperatorWorkflowTitle: 'حارس ميزانية مهلة التقاط الأدلة',
         adapterReplayOperatorWorkflowBody: 'توصيل إنفاذ سياسة أداء الأدلة: وضوح إنفاذ السياسة وأبطأ مرحلة داخل مسار أدلة الإصدار. دون تحقق آلي أو اعتماد أو قفل تصدير أو حفظ حالة أو تصريح نشر.'
       }),
       fr: Object.freeze({
-        alphaBadge: 'v1.4.0-alpha.63 Câblage application politique performance preuves · budget délai',
-        hostedDemoVerificationBody: 'Câblage application politique performance preuves est prêt pour les preuves de release : l’application politique et l’action suivante opérateur relient les états pass/warn/fail aux artefacts de revue avant que les régressions navigateur deviennent cachées. Les preuves hébergées doivent annoncer 1.4.0-alpha.63 en interne tout en affichant v1.4.0-alpha.63 Câblage application politique performance preuves aux utilisateurs. Registre de tendance uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
-        analysisReleaseNote: '1.4.0-alpha.63 relie l’état de politique performance et l’action suivante à la revue de verrouillage.',
+        alphaBadge: 'v1.4.0-alpha.64 Câblage application politique performance preuves · budget délai',
+        hostedDemoVerificationBody: 'Câblage application politique performance preuves est prêt pour les preuves de release : l’application politique et l’action suivante opérateur relient les états pass/warn/fail aux artefacts de revue avant que les régressions navigateur deviennent cachées. Les preuves hébergées doivent annoncer 1.4.0-alpha.64 en interne tout en affichant v1.4.0-alpha.64 Câblage application politique performance preuves aux utilisateurs. Registre de tendance uniquement : aucun appel fournisseur réel, requête réseau cachée, OAuth/cycle token, persistance d’identifiants, fetch source live, vérification automatique des sources, visa, verrou d’export, persistance de statut, mutation batch, persistance d’état de navigation, signature cryptographique ou permission de publication.',
+        analysisReleaseNote: '1.4.0-alpha.64 relie l’état de politique performance et l’action suivante à la revue de verrouillage.',
         adapterReplayReviewPackPreviewTitle: 'Garde budget délai capture preuves',
         adapterReplayReviewPackPreviewBody: 'Vue gouvernance release : registre guide opérateur, phase la plus lente, historique timing et état budget. Aucun appel fournisseur réel.',
         adapterReplayOperatorWorkflowTitle: 'Garde budget délai capture preuves',
@@ -118,8 +118,8 @@ const CURRENT_RELEASE_IDENTITY = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.63 توصيل إنفاذ سياسة أداء الأدلة',
-    fr: 'v1.4.0-alpha.63 Câblage application politique performance preuves'
+    ar: 'v1.4.0-alpha.64 توصيل إنفاذ سياسة أداء الأدلة',
+    fr: 'v1.4.0-alpha.64 Câblage application politique performance preuves'
   });
 })();
 
@@ -140,8 +140,8 @@ const CURRENT_BROWSER_VISIBLE_TEXT_CONTRACT = Object.freeze({
   contract.milestone = CURRENT_RELEASE_IDENTITY.title;
   contract.publicVersionLabels = Object.assign({}, contract.publicVersionLabels || {}, {
     en: CURRENT_RELEASE_IDENTITY.publicLabel,
-    ar: 'v1.4.0-alpha.63 توصيل إنفاذ سياسة أداء الأدلة',
-    fr: 'v1.4.0-alpha.63 Câblage application politique performance preuves'
+    ar: 'v1.4.0-alpha.64 توصيل إنفاذ سياسة أداء الأدلة',
+    fr: 'v1.4.0-alpha.64 Câblage application politique performance preuves'
   });
 
   contract.requiredVisibleText = Object.assign({}, contract.requiredVisibleText || {}, CURRENT_BROWSER_VISIBLE_TEXT_CONTRACT);

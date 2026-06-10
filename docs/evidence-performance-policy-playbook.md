@@ -1,6 +1,6 @@
-# Evidence Performance Policy Enforcement Wiring
+# Live Evidence Performance Trend Diff Bundle Inclusion
 
-Current release: v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring
+Current release: v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion
 
 This playbook explains how operators should interpret hosted evidence performance threshold output and what to do when a release shows pass, warn, or fail status.
 

@@ -204,6 +204,17 @@ assert.equal(manifest.browser.playwright_install_log_file, 'logs/playwright-inst
 assert.ok(fs.existsSync(path.join(bundleDir, 'checksums', 'SHA256SUMS.txt')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.json')), 'bundle must include hosted evidence threshold policy ledger JSON');
 assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-ledger.md')), 'bundle must include hosted evidence threshold policy ledger Markdown');
+assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-diff.json')), 'bundle must include live hosted evidence trend diff JSON');
+assert.ok(fs.existsSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-diff.md')), 'bundle must include live hosted evidence trend diff Markdown');
+const trendDiff = JSON.parse(fs.readFileSync(path.join(bundleDir, 'performance-trends', 'hosted-evidence-performance-trend-diff.json'), 'utf8'));
+assert.equal(trendDiff.bundle_inclusion.included_in_canonical_lock_bundle, true, 'trend diff must be marked as included in canonical bundle');
+assert.notEqual(trendDiff.threshold_policy.status, 'not_evaluated', 'trend diff policy must evaluate to pass/warn/fail');
+const dashboardDigest = JSON.parse(fs.readFileSync(path.join(bundleDir, 'release-lock-dashboard', 'release-lock-dashboard-digest.json'), 'utf8'));
+assert.notEqual(dashboardDigest.evidence.performance_policy.status, 'not_evaluated', 'dashboard must consume bundled live trend diff');
+assert.equal(dashboardDigest.evidence.performance_policy.diff_file, 'performance-trends/hosted-evidence-performance-trend-diff.json');
+const checksumText = fs.readFileSync(path.join(bundleDir, 'checksums', 'SHA256SUMS.txt'), 'utf8');
+assert.ok(checksumText.includes('performance-trends/hosted-evidence-performance-trend-diff.json'), 'checksums must track trend diff JSON');
+assert.ok(checksumText.includes('performance-trends/hosted-evidence-performance-trend-diff.md'), 'checksums must track trend diff Markdown');
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'hosted-demo-metadata.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'matrix-summary.json')));
 assert.ok(fs.existsSync(path.join(bundleDir, 'hosted-demo-evidence', 'en', 'landing.validation.json')));

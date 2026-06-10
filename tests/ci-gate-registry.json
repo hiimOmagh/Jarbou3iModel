@@ -1,6 +1,6 @@
 {
-  "ci_gate_registry_version": "1.4.0-alpha.63",
-  "release_title": "v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring",
+  "ci_gate_registry_version": "1.4.0-alpha.64",
+  "release_title": "v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion",
   "registry_type": "ci_gate_registry",
   "runtime_capability_change": false,
   "provider_behavior_changed": false,
@@ -45,6 +45,7 @@
         "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/hosted-evidence-performance-threshold-policy-check.mjs",
         "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
+        "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs",
         "tests/evidence-performance-policy-docs-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
@@ -234,6 +235,7 @@
         "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/hosted-evidence-performance-threshold-policy-check.mjs",
         "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
+        "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs",
         "tests/evidence-performance-policy-docs-check.mjs",
         "tests/bulk-current-no-browser-diagnosis-check.mjs",
         "tests/bulk-diagnosis-ux-report-check.mjs",
@@ -452,6 +454,7 @@
         "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/hosted-evidence-performance-threshold-policy-check.mjs",
         "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
+        "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs",
         "tests/evidence-performance-policy-docs-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs"
       ],
@@ -656,6 +659,7 @@
         "tests/hosted-evidence-performance-trend-diff-check.mjs",
         "tests/hosted-evidence-performance-threshold-policy-check.mjs",
         "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
+        "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs",
         "tests/evidence-performance-policy-docs-check.mjs",
         "tests/manual-workflow-ux-consolidation-check.mjs",
         "tests/current-release-lock-completion-check.mjs",
@@ -702,7 +706,7 @@
     }
   },
   "runtime_optimization": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "optimization_scope": "evidence_performance_policy_enforcement_wiring",
     "provider_behavior_changed": false,
     "oauth_behavior_changed": false,
@@ -710,17 +714,17 @@
     "source_behavior_changed": false,
     "storage_behavior_changed": false,
     "name": "evidence_performance_policy_enforcement_wiring",
-    "current_candidate": "1.4.0-alpha.63",
+    "current_candidate": "1.4.0-alpha.64",
     "syntax_matrix_parallelization_enabled": true,
     "node_check_parallelization_enabled": false,
     "runtime_capability_change": false,
     "previous_serial_no_browser_syntax_checks": 7,
     "description": "Release-governance hardening: wires hosted evidence performance threshold policy status and operator next actions into trend diff and dashboard review artifacts.",
     "scope": "evidence_performance_policy_enforcement_wiring",
-    "release": "v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring"
+    "release": "v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion"
   },
   "syntax_matrix": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "runner": "tests/syntax-matrix-check.mjs",
     "files": [
       "src/app.js",
@@ -950,13 +954,14 @@
       "tests/hosted-evidence-performance-threshold-policy-check.mjs",
       "tests/evidence-performance-policy-docs-check.mjs",
       "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
-      "scripts/release-lock-dashboard-digest.mjs"
+      "scripts/release-lock-dashboard-digest.mjs",
+      "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs"
     ],
     "parallelizable": true,
     "concurrency_env": "CI_SYNTAX_CONCURRENCY"
   },
   "hosted_evidence_capture_polish": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "hosted_demo_evidence_capture_settle_and_visual_artifact_guard",
     "screenshot_settle_required": true,
     "visual_artifact_guard_required": true,
@@ -976,7 +981,7 @@
     "storage_behavior_changed": false
   },
   "debt_readiness_audit": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "fixture_test_debt_ledger_source_file_refactor_readiness_and_language_description_audit",
     "runtime_capability_change": false,
     "provider_behavior_changed": false,
@@ -1132,10 +1137,11 @@
     "tests/hosted-evidence-performance-trend-ledger-check.mjs",
     "scripts/hosted-evidence-performance-trend-diff.mjs",
     "tests/hosted-evidence-performance-trend-diff-check.mjs",
-    "tests/evidence-performance-policy-enforcement-wiring-check.mjs"
+    "tests/evidence-performance-policy-enforcement-wiring-check.mjs",
+    "tests/live-evidence-performance-trend-diff-bundle-inclusion-check.mjs"
   ],
   "release_digest_schema_contract": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "evidence_performance_policy_enforcement_wiring",
     "dashboard_json_required": true,
     "dashboard_markdown_required": true,
@@ -1150,7 +1156,7 @@
     "storage_behavior_changed": false
   },
   "lock_bundle_schema_enforcement_ci": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "evidence_performance_policy_enforcement_wiring",
     "workflow_enforcement_required": true,
     "build_script_enforcement_required": true,
@@ -1160,7 +1166,7 @@
     "enforcement_must_run_before_upload": true
   },
   "lock_evidence_review_cli_exit_codes": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "evidence_performance_policy_enforcement_wiring",
     "success": 0,
     "usage_error": 64,
@@ -1178,8 +1184,8 @@
     ]
   },
   "evidence_performance_policy_enforcement_wiring": {
-    "version": "1.4.0-alpha.63",
-    "release": "v1.4.0-alpha.63 — Evidence Performance Policy Enforcement Wiring",
+    "version": "1.4.0-alpha.64",
+    "release": "v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion",
     "scope": "evidence_performance_policy_enforcement_wiring",
     "trend_diff_policy_status_required": true,
     "dashboard_digest_policy_status_required": true,
@@ -1193,7 +1199,7 @@
     "source_behavior_changed": false
   },
   "hosted_evidence_performance_policy_enforcement_wiring": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "evidence_performance_policy_enforcement_wiring",
     "ledger_json_required": true,
     "ledger_markdown_required": true,
@@ -1209,7 +1215,7 @@
     "storage_behavior_changed": false
   },
   "hosted_evidence_capture_timeout_budget_guard": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "hosted_evidence_capture_timeout_budget_guard",
     "timing_metadata_required": true,
     "phase_budget_records_required": true,
@@ -1223,7 +1229,7 @@
     "storage_behavior_changed": false
   },
   "evidence_performance_trend_diff_guard": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "evidence_performance_policy_enforcement_wiring",
     "previous_ledger_required": true,
     "current_ledger_required": true,
@@ -1243,7 +1249,7 @@
     "threshold_policy_required": true
   },
   "evidence_performance_trend_threshold_policy": {
-    "version": "1.4.0-alpha.63",
+    "version": "1.4.0-alpha.64",
     "scope": "evidence_performance_policy_enforcement_wiring",
     "total_warning_threshold_ratio": 0.1,
     "total_failure_threshold_ratio": 0.2,
@@ -1261,5 +1267,23 @@
     "backend_behavior_changed": false,
     "source_behavior_changed": false,
     "storage_behavior_changed": false
+  },
+  "live_evidence_performance_trend_diff_bundle_inclusion": {
+    "release": "v1.4.0-alpha.64 — Live Evidence Performance Trend Diff Bundle Inclusion",
+    "generated_artifacts": [
+      "performance-trends/hosted-evidence-performance-trend-diff.json",
+      "performance-trends/hosted-evidence-performance-trend-diff.md"
+    ],
+    "dashboard_policy_statuses": [
+      "pass",
+      "warn",
+      "fail"
+    ],
+    "first_run_baseline": "current_ledger_first_run_baseline",
+    "previous_ledger_env_vars": [
+      "HOSTED_EVIDENCE_PREVIOUS_PERFORMANCE_LEDGER_FILE",
+      "PREVIOUS_HOSTED_EVIDENCE_PERFORMANCE_LEDGER_FILE"
+    ],
+    "behavior_scope": "evidence-only bundle assembly; no runtime/provider/OAuth/backend/storage/source behavior change"
   }
 }

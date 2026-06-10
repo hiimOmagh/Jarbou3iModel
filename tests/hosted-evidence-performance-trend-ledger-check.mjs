@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { CURRENT_RELEASE, CURRENT_RUNTIME_SCOPE, CURRENT_VERSION } from './current-release-identity.mjs';
+import { CURRENT_PUBLIC_LABEL, CURRENT_RELEASE, CURRENT_RUNTIME_SCOPE, CURRENT_VERSION } from './current-release-identity.mjs';
 
 const SCRIPT = 'scripts/hosted-evidence-performance-trend-ledger.mjs';
 const BUILDER = 'scripts/build-lock-evidence-bundle.mjs';
@@ -41,7 +41,7 @@ const outputDir = path.join(tempRoot, 'performance-trends');
 writeJson(path.join(bundleDir, 'evidence-manifest.json'), {
   version: CURRENT_VERSION,
   release: CURRENT_RELEASE,
-  public_version_label: `v${CURRENT_VERSION} Evidence Performance Policy Enforcement Wiring`,
+  public_version_label: CURRENT_PUBLIC_LABEL,
   run_id: 'fixture-run',
   run_attempt: '1',
   commit_sha: 'fixture-sha',
@@ -50,7 +50,7 @@ writeJson(path.join(bundleDir, 'evidence-manifest.json'), {
 writeJson(path.join(bundleDir, 'hosted-demo-evidence', 'hosted-demo-metadata.json'), {
   evidence_review_version: CURRENT_VERSION,
   capture_polish_version: CURRENT_VERSION,
-  public_version_label: `v${CURRENT_VERSION} Evidence Performance Policy Enforcement Wiring`,
+  public_version_label: CURRENT_PUBLIC_LABEL,
   generated_at: '2026-06-07T00:00:00.000Z',
   timing_budget_guard: {
     guard: 'hosted_evidence_capture_timeout_budget_guard',
