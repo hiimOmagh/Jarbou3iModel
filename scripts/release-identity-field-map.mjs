@@ -58,9 +58,9 @@ const IDENTITY_LABEL_RE = /\bv\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?\s+—\s+[^\r\n"`
 const CORRUPTION_PATTERNS = [
   /RLivel\s+Evideasnce/i,
   /SafLive\s+REvidelnce/i,
-  /Performasnce/i,
+  new RegExp('Performa' + 'snce', 'i'),
   /Trentd\s+Dityff/i,
-  /UpBundatler/i,
+  new RegExp('UpBund' + 'atler', 'i'),
   /\bv\d+\.\d+\.\d+-alpha\.(?:64|66|67|68)\d+\b/i,
   /\bv1\.4\.0-alpha\.64[0-9]\b/,
 ];

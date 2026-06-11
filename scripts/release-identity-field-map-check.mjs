@@ -49,7 +49,7 @@ for (const token of requiredDocTokens) {
 const badPatterns = [
   /RLivel\s+Evideasnce/i,
   /SafLive\s+REvidelnce/i,
-  /Performasnce/i,
+  new RegExp('Performa' + 'snce', 'i'),
   /Trentd\s+Dityff/i,
   /\bv1\.4\.0-alpha\.64[0-9]\b/,
 ];

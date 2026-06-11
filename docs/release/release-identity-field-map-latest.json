@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-06-11T18:18:11.496Z",
+  "generated_at": "2026-06-11T18:36:36.605Z",
   "generated_by": "release-identity-field-map.mjs",
   "mode": "diagnostic_only_no_release_identity_mutation",
   "git": {
     "branch": "v1.4.0-alpha.68-release-identity-field-map",
-    "head": "4f9d679715693cdd5a10aea141e993ebadad463d",
-    "status_short": "?? docs/release/release-identity-field-map.md\n?? scripts/release-identity-field-map-check.mjs\n?? scripts/release-identity-field-map.mjs"
+    "head": "85d321a4b9444c89081f125af682a0bccc8310f0",
+    "status_short": "D docs/release/release-identity-field-map-latest.json\n M scripts/release-identity-field-map-check.mjs\n M scripts/release-identity-field-map.mjs"
   },
   "current_detected_identity": {
     "version": "1.4.0-alpha.64",
@@ -533,7 +533,7 @@
     "current_owner_candidate_files": 22,
     "historical_reference_candidate_files": 308,
     "tests_asserting_current_identity_files": 4,
-    "corruption_findings": 3
+    "corruption_findings": 0
   },
   "release_versions_found": [
     "v0.11.0",
@@ -23709,22 +23709,6 @@
     "release": "v1.4.0-alpha.69 — Structured Release Identity Mutation",
     "condition": "Only after this field map is reviewed and the safe-update allowlist is encoded from json_identity_fields and known exported constants."
   },
-  "corruption_findings": [
-    {
-      "file": "scripts/release-identity-field-map-check.mjs",
-      "pattern": "/Performasnce/i",
-      "sample": "Performasnce"
-    },
-    {
-      "file": "scripts/release-identity-field-map.mjs",
-      "pattern": "/Performasnce/i",
-      "sample": "Performasnce"
-    },
-    {
-      "file": "scripts/release-identity-field-map.mjs",
-      "pattern": "/UpBundatler/i",
-      "sample": "UpBundatler"
-    }
-  ],
+  "corruption_findings": [],
   "read_errors": []
 }
