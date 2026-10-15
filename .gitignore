@@ -3,3 +3,8 @@ playwright-report/
 test-results/
 .DS_Store
 *.log
+
+# Secrets & reference clones (Remotion video project)
+.env
+.env.*
+.repo-ref/

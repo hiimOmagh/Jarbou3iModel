@@ -1,0 +1,735 @@
+{
+  "fps": 30,
+  "generatedAt": "2026-10-15T20:15:02.762Z",
+  "scenes": {
+    "hook": {
+      "audioFile": "tts/scene-hook.mp3",
+      "source": "elevenlabs",
+      "audioEndSeconds": 10.266,
+      "durationInSeconds": 10.866,
+      "durationInFrames": 326,
+      "captions": [
+        {
+          "text": "Every",
+          "startMs": 0,
+          "endMs": 313,
+          "timestampMs": 0,
+          "confidence": 1
+        },
+        {
+          "text": " major",
+          "startMs": 383,
+          "endMs": 650,
+          "timestampMs": 383,
+          "confidence": 1
+        },
+        {
+          "text": " policy",
+          "startMs": 708,
+          "endMs": 1173,
+          "timestampMs": 708,
+          "confidence": 1
+        },
+        {
+          "text": " or",
+          "startMs": 1242,
+          "endMs": 1312,
+          "timestampMs": 1242,
+          "confidence": 1
+        },
+        {
+          "text": " crisis",
+          "startMs": 1370,
+          "endMs": 1765,
+          "timestampMs": 1370,
+          "confidence": 1
+        },
+        {
+          "text": " arrives",
+          "startMs": 1811,
+          "endMs": 2206,
+          "timestampMs": 1811,
+          "confidence": 1
+        },
+        {
+          "text": " wrapped",
+          "startMs": 2241,
+          "endMs": 2485,
+          "timestampMs": 2241,
+          "confidence": 1
+        },
+        {
+          "text": " in",
+          "startMs": 2508,
+          "endMs": 2566,
+          "timestampMs": 2508,
+          "confidence": 1
+        },
+        {
+          "text": " a",
+          "startMs": 2612,
+          "endMs": 2635,
+          "timestampMs": 2612,
+          "confidence": 1
+        },
+        {
+          "text": " narrative.",
+          "startMs": 2682,
+          "endMs": 3170,
+          "timestampMs": 2682,
+          "confidence": 1
+        },
+        {
+          "text": " The",
+          "startMs": 3553,
+          "endMs": 3657,
+          "timestampMs": 3553,
+          "confidence": 1
+        },
+        {
+          "text": " Jarbou3i",
+          "startMs": 3715,
+          "endMs": 4075,
+          "timestampMs": 3715,
+          "confidence": 1
+        },
+        {
+          "text": " Model",
+          "startMs": 4145,
+          "endMs": 4389,
+          "timestampMs": 4145,
+          "confidence": 1
+        },
+        {
+          "text": " separates",
+          "startMs": 4458,
+          "endMs": 4923,
+          "timestampMs": 4458,
+          "confidence": 1
+        },
+        {
+          "text": " verified",
+          "startMs": 4981,
+          "endMs": 5422,
+          "timestampMs": 4981,
+          "confidence": 1
+        },
+        {
+          "text": " empirical",
+          "startMs": 5445,
+          "endMs": 5898,
+          "timestampMs": 5445,
+          "confidence": 1
+        },
+        {
+          "text": " facts",
+          "startMs": 5956,
+          "endMs": 6269,
+          "timestampMs": 5956,
+          "confidence": 1
+        },
+        {
+          "text": " from",
+          "startMs": 6293,
+          "endMs": 6420,
+          "timestampMs": 6293,
+          "confidence": 1
+        },
+        {
+          "text": " structural",
+          "startMs": 6490,
+          "endMs": 6931,
+          "timestampMs": 6490,
+          "confidence": 1
+        },
+        {
+          "text": " inferences,",
+          "startMs": 7001,
+          "endMs": 7767,
+          "timestampMs": 7001,
+          "confidence": 1
+        },
+        {
+          "text": " mapping",
+          "startMs": 8046,
+          "endMs": 8382,
+          "timestampMs": 8046,
+          "confidence": 1
+        },
+        {
+          "text": " how",
+          "startMs": 8440,
+          "endMs": 8533,
+          "timestampMs": 8440,
+          "confidence": 1
+        },
+        {
+          "text": " power",
+          "startMs": 8603,
+          "endMs": 8882,
+          "timestampMs": 8603,
+          "confidence": 1
+        },
+        {
+          "text": " actually",
+          "startMs": 8963,
+          "endMs": 9346,
+          "timestampMs": 8963,
+          "confidence": 1
+        },
+        {
+          "text": " operates.",
+          "startMs": 9404,
+          "endMs": 10217,
+          "timestampMs": 9404,
+          "confidence": 1
+        }
+      ]
+    },
+    "pillars": {
+      "audioFile": "tts/scene-pillars.mp3",
+      "source": "elevenlabs",
+      "audioEndSeconds": 11.938,
+      "durationInSeconds": 12.538,
+      "durationInFrames": 377,
+      "captions": [
+        {
+          "text": "Instead",
+          "startMs": 0,
+          "endMs": 418,
+          "timestampMs": 0,
+          "confidence": 1
+        },
+        {
+          "text": " of",
+          "startMs": 464,
+          "endMs": 511,
+          "timestampMs": 464,
+          "confidence": 1
+        },
+        {
+          "text": " reading",
+          "startMs": 569,
+          "endMs": 801,
+          "timestampMs": 569,
+          "confidence": 1
+        },
+        {
+          "text": " events",
+          "startMs": 848,
+          "endMs": 1161,
+          "timestampMs": 848,
+          "confidence": 1
+        },
+        {
+          "text": " as",
+          "startMs": 1196,
+          "endMs": 1289,
+          "timestampMs": 1196,
+          "confidence": 1
+        },
+        {
+          "text": " isolated",
+          "startMs": 1405,
+          "endMs": 1904,
+          "timestampMs": 1405,
+          "confidence": 1
+        },
+        {
+          "text": " headlines,",
+          "startMs": 1962,
+          "endMs": 2601,
+          "timestampMs": 1962,
+          "confidence": 1
+        },
+        {
+          "text": " the",
+          "startMs": 2879,
+          "endMs": 2984,
+          "timestampMs": 2879,
+          "confidence": 1
+        },
+        {
+          "text": " framework",
+          "startMs": 3053,
+          "endMs": 3483,
+          "timestampMs": 3053,
+          "confidence": 1
+        },
+        {
+          "text": " deconstructs",
+          "startMs": 3553,
+          "endMs": 4261,
+          "timestampMs": 3553,
+          "confidence": 1
+        },
+        {
+          "text": " systems",
+          "startMs": 4307,
+          "endMs": 4725,
+          "timestampMs": 4307,
+          "confidence": 1
+        },
+        {
+          "text": " across",
+          "startMs": 4772,
+          "endMs": 5108,
+          "timestampMs": 4772,
+          "confidence": 1
+        },
+        {
+          "text": " six",
+          "startMs": 5166,
+          "endMs": 5433,
+          "timestampMs": 5166,
+          "confidence": 1
+        },
+        {
+          "text": " interlocking",
+          "startMs": 5526,
+          "endMs": 6026,
+          "timestampMs": 5526,
+          "confidence": 1
+        },
+        {
+          "text": " pillars:",
+          "startMs": 6072,
+          "endMs": 6606,
+          "timestampMs": 6072,
+          "confidence": 1
+        },
+        {
+          "text": " Actors,",
+          "startMs": 7047,
+          "endMs": 7651,
+          "timestampMs": 7047,
+          "confidence": 1
+        },
+        {
+          "text": " Interests,",
+          "startMs": 7721,
+          "endMs": 8348,
+          "timestampMs": 7721,
+          "confidence": 1
+        },
+        {
+          "text": " Tools,",
+          "startMs": 8557,
+          "endMs": 9183,
+          "timestampMs": 8557,
+          "confidence": 1
+        },
+        {
+          "text": " Narratives,",
+          "startMs": 9392,
+          "endMs": 9973,
+          "timestampMs": 9392,
+          "confidence": 1
+        },
+        {
+          "text": " Results,",
+          "startMs": 10089,
+          "endMs": 10670,
+          "timestampMs": 10089,
+          "confidence": 1
+        },
+        {
+          "text": " and",
+          "startMs": 10716,
+          "endMs": 10855,
+          "timestampMs": 10716,
+          "confidence": 1
+        },
+        {
+          "text": " Feedback",
+          "startMs": 10913,
+          "endMs": 11227,
+          "timestampMs": 10913,
+          "confidence": 1
+        },
+        {
+          "text": " Loops.",
+          "startMs": 11285,
+          "endMs": 11889,
+          "timestampMs": 11285,
+          "confidence": 1
+        }
+      ]
+    },
+    "demo": {
+      "audioFile": "tts/scene-demo.mp3",
+      "source": "elevenlabs",
+      "audioEndSeconds": 12.121,
+      "durationInSeconds": 12.721,
+      "durationInFrames": 382,
+      "captions": [
+        {
+          "text": "Watch",
+          "startMs": 0,
+          "endMs": 360,
+          "timestampMs": 0,
+          "confidence": 1
+        },
+        {
+          "text": " how",
+          "startMs": 406,
+          "endMs": 522,
+          "timestampMs": 406,
+          "confidence": 1
+        },
+        {
+          "text": " a",
+          "startMs": 592,
+          "endMs": 627,
+          "timestampMs": 592,
+          "confidence": 1
+        },
+        {
+          "text": " raw",
+          "startMs": 708,
+          "endMs": 987,
+          "timestampMs": 708,
+          "confidence": 1
+        },
+        {
+          "text": " institutional",
+          "startMs": 1103,
+          "endMs": 1846,
+          "timestampMs": 1103,
+          "confidence": 1
+        },
+        {
+          "text": " claim",
+          "startMs": 1892,
+          "endMs": 2136,
+          "timestampMs": 1892,
+          "confidence": 1
+        },
+        {
+          "text": " is",
+          "startMs": 2194,
+          "endMs": 2264,
+          "timestampMs": 2194,
+          "confidence": 1
+        },
+        {
+          "text": " parsed",
+          "startMs": 2334,
+          "endMs": 2612,
+          "timestampMs": 2334,
+          "confidence": 1
+        },
+        {
+          "text": " in",
+          "startMs": 2647,
+          "endMs": 2717,
+          "timestampMs": 2647,
+          "confidence": 1
+        },
+        {
+          "text": " real",
+          "startMs": 2763,
+          "endMs": 2914,
+          "timestampMs": 2763,
+          "confidence": 1
+        },
+        {
+          "text": " time.",
+          "startMs": 2961,
+          "endMs": 3390,
+          "timestampMs": 2961,
+          "confidence": 1
+        },
+        {
+          "text": " On",
+          "startMs": 3831,
+          "endMs": 4005,
+          "timestampMs": 3831,
+          "confidence": 1
+        },
+        {
+          "text": " the",
+          "startMs": 4040,
+          "endMs": 4110,
+          "timestampMs": 4040,
+          "confidence": 1
+        },
+        {
+          "text": " left,",
+          "startMs": 4180,
+          "endMs": 4470,
+          "timestampMs": 4180,
+          "confidence": 1
+        },
+        {
+          "text": " plain-language",
+          "startMs": 4516,
+          "endMs": 5166,
+          "timestampMs": 4516,
+          "confidence": 1
+        },
+        {
+          "text": " questions",
+          "startMs": 5201,
+          "endMs": 5642,
+          "timestampMs": 5201,
+          "confidence": 1
+        },
+        {
+          "text": " unpack",
+          "startMs": 5700,
+          "endMs": 6014,
+          "timestampMs": 5700,
+          "confidence": 1
+        },
+        {
+          "text": " the",
+          "startMs": 6072,
+          "endMs": 6142,
+          "timestampMs": 6072,
+          "confidence": 1
+        },
+        {
+          "text": " system.",
+          "startMs": 6177,
+          "endMs": 6653,
+          "timestampMs": 6177,
+          "confidence": 1
+        },
+        {
+          "text": " On",
+          "startMs": 7094,
+          "endMs": 7245,
+          "timestampMs": 7094,
+          "confidence": 1
+        },
+        {
+          "text": " the",
+          "startMs": 7291,
+          "endMs": 7361,
+          "timestampMs": 7291,
+          "confidence": 1
+        },
+        {
+          "text": " right,",
+          "startMs": 7419,
+          "endMs": 7709,
+          "timestampMs": 7419,
+          "confidence": 1
+        },
+        {
+          "text": " every",
+          "startMs": 7755,
+          "endMs": 7988,
+          "timestampMs": 7755,
+          "confidence": 1
+        },
+        {
+          "text": " claim",
+          "startMs": 8034,
+          "endMs": 8255,
+          "timestampMs": 8034,
+          "confidence": 1
+        },
+        {
+          "text": " is",
+          "startMs": 8313,
+          "endMs": 8382,
+          "timestampMs": 8313,
+          "confidence": 1
+        },
+        {
+          "text": " gated",
+          "startMs": 8440,
+          "endMs": 8719,
+          "timestampMs": 8440,
+          "confidence": 1
+        },
+        {
+          "text": " by",
+          "startMs": 8766,
+          "endMs": 8870,
+          "timestampMs": 8766,
+          "confidence": 1
+        },
+        {
+          "text": " its",
+          "startMs": 8916,
+          "endMs": 9044,
+          "timestampMs": 8916,
+          "confidence": 1
+        },
+        {
+          "text": " epistemic",
+          "startMs": 9114,
+          "endMs": 9706,
+          "timestampMs": 9114,
+          "confidence": 1
+        },
+        {
+          "text": " status",
+          "startMs": 9764,
+          "endMs": 10217,
+          "timestampMs": 9764,
+          "confidence": 1
+        },
+        {
+          "text": " inside",
+          "startMs": 10333,
+          "endMs": 10762,
+          "timestampMs": 10333,
+          "confidence": 1
+        },
+        {
+          "text": " validated",
+          "startMs": 10797,
+          "endMs": 11285,
+          "timestampMs": 10797,
+          "confidence": 1
+        },
+        {
+          "text": " JSON.",
+          "startMs": 11331,
+          "endMs": 12074,
+          "timestampMs": 11331,
+          "confidence": 1
+        }
+      ]
+    },
+    "quickstart": {
+      "audioFile": "tts/scene-quickstart.mp3",
+      "source": "elevenlabs",
+      "audioEndSeconds": 9.326,
+      "durationInSeconds": 9.926,
+      "durationInFrames": 298,
+      "captions": [
+        {
+          "text": "Clone",
+          "startMs": 0,
+          "endMs": 406,
+          "timestampMs": 0,
+          "confidence": 1
+        },
+        {
+          "text": " hiimOmagh",
+          "startMs": 464,
+          "endMs": 1103,
+          "timestampMs": 464,
+          "confidence": 1
+        },
+        {
+          "text": " slash",
+          "startMs": 1126,
+          "endMs": 1451,
+          "timestampMs": 1126,
+          "confidence": 1
+        },
+        {
+          "text": " Jarbou3i",
+          "startMs": 1509,
+          "endMs": 1881,
+          "timestampMs": 1509,
+          "confidence": 1
+        },
+        {
+          "text": " Model",
+          "startMs": 1939,
+          "endMs": 2276,
+          "timestampMs": 1939,
+          "confidence": 1
+        },
+        {
+          "text": " on",
+          "startMs": 2450,
+          "endMs": 2647,
+          "timestampMs": 2450,
+          "confidence": 1
+        },
+        {
+          "text": " GitHub",
+          "startMs": 2717,
+          "endMs": 3088,
+          "timestampMs": 2717,
+          "confidence": 1
+        },
+        {
+          "text": " to",
+          "startMs": 3158,
+          "endMs": 3216,
+          "timestampMs": 3158,
+          "confidence": 1
+        },
+        {
+          "text": " audit",
+          "startMs": 3297,
+          "endMs": 3553,
+          "timestampMs": 3297,
+          "confidence": 1
+        },
+        {
+          "text": " complex",
+          "startMs": 3611,
+          "endMs": 4029,
+          "timestampMs": 3611,
+          "confidence": 1
+        },
+        {
+          "text": " systems,",
+          "startMs": 4075,
+          "endMs": 4656,
+          "timestampMs": 4075,
+          "confidence": 1
+        },
+        {
+          "text": " stress-test",
+          "startMs": 5039,
+          "endMs": 5642,
+          "timestampMs": 5039,
+          "confidence": 1
+        },
+        {
+          "text": " competing",
+          "startMs": 5689,
+          "endMs": 6060,
+          "timestampMs": 5689,
+          "confidence": 1
+        },
+        {
+          "text": " hypotheses,",
+          "startMs": 6107,
+          "endMs": 6989,
+          "timestampMs": 6107,
+          "confidence": 1
+        },
+        {
+          "text": " and",
+          "startMs": 7268,
+          "endMs": 7419,
+          "timestampMs": 7268,
+          "confidence": 1
+        },
+        {
+          "text": " eliminate",
+          "startMs": 7465,
+          "endMs": 7930,
+          "timestampMs": 7465,
+          "confidence": 1
+        },
+        {
+          "text": " rhetorical",
+          "startMs": 7964,
+          "endMs": 8417,
+          "timestampMs": 7964,
+          "confidence": 1
+        },
+        {
+          "text": " inflation.",
+          "startMs": 8464,
+          "endMs": 9288,
+          "timestampMs": 8464,
+          "confidence": 1
+        }
+      ]
+    }
+  }
+}

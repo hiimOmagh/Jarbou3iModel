@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.1.0",
+  "analysis_id": "illustrative-subsidy-digitization-en",
+  "generated_at": "2026-10-15T00:00:00Z",
+  "language": "en",
+  "model_mode": "focused",
+  "analysis_lens": "strategic",
+  "subject": {
+    "title": "Illustrative case: digitizing a national food subsidy",
+    "context": "Hypothetical teaching case. A ministry replaces paper bread-and-fuel vouchers with a biometric, ID-linked smart card during a tight budget cycle. All names, figures and sources are illustrative.",
+    "question": "Who gains power when a subsidy moves from paper vouchers to an algorithmic smart card, and which official claims survive evidence review?",
+    "executive_thesis": "The reform verifiably changes the tools and the enrolled population; the fiscal motive is a structural inference; the headline fraud figure is an unverified institutional claim."
+  },
+  "interests": [
+    {
+      "id": "I1",
+      "name": "Cut the subsidy bill before budget review",
+      "type": "economic",
+      "intensity": 5,
+      "horizon": "short",
+      "stakes": "important",
+      "confidence": "medium",
+      "rationale": "Launch timing coincides with the budget review; motive inferred from the fiscal calendar, not stated in any document."
+    }
+  ],
+  "actors": [
+    {
+      "id": "A1",
+      "name": "Ministry, card contractor, 2.1M households",
+      "category": "state",
+      "financial": 4,
+      "decision_access": 5,
+      "disruption_capacity": 3,
+      "media_influence": 4,
+      "confidence": "high",
+      "rationale": "The ministry, its payment-card contractor and the enrolled household register are named in the published procurement record."
+    }
+  ],
+  "tools": [
+    {
+      "id": "T1",
+      "name": "Biometric card + eligibility formula",
+      "type": "administrative-technical",
+      "cost": 4,
+      "risk": 3,
+      "speed": 3,
+      "reversibility": 2,
+      "deniability": 2,
+      "confidence": "high",
+      "rationale": "The decree text specifies biometric enrolment and a points-based eligibility formula."
+    }
+  ],
+  "narrative": [
+    {
+      "id": "N1",
+      "name": "Card will cut fraud by 40%",
+      "frame": "efficiency and anti-fraud",
+      "coherence": 4,
+      "media_alignment": 4,
+      "public_acceptance": 3,
+      "confidence": "low",
+      "rationale": "The 40% figure appears only in a press release; no method, baseline or dataset is published."
+    }
+  ],
+  "results": [
+    {
+      "id": "R1",
+      "name": "1 in 11 eligible homes failed enrolment",
+      "type": "direct",
+      "goal_achieved_pct": 55,
+      "cost_benefit": 2,
+      "power_balance_impact": "shifted toward the administering ministry and contractor",
+      "confidence": "high",
+      "rationale": "The pilot audit reports enrolment failures among households that met the eligibility criteria."
+    }
+  ],
+  "feedback": [
+    {
+      "id": "F1",
+      "description": "Complaints force new municipal appeal desks",
+      "adapts": "actors",
+      "speed": "slow",
+      "confidence": "medium",
+      "rationale": "Appeal desks extend the actor set; causal link to complaints is inferred from sequence, not confirmed."
+    }
+  ],
+  "contradictions": {
+    "items": [
+      {
+        "id": "C1",
+        "rhetoric": "The card will reach every family in need.",
+        "contradiction_type": "rhetoric_vs_action",
+        "actions": [
+          "Pilot audit shows 1 in 11 eligible households failed biometric enrolment",
+          "No appeal channel existed at launch"
+        ],
+        "affected_layers": ["narrative", "tools", "results"],
+        "interpretation": "Universal-reach rhetoric coexists with a measurable exclusion error built into the enrolment tool.",
+        "severity": 6,
+        "confidence": "high"
+      }
+    ]
+  },
+  "scenarios": {
+    "items": [
+      {
+        "id": "S1",
+        "name": "Exclusion becomes the hidden saving",
+        "probability": 45,
+        "timeframe": "12-18 months",
+        "drivers": ["Budget pressure", "Weak appeal capacity"],
+        "early_signals": ["Appeal backlog grows", "Subsidy spend falls faster than fraud findings"],
+        "disproven_if": ["Audited fraud reduction explains most of the spending drop"],
+        "rationale": "If savings outpace documented fraud, exclusion error is a plausible contributor."
+      }
+    ]
+  },
+  "evidence": {
+    "items": [
+      {
+        "id": "E1",
+        "claim": "The ministry, a named card contractor and 2.1M enrolled households are the system's actors.",
+        "basis": "source_based",
+        "confidence": "high",
+        "source_title": "Illustrative: public procurement contract and enrolment register",
+        "source_url": "",
+        "source_date": "2026-03",
+        "source_type": "official_record",
+        "source_note": "Hypothetical primary record used for teaching.",
+        "evidence_strength": 5,
+        "uncertainty": "Low; names and counts are stated in the record.",
+        "counter_evidence": "None identified."
+      },
+      {
+        "id": "E2",
+        "claim": "The reform is driven by the need to cut the subsidy bill before the budget review.",
+        "basis": "inference",
+        "confidence": "medium",
+        "source_title": "Illustrative: fiscal calendar comparison",
+        "source_url": "",
+        "source_date": "2026-04",
+        "source_type": "analysis",
+        "source_note": "Motive inferred from timing; no document states it.",
+        "evidence_strength": 3,
+        "uncertainty": "Timing is consistent with the motive but does not prove it.",
+        "counter_evidence": "The ministry cites service quality, not cost, as the goal."
+      },
+      {
+        "id": "E3",
+        "claim": "Eligibility is decided by biometric enrolment plus a points-based formula.",
+        "basis": "source_based",
+        "confidence": "high",
+        "source_title": "Illustrative: subsidy decree text",
+        "source_url": "",
+        "source_date": "2026-02",
+        "source_type": "primary_legal_policy",
+        "source_note": "Hypothetical decree used for teaching.",
+        "evidence_strength": 5,
+        "uncertainty": "Low.",
+        "counter_evidence": "None identified."
+      },
+      {
+        "id": "E4",
+        "claim": "The card will cut subsidy fraud by 40%.",
+        "basis": "source_based",
+        "confidence": "low",
+        "source_title": "Illustrative: ministry press release",
+        "source_url": "",
+        "source_date": "2026-05",
+        "source_type": "press_release",
+        "source_note": "Asserted figure; no method, baseline or dataset published.",
+        "evidence_strength": 1,
+        "uncertainty": "High; the figure cannot be reproduced.",
+        "counter_evidence": "No independent fraud audit exists."
+      },
+      {
+        "id": "E5",
+        "claim": "In the pilot, 1 in 11 eligible households failed enrolment.",
+        "basis": "observation",
+        "confidence": "high",
+        "source_title": "Illustrative: pilot audit report",
+        "source_url": "",
+        "source_date": "2026-07",
+        "source_type": "official_dataset",
+        "source_note": "Hypothetical audit used for teaching.",
+        "evidence_strength": 4,
+        "uncertainty": "Pilot regions may not represent the national rollout.",
+        "counter_evidence": "Enrolment improved in the final pilot month."
+      },
+      {
+        "id": "E6",
+        "claim": "Appeal desks were added because of exclusion complaints.",
+        "basis": "inference",
+        "confidence": "medium",
+        "source_title": "Illustrative: complaint log and ministerial circular timeline",
+        "source_url": "",
+        "source_date": "2026-09",
+        "source_type": "analysis",
+        "source_note": "Sequence of events suggests, but does not confirm, the causal link.",
+        "evidence_strength": 3,
+        "uncertainty": "Other drivers (court rulings, donor pressure) are possible.",
+        "counter_evidence": "The circular does not mention complaints."
+      }
+    ]
+  },
+  "assumptions": {
+    "items": [
+      {
+        "id": "AS1",
+        "assumption": "Pilot enrolment failure rates carry over to the national rollout.",
+        "risk": "medium",
+        "disproving_test": "National enrolment audit shows a failure rate under 2%.",
+        "implication_if_wrong": "The exclusion result weakens and the contradiction severity drops."
+      }
+    ]
+  },
+  "links": [
+    { "from": "I1", "to": "A1", "relation": "motivates", "strength": 4 },
+    { "from": "A1", "to": "T1", "relation": "uses", "strength": 5 },
+    { "from": "T1", "to": "N1", "relation": "is_justified_by", "strength": 4 },
+    { "from": "T1", "to": "R1", "relation": "produces", "strength": 4 },
+    { "from": "R1", "to": "F1", "relation": "triggers", "strength": 3 },
+    { "from": "F1", "to": "A1", "relation": "adapts", "strength": 3 },
+    { "from": "E1", "to": "A1", "relation": "supports", "strength": 5 },
+    { "from": "E2", "to": "I1", "relation": "supports", "strength": 3 },
+    { "from": "E3", "to": "T1", "relation": "supports", "strength": 5 },
+    { "from": "E4", "to": "N1", "relation": "supports", "strength": 1 },
+    { "from": "E5", "to": "R1", "relation": "supports", "strength": 4 },
+    { "from": "E6", "to": "F1", "relation": "supports", "strength": 3 }
+  ],
+  "quality_gate": {
+    "publication_risk": "high",
+    "weakest_layer": "narrative",
+    "next_improvement": "Teaching case only: every source is illustrative and unverified, so the repo's publication gate stays blocked by design."
+  }
+}
