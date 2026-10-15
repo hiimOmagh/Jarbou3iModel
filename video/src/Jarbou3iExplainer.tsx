@@ -2,25 +2,29 @@ import { Audio } from "@remotion/media";
 import { AbsoluteFill, Interactive, Series, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { WordCaptions } from "./components/WordCaptions";
 import { fontFamily } from "./fonts";
+import { CtaScene } from "./scenes/CtaScene";
+import { EvidenceScene } from "./scenes/EvidenceScene";
 import { HookScene } from "./scenes/HookScene";
-import { PillarsGraphScene } from "./scenes/PillarsGraphScene";
-import { QuickstartScene } from "./scenes/QuickstartScene";
-import { SplitDemoScene } from "./scenes/SplitDemoScene";
-import type { Jarbou3iVideoProps } from "./types/jarbou3iSchema";
+import { LensesScene } from "./scenes/LensesScene";
+import { ReviewScene } from "./scenes/ReviewScene";
+import type { SceneProps } from "./scenes/types";
+import { WorkflowScene } from "./scenes/WorkflowScene";
+import { WorkspaceScene } from "./scenes/WorkspaceScene";
+import { SCENE_ORDER, type Jarbou3iVideoProps, type SceneId } from "./types/jarbou3iSchema";
 
-export const Jarbou3iExplainer: React.FC<Jarbou3iVideoProps> = ({
-  repoName,
-  version,
-  tagline,
-  caseStudyTitle,
-  rawHeadline,
-  pillars,
-  scenes,
-}) => {
+const SCENES: Record<SceneId, { name: string; Component: React.FC<SceneProps> }> = {
+  hook: { name: "Hook", Component: HookScene },
+  workflow: { name: "How it works", Component: WorkflowScene },
+  lenses: { name: "Two lenses", Component: LensesScene },
+  evidence: { name: "Evidence discipline", Component: EvidenceScene },
+  review: { name: "In-depth review", Component: ReviewScene },
+  workspace: { name: "Local-first", Component: WorkspaceScene },
+  cta: { name: "Call to action", Component: CtaScene },
+};
+
+export const Jarbou3iExplainer: React.FC<Jarbou3iVideoProps> = (video) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
-  const fact = pillars.find((p) => p.status === "VERIFIED_FACT") ?? pillars[0];
-  const inference = pillars.find((p) => p.status === "STRUCTURAL_INFERENCE") ?? pillars[1];
 
   return (
     <AbsoluteFill
@@ -34,34 +38,17 @@ export const Jarbou3iExplainer: React.FC<Jarbou3iVideoProps> = ({
       }}
     >
       <Series>
-        <Series.Sequence name="Hook" durationInFrames={scenes.hook.durationInFrames}>
-          <HookScene
-            repoName={repoName}
-            version={version}
-            tagline={tagline}
-            rawHeadline={rawHeadline}
-            fact={fact}
-            inference={inference}
-            captions={scenes.hook.captions}
-          />
-          <Audio src={staticFile(scenes.hook.audioFile)} />
-          <WordCaptions captions={scenes.hook.captions} />
-        </Series.Sequence>
-        <Series.Sequence name="Pillars" durationInFrames={scenes.pillars.durationInFrames}>
-          <PillarsGraphScene pillars={pillars} captions={scenes.pillars.captions} />
-          <Audio src={staticFile(scenes.pillars.audioFile)} />
-          <WordCaptions captions={scenes.pillars.captions} />
-        </Series.Sequence>
-        <Series.Sequence name="Demo" durationInFrames={scenes.demo.durationInFrames}>
-          <SplitDemoScene pillars={pillars} caseStudyTitle={caseStudyTitle} rawHeadline={rawHeadline} />
-          <Audio src={staticFile(scenes.demo.audioFile)} />
-          <WordCaptions captions={scenes.demo.captions} />
-        </Series.Sequence>
-        <Series.Sequence name="Quickstart" durationInFrames={scenes.quickstart.durationInFrames}>
-          <QuickstartScene repoName={repoName} captions={scenes.quickstart.captions} />
-          <Audio src={staticFile(scenes.quickstart.audioFile)} />
-          <WordCaptions captions={scenes.quickstart.captions} />
-        </Series.Sequence>
+        {SCENE_ORDER.map((id) => {
+          const { name, Component } = SCENES[id];
+          const scene = video.scenes[id];
+          return (
+            <Series.Sequence key={id} name={name} durationInFrames={scene.durationInFrames}>
+              <Component video={video} captions={scene.captions} />
+              <Audio src={staticFile(scene.audioFile)} />
+              <WordCaptions captions={scene.captions} />
+            </Series.Sequence>
+          );
+        })}
       </Series>
 
       <Interactive.Div

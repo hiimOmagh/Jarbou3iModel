@@ -20,14 +20,22 @@ const OUT_DIR = join("public", "tts");
 // other inside a word token never shifts any timestamp.
 const SPOKEN_NAME = "Jarbou'i";
 const DISPLAY_NAME = "Jarbou3i";
-const SPOKEN_NAME_PATTERN = /Jarbou['’]i/g;
+const SPOKEN_NAME_PATTERN = /(jarbou)['’]i/gi;
 
 const NARRATION: Record<SceneId, string> = {
-  hook: "Every major policy or crisis arrives wrapped in a narrative. The Jarbou'i Model separates verified empirical facts from structural inferences, mapping how power actually operates.",
-  pillars: "Instead of reading events as isolated headlines, the framework deconstructs systems across six interlocking pillars: Actors, Interests, Tools, Narratives, Results, and Feedback Loops.",
-  demo: "Watch how a raw institutional claim is parsed in real time. On the left, plain-language questions unpack the system. On the right, every claim is gated by its epistemic status inside validated JSON.",
-  quickstart: "Clone hiimOmagh slash Jarbou'i Model on GitHub to audit complex systems, stress-test competing hypotheses, and eliminate rhetorical inflation.",
+  hook: "Every policy, crisis, or reform arrives wrapped in a story. The Jarbou'i Model turns the AI assistant you already use into a disciplined analyst. It separates verified facts from institutional claims and plausible inferences, and keeps your report blocked until the evidence holds.",
+  workflow: "Describe your topic, choose a lens, and copy a precise prompt into ChatGPT, Claude, Gemini, or any assistant. Paste the answer back. Format slips are repaired, missing parts get a targeted follow-up prompt, and nothing is ever invented.",
+  lenses: "Two lenses, two rigorous methods. Strategic follows interests to results: actors, tools, narratives, outcomes, and feedback, tested against contradictions and scenarios. The Biopolitical Training Map traces how bodies, data, and classifications become governed, across nine pillars, thirteen capture criteria, nine rival explanations, and an eighteen-point self-audit.",
+  evidence: "Every claim is typed, as a verified fact, an institutional claim, a plausible inference, or speculation, with its source tier and verification state. Readiness is only a diagnostic. Publication stays blocked until every source is verified and every concern is resolved.",
+  review: "Then explore the result in depth: what matters first, the full protocol, a connections explorer, an evidence test with rival explanations, and a calibrated judgment of what is supported, disputed, or unknown.",
+  workspace: "Everything runs in your browser. No account, no backend, no tracking. Each analysis becomes a local workspace with immutable revisions, a review ledger, and portable backups. Export a standalone HTML report and lossless JSON.",
+  cta: "In Arabic, English, and French, light or dark, on any screen. Open jarbou'i model dot pages dot dev, and start your first analysis.",
 };
+
+// Spoken word runs shown as one caption token (timing spans the whole run).
+const MERGES: { spoken: string[]; display: string }[] = [
+  { spoken: ["jarbou3i", "model", "dot", "pages", "dot", "dev"], display: "jarbou3i-model.pages.dev" },
+];
 
 type Alignment = {
   characters: string[];
@@ -130,8 +138,20 @@ function alignmentToCaptions(alignment: Alignment): Caption[] {
   });
   if (current) words.push(current);
 
+  for (const w of words) w.text = w.text.replace(SPOKEN_NAME_PATTERN, (_, stem: string) => `${stem}3i`);
+  const bare = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, "");
+  for (const { spoken, display } of MERGES) {
+    for (let i = 0; i + spoken.length <= words.length; i++) {
+      if (spoken.every((sp, k) => bare(words[i + k].text) === sp)) {
+        const last = words[i + spoken.length - 1];
+        const trailing = last.text.match(/[^A-Za-z0-9]*$/)?.[0] ?? "";
+        words.splice(i, spoken.length, { text: display + trailing, start: words[i].start, end: last.end });
+      }
+    }
+  }
+
   return words.map((word, index) => {
-    const display = word.text.replace(SPOKEN_NAME_PATTERN, DISPLAY_NAME);
+    const display = word.text;
     const startMs = Math.round(word.start * 1000);
     const endMs = Math.max(startMs + 1, Math.round(word.end * 1000));
     return {

@@ -1,12 +1,13 @@
 import { monoFamily } from "../fonts";
-import { STATUS_COLORS, type EpistemicStatus } from "../types/jarbou3iSchema";
+import { EPISTEMIC_COLORS, type EpistemicType } from "../types/jarbou3iSchema";
 
-export const StatusChip: React.FC<{
-  status: EpistemicStatus;
+export const EpistemicChip: React.FC<{
+  type: EpistemicType;
   fontSize?: number;
   brackets?: boolean;
-}> = ({ status, fontSize = 18, brackets = false }) => {
-  const color = STATUS_COLORS[status];
+  dim?: boolean;
+}> = ({ type, fontSize = 18, brackets = false, dim = false }) => {
+  const color = dim ? "#64748B" : EPISTEMIC_COLORS[type];
   return (
     <span
       style={{
@@ -19,10 +20,9 @@ export const StatusChip: React.FC<{
         borderRadius: 8,
         padding: "4px 10px",
         whiteSpace: "nowrap",
-        letterSpacing: 0.3,
       }}
     >
-      {brackets ? `[${status}]` : status}
+      {brackets ? `[${type}]` : type}
     </span>
   );
 };

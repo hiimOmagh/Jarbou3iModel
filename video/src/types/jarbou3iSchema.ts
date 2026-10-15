@@ -1,14 +1,32 @@
 import { z } from "zod";
 
-// Presentation labels for the repo's epistemic discipline. They are derived
-// from the Strategic contract's evidence `basis` + `evidence_strength` and the
-// evidence -> record `links` (see scripts/json-to-props.ts), not stored in it.
-export const EpistemicStatusSchema = z.enum([
-  "VERIFIED_FACT",
-  "STRUCTURAL_INFERENCE",
-  "UNVERIFIED_CLAIM",
+// The ten epistemic types of the Biopolitical v2.1 evidence contract.
+export const EpistemicTypeSchema = z.enum([
+  "verified_fact",
+  "quantitative_estimate",
+  "institutional_claim",
+  "scholarly_interpretation",
+  "political_narrative",
+  "legal_classification",
+  "ethical_judgment",
+  "plausible_inference",
+  "speculation",
+  "unsupported_allegation",
 ]);
-export type EpistemicStatus = z.infer<typeof EpistemicStatusSchema>;
+export type EpistemicType = z.infer<typeof EpistemicTypeSchema>;
+
+export const EPISTEMIC_COLORS: Record<EpistemicType, string> = {
+  verified_fact: "#10B981",
+  quantitative_estimate: "#38BDF8",
+  institutional_claim: "#F87171",
+  scholarly_interpretation: "#A78BFA",
+  political_narrative: "#FB7185",
+  legal_classification: "#60A5FA",
+  ethical_judgment: "#C084FC",
+  plausible_inference: "#F59E0B",
+  speculation: "#FBBF24",
+  unsupported_allegation: "#94A3B8",
+};
 
 // Mirrors `Caption` from @remotion/captions.
 export const CaptionSchema = z.object({
@@ -20,21 +38,16 @@ export const CaptionSchema = z.object({
   pageBreakAfter: z.boolean().optional(),
 });
 
-export const PillarSchema = z.object({
-  id: z.enum(["actors", "interests", "tools", "narratives", "results", "feedback_loops"]),
-  label: z.string(),
-  question: z.string(),
-  plainSummary: z.string(),
-  // Real key in the Strategic v1.1 contract: interests, actors, tools, narrative, results, feedback.
-  jsonKey: z.string(),
-  recordId: z.string(),
-  sampleValue: z.string(),
-  status: EpistemicStatusSchema,
+export const ClaimSchema = z.object({
+  type: EpistemicTypeSchema,
+  text: z.string(),
+  note: z.string(),
 });
-export type Pillar = z.infer<typeof PillarSchema>;
+export type Claim = z.infer<typeof ClaimSchema>;
 
-export const SceneIdSchema = z.enum(["hook", "pillars", "demo", "quickstart"]);
+export const SceneIdSchema = z.enum(["hook", "workflow", "lenses", "evidence", "review", "workspace", "cta"]);
 export type SceneId = z.infer<typeof SceneIdSchema>;
+export const SCENE_ORDER: SceneId[] = ["hook", "workflow", "lenses", "evidence", "review", "workspace", "cta"];
 
 export const SceneSchema = z.object({
   audioFile: z.string(),
@@ -43,20 +56,14 @@ export const SceneSchema = z.object({
 });
 export type SceneData = z.infer<typeof SceneSchema>;
 
-export const ScenesSchema = z.object({
-  hook: SceneSchema,
-  pillars: SceneSchema,
-  demo: SceneSchema,
-  quickstart: SceneSchema,
-});
+export const ScenesSchema = z.record(SceneIdSchema, SceneSchema);
 
 export const Jarbou3iVideoSchema = z.object({
-  repoName: z.string(),
-  version: z.string(),
+  siteUrl: z.string(),
   tagline: z.string(),
-  caseStudyTitle: z.string(),
   rawHeadline: z.string(),
-  pillars: z.array(PillarSchema).length(6),
+  // Hook split: one claim per card, left to right.
+  claims: z.array(ClaimSchema).length(3),
   scenes: ScenesSchema,
 });
 export type Jarbou3iVideoProps = z.infer<typeof Jarbou3iVideoSchema>;
@@ -75,11 +82,3 @@ export const TtsManifestSchema = z.object({
   ),
 });
 export type TtsManifest = z.infer<typeof TtsManifestSchema>;
-
-export const SCENE_ORDER: SceneId[] = ["hook", "pillars", "demo", "quickstart"];
-
-export const STATUS_COLORS: Record<EpistemicStatus, string> = {
-  VERIFIED_FACT: "#10B981",
-  STRUCTURAL_INFERENCE: "#F59E0B",
-  UNVERIFIED_CLAIM: "#F87171",
-};
